@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>AgroSatCopilot · Cuaderno MICAI 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Cuaderno de trabajo · MICAI 2027</p>
+    <h1>AgroSatCopilot</h1>
+    <p class="sub">Clasificación de cultivos parcela a parcela sobre series temporales de
+      Sentinel-2, y el artículo que estamos escribiendo con lo que ese sistema resultó medir
+      de verdad.</p>
+    <div class="meta">
+      <span><b>Autores</b> A. J. Zizumbo Velasco · J. A. Rebull-Saucedo</span>
+      <span><b>Datos</b> PASTIS-R, fold 5 held-out</span>
+      <span><b>Estado</b> 2 sep 2026</span>
+    </div>
+  </header>
+</div>
+
+<nav>
+  <div class="tabs" role="tablist" aria-label="Secciones">
+    <button class="tab" role="tab" id="t-que" aria-controls="p-que" aria-selected="true">Qué es</button>
+    <button class="tab" role="tab" id="t-est" aria-controls="p-est" aria-selected="false">Estado</button>
+    <a class="tab" href="plan.html">Plan por épicas</a>
+    <button class="tab" role="tab" id="t-hall" aria-controls="p-hall" aria-selected="false">Hallazgos</button>
+    <button class="tab" role="tab" id="t-pend" aria-controls="p-pend" aria-selected="false">Pendientes</button>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<section class="panel" id="p-que" role="tabpanel" aria-labelledby="t-que">
+  <p class="lead">AgroSatCopilot mapea qué se cultiva en cada parcela agrícola a partir de
+    lo que los satélites ven a lo largo del año. El artículo que preparamos para MICAI 2027
+    no trata del sistema: trata de una decisión que el sistema tuvo que tomar y que nadie
+    mide.</p>
+
+  <h2>El problema, en una imagen</h2>
+  <p>El banco público PASTIS-R cubre Francia metropolitana con dieciocho clases agronómicas.
+    Sobre el fold 5, el que reservamos para medir, hay <strong>16 640 parcelas</strong>. Su
+    reparto es el punto de partida de todo:</p>
+
+  <figure>
+    <div class="bars" id="support-bars"></div>
+    <figcaption>Parcelas por clase en el fold 5. La clase mayoritaria tiene 6 128 parcelas
+      y la menor, 103: una razón de sesenta a uno. En rojo, seis clases de soporte bajo, del
+      orden de las que el equipo retiró del producto desplegado para poder mapear con calidad
+      aceptable.</figcaption>
+  </figure>
+
+  <h2>La decisión que nadie mide</h2>
+  <p>Cuando un mapa de cultivos no alcanza calidad suficiente, hay dos maneras de recortar
+    lo que promete. Se puede <strong>prometer menos clases</strong> —retirar del catálogo
+    las que el modelo no distingue— o se puede <strong>responder menos parcelas</strong>,
+    abstenerse donde el modelo no está seguro. Son productos distintos y se eligen por
+    intuición.</p>
+  <p>Este equipo tomó la primera vía sin medirla: pasó de dieciocho clases a doce porque
+    las seis retiradas «tenían muy poca muestra» y «bajaban mucho el F1 macro». Es una
+    decisión razonable, documentada y, hasta donde alcanza nuestra revisión de 43 trabajos,
+    nunca cuantificada frente a su alternativa.</p>
+
+  <div class="callout">
+    <p><strong>Lo que el artículo demuestra hoy</strong> no es cuál de las dos vías es
+      mejor, sino algo previo y más incómodo: que el F1-macro no es comparable entre
+      catálogos de distinto tamaño, de modo que la comparación habitual entre ambas vías
+      está mal planteada de raíz. Lo descubrimos auditando nuestro propio experimento.</p>
+  </div>
+
+  <h2>Cómo se trabaja aquí</h2>
+  <ul>
+    <li><strong>Cifras reales o nada.</strong> Cada número impreso se re-deriva desde un
+      archivo sellado con MD5 en un registro de custodia. Lo que no tiene archivo, no se
+      escribe.</li>
+    <li><strong>Los resultados negativos se publican</strong>, con su matiz. Tres de los
+      cuatro experimentos de esta fase salieron nulos y los tres van al artículo.</li>
+    <li><strong>Un control que nunca ha fallado no se sabe si funciona.</strong> Cada gate
+      se prueba en negativo antes de confiar en él.</li>
+    <li><strong>Las auditorías se hacen a ciegas.</strong> Los revisores no reciben nuestras
+      conclusiones; así encuentran lo que nosotros no vimos.</li>
+  </ul>
+</section>
+
+<section class="panel" id="p-est" role="tabpanel" aria-labelledby="t-est" hidden>
+  <p class="lead">Tres fases cerradas, una auditoría ciega que obligó a retirar el resultado
+    principal, y una contribución mejor fundada que salió de ese mismo error.</p>
+
+  <h2>Registro de custodia</h2>
+  <div class="ledger">
+    <div class="ledger-row"><span class="name">Artefactos sellados con MD5</span><span class="note">gate en verde</span><span class="num">51</span></div>
+    <div class="ledger-row"><span class="name">Cifras declaradas sin artefacto</span><span class="note">no se imprimen</span><span class="num">8</span></div>
+    <div class="ledger-row"><span class="name">Referencias con identificador verificado por API</span><span class="note">0 fuera de OK</span><span class="num">43</span></div>
+    <div class="ledger-row"><span class="name">Consultas de literatura registradas</span><span class="note">tres fuentes</span><span class="num">61</span></div>
+    <div class="ledger-row"><span class="name">Parcelas del universo de evaluación</span><span class="note">fold 5 held-out</span><span class="num">16 640</span></div>
+    <div class="ledger-row"><span class="name">Peso del sello que sustituye al dataset</span><span class="note">frente a 68 GB</span><span class="num">420 kB</span></div>
+  </div>
+
+  <h2>Los diez modelos, bajo un solo protocolo</h2>
+  <p>Medidos sobre las mismas parcelas, con el mismo arnés y la misma métrica. Es la primera
+    vez que el proyecto los compara así.</p>
+  <div class="scroll">
+    <table>
+      <thead><tr><th>Modelo</th><th class="n">F1-macro</th><th class="n">Exactitud</th></tr></thead>
+      <tbody id="members-tbody"></tbody>
+    </table>
+  </div>
+  <p>El mejor miembro individual es <code>tsvit-pheno</code>. Ninguna de las cuatro reglas de
+    combinación lo mejora bajo un protocolo libre de fuga, y el motivo probable no es que
+    combinar no sirva: es que <strong>no hay con qué combinarlo</strong>. U-TAE rinde 0,19
+    donde la literatura le da alrededor de 0,63, así que los miembros débiles están mal
+    entrenados, no el fuerte contaminado.</p>
+
+  <h2>Los dos regímenes de la cifra campeona</h2>
+  <p>El 0,7486 que el proyecto publicó no es un held-out: el meta-modelo se reentrena sobre
+    las mismas parcelas que luego puntúa. La cifra libre de fuga ya existía en un CSV del
+    repositorio, guardada en la columna de al lado.</p>
+  <div class="ledger">
+    <div class="ledger-row"><span class="name">Stacking-5, reajustado sobre todas las parcelas</span><span class="note">in-sample</span><span class="num">0,7486</span></div>
+    <div class="ledger-row"><span class="name">Stacking-5, bloques espaciales agrupados</span><span class="note">libre de fuga</span><span class="num hi">0,6794</span></div>
+    <div class="ledger-row"><span class="name">Mejor miembro individual, sin combinar</span><span class="note">libre de fuga</span><span class="num hi">0,7367</span></div>
+  </div>
+</section>
+
+<section class="panel" id="p-hall" role="tabpanel" aria-labelledby="t-hall" hidden>
+  <p class="lead">Cuatro revisores independientes auditaron el experimento sin conocer
+    nuestras conclusiones. Tumbaron el resultado principal, y tenían razón.</p>
+
+  <h2>Lo que cayó</h2>
+
+  <div class="finding blocker">
+    <div class="top"><span class="chip stop">Bloqueante</span><h3>El delta era aritmética del denominador</h3></div>
+    <p>La métrica promediaba sobre conjuntos de clases distintos según el mecanismo: la
+      retirada sobre las <em>K</em> clases de mejor F1, la abstención sobre las hasta
+      dieciocho presentes. Al igualar el conjunto evaluado, el signo se invierte en los siete
+      puntos de operación.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Clases prometidas</th><th class="n">Delta publicado</th><th class="n">Delta corregido</th></tr></thead>
+        <tbody id="delta-tbody"></tbody>
+      </table>
+    </div>
+    <p>La demostración más limpia: sobre esas mismas parcelas, <strong>sin retirar ni
+      rechazar nada</strong>, el F1-macro calculado sobre las ocho clases más fáciles es
+      0,8956 — más alto que el 0,8243 que atribuíamos al mecanismo. No hacía falta mecanismo
+      alguno, bastaba con cambiar el denominador.</p>
+  </div>
+
+  <div class="finding blocker">
+    <div class="top"><span class="chip stop">Bloqueante</span><h3>Un mecanismo miraba la respuesta</h3></div>
+    <p>La retirada de clases decidía a qué parcelas responder consultando su etiqueta
+      verdadera. Un sistema desplegado no la conoce. Los dos mecanismos se comparaban bajo
+      información asimétrica mientras el texto afirmaba lo contrario.</p>
+  </div>
+
+  <div class="finding blocker">
+    <div class="top"><span class="chip stop">Bloqueante</span><h3>El intervalo delataba el error y no lo vimos</h3></div>
+    <p>El bootstrap sorteaba índices distintos para cada mecanismo. Con las dieciocho clases
+      prometidas ambos son literalmente el mismo objeto: el delta sale cero y el intervalo
+      debería ser cero también. Publicamos [−0,029, +0,031] y leímos esa fila como control
+      superado.</p>
+  </div>
+
+  <h2>Lo que aguanta</h2>
+
+  <div class="finding pass">
+    <div class="top"><span class="chip ok">Verificado</span><h3>La cifra campeona es in-sample</h3></div>
+    <p>Reproducido al sexto decimal por tres vías independientes. Las cuatro cifras selladas
+      del proyecto pertenecen a ese régimen, y la columna libre de fuga ya estaba calculada
+      al lado de la que se publicó.</p>
+  </div>
+
+  <div class="finding pass">
+    <div class="top"><span class="chip ok">Verificado</span><h3>Tres resultados nulos, y se refuerzan</h3></div>
+    <p>El refinamiento por vecindad espacial no aporta con ningún parámetro; la rama
+      contrastiva FarSLIP da +0,0006 con intervalo que cruza el cero; el árbitro entrenado no
+      mejora al promedio simple. Al corregir por autocorrelación espacial los tres intervalos
+      se ensanchan y los tres nulos quedan más firmes.</p>
+  </div>
+
+  <div class="finding pass">
+    <div class="top"><span class="chip ok">Verificado</span><h3>La partición espacial es impecable</h3></div>
+    <p>Cinco bloques disjuntos, las 16 640 parcelas evaluadas exactamente una vez, ningún
+      parche repartido entre entrenamiento y prueba, y una separación mínima de
+      <strong>22 951 metros</strong> entre una parcela de prueba y la más cercana de
+      entrenamiento.</p>
+  </div>
+
+  <div class="callout">
+    <p><strong>Lo que queda es mejor de lo que teníamos.</strong> Del error sale una
+      contribución más firme: el F1-macro no es comparable entre catálogos de distinto
+      tamaño, y esa incomparabilidad invalida una forma de comparar que está extendida.
+      Explica además por qué el paso de dieciocho a doce clases <em>parece</em> mejorar la
+      calidad. Es más estrecho que lo que perseguíamos y es verdad.</p>
+  </div>
+</section>
+
+<section class="panel" id="p-pend" role="tabpanel" aria-labelledby="t-pend" hidden>
+  <p class="lead">Lo que no podemos resolver solos, en orden de urgencia real.</p>
+  <div class="phases" id="pending"></div>
+
+  <h2>Lo que ya no hace falta pedir</h2>
+  <p>La ventana de la máquina H100 salió de la lista: el registro de MLflow dice que ese
+    entrenamiento tardó 32 minutos en una tarjeta de consumo, así que los cinco reentrenamientos
+    caben en menos de tres horas y los hacemos nosotros. Los artefactos de la rama multirregión
+    y la evaluación conversacional también salen, porque ese contenido no entra en el cuerpo del
+    artículo con el encuadre actual.</p>
+</section>
+
+  <footer>
+    Cuaderno de trabajo interno · <a href="plan.html">Plan por épicas</a> · Las cifras proceden
+    del registro de custodia sellado y se re-derivan desde artefactos versionados · Actualizado
+    el 2 de septiembre de 2026
+  </footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var support = [
+    ["0",6128],["2",2196],["7",2067],["1",1584],["13",660],["11",576],
+    ["3",573],["15",511],["4",387],["10",355],["6",313],["9",214],
+    ["14",209],["17",206],["5",198],["16",193],["8",167],["12",103]
+  ];
+  var rare = {"12":1,"16":1,"8":1,"5":1,"17":1,"9":1};
+  var max = 6128, bars = document.getElementById("support-bars");
+  support.forEach(function(r){
+    var row = document.createElement("div"); row.className = "bar-row";
+    var lab = document.createElement("span"); lab.className = "lab"; lab.textContent = "cl " + r[0];
+    var track = document.createElement("div"); track.className = "bar-track";
+    var fill = document.createElement("div");
+    fill.className = "bar-fill" + (rare[r[0]] ? " rare" : "");
+    fill.style.width = Math.max(0.7, (r[1] / max) * 100) + "%";
+    track.appendChild(fill);
+    var val = document.createElement("span"); val.className = "val";
+    val.textContent = r[1].toLocaleString("es-ES");
+    row.appendChild(lab); row.appendChild(track); row.appendChild(val);
+    bars.appendChild(row);
+  });
+
+  var members = [
+    ["tsvit-pheno","0,7367","0,8579"],["xgb-alphaearth","0,5913","0,7811"],
+    ["deeplabv3plus","0,3546","0,6490"],["segformer","0,3382","0,6474"],
+    ["tsvit-pheno-fullm","0,2552","0,5334"],["unet","0,2055","0,5541"],
+    ["utae","0,1880","0,5407"],["anysat","0,1873","0,5710"],
+    ["farslip-ft18","0,1730","0,3142"],["farslip-zeroshot","0,0306","0,0948"]
+  ];
+  var mb = document.getElementById("members-tbody");
+  members.forEach(function(m){
+    var tr = document.createElement("tr");
+    tr.innerHTML = '<td><code>' + m[0] + '</code></td><td class="n">' + m[1] +
+                   '</td><td class="n">' + m[2] + '</td>';
+    mb.appendChild(tr);
+  });
+
+  var deltas = [["18","+0,0000","+0,0000"],["16","+0,0003","−0,0128"],
+                ["14","+0,0076","−0,0185"],["12","+0,0504","−0,0174"],
+                ["10","+0,1423","−0,0095"],["9","+0,1501","−0,0253"],
+                ["8","+0,1944","−0,0166"]];
+  var db = document.getElementById("delta-tbody");
+  deltas.forEach(function(d){
+    var tr = document.createElement("tr");
+    tr.innerHTML = '<td class="n">' + d[0] + '</td><td class="n">' + d[1] +
+                   '</td><td class="n neg">' + d[2] + '</td>';
+    db.appendChild(tr);
+  });
+
+  var pending = [
+    ["1","El registro de folds de tsvit-pheno","Es lo único que puede invalidar resultados ya escritos. Con qué folds se entrenó ese checkpoint.","stop","Urgente"],
+    ["2","La inconsistencia de tsvit-pheno-fullm","Da 0,7918 a nivel píxel y 0,2552 a nivel parcela sobre el mismo fold. Con qué checkpoint se generó el volcado.","stop","Urgente"],
+    ["3","Firmar o rebatir el encuadre","Sin ese visto bueno no se escribe la introducción ni el título.","wip","Decisión"],
+    ["4","Autoría y autor de correspondencia","Quien firma la licencia lo hace a mano y no se puede cambiar después.","wip","Decisión"],
+    ["5","Cuatro archivos sin versionar","Tres checkpoints de FarSLIP que el código usa por defecto y no están en ningún sitio, más el parquet de Italia.","idle","Datos"]
+  ];
+  var pe = document.getElementById("pending");
+  pending.forEach(function(p){
+    var d = document.createElement("div");
+    d.className = "phase";
+    d.innerHTML = '<span class="n">' + p[0] + '</span><div><h3>' + p[1] +
+                  '</h3><p>' + p[2] + '</p></div><span class="chip ' + p[3] + '">' + p[4] + '</span>';
+    pe.appendChild(d);
+  });
+
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('button[role="tab"]'));
+  function select(tab){
+    tabs.forEach(function(t){
+      var on = t === tab;
+      t.setAttribute("aria-selected", on ? "true" : "false");
+      document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+    });
+  }
+  tabs.forEach(function(t, i){
+    t.addEventListener("click", function(){ select(t); t.focus(); });
+    t.addEventListener("keydown", function(e){
+      var d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+      if(d){ e.preventDefault(); var n = tabs[(i + d + tabs.length) % tabs.length]; select(n); n.focus(); }
+    });
+  });
+
+  // Permite enlazar desde plan.html a una pestaña concreta.
+  var byHash = {"#estado":"t-est","#hallazgos":"t-hall","#pendientes":"t-pend"};
+  var target = byHash[window.location.hash];
+  if(target){ select(document.getElementById(target)); }
+})();
+</script>
+</body>
+</html>

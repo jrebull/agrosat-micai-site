@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Plan por épicas · AgroSatCopilot MICAI 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="wrap wide">
+  <header>
+    <p class="eyebrow"><a href="index.html">← Cuaderno AgroSatCopilot</a></p>
+    <h1>Plan por épicas</h1>
+    <p class="sub">El trabajo del artículo MICAI 2027, desglosado en cinco épicas y treinta y
+      tres historias de usuario con sus criterios de aceptación, puntos de historia,
+      dependencias y artefacto de salida.</p>
+    <div class="meta">
+      <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
+      <span><b>Total</b> <span id="total-sp">—</span> SP</span>
+      <span><b>Actualizado</b> 2 sep 2026</span>
+    </div>
+  </header>
+</div>
+
+<nav>
+  <div class="tabs">
+    <a class="tab" href="index.html">Qué es</a>
+    <a class="tab" href="index.html#estado">Estado</a>
+    <a class="tab current" href="plan.html">Plan por épicas</a>
+    <a class="tab" href="index.html#hallazgos">Hallazgos</a>
+    <a class="tab" href="index.html#pendientes">Pendientes</a>
+  </div>
+</nav>
+
+<div class="wrap wide">
+  <div class="panel">
+
+    <p class="lead">Las épicas están ordenadas por dependencia, no por calendario. MICAI 2027
+      todavía no tiene sede ni convocatoria, así que el calendario se fijará hacia atrás desde
+      la fecha de envío cuando se publique.</p>
+
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Épica</th><th>Qué resuelve</th><th class="n">US</th><th class="n">SP</th><th>Estado</th></tr></thead>
+        <tbody id="epic-summary"></tbody>
+      </table>
+    </div>
+
+    <p>Convención de estados: <span class="chip ok">Hecha</span> el criterio de aceptación se
+      cumple y su artefacto está sellado · <span class="chip wip">En curso</span> ·
+      <span class="chip idle">Lista</span> sin bloqueos, no empezada ·
+      <span class="chip stop">Bloqueada</span> depende de un tercero o de otra US.</p>
+
+    <div id="epics"></div>
+
+  </div>
+
+  <footer>
+    Cuaderno interno · <a href="index.html">Volver al resumen</a> · Los criterios de aceptación
+    se verifican contra artefactos sellados con MD5, nunca contra documentos
+  </footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var EPICS = [
+    {
+      id:"EPIC 13", name:"Fundamento científico del artículo", status:"ok",
+      goal:"Establecer si hay contribución, sellar la evidencia y medirla con un protocolo libre de fuga. Cerrada, incluida la auditoría que retiró uno de sus resultados.",
+      us:[
+        {id:"US-084", t:"Búsqueda sistemática y matriz de trabajo relacionado", sp:5, st:"ok",
+         role:"Como equipo que va a reclamar un hueco, quiero saber qué se ha publicado ya en los cuatro frentes del ángulo, para no reclamar como nuevo algo que existe.",
+         ac:["61 consultas ejecutadas en arXiv, Semantic Scholar y OpenAlex con la respuesta cruda guardada por consulta",
+             "Matriz de al menos 25 trabajos con método, fortaleza, límite y hueco: se entregaron 43",
+             "Cada entrada con DOI o identificador arXiv resuelto por API, cero filas fuera de estado OK",
+             "Las consultas sin API se registran a mano con su fecha"],
+         out:"reports/paper_micai/fase0/ · docs/paper/novedad.md", dep:"—"},
+        {id:"US-085", t:"Verificación de las tres referencias ancla", sp:2, st:"ok",
+         role:"Como autor que hereda un bib con datos inventados, quiero leer las fuentes reales, para no atribuirles afirmaciones que no hacen.",
+         ac:["Título, autores y año de cada ancla obtenidos de la API, no de memoria",
+             "Contraste explícito entre lo que el manuscrito les atribuye y lo que dicen",
+             "Hallazgos registrados como afirmaciones prohibidas en el ADR"],
+         out:"docs/paper/novedad.md §4", dep:"US-084"},
+        {id:"US-086", t:"Registro de custodia con MD5 y gate de artefactos", sp:5, st:"ok",
+         role:"Como equipo que ya publicó cifras sin respaldo, quiero que ninguna cifra entre al artículo sin archivo sellado, para que un revisor pueda re-derivarlas.",
+         ac:["paper/ARTIFACTS.md con elemento, ruta, MD5, tamaño, commit y estado",
+             "Las cifras sin artefacto se declaran explícitamente en lugar de omitirse",
+             "make paper-artifacts-check recalcula los digest y falla si algo cambió",
+             "El gate se prueba en negativo: alterar un byte lo pone en rojo",
+             "Distingue lo que falta por dvc pull de un sello roto"],
+         out:"paper/ARTIFACTS.md · scripts/paper_artifacts_check.py", dep:"—"},
+        {id:"US-087", t:"Sellado del ground truth del fold 5", sp:3, st:"ok",
+         role:"Como revisor externo, quiero reproducir la evaluación sin descargar 68 GB, para poder comprobar las cifras en minutos.",
+         ac:["16 640 etiquetas por parcela, centroides y soporte por clase derivados de PASTIS-R",
+             "Procedencia con el MD5 de Zenodo, el commit y las versiones de cómputo",
+             "El conjunto entero pesa menos de 500 kB y viaja en git",
+             "Test permanente que re-deriva la cobertura y se prueba en negativo"],
+         out:"reports/paper_micai/fase1/ · tests/ml/eval/test_paper_micai_fold5_seal.py", dep:"US-086"},
+        {id:"US-088", t:"Los diez miembros bajo un protocolo único", sp:3, st:"ok",
+         role:"Como autor, quiero comparar los modelos con el mismo arnés y la misma métrica, para saber cuál es de verdad el mejor.",
+         ac:["Los diez miembros medidos sobre las mismas 16 640 parcelas",
+             "F1-macro y exactitud, con el régimen declarado en cada fila",
+             "El resultado contradice la etiqueta heredada de mejor individual y se reporta"],
+         out:"reports/paper_micai/fase2/individuales_protocolo_unico.csv", dep:"US-087"},
+        {id:"US-089", t:"Arbitraje homogéneo frente a heterogéneo", sp:8, st:"ok",
+         role:"Como autor, quiero saber si un árbitro entrenado compra algo sobre un promedio, para no atribuirle una ganancia que no tiene.",
+         ac:["Cuatro reglas de combinación sobre los mismos miembros y folds",
+             "Los dos regímenes del meta-modelo separados y etiquetados",
+             "Bootstrap pareado por parcela y McNemar exacto",
+             "Desglose por clase que explique el agregado"],
+         out:"combinaciones.csv · arbitraje_pruebas.json · arbitraje_por_clase.csv", dep:"US-088"},
+        {id:"US-090", t:"Frontera calidad-cobertura de dos mecanismos", sp:8, st:"stop",
+         role:"Como autor, quiero contrastar retirar clases contra abstenerse por confianza a igual cobertura, para convertir la decisión en un punto de operación medible.",
+         ac:["RETIRADA por la auditoría US-093: tres defectos independientes",
+             "El estimando no estaba alineado entre mecanismos",
+             "Un mecanismo decidía a quién responder mirando la etiqueta",
+             "El bootstrap no era pareado",
+             "Se rehace en EPIC 14; ninguna de sus cifras se cita mientras tanto"],
+         out:"retirada", dep:"US-088"},
+        {id:"US-091", t:"Nulo de vecindad espacial con intervalo", sp:3, st:"ok",
+         role:"Como autor, quiero saber si el contexto de las parcelas vecinas aporta, para no dejar sin explorar un eje evidente ni afirmar un cero que no midiera.",
+         ac:["Barrido de k y alfa con el punto elegido fuera del bloque medido",
+             "Intervalo bootstrap pareado del delta",
+             "Alcance acotado a la vecindad entre parcelas, no al contexto interno",
+             "Se explica el desacuerdo con el artefacto heredado"],
+         out:"vecindad_barrido.csv · vecindad_veredicto.json", dep:"US-089"},
+        {id:"US-092", t:"Aporte de la rama contrastiva con intervalo", sp:2, st:"ok",
+         role:"Como autor, quiero saber si FarSLIP aporta señal complementaria, para reportarlo con su intervalo en lugar de con un delta suelto.",
+         ac:["Cinco miembros contra tres en un solo universo, justificado por escrito",
+             "Ambos estimados con el mismo agrupado libre de fuga",
+             "Las filas in-sample se reportan al lado, reproduciendo las cifras selladas"],
+         out:"farslip_cinco_vs_tres.csv · farslip_delta.json", dep:"US-089"},
+        {id:"US-093", t:"Auditoría ciega multiagente", sp:5, st:"ok",
+         role:"Como autor que no puede auditarse a sí mismo, quiero revisores sin acceso a mis conclusiones, para que encuentren lo que yo no vi.",
+         ac:["Cuatro revisores independientes: estadística, fuga, trazabilidad y coherencia",
+             "Ninguno recibe las conclusiones previas ni lo que se espera encontrar",
+             "Cada hallazgo con archivo, línea y el comando que lo demuestra",
+             "Los bloqueantes se verifican de forma independiente antes de aceptarlos",
+             "Se registran también los controles que pasan"],
+         out:"docs/paper/auditoria-2026-09-02.md", dep:"US-089, US-090, US-091, US-092"}
+      ]
+    },
+    {
+      id:"EPIC 14", name:"Reparación y robustez del experimento", status:"wip",
+      goal:"Rehacer la contribución central sin los tres defectos que la auditoría encontró, y cerrar las objeciones baratas antes de tocar datos nuevos. Todo en CPU y sin terceros.",
+      us:[
+        {id:"US-094", t:"Frontera con estimando alineado", sp:5, st:"wip",
+         role:"Como autor, quiero puntuar ambos mecanismos sobre el mismo conjunto de clases, para que el delta mida el mecanismo y no el denominador.",
+         ac:["Ambos brazos promedian sobre la misma leyenda en cada bloque",
+             "Se reporta además el macro sobre las K clases fáciles sin mecanismo alguno, como referencia de cuánto explica el denominador",
+             "Si el signo se invierte respecto a lo publicado, se reporta la inversión"],
+         out:"reports/paper_micai/fase3/", dep:"US-093"},
+        {id:"US-095", t:"Variante desplegable, sin oráculo de etiqueta", sp:3, st:"idle",
+         role:"Como operador, quiero la cifra que obtendría de verdad, porque en inferencia no sé si la clase real de una parcela está en el catálogo.",
+         ac:["La entrega se decide con la predicción, nunca con la etiqueta",
+             "El objetivo de cobertura tampoco deriva de una cantidad que dependa de la etiqueta",
+             "Se publican las dos versiones y se declara cuál es alcanzable"],
+         out:"reports/paper_micai/fase3/", dep:"US-094"},
+        {id:"US-096", t:"Bootstrap pareado y por clúster espacial", sp:3, st:"idle",
+         role:"Como revisor, quiero intervalos que midan lo que dicen medir, para poder confiar en los que excluyen el cero.",
+         ac:["Un único índice de remuestreo por bloque, con ambos mecanismos recalculados",
+             "A cobertura completa el intervalo debe ser degenerado en cero; si no, el arnés sigue roto",
+             "Variante por clúster espacial, porque las parcelas de un parche no son independientes",
+             "Mil remuestreos, como fija el preregistro"],
+         out:"reports/paper_micai/fase3/", dep:"US-094"},
+        {id:"US-097", t:"Réplica sobre un segundo predictor", sp:2, st:"idle",
+         role:"Como autor, quiero saber si el efecto es del desbalance o de un modelo concreto, para responder a la objeción de validez con lo que ya tengo.",
+         ac:["Todo el protocolo repetido sobre el segundo mejor miembro",
+             "Se reporta se transporte o no"],
+         out:"reports/paper_micai/fase3/", dep:"US-094"},
+        {id:"US-098", t:"Tercer mecanismo: retirada por soporte", sp:3, st:"idle",
+         role:"Como autor, quiero medir el criterio que el equipo usó de verdad al desplegar, para comparar contra la práctica y no contra una regla inventada.",
+         ac:["Retirada por soporte bajo, que es el criterio declarado por el equipo",
+             "Comparado con la retirada por F1 y con la abstención por confianza",
+             "Se coteja con las seis clases que el producto desplegado retiró"],
+         out:"reports/paper_micai/fase3/", dep:"US-094"},
+        {id:"US-099", t:"Corrección por multiplicidad", sp:2, st:"idle",
+         role:"Como revisor, quiero saber cuántos contrastes se hicieron, para juzgar los que salieron significativos.",
+         ac:["Recuento explícito de todas las afirmaciones inferenciales del artículo",
+             "Holm o Benjamini-Hochberg dentro de cada familia, con el intervalo sin corregir al lado",
+             "Confirmatorio y exploratorio declarados antes de mirar"],
+         out:"docs/paper/preregistro-fases-3-4.md", dep:"US-094"},
+        {id:"US-100", t:"Figura de la frontera", sp:2, st:"idle",
+         role:"Como lector, quiero ver la frontera de un vistazo, para entender el compromiso sin leer una tabla.",
+         ac:["Vectorial, legible en blanco y negro",
+             "Los dos o tres mecanismos con sus bandas de confianza",
+             "Cada etiqueta nombra un valor que la figura alcanza"],
+         out:"paper/micai/figures/", dep:"US-095, US-096"}
+      ]
+    },
+    {
+      id:"EPIC 15", name:"Validez externa", status:"idle",
+      goal:"Responder a la objeción que más pesa: un solo conjunto de datos, una sola región, un solo año. Nada de esto necesita terceros.",
+      us:[
+        {id:"US-101", t:"Ingesta y sellado de BreizhCrops", sp:2, st:"ok",
+         role:"Como autor, quiero un segundo banco parcelario de otra región y otro año, para comprobar si la conclusión se transporta.",
+         ac:["Descarga desde DVC: 1,5 GB en disco",
+             "Inspección declarada antes de entrenar: número de clases, soporte y razón mayor a menor",
+             "Si el desbalance no es apreciable, se declara y no se sustituye por otro dataset"],
+         out:"data/breizhcrops/", dep:"—"},
+        {id:"US-102", t:"Clasificador por parcela en BreizhCrops", sp:5, st:"idle",
+         role:"Como autor, quiero un predictor honesto sobre el segundo banco, para poder aplicarle el mismo protocolo.",
+         ac:["Entrenamiento en CPU con particiones espaciales del mismo tipo",
+             "Ground truth, posteriores y soporte sellados como se hizo con el fold 5",
+             "Ninguna decisión tomada mirando el resultado"],
+         out:"reports/paper_micai/fase4/", dep:"US-101"},
+        {id:"US-103", t:"Réplica del protocolo, sin tocar el método", sp:3, st:"idle",
+         role:"Como revisor, quiero que la réplica use el mismo código, para que la diferencia sea el dato y no el analista.",
+         ac:["El protocolo de EPIC 14 corre sin modificar una línea",
+             "El criterio principal preregistrado se evalúa una sola vez",
+             "El resultado se reporta se transporte o no; si no replica, la contribución pasa a ser el protocolo"],
+         out:"reports/paper_micai/fase4/", dep:"US-102, US-096"},
+        {id:"US-104", t:"Reentrenamiento OOF de cinco folds", sp:8, st:"idle",
+         role:"Como autor, quiero posteriores fuera de muestra sobre los 2 433 parches, para que el meta-modelo se entrene como es debido y el universo crezca.",
+         ac:["Cinco corridas rotando qué fold queda fuera, con build_and_train",
+             "36 GB de datos, no 68: solo la serie óptica y las anotaciones",
+             "Cada checkpoint y cada volcado salen con dvc add, dvc push y su corrida en MLflow",
+             "Resuelve por construcción la procedencia del checkpoint en duda"],
+         out:"ml/eval/oof/ ampliado", dep:"—"},
+        {id:"US-105", t:"Universo ampliado y meta-modelo bien alimentado", sp:3, st:"idle",
+         role:"Como autor, quiero repetir el contraste de ensambles con datos suficientes, para poder cerrar el resultado negativo en positivo o en negativo.",
+         ac:["Universo de unas 83 000 parcelas en lugar de 16 640",
+             "El meta-modelo se entrena con folds completos y no con bloques de uno solo",
+             "Se declara si el resultado negativo del ensamble sobrevive"],
+         out:"reports/paper_micai/fase5/", dep:"US-104"}
+      ]
+    },
+    {
+      id:"EPIC 16", name:"Manuscrito", status:"stop",
+      goal:"Doce páginas nuevas bajo la clase de Springer. El manuscrito heredado no se repara: se conserva como material de consulta.",
+      us:[
+        {id:"US-106", t:"Esqueleto LNCS y preámbulo", sp:3, st:"idle",
+         role:"Como autor, quiero un proyecto que compile limpio desde el primer día, para no descubrir problemas de formato la semana del envío.",
+         ac:["Clase llncs con runningheads y A4 real verificado sobre el PDF",
+             "cmap antes de fontenc, xurl, hyperref con hidelinks, emergencystretch",
+             "keywords dentro del abstract y apéndice antes de las referencias",
+             "Compilación con código de salida cero y cero referencias indefinidas"],
+         out:"paper/micai/", dep:"—"},
+        {id:"US-107", t:"Materiales y método", sp:5, st:"idle",
+         role:"Como revisor, quiero poder reproducir el protocolo desde el texto, para juzgar si mide lo que dice medir.",
+         ac:["Datos, universo y el porqué de las 16 640 parcelas",
+             "Los dos o tres mecanismos definidos sin ambigüedad, incluido qué se entrega y qué se promedia",
+             "El protocolo de bloques y por qué se agrupan predicciones en lugar de promediar macros",
+             "El régimen de cada cifra declarado en la propia tabla"],
+         out:"paper/micai/sections/", dep:"US-106, US-096"},
+        {id:"US-108", t:"Resultados", sp:5, st:"idle",
+         role:"Como lector, quiero ver el resultado con su intervalo y su alcance, sin tener que inferir la salvedad.",
+         ac:["Cada cifra con fila sellada en el registro de custodia",
+             "Los resultados negativos con su matiz, no en trabajo futuro",
+             "Los deltas por bloque reportados, incluido el bloque que invierte el signo"],
+         out:"paper/micai/sections/", dep:"US-107, US-103"},
+        {id:"US-109", t:"Trabajo relacionado por limitaciones", sp:3, st:"idle",
+         role:"Como revisor, quiero ver que conocen el trabajo previo más cercano, para creerme el hueco que reclaman.",
+         ac:["Cada cita con su fortaleza y su límite, no una lista de usos",
+             "El precedente más cercano leído entero y comparado con justicia",
+             "El hueco enunciado acotado a la revisión hecha, nunca como afirmación universal"],
+         out:"paper/micai/sections/", dep:"US-106"},
+        {id:"US-110", t:"Bibliografía con DOI", sp:3, st:"idle",
+         role:"Como editor, quiero entradas completas y verificables, porque una cita rota es lo primero que se nota.",
+         ac:["Parte de las 43 entradas ya verificadas por API",
+             "DOI de actas para las que hoy solo tienen identificador arXiv",
+             "Sin campos note, siglas protegidas, más de seis autores con et al.",
+             "Gate de citas más verificación por API de cada identificador"],
+         out:"paper/micai/bib/", dep:"US-084"},
+        {id:"US-111", t:"Doble ciego y gate de identidad", sp:3, st:"idle",
+         role:"Como autor que envía a una revisión ciega, quiero una prueba mecánica de que el PDF no me identifica, porque revisarlo a ojo no basta.",
+         ac:["Un solo master con condicional de anonimato y dos salidas de cuerpo idéntico",
+             "Extracción de texto del PDF con cero coincidencias de la lista de tokens",
+             "El gate se prueba en negativo antes de confiar en él",
+             "Sin nombre del sistema, ni jerga interna, ni rutas del repositorio"],
+         out:"paper/micai/", dep:"US-108"},
+        {id:"US-112", t:"Empaquetado de envío", sp:2, st:"idle",
+         role:"Como autor, quiero un paquete que el sistema del congreso acepte a la primera, para no perder el plazo por un formato.",
+         ac:["Zip con el proyecto LaTeX completo, como pide la convocatoria",
+             "Excluye fuentes en español, notebooks y tablas no usadas",
+             "Cero desbordes mayores de cinco puntos medidos sobre el PDF ensamblado",
+             "Dentro del límite de páginas con media página de holgura"],
+         out:"paper/micai/dist/", dep:"US-111"}
+      ]
+    },
+    {
+      id:"EPIC 17", name:"Entrega y difusión", status:"stop",
+      goal:"Lo que rodea al artículo: el cuaderno público, los metadatos que Springer exige y el repositorio citable.",
+      us:[
+        {id:"US-113", t:"Cuaderno del proyecto en Netlify", sp:3, st:"wip",
+         role:"Como coautor, quiero ver el estado del trabajo sin abrir LaTeX ni el repositorio, para poder revisarlo desde cualquier sitio.",
+         ac:["Sitio estático sin dependencias de compilación",
+             "Cabecera noindex: el sitio nombra a los autores y no puede indexarse durante la revisión",
+             "Resumen, estado, plan por épicas, hallazgos y pendientes",
+             "Despliegue desde su propio repositorio"],
+         out:"este sitio", dep:"—"},
+        {id:"US-114", t:"Metadatos de autoría y licencia", sp:2, st:"wip",
+         role:"Como autor de correspondencia, quiero que mi nombre sea idéntico en todas partes, porque Springer no lo deja cambiar después.",
+         ac:["ORCID de ambos verificados contra el registro público",
+             "Nombre idéntico carácter a carácter en artículo, sistema del congreso, licencia y repositorio",
+             "Autor de correspondencia decidido antes del envío",
+             "Créditos a los autores del código, solo en la versión final"],
+         out:"docs/paper/metadatos-autoria.md", dep:"—"},
+        {id:"US-115", t:"Repositorio citable con DOI", sp:3, st:"idle",
+         role:"Como lector, quiero llegar al código y a los datos que producen las cifras, para poder comprobarlas.",
+         ac:["Licencia en formato que GitHub reconozca y CITATION.cff",
+             "Release con DOI de Zenodo",
+             "Declaración de disponibilidad con las licencias reales de cada dato",
+             "Sin URL en la versión de envío, por el doble ciego"],
+         out:"raíz del repositorio", dep:"US-111"},
+        {id:"US-116", t:"Seguimiento de la convocatoria", sp:1, st:"idle",
+         role:"Como equipo, quiero fijar el calendario en cuanto se publique, para no descubrir el plazo con dos semanas de margen.",
+         ac:["Comprobación periódica de la página de autores del año",
+             "Límite de páginas, formato y política de revisión verificados para 2027, no heredados de 2026",
+             "Calendario hacia atrás desde el envío con una semana de holgura"],
+         out:"docs/plan-micai-2027.md", dep:"—"}
+      ]
+    }
+  ];
+
+  var LABEL = {ok:"Hecha", wip:"En curso", idle:"Lista", stop:"Bloqueada"};
+
+  var summary = document.getElementById("epic-summary");
+  var grandTotal = 0;
+
+  EPICS.forEach(function(e){
+    var sp = e.us.reduce(function(a,u){ return a + u.sp; }, 0);
+    var done = e.us.filter(function(u){ return u.st === "ok"; }).length;
+    grandTotal += sp;
+
+    var tr = document.createElement("tr");
+    tr.innerHTML = '<td><a href="#' + e.id.replace(/\s/g,"") + '"><code>' + e.id + '</code></a> ' +
+                   e.name + '</td><td>' + e.goal.split(".")[0] + '.</td>' +
+                   '<td class="n">' + done + "/" + e.us.length + '</td>' +
+                   '<td class="n">' + sp + '</td>' +
+                   '<td><span class="chip ' + e.status + '">' + LABEL[e.status] + '</span></td>';
+    summary.appendChild(tr);
+  });
+  document.getElementById("total-sp").textContent = grandTotal;
+
+  var host = document.getElementById("epics");
+  EPICS.forEach(function(e){
+    var sp = e.us.reduce(function(a,u){ return a + u.sp; }, 0);
+    var sec = document.createElement("section");
+    sec.className = "epic";
+    sec.id = e.id.replace(/\s/g,"");
+
+    var head = document.createElement("div");
+    head.className = "epic-head";
+    head.innerHTML = '<span class="epic-id">' + e.id + '</span><h2>' + e.name +
+                     '</h2><span class="epic-sp">' + e.us.length + " US · " + sp + " SP</span>";
+    sec.appendChild(head);
+
+    var goal = document.createElement("p");
+    goal.className = "epic-goal";
+    goal.textContent = e.goal;
+    sec.appendChild(goal);
+
+    e.us.forEach(function(u){
+      var d = document.createElement("article");
+      d.className = "us";
+      var acs = u.ac.map(function(a){ return "<li><span>" + a + "</span></li>"; }).join("");
+      d.innerHTML =
+        '<div class="us-top">' +
+          '<span class="us-id">' + u.id + '</span>' +
+          '<span class="us-title">' + u.t + '</span>' +
+          '<span class="us-sp">' + u.sp + ' SP</span>' +
+          '<span class="chip ' + u.st + '">' + LABEL[u.st] + '</span>' +
+        '</div>' +
+        '<div class="us-body">' +
+          '<p class="role">' + u.role + '</p>' +
+          '<ul class="ac">' + acs + '</ul>' +
+          '<div class="us-foot"><span><b>Salida</b> ' + u.out +
+          '</span><span><b>Depende de</b> ' + u.dep + '</span></div>' +
+        '</div>';
+      sec.appendChild(d);
+    });
+
+    host.appendChild(sec);
+  });
+})();
+</script>
+</body>
+</html>
