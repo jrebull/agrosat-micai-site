@@ -162,11 +162,18 @@
       <tbody id="members-tbody"></tbody>
     </table>
   </div>
-  <p>El mejor miembro individual es <code>tsvit-pheno</code>, y ninguna de las cuatro reglas
-    de combinación lo mejora bajo un protocolo libre de fuga. El motivo probable no es que
-    combinar no sirva: es que <strong>no hay con qué combinarlo</strong>. U-TAE rinde 0,19
-    donde la literatura le da alrededor de 0,63, así que lo anómalo son los miembros débiles,
-    no el fuerte.</p>
+  <p>El mejor miembro individual de esta tabla es <code>tsvit-pheno</code>, y ninguna de las cuatro
+    reglas de combinación lo mejora bajo un protocolo libre de fuga.</p>
+  <p><b>Retirado el 3 de septiembre.</b> Aquí decíamos que «U-TAE rinde 0,19 donde la literatura le
+    da alrededor de 0,63». La comparación es <strong>inválida</strong>: 0,19 es F1-macro por parcela
+    y 0,63 es mIoU por píxel, que son métricas y niveles distintos. Lo señaló el coautor. Por qué
+    ese checkpoint rinde tan por debajo de su propia validación es una pregunta abierta, y se
+    responde midiendo mIoU contra mIoU, no citando la literatura de memoria.</p>
+  <p><b>Y una advertencia sobre toda esta tabla</b>: <code>tsvit-pheno-fullm</code> aparece con
+    0,2552 y esa cifra es un <strong>bug</strong> del volcado, no un resultado. Corregido vale
+    0,7883, con lo que sería el mejor miembro y no el quinto. El arreglo no está en este
+    repositorio, así que la tabla se publica con el defecto señalado en vez de con la cifra
+    corregida que no podemos re-derivar aquí.</p>
 
   <h2>Los dos regímenes de la cifra campeona</h2>
   <p>El 0,7486 que el proyecto publicó no es un held-out: el meta-modelo se reentrena sobre las

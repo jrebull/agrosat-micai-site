@@ -289,3 +289,7 @@ tbody tr.hi td{background:var(--sienna-soft);font-weight:600}
 /* --- aviso del borrador retirado --- */
 .retirado{font-size:13.5px;color:var(--muted);max-width:64ch;margin:10px 0 0;
   border-left:2px solid var(--sienna);padding-left:12px}
+
+/* --- historia retirada por una auditoria --- */
+.chip.dead{background:var(--sheet-2);color:var(--muted);text-decoration:line-through}
+.epic[data-status="dead"] .epic-head h2{text-decoration:line-through;color:var(--muted)}
