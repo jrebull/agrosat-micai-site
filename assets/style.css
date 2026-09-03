@@ -262,3 +262,26 @@ footer a{color:var(--muted)}
   html{scroll-behavior:auto}
   *{transition:none!important;animation:none!important}
 }
+
+/* --- descargas del borrador y bloques del panel del articulo --- */
+.downloads{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 0}
+.dl{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.04em;
+  text-decoration:none;color:var(--sheet);background:var(--deep);padding:9px 14px;
+  border:1px solid var(--deep)}
+.dl:last-child{background:transparent;color:var(--deep)}
+.dl:hover{background:var(--sienna);border-color:var(--sienna);color:var(--sheet)}
+.dl:focus-visible{outline:2px solid var(--sienna);outline-offset:2px}
+
+.quote-title{font-family:var(--display);font-size:23px;font-weight:600;line-height:1.24;
+  color:var(--ink);border-left:3px solid var(--sienna);padding-left:18px;margin:14px 0 26px;
+  max-width:34ch}
+.quote-title span{display:block;font-size:15.5px;font-weight:400;color:var(--muted);
+  margin-top:7px;line-height:1.4}
+
+ol.claims{margin:10px 0 26px;padding-left:0;list-style:none;counter-reset:claim}
+ol.claims li{counter-increment:claim;position:relative;padding:0 0 15px 42px;font-size:15.5px;
+  max-width:62ch}
+ol.claims li::before{content:counter(claim,decimal-leading-zero);position:absolute;left:0;top:2px;
+  font-family:var(--mono);font-size:11px;color:var(--sienna)}
+
+tbody tr.hi td{background:var(--sienna-soft);font-weight:600}

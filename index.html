@@ -18,16 +18,22 @@
       <div>
         <p class="stamp">Cuaderno de trabajo · MICAI 2027</p>
         <h1>AgroSat<br>Copilot<span class="thin">Qué se cultiva en cada parcela, visto desde
-          órbita — y qué resultó medir de verdad ese sistema.</span></h1>
+          órbita — y cuánto de lo que ese sistema medía era el método.</span></h1>
       </div>
-      <p class="lede">El artículo que preparamos no trata del sistema. Trata de una decisión
-        que el sistema tuvo que tomar para poder desplegarse, que se toma por intuición en
-        todo el campo, y que nadie ha medido.</p>
+      <p class="lede">El artículo ya no trata del sistema, ni de cuál de dos maneras de
+        recortar un mapa es mejor. Trata de algo previo: <b>cuánto de una mejora de calidad es el
+        método y cuánto es haber cambiado el denominador</b>. La respuesta, en dos bancos de
+        datos, es que casi todo es el denominador.</p>
       <div class="colophon">
         <span><b>Autores</b> A. J. Zizumbo Velasco · J. A. Rebull-Saucedo</span>
-        <span><b>Universo</b> PASTIS-R · fold 5 held-out · 16 640 parcelas · 18 clases</span>
-        <span><b>Revisión</b> 2 de septiembre de 2026</span>
+        <span><b>Universos</b> PASTIS-R · 16 640 parcelas · 18 clases &nbsp;·&nbsp;
+          BreizhCrops 2017 · 60 000 parcelas · 9 clases</span>
+        <span><b>Revisión</b> 3 de septiembre de 2026 · borrador completo de 15 páginas</span>
       </div>
+      <p class="downloads">
+        <a class="dl" href="paper/agrosat-micai-borrador-es.pdf">Borrador en español · PDF</a>
+        <a class="dl" href="paper/agrosat-micai-borrador-en.pdf">Draft in English · PDF</a>
+      </p>
     </div>
   </div>
 </div>
@@ -38,6 +44,7 @@
       <button role="tab" id="t-que" aria-controls="p-que" aria-selected="true">Qué es</button>
       <button role="tab" id="t-est" aria-controls="p-est" aria-selected="false">Estado</button>
       <button role="tab" id="t-fig" aria-controls="p-fig" aria-selected="false">Resultados</button>
+      <button role="tab" id="t-paper" aria-controls="p-paper" aria-selected="false">El artículo</button>
       <button role="tab" id="t-hall" aria-controls="p-hall" aria-selected="false">Hallazgos</button>
       <button role="tab" id="t-pend" aria-controls="p-pend" aria-selected="false">Pendientes</button>
     </div>
@@ -93,11 +100,25 @@
         tres trabajos, nunca cuantificada frente a su alternativa.</p>
 
       <div class="callout">
-        <p>Lo que el artículo demuestra hoy no es cuál de las dos vías es mejor, sino algo
-          previo y más incómodo: <strong>que el F1-macro no es comparable entre catálogos de
-          distinto tamaño</strong>, de modo que la comparación habitual entre ambas está mal
-          planteada de raíz. Lo descubrimos auditando nuestro propio experimento.</p>
+        <p>Lo que el artículo demuestra es previo a esa elección y más incómodo: <strong>casi toda
+          la mejora que se obtiene al recortar el catálogo no la produce el mecanismo, sino el
+          denominador más pequeño</strong>. El control que lo revela cuesta una línea —puntuar el
+          modelo intacto sobre el mismo catálogo, entregándolo todo— y sin él una tabla de
+          resultados no permite distinguir un método de una división.</p>
+        <p>Y cuando por fin se compara bien, <strong>gana la otra vía</strong>: a igual cobertura,
+          abstenerse en las parcelas dudosas da mejor calidad que retirar clases. Es lo contrario
+          de lo que suponíamos al empezar, y lo publicamos así.</p>
       </div>
+
+      <h2 id="parcelas">Las parcelas, tal como son</h2>
+      <p>Arriba, lo que el satélite ve en color natural a principios de julio. Abajo, la etiqueta
+        agronómica de cada parcela. El producto se entrega parcela a parcela, y el catálogo que
+        estudia el artículo es la lista de nombres que la fila de abajo tiene permitido usar.</p>
+      <figure class="plot">
+        <img src="img/parcelas.png" alt="Tres parches del fold 5: arriba composición Sentinel-2 en color natural con las parcelas visibles como polígonos de distinto tono; abajo la misma escena coloreada por clase agronómica.">
+        <figcaption>Tres parches del fold retenido, con 60, 93 y 112 parcelas. Son datos reales del
+          banco, no un esquema.</figcaption>
+      </figure>
 
       <h2 id="metodo">Cómo se trabaja aquí</h2>
       <ul>
@@ -116,17 +137,18 @@
 
 <!-- ================= ESTADO ================= -->
 <section class="panel" id="p-est" role="tabpanel" aria-labelledby="t-est" hidden>
-  <p class="lede">Tres fases cerradas, una auditoría ciega que obligó a retirar el resultado
-    principal, y una contribución mejor fundada que salió de ese mismo error.</p>
+  <p class="lede">Seis fases cerradas, una auditoría ciega que obligó a retirar el resultado
+    principal, una réplica en un segundo banco de datos que confirmó lo que quedó en pie, y un
+    borrador completo de quince páginas.</p>
 
   <h2>Registro de custodia</h2>
   <div class="ledger">
-    <div class="ledger-row"><span class="name">Artefactos sellados con MD5</span><span class="note">comprobación en verde</span><span class="num">51</span></div>
+    <div class="ledger-row"><span class="name">Artefactos sellados con MD5</span><span class="note">comprobación en verde</span><span class="num">65</span></div>
     <div class="ledger-row"><span class="name">Cifras declaradas sin artefacto</span><span class="note">no se imprimen</span><span class="num">8</span></div>
-    <div class="ledger-row"><span class="name">Referencias verificadas por API</span><span class="note">cero fuera de OK</span><span class="num">43</span></div>
-    <div class="ledger-row"><span class="name">Consultas de literatura registradas</span><span class="note">tres fuentes</span><span class="num">61</span></div>
-    <div class="ledger-row"><span class="name">Parcelas del universo de evaluación</span><span class="note">fold 5 held-out</span><span class="num">16 640</span></div>
-    <div class="ledger-row"><span class="name">Peso del sello que sustituye al dataset</span><span class="note">frente a 68 GB</span><span class="num">420 kB</span></div>
+    <div class="ledger-row"><span class="name">Referencias verificadas por API</span><span class="note">cero fuera de OK</span><span class="num">44</span></div>
+    <div class="ledger-row"><span class="name">Parcelas puntuadas, los dos bancos</span><span class="note">16 640 + 60 000</span><span class="num">76 640</span></div>
+    <div class="ledger-row"><span class="name">Páginas del borrador</span><span class="note">A4, cero errores, cero overfull</span><span class="num">15</span></div>
+    <div class="ledger-row"><span class="name">Figuras y tablas del artículo</span><span class="note">todas re-derivables</span><span class="num">6 + 4</span></div>
   </div>
 
   <h2>Los diez modelos, bajo un solo protocolo</h2>
@@ -157,8 +179,75 @@
 
 <!-- ================= RESULTADOS ================= -->
 <section class="panel" id="p-fig" role="tabpanel" aria-labelledby="t-fig" hidden>
-  <p class="lede">Dos figuras de la evaluación densa que sobreviven a la auditoría, porque
-    describen predicciones en lugar de sostener una comparación.</p>
+  <p class="lede">El resultado principal primero: cuánto de la mejora al recortar el catálogo
+    es el mecanismo y cuánto es la división.</p>
+
+  <h2>El pasillo donde ningún mecanismo hace nada</h2>
+  <p>En el segundo banco, pasar de nueve clases a seis sube el F1-macro de 0,4895 a 0,7342. Los
+    cuatro mecanismos dan <strong>exactamente la misma cifra</strong> en todo ese tramo, con
+    cobertura 1,000. Girasol tiene dos parcelas de 60 000 y nueces siete: el modelo no las predice
+    nunca, así que retirarlas no retira ninguna parcela de la entrega. Nadie hace nada y la métrica
+    sube casi un cuarto de punto sola.</p>
+  <figure class="plot">
+    <img src="img/frontera-breizh.png" alt="Dos paneles con cuatro curvas cada uno. De nueve a seis clases las cuatro curvas se superponen exactamente; a partir de ahí se separan y la de retirada por soporte baja mientras las otras suben.">
+    <figcaption>BreizhCrops, los dos universos de clases. Las cuatro series son indistinguibles
+      hasta seis clases prometidas. La línea punteada marca el criterio fijado por escrito antes de
+      correr el experimento.</figcaption>
+  </figure>
+
+  <div class="ledger">
+    <div class="ledger-row"><span class="name">De 9 a 6 clases · parte que es el denominador</span><span class="note">ningún mecanismo actúa</span><span class="num hi">100,0 %</span></div>
+    <div class="ledger-row"><span class="name">Criterio principal, K = 5 · denominador</span><span class="note">preregistrado</span><span class="num hi">95,1 %</span></div>
+    <div class="ledger-row"><span class="name">Banco primario, de 18 a 8 clases · denominador</span><span class="note">otro dato, otro modelo</span><span class="num hi">88,3 %</span></div>
+  </div>
+
+  <div class="scroll">
+    <table>
+      <thead><tr><th class="n">Clases</th><th class="n">F1</th><th class="n">Mejora aparente</th>
+        <th class="n">Es el denominador</th><th class="n">Cobertura</th></tr></thead>
+      <tbody id="descomp-tbody"></tbody>
+    </table>
+  </div>
+  <figcaption>BreizhCrops, universo de nueve clases. La fila resaltada es el criterio principal,
+    fijado por escrito antes de correr el experimento.</figcaption>
+
+  <h2>Por qué es posible ese pasillo</h2>
+  <p>Porque la cola de clases raras no es delgada, es degenerada. En el banco primario la clase
+    menor tiene 103 parcelas; en el segundo tiene <strong>dos</strong>.</p>
+  <figure class="plot">
+    <img src="img/soporte.png" alt="Dos gráficos de barras en escala logarítmica. En PASTIS-R las clases van de 6 128 a 103 parcelas; en BreizhCrops de 18 113 a 2, con una caída abrupta tras las seis primeras clases.">
+    <figcaption>Soporte por clase, escala logarítmica. En siena, lo que todo criterio de retirada
+      quita primero.</figcaption>
+  </figure>
+
+  <h2>El criterio que se usa en la práctica es el peor, y empeora al usarlo más</h2>
+  <p>Retirar por soporte bajo —lo que este equipo hizo para desplegar— queda último en los dos
+    bancos y además <strong>baja</strong> conforme se retiran más clases. La razón se ve en las
+    leyendas: saca la colza, que el modelo separa bien, y conserva las dos praderas, que confunde
+    entre sí. Optimiza el tamaño de la muestra, no la calidad de lo que se entrega.</p>
+  <figure class="plot">
+    <img src="img/leyendas.png" alt="Dos rejillas. En la de retirada por F1 la colza permanece hasta tres clases prometidas; en la de retirada por soporte la colza desaparece en cinco clases mientras las dos praderas siguen dentro.">
+    <figcaption>Qué clases sobrevive cada criterio conforme se recorta. Celda llena, clase
+      prometida. Los dos criterios discrepan justo en las clases que deciden el resultado.</figcaption>
+  </figure>
+
+  <h2>La misma frontera, vista en cobertura</h2>
+  <figure class="plot">
+    <img src="img/cobertura.png" alt="Dos paneles con calidad frente a cobertura entregada. Las cruces grises del control se alinean en cobertura uno, varias de ellas por encima de las curvas de los mecanismos a cobertura menor.">
+    <figcaption>Las cruces son el control: entrega todo, así que vive en cobertura uno. Lo que hay
+      que mirar es cuántas quedan <em>por encima</em> de los mecanismos que sí recortan.</figcaption>
+  </figure>
+
+  <h2>El banco primario dice lo mismo</h2>
+  <figure class="plot">
+    <img src="img/frontera-pastis.png" alt="Dos paneles, uno por predictor, con las mismas cuatro series sobre PASTIS-R de dieciocho a ocho clases prometidas.">
+    <figcaption>PASTIS-R, sus dos predictores más fuertes. El control sin mecanismo ya recupera la
+      mayor parte del trayecto.</figcaption>
+  </figure>
+
+  <h2>Dos figuras heredadas de la evaluación densa</h2>
+  <p>Sobreviven a la auditoría porque describen predicciones en lugar de sostener una
+    comparación.</p>
   <p>Las dos vienen del volcado píxel a píxel sobre los 496 parches del fold 5 y llevan
     diecinueve filas, no dieciocho: la evaluación densa incluye la clase <em>Background</em>,
     que el universo por parcela del artículo deja fuera. Son de <code>tsvit</code>, la
@@ -195,6 +284,57 @@
       Dibuja los 2 326 errores encima de los 14 314 aciertos, así que un catorce por ciento
       tapa al ochenta y seis y la imagen contradice su propio título. Está en la lista de
       cosas que hay que rehacer antes de que ninguna figura entre al artículo.</p>
+  </div>
+</section>
+
+<!-- ================= EL ARTÍCULO ================= -->
+<section class="panel" id="p-paper" role="tabpanel" aria-labelledby="t-paper" hidden>
+  <p class="lede">Quince páginas en A4, seis figuras, cuatro tablas, cero errores de LaTeX y cero
+    cajas overfull. Ninguna cifra impresa carece de archivo sellado que la sostenga.</p>
+
+  <p class="downloads">
+    <a class="dl" href="paper/agrosat-micai-borrador-es.pdf">Borrador en español · PDF</a>
+    <a class="dl" href="paper/agrosat-micai-borrador-en.pdf">Draft in English · PDF</a>
+  </p>
+
+  <h2>Título</h2>
+  <p class="quote-title">¿Cuánto de esa mejora es el denominador?<br>
+    <span>Un control para el recorte de leyenda en mapeo de cultivos desbalanceado</span></p>
+
+  <h2>Lo que sostiene</h2>
+  <ol class="claims">
+    <li><b>Casi toda la mejora es la división.</b> 88 % en el banco primario, 95 % en el segundo en
+      el punto de operación fijado por escrito de antemano, y 100 % en el tramo donde la cobertura
+      sigue completa y los cuatro mecanismos devuelven cifras idénticas.</li>
+    <li><b>El control cuesta una línea.</b> Puntuar el predictor intacto sobre el mismo catálogo,
+      entregándolo todo. Lo que ese control recupere no lo compró ningún mecanismo.</li>
+    <li><b>A igual cobertura gana abstenerse</b>, no recortar clases: −0,0248 con intervalo que
+      excluye el cero y corrección por multiplicidad en el segundo banco. Es lo contrario de la
+      hipótesis con la que empezamos.</li>
+    <li><b>Retirar por soporte es el peor criterio</b> de los tres, y no es monótono: retirar más
+      empeora el mapa entregado.</li>
+    <li><b>Un meta-modelo entrenado ya hace ese recorte sin declararlo.</b> Lleva una clase de 355
+      parcelas a F1 exactamente cero, cuando el mejor modelo individual saca 0,7790 en esa misma
+      clase y hasta la media sin entrenar saca 0,7752.</li>
+  </ol>
+
+  <h2>Cómo está construido</h2>
+  <div class="ledger">
+    <div class="ledger-row"><span class="name">Bibliografía generada, no escrita</span><span class="note">arXiv · Crossref · OpenAlex</span><span class="num">44</span></div>
+    <div class="ledger-row"><span class="name">Referencias citadas en el cuerpo</span><span class="note">de esas 44</span><span class="num">25</span></div>
+    <div class="ledger-row"><span class="name">Gate de doble ciego</span><span class="note">probado en negativo</span><span class="num hi">16 tokens</span></div>
+    <div class="ledger-row"><span class="name">Compilación reproducible</span><span class="note">mismo MD5 en cada corrida</span><span class="num hi">byte a byte</span></div>
+  </div>
+  <p>Lo último no es una florituras. Antes de arreglarlo, el PDF cambiaba de MD5 en cada
+    compilación por una fecha incrustada, y las figuras por identificadores aleatorios: sellar el
+    archivo de envío no significaba nada. Ahora un árbol limpio con solo los archivos versionados
+    compila y da el mismo hash.</p>
+
+  <div class="callout">
+    <p><strong>El encuadre cambió con el resultado, en vez de sobrevivirlo.</strong> El plan de
+      septiembre decía que recortar la leyenda dominaba y compraba más calidad que la abstención.
+      Las fases 3 y 4 falsificaron las dos afirmaciones. La tesis nueva —cuánto de una mejora es el
+      denominador— es más estrecha, más comprobable y se sostiene en dos bancos.</p>
   </div>
 </section>
 
@@ -263,12 +403,37 @@
       entrenamiento.</p>
   </div>
 
+  <h2>Lo que salió del experimento rehecho</h2>
+
+  <div class="finding pass">
+    <div class="top"><span class="chip ok">Fase 3</span><h3>Rehecho sin los tres defectos, H1 no se sostiene</h3></div>
+    <p>Con el estimando alineado, la entrega sin oráculo y el remuestreo pareado, a nueve clases
+      prometidas el intervalo incluye el cero en los dos predictores y ningún contraste sobrevive a
+      la corrección por multiplicidad. Lo que sí queda demostrado es la descomposición: de dieciocho
+      clases a ocho, <strong>0,2155 de los 0,2440 de mejora aparente son solo el denominador</strong>.</p>
+  </div>
+
+  <div class="finding pass">
+    <div class="top"><span class="chip ok">Fase 4</span><h3>Se transporta a otro banco, y más limpio</h3></div>
+    <p>Mismo protocolo y mismo código sobre BreizhCrops 2017, con el clasificador entrenado dejando
+      una región fuera. El denominador se lleva el 95,1 % en el criterio principal y el
+      <strong>100 %</strong> mientras la cobertura sigue completa. Y aquí H1 no solo no se sostiene:
+      su contraria sí, con intervalo (−0,0272, −0,0225) y Holm por debajo de 0,0001.</p>
+  </div>
+
+  <div class="finding pass">
+    <div class="top"><span class="chip ok">Fase 4</span><h3>El árbitro entrenado retira una clase sin decirlo</h3></div>
+    <p>Winter durum wheat, 355 parcelas. El mejor modelo individual saca 0,7790, la media sin
+      entrenar 0,7752, el voto ponderado 0,7782 — y el meta-modelo entrenado, <strong>0,0000</strong>.
+      La retirada es un comportamiento aprendido, no una propiedad de combinar.</p>
+  </div>
+
   <div class="callout">
-    <p><strong>Lo que queda es mejor de lo que teníamos.</strong> Del error sale una
-      contribución más firme: el F1-macro no es comparable entre catálogos de distinto tamaño,
-      y esa incomparabilidad invalida una forma de comparar que está extendida. Explica además
-      por qué el paso de dieciocho a doce clases <em>parece</em> mejorar la calidad. Es más
-      estrecho que lo que perseguíamos y es verdad.</p>
+    <p><strong>Lo que queda es mejor de lo que teníamos.</strong> Del error salió una contribución
+      más firme y ahora replicada: casi toda la mejora que se obtiene recortando el catálogo es el
+      denominador, y el control que lo revela cuesta una línea. Explica además por qué el paso de
+      dieciocho a doce clases <em>parece</em> mejorar la calidad. Es más estrecho que lo que
+      perseguíamos y es verdad en dos bancos.</p>
   </div>
 </section>
 
@@ -278,11 +443,21 @@
   <div id="pending"></div>
 
   <h2>Lo que ya no hace falta pedir</h2>
-  <p>La ventana de la máquina H100 salió de la lista: el registro de entrenamiento dice que
-    ese modelo tardó treinta y dos minutos en una tarjeta de consumo, así que los cinco
-    reentrenamientos caben en menos de tres horas y los hacemos nosotros. Los artefactos de la
-    rama multirregión y la evaluación conversacional también salen, porque ese contenido no
-    entra en el cuerpo del artículo con el encuadre actual.</p>
+  <p>La ventana de la máquina H100 salió de la lista: el registro de entrenamiento dice que ese
+    modelo tardó treinta y dos minutos en una tarjeta de consumo, así que los cinco reentrenamientos
+    caben en menos de tres horas y los hacemos nosotros. Los artefactos de la rama multirregión y la
+    evaluación conversacional también salen, porque ese contenido no entra en el cuerpo del artículo
+    con el encuadre actual. Y <strong>el segundo banco de datos ya no es una petición</strong>: está
+    descargado, procesado y replicado.</p>
+
+  <h2>Lo nuestro, sin bloqueo externo</h2>
+  <ul>
+    <li>Pasada de estilo fino sobre las quince páginas.</li>
+    <li>DOI de actas para las entradas que hoy solo tienen identificador arXiv.</li>
+    <li>Empaquetado <code>.zip</code> del proyecto LaTeX completo, como pide MICAI.</li>
+    <li>Anonimizar o hacer privado este cuaderno antes del envío: el gate de doble ciego cubre el
+      PDF, no el sitio.</li>
+  </ul>
 </section>
 
   <footer>
@@ -388,6 +563,26 @@
                 ["14","+0,0076","−0,0185"],["12","+0,0504","−0,0174"],
                 ["10","+0,1423","−0,0095"],["9","+0,1501","−0,0253"],
                 ["8","+0,1944","−0,0166"]];
+
+  /* descomposición de la fase 4, banco de réplica, universo de nueve clases */
+  var descomp = [["9","0,4895","—","—","1,000"],
+                 ["8","0,5507","+0,0612","100,0 %","1,000"],
+                 ["7","0,6293","+0,1398","100,0 %","1,000"],
+                 ["6","0,7342","+0,2447","100,0 %","1,000"],
+                 ["5","0,8055","+0,3160","95,1 %","0,859"],
+                 ["4","0,8579","+0,3684","91,0 %","0,806"],
+                 ["3","0,9126","+0,4232","90,4 %","0,444"]];
+  var kb = document.getElementById("descomp-tbody");
+  if(kb){
+    descomp.forEach(function(d){
+      var tr = document.createElement("tr");
+      if(d[0] === "5") tr.className = "hi";
+      tr.innerHTML = '<td class="n">' + d[0] + '</td><td class="n">' + d[1] +
+                     '</td><td class="n">' + d[2] + '</td><td class="n neg">' + d[3] +
+                     '</td><td class="n">' + d[4] + '</td>';
+      kb.appendChild(tr);
+    });
+  }
   var db = document.getElementById("delta-tbody");
   deltas.forEach(function(d){
     var tr = document.createElement("tr");
@@ -401,7 +596,8 @@
     ["02","La inconsistencia de tsvit-pheno-fullm","Da 0,7918 a nivel píxel y 0,2552 a nivel parcela sobre el mismo fold. Con qué checkpoint se generó el volcado.","stop","Urgente"],
     ["03","Firmar o rebatir el encuadre","Sin ese visto bueno no se escribe la introducción ni el título.","wip","Decisión"],
     ["04","Autoría y autor de correspondencia","Quien firma la licencia lo hace a mano y no se puede cambiar después.","wip","Decisión"],
-    ["05","Cuatro archivos sin versionar","Tres checkpoints que el código usa por defecto y no están en ningún sitio, más el parquet de Italia.","idle","Datos"]
+    ["05","Cuatro archivos sin versionar","Tres checkpoints que el código usa por defecto y no están en ningún sitio, más el parquet de Italia.","idle","Datos"],
+    ["06","Revisión del borrador de quince páginas","Está completo y compila; falta que lo lea alguien que no lo escribió.","wip","Revisión"]
   ];
   var pe = document.getElementById("pending");
   pending.forEach(function(p){
@@ -432,7 +628,8 @@
   });
   select(document.getElementById("t-que"));
 
-  var byHash = {"#estado":"t-est","#resultados":"t-fig","#hallazgos":"t-hall","#pendientes":"t-pend"};
+  var byHash = {"#estado":"t-est","#resultados":"t-fig","#articulo":"t-paper",
+                "#hallazgos":"t-hall","#pendientes":"t-pend"};
   if(byHash[window.location.hash]) select(document.getElementById(byHash[window.location.hash]));
 })();
 </script>
