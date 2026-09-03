@@ -7,98 +7,123 @@
 <title>AgroSatCopilot · Cuaderno MICAI 2027</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 
-<div class="wrap">
-  <header>
-    <p class="eyebrow">Cuaderno de trabajo · MICAI 2027</p>
-    <h1>AgroSatCopilot</h1>
-    <p class="sub">Clasificación de cultivos parcela a parcela sobre series temporales de
-      Sentinel-2, y el artículo que estamos escribiendo con lo que ese sistema resultó medir
-      de verdad.</p>
-    <div class="meta">
-      <span><b>Autores</b> A. J. Zizumbo Velasco · J. A. Rebull-Saucedo</span>
-      <span><b>Datos</b> PASTIS-R, fold 5 held-out</span>
-      <span><b>Estado</b> 2 sep 2026</span>
+<div class="sheet">
+  <div class="masthead">
+    <div class="masthead-grid">
+      <div>
+        <p class="stamp">Cuaderno de trabajo · MICAI 2027</p>
+        <h1>AgroSat<br>Copilot<span class="thin">Qué se cultiva en cada parcela, visto desde
+          órbita — y qué resultó medir de verdad ese sistema.</span></h1>
+      </div>
+      <p class="lede">El artículo que preparamos no trata del sistema. Trata de una decisión
+        que el sistema tuvo que tomar para poder desplegarse, que se toma por intuición en
+        todo el campo, y que nadie ha medido.</p>
+      <div class="colophon">
+        <span><b>Autores</b> A. J. Zizumbo Velasco · J. A. Rebull-Saucedo</span>
+        <span><b>Universo</b> PASTIS-R · fold 5 held-out · 16 640 parcelas · 18 clases</span>
+        <span><b>Revisión</b> 2 de septiembre de 2026</span>
+      </div>
     </div>
-  </header>
+  </div>
 </div>
 
-<nav>
-  <div class="tabs" role="tablist" aria-label="Secciones">
-    <button class="tab" role="tab" id="t-que" aria-controls="p-que" aria-selected="true">Qué es</button>
-    <button class="tab" role="tab" id="t-est" aria-controls="p-est" aria-selected="false">Estado</button>
-    <a class="tab" href="plan.html">Plan por épicas</a>
-    <button class="tab" role="tab" id="t-hall" aria-controls="p-hall" aria-selected="false">Hallazgos</button>
-    <button class="tab" role="tab" id="t-pend" aria-controls="p-pend" aria-selected="false">Pendientes</button>
+<div class="nav">
+  <div class="nav-inner">
+    <div class="tabset" role="tablist" aria-label="Secciones del cuaderno">
+      <button role="tab" id="t-que" aria-controls="p-que" aria-selected="true">Qué es</button>
+      <button role="tab" id="t-est" aria-controls="p-est" aria-selected="false">Estado</button>
+      <button role="tab" id="t-fig" aria-controls="p-fig" aria-selected="false">Resultados</button>
+      <button role="tab" id="t-hall" aria-controls="p-hall" aria-selected="false">Hallazgos</button>
+      <button role="tab" id="t-pend" aria-controls="p-pend" aria-selected="false">Pendientes</button>
+    </div>
+    <a class="away" href="plan.html">Plan por épicas</a>
   </div>
-</nav>
+</div>
 
-<div class="wrap">
+<div class="sheet">
 
+<!-- ================= QUÉ ES ================= -->
 <section class="panel" id="p-que" role="tabpanel" aria-labelledby="t-que">
-  <p class="lead">AgroSatCopilot mapea qué se cultiva en cada parcela agrícola a partir de
-    lo que los satélites ven a lo largo del año. El artículo que preparamos para MICAI 2027
-    no trata del sistema: trata de una decisión que el sistema tuvo que tomar y que nadie
-    mide.</p>
+  <div class="rail">
+    <aside class="rail-index" aria-label="Índice de la sección">
+      <p>En esta hoja</p>
+      <ol>
+        <li><a href="#mosaico">El reparto de las clases</a></li>
+        <li><a href="#decision">La decisión que nadie mide</a></li>
+        <li><a href="#metodo">Cómo se trabaja aquí</a></li>
+      </ol>
+    </aside>
+    <div>
+      <p class="lede">AgroSatCopilot mapea qué se cultiva en cada parcela a partir de lo que
+        los satélites ven a lo largo del año. Dieciocho clases agronómicas sobre Francia
+        metropolitana, en un banco público.</p>
 
-  <h2>El problema, en una imagen</h2>
-  <p>El banco público PASTIS-R cubre Francia metropolitana con dieciocho clases agronómicas.
-    Sobre el fold 5, el que reservamos para medir, hay <strong>16 640 parcelas</strong>. Su
-    reparto es el punto de partida de todo:</p>
+      <h2 id="mosaico">Casi todo el mapa son cuatro cultivos</h2>
+      <p>Cada celda del mosaico es una parcela del fold 5, coloreada por su clase real. Cuatro
+        clases se comen dos tercios del terreno; las seis últimas juntas no llegan al siete por
+        ciento. Ese desequilibrio es el punto de partida de todo lo demás.</p>
 
-  <figure>
-    <div class="bars" id="support-bars"></div>
-    <figcaption>Parcelas por clase en el fold 5. La clase mayoritaria tiene 6 128 parcelas
-      y la menor, 103: una razón de sesenta a uno. En rojo, seis clases de soporte bajo, del
-      orden de las que el equipo retiró del producto desplegado para poder mapear con calidad
-      aceptable.</figcaption>
-  </figure>
+      <figure class="plot">
+        <canvas class="plot-canvas" id="mosaic" width="1600" height="520"
+                role="img" aria-label="Mosaico de 16 640 parcelas coloreadas por clase de cultivo: cuatro clases dominan la superficie y la cola de clases raras apenas es visible."></canvas>
+        <div class="plot-legend" id="mosaic-legend"></div>
+        <figcaption>Proporciones reales del fold 5. La disposición de las parcelas es
+          esquemática, no geográfica: lo que el mosaico representa fielmente es cuánta
+          superficie ocupa cada clase.</figcaption>
+      </figure>
 
-  <h2>La decisión que nadie mide</h2>
-  <p>Cuando un mapa de cultivos no alcanza calidad suficiente, hay dos maneras de recortar
-    lo que promete. Se puede <strong>prometer menos clases</strong> —retirar del catálogo
-    las que el modelo no distingue— o se puede <strong>responder menos parcelas</strong>,
-    abstenerse donde el modelo no está seguro. Son productos distintos y se eligen por
-    intuición.</p>
-  <p>Este equipo tomó la primera vía sin medirla: pasó de dieciocho clases a doce porque
-    las seis retiradas «tenían muy poca muestra» y «bajaban mucho el F1 macro». Es una
-    decisión razonable, documentada y, hasta donde alcanza nuestra revisión de 43 trabajos,
-    nunca cuantificada frente a su alternativa.</p>
+      <div class="bars" id="support-bars"></div>
+      <figcaption>Las mismas dieciocho clases, contadas. De 6 128 parcelas en la mayoritaria a
+        103 en la menor: una razón de sesenta a uno. En siena, las seis de menor soporte.</figcaption>
 
-  <div class="callout">
-    <p><strong>Lo que el artículo demuestra hoy</strong> no es cuál de las dos vías es
-      mejor, sino algo previo y más incómodo: que el F1-macro no es comparable entre
-      catálogos de distinto tamaño, de modo que la comparación habitual entre ambas vías
-      está mal planteada de raíz. Lo descubrimos auditando nuestro propio experimento.</p>
+      <h2 id="decision">La decisión que nadie mide</h2>
+      <p>Cuando un mapa de cultivos no alcanza calidad suficiente, hay dos maneras de recortar
+        lo que promete. Se puede <strong>prometer menos clases</strong> —retirar del catálogo
+        las que el modelo no distingue— o se puede <strong>responder menos parcelas</strong>,
+        abstenerse allí donde el modelo no está seguro. Son productos distintos y se eligen
+        por intuición.</p>
+      <p>Este equipo tomó la primera vía sin medirla: pasó de dieciocho clases a doce porque
+        las seis retiradas «tenían muy poca muestra» y «bajaban mucho el F1 macro». Es una
+        decisión razonable, documentada y, hasta donde alcanza nuestra revisión de cuarenta y
+        tres trabajos, nunca cuantificada frente a su alternativa.</p>
+
+      <div class="callout">
+        <p>Lo que el artículo demuestra hoy no es cuál de las dos vías es mejor, sino algo
+          previo y más incómodo: <strong>que el F1-macro no es comparable entre catálogos de
+          distinto tamaño</strong>, de modo que la comparación habitual entre ambas está mal
+          planteada de raíz. Lo descubrimos auditando nuestro propio experimento.</p>
+      </div>
+
+      <h2 id="metodo">Cómo se trabaja aquí</h2>
+      <ul>
+        <li><strong>Cifras reales o nada.</strong> Cada número impreso se re-deriva desde un
+          archivo sellado con MD5. Lo que no tiene archivo, no se escribe.</li>
+        <li><strong>Los resultados negativos se publican</strong>, con su matiz. Tres de los
+          cuatro experimentos de esta fase salieron nulos y los tres van al artículo.</li>
+        <li><strong>Un control que nunca ha fallado no se sabe si funciona.</strong> Cada
+          comprobación se prueba en negativo antes de confiar en ella.</li>
+        <li><strong>Las auditorías se hacen a ciegas.</strong> Los revisores no reciben
+          nuestras conclusiones; así encuentran lo que nosotros no vimos.</li>
+      </ul>
+    </div>
   </div>
-
-  <h2>Cómo se trabaja aquí</h2>
-  <ul>
-    <li><strong>Cifras reales o nada.</strong> Cada número impreso se re-deriva desde un
-      archivo sellado con MD5 en un registro de custodia. Lo que no tiene archivo, no se
-      escribe.</li>
-    <li><strong>Los resultados negativos se publican</strong>, con su matiz. Tres de los
-      cuatro experimentos de esta fase salieron nulos y los tres van al artículo.</li>
-    <li><strong>Un control que nunca ha fallado no se sabe si funciona.</strong> Cada gate
-      se prueba en negativo antes de confiar en él.</li>
-    <li><strong>Las auditorías se hacen a ciegas.</strong> Los revisores no reciben nuestras
-      conclusiones; así encuentran lo que nosotros no vimos.</li>
-  </ul>
 </section>
 
+<!-- ================= ESTADO ================= -->
 <section class="panel" id="p-est" role="tabpanel" aria-labelledby="t-est" hidden>
-  <p class="lead">Tres fases cerradas, una auditoría ciega que obligó a retirar el resultado
+  <p class="lede">Tres fases cerradas, una auditoría ciega que obligó a retirar el resultado
     principal, y una contribución mejor fundada que salió de ese mismo error.</p>
 
   <h2>Registro de custodia</h2>
   <div class="ledger">
-    <div class="ledger-row"><span class="name">Artefactos sellados con MD5</span><span class="note">gate en verde</span><span class="num">51</span></div>
+    <div class="ledger-row"><span class="name">Artefactos sellados con MD5</span><span class="note">comprobación en verde</span><span class="num">51</span></div>
     <div class="ledger-row"><span class="name">Cifras declaradas sin artefacto</span><span class="note">no se imprimen</span><span class="num">8</span></div>
-    <div class="ledger-row"><span class="name">Referencias con identificador verificado por API</span><span class="note">0 fuera de OK</span><span class="num">43</span></div>
+    <div class="ledger-row"><span class="name">Referencias verificadas por API</span><span class="note">cero fuera de OK</span><span class="num">43</span></div>
     <div class="ledger-row"><span class="name">Consultas de literatura registradas</span><span class="note">tres fuentes</span><span class="num">61</span></div>
     <div class="ledger-row"><span class="name">Parcelas del universo de evaluación</span><span class="note">fold 5 held-out</span><span class="num">16 640</span></div>
     <div class="ledger-row"><span class="name">Peso del sello que sustituye al dataset</span><span class="note">frente a 68 GB</span><span class="num">420 kB</span></div>
@@ -113,11 +138,11 @@
       <tbody id="members-tbody"></tbody>
     </table>
   </div>
-  <p>El mejor miembro individual es <code>tsvit-pheno</code>. Ninguna de las cuatro reglas de
-    combinación lo mejora bajo un protocolo libre de fuga, y el motivo probable no es que
+  <p>El mejor miembro individual es <code>tsvit-pheno</code>, y ninguna de las cuatro reglas
+    de combinación lo mejora bajo un protocolo libre de fuga. El motivo probable no es que
     combinar no sirva: es que <strong>no hay con qué combinarlo</strong>. U-TAE rinde 0,19
-    donde la literatura le da alrededor de 0,63, así que los miembros débiles están mal
-    entrenados, no el fuerte contaminado.</p>
+    donde la literatura le da alrededor de 0,63, así que lo anómalo son los miembros débiles,
+    no el fuerte.</p>
 
   <h2>Los dos regímenes de la cifra campeona</h2>
   <p>El 0,7486 que el proyecto publicó no es un held-out: el meta-modelo se reentrena sobre
@@ -130,8 +155,52 @@
   </div>
 </section>
 
+<!-- ================= RESULTADOS ================= -->
+<section class="panel" id="p-fig" role="tabpanel" aria-labelledby="t-fig" hidden>
+  <p class="lede">Dos figuras de la evaluación densa que sobreviven a la auditoría, porque
+    describen predicciones en lugar de sostener una comparación.</p>
+  <p>Las dos vienen del volcado píxel a píxel sobre los 496 parches del fold 5 y llevan
+    diecinueve filas, no dieciocho: la evaluación densa incluye la clase <em>Background</em>,
+    que el universo por parcela del artículo deja fuera. Son de <code>tsvit</code>, la
+    variante base del mejor miembro.</p>
+
+  <h2>Dónde se rompe el modelo</h2>
+  <figure class="plot">
+    <img src="img/confusion.png" alt="Matriz de confusión de dieciocho clases más fondo. La diagonal es intensa en las cuatro clases mayoritarias y se difumina en la mitad inferior, donde las clases minoritarias se confunden entre sí y con las clases grandes.">
+    <figcaption>Matriz de confusión, recall por clase. Cada fila es la verdad y cada columna
+      la predicción; una diagonal perfecta sería un modelo perfecto.</figcaption>
+  </figure>
+  <p>La diagonal aguanta arriba y se deshace abajo. <em>Winter barley</em>, <em>Grapevine</em>
+    y <em>Soft winter wheat</em> son casi bloques sólidos; <em>Mixed cereal</em>, la última
+    fila, apenas tiene diagonal y su masa se reparte entre <em>Background</em>,
+    <em>Meadow</em> y <em>Soft winter wheat</em> — es decir, <strong>se confunde justo con
+    las clases grandes</strong>. Ese es el mecanismo que castiga al F1-macro: una clase rara
+    mal predicha no baja casi nada la exactitud, porque son pocas parcelas, pero arrastra su
+    sumando entero en un promedio por clase.</p>
+
+  <h2>La cola, ordenada</h2>
+  <figure class="plot">
+    <img src="img/per_class_iou.png" alt="Barras horizontales de IoU por clase. Las clases mayoritarias superan 0,8 y las últimas cinco caen por debajo de 0,45, con Mixed cereal en 0,24.">
+    <figcaption>Intersección sobre unión por clase, misma corrida densa. Ordenada por el
+      identificador de clase, no por rendimiento.</figcaption>
+  </figure>
+  <p>Las cinco últimas —<em>Mixed cereal</em> 0,24, <em>Orchard</em> 0,31, <em>Beet</em> 0,42,
+    <em>Potatoes</em> 0,43, <em>Winter durum wheat</em> 0,45— son casi exactamente las que el
+    equipo retiró para poder desplegar. La figura no demuestra que retirarlas fuera lo
+    correcto; muestra <strong>por qué la tentación es tan fuerte</strong>, que es la pregunta
+    que el artículo convierte en medible.</p>
+
+  <div class="callout">
+    <p>Una figura que <strong>no</strong> aparece aquí: los residuos espaciales del ensamble.
+      Dibuja los 2 326 errores encima de los 14 314 aciertos, así que un catorce por ciento
+      tapa al ochenta y seis y la imagen contradice su propio título. Está en la lista de
+      cosas que hay que rehacer antes de que ninguna figura entre al artículo.</p>
+  </div>
+</section>
+
+<!-- ================= HALLAZGOS ================= -->
 <section class="panel" id="p-hall" role="tabpanel" aria-labelledby="t-hall" hidden>
-  <p class="lead">Cuatro revisores independientes auditaron el experimento sin conocer
+  <p class="lede">Cuatro revisores independientes auditaron el experimento sin conocer
     nuestras conclusiones. Tumbaron el resultado principal, y tenían razón.</p>
 
   <h2>Lo que cayó</h2>
@@ -148,10 +217,10 @@
         <tbody id="delta-tbody"></tbody>
       </table>
     </div>
-    <p>La demostración más limpia: sobre esas mismas parcelas, <strong>sin retirar ni
-      rechazar nada</strong>, el F1-macro calculado sobre las ocho clases más fáciles es
-      0,8956 — más alto que el 0,8243 que atribuíamos al mecanismo. No hacía falta mecanismo
-      alguno, bastaba con cambiar el denominador.</p>
+    <p>La demostración más limpia: sobre esas mismas parcelas, <strong>sin retirar ni rechazar
+      nada</strong>, el F1-macro calculado sobre las ocho clases más fáciles es 0,8956 — más
+      alto que el 0,8243 que atribuíamos al mecanismo. No hacía falta mecanismo alguno,
+      bastaba con cambiar el denominador.</p>
   </div>
 
   <div class="finding blocker">
@@ -163,9 +232,9 @@
 
   <div class="finding blocker">
     <div class="top"><span class="chip stop">Bloqueante</span><h3>El intervalo delataba el error y no lo vimos</h3></div>
-    <p>El bootstrap sorteaba índices distintos para cada mecanismo. Con las dieciocho clases
+    <p>El remuestreo sorteaba índices distintos para cada mecanismo. Con las dieciocho clases
       prometidas ambos son literalmente el mismo objeto: el delta sale cero y el intervalo
-      debería ser cero también. Publicamos [−0,029, +0,031] y leímos esa fila como control
+      debería salir cero también. Publicamos [−0,029, +0,031] y leímos esa fila como control
       superado.</p>
   </div>
 
@@ -181,9 +250,9 @@
   <div class="finding pass">
     <div class="top"><span class="chip ok">Verificado</span><h3>Tres resultados nulos, y se refuerzan</h3></div>
     <p>El refinamiento por vecindad espacial no aporta con ningún parámetro; la rama
-      contrastiva FarSLIP da +0,0006 con intervalo que cruza el cero; el árbitro entrenado no
-      mejora al promedio simple. Al corregir por autocorrelación espacial los tres intervalos
-      se ensanchan y los tres nulos quedan más firmes.</p>
+      contrastiva da +0,0006 con intervalo que cruza el cero; el árbitro entrenado no mejora
+      al promedio simple. Al corregir por autocorrelación espacial los tres intervalos se
+      ensanchan y los tres nulos quedan más firmes.</p>
   </div>
 
   <div class="finding pass">
@@ -196,29 +265,30 @@
 
   <div class="callout">
     <p><strong>Lo que queda es mejor de lo que teníamos.</strong> Del error sale una
-      contribución más firme: el F1-macro no es comparable entre catálogos de distinto
-      tamaño, y esa incomparabilidad invalida una forma de comparar que está extendida.
-      Explica además por qué el paso de dieciocho a doce clases <em>parece</em> mejorar la
-      calidad. Es más estrecho que lo que perseguíamos y es verdad.</p>
+      contribución más firme: el F1-macro no es comparable entre catálogos de distinto tamaño,
+      y esa incomparabilidad invalida una forma de comparar que está extendida. Explica además
+      por qué el paso de dieciocho a doce clases <em>parece</em> mejorar la calidad. Es más
+      estrecho que lo que perseguíamos y es verdad.</p>
   </div>
 </section>
 
+<!-- ================= PENDIENTES ================= -->
 <section class="panel" id="p-pend" role="tabpanel" aria-labelledby="t-pend" hidden>
-  <p class="lead">Lo que no podemos resolver solos, en orden de urgencia real.</p>
-  <div class="phases" id="pending"></div>
+  <p class="lede">Lo que no podemos resolver solos, en orden de urgencia real.</p>
+  <div id="pending"></div>
 
   <h2>Lo que ya no hace falta pedir</h2>
-  <p>La ventana de la máquina H100 salió de la lista: el registro de MLflow dice que ese
-    entrenamiento tardó 32 minutos en una tarjeta de consumo, así que los cinco reentrenamientos
-    caben en menos de tres horas y los hacemos nosotros. Los artefactos de la rama multirregión
-    y la evaluación conversacional también salen, porque ese contenido no entra en el cuerpo del
-    artículo con el encuadre actual.</p>
+  <p>La ventana de la máquina H100 salió de la lista: el registro de entrenamiento dice que
+    ese modelo tardó treinta y dos minutos en una tarjeta de consumo, así que los cinco
+    reentrenamientos caben en menos de tres horas y los hacemos nosotros. Los artefactos de la
+    rama multirregión y la evaluación conversacional también salen, porque ese contenido no
+    entra en el cuerpo del artículo con el encuadre actual.</p>
 </section>
 
   <footer>
     Cuaderno de trabajo interno · <a href="plan.html">Plan por épicas</a> · Las cifras proceden
-    del registro de custodia sellado y se re-derivan desde artefactos versionados · Actualizado
-    el 2 de septiembre de 2026
+    del registro de custodia sellado y se re-derivan desde artefactos versionados<br>
+    No indexable y no enlazable desde el artículo mientras dure la revisión a doble ciego
   </footer>
 </div>
 
@@ -226,27 +296,79 @@
 (function(){
   "use strict";
 
-  var support = [
-    ["0",6128],["2",2196],["7",2067],["1",1584],["13",660],["11",576],
-    ["3",573],["15",511],["4",387],["10",355],["6",313],["9",214],
-    ["14",209],["17",206],["5",198],["16",193],["8",167],["12",103]
+  var CLASES = [
+    {id:0, n:6128, c:"#7C8F5E"}, {id:2, n:2196, c:"#A9A05A"}, {id:7, n:2067, c:"#5E7A3A"},
+    {id:1, n:1584, c:"#93A277"}, {id:13, n:660, c:"#8C9C86"}, {id:11, n:576, c:"#6E8878"},
+    {id:3,  n:573, c:"#A8B08A"}, {id:15, n:511, c:"#7E8B6A"}, {id:4,  n:387, c:"#B5A96B"},
+    {id:10, n:355, c:"#8A9668"}, {id:6,  n:313, c:"#9AA37E"}, {id:9,  n:214, c:"#B4522F"},
+    {id:14, n:209, c:"#96674A"}, {id:17, n:206, c:"#B4522F"}, {id:5,  n:198, c:"#B4522F"},
+    {id:16, n:193, c:"#B4522F"}, {id:8,  n:167, c:"#B4522F"}, {id:12, n:103, c:"#B4522F"}
   ];
-  var rare = {"12":1,"16":1,"8":1,"5":1,"17":1,"9":1};
-  var max = 6128, bars = document.getElementById("support-bars");
-  support.forEach(function(r){
+  var RARAS = {9:1, 17:1, 5:1, 16:1, 8:1, 12:1};
+  var TOTAL = 16640;
+
+  /* ---- mosaico de parcelas: celdas irregulares con las proporciones reales ---- */
+  function pintarMosaico(){
+    var cv = document.getElementById("mosaic");
+    if(!cv || !cv.getContext) return;
+    var ctx = cv.getContext("2d");
+    var W = cv.width, H = cv.height;
+    ctx.clearRect(0,0,W,H);
+
+    // Reparto en columnas proporcionales al soporte, subdividido en parcelas irregulares.
+    var semilla = 20260902;
+    function rnd(){ semilla = (semilla * 1664525 + 1013904223) % 4294967296; return semilla / 4294967296; }
+
+    var x = 0;
+    CLASES.forEach(function(cl){
+      var w = (cl.n / TOTAL) * W;
+      var y = 0;
+      while(y < H){
+        var h = Math.max(9, (0.05 + rnd() * 0.16) * H);
+        if(y + h > H) h = H - y;
+        var xx = 0;
+        while(xx < w){
+          var ww = Math.max(5, (0.25 + rnd() * 0.55) * w);
+          if(xx + ww > w) ww = w - xx;
+          ctx.fillStyle = cl.c;
+          ctx.globalAlpha = 0.72 + rnd() * 0.28;
+          ctx.fillRect(Math.round(x + xx), Math.round(y), Math.ceil(ww) - 1, Math.ceil(h) - 1);
+          xx += ww;
+        }
+        y += h;
+      }
+      x += w;
+    });
+    ctx.globalAlpha = 1;
+  }
+  pintarMosaico();
+
+  var leyenda = document.getElementById("mosaic-legend");
+  [["#7C8F5E","clase 0 · 36,8 %"],["#A9A05A","clase 2 · 13,2 %"],["#5E7A3A","clase 7 · 12,4 %"],
+   ["#93A277","clase 1 · 9,5 %"],["#B4522F","seis clases raras · 6,5 % juntas"]]
+  .forEach(function(e){
+    var s = document.createElement("span");
+    s.innerHTML = '<i style="background:' + e[0] + '"></i>' + e[1];
+    leyenda.appendChild(s);
+  });
+
+  /* ---- barras de soporte ---- */
+  var bars = document.getElementById("support-bars");
+  CLASES.forEach(function(cl){
     var row = document.createElement("div"); row.className = "bar-row";
-    var lab = document.createElement("span"); lab.className = "lab"; lab.textContent = "cl " + r[0];
+    var lab = document.createElement("span"); lab.className = "lab"; lab.textContent = "cl " + cl.id;
     var track = document.createElement("div"); track.className = "bar-track";
     var fill = document.createElement("div");
-    fill.className = "bar-fill" + (rare[r[0]] ? " rare" : "");
-    fill.style.width = Math.max(0.7, (r[1] / max) * 100) + "%";
+    fill.className = "bar-fill" + (RARAS[cl.id] ? " rare" : "");
+    fill.style.width = Math.max(0.7, (cl.n / 6128) * 100) + "%";
     track.appendChild(fill);
     var val = document.createElement("span"); val.className = "val";
-    val.textContent = r[1].toLocaleString("es-ES");
+    val.textContent = cl.n.toLocaleString("es-ES");
     row.appendChild(lab); row.appendChild(track); row.appendChild(val);
     bars.appendChild(row);
   });
 
+  /* ---- tablas ---- */
   var members = [
     ["tsvit-pheno","0,7367","0,8579"],["xgb-alphaearth","0,5913","0,7811"],
     ["deeplabv3plus","0,3546","0,6490"],["segformer","0,3382","0,6474"],
@@ -275,41 +397,43 @@
   });
 
   var pending = [
-    ["1","El registro de folds de tsvit-pheno","Es lo único que puede invalidar resultados ya escritos. Con qué folds se entrenó ese checkpoint.","stop","Urgente"],
-    ["2","La inconsistencia de tsvit-pheno-fullm","Da 0,7918 a nivel píxel y 0,2552 a nivel parcela sobre el mismo fold. Con qué checkpoint se generó el volcado.","stop","Urgente"],
-    ["3","Firmar o rebatir el encuadre","Sin ese visto bueno no se escribe la introducción ni el título.","wip","Decisión"],
-    ["4","Autoría y autor de correspondencia","Quien firma la licencia lo hace a mano y no se puede cambiar después.","wip","Decisión"],
-    ["5","Cuatro archivos sin versionar","Tres checkpoints de FarSLIP que el código usa por defecto y no están en ningún sitio, más el parquet de Italia.","idle","Datos"]
+    ["01","El registro de folds de tsvit-pheno","Es lo único que puede invalidar resultados ya escritos. Con qué folds se entrenó ese checkpoint.","stop","Urgente"],
+    ["02","La inconsistencia de tsvit-pheno-fullm","Da 0,7918 a nivel píxel y 0,2552 a nivel parcela sobre el mismo fold. Con qué checkpoint se generó el volcado.","stop","Urgente"],
+    ["03","Firmar o rebatir el encuadre","Sin ese visto bueno no se escribe la introducción ni el título.","wip","Decisión"],
+    ["04","Autoría y autor de correspondencia","Quien firma la licencia lo hace a mano y no se puede cambiar después.","wip","Decisión"],
+    ["05","Cuatro archivos sin versionar","Tres checkpoints que el código usa por defecto y no están en ningún sitio, más el parquet de Italia.","idle","Datos"]
   ];
   var pe = document.getElementById("pending");
   pending.forEach(function(p){
     var d = document.createElement("div");
-    d.className = "phase";
+    d.className = "entry";
     d.innerHTML = '<span class="n">' + p[0] + '</span><div><h3>' + p[1] +
                   '</h3><p>' + p[2] + '</p></div><span class="chip ' + p[3] + '">' + p[4] + '</span>';
     pe.appendChild(d);
   });
 
-  var tabs = Array.prototype.slice.call(document.querySelectorAll('button[role="tab"]'));
+  /* ---- pestañas ---- */
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
   function select(tab){
     tabs.forEach(function(t){
       var on = t === tab;
       t.setAttribute("aria-selected", on ? "true" : "false");
+      t.setAttribute("tabindex", on ? "0" : "-1");
       document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
     });
+    if(tab.id === "t-que") pintarMosaico();
   }
   tabs.forEach(function(t, i){
-    t.addEventListener("click", function(){ select(t); t.focus(); });
+    t.addEventListener("click", function(){ select(t); });
     t.addEventListener("keydown", function(e){
       var d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
       if(d){ e.preventDefault(); var n = tabs[(i + d + tabs.length) % tabs.length]; select(n); n.focus(); }
     });
   });
+  select(document.getElementById("t-que"));
 
-  // Permite enlazar desde plan.html a una pestaña concreta.
-  var byHash = {"#estado":"t-est","#hallazgos":"t-hall","#pendientes":"t-pend"};
-  var target = byHash[window.location.hash];
-  if(target){ select(document.getElementById(target)); }
+  var byHash = {"#estado":"t-est","#resultados":"t-fig","#hallazgos":"t-hall","#pendientes":"t-pend"};
+  if(byHash[window.location.hash]) select(document.getElementById(byHash[window.location.hash]));
 })();
 </script>
 </body>
