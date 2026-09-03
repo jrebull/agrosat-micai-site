@@ -367,10 +367,10 @@
     <span>Puntos de operación para mapeo de cultivos con desbalance extremo</span></p>
 
   <div class="callout">
-    <p><b>Sede decidida: MICAI 2027, de 16 a 18 páginas, y solo MICAI.</b> Con ese tope la rejilla
-      completa cabe, así que no hay que partir el trabajo entre un artículo de congreso y otro de
-      revista — que era la alternativa sobre la mesa. Lo que no cabe es la autopsia de nuestros
-      propios errores como primera contribución.</p>
+    <p><b>Sede decidida: MICAI 2027, veinte páginas, y solo MICAI.</b> Con ese tope no solo cabe
+      la rejilla completa: cabe una <b>sección de robustez de verdad</b>, que es lo que separa un
+      artículo que aguanta a un revisor estricto de uno que solo aguanta a un revisor amable. Lo que
+      sigue sin caber es la autopsia de nuestros propios errores como primera contribución.</p>
     <p>Cinco auditorías después, el plan se reescribió entero. La más incómoda devolvió una
       aritmética simple: de 150 puntos planificados, solo 27 producían conocimiento nuevo. El 18 %.
       Ahora son <b>76 de 191, el 40 %</b>.</p>
@@ -427,6 +427,36 @@
     <div class="ledger-row"><span class="name">Gate sobre el HTML del cuaderno</span><span class="note">gobernanza, no artículo</span><span class="num hi">−3 SP</span></div>
     <div class="ledger-row"><span class="name">Reimplementar un rechazador aprendido</span><span class="note">riesgo de ajuste que el revisor criticará igual</span><span class="num hi">recortado</span></div>
     <div class="ledger-row"><span class="name">Conocimiento nuevo, antes y después</span><span class="note">del total planificado</span><span class="num hi">18 % → 32 %</span></div>
+  </div>
+
+  <h2>El campo de tiro</h2>
+  <p>Un revisor estricto de MICAI no va a discutir el mapeo de cultivos: va a buscar el punto donde
+    el resultado se cae. Diez ataques inventariados, cada uno convertido en un experimento que se
+    corre <strong>antes</strong> de escribir. Lo que sobreviva va al artículo; lo que no,
+    <strong>cambia la afirmación</strong>.</p>
+
+  <div class="scroll">
+    <table>
+      <thead><tr><th>El ataque, tal como lo escribiría</th><th>La prueba que lo desactiva</th></tr></thead>
+      <tbody>
+        <tr><td>«En vez de todo esto, entrenen un clasificador mejor»</td><td>La ganancia de cada mecanismo frente a la de cambiar de modelo, en el mismo eje de coste</td></tr>
+        <tr><td>«Su confianza y su conforme suponen posteriores calibradas, y no enseñan ni un diagrama de fiabilidad»</td><td>Calibración <em>por clase</em>, y cobertura <em>condicional</em> del conforme, que es la que dice algo del reparto</td></tr>
+        <tr><td>«Todo corre con la semilla 42 y un submuestreo que eligieron ustedes»</td><td>Diez semillas sobre todo el pipeline; si una conclusión depende de la semilla, se retira</td></tr>
+        <tr><td>«Su disparidad es la definición de su mecanismo, no un hallazgo»</td><td>Descomponerla en la parte implicada analíticamente y la que no, y declarar cuál es cuál</td></tr>
+        <tr><td>«El 1,62 % de celdas imputadas toca al 63 % de las parcelas»</td><td>Repetir sobre las parcelas sin ninguna celda imputada, y reportar la fracción de <em>parcelas</em></td></tr>
+        <tr><td>«Eligieron el punto de operación que les conviene»</td><td>La curva completa, con el punto preregistrado marcado, y el <em>rango</em> en vez del máximo</td></tr>
+        <tr><td>«Su punto de operación se elige en un año y se aplica en otro»</td><td>Elegirlo en un año y evaluarlo en otro, o declarar la limitación con nombre</td></tr>
+        <tr><td>«Su colchón de un kilómetro es arbitrario y sus bloques filtran»</td><td>Varios colchones, con la distancia mínima real entre prueba y entrenamiento por bloque</td></tr>
+        <tr><td>«Las declaraciones de cultivo tienen error conocido: su disparidad puede ser ruido»</td><td>Inyección de ruido a tasas documentadas, y a qué tasa deja de sostenerse</td></tr>
+        <tr><td>«¿Por qué estos cuatro mecanismos?»</td><td>Situarlos en el retículo de predictores con valores de conjunto, y nombrar los que quedan fuera</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="ledger">
+    <div class="ledger-row"><span class="name">Reparto de las veinte páginas</span><span class="note">robustez es un cuarto de resultados</span><span class="num hi">2,5 pp</span></div>
+    <div class="ledger-row"><span class="name">Regla de recorte</span><span class="note">nunca de robustez</span><span class="num hi">del resultado al apéndice</span></div>
+    <div class="ledger-row"><span class="name">Esfuerzo en conocimiento y robustez</span><span class="note">era el 18 %</span><span class="num hi">50 %</span></div>
   </div>
 
   <div class="callout">
