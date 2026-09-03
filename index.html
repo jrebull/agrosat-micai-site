@@ -20,20 +20,23 @@
         <h1>AgroSat<br>Copilot<span class="thin">Qué se cultiva en cada parcela, visto desde
           órbita — y cuánto de lo que ese sistema medía era el método.</span></h1>
       </div>
-      <p class="lede">El artículo ya no trata del sistema, ni de cuál de dos maneras de
-        recortar un mapa es mejor. Trata de algo previo: <b>cuánto de una mejora de calidad es el
-        método y cuánto es haber cambiado el denominador</b>. La respuesta, en dos bancos de
-        datos, es que casi todo es el denominador.</p>
+      <p class="lede">Un mapa de cultivos que no alcanza calidad tiene tres salidas, no dos:
+        <b>prometer menos clases, responder menos parcelas, o responder con un conjunto</b>. El
+        artículo las compara a igual cobertura, bajo un protocolo que no hace trampa, y mide
+        <b>quién paga</b> en cada caso.</p>
       <div class="colophon">
         <span><b>Autores</b> A. J. Zizumbo Velasco · J. A. Rebull-Saucedo</span>
         <span><b>Universos</b> PASTIS-R · 16 640 parcelas · 18 clases &nbsp;·&nbsp;
           BreizhCrops 2017 · 60 000 parcelas · 9 clases</span>
-        <span><b>Revisión</b> 3 de septiembre de 2026 · borrador completo de 15 páginas</span>
+        <span><b>Revisión</b> 3 de septiembre de 2026 · <b>reencuadrado tras auditoría</b></span>
       </div>
       <p class="downloads">
-        <a class="dl" href="paper/agrosat-micai-borrador-es.pdf">Borrador en español · PDF</a>
-        <a class="dl" href="paper/agrosat-micai-borrador-en.pdf">Draft in English · PDF</a>
+        <a class="dl" href="plan.html">El plan nuevo, por épicas</a>
+        <a class="dl" href="paper/agrosat-micai-borrador-es.pdf">Borrador retirado · PDF</a>
       </p>
+      <p class="retirado">El borrador de quince páginas se publica <b>retirado</b>. Cuatro
+        revisores a ciegas lo auditaron con criterios de MICAI y los cuatro recomendaron rechazo.
+        Se deja accesible porque el registro de lo que salió mal vale más que el borrador.</p>
     </div>
   </div>
 </div>
@@ -100,14 +103,13 @@
         tres trabajos, nunca cuantificada frente a su alternativa.</p>
 
       <div class="callout">
-        <p>Lo que el artículo demuestra es previo a esa elección y más incómodo: <strong>casi toda
-          la mejora que se obtiene al recortar el catálogo no la produce el mecanismo, sino el
-          denominador más pequeño</strong>. El control que lo revela cuesta una línea —puntuar el
-          modelo intacto sobre el mismo catálogo, entregándolo todo— y sin él una tabla de
-          resultados no permite distinguir un método de una división.</p>
-        <p>Y cuando por fin se compara bien, <strong>gana la otra vía</strong>: a igual cobertura,
-          abstenerse en las parcelas dudosas da mejor calidad que retirar clases. Es lo contrario
-          de lo que suponíamos al empezar, y lo publicamos así.</p>
+        <p>La pregunta del artículo es <strong>cuál de esas salidas conviene y a quién le cuesta</strong>.
+          Y hay una tercera que nadie ha medido en este dominio: <strong>devolver un conjunto de
+          cultivos plausibles</strong> —«trigo o cebada»— en lugar de una etiqueta o de nada.</p>
+        <p>Lo que ya está medido y sobrevivió a la auditoría: el recorte de leyenda deja a una clase
+          rara con el <strong>20 % de sus parcelas atendidas</strong>, mientras la abstención atiende
+          el 62 % de esas mismas clases. Y el recorte entrega respuestas <strong>garantizadamente
+          falsas</strong> para las clases que retiró; la abstención no entrega nada.</p>
       </div>
 
       <h2 id="parcelas">Las parcelas, tal como son</h2>
@@ -167,9 +169,11 @@
     no el fuerte.</p>
 
   <h2>Los dos regímenes de la cifra campeona</h2>
-  <p>El 0,7486 que el proyecto publicó no es un held-out: el meta-modelo se reentrena sobre
-    las mismas parcelas que luego puntúa. La cifra libre de fuga ya existía en un CSV del
-    repositorio, guardada en la columna de al lado.</p>
+  <p>El 0,7486 que el proyecto publicó no es un held-out: el meta-modelo se reentrena sobre las
+    mismas parcelas que luego puntúa. <b>Precisión del 3 de septiembre:</b> en el CSV había una
+    columna libre de fuga, pero vale <strong>0,536</strong>, no 0,6794. Ese 0,6794 es una
+    re-derivación nuestra, agrupando posteriores en vez de promediar macros por bloque. Lo que
+    existía al lado era otra cifra, con otro estimador y peor.</p>
   <div class="ledger">
     <div class="ledger-row"><span class="name">Stacking-5, reajustado sobre todas las parcelas</span><span class="note">in-sample</span><span class="num">0,7486</span></div>
     <div class="ledger-row"><span class="name">Stacking-5, bloques espaciales agrupados</span><span class="note">libre de fuga</span><span class="num hi">0,6794</span></div>
@@ -273,11 +277,11 @@
     <figcaption>Intersección sobre unión por clase, misma corrida densa. Ordenada por el
       identificador de clase, no por rendimiento.</figcaption>
   </figure>
-  <p>Las cinco últimas —<em>Mixed cereal</em> 0,24, <em>Orchard</em> 0,31, <em>Beet</em> 0,42,
-    <em>Potatoes</em> 0,43, <em>Winter durum wheat</em> 0,45— son casi exactamente las que el
-    equipo retiró para poder desplegar. La figura no demuestra que retirarlas fuera lo
-    correcto; muestra <strong>por qué la tentación es tan fuerte</strong>, que es la pregunta
-    que el artículo convierte en medible.</p>
+  <p><b>Corregido el 3 de septiembre.</b> Aquí decíamos que esas cinco son «casi exactamente
+    las que el equipo retiró». Es falso: de las cinco, <strong>solo dos</strong> —<em>Mixed
+    cereal</em> y <em>Potatoes</em>— están entre las seis retiradas. <em>Orchard</em>,
+    <em>Beet</em> y <em>Winter durum wheat</em> se conservaron. Lo que la figura muestra es por
+    qué la tentación de retirar es fuerte, no que el equipo cediera a ella por IoU.</p>
 
   <div class="callout">
     <p>Una figura que <strong>no</strong> aparece aquí: los residuos espaciales del ensamble.
@@ -289,52 +293,91 @@
 
 <!-- ================= EL ARTÍCULO ================= -->
 <section class="panel" id="p-paper" role="tabpanel" aria-labelledby="t-paper" hidden>
-  <p class="lede">Quince páginas en A4, seis figuras, cuatro tablas, cero errores de LaTeX y cero
-    cajas overfull. Ninguna cifra impresa carece de archivo sellado que la sostenga.</p>
-
-  <p class="downloads">
-    <a class="dl" href="paper/agrosat-micai-borrador-es.pdf">Borrador en español · PDF</a>
-    <a class="dl" href="paper/agrosat-micai-borrador-en.pdf">Draft in English · PDF</a>
-  </p>
-
-  <h2>Título</h2>
-  <p class="quote-title">¿Cuánto de esa mejora es el denominador?<br>
-    <span>Un control para el recorte de leyenda en mapeo de cultivos desbalanceado</span></p>
-
-  <h2>Lo que sostiene</h2>
-  <ol class="claims">
-    <li><b>Casi toda la mejora es la división.</b> 88 % en el banco primario, 95 % en el segundo en
-      el punto de operación fijado por escrito de antemano, y 100 % en el tramo donde la cobertura
-      sigue completa y los cuatro mecanismos devuelven cifras idénticas.</li>
-    <li><b>El control cuesta una línea.</b> Puntuar el predictor intacto sobre el mismo catálogo,
-      entregándolo todo. Lo que ese control recupere no lo compró ningún mecanismo.</li>
-    <li><b>A igual cobertura gana abstenerse</b>, no recortar clases: −0,0248 con intervalo que
-      excluye el cero y corrección por multiplicidad en el segundo banco. Es lo contrario de la
-      hipótesis con la que empezamos.</li>
-    <li><b>Retirar por soporte es el peor criterio</b> de los tres, y no es monótono: retirar más
-      empeora el mapa entregado.</li>
-    <li><b>Un meta-modelo entrenado ya hace ese recorte sin declararlo.</b> Lleva una clase de 355
-      parcelas a F1 exactamente cero, cuando el mejor modelo individual saca 0,7790 en esa misma
-      clase y hasta la media sin entrenar saca 0,7752.</li>
-  </ol>
-
-  <h2>Cómo está construido</h2>
-  <div class="ledger">
-    <div class="ledger-row"><span class="name">Bibliografía generada, no escrita</span><span class="note">arXiv · Crossref · OpenAlex</span><span class="num">44</span></div>
-    <div class="ledger-row"><span class="name">Referencias citadas en el cuerpo</span><span class="note">de esas 44</span><span class="num">25</span></div>
-    <div class="ledger-row"><span class="name">Gate de doble ciego</span><span class="note">probado en negativo</span><span class="num hi">16 tokens</span></div>
-    <div class="ledger-row"><span class="name">Compilación reproducible</span><span class="note">mismo MD5 en cada corrida</span><span class="num hi">byte a byte</span></div>
-  </div>
-  <p>Lo último no es una florituras. Antes de arreglarlo, el PDF cambiaba de MD5 en cada
-    compilación por una fecha incrustada, y las figuras por identificadores aleatorios: sellar el
-    archivo de envío no significaba nada. Ahora un árbol limpio con solo los archivos versionados
-    compila y da el mismo hash.</p>
+  <p class="lede">El borrador de quince páginas está retirado. Lo que sigue es qué lo tumbó y qué
+    se escribe en su lugar.</p>
 
   <div class="callout">
-    <p><strong>El encuadre cambió con el resultado, en vez de sobrevivirlo.</strong> El plan de
-      septiembre decía que recortar la leyenda dominaba y compraba más calidad que la abstención.
-      Las fases 3 y 4 falsificaron las dos afirmaciones. La tesis nueva —cuánto de una mejora es el
-      denominador— es más estrecha, más comprobable y se sostiene en dos bancos.</p>
+    <p><b>Cuatro revisores a ciegas, cuatro rechazos, y apenas se solapan.</b> Se les dio el
+      manuscrito con ejes disjuntos —validez estadística, afirmación contra evidencia, novedad y
+      cumplimiento editorial— sin nuestras conclusiones y sin la revisión del coautor. Los tres
+      defectos estadísticos decisivos los reprodujimos después nosotros mismos.</p>
+  </div>
+
+  <h2>Los tres defectos del aparato, reproducidos</h2>
+
+  <div class="finding blocker">
+    <div class="top"><span class="chip stop">Fatal</span><h3>El «estimando alineado» no estaba alineado</h3></div>
+    <p>El artículo denunciaba comparar sobre denominadores distintos y lo hacía: promediaba sobre las
+      clases presentes <em>en la entrega de cada brazo</em>, y esos conjuntos difieren. En uno de los
+      cinco bloques, igualar el denominador <strong>invierte el signo</strong>, de −0,0448 a +0,0160,
+      y el contraste principal se encoge un 42 %.</p>
+  </div>
+
+  <div class="finding blocker">
+    <div class="top"><span class="chip stop">Fatal</span><h3>El remuestreo usaba la unidad equivocada</h3></div>
+    <p>El estimando es la media por bloque, pero el bootstrap remuestreaba parcelas dentro del bloque
+      y nunca bloques. Sobre la unidad correcta, el intervalo del banco primario es
+      <strong>(−0,0430, −0,0147) y excluye el cero</strong>; publicamos (−0,0414, +0,0080) y
+      concluimos «no distinguible de cero». La unidad de remuestreo decidía el titular.</p>
+  </div>
+
+  <div class="finding blocker">
+    <div class="top"><span class="chip stop">Fatal</span><h3>El mecanismo ganador no jugaba con las mismas reglas</h3></div>
+    <p>El rechazo por confianza elegía su umbral <em>dentro</em> del bloque donde se le medía; el
+      recorte de leyenda elegía su catálogo fuera. El abstract afirmaba que el protocolo elige el
+      punto de operación fuera de los datos que lo miden: cierto para un brazo, falso para el que
+      gana.</p>
+  </div>
+
+  <div class="finding blocker">
+    <div class="top"><span class="chip stop">Fatal</span><h3>Una premisa falsa, señalada por el coautor</h3></div>
+    <p>El artículo repetía en seis sitios que retirar clases por soporte bajo es «lo que hace la
+      práctica», y lo atribuía a este equipo. <strong>Es falso.</strong> El orden real de entrada de
+      las clases lo decide el F1 por clase con umbral 0,90, y existe una columna que prueba que la
+      cobertura sí se midió: 90,5 % con doce clases. El equipo usó el criterio bueno.</p>
+  </div>
+
+  <h2>Y lo demás</h2>
+  <ul>
+    <li><b>Reporte selectivo.</b> Publicábamos el 95,1 % de uno de dos universos preregistrados; el
+      otro, que el preregistro declaró <em>el mensurable</em>, da 85,5 % y no aparecía.</li>
+    <li><b>El preregistro como credencial.</b> Se citaba sin decir que su hipótesis fue refutada ni
+      que la regla de entrega había cambiado.</li>
+    <li><b>Una contribución que no existía.</b> «Ordenamos los tres criterios con intervalos
+      pareados»: no había ni un intervalo para ese orden.</li>
+    <li><b>El gate de anonimato no normalizaba acentos.</b> <code>tecnologico</code> nunca podía
+      coincidir con «Tecnológico». Tres de dieciséis tokens eran inertes, y la autoprueba pasaba
+      porque inyectaba el token tal cual: no podía detectar un token que no corresponde a la
+      realidad.</li>
+    <li><b>El anonimato se rompía por el sobre.</b> El envío es un zip del proyecto LaTeX y el
+      fuente lleva nombres, ORCID y correos; el gate solo miraba el PDF.</li>
+    <li><b>Las seis figuras del artículo en inglés estaban rotuladas en español</b>, a 4 pt.</li>
+    <li><b>Sin declaración de asistencia de IA</b>, que Springer exige.</li>
+  </ul>
+
+  <h2>El ángulo nuevo</h2>
+  <p class="quote-title">Prometer menos clases, responder menos parcelas, o responder con un conjunto<br>
+    <span>Puntos de operación para mapeo de cultivos con desbalance extremo</span></p>
+
+  <ol class="claims">
+    <li><b>Un protocolo que hace comparables los mecanismos, y la medida de lo que cuesta cada
+      error al construirlo.</b> Los tres defectos de arriba, cada uno con su efecto cuantificado.
+      No es metodología de relleno: es el resultado de habernos equivocado en los tres.</li>
+    <li><b>Los dos mecanismos que faltaban</b>: conjuntos de etiquetas por predicción conforme, y
+      retroceso a una clase más gruesa. Los cuatro, a igual cobertura.</li>
+    <li><b>Contabilidad de equidad: quién paga.</b> Cobertura por clase bajo cada mecanismo, ya
+      medida.</li>
+    <li><b>El orden entre criterios de retirada</b>, con cobertura igualada e intervalos, que hoy
+      no tiene ninguno.</li>
+    <li><b>La descomposición denominador contra mecanismo</b> baja a recomendación de reporte, con
+      su precedente reconocido en la primera página.</li>
+  </ol>
+
+  <div class="callout">
+    <p><b>Lo que el reencuadre exige</b>, y no es poco: cuatro bancos de datos con al menos uno
+      fuera de Europa occidental, varios predictores por banco, líneas base de la literatura de
+      verdad, y un preregistro nuevo escrito antes de correr nada. Está desglosado en
+      <a href="plan.html">siete épicas nuevas y treinta y una historias</a>.</p>
   </div>
 </section>
 

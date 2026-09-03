@@ -16,13 +16,23 @@
   <div class="masthead">
     <p class="stamp"><a href="index.html" style="color:inherit;text-decoration:none">← Cuaderno AgroSatCopilot</a></p>
     <h1>Plan por épicas</h1>
-    <p class="lede">El trabajo del artículo MICAI 2027, desglosado en cinco épicas y treinta y
-      tres historias de usuario con sus criterios de aceptación, puntos de historia,
+    <p class="lede">El trabajo del artículo MICAI 2027, desglosado en doce épicas y sesenta y
+      cinco historias de usuario con sus criterios de aceptación, puntos de historia,
       dependencias y artefacto de salida.</p>
+    <div class="callout" style="margin-top:22px">
+      <p><b>Reencuadre del 3 de septiembre de 2026.</b> Cuatro revisores a ciegas auditaron el
+        borrador de quince páginas con criterios de MICAI y los cuatro recomendaron rechazo, por
+        caminos que apenas se solapan. En paralelo, la revisión del coautor encontró que una de las
+        premisas del artículo era falsa. Tres de los defectos estadísticos los reprodujimos nosotros
+        mismos.</p>
+      <p>No se parchea: se reencuadra. Las épicas <b>13 a 17</b> quedan como están, con lo hecho
+        marcado; las épicas <b>18 a 24</b> son el trabajo nuevo. El calendario largo hacia 2027 lo
+        permite, y el resultado va a ser mejor que el que teníamos.</p>
+    </div>
     <div class="colophon">
       <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
       <span><b>Total</b> <span id="total-sp">—</span> puntos de historia</span>
-      <span><b>Actualizado</b> 3 de septiembre de 2026</span>
+      <span><b>Actualizado</b> 3 de septiembre de 2026, tras la auditoría</span>
     </div>
   </div>
 </div>
@@ -235,8 +245,8 @@
       ]
     },
     {
-      id:"EPIC 16", name:"Manuscrito", status:"wip",
-      goal:"Escribir el manuscrito desde cero sobre artefactos sellados. Primer borrador completo: quince páginas, seis figuras, cuatro tablas, cero errores y cero overfull.",
+      id:"EPIC 16", name:"Manuscrito (primera versión, superada)", status:"stop",
+      goal:"Escribir el manuscrito desde cero sobre artefactos sellados. Se entregó completo —quince páginas, seis figuras, cuatro tablas— y la auditoría del 3 de septiembre lo retiró. Su maquinaria (plantilla, gates, figuras reproducibles) se conserva; su contenido lo sustituye la EPIC 23.",
       us:[
         {id:"US-106", t:"Esqueleto LNCS y preámbulo", sp:3, st:"ok",
          role:"Como autor, quiero un proyecto que compile limpio desde el primer día, para no descubrir problemas de formato la semana del envío.",
@@ -325,6 +335,258 @@
              "Límite de páginas, formato y política de revisión verificados para 2027, no heredados de 2026",
              "Calendario hacia atrás desde el envío con una semana de holgura"],
          out:"docs/plan-micai-2027.md", dep:"—"}
+      ]
+    },
+    {
+      id:"EPIC 18", name:"Deuda técnica y gobernanza", status:"idle",
+      goal:"Cerrar lo que Arthur documentó en su Ruta 0 y su Ruta 1. Es bloqueante: mientras el volcado OOF siga roto, la frase «los dos miembros más fuertes» del artículo es falsa, y mientras haya dos repositorios el sello MD5 no es verificable por quien revisa.",
+      us:[
+        {id:"US-118", t:"Endurecimiento del harness OOF y re-corrida canónica", sp:8, st:"idle",
+         role:"Como equipo que publicó una cifra producida por un bug, quiero que el arnés no pueda volver a mezclar configuraciones, para que ninguna tabla imprima un fallo como resultado.",
+         ac:["Constructor único de kwargs de scoring, consumido por dense_metrics y dump_oof (área A de Arthur)",
+             "Test de regresión: para cada spec con n_timesteps, el dataset del volcado devuelve tensores con esa T (área B)",
+             "Error explícito, no strict=False silencioso, si faltan claves del checkpoint (área C)",
+             "Chequeo de manifest sin huérfanos: falla si hay parquet sin entrada (área H)",
+             "train_folds, val_folds, n_timesteps y md5 del checkpoint en los params de MLflow (área G)",
+             "tsvit-pheno-fullm re-volcado y su F1 por parcela coherente con su métrica densa"],
+         out:"PR en main; ml/eval/oof/*; docs/model_cards/", dep:"—"},
+        {id:"US-119", t:"Sanidad de los miembros heredados", sp:3, st:"idle",
+         role:"Como autor que va a publicar una tabla de miembros, quiero saber por qué utae, anysat y segformer caen tanto entre su validación propia y el fold 5, para no atribuir a un modelo lo que es un checkpoint mal cargado.",
+         ac:["Comparación automática entre best_metrics del checkpoint y la métrica del volcado, con umbral de 0,15 (área D de Arthur)",
+             "Causa documentada por miembro, aunque sea «checkpoint de otro fold, no comparable»",
+             "Decisión explícita por miembro: incluir, corregir o excluir",
+             "Ninguna comparación con la literatura mezcla F1 por parcela con mIoU por píxel"],
+         out:"docs/paper/sanidad-miembros.md", dep:"US-118"},
+        {id:"US-120", t:"Identidad única de cada modelo", sp:2, st:"idle",
+         role:"Como equipo con tres checkpoints distintos llamados «tsvit-pheno», quiero que cada modelo tenga una identidad y una sola, porque esa ambigüedad es la que produjo el bug.",
+         ac:["Clave tsvit-pheno-fullm-v2 en el registry y en el manifest",
+             "Renombrado del alias tsvit-pheno en oof_new32",
+             "Tabla de miembros con checkpoint, md5, T, dim y folds de entrenamiento"],
+         out:"ml/eval/oof/manifest.json; CHECKPOINT_REGISTRY", dep:"US-118"},
+        {id:"US-121", t:"ADR-014: reencuadre, alcance y destino del manuscrito heredado", sp:3, st:"idle",
+         role:"Como equipo que cambia de tesis por segunda vez, quiero que el cambio quede firmado, para que dentro de seis meses nadie reconstruya el ángulo viejo de memoria.",
+         ac:["Ángulo nuevo, contribuciones y lo que baja de rango, con la evidencia que lo obligó",
+             "Destino del manuscrito E11 de 24 páginas: informe técnico interno o preprint tras el fix, no en limbo",
+             "Qué predictor es el del artículo y por qué",
+             "Firmado por los dos autores"],
+         out:"docs/decisions/ADR-014-reencuadre-micai.md", dep:"—"},
+        {id:"US-122", t:"Consentimiento, crédito y divulgación de asistencia de IA", sp:3, st:"idle",
+         role:"Como autor que va a nombrar a terceros y que usó agentes para auditar, quiero pedir permiso y declarar la asistencia antes de escribir, porque después del camera-ready no se corrige.",
+         ac:["Consentimiento escrito de las personas agradecidas, archivado",
+             "Patrocinador acreditado o su ausencia justificada",
+             "Párrafo de divulgación de IA que nombra herramienta, versión y tarea, con los autores asumiendo la responsabilidad",
+             "Ninguna auditoría hecha por agentes se presenta como revisión por personas"],
+         out:"docs/paper/metadatos-autoria.md; sección de declaraciones", dep:"US-121"},
+        {id:"US-123", t:"Fuente única de verdad", sp:3, st:"idle",
+         role:"Como revisor externo, quiero que el repositorio que el artículo cita sea el mismo donde viven sus cifras, para poder comprobarlas sin pedir acceso a otro sitio.",
+         ac:["Artefactos, gate y cuaderno en un solo repositorio",
+             "El sitio se despliega desde ahí",
+             "Ninguna cifra publicada existe solo en un árbol de trabajo sin commitear"],
+         out:"monorepo; netlify.toml", dep:"US-121"}
+      ]
+    },
+    {
+      id:"EPIC 19", name:"El protocolo, esta vez correcto", status:"idle",
+      goal:"Reparar los tres defectos que cuatro revisores encontraron y que reproduje: denominador no común, unidad de remuestreo equivocada y elección asimétrica del punto de operación. Los tres empujaban hacia la conclusión que publiqué. La reparación, con su coste medido, pasa a ser la primera contribución del artículo.",
+      us:[
+        {id:"US-124", t:"Denominador común fijado antes de la entrega", sp:5, st:"idle",
+         role:"Como autor que denuncia comparar sobre denominadores distintos, quiero no hacerlo yo, porque hoy la ecuación 1 promedia sobre las clases presentes en la entrega de cada brazo y esos conjuntos difieren.",
+         ac:["El conjunto evaluado se fija una vez por bloque y contraste, sobre las clases presentes en el bloque completo",
+             "Caso |L ∩ Y| = 0 explícito, no un 0,0 silencioso que es un valor válido de la métrica",
+             "Test en negativo que falla con la versión anterior",
+             "Medido y publicado qué cambia: hoy un bloque invierte el signo y el contraste principal se encoge un 42 %"],
+         out:"ml/eval/paper_micai_coverage.py; reports/", dep:"—"},
+        {id:"US-125", t:"El bloque como unidad de remuestreo", sp:5, st:"idle",
+         role:"Como autor cuyo estimando es la media por bloque, quiero que el intervalo propague la varianza entre bloques, porque hoy remuestrea parcelas dentro del bloque y nunca bloques.",
+         ac:["Remuestreo por bloque, y por parche donde haya coordenadas",
+             "Con dos bloques se renuncia al intervalo y se reportan los dos deltas, sin p ni significancia",
+             "El conjunto de clases evaluadas se congela antes de remuestrear, no se recalcula por réplica",
+             "Medido qué cambia: sobre bloques el intervalo del banco primario excluye el cero, y el publicado lo incluye"],
+         out:"ml/eval/paper_micai_coverage.py", dep:"US-124"},
+        {id:"US-126", t:"Simetría del punto de operación", sp:3, st:"idle",
+         role:"Como autor que afirma elegir el punto de operación fuera de los datos que lo miden, quiero que sea cierto para los dos brazos, porque hoy el umbral de confianza sale del bloque de evaluación y la leyenda no.",
+         ac:["El cuantil de confianza se fija en los bloques de entrenamiento y se aplica al de evaluación",
+             "La cobertura objetivo también se fija fuera del bloque",
+             "Si el resultado no sobrevive a la simetría, se dice"],
+         out:"ml/eval/paper_micai_coverage.py", dep:"US-124"},
+        {id:"US-127", t:"Los contrastes que faltaban", sp:5, st:"idle",
+         role:"Como lector de la introducción, quiero que los tres criterios que dice ordenar con intervalos tengan intervalos, porque hoy solo existe uno de los pares.",
+         ac:["Contraste pareado entre los dos criterios de retirada, con cobertura igualada",
+             "Contraste entre cada mecanismo y el control sin mecanismo",
+             "Intervalo bootstrap para la razón denominador sobre ganancia, que hoy se publica como punto",
+             "Ninguna comparación entre mecanismos a coberturas distintas"],
+         out:"reports/paper_micai/", dep:"US-125"},
+        {id:"US-128", t:"Multiplicidad bien definida", sp:3, st:"idle",
+         role:"Como revisor de la corrección por multiplicidad, quiero que el criterio principal esté protegido y que la familia no incluya hipótesis degeneradas.",
+         ac:["El criterio principal se reporta sin corregir, y la familia exploratoria aparte",
+             "Se excluyen de la familia los K donde los mecanismos son idénticos por construcción",
+             "La multiplicidad entre bancos, predictores y universos se declara y se trata",
+             "El p bootstrap se reporta con su resolución real, no como «menor que 0,0001» con mil remuestreos"],
+         out:"ml/eval/paper_micai_coverage.py", dep:"US-127"},
+        {id:"US-129", t:"Gate de protocolo, probado en negativo", sp:3, st:"idle",
+         role:"Como equipo al que se le colaron tres defectos de protocolo, quiero una comprobación que los detecte, y verla fallar antes de confiar en ella.",
+         ac:["Falla si dos brazos de un contraste evalúan sobre conjuntos de clases distintos",
+             "Falla si un punto de operación se elige dentro del bloque de evaluación",
+             "Falla si se compara a coberturas distintas sin declararlo",
+             "Los tres casos se prueban en negativo con el código anterior"],
+         out:"tests/ml/eval/; make micai-protocol-check", dep:"US-128"}
+      ]
+    },
+    {
+      id:"EPIC 20", name:"Cuatro maneras de prometer menos", status:"idle",
+      goal:"Añadir los dos mecanismos que faltan y que son la razón de que el artículo anterior fuera estrecho: devolver un conjunto de etiquetas plausibles, y retroceder a una clase más gruesa. Los cuatro, a igual cobertura, bajo el protocolo de la EPIC 19.",
+      us:[
+        {id:"US-130", t:"Predicción conforme como tercer mecanismo", sp:8, st:"idle",
+         role:"Como producto que no sabe si es trigo o cebada, quiero poder decir «una de estas dos» en vez de callarme o de borrar la clase del catálogo, que es lo que la literatura moderna hace y este artículo no tenía.",
+         ac:["Conjuntos de predicción con calibración fuera del bloque de evaluación",
+             "Cobertura marginal comprobada contra el nivel nominal",
+             "Tamaño medio del conjunto como eje de coste, junto a la cobertura",
+             "Comparado con los otros mecanismos bajo el estimando común"],
+         out:"ml/eval/conformal.py; reports/", dep:"US-129"},
+        {id:"US-131", t:"Retroceso jerárquico como cuarto mecanismo", sp:5, st:"idle",
+         role:"Como agrónomo, prefiero que me digan «cereal de invierno» a que no me digan nada, y ese mecanismo existe en la literatura de mapeo de cultivos desde 2021 sin haberse comparado con los otros.",
+         ac:["Jerarquía agronómica declarada y justificada, no inventada por conveniencia",
+             "Retroceso al nivel grueso cuando la decisión fina no es fiable",
+             "Métrica que penaliza la pérdida de especificidad, no solo el acierto",
+             "Comparado a igual cobertura con los otros tres"],
+         out:"ml/eval/hierarchical_backoff.py", dep:"US-129"},
+        {id:"US-132", t:"Líneas base de la literatura, no propias", sp:5, st:"idle",
+         role:"Como revisor, quiero ver el artículo comparado contra los métodos que dice extender, porque hoy no compara contra ninguno.",
+         ac:["Regla de Chow como línea base clásica de rechazo",
+             "Al menos un rechazo aprendido de la literatura reciente",
+             "Cada línea base implementada desde su publicación y con su cita",
+             "Tabla única con los cuatro mecanismos y las líneas base bajo el mismo protocolo"],
+         out:"reports/paper_micai/lineas_base/", dep:"US-130"}
+      ]
+    },
+    {
+      id:"EPIC 21", name:"Quién paga: contabilidad de equidad", status:"wip",
+      goal:"Un revisor señaló que el artículo citaba a Jones et al. 2020 para respaldar lo contrario de lo que ese trabajo demuestra, y que nunca habíamos medido la cobertura por clase. La medición ya está hecha y nos favorece, pero necesita intervalo, más mecanismos y figura.",
+      us:[
+        {id:"US-133", t:"Cobertura por clase bajo cada mecanismo", sp:3, st:"ok",
+         role:"Como productor de un cultivo raro, quiero saber qué probabilidad tengo de recibir respuesta bajo cada mecanismo, porque una media de cobertura no me dice nada.",
+         ac:["Cobertura por clase verdadera, por mecanismo y por banco",
+             "Correlación entre soporte y cobertura, con su p",
+             "Hecho: el recorte deja una clase rara con el 20 % de sus parcelas atendidas y la abstención con el 62 %",
+             "Hecho: sin asociación significativa entre soporte y cobertura bajo abstención"],
+         out:"reports/paper_micai/equidad/", dep:"—"},
+        {id:"US-134", t:"La disparidad, con su intervalo", sp:3, st:"idle",
+         role:"Como revisor, quiero que la afirmación de equidad tenga incertidumbre, no un punto.",
+         ac:["Intervalo por bloque para la disparidad entre clases",
+             "Medida de disparidad declarada antes de mirarla",
+             "Los cuatro mecanismos de la EPIC 20 incluidos"],
+         out:"reports/paper_micai/equidad/", dep:"US-132"},
+        {id:"US-135", t:"El coste de entregar una respuesta imposible", sp:3, st:"idle",
+         role:"Como usuario del mapa, quiero saber que bajo recorte de leyenda una parcela de clase retirada que sí recibe respuesta la recibe garantizadamente mal, cosa que la abstención no hace.",
+         ac:["Fracción de entregas imposibles por mecanismo",
+             "Contrastado con la fracción de abstenciones del mecanismo comparado",
+             "Figura que lo enseñe sin necesidad de la tabla"],
+         out:"reports/paper_micai/equidad/", dep:"US-133"}
+      ]
+    },
+    {
+      id:"EPIC 22", name:"Validez externa de verdad", status:"idle",
+      goal:"Dos bancos franceses no demuestran transporte, y así lo dijeron los revisores. Cuatro bancos, al menos uno fuera de Europa occidental, y varios predictores por banco.",
+      us:[
+        {id:"US-136", t:"Tercer banco, fuera de Francia", sp:8, st:"idle",
+         role:"Como revisor de validez externa, quiero ver el protocolo en otra geografía y otra nomenclatura de cultivos.",
+         ac:["Banco público, con partición espacial propia y licencia compatible",
+             "Mismo protocolo, sin tocar una línea del método",
+             "Preregistrado antes de correrlo"],
+         out:"reports/paper_micai/fase-externa/", dep:"US-129"},
+        {id:"US-137", t:"Cuarto banco, fuera de Europa occidental", sp:8, st:"idle",
+         role:"Como lector de un artículo que habla de desbalance de clases, quiero ver un sistema agrícola donde el desbalance tenga otra forma, no la misma cola europea.",
+         ac:["Sistema agrícola distinto: parcelas pequeñas, policultivo o agricultura de subsistencia",
+             "Si la conclusión no se transporta, se reporta igual y el artículo gana un matiz",
+             "Licencia y atribución resueltas antes de descargar"],
+         out:"reports/paper_micai/fase-externa/", dep:"US-136"},
+        {id:"US-138", t:"Reentrenamiento OOF de cinco folds", sp:8, st:"idle",
+         role:"Como equipo cuyo meta-modelo se entrena con un solo fold, quiero cinco volcados con procedencia completa, para que el universo del ensamble deje de ser una limitación estructural.",
+         ac:["Plan de cómputo decidido con las cuatro opciones costeadas por Arthur, y prueba de humo de una época antes de comprometer presupuesto",
+             "Cinco volcados con folds, T y md5 en MLflow, y dvc push por fold",
+             "El modelo del artículo decidido en ADR-014, no por descarte"],
+         out:"ml/eval/oof/; docs/operations/computo-micai-2027.md", dep:"US-120"},
+        {id:"US-139", t:"Varios predictores por banco, incluido el desplegado", sp:5, st:"idle",
+         role:"Como revisor, quiero saber si la conclusión es del desbalance o de un modelo, y quiero ver el producto que de verdad se desplegó.",
+         ac:["Al menos tres predictores por banco, de familias distintas",
+             "El campeón desplegado entre ellos, con su cifra",
+             "Ninguna selección de predictores hecha sobre un ranking que se sepa contaminado"],
+         out:"reports/paper_micai/", dep:"US-119"}
+      ]
+    },
+    {
+      id:"EPIC 23", name:"Manuscrito y evidencia", status:"idle",
+      goal:"Escribir el artículo nuevo sobre el protocolo corregido, con el precedente reconocido en la primera página y sin ninguna de las quince afirmaciones que la auditoría tumbó.",
+      us:[
+        {id:"US-140", t:"Preregistro del experimento central", sp:3, st:"idle",
+         role:"Como equipo al que le refutaron la hipótesis y no lo dijo, quiero declarar por escrito qué espero y qué me haría cambiar de opinión, antes de correr nada.",
+         ac:["Hipótesis, criterio principal y qué la refutaría, fechado y commiteado antes del primer resultado",
+             "Toda desviación posterior como enmienda fechada, incluida cualquier que cambie la regla de entrega",
+             "El apéndice del artículo declara la hipótesis y si se refutó"],
+         out:"docs/paper/preregistro-v2.md", dep:"US-129"},
+        {id:"US-141", t:"Trabajo relacionado con el precedente reconocido", sp:5, st:"idle",
+         role:"Como autor al que un revisor le enseñó que su efecto está documentado desde los noventa, quiero citarlo en la primera página y delimitar qué queda de mío.",
+         ac:["El precedente de agregación de clases citado y acotado",
+             "Clasificación selectiva, rechazo jerárquico, conjuntos de etiquetas y métricas bajo desbalance, cada uno con su límite",
+             "Ninguna afirmación de que algo «nunca se ha medido» sin la búsqueda que la respalde",
+             "Cero citas de relleno: cada una se ha leído"],
+         out:"paper/micai/sections/02-related.tex", dep:"—"},
+        {id:"US-142", t:"Bibliografía verificada y publicada", sp:3, st:"idle",
+         role:"Como lector, quiero poder localizar cada referencia, porque hoy once de veinticinco salen sin venue ni DOI.",
+         ac:["Versión revisada por pares donde exista, no el preprint",
+             "Ninguna entrada citada sin venue ni identificador en el PDF",
+             "Ninguna entrada en el bib que no se cite",
+             "Gate de citas verificado por API"],
+         out:"paper/micai/refs.bib", dep:"US-141"},
+        {id:"US-143", t:"Figuras bilingües, legibles y sin color como único canal", sp:5, st:"idle",
+         role:"Como revisor que lee el artículo en inglés, quiero que sus figuras estén en inglés, porque hoy las seis están rotuladas en español y su tipografía queda a 4 pt.",
+         ac:["Generador parametrizado por idioma, con salida en inglés y en español",
+             "Generadas al ancho final real, con tipografía de al menos 8 pt al tamaño impreso",
+             "Ninguna figura codifica su significado solo con color",
+             "Reproducibles byte a byte, como ya lo son"],
+         out:"scripts/build_paper_micai_*_figure.py", dep:"—"},
+        {id:"US-144", t:"Manuscrito nuevo", sp:13, st:"idle",
+         role:"Como autor, quiero escribir el artículo del ángulo nuevo, no parchear el anterior, porque el anterior arrastra frases que ya no corresponden a ningún dato.",
+         ac:["Ninguna cifra sin fila sellada, y ninguna tabla que muestre un subconjunto sin declarar la regla",
+             "El abstract dice lo mismo que los resultados, incluidos los nulos",
+             "Los dos universos preregistrados se reportan, no el que conviene",
+             "Régimen y número de clases junto a toda cifra promediada",
+             "Doce páginas de diseño"],
+         out:"paper/micai/", dep:"US-140"}
+      ]
+    },
+    {
+      id:"EPIC 24", name:"Entrega", status:"idle",
+      goal:"Cerrar el envío sin los agujeros que la auditoría encontró: el anonimato roto por el sobre y no por la carta, las licencias de datos sin atribución, y un apéndice de reproducibilidad que el lector no puede alcanzar.",
+      us:[
+        {id:"US-145", t:"Empaquetado con gate de anonimato sobre todo el archivo", sp:5, st:"idle",
+         role:"Como autor que envía un zip del proyecto LaTeX, quiero que el gate mire todos los archivos del zip y no solo el PDF, porque el fuente lleva los nombres, los ORCID y los correos.",
+         ac:["Bloque de firmas fuera del fuente principal, en un archivo que solo entra en el camera-ready",
+             "Zip construido desde una lista blanca en un directorio limpio, nunca zip -r del árbol",
+             "El gate recorre todos los archivos del zip",
+             "El gate normaliza acentos: hoy «tecnologico» no puede coincidir con «Tecnológico», y tres de dieciséis tokens son inertes",
+             "Tokens que faltan añadidos, incluido el ORCID del segundo autor",
+             "La autoprueba inyecta la forma renderizada, no el token, que es lo que dejaba pasar el fallo"],
+         out:"scripts/paper_micai_anon_check.py; make micai-zip", dep:"US-144"},
+        {id:"US-146", t:"Depósito citable con DOI", sp:3, st:"idle",
+         role:"Como revisor, quiero alcanzar el ledger, el preregistro y los datos derivados, porque el apéndice los describe y no los enlaza.",
+         ac:["Ledger, preregistro, enmiendas, artefactos derivados y código en Zenodo con DOI",
+             "Enlace anonimizado para la versión de revisión, no «disponible bajo petición»",
+             "Declarado con precisión qué no se publica y por qué"],
+         out:"CITATION.cff; DOI", dep:"US-144"},
+        {id:"US-147", t:"Licencias y atribución de los datos", sp:2, st:"idle",
+         role:"Como equipo que reproduce imágenes Sentinel y anotaciones con licencia compartida-igual dentro de un volumen con derechos exclusivos, quiero resolver el conflicto antes de firmar, no después.",
+         ac:["Atribución de Copernicus en los pies de figura",
+             "Licencia de cada banco declarada, con su cláusula de compartir-igual",
+             "Compatibilidad con el contrato de Springer confirmada o figura sustituida"],
+         out:"paper/micai/; docs/licenses/", dep:"US-143"},
+        {id:"US-148", t:"Metadatos, camera-ready y convocatoria", sp:3, st:"idle",
+         role:"Como autor de correspondencia, quiero que el nombre coincida carácter a carácter en todas partes y que el calendario tenga holgura real.",
+         ac:["Forma con guion propagada al repositorio, la licencia y el sistema del congreso",
+             "Declaraciones obligatorias completas, incluida la de IA",
+             "Convocatoria de 2027 verificada en cuanto se publique, y límite de páginas confirmado",
+             "Una semana de holgura sobre el plazo real"],
+         out:"docs/paper/metadatos-autoria.md", dep:"US-146"}
       ]
     }
   ];
