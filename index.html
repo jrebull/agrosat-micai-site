@@ -20,10 +20,10 @@
         <h1>AgroSat<br>Copilot<span class="thin">Qué se cultiva en cada parcela, visto desde
           órbita — y cuánto de lo que ese sistema medía era el método.</span></h1>
       </div>
-      <p class="lede">Un mapa de cultivos que no alcanza calidad tiene tres salidas, no dos:
-        <b>prometer menos clases, responder menos parcelas, o responder con un conjunto</b>. El
-        artículo las compara a igual cobertura, bajo un protocolo que no hace trampa, y mide
-        <b>quién paga</b> en cada caso.</p>
+      <p class="lede">Un mapa de cultivos que no alcanza calidad puede <b>prometer menos clases,
+        responder menos parcelas, responder con un conjunto o retroceder a una clase más gruesa</b>.
+        El artículo no pregunta cuál acierta más, porque no son comparables por acierto. Pregunta
+        <b>cuál conviene a quién, y a costa de quién</b>.</p>
       <div class="colophon">
         <span><b>Autores</b> A. J. Zizumbo Velasco · J. A. Rebull-Saucedo</span>
         <span><b>Universos</b> PASTIS-R · 16 640 parcelas · 18 clases &nbsp;·&nbsp;
@@ -362,23 +362,55 @@
     <li><b>Sin declaración de asistencia de IA</b>, que Springer exige.</li>
   </ul>
 
-  <h2>El ángulo nuevo</h2>
-  <p class="quote-title">Prometer menos clases, responder menos parcelas, o responder con un conjunto<br>
+  <h2>El ángulo, después de la segunda vuelta</h2>
+  <p class="quote-title">Cuál conviene, y a costa de quién<br>
     <span>Puntos de operación para mapeo de cultivos con desbalance extremo</span></p>
 
+  <div class="callout">
+    <p><b>Una revisión estratégica a ciegas del plan devolvió una aritmética incómoda:</b> de los
+      150 puntos planificados, solo 27 producían conocimiento nuevo. El 18 %. El resto era
+      rehabilitación. Y la primera contribución no era un resultado, era <b>la confesión de tres
+      errores propios</b>. Ningún revisor recuerda una enmienda; recuerda un resultado.</p>
+  </div>
+
   <ol class="claims">
-    <li><b>Un protocolo que hace comparables los mecanismos, y la medida de lo que cuesta cada
-      error al construirlo.</b> Los tres defectos de arriba, cada uno con su efecto cuantificado.
-      No es metodología de relleno: es el resultado de habernos equivocado en los tres.</li>
+    <li><b>Un criterio, no una tabla.</b> El artículo denunciaba que el F1-macro no es comparable
+      entre catálogos y luego iba a comparar con F1-macro cuatro mecanismos que cambian el catálogo.
+      Se mordía la cola. Los cuatro producen errores <em>cualitativamente</em> distintos —una
+      etiqueta segura y falsa, un silencio, una ambigüedad acotada, una verdad gruesa— y ninguna
+      métrica de acierto los ordena. Se ordenan <b>en espacio de costes</b>, con un diagrama de
+      fases que dice qué mecanismo gana en qué región. Cero horas de GPU: es re-puntuar
+      predicciones que ya existen.</li>
+    <li><b>La decisión de despliegue real, situada en ese mapa.</b> Es el único activo que nadie
+      puede reproducir: un sistema desplegado recortó su catálogo de 18 clases a 12 con criterio F1
+      por clase ≥ 0,90 y cobertura resultante 0,9054. El reencuadre lo había borrado, y era un
+      error: <b>el doble ciego exige quitar el nombre, no el hecho</b>. Va al mapa con la pregunta
+      que nadie publica: dado su coste implícito, ¿acertó?</li>
+    <li><b>Contabilidad de equidad: quién paga.</b> Cobertura por clase y por tamaño de parcela bajo
+      cada mecanismo. Ya medida en su primera versión.</li>
     <li><b>Los dos mecanismos que faltaban</b>: conjuntos de etiquetas por predicción conforme, y
-      retroceso a una clase más gruesa. Los cuatro, a igual cobertura.</li>
-    <li><b>Contabilidad de equidad: quién paga.</b> Cobertura por clase bajo cada mecanismo, ya
-      medida.</li>
-    <li><b>El orden entre criterios de retirada</b>, con cobertura igualada e intervalos, que hoy
-      no tiene ninguno.</li>
-    <li><b>La descomposición denominador contra mecanismo</b> baja a recomendación de reporte, con
-      su precedente reconocido en la primera página.</li>
+      retroceso a una clase más gruesa.</li>
+    <li><b>El protocolo corregido y la descomposición</b> bajan a método y apéndice. Son
+      obligatorios; la confesión no.</li>
   </ol>
+
+  <h2>Lo que se recortó, y por qué</h2>
+  <div class="ledger">
+    <div class="ledger-row"><span class="name">Reentrenamiento OOF de cinco folds</span><span class="note">alimentaba al árbitro, que salió del artículo</span><span class="num hi">−8 SP</span></div>
+    <div class="ledger-row"><span class="name">Cuarto banco de datos</span><span class="note">tres bancos y dos continentes ya responden</span><span class="num hi">−8 SP</span></div>
+    <div class="ledger-row"><span class="name">Gate sobre el HTML del cuaderno</span><span class="note">gobernanza, no artículo</span><span class="num hi">−3 SP</span></div>
+    <div class="ledger-row"><span class="name">Reimplementar un rechazador aprendido</span><span class="note">riesgo de ajuste que el revisor criticará igual</span><span class="num hi">recortado</span></div>
+    <div class="ledger-row"><span class="name">Conocimiento nuevo, antes y después</span><span class="note">del total planificado</span><span class="num hi">18 % → 32 %</span></div>
+  </div>
+
+  <div class="callout">
+    <p><b>Y se cerraron tres escotillas.</b> El plan tenía una salida en forma de protocolo para
+      cada desenlace: «si no sobrevive a la simetría, se dice», «si no se transporta, el artículo
+      gana un matiz», «si no replica, la contribución pasa a ser el protocolo». Un plan con una
+      escotilla para cada desenlace <b>aterriza en la escotilla</b>. Queda escrito: el protocolo no
+      puede ser el resultado de reserva. Si el experimento central no da nada, se va a revista y se
+      espera al año siguiente.</p>
+  </div>
 
   <h2>El hueco, después de mirar la literatura de verdad</h2>
   <p>Un barrido de 2024 a 2026 <strong>estrechó el hueco, y eso es bueno</strong>: uno preciso se
