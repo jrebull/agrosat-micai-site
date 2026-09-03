@@ -373,11 +373,61 @@
       su precedente reconocido en la primera página.</li>
   </ol>
 
+  <h2>El hueco, después de mirar la literatura de verdad</h2>
+  <p>Un barrido de 2024 a 2026 <strong>estrechó el hueco, y eso es bueno</strong>: uno preciso se
+    defiende y uno amplio se tumba. Verificamos cada DOI contra Crossref y arXiv por nuestra
+    cuenta, no solo por el barrido.</p>
+
+  <div class="finding blocker">
+    <div class="top"><span class="chip stop">Ya no podemos decirlo</span><h3>«Nadie abstiene en mapeo de cultivos»</h3></div>
+    <p>Rey et al. 2025 excluyen píxeles por umbral de incertidumbre <strong>sobre PASTIS, con U-TAE,
+      UNET3D y TSViT</strong> — nuestro banco y nuestras arquitecturas. Lo decisivo es cómo: en todo
+      el trabajo no aparecen «abstention», «selective classification» ni «risk-coverage». Es
+      abstención de facto, sin marco, sin curva riesgo-cobertura y sin preguntar quién paga.</p>
+  </div>
+
+  <div class="finding blocker">
+    <div class="top"><span class="chip stop">Ya no podemos decirlo</span><h3>«Recortar el catálogo no se ha medido»</h3></div>
+    <p>Ghassemi et al. 2025 ya tratan el tamaño del catálogo como variable de diseño medida: de las
+      52 clases de LUCAS 2022 concluyen que <strong>26 equilibran exactitud y detalle</strong>. En
+      cobertura del suelo general, sin marco de abstención y sin contabilidad de quién pierde.</p>
+  </div>
+
+  <div class="finding pass">
+    <div class="top"><span class="chip ok">Lo que sí queda</span><h3>Tres piezas que no se hablan entre sí</h3></div>
+    <p>La jerarquía normativa está montada y validada —HCAT4, EuroCrops v2.0 con 47 millones de
+      parcelas— pero solo se usa como supervisión, <strong>nunca como opción de repliegue</strong>.
+      El rechazo existe, pero por <em>novedad</em>. Y lo conforme llega a cobertura del suelo, no a
+      tipo de cultivo por parcela desde series temporales. El único trabajo de observación de la
+      Tierra que dice «abstain», SHRUG-FM en EarthVision 2026, evalúa incendios, inundaciones y
+      deslizamientos: <strong>ninguna tarea agrícola</strong>.</p>
+    <p><b>La contribución, reformulada: no es el mecanismo, es la contabilidad.</b> Medir, para cada
+      mecanismo, qué cultivos y qué tamaños de parcela absorben la promesa retirada.</p>
+  </div>
+
   <div class="callout">
-    <p><b>Lo que el reencuadre exige</b>, y no es poco: cuatro bancos de datos con al menos uno
-      fuera de Europa occidental, varios predictores por banco, líneas base de la literatura de
-      verdad, y un preregistro nuevo escrito antes de correr nada. Está desglosado en
-      <a href="plan.html">siete épicas nuevas y treinta y una historias</a>.</p>
+    <p><b>Y una regla de redacción que sale de aquí.</b> Las búsquedas negativas tienen un sesgo
+      declarado: OpenAlex carece de resumen para buena parte de Elsevier e IEEE, así que un cero
+      suyo infravalora. En el artículo se escribe <em>«no encontramos trabajo que…»</em>, nunca
+      <em>«nadie ha…»</em>. Un revisor con un contraejemplo tumba una afirmación absoluta, y no la
+      tumbaría dos veces.</p>
+  </div>
+
+  <h2>Los cuatro bancos, ya elegidos</h2>
+  <p>Con partición espacial <strong>ajena</strong>, no construida por nosotros, que es justo lo que
+    un revisor cuestionaría si la inventáramos.</p>
+  <div class="ledger">
+    <div class="ledger-row"><span class="name">PASTIS · Francia, 18 clases</span><span class="note">fold oficial</span><span class="num">16 640</span></div>
+    <div class="ledger-row"><span class="name">BreizhCrops · Bretaña, 9 clases</span><span class="note">por región</span><span class="num">60 000</span></div>
+    <div class="ledger-row"><span class="name">CropHarvest · Kenia, Brasil, Togo</span><span class="note">separación espacial documentada</span><span class="num hi">CC BY-SA</span></div>
+    <div class="ledger-row"><span class="name">GEO-Bench m-SA-crop-type · Sudáfrica, 9 clases</span><span class="note">licencia limpia</span><span class="num hi">CC BY</span></div>
+  </div>
+
+  <div class="callout">
+    <p><b>Lo que el reencuadre exige</b>, y no es poco: los cuatro bancos, varios predictores por
+      banco, líneas base de la literatura de verdad, y un preregistro nuevo escrito antes de correr
+      nada. Está desglosado en <a href="plan.html">siete épicas nuevas y treinta y una
+      historias</a>.</p>
   </div>
 </section>
 
