@@ -144,9 +144,9 @@
   <p class="lede">El borrador de quince páginas sigue retirado. Ocho rondas externas cerraron
     defectos de evaluación, custodia y redacción. US-173 cerró el primer contrato científico del
     estudio reencuadrado: estimando y población ya están fijados; quedan pérdida, margen práctico y
-    criterio principal antes de firmar el preregistro. US-121 y US-118 están ahora en curso. El
-    arnés OOF ya comprueba la longitud temporal realmente usada y su gate corre en CI; la población
-    elegible sigue siendo exactamente 16 640 parcelas.</p>
+    criterio principal antes de firmar el preregistro. US-119 cerró la sanidad del panel heredado;
+    US-121 y US-118 están en curso. El arnés OOF ya comprueba la longitud temporal realmente usada y
+    su gate corre en CI; la población elegible sigue siendo exactamente 16 640 parcelas.</p>
 
   <div class="callout">
     <p><b>Estado de la conclusión.</b> H1-2026 está <strong>pendiente</strong>: ni «se refutó» ni
@@ -167,7 +167,7 @@
 
   <h2>Registro de custodia</h2>
   <div class="ledger">
-    <div class="ledger-row"><span class="name">Artefactos verificados con MD5</span><span class="note">25 son OBSOLETO y no citables</span><span class="num">91</span></div>
+    <div class="ledger-row"><span class="name">Artefactos verificados con MD5</span><span class="note">25 son OBSOLETO y no citables</span><span class="num">93</span></div>
     <div class="ledger-row"><span class="name">Cifras declaradas sin artefacto</span><span class="note">no se imprimen</span><span class="num">8</span></div>
     <div class="ledger-row"><span class="name">Referencias verificadas por API</span><span class="note">cero fuera de OK</span><span class="num">44</span></div>
     <div class="ledger-row"><span class="name">Parcelas puntuadas, los dos bancos</span><span class="note">16 640 + 60 000</span><span class="num">76 640</span></div>
@@ -1000,8 +1000,19 @@
     <div class="top"><span class="chip ok">US-118 parcial</span><h3>El inventario OOF ya protege también CI</h3></div>
     <p>El gate distingue artefactos canónicos, históricos sin procedencia y excluidos; verifica
       bytes o punteros DVC y exige que la longitud temporal del dataset coincida con la del
-      checkpoint. Al activarse detectó un volcado no inventariado. La historia sigue en curso
+      modelo especificado. Los manifiestos nuevos fijan versión de código y datos por miembro; el
+      histórico vuelve a describir una sola corrida, sin pegarle Full-M desde otra. Al activarse el
+      gate detectó un volcado no inventariado. La historia sigue en curso
       porque la tabla inferencial y las 25 filas obsoletas esperan pérdida, panel y preregistro.</p>
+  </div>
+
+  <div class="finding pass">
+    <div class="top"><span class="chip ok">US-119 cerrada</span><h3>Dos miembros salen y una premisa cae</h3></div>
+    <p>AnySat y U-TAE quedan fuera del panel inferencial mientras su caída de 0,3597 y 0,4010 no tenga
+      causa identificada; se conservan como descriptivos. SegFormer no cae: mejora 0,0235 en el fold
+      retenido y desmiente la premisa de la historia. El productor prueba además que los pesos de la
+      métrica y del arnés coinciden —380 tensores en U-Net, 501 en AnySat y 208 en SegFormer— y guarda
+      la decisión por miembro dentro del artefacto sellado.</p>
   </div>
 </section>
 
@@ -1146,7 +1157,7 @@
   }
   var pending = [
     ["01","US-121 · Firmar alcance, modelo y destino","ADR-014 está escrito y cumple sus cinco criterios; permanece abierto hasta las dos firmas o la fecha de corte del 18 de septiembre.","wip","En curso"],
-    ["02","US-118 · Endurecer el arnés OOF","El productor ya acopla T=37 en checkpoint y dataset, el inventario corre en CI y la población independiente queda en 16 640 parcelas. Sigue abierta hasta que la tabla inferencial se regenere después de fijar pérdida, panel y preregistro.","wip","En curso"],
+    ["02","US-118 · Endurecer el arnés OOF","El productor ya acopla T=37 entre especificación del modelo y dataset, el inventario corre en CI y la población independiente queda en 16 640 parcelas. Sigue abierta hasta que la tabla inferencial se regenere después de fijar pérdida, panel y preregistro.","wip","En curso"],
     ["03","US-141 y US-142 · Trabajo relacionado y bibliografía","Verificar cada precedente desde su texto, delimitar la contribución y publicar referencias localizables.","idle","Sin resultados"],
     ["04","US-172 · Tabla de pérdidas","Completar la moneda común por acción, resultado y afectado; hasta entonces no se comparan mecanismos.","stop","Camino crítico"],
     ["05","US-174 y US-175 · Margen y geometría","Derivar el margen práctico desde la tabla de pérdidas y preregistrar el símplex completo o una sección con justificación sustantiva.","stop","Depende de US-172"],
