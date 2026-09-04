@@ -393,12 +393,19 @@
       cinco y dos.</p>
   </div>
 
-  <div class="finding pass">
-    <div class="top"><span class="chip ok">Aquí sí hay efecto</span><h3>La disparidad es un factor de ocho</h3></div>
-    <p>La clase 10, con 355 parcelas, recibe <strong>0,090 de cobertura bajo recorte de leyenda y
-      0,741 bajo abstención</strong>. Frente a un delta de calidad de 0,017 que no llega a
-      significativo. El criterio principal del artículo se muda ahí, que es donde el diseño tiene
-      potencia de sobra, y la equidad deja de ser la tercera contribución para ser la tesis.</p>
+  <div class="finding">
+    <div class="top"><span class="chip dead">Retirado</span><h3>«La disparidad es un factor de ocho»</h3></div>
+    <p class="retirado">Esto estuvo publicado aquí como el hallazgo que salvaba el artículo, y es
+      falso por dos caminos distintos. La clase 10, con 355 parcelas, sí recibe <strong>0,090 de
+      cobertura bajo recorte y 0,741 bajo abstención</strong> — pero ocho es la <b>mayor de
+      dieciocho razones cuya mediana es 1,00</b>, leída después de mirar la tabla, y no es monótona
+      en soporte: la clase 8, más rara con 167 parcelas, recibe 0,958 bajo recorte. Y medida la
+      potencia con cuatro medidas de disparidad declaradas antes de elegir, <b>ninguna la tiene con
+      cinco bloques</b>: las cuatro incluyen el cero y necesitan entre doce y diecisiete.</p>
+    <p>Peor que el número era la frase que lo seguía: «el criterio principal se muda ahí, que es
+      donde el diseño tiene potencia». <b>Mudar el criterio principal a donde hay potencia es elegir
+      el resultado antes de medirlo.</b> La disparidad vuelve a ser una hipótesis por medir, y el
+      criterio principal se fija en la firma del preregistro, uno solo y sin regla condicional.</p>
   </div>
 
   <ol class="claims">
@@ -411,9 +418,9 @@
       predicciones que ya existen.</li>
     <li><b>La decisión de despliegue real, situada en ese mapa.</b> Es el único activo que nadie
       puede reproducir: un sistema desplegado recortó su catálogo de 18 clases a 12 con criterio F1
-      por clase ≥ 0,90 y cobertura resultante 0,88269 —14 688 parcelas de 16 640—, no 0,9054: esa cifra es el cumulative_support_share de la curva del Stacking-5, y se nos cruzó entre artefactos. El reencuadre lo había borrado, y era un
-      error: <b>el doble ciego exige quitar el nombre, no el hecho</b>. Va al mapa con la pregunta
-      que nadie publica: dado su coste implícito, ¿acertó?</li>
+      por clase ≥ 0,90. El reencuadre había borrado el hecho, y era un error: <b>el doble ciego
+      exige quitar el nombre, no el hecho</b>. Va al mapa con la pregunta que nadie publica: dado su
+      coste implícito, ¿acertó? <b>Su cobertura de entrega está por medir</b> — ver abajo.</li>
     <li><b>Contabilidad de equidad: quién paga.</b> Cobertura por clase y por tamaño de parcela bajo
       cada mecanismo. Ya medida en su primera versión.</li>
     <li><b>Los dos mecanismos que faltaban</b>: conjuntos de etiquetas por predicción conforme, y
@@ -434,7 +441,8 @@
   <h2>Lo que encontró una auditoría externa que ocho internas no vieron</h2>
   <p>El plan se entregó a un revisor ajeno al proyecto, con el encargo de responder a ciegas antes
     de leer una sola de nuestras conclusiones. Su veredicto fue <strong>no arrancar todavía</strong>,
-    y tenía razón.</p>
+    y tenía razón. <b>Van dos rondas</b>: la segunda verificó la primera <em>en el código</em> en vez
+    de creerse nuestra página de respuestas, y lo que encontró está más abajo.</p>
 
   <div class="finding blocker">
     <div class="top"><span class="chip stop">Fatal</span><h3>La utilidad no podía cobrar la abstención</h3></div>
@@ -471,9 +479,90 @@
   </div>
 
   <div class="callout">
-    <p><b>Y una cifra cruzada, la tercera de la sesión.</b> Atribuíamos al sistema desplegado una
-      cobertura de 0,9054, y esa cifra pertenece a la curva de <em>otro</em> modelo. La real es
-      <strong>14 688 de 16 640, o sea 0,88269</strong>.</p>
+    <p><b>Y una cifra cruzada dos veces, que es la lección más barata de la sesión.</b> Atribuíamos
+      al sistema desplegado una cobertura de 0,9054, y esa cifra pertenece a la curva de <em>otro</em>
+      modelo. La corregimos a <strong>14 688 de 16 640, o sea 0,88269</strong> — y la segunda
+      auditoría externa encontró que <b>esa tampoco es una cobertura</b>. El filtro que produce
+      las 14 688 parcelas es <code>if label not in kept: continue</code>: descarta por la
+      <em>etiqueta verdadera</em>, así que 0,88269 es la <b>cuota de soporte de la verdad</b> en el
+      catálogo de doce — cuántas parcelas <em>podrían</em> puntuarse, no a cuántas responde el
+      sistema.</p>
+    <p>Se renombra a lo que es y <b>la cobertura de entrega queda por medir</b>, desde la regla que
+      de verdad se desplegó y desde sus predicciones, no desde las etiquetas. Dos veces seguidas el
+      error fue el mismo: una cifra correcta en su artefacto, colocada en un contexto que no es el
+      suyo. Un número no es verdadero o falso por sí mismo — lo es respecto de la pregunta que
+      dice responder.</p>
+  </div>
+
+  <h2>La segunda ronda: verificar la corrección, no creérsela</h2>
+  <p>Le devolvimos al mismo revisor la lista de lo que decíamos haber arreglado. En vez de leerla,
+    fue al código. <b>Dos de nuestros cierres eran falsos y aparecieron tres defectos nuevos.</b>
+    Esta es la parte cara de trabajar así, y es la que justifica todo lo demás.</p>
+
+  <div class="finding blocker">
+    <div class="top"><span class="chip stop">Cierre falso</span><h3>Arreglamos la utilidad y seguía rota por el otro lado</h3></div>
+    <p>La primera ronda encontró que el conjunto vacío valía cero pasara lo que pasara. Lo separamos
+      en un término aparte y lo dimos por cerrado, con dos tests de regresión. Pero la
+      implementación seguía <b>evaluando <code>g</code> sobre todos los tamaños</b> —ceros
+      incluidos— y descartando las columnas después. La firma promete que <code>g</code> solo ve
+      conjuntos no vacíos; una <code>g</code> legítima definida solo para tamaños positivos
+      reventaba igual.</p>
+    <p>Nuestros dos tests no podían verlo: comprobaban <em>el número de salida</em>, y el número era
+      correcto. El control que lo detecta es un <b>espía</b> —una <code>g</code> que registra qué
+      tamaños recibe y falla si recibe un cero—, y comprobamos que <b>falla sobre la implementación
+      anterior</b> antes de creerle. Es la tercera vez en esta sesión que un control nuestro no
+      podía detectar aquello para lo que existía.</p>
+  </div>
+
+  <div class="finding blocker">
+    <div class="top"><span class="chip stop">Fatal, y es el nuestro</span><h3>El suelo de soporte reintroducía el denominador móvil</h3></div>
+    <p>La contribución del artículo es que <b>casi toda la mejora al recortar la leyenda es el cambio
+      de denominador</b>. Y la regla que habíamos escrito para el preregistro —promediar solo sobre
+      las clases con al menos veinte parcelas <em>en ese bloque</em>— hace que <b>cada bloque estime
+      una población de clases distinta</b>. Es el mismo defecto que denunciamos, con otro disfraz, y
+      dentro del documento que iba a firmarse.</p>
+    <p>Medido con cinco bloques: retienen <strong>11, 13, 14, 13 y 10 clases</strong>; solo
+      <strong>seis son comunes a los cinco</strong>; la unión son las dieciocho; el Jaccard mínimo
+      entre dos universos es <strong>0,400</strong>. O se fija un universo común desde
+      entrenamiento, o se declara un estimando clase-por-bloque con su ponderación y se le llama por
+      su nombre. Lo que ya no se puede es promediar cinco macros de denominador distinto.</p>
+  </div>
+
+  <div class="finding blocker">
+    <div class="top"><span class="chip stop">Sesgado por construcción</span><h3>La «distancia mínima» no era mínima</h3></div>
+    <p>El criterio que fija el número de bloques se apoya en la separación entre una parcela de
+      prueba y la más cercana de entrenamiento. Nuestro productor <b>submuestreaba unos 300 puntos de
+      cada lado antes de tomar el mínimo</b>. Quitar candidatos solo puede mantener o subir un
+      mínimo: el sesgo va siempre en la dirección que nos favorece, y el diseño parecía más separado
+      de lo que está.</p>
+    <p>Con vecino más cercano exacto: k=5 baja de 23,505 a <strong>22,972 km</strong>, k=8 de 2,877 a
+      <strong>1,975</strong>, la mediana de 133,489 a <strong>122,056</strong>. El veredicto del
+      criterio no cambia — <b>pero lo que se publica es el número, no el veredicto</b>.</p>
+  </div>
+
+  <div class="finding">
+    <div class="top"><span class="chip wip">Corregido</span><h3>Tres números que vivían solo en la prosa, y un Jaccard mal atribuido</h3></div>
+    <p>La tabla de colchones del preregistro —cuatro filas con sus separaciones— no tenía productor
+      ni artefacto: la habíamos escrito. Ahora son <b>veinte combinaciones selladas</b>, y los
+      valores exactos no coinciden con los que la prosa decía. Con cinco bloques el colchón resulta
+      <em>irrelevante</em>: las cuatro filas dan el mismo número, porque los bloques ya están a 23 km.</p>
+    <p>Y el solapamiento entre folds que publicábamos como «0,60 entre los entrenamientos» era el de
+      <b>entrenamiento más validación</b>. Entre entrenamientos solos es <strong>0,4273</strong> de
+      media y 0,5510 de máximo. Los dos números son ciertos y no son el mismo. Ahora el artefacto
+      trae los dos con nombre propio — y la tendencia dice lo que importa: <b>cuanto más se parte,
+      más comparten los folds</b>, hasta 0,92 con veinticinco bloques. Subdividir no produce
+      réplicas: produce el mismo dato contado más veces.</p>
+  </div>
+
+  <div class="finding">
+    <div class="top"><span class="chip wip">Corregido</span><h3>Dos contradicciones que vivían dentro del mismo objeto</h3></div>
+    <p>Una historia del plan decía «sin dependencias» en su criterio de aceptación mientras
+      declaraba cuatro en su campo de dependencias. Y el preregistro prohibía elegir el criterio
+      principal según dónde hubiera potencia, y <b>dos líneas después</b> traía la regla «si la
+      disparidad tiene potencia es el criterio principal; si no, el mapa».</p>
+    <p>Las dos están corregidas, y la primera además <b>tiene ahora un gate</b> que la comprueba en
+      las ochenta y nueve historias. Probado rompiéndolo: inyectada la frase, falla; retirada, pasa.
+      De paso encontró tres falsos positivos propios y hubo que acotarlo.</p>
   </div>
 
   <h2>El campo de tiro</h2>
