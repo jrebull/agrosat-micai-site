@@ -36,8 +36,8 @@
         premisas del artículo era falsa. Tres de los defectos estadísticos los reprodujimos nosotros
         mismos.</p>
       <p>No se parchea: se reencuadra. Las épicas <b>13 a 17</b> quedan como historia, con lo
-        hecho y lo retirado marcados; las épicas <b>18 a 25</b> son el trabajo nuevo y se
-        reescribieron enteras tras cinco auditorías más.</p>
+        hecho y lo retirado marcados; las épicas <b>18 a 27</b> contienen el trabajo nuevo y se
+        reauditaron durante ocho rondas externas.</p>
       <p><b>Auditoría externa, 3 de septiembre.</b> Después de varias auditorías internas —el recuento exacto no sale de ningún artefacto, así que no se da—, un
         revisor ajeno al proyecto encontró lo que ninguna había visto, incluida una función de
         utilidad que prometía dejar elegir el precio de abstenerse y lo hacía imposible. Su veredicto
@@ -45,6 +45,10 @@
         una función de pérdida identificada</b>, y la cardinalidad ocupaba ese lugar sin
         justificación. Por eso el plan se reordena: la <b>EPIC 27</b> va delante de todo y el camino
         crítico empieza ahí.</p>
+      <p><b>Estado al 4 de septiembre.</b> Las ocho rondas cerraron defectos en código, tests,
+        custodia y redacción, pero eso no cuenta como ejecutar el estudio nuevo. Las historias
+        científicas conservan su estado. La siguiente acción es <b>US-172</b>: obtener de usuarios
+        reales la tabla de pérdidas por acción, resultado y afectado.</p>
       <p><b>Sede única: MICAI 2027, hipótesis de planificación de 20 páginas</b> — el tope que
         permitía la edición anterior, <b>a reverificar cuando salga la convocatoria</b>; si baja, el
         recorte sale de resultados hacia el apéndice y nunca de robustez. Sin artículo de revista en
@@ -52,10 +56,16 @@
         era la alternativa sobre la mesa. Lo que no cabe es la autopsia de nuestros propios errores
         como primera contribución: eso va a método y apéndice.</p>
     </div>
+    <div class="ledger" style="margin-top:22px">
+      <div class="ledger-row"><span class="name">Historias históricas terminadas</span><span class="note">no son avance del estudio reencuadrado</span><span class="num" id="progress-done">—</span></div>
+      <div class="ledger-row"><span class="name">Historias retiradas</span><span class="note">se conservan como registro</span><span class="num" id="progress-retired">—</span></div>
+      <div class="ledger-row"><span class="name">Historias por ejecutar</span><span class="note">incluye dependencias aún no liberadas</span><span class="num" id="progress-pending">—</span></div>
+      <div class="ledger-row"><span class="name">Esfuerzo pendiente</span><span class="note">el camino crítico empieza en US-172</span><span class="num" id="progress-pending-sp">—</span></div>
+    </div>
     <div class="colophon">
       <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
       <span><b>Total</b> <span id="total-sp">—</span> puntos de historia</span>
-      <span><b>Actualizado</b> 3 de septiembre de 2026, tras la auditoría</span>
+      <span><b>Actualizado</b> 4 de septiembre de 2026, tras la octava ronda</span>
     </div>
   </div>
 </div>
@@ -440,6 +450,7 @@
          ac:["Tabla L(y, acción, afectado) con las cuatro clases de error nombradas, no una función de la cardinalidad: dos conjuntos del mismo tamaño pueden costar cosas muy distintas",
              "El precio de no responder se SUMA, no se multiplica por la contención. La primera implementación lo multiplicaba y por eso no se podía elegir",
              "NO hay salida por «supuesto del artículo». Cada precio sale de una ELICITACIÓN con usuarios reales: protocolo escrito antes, al menos tres informantes de cada uno de los dos grupos afectados, guion de las preguntas, respuestas crudas guardadas y síntesis trazable de cada celda L(y, acción, afectado) hasta las respuestas que la producen. Un precio que nadie fuera del equipo haya dicho en voz alta no entra en la tabla",
+             "Antes de contactar a nadie se documentan consentimiento, minimización, acceso, retención y anonimización; además se comprueba si la institución exige revisión ética y, si la exige, no se recoge ninguna respuesta antes de aprobarla",
              "El artefacto incluye el desacuerdo: si dos informantes del mismo grupo dan precios distintos, se publica el rango y se declara qué se hace con él, en vez de promediarlo en silencio",
              "Al menos dos afectados distintos con precios distintos: quien controla subvenciones y quien asesora al productor no pierden lo mismo cuando el mapa calla",
              "Declarada en el preregistro antes de calcular nada",
@@ -883,6 +894,16 @@
     summary.appendChild(tr);
   });
   document.getElementById("total-sp").textContent = grandTotal;
+
+  var stories = EPICS.reduce(function(all,e){ return all.concat(e.us); }, []);
+  var doneStories = stories.filter(function(u){ return u.st === "ok"; });
+  var retiredStories = stories.filter(function(u){ return u.st === "dead"; });
+  var pendingStories = stories.filter(function(u){ return u.st !== "ok" && u.st !== "dead"; });
+  var pendingSp = pendingStories.reduce(function(total,u){ return total + u.sp; }, 0);
+  document.getElementById("progress-done").textContent = doneStories.length;
+  document.getElementById("progress-retired").textContent = retiredStories.length;
+  document.getElementById("progress-pending").textContent = pendingStories.length;
+  document.getElementById("progress-pending-sp").textContent = pendingSp + " SP";
 
   var host = document.getElementById("epics");
   EPICS.forEach(function(e){

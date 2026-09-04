@@ -28,7 +28,7 @@
         <span><b>Autores</b> A. J. Zizumbo Velasco · J. A. Rebull-Saucedo</span>
         <span><b>Universos</b> PASTIS-R · 16 640 parcelas · 18 clases &nbsp;·&nbsp;
           BreizhCrops 2017 · 60 000 parcelas · 9 clases</span>
-        <span><b>Revisión</b> 3 de septiembre de 2026 · <b>reencuadrado tras auditoría</b></span>
+        <span><b>Revisión</b> 4 de septiembre de 2026 · <b>ocho rondas externas cerradas</b></span>
       </div>
       <p class="downloads">
         <a class="dl" href="plan.html">El plan nuevo, por épicas</a>
@@ -141,9 +141,16 @@
 
 <!-- ================= ESTADO ================= -->
 <section class="panel" id="p-est" role="tabpanel" aria-labelledby="t-est" hidden>
-  <p class="lede">Seis fases cerradas, una auditoría ciega que obligó a retirar el resultado
-    principal, una réplica en un segundo banco de datos que confirmó lo que quedó en pie, y un
-    borrador completo de quince páginas.</p>
+  <p class="lede">El borrador de quince páginas sigue retirado. Ocho rondas externas cerraron
+    defectos de evaluación, custodia y redacción; el estudio reencuadrado todavía no ha empezado.
+    Su primera acción es US-172: identificar con usuarios reales qué pierde cada afectado.</p>
+
+  <div class="callout">
+    <p><b>Estado de la conclusión.</b> H1-2026 está <strong>pendiente</strong>: ni «se refutó» ni
+      «no replicó». Las cuatro cifras que sostenían ese veredicto están invalidadas y trece
+      artefactos permanecen <code>OBSOLETO</code>. Lo único que no depende de esas cifras es que la
+      regla de entrega cambió.</p>
+  </div>
 
   <div class="callout" data-cuarentena style="border-top-color:#b03a2e">
     <p><b>CUARENTENA.</b> Esta página reproduce cifras derivadas de artefactos marcados
@@ -157,7 +164,7 @@
 
   <h2>Registro de custodia</h2>
   <div class="ledger">
-    <div class="ledger-row"><span class="name">Artefactos sellados con MD5</span><span class="note">comprobación en verde</span><span class="num">65</span></div>
+    <div class="ledger-row"><span class="name">Artefactos verificados con MD5</span><span class="note">13 son OBSOLETO y no citables</span><span class="num">84</span></div>
     <div class="ledger-row"><span class="name">Cifras declaradas sin artefacto</span><span class="note">no se imprimen</span><span class="num">8</span></div>
     <div class="ledger-row"><span class="name">Referencias verificadas por API</span><span class="note">cero fuera de OK</span><span class="num">44</span></div>
     <div class="ledger-row"><span class="name">Parcelas puntuadas, los dos bancos</span><span class="note">16 640 + 60 000</span><span class="num">76 640</span></div>
@@ -466,7 +473,7 @@
   <h2>Lo que encontró una auditoría externa que ocho internas no vieron</h2>
   <p>El plan se entregó a un revisor ajeno al proyecto, con el encargo de responder a ciegas antes
     de leer una sola de nuestras conclusiones. Su veredicto fue <strong>no arrancar todavía</strong>,
-    y tenía razón. <b>Van siete rondas</b>, y cada una verificó a la anterior en el código en vez de
+    y tenía razón. <b>Van ocho rondas</b>, y cada una verificó a la anterior en el código en vez de
     creerse nuestra página de respuestas.</p>
 
   <div class="finding blocker">
@@ -912,150 +919,94 @@
   <div class="callout">
     <p><b>Lo que el reencuadre exige</b>, y no es poco: los cuatro bancos, varios predictores por
       banco, líneas base de la literatura de verdad, y un preregistro nuevo escrito antes de correr
-      nada. Está desglosado en <a href="plan.html">siete épicas nuevas y treinta y una
-      historias</a>.</p>
+      nada. Está desglosado en las <a href="plan.html">épicas 18 a 27 del plan ejecutable</a>.</p>
   </div>
 </section>
 
 <!-- ================= HALLAZGOS ================= -->
 <section class="panel" id="p-hall" role="tabpanel" aria-labelledby="t-hall" hidden>
-  <p class="lede">Cuatro revisores independientes auditaron el experimento sin conocer
-    nuestras conclusiones. Tumbaron el resultado principal, y tenían razón.</p>
+  <p class="lede">Aquí solo quedan hallazgos vigentes. Los defectos ya reparados salieron de esta
+    lista: su historia permanece en el repositorio, pero no compite con lo que todavía impide
+    ejecutar el estudio.</p>
 
-  <h2>Lo que cayó</h2>
-
-  <div class="finding blocker">
-    <div class="top"><span class="chip stop">Bloqueante</span><h3>El delta era aritmética del denominador</h3></div>
-    <p>La métrica promediaba sobre conjuntos de clases distintos según el mecanismo: la
-      retirada sobre las <em>K</em> clases de mejor F1, la abstención sobre las hasta
-      dieciocho presentes. Al igualar el conjunto evaluado, el signo se invierte en los siete
-      puntos de operación.</p>
-    <div class="scroll">
-      <table>
-        <thead><tr><th>Clases prometidas</th><th class="n">Delta publicado</th><th class="n">Delta corregido</th></tr></thead>
-        <tbody id="delta-tbody"></tbody>
-      </table>
-    </div>
-    <p>La demostración más limpia: sobre esas mismas parcelas, <strong>sin retirar ni rechazar
-      nada</strong>, el F1-macro calculado sobre las ocho clases más fáciles es 0,8956 — más
-      alto que el 0,8243 que atribuíamos al mecanismo. No hacía falta mecanismo alguno,
-      bastaba con cambiar el denominador.</p>
-  </div>
+  <h2>El bloqueante sustantivo</h2>
 
   <div class="finding blocker">
-    <div class="top"><span class="chip stop">Bloqueante</span><h3>Un mecanismo miraba la respuesta</h3></div>
-    <p>La retirada de clases decidía a qué parcelas responder consultando su etiqueta
-      verdadera. Un sistema desplegado no la conoce. Los dos mecanismos se comparaban bajo
-      información asimétrica mientras el texto afirmaba lo contrario.</p>
-  </div>
-
-  <div class="finding blocker">
-    <div class="top"><span class="chip stop">Bloqueante</span><h3>El intervalo delataba el error y no lo vimos</h3></div>
-    <p>El remuestreo sorteaba índices distintos para cada mecanismo. Con las dieciocho clases
-      prometidas ambos son literalmente el mismo objeto: el delta sale cero y el intervalo
-      debería salir cero también. Publicamos [−0,029, +0,031] y leímos esa fila como control
-      superado.</p>
-  </div>
-
-  <h2>Lo que aguanta</h2>
-
-  <div class="finding pass">
-    <div class="top"><span class="chip ok">Verificado</span><h3>La cifra campeona es in-sample</h3></div>
-    <p>Reproducido al sexto decimal por tres vías independientes. Las cuatro cifras selladas
-      del proyecto pertenecen a ese régimen, y la columna libre de fuga ya estaba calculada
-      al lado de la que se publicó.</p>
-  </div>
-
-  <div class="finding pass">
-    <div class="top"><span class="chip ok">Verificado</span><h3>Tres resultados nulos, y se refuerzan</h3></div>
-    <p>El refinamiento por vecindad espacial no aporta con ningún parámetro; la rama
-      contrastiva da +0,0006 con intervalo que cruza el cero; el árbitro entrenado no mejora
-      al promedio simple. Al corregir por autocorrelación espacial los tres intervalos se
-      ensanchan y los tres nulos quedan más firmes.</p>
-  </div>
-
-  <div class="finding">
-    <div class="top"><span class="chip wip">Corregido</span><h3>La partición espacial: lo que sí está verificado, y hasta dónde</h3></div>
-    <p>Verificado y sigue en pie: cinco bloques disjuntos, las 16 640 parcelas evaluadas
-      exactamente una vez, ningún parche repartido entre entrenamiento y prueba.</p>
-    <p class="retirado">Lo que decía este recuadro y era dos cosas a la vez: «una separación mínima
-      de 22 951 metros entre una parcela de prueba y la más cercana de entrenamiento», y el título
-      «impecable». El número no está en ningún artefacto — el artefacto vigente da
-      <strong>22 972 metros</strong> — y no es entre parcelas: es <b>entre centroides</b>, que es
-      una cota superior de la separación real. Y una cota superior no demuestra independencia: eso
-      necesita un diagnóstico de autocorrelación residual que no está hecho. «Impecable» era una
-      palabra escrita sobre una medición que no la sostiene.</p>
-  </div>
-
-  <h2>Lo que salió del experimento rehecho</h2>
-
-  <div class="finding">
-    <div class="top"><span class="chip dead">Pendiente de regenerar</span><h3>Fase 3: «rehecho sin los tres defectos» era falso</h3></div>
-    <p class="retirado"><b>Estas cifras salieron del módulo que TODAVÍA tenía los tres defectos.</b>
-      Se anunciaron como el experimento rehecho y no lo eran: los tres se repararon el 4 de
-      septiembre, después de que una auditoría externa los encontrara leyendo el código. Todo lo que
-      sigue en este apartado queda como exploratorio y pendiente de regenerar, y el ledger lo marca
-      como <code>OBSOLETO</code>. Se deja escrito, sin retocar, porque borrarlo sería repetir el
-      error que lo produjo.</p>
-    <p>Con el estimando alineado, la entrega sin oráculo y el remuestreo pareado, a nueve clases
-      prometidas el intervalo incluye el cero en los dos predictores y ningún contraste sobrevive a
-      la corrección por multiplicidad. Lo que sí queda demostrado es la descomposición: de dieciocho
-      clases a ocho, <strong>0,2155 de los 0,2440 de mejora aparente son solo el denominador</strong>.</p>
-  </div>
-
-  <div class="finding">
-    <div class="top"><span class="chip dead">Pendiente de regenerar</span><h3>Fase 4: «se transporta» y su Holm no deberían existir</h3></div>
-    <p class="retirado">Este apartado decía que la descomposición se transporta a BreizhCrops 2017 y
-      que allí la contraria de H1 sí se sostiene, «con intervalo (−0,0272, −0,0225) y Holm por
-      debajo de 0,0001». <b>Ese intervalo y ese Holm no deberían existir</b>: BreizhCrops tiene
-      exactamente <b>dos regiones</b>, y con dos bloques el contrato del protocolo dice reportar los
-      dos deltas y nada más — ni intervalo, ni p, ni corrección por multiplicidad. El código los
-      calculaba igual, y una auditoría externa lo encontró. Ya no: por debajo de tres bloques
-      definidos, la función devuelve los deltas y nada más.</p>
-    <p class="retirado">Y todo esto salió además del módulo con los tres defectos. Queda como
-      exploratorio y pendiente de regenerar, marcado <code>OBSOLETO</code> en el ledger.</p>
-  </div>
-
-  <div class="finding">
-    <div class="top"><span class="chip dead">Pendiente de regenerar</span><h3>El árbitro entrenado retira una clase sin decirlo</h3></div>
-    <p class="retirado">Del mismo módulo con los tres defectos: exploratorio y pendiente de
-      regenerar.</p>
-    <p>Winter durum wheat, 355 parcelas. El mejor modelo individual saca 0,7790, la media sin
-      entrenar 0,7752, el voto ponderado 0,7782 — y el meta-modelo entrenado, <strong>0,0000</strong>.
-      La retirada es un comportamiento aprendido, no una propiedad de combinar.</p>
+    <div class="top"><span class="chip stop">Bloqueante</span><h3>US-172 todavía no existe como comportamiento</h3></div>
+    <p>Comparar retirada, abstención, conjuntos y retroceso exige una tabla
+      <em>L</em>(resultado verdadero, acción, afectado). El criterio ya no permite inventar precios
+      como «supuesto del artículo», pero la tabla aún no se ha obtenido. Debe salir de un protocolo
+      previo y de usuarios reales: al menos tres personas de control de subvenciones y tres de
+      asesoría agronómica, con respuestas crudas y trazabilidad hasta cada celda.</p>
+    <p><strong>Hasta entonces no hay moneda común y no se corre el experimento.</strong></p>
   </div>
 
   <div class="callout">
-    <p><strong>Lo que queda, dicho con el alcance que tiene.</strong> La contribución candidata
-      sigue siendo la misma —casi toda la mejora que se obtiene recortando el catálogo es el
-      denominador, y el control que lo revela cuesta una línea— pero <b>hoy no está demostrada</b>:
-      las dos veces que la medimos fue con el módulo defectuoso, y la palabra «replicada» exige un
-      segundo banco cuyo intervalo el diseño no permite calcular. Se regenera antes de afirmarla. Explica además por qué el paso de
-      dieciocho a doce clases <em>parece</em> mejorar la calidad. Es más estrecho que lo que
-      perseguíamos y es verdad en dos bancos.</p>
+    <p><b>H1-2026 está pendiente.</b> Retirar sus cuatro cifras invalidó también el veredicto que
+      dependía de ellas. Puede salir en cualquiera de los dos sentidos al regenerar. Decir ahora
+      «se refutó» o «no replicó» sería dejar la conclusión en pie después de retirar su evidencia.</p>
+  </div>
+
+  <h2>Lo que falta antes de firmar el preregistro</h2>
+
+  <div class="finding">
+    <div class="top"><span class="chip idle">US-173</span><h3>Elegir el estimando y la población</h3></div>
+    <p>Hay que escoger entre inferencia condicional al conjunto de datos e inferencia entre
+      regiones y campañas. La unidad de análisis, el alcance de los intervalos y las afirmaciones
+      de transporte dependen de esa elección.</p>
+  </div>
+
+  <div class="finding">
+    <div class="top"><span class="chip idle">US-174 y US-175</span><h3>Fijar el margen práctico y la geometría de costes</h3></div>
+    <p>El margen de equivalencia debe derivarse de la pérdida expresada por los usuarios, no del
+      efecto mínimo detectable. Después hay que declarar si se explora el símplex completo de tres
+      razones libres o una sección justificada antes de mirar resultados.</p>
+  </div>
+
+  <div class="finding">
+    <div class="top"><span class="chip dead">13 obsoletos</span><h3>Regenerar, no reinterpretar</h3></div>
+    <p>Los trece artefactos marcados <code>OBSOLETO</code> siguen sellados como registro, pero no son
+      citables. Se regeneran solo después de cerrar US-172 a US-175 y firmar el preregistro; ninguna
+      cifra antigua se traslada al artículo por continuidad narrativa.</p>
+  </div>
+
+  <div class="finding">
+    <div class="top"><span class="chip wip">Deuda abierta</span><h3>Tres reparaciones estadísticas siguen pendientes</h3></div>
+    <p>El MDE continúa aproximado con una <em>t</em> central; la multiplicidad de toda la superficie
+      de costes no está implementada; y la selección de predictores todavía usa datos de evaluación.
+      Son trabajo posterior al preregistro, no resultados disponibles.</p>
+  </div>
+
+  <h2>Protecciones cerradas que no se deben romper</h2>
+
+  <div class="finding pass">
+    <div class="top"><span class="chip ok">Verificado</span><h3>Los controles ya prueban el mecanismo</h3></div>
+    <p>El punto de operación completo sale de entrenamiento y es invariante al bloque de prueba;
+      los intervalos exigen tres bloques únicos y brazos pareados; lo indefinido se conserva como
+      NaN; la custodia verifica el blob histórico; y <code>OBSOLETO</code> impide publicar sus cifras,
+      también en documentos nuevos y en el cuaderno. Las revisiones recibidas solo se exceptúan por
+      una lista cerrada con MD5.</p>
   </div>
 </section>
 
 <!-- ================= PENDIENTES ================= -->
 <section class="panel" id="p-pend" role="tabpanel" aria-labelledby="t-pend" hidden>
-  <p class="lede">Lo que no podemos resolver solos, en orden de urgencia real.</p>
+  <p class="lede">Camino de continuación, en orden de dependencia. «Lista» significa preparada,
+    no empezada; las correcciones de auditoría no cambian el estado científico de ninguna historia.</p>
   <div id="pending"></div>
 
-  <h2>Lo que ya no hace falta pedir</h2>
-  <p>La ventana de la máquina H100 salió de la lista: el registro de entrenamiento dice que ese
-    modelo tardó treinta y dos minutos en una tarjeta de consumo, así que los cinco reentrenamientos
-    caben en menos de tres horas y los hacemos nosotros. Los artefactos de la rama multirregión y la
-    evaluación conversacional también salen, porque ese contenido no entra en el cuerpo del artículo
-    con el encuadre actual. Y <strong>el segundo banco de datos ya no es una petición</strong>: está
-    descargado, procesado y replicado.</p>
+  <h2>Regla de ejecución</h2>
+  <p>No se produce ningún resultado nuevo antes de firmar el preregistro. Durante el reclutamiento
+    sí se puede preparar US-173, comprobar el trámite ético y endurecer infraestructura, siempre que
+    nadie mire salidas para elegir el estimando, el margen o la sección de costes.</p>
 
-  <h2>Lo nuestro, sin bloqueo externo</h2>
+  <h2>Criterio de salida</h2>
   <ul>
-    <li>Pasada de estilo fino sobre las quince páginas.</li>
-    <li>DOI de actas para las entradas que hoy solo tienen identificador arXiv.</li>
-    <li>Empaquetado <code>.zip</code> del proyecto LaTeX completo, como pide MICAI.</li>
-    <li>Anonimizar o hacer privado este cuaderno antes del envío: el gate de doble ciego cubre el
-      PDF, no el sitio.</li>
+    <li><strong>Arranque:</strong> US-172 materializada con personas reales y custodia ética.</li>
+    <li><strong>Firma:</strong> US-172 a US-175 cerradas y preregistro firmado.</li>
+    <li><strong>Cómputo:</strong> módulo reparado, multiplicidad completa y selección separada.</li>
+    <li><strong>Decisión:</strong> artículo solo si los artefactos regenerados sostienen una
+      afirmación útil dentro del alcance declarado.</li>
   </ul>
 </section>
 
@@ -1158,11 +1109,6 @@
     mb.appendChild(tr);
   });
 
-  var deltas = [["18","+0,0000","+0,0000"],["16","+0,0003","−0,0128"],
-                ["14","+0,0076","−0,0185"],["12","+0,0504","−0,0174"],
-                ["10","+0,1423","−0,0095"],["9","+0,1501","−0,0253"],
-                ["8","+0,1944","−0,0166"]];
-
   /* descomposición de la fase 4, banco de réplica, universo de nueve clases */
   var descomp = [["9","0,4895","—","—","1,000"],
                  ["8","0,5507","+0,0612","100,0 %","1,000"],
@@ -1182,21 +1128,14 @@
       kb.appendChild(tr);
     });
   }
-  var db = document.getElementById("delta-tbody");
-  deltas.forEach(function(d){
-    var tr = document.createElement("tr");
-    tr.innerHTML = '<td class="n">' + d[0] + '</td><td class="n">' + d[1] +
-                   '</td><td class="n neg">' + d[2] + '</td>';
-    db.appendChild(tr);
-  });
-
   var pending = [
-    ["01","El registro de folds de tsvit-pheno","Es lo único que puede invalidar resultados ya escritos. Con qué folds se entrenó ese checkpoint.","stop","Urgente"],
-    ["02","La inconsistencia de tsvit-pheno-fullm","Da 0,7918 a nivel píxel y 0,2552 a nivel parcela sobre el mismo fold. Con qué checkpoint se generó el volcado.","stop","Urgente"],
-    ["03","Firmar o rebatir el encuadre","Sin ese visto bueno no se escribe la introducción ni el título.","wip","Decisión"],
-    ["04","Autoría y autor de correspondencia","Quien firma la licencia lo hace a mano y no se puede cambiar después.","wip","Decisión"],
-    ["05","Cuatro archivos sin versionar","Tres checkpoints que el código usa por defecto y no están en ningún sitio, más el parquet de Italia.","idle","Datos"],
-    ["06","Revisión del borrador de quince páginas","Está completo y compila; falta que lo lea alguien que no lo escribió.","wip","Revisión"]
+    ["01","US-172 · Cerrar protocolo y custodia ética","Escribir el guion antes del contacto, definir consentimiento, minimización, acceso y retención, y comprobar si la institución exige revisión ética.","idle","Siguiente"],
+    ["02","US-172 · Elicitar pérdidas con usuarios reales","Reclutar al menos tres personas de control de subvenciones y tres de asesoría agronómica; guardar respuestas crudas y trazar cada celda de la tabla hasta ellas.","stop","Tras protocolo"],
+    ["03","US-173 · Elegir estimando y población","Documentar las dos alternativas y cerrar una sin mirar resultados. Esta preparación puede avanzar mientras se recluta.","idle","En paralelo"],
+    ["04","US-174 y US-175 · Margen y geometría","Derivar el margen práctico desde la tabla de pérdidas y preregistrar el símplex completo o una sección con justificación sustantiva.","stop","Depende de US-172"],
+    ["05","US-140 · Firmar el preregistro","Congelar pérdida, estimando, población, margen, multiplicidad y selección de predictores antes del primer resultado nuevo.","stop","Depende de 172–175"],
+    ["06","EPIC 19 · Reparar y regenerar","Implementar MDE no central, multiplicidad de toda la superficie y selección separada; después regenerar los trece artefactos obsoletos.","stop","Tras la firma"],
+    ["07","Decisión de continuidad","Contrastar los artefactos regenerados con la afirmación preregistrada y decidir artículo, reducción de alcance o cierre sin mover el criterio.","stop","Go / no-go"]
   ];
   var pe = document.getElementById("pending");
   pending.forEach(function(p){
