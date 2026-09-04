@@ -159,6 +159,80 @@ ul li::before{content:"";position:absolute;left:2px;top:.62em;width:9px;height:1
      text-align:right;min-width:8ch;color:var(--ink);font-weight:500}
 .num.hi{color:var(--sienna)}
 
+/* ---------- tablero de avance ---------- */
+.progress-dashboard,.hero-roadmap{margin:36px 0 44px;border-top:2px solid var(--ink);
+  padding-top:20px}
+.progress-dashboard-head{display:grid;gap:18px;align-items:start;margin-bottom:20px}
+@media (min-width:800px){
+  .progress-dashboard-head{grid-template-columns:minmax(0,1fr) minmax(280px,.72fr);gap:42px}
+}
+.progress-dashboard-head h2{margin:2px 0 0;max-width:none}
+.progress-dashboard-head>p{font-size:14.5px;color:var(--muted);margin:0;max-width:52ch}
+.eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--sienna);margin:0!important}
+.progress-overview{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;
+  background:var(--panel);border:1px solid var(--rule);padding:22px;margin-bottom:18px}
+@media (min-width:720px){
+  .progress-overview{grid-template-columns:minmax(260px,.85fr) 1.15fr;gap:36px;align-items:end}
+}
+.progress-score{display:grid;grid-template-columns:1fr auto;gap:3px 14px;align-items:end}
+.progress-score-value{font-family:var(--display);font-size:clamp(44px,7vw,72px);font-weight:700;
+  letter-spacing:-.05em;line-height:.9;color:var(--deep)}
+.progress-score-label{font-family:var(--display);font-size:13px;font-weight:600;color:var(--ink-2);
+  padding-bottom:5px;text-align:right}
+.progress-score-detail{grid-column:1/-1;font-family:var(--mono);font-size:10.5px;color:var(--muted)}
+.progress-track{height:7px;background:var(--sheet-2);overflow:hidden;margin:11px 0 8px}
+.progress-track span{display:block;height:100%;background:var(--deep);min-width:0}
+.progress-track-large{grid-column:1/-1;height:10px;margin:10px 0 3px}
+.progress-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:0;
+  border-top:1px solid var(--rule-fine)}
+.progress-facts div{padding:13px 12px 0 0;border-right:1px solid var(--rule-fine)}
+.progress-facts div+div{padding-left:12px}
+.progress-facts div:last-child{border-right:0}
+.progress-facts dt{font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--muted)}
+.progress-facts dd{font-family:var(--display);font-size:25px;font-weight:600;margin:4px 0 0;
+  color:var(--ink)}
+.epic-progress-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px}
+.epic-progress-card{background:var(--panel);border:1px solid var(--rule-fine);padding:15px 16px;
+  min-width:0}
+.epic-progress-card.wip{border-top:3px solid var(--ochre)}
+.epic-progress-card.ok{border-top:3px solid var(--olive)}
+.epic-progress-top,.epic-progress-meta{display:flex;justify-content:space-between;gap:10px;
+  align-items:center}
+.epic-progress-top code{background:transparent;padding:0;color:var(--deep);font-size:10px}
+.epic-progress-pct{font-family:var(--mono);font-size:13px;color:var(--ink);font-weight:500}
+.epic-progress-card h3{font-size:14px;line-height:1.25;min-height:2.5em;margin:10px 0 14px}
+.epic-progress-meta{font-family:var(--mono);font-size:9.5px;color:var(--muted);
+  font-variant-numeric:tabular-nums;flex-wrap:wrap}
+.epic-progress-meta .chip{font-size:8px;padding:3px 6px}
+
+/* ---------- camino de cero a paper ---------- */
+.hero-track{display:grid;grid-template-columns:repeat(7,minmax(146px,1fr));gap:10px;
+  overflow-x:auto;padding:2px 1px 14px;scroll-snap-type:x proximity}
+.hero-step{position:relative;background:var(--panel);border:1px solid var(--rule-fine);
+  border-top:3px solid var(--rule);padding:15px;min-height:224px;scroll-snap-align:start}
+.hero-step.wip{border-top-color:var(--ochre)}
+.hero-step.ok{border-top-color:var(--olive)}
+.hero-step:not(:last-child)::after{content:"→";position:absolute;right:-10px;top:47%;z-index:2;
+  width:19px;height:19px;background:var(--sheet);color:var(--muted);font-family:var(--mono);
+  font-size:13px;line-height:19px;text-align:center}
+.hero-step-kicker{display:flex;justify-content:space-between;gap:8px;font-family:var(--mono);
+  font-size:8.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.hero-step h3{font-size:14px;line-height:1.2;margin:22px 0 7px;min-height:2.4em}
+.hero-step p{font-size:12.5px;line-height:1.42;color:var(--muted);min-height:4.3em;margin:0 0 13px}
+.hero-step>code{display:block;background:transparent;padding:0;color:var(--deep);font-size:9.5px;
+  min-height:2.8em;white-space:normal}
+.hero-step .progress-track{margin-top:12px}
+.hero-step-score{font-family:var(--mono);font-size:9.5px;color:var(--muted)}
+@media (max-width:620px){
+  .progress-facts{grid-template-columns:1fr}
+  .progress-facts div,.progress-facts div+div{padding:10px 0;border-right:0;
+    border-bottom:1px solid var(--rule-fine)}
+  .progress-facts div:last-child{border-bottom:0}
+  .hero-track{grid-template-columns:repeat(7,minmax(220px,76vw))}
+}
+
 /* ---------- barras ---------- */
 .bars{display:grid;gap:4px;margin:18px 0 8px}
 .bar-row{display:grid;grid-template-columns:4.5ch 1fr 6ch;gap:12px;align-items:center}

@@ -50,7 +50,7 @@
         reencuadrado</b>: la inferencia será condicional a cada banco, con la parcela como unidad,
         <code>patch_id</code> como clúster y sin afirmar transporte. Quedan tres parámetros antes
         de firmar el preregistro: pérdida, margen práctico y criterio principal. El camino crítico
-        continúa en <b>US-172</b>.</p>
+        continúa en <b>US-172</b>; en paralelo, <b>US-121 y US-118 están en curso</b>.</p>
       <p><b>Sede única: MICAI 2027, hipótesis de planificación de 20 páginas</b> — el tope que
         permitía la edición anterior, <b>a reverificar cuando salga la convocatoria</b>; si baja, el
         recorte sale de resultados hacia el apéndice y nunca de robustez. Sin artículo de revista en
@@ -68,7 +68,7 @@
     <div class="colophon">
       <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
       <span><b>Total</b> <span id="total-sp">—</span> puntos de historia</span>
-      <span><b>Actualizado</b> 4 de septiembre de 2026, US-173 cerrado</span>
+      <span><b>Actualizado</b> 4 de septiembre de 2026, US-121 y US-118 en curso</span>
     </div>
   </div>
 </div>
@@ -91,6 +91,50 @@
     <p class="lede">Las épicas están ordenadas por dependencia, no por calendario. MICAI 2027
       todavía no tiene sede ni convocatoria, así que el calendario se fijará hacia atrás desde
       la fecha de envío cuando se publique.</p>
+
+    <section class="progress-dashboard" aria-labelledby="progress-title">
+      <div class="progress-dashboard-head">
+        <div>
+          <p class="eyebrow">Avance ejecutable · épicas 18 a 27</p>
+          <h2 id="progress-title">Cuánto está realmente cerrado</h2>
+        </div>
+        <p>El porcentaje usa <b>SP con criterio de aceptación cumplido</b> sobre SP activos. Una
+          historia en curso se ve, pero no recibe crédito parcial; las retiradas no cuentan en el
+          denominador.</p>
+      </div>
+      <div class="progress-overview">
+        <div class="progress-score">
+          <span class="progress-score-value" id="progress-overall-pct">—</span>
+          <span class="progress-score-label">del plan nuevo cerrado</span>
+          <div class="progress-track progress-track-large" role="progressbar"
+               aria-label="Avance general del plan nuevo" aria-valuemin="0" aria-valuemax="100"
+               aria-valuenow="0">
+            <span id="progress-overall-fill"></span>
+          </div>
+          <span class="progress-score-detail" id="progress-overall-sp">—</span>
+        </div>
+        <dl class="progress-facts">
+          <div><dt>Historias cerradas</dt><dd id="progress-new-stories">—</dd></div>
+          <div><dt>En curso</dt><dd id="progress-new-wip">—</dd></div>
+          <div><dt>Épicas activas</dt><dd id="progress-new-epics">—</dd></div>
+        </dl>
+      </div>
+      <div class="epic-progress-grid" id="epic-progress-grid"
+           aria-label="Avance por épica del plan nuevo"></div>
+    </section>
+
+    <section class="hero-roadmap" aria-labelledby="hero-title">
+      <div class="progress-dashboard-head">
+        <div>
+          <p class="eyebrow">Zero → hero</p>
+          <h2 id="hero-title">De evidencia rota a artículo defendible</h2>
+        </div>
+        <p>Es un orden de salida, no una cascada rígida: el trabajo independiente puede solaparse,
+          pero ninguna etapa salta el contrato que la precede.</p>
+      </div>
+      <div class="hero-track" id="zero-to-hero"
+           aria-label="Camino desde los cimientos verificables hasta la entrega del artículo"></div>
+    </section>
 
     <div class="scroll">
       <table>
@@ -377,16 +421,19 @@
       ]
     },
     {
-      id:"EPIC 18", name:"Cimientos: recuperar, sanear, gobernar", status:"idle",
+      id:"EPIC 18", name:"Cimientos: recuperar, sanear, gobernar", status:"wip",
       goal:"Nada de lo que sigue vale si el suelo se mueve. Aquí se recupera lo recuperable, se declara lo que no, y se cierra la gobernanza. Es la única épica que puede empezar hoy sin depender de nada.",
       us:[
-        {id:"US-118", t:"Endurecimiento del arnés OOF y re-volcado canónico", sp:8, st:"idle",
+        {id:"US-118", t:"Endurecimiento del arnés OOF y re-volcado canónico", sp:8, st:"wip",
          role:"Como equipo que publicó una cifra producida por un bug, quiero que el arnés no pueda volver a mezclar configuraciones, para que ninguna tabla imprima un fallo como resultado.",
          ac:["dvc pull de checkpoints/segmentation verificado contra MD5: son 2,84 GB y 37 ficheros, y están en el remoto. No estaban perdidos, estaban sin traer",
              "Constructor único de kwargs de scoring, consumido por el cálculo denso y por el volcado",
              "Test de regresión: para cada spec con n_timesteps, el dataset del volcado devuelve tensores con esa T",
              "Error explícito si faltan claves del checkpoint, en vez de carga silenciosa",
              "Chequeo que falla si existe un parquet OOF sin entrada en el manifiesto",
+             "EN CURSO: make oof-manifest-check ya existe y falla como debe sobre cinco parquets huérfanos. Dos son miembros consumidos por el pipeline; no se añaden al manifiesto sin procedencia",
+             "El gate compara por nombre de fichero porque el manifiesto heredado guarda rutas absolutas C:\\Users\\arthu\\...; comparar la ruta completa daría un verde vacío fuera de aquella máquina",
+             "El gate entra en CI solo cuando el re-volcado lo deje verde; mientras esté rojo se ejecuta como diagnóstico explícito, no como control ignorable",
              "train_folds, val_folds, n_timesteps y md5 del checkpoint en los parámetros de MLflow",
              "tsvit-pheno-fullm re-volcado. Tras el re-volcado, o su F1 por parcela es consistente con su métrica densa dentro del umbral de 0,15 de US-119, o la discrepancia residual queda documentada con su causa. La tabla de miembros y el ranking que consume US-139 se recomputan y se sellan CON EL VALOR QUE SALGA, sea cual sea"],
          out:"PR en el fork; ml/eval/oof/; docs/model_cards/", dep:"—"},
@@ -925,6 +972,101 @@
   document.getElementById("progress-retired").textContent = retiredStories.length;
   document.getElementById("progress-pending").textContent = pendingStories.length;
   document.getElementById("progress-pending-sp").textContent = pendingSp + " SP";
+
+  function activeStats(epics){
+    var active = epics.reduce(function(all,e){
+      return all.concat(e.us.filter(function(u){ return u.st !== "dead"; }));
+    }, []);
+    var totalSp = active.reduce(function(total,u){ return total + u.sp; }, 0);
+    var done = active.filter(function(u){ return u.st === "ok"; });
+    var doneSp = done.reduce(function(total,u){ return total + u.sp; }, 0);
+    return {
+      active: active,
+      done: done,
+      totalSp: totalSp,
+      doneSp: doneSp,
+      pct: totalSp ? Math.round(100 * doneSp / totalSp) : 0
+    };
+  }
+
+  function progressMarkup(pct, label){
+    return '<div class="progress-track" role="progressbar" aria-label="' + label +
+           '" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + pct + '">' +
+           '<span style="width:' + pct + '%"></span></div>';
+  }
+
+  var newEpics = EPICS.filter(function(e){
+    return Number(e.id.replace("EPIC ", "")) >= 18;
+  });
+  var overall = activeStats(newEpics);
+  var overallTrack = document.querySelector(".progress-track-large");
+  document.getElementById("progress-overall-pct").textContent = overall.pct + "%";
+  document.getElementById("progress-overall-sp").textContent =
+    overall.doneSp + " de " + overall.totalSp + " SP cerrados";
+  document.getElementById("progress-overall-fill").style.width = overall.pct + "%";
+  overallTrack.setAttribute("aria-valuenow", overall.pct);
+  document.getElementById("progress-new-stories").textContent =
+    overall.done.length + " / " + overall.active.length;
+  document.getElementById("progress-new-wip").textContent = overall.active.filter(function(u){
+    return u.st === "wip";
+  }).length;
+  document.getElementById("progress-new-epics").textContent = newEpics.filter(function(e){
+    return e.status === "wip";
+  }).length + " / " + newEpics.length;
+
+  var epicProgress = document.getElementById("epic-progress-grid");
+  newEpics.forEach(function(e){
+    var stats = activeStats([e]);
+    var card = document.createElement("article");
+    card.className = "epic-progress-card " + e.status;
+    card.innerHTML =
+      '<div class="epic-progress-top"><code>' + e.id + '</code>' +
+      '<span class="epic-progress-pct">' + stats.pct + '%</span></div>' +
+      '<h3>' + e.name + '</h3>' +
+      progressMarkup(stats.pct, "Avance de " + e.id) +
+      '<div class="epic-progress-meta"><span>' + stats.doneSp + '/' + stats.totalSp +
+      ' SP</span><span>' + stats.done.length + '/' + stats.active.length + ' US</span>' +
+      '<span class="chip ' + e.status + '">' + LABEL[e.status] + '</span></div>';
+    epicProgress.appendChild(card);
+  });
+
+  var ROADMAP = [
+    {n:"00", t:"Fundación verificable", ids:["EPIC 18"],
+     note:"Gobernanza, manifiestos y arnés OOF"},
+    {n:"01", t:"Decisión definida", ids:["EPIC 27"],
+     note:"Pérdida, estimando, población y margen"},
+    {n:"02", t:"Protocolo firmado", ids:["EPIC 19"],
+     note:"Una regla común antes de calcular"},
+    {n:"03", t:"Mecanismos comparables", ids:["EPIC 20"],
+     note:"Cuatro promesas bajo el mismo eje"},
+    {n:"04", t:"Quién gana y quién paga", ids:["EPIC 21","EPIC 25"],
+     note:"Equidad y mapa de decisión"},
+    {n:"05", t:"Resultado que aguanta", ids:["EPIC 22","EPIC 26"],
+     note:"Validez externa y campo de tiro"},
+    {n:"06", t:"Paper defendible", ids:["EPIC 23","EPIC 24"],
+     note:"Manuscrito, paquete y entrega"}
+  ];
+  var epicById = EPICS.reduce(function(index,e){ index[e.id] = e; return index; }, {});
+  var hero = document.getElementById("zero-to-hero");
+  ROADMAP.forEach(function(stage){
+    var epics = stage.ids.map(function(id){ return epicById[id]; });
+    var stats = activeStats(epics);
+    var hasWip = epics.some(function(e){
+      return e.status === "wip" || e.us.some(function(u){ return u.st === "wip"; });
+    });
+    var state = stats.pct === 100 ? "ok" : (hasWip || stats.doneSp ? "wip" : "idle");
+    var stateLabel = state === "ok" ? "Completa" : (state === "wip" ? "En curso" : "Por abrir");
+    var item = document.createElement("article");
+    item.className = "hero-step " + state;
+    item.innerHTML =
+      '<div class="hero-step-kicker"><span>' + stage.n + '</span><span>' + stateLabel + '</span></div>' +
+      '<h3>' + stage.t + '</h3><p>' + stage.note + '</p>' +
+      '<code>' + stage.ids.join(" · ") + '</code>' +
+      progressMarkup(stats.pct, "Avance de " + stage.t) +
+      '<span class="hero-step-score">' + stats.pct + '% · ' + stats.doneSp + '/' +
+      stats.totalSp + ' SP</span>';
+    hero.appendChild(item);
+  });
 
   var host = document.getElementById("epics");
   EPICS.forEach(function(e){
