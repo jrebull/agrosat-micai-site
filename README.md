@@ -1,8 +1,8 @@
 # Cuaderno AgroSatCopilot · MICAI 2027
 
 Sitio estático con el estado del artículo: qué es el proyecto, en qué punto está, el plan
-desglosado por épicas e historias de usuario, los hallazgos de la auditoría y lo que queda
-pendiente de terceros.
+desglosado por épicas e historias de usuario, los hallazgos vigentes y el camino de
+continuación.
 
 Vive aparte del repositorio del sistema
 ([`jrebull/agrosat-copilotv2`](https://github.com/jrebull/agrosat-copilotv2)) para que
@@ -12,7 +12,7 @@ publicarlo no arrastre 68 GB de datos ni exponga rutas internas.
 
 ```
 index.html        resumen, estado y hallazgos, con pestañas
-plan.html         5 épicas y 33 historias de usuario con criterios de aceptación
+plan.html         15 épicas y 89 historias de usuario con criterios de aceptación
 assets/style.css  la hoja de estilo, compartida por las dos páginas
 netlify.toml      configuración de despliegue y cabeceras
 _headers          las mismas cabeceras, por si se despliega sin leer el toml
@@ -20,7 +20,7 @@ robots.txt        prohibición de rastreo
 ```
 
 Sin compilación, sin dependencias, sin `node_modules`. Son dos HTML, una hoja de estilo y
-dos fuentes de Google. Pesa 156 kB.
+dos fuentes de Google.
 
 ## Desplegar en Netlify
 
@@ -57,7 +57,7 @@ repositorio citado mientras dure la revisión: identificaría a los autores.
 ## Actualizar el contenido
 
 Las cifras están al final de cada HTML, en arrays de JavaScript con nombres explícitos
-(`support`, `members`, `deltas`, `pending`, `EPICS`). Editar una tabla es editar su array.
+(`support`, `members`, `pending`, `EPICS`). Editar una tabla es editar su array.
 
 Cuando cambie una cifra del artículo, la fuente de verdad sigue siendo el registro de
 custodia del repositorio principal, `paper/ARTIFACTS.md`. Este sitio la refleja; no la
