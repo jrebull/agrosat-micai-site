@@ -441,8 +441,8 @@
   <h2>Lo que encontró una auditoría externa que ocho internas no vieron</h2>
   <p>El plan se entregó a un revisor ajeno al proyecto, con el encargo de responder a ciegas antes
     de leer una sola de nuestras conclusiones. Su veredicto fue <strong>no arrancar todavía</strong>,
-    y tenía razón. <b>Van dos rondas</b>: la segunda verificó la primera <em>en el código</em> en vez
-    de creerse nuestra página de respuestas, y lo que encontró está más abajo.</p>
+    y tenía razón. <b>Van tres rondas</b>, y cada una verificó a la anterior en el código en vez de
+    creerse nuestra página de respuestas.</p>
 
   <div class="finding blocker">
     <div class="top"><span class="chip stop">Fatal</span><h3>La utilidad no podía cobrar la abstención</h3></div>
@@ -465,7 +465,9 @@
   <div class="finding blocker">
     <div class="top"><span class="chip stop">Fatal</span><h3>Más bloques no son más réplicas</h3></div>
     <p>Partir el mismo territorio más fino no crea observaciones independientes: los folds comparten
-      entrenamiento con <strong>Jaccard medio de 0,60</strong>. La ganancia de potencia del barrido
+      entrenamiento con <strong>Jaccard medio de 0,4273</strong> — y 0,6000 si se cuenta
+      entrenamiento más validación, que es el número que publicamos aquí como si fuera el
+      primero. La ganancia de potencia del barrido
       venía de cambiar la unidad, no de observar territorio nuevo. Y falta declarar el estimando,
       porque el diseño mezclaba inferencia condicional al conjunto con inferencia entre regiones.</p>
   </div>
@@ -563,6 +565,67 @@
     <p>Las dos están corregidas, y la primera además <b>tiene ahora un gate</b> que la comprueba en
       las ochenta y nueve historias. Probado rompiéndolo: inyectada la frase, falla; retirada, pasa.
       De paso encontró tres falsos positivos propios y hubo que acotarlo.</p>
+  </div>
+
+  <h2>La tercera ronda: corregimos donde señalaron, no en todas partes</h2>
+  <p>La ronda 3 encontró un patrón nuestro que no habíamos visto: <b>arreglábamos el documento
+    donde el auditor había puesto el dedo y dejábamos las otras apariciones intactas</b>. El
+    preregistro decía lo correcto y el plan seguía diciendo lo anterior — cuatro veces. La regla que
+    faltaba la teníamos escrita desde el principio: <em>agota el alcance del control</em>.</p>
+
+  <div class="finding blocker">
+    <div class="top"><span class="chip stop">Reparado</span><h3>El motor que produjo todos los resultados seguía roto, y ningún test lo tocaba</h3></div>
+    <p>Los tres defectos diagnosticados hacía semanas seguían <em>en el código</em>: el universo de
+      clases del macro salía de las verdades de las parcelas <b>entregadas</b> —que dependen del
+      mecanismo, así que el denominador se movía entre brazos—; el umbral del rechazo por confianza
+      se elegía <b>dentro del bloque que lo mide</b>; y el intervalo remuestreaba <b>parcelas</b>,
+      convirtiendo cinco bloques espaciales en dieciséis mil réplicas que no existen. La suite verde
+      no decía nada de ese fichero porque no había un solo test sobre él.</p>
+    <p>Los tres están reparados, y <b>cada reparación es un parámetro obligatorio</b>: los tres
+      habían sobrevivido como valores por defecto silenciosos, así que ahora no se puede llamar a
+      ninguna de esas funciones sin declarar qué universo de clases, qué umbral y qué unidad de
+      remuestreo. Ocho tests nuevos, dos de ellos comprobados <em>fallando</em> sobre la versión
+      anterior. Y todo lo que ese módulo produjo queda marcado en el ledger como pendiente de
+      regenerar.</p>
+  </div>
+
+  <div class="finding blocker">
+    <div class="top"><span class="chip stop">Cierre parcial</span><h3>Prohibimos elegir el criterio por la potencia, y la regla seguía en el plan</h3></div>
+    <p>El preregistro lo prohíbe desde la ronda 2. Pero una historia del plan seguía exigiendo, con
+      todas sus letras, que «el criterio principal se mueve a una magnitud donde el diseño sí tenga
+      potencia» — contradiciendo a la historia que promete fijarlo desde la pérdida. <b>La potencia
+      evalúa una variable elegida por la decisión sustantiva; no la elige.</b></p>
+  </div>
+
+  <div class="finding">
+    <div class="top"><span class="chip wip">Corregido</span><h3>El ledger tenía procedencia falsa, y su gate solo sabía comparar bytes</h3></div>
+    <p>La cabecera decía apuntar a un commit y el auditado era otro cuatro commits después. Y
+      veinticuatro filas declaraban «sin seguimiento en git» archivos que <em>sí</em> estaban
+      versionados — el auditor encontró tres a mano; el gate, al encenderlo, encontró veinticuatro.
+      Pasaba porque solo miraba ruta, MD5 y estado.</p>
+    <p>Ahora comprueba <b>procedencia</b>: el commit de sellado tiene que existir y estar en la
+      historia de HEAD, y quien dice no estar versionado tiene que ser cierto. El otro gate, el de
+      dependencias contradictorias, solo leía dos campos y burlarlo era mover la frase al título:
+      ahora recorre el objeto entero. <b>Los dos están probados en negativo y versionados</b>, que
+      es la diferencia entre una prueba y el recuerdo de una prueba.</p>
+  </div>
+
+  <div class="finding">
+    <div class="top"><span class="chip wip">Corregido</span><h3>Describíamos mal nuestra propia decisión de despliegue</h3></div>
+    <p>Decíamos que el catálogo bajó de 18 clases a 12 con «criterio F1 por clase ≥ 0,90». El código
+      dice otra cosa: el catálogo de doce es el <b>último cuyo macro-F1 restringido se mantiene
+      sobre 0,90</b> al ir añadiendo clases en orden de calidad resuelta — 0,9001 con doce, por
+      debajo con trece. No es un matiz: esa decisión real es el insumo de la tabla de pérdidas, y no
+      puede entrar deformada.</p>
+  </div>
+
+  <div class="finding">
+    <div class="top"><span class="chip wip">Corregido</span><h3>«Distancia exacta entre parcelas» era exacta solo entre centroides</h3></div>
+    <p>El KD-tree eliminó el sesgo del submuestreo, pero el universo sellado guarda centroides: dos
+      campos vecinos separados por un seto están tan lejos como sus centros. Es una <b>cota
+      superior</b> de la separación real, y por sí sola no demuestra independencia — eso necesita un
+      diagnóstico de autocorrelación que no está hecho. Renombrada en el artefacto y en los dos
+      documentos que la citan, con esa limitación escrita.</p>
   </div>
 
   <h2>El campo de tiro</h2>
