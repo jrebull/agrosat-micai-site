@@ -441,7 +441,7 @@
   <h2>Lo que encontró una auditoría externa que ocho internas no vieron</h2>
   <p>El plan se entregó a un revisor ajeno al proyecto, con el encargo de responder a ciegas antes
     de leer una sola de nuestras conclusiones. Su veredicto fue <strong>no arrancar todavía</strong>,
-    y tenía razón. <b>Van tres rondas</b>, y cada una verificó a la anterior en el código en vez de
+    y tenía razón. <b>Van cuatro rondas</b>, y cada una verificó a la anterior en el código en vez de
     creerse nuestra página de respuestas.</p>
 
   <div class="finding blocker">
@@ -628,6 +628,70 @@
       documentos que la citan, con esa limitación escrita.</p>
   </div>
 
+  <h2>La cuarta ronda: repararlo por el camino ancho y dejar el estrecho abierto</h2>
+  <p>Las tres reparaciones grandes de la ronda anterior eran correctas en lo que arreglaban
+    <em>y las tres tenían una rendija</em>. Ese es el patrón de esta ronda, y es más incómodo que
+    los anteriores porque no se ve mirando lo que se arregló: solo mirando lo que no.</p>
+
+  <div class="finding blocker">
+    <div class="top"><span class="chip stop">Fuga</span><h3>El umbral salía de entrenamiento; su tasa, no</h3></div>
+    <p>Sacamos el umbral de confianza del bloque evaluado, lo dimos por cerrado y escribimos un test.
+      Pero la <b>tasa objetivo</b> del cuantil seguía siendo <code>ref.delivered.mean()</code>: la
+      cobertura que el otro mecanismo <em>realizó en el bloque de prueba</em>. La fuga era más
+      estrecha y era la misma fuga. El auditor lo demostró dejando el entrenamiento intacto y
+      cambiando solo la máscara de referencia: la entrega del comparador cambió.</p>
+    <p>Y nuestro test no podía verlo porque <b>comprobaba un síntoma</b> —que los recuentos no
+      coincidieran siempre— en vez del mecanismo. Ahora la tasa es la fracción de parcelas de
+      <em>entrenamiento</em> cuyo argmax cae en la leyenda, y el test es de <b>invariancia</b>:
+      destrozar el bloque de prueba entero no mueve el umbral, y tocar el entrenamiento sí. Lo
+      segundo importa tanto como lo primero: un test insensible a todo también pasa.</p>
+  </div>
+
+  <div class="finding blocker">
+    <div class="top"><span class="chip stop">Inferencia donde no la hay</span><h3>Dos regiones no dan un p, y le estábamos aplicando Holm</h3></div>
+    <p>Nuestro propio protocolo dice que con dos bloques se reportan los dos deltas y nada más — ni
+      intervalo, ni p, ni corrección por multiplicidad. BreizhCrops tiene exactamente dos regiones.
+      El código calculaba el intervalo t, sacaba un p, <b>y le aplicaba Holm</b>, y de ahí salía el
+      «Holm por debajo de 0,0001» que publicamos como transporte demostrado.</p>
+    <p>Por debajo de tres bloques definidos, la función ya no devuelve ni intervalo ni p, y los dos
+      productores escriben el motivo en lugar del Holm que no corresponde.</p>
+  </div>
+
+  <div class="finding blocker">
+    <div class="top"><span class="chip stop">Camino de al lado</span><h3>El gate de custodia comparaba bytes, no procedencia</h3></div>
+    <p>Le añadimos la comprobación de procedencia y seguía siendo burlable: verificaba que los bytes
+      de hoy coincidieran, no que el commit declarado los hubiera producido. El auditor puso el
+      <b>commit raíz, 467 atrás</b>, como sello y el gate dijo OK; puso un commit inventado en una
+      fila y también.</p>
+    <p>Ahora verifica el <b>blob en el commit de cada fila</b> —o el MD5 dentro de su puntero
+      <code>.dvc</code>— y exige que el sello no sea anterior a ninguna fila que sella. Al
+      encenderlo saltaron <b>las diez filas</b> que el auditor había predicho. Y la columna ya no se
+      rellena a mano: <code>make paper-artifacts-seal</code> la calcula desde git.</p>
+  </div>
+
+  <div class="finding">
+    <div class="top"><span class="chip wip">Corregido</span><h3>Otra vez el único valor que no distingue el bug</h3></div>
+    <p>La rama de varianza cero del intervalo devolvía <em>p = 1 y «no excluye el cero»</em> para
+      cualquier diferencia constante — incluida una constante de 0,1, que obviamente no contiene el
+      cero. El único test de esa rama usaba cuatro ceros. <b>Es exactamente el mismo modo de fallo
+      que ya nos habían señalado</b> en la utilidad de abstención, repetido dos semanas después por
+      las mismas manos.</p>
+    <p>Separados los dos casos: todo cero es la autocomprobación del arnés; constante no nula da
+      intervalo degenerado y <b>p indefinido</b>, porque sin varianza la t no existe y no se inventa.
+      Y lo indefinido pasa a ser NaN en vez de 0,0, que es un cero con pinta de medida.</p>
+  </div>
+
+  <div class="finding">
+    <div class="top"><span class="chip dead">Retirado</span><h3>Trece artefactos dejan de ser citables, y se nota</h3></div>
+    <p>El ledger avisaba en su cabecera de que los productos del módulo defectuoso eran
+      exploratorios, y a la vez sus filas decían <code>SELLADO</code> y el gate terminaba con «84
+      artefactos sellados, OK». Aviso en prosa contra estado ejecutable: gana el estado. Por eso una
+      de esas cifras acabó en este cuaderno presentada como el experimento corregido.</p>
+    <p>Ahora existe el estado <b><code>OBSOLETO</code></b>: trece filas verificadas igual, contadas
+      aparte y con aviso explícito de que no entran en el artículo. Y los apartados de este cuaderno
+      que las citaban están tachados arriba, con el texto original a la vista.</p>
+  </div>
+
   <h2>El campo de tiro</h2>
   <p>Un revisor estricto de MICAI no va a discutir el mapeo de cultivos: va a buscar el punto donde
     el resultado se cae. Diez ataques inventariados, cada uno convertido en un experimento que se
@@ -782,43 +846,63 @@
       ensanchan y los tres nulos quedan más firmes.</p>
   </div>
 
-  <div class="finding pass">
-    <div class="top"><span class="chip ok">Verificado</span><h3>La partición espacial es impecable</h3></div>
-    <p>Cinco bloques disjuntos, las 16 640 parcelas evaluadas exactamente una vez, ningún
-      parche repartido entre entrenamiento y prueba, y una separación mínima de
-      <strong>22 951 metros</strong> entre una parcela de prueba y la más cercana de
-      entrenamiento.</p>
+  <div class="finding">
+    <div class="top"><span class="chip wip">Corregido</span><h3>La partición espacial: lo que sí está verificado, y hasta dónde</h3></div>
+    <p>Verificado y sigue en pie: cinco bloques disjuntos, las 16 640 parcelas evaluadas
+      exactamente una vez, ningún parche repartido entre entrenamiento y prueba.</p>
+    <p class="retirado">Lo que decía este recuadro y era dos cosas a la vez: «una separación mínima
+      de 22 951 metros entre una parcela de prueba y la más cercana de entrenamiento», y el título
+      «impecable». El número no está en ningún artefacto — el artefacto vigente da
+      <strong>22 972 metros</strong> — y no es entre parcelas: es <b>entre centroides</b>, que es
+      una cota superior de la separación real. Y una cota superior no demuestra independencia: eso
+      necesita un diagnóstico de autocorrelación residual que no está hecho. «Impecable» era una
+      palabra escrita sobre una medición que no la sostiene.</p>
   </div>
 
   <h2>Lo que salió del experimento rehecho</h2>
 
-  <div class="finding pass">
-    <div class="top"><span class="chip ok">Fase 3</span><h3>Rehecho sin los tres defectos, H1 no se sostiene</h3></div>
+  <div class="finding">
+    <div class="top"><span class="chip dead">Pendiente de regenerar</span><h3>Fase 3: «rehecho sin los tres defectos» era falso</h3></div>
+    <p class="retirado"><b>Estas cifras salieron del módulo que TODAVÍA tenía los tres defectos.</b>
+      Se anunciaron como el experimento rehecho y no lo eran: los tres se repararon el 4 de
+      septiembre, después de que una auditoría externa los encontrara leyendo el código. Todo lo que
+      sigue en este apartado queda como exploratorio y pendiente de regenerar, y el ledger lo marca
+      como <code>OBSOLETO</code>. Se deja escrito, sin retocar, porque borrarlo sería repetir el
+      error que lo produjo.</p>
     <p>Con el estimando alineado, la entrega sin oráculo y el remuestreo pareado, a nueve clases
       prometidas el intervalo incluye el cero en los dos predictores y ningún contraste sobrevive a
       la corrección por multiplicidad. Lo que sí queda demostrado es la descomposición: de dieciocho
       clases a ocho, <strong>0,2155 de los 0,2440 de mejora aparente son solo el denominador</strong>.</p>
   </div>
 
-  <div class="finding pass">
-    <div class="top"><span class="chip ok">Fase 4</span><h3>Se transporta a otro banco, y más limpio</h3></div>
-    <p>Mismo protocolo y mismo código sobre BreizhCrops 2017, con el clasificador entrenado dejando
-      una región fuera. El denominador se lleva el 95,1 % en el criterio principal y el
-      <strong>100 %</strong> mientras la cobertura sigue completa. Y aquí H1 no solo no se sostiene:
-      su contraria sí, con intervalo (−0,0272, −0,0225) y Holm por debajo de 0,0001.</p>
+  <div class="finding">
+    <div class="top"><span class="chip dead">Pendiente de regenerar</span><h3>Fase 4: «se transporta» y su Holm no deberían existir</h3></div>
+    <p class="retirado">Este apartado decía que la descomposición se transporta a BreizhCrops 2017 y
+      que allí la contraria de H1 sí se sostiene, «con intervalo (−0,0272, −0,0225) y Holm por
+      debajo de 0,0001». <b>Ese intervalo y ese Holm no deberían existir</b>: BreizhCrops tiene
+      exactamente <b>dos regiones</b>, y con dos bloques el contrato del protocolo dice reportar los
+      dos deltas y nada más — ni intervalo, ni p, ni corrección por multiplicidad. El código los
+      calculaba igual, y una auditoría externa lo encontró. Ya no: por debajo de tres bloques
+      definidos, la función devuelve los deltas y nada más.</p>
+    <p class="retirado">Y todo esto salió además del módulo con los tres defectos. Queda como
+      exploratorio y pendiente de regenerar, marcado <code>OBSOLETO</code> en el ledger.</p>
   </div>
 
-  <div class="finding pass">
-    <div class="top"><span class="chip ok">Fase 4</span><h3>El árbitro entrenado retira una clase sin decirlo</h3></div>
+  <div class="finding">
+    <div class="top"><span class="chip dead">Pendiente de regenerar</span><h3>El árbitro entrenado retira una clase sin decirlo</h3></div>
+    <p class="retirado">Del mismo módulo con los tres defectos: exploratorio y pendiente de
+      regenerar.</p>
     <p>Winter durum wheat, 355 parcelas. El mejor modelo individual saca 0,7790, la media sin
       entrenar 0,7752, el voto ponderado 0,7782 — y el meta-modelo entrenado, <strong>0,0000</strong>.
       La retirada es un comportamiento aprendido, no una propiedad de combinar.</p>
   </div>
 
   <div class="callout">
-    <p><strong>Lo que queda es mejor de lo que teníamos.</strong> Del error salió una contribución
-      más firme y ahora replicada: casi toda la mejora que se obtiene recortando el catálogo es el
-      denominador, y el control que lo revela cuesta una línea. Explica además por qué el paso de
+    <p><strong>Lo que queda, dicho con el alcance que tiene.</strong> La contribución candidata
+      sigue siendo la misma —casi toda la mejora que se obtiene recortando el catálogo es el
+      denominador, y el control que lo revela cuesta una línea— pero <b>hoy no está demostrada</b>:
+      las dos veces que la medimos fue con el módulo defectuoso, y la palabra «replicada» exige un
+      segundo banco cuyo intervalo el diseño no permite calcular. Se regenera antes de afirmarla. Explica además por qué el paso de
       dieciocho a doce clases <em>parece</em> mejorar la calidad. Es más estrecho que lo que
       perseguíamos y es verdad en dos bancos.</p>
   </div>

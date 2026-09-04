@@ -28,7 +28,7 @@
       <p>No se parchea: se reencuadra. Las épicas <b>13 a 17</b> quedan como historia, con lo
         hecho y lo retirado marcados; las épicas <b>18 a 25</b> son el trabajo nuevo y se
         reescribieron enteras tras cinco auditorías más.</p>
-      <p><b>Auditoría externa, 3 de septiembre.</b> Después de ocho auditorías internas, un
+      <p><b>Auditoría externa, 3 de septiembre.</b> Después de varias auditorías internas —el recuento exacto no sale de ningún artefacto, así que no se da—, un
         revisor ajeno al proyecto encontró lo que ninguna había visto, incluida una función de
         utilidad que prometía dejar elegir el precio de abstenerse y lo hacía imposible. Su veredicto
         fue <b>no arrancar todavía</b>, y su causa raíz una sola: <b>el problema de decisión no tenía
@@ -505,7 +505,7 @@
              "Se computa desde los artefactos ya sellados y se sella en reports/paper_micai/potencia/, en vez de afirmarse en prosa: es exactamente lo que este proyecto reprocha en otros sitios",
              "Incluye la potencia del criterio principal NUEVO, la disparidad, y no solo la del delta de calidad: mover el titular sin recalcular el MDE es el mismo error un piso más arriba"],
          out:"reports/paper_micai/potencia/", dep:"US-125, US-171"},
-        {id:"US-171", t:"El número de bloques: un grado de libertad que decide la significancia", sp:8, st:"idle",
+        {id:"US-171", t:"El número de bloques: un grado de libertad con el que cambia la conclusión", sp:8, st:"idle",
          role:"Como equipo al que le dijeron que hacen falta trece bloques y solo tiene cinco, quiero saber si el cinco es una restricción del dato o el valor por defecto de una función. Es lo segundo, y lo que se encuentra al mirarlo es más interesante que el permiso para usar quince.",
          ac:["MEDIDO y sellado: cinco es el valor por defecto de build_spatial_kfold y el fold retenido tiene 176 celdas H3. Con cinco el intervalo incluye el cero; con diez, doce, quince, veinte y veinticinco lo excluye. El artefacto trae una columna tiene_potencia que compara el efecto con un MDE calculado tratando las subdivisiones como si fueran n réplicas independientes: NO LO SON, y esa columna se renombra y se acompaña del Jaccard antes de que nadie la cite. Un MDE que baja porque partes más el mismo territorio no es potencia, es aritmética",
              "EL HALLAZGO, y es esto y no el permiso para usar quince: EN ESTE ANÁLISIS EXPLORATORIO, la conclusión cambia con k. El estimador se mueve 0,0122 entre valores de k, un 73 % del propio efecto, y sin tendencia monótona. Dicho con el alcance que el diseño sostiene y no más: es un territorio, con folds solapados y cifras producidas por el módulo que aún tenía los tres defectos. NO se escribe «la granularidad decide la significancia» ni «lo demuestra» hasta rehacerlo con US-124, US-125 y el estimando de US-173",
