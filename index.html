@@ -28,7 +28,7 @@
         <span><b>Autores</b> A. J. Zizumbo Velasco · J. A. Rebull-Saucedo</span>
         <span><b>Universos</b> PASTIS-R · 16 640 parcelas · 18 clases &nbsp;·&nbsp;
           BreizhCrops 2017 · 60 000 parcelas · 9 clases</span>
-        <span><b>Revisión</b> 4 de septiembre de 2026 · <b>ocho rondas externas cerradas</b></span>
+        <span><b>Revisión</b> 4 de septiembre de 2026 · <b>US-173 cerrado</b></span>
       </div>
       <p class="downloads">
         <a class="dl" href="plan.html">El plan nuevo, por épicas</a>
@@ -142,8 +142,9 @@
 <!-- ================= ESTADO ================= -->
 <section class="panel" id="p-est" role="tabpanel" aria-labelledby="t-est" hidden>
   <p class="lede">El borrador de quince páginas sigue retirado. Ocho rondas externas cerraron
-    defectos de evaluación, custodia y redacción; el estudio reencuadrado todavía no ha empezado.
-    Su primera acción es US-172: identificar con usuarios reales qué pierde cada afectado.</p>
+    defectos de evaluación, custodia y redacción. US-173 cerró el primer contrato científico del
+    estudio reencuadrado: estimando y población ya están fijados; quedan pérdida, margen práctico y
+    criterio principal antes de firmar el preregistro.</p>
 
   <div class="callout">
     <p><b>Estado de la conclusión.</b> H1-2026 está <strong>pendiente</strong>: ni «se refutó» ni
@@ -500,8 +501,8 @@
       entrenamiento con <strong>Jaccard medio de 0,4273</strong> — y 0,6000 si se cuenta
       entrenamiento más validación, que es el número que publicamos aquí como si fuera el
       primero. La ganancia de potencia del barrido
-      venía de cambiar la unidad, no de observar territorio nuevo. Y falta declarar el estimando,
-      porque el diseño mezclaba inferencia condicional al conjunto con inferencia entre regiones.</p>
+      venía de cambiar la unidad, no de observar territorio nuevo. US-173 ya cerró esa mezcla:
+      la inferencia será condicional a cada banco y no sostendrá afirmaciones de transporte.</p>
   </div>
 
   <div class="finding blocker">
@@ -557,9 +558,9 @@
       dentro del documento que iba a firmarse.</p>
     <p>Medido con cinco bloques: retienen <strong>11, 13, 14, 13 y 10 clases</strong>; solo
       <strong>seis son comunes a los cinco</strong>; la unión son las dieciocho; el Jaccard mínimo
-      entre dos universos es <strong>0,400</strong>. O se fija un universo común desde
-      entrenamiento, o se declara un estimando clase-por-bloque con su ponderación y se le llama por
-      su nombre. Lo que ya no se puede es promediar cinco macros de denominador distinto.</p>
+      entre dos universos es <strong>0,400</strong>. US-173 cerró la elección: el universo común se
+      fija exclusivamente desde entrenamiento y se comparte entre mecanismos y bloques. La
+      alternativa clase×bloque quedó retirada para que no pueda elegirse después.</p>
   </div>
 
   <div class="finding blocker">
@@ -948,13 +949,8 @@
   </div>
 
   <h2>Lo que falta antes de firmar el preregistro</h2>
-
-  <div class="finding">
-    <div class="top"><span class="chip idle">US-173</span><h3>Elegir el estimando y la población</h3></div>
-    <p>Hay que escoger entre inferencia condicional al conjunto de datos e inferencia entre
-      regiones y campañas. La unidad de análisis, el alcance de los intervalos y las afirmaciones
-      de transporte dependen de esa elección.</p>
-  </div>
+  <p>Quedan tres parámetros abiertos: función de pérdida, margen práctico y criterio principal.
+    El estimando y su población ya no forman parte de esta lista.</p>
 
   <div class="finding">
     <div class="top"><span class="chip idle">US-174 y US-175</span><h3>Fijar el margen práctico y la geometría de costes</h3></div>
@@ -980,6 +976,14 @@
   <h2>Protecciones cerradas que no se deben romper</h2>
 
   <div class="finding pass">
+    <div class="top"><span class="chip ok">US-173</span><h3>Estimando y población declarados</h3></div>
+    <p>La inferencia es condicional a cada banco, sobre todas las parcelas elegibles de prueba,
+      incluida la no entrega. La parcela es la unidad observacional y <code>patch_id</code> el
+      clúster; no se promedian bancos ni se afirma transporte. El punto de operación sale de
+      entrenamiento y validación y un gate impide que el contrato y el preregistro diverjan.</p>
+  </div>
+
+  <div class="finding pass">
     <div class="top"><span class="chip ok">Verificado</span><h3>Los controles ya prueban el mecanismo</h3></div>
     <p>El punto de operación completo sale de entrenamiento y es invariante al bloque de prueba;
       los intervalos exigen tres bloques únicos y brazos pareados; lo indefinido se conserva como
@@ -991,14 +995,14 @@
 
 <!-- ================= PENDIENTES ================= -->
 <section class="panel" id="p-pend" role="tabpanel" aria-labelledby="t-pend" hidden>
-  <p class="lede">Camino de continuación, en orden de dependencia. «Lista» significa preparada,
-    no empezada; las correcciones de auditoría no cambian el estado científico de ninguna historia.</p>
+  <p class="lede">Camino de continuación actualizado. US-173 está cerrado; el trabajo autónomo
+    avanza por alcance, arnés OOF y bibliografía sin calcular contrastes del experimento central.</p>
   <div id="pending"></div>
 
   <h2>Regla de ejecución</h2>
-  <p>No se produce ningún resultado nuevo antes de firmar el preregistro. Durante el reclutamiento
-    sí se puede preparar US-173, comprobar el trámite ético y endurecer infraestructura, siempre que
-    nadie mire salidas para elegir el estimando, el margen o la sección de costes.</p>
+  <p>No se produce ningún contraste nuevo de las EPIC 20, 21, 22 ni 25 antes de firmar el
+    preregistro. Mientras tanto sí avanzan US-121, US-118, US-141 y US-142; ninguna permite escoger
+    pérdida, margen, criterio o sección de costes mirando resultados.</p>
 
   <h2>Criterio de salida</h2>
   <ul>
@@ -1129,13 +1133,14 @@
     });
   }
   var pending = [
-    ["01","US-172 · Cerrar protocolo y custodia ética","Escribir el guion antes del contacto, definir consentimiento, minimización, acceso y retención, y comprobar si la institución exige revisión ética.","idle","Siguiente"],
-    ["02","US-172 · Elicitar pérdidas con usuarios reales","Reclutar al menos tres personas de control de subvenciones y tres de asesoría agronómica; guardar respuestas crudas y trazar cada celda de la tabla hasta ellas.","stop","Tras protocolo"],
-    ["03","US-173 · Elegir estimando y población","Documentar las dos alternativas y cerrar una sin mirar resultados. Esta preparación puede avanzar mientras se recluta.","idle","En paralelo"],
-    ["04","US-174 y US-175 · Margen y geometría","Derivar el margen práctico desde la tabla de pérdidas y preregistrar el símplex completo o una sección con justificación sustantiva.","stop","Depende de US-172"],
-    ["05","US-140 · Firmar el preregistro","Congelar pérdida, estimando, población, margen, multiplicidad y selección de predictores antes del primer resultado nuevo.","stop","Depende de 172–175"],
-    ["06","EPIC 19 · Reparar y regenerar","Implementar MDE no central, multiplicidad de toda la superficie y selección separada; después regenerar los trece artefactos obsoletos.","stop","Tras la firma"],
-    ["07","Decisión de continuidad","Contrastar los artefactos regenerados con la afirmación preregistrada y decidir artículo, reducción de alcance o cierre sin mover el criterio.","stop","Go / no-go"]
+    ["01","US-121 · Firmar alcance, modelo y destino","Cerrar ADR-014 con una sola tesis, sede MICAI 2027, predictor del artículo y destino de los manuscritos heredados.","idle","Siguiente autónoma"],
+    ["02","US-118 · Endurecer el arnés OOF","Unificar el scoring, verificar checkpoints y preparar el re-volcado canónico sin usarlo para elegir el criterio del artículo.","idle","En paralelo"],
+    ["03","US-141 y US-142 · Trabajo relacionado y bibliografía","Verificar cada precedente desde su texto, delimitar la contribución y publicar referencias localizables.","idle","Sin resultados"],
+    ["04","US-172 · Tabla de pérdidas","Completar la moneda común por acción, resultado y afectado; hasta entonces no se comparan mecanismos.","stop","Camino crítico"],
+    ["05","US-174 y US-175 · Margen y geometría","Derivar el margen práctico desde la tabla de pérdidas y preregistrar el símplex completo o una sección con justificación sustantiva.","stop","Depende de US-172"],
+    ["06","US-140 · Firmar el preregistro","Congelar pérdida, estimando, población, margen, multiplicidad y selección de predictores antes del primer resultado nuevo.","stop","Depende de 172–175"],
+    ["07","EPIC 19 · Reparar y regenerar","Implementar MDE no central, multiplicidad de toda la superficie y selección separada; después regenerar los trece artefactos obsoletos.","stop","Tras la firma"],
+    ["08","Decisión de continuidad","Contrastar los artefactos regenerados con la afirmación preregistrada y decidir artículo, reducción de alcance o cierre sin mover el criterio.","stop","Go / no-go"]
   ];
   var pe = document.getElementById("pending");
   pending.forEach(function(p){

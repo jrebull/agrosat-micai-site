@@ -46,9 +46,11 @@
         justificación. Por eso el plan se reordena: la <b>EPIC 27</b> va delante de todo y el camino
         crítico empieza ahí.</p>
       <p><b>Estado al 4 de septiembre.</b> Las ocho rondas cerraron defectos en código, tests,
-        custodia y redacción, pero eso no cuenta como ejecutar el estudio nuevo. Las historias
-        científicas conservan su estado. La siguiente acción es <b>US-172</b>: obtener de usuarios
-        reales la tabla de pérdidas por acción, resultado y afectado.</p>
+        custodia y redacción. <b>US-173 es la primera historia científica cerrada del estudio
+        reencuadrado</b>: la inferencia será condicional a cada banco, con la parcela como unidad,
+        <code>patch_id</code> como clúster y sin afirmar transporte. Quedan tres parámetros antes
+        de firmar el preregistro: pérdida, margen práctico y criterio principal. El camino crítico
+        continúa en <b>US-172</b>.</p>
       <p><b>Sede única: MICAI 2027, hipótesis de planificación de 20 páginas</b> — el tope que
         permitía la edición anterior, <b>a reverificar cuando salga la convocatoria</b>; si baja, el
         recorte sale de resultados hacia el apéndice y nunca de robustez. Sin artículo de revista en
@@ -57,15 +59,16 @@
         como primera contribución: eso va a método y apéndice.</p>
     </div>
     <div class="ledger" style="margin-top:22px">
-      <div class="ledger-row"><span class="name">Historias históricas terminadas</span><span class="note">no son avance del estudio reencuadrado</span><span class="num" id="progress-done">—</span></div>
+      <div class="ledger-row"><span class="name">Historias históricas terminadas</span><span class="note">épicas 13 a 17; no son avance nuevo</span><span class="num" id="progress-done-historical">—</span></div>
+      <div class="ledger-row"><span class="name">Historias nuevas terminadas</span><span class="note">épicas 18 a 27</span><span class="num" id="progress-done-new">—</span></div>
       <div class="ledger-row"><span class="name">Historias retiradas</span><span class="note">se conservan como registro</span><span class="num" id="progress-retired">—</span></div>
-      <div class="ledger-row"><span class="name">Historias por ejecutar</span><span class="note">incluye dependencias aún no liberadas</span><span class="num" id="progress-pending">—</span></div>
+      <div class="ledger-row"><span class="name">Historias nuevas por ejecutar</span><span class="note">incluye dependencias aún no liberadas</span><span class="num" id="progress-pending">—</span></div>
       <div class="ledger-row"><span class="name">Esfuerzo pendiente</span><span class="note">el camino crítico empieza en US-172</span><span class="num" id="progress-pending-sp">—</span></div>
     </div>
     <div class="colophon">
       <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
       <span><b>Total</b> <span id="total-sp">—</span> puntos de historia</span>
-      <span><b>Actualizado</b> 4 de septiembre de 2026, tras la octava ronda</span>
+      <span><b>Actualizado</b> 4 de septiembre de 2026, US-173 cerrado</span>
     </div>
   </div>
 </div>
@@ -442,10 +445,10 @@
       ]
     },
     {
-      id:"EPIC 27", name:"Identificar la pérdida, el estimando y la población", status:"idle",
+      id:"EPIC 27", name:"Identificar la pérdida, el estimando y la población", status:"wip",
       goal:"La auditoría externa dio una sola causa raíz: **el problema de decisión no tiene una función de pérdida identificada, y la cardinalidad estaba ocupando ese lugar sin justificación**. Mientras eso siga así, comparar mecanismos es comparar en una moneda que nadie ha acuñado. Esta épica va delante de la 19 y bloquea a todas las demás. No consume cómputo: es la parte del trabajo que decide qué significan los números que vengan después.",
       us:[
-        {id:"US-172", t:"La tabla de pérdidas, por acción, resultado y afectado", sp:8, st:"idle",
+        {id:"US-172", t:"La tabla de pérdidas, por acción, resultado y afectado", sp:8, st:"wip",
          role:"Como quien despliega un mapa, mis cuatro errores no cuestan lo mismo: una etiqueta falsa que actúo, un silencio que me deja sin dato, un conjunto ambiguo que me obliga a decidir, y una respuesta gruesa que es cierta pero no me sirve. Sin ese precio, comparar mecanismos no significa nada.",
          ac:["La rejilla COMPLETA de pares (acción, resultado) declarada ANTES de elicitar, y son SIETE celdas, no cuatro: etiqueta precisa que acierta —la referencia, sin la cual no hay escala—, etiqueta precisa que falla, no respuesta, conjunto que contiene la verdad, conjunto que NO la contiene, clase gruesa con la verdad dentro y clase gruesa con la verdad fuera. Las tres que faltaban son justo las que hacen que un conjunto o un retroceso no sean gratis, y si aparecen después de elicitar serán supuestos nuestros",
              "El precio de no responder se SUMA, no se multiplica por la contención. La primera implementación lo multiplicaba y por eso no se podía elegir",
@@ -460,14 +463,18 @@
              "Declarada en el preregistro antes de calcular nada",
              "La cardinalidad sobrevive como descriptor secundario, nunca como moneda"],
          out:"docs/paper/perdidas-protocolo.md; docs/paper/perdidas.md; ml/eval/decision_cost.py", dep:"—"},
-        {id:"US-173", t:"El estimando y su población, declarados", sp:5, st:"idle",
+        {id:"US-173", t:"El estimando y su población, declarados", sp:5, st:"ok",
          role:"Como revisor, quiero saber sobre qué población generaliza cada intervalo, porque hoy el diseño mezcla dos preguntas distintas y las trata como una.",
-         ac:["Se elige y se declara: inferencia CONDICIONAL al conjunto de datos, con el parche como clúster y el alcance local reconocido; o inferencia ENTRE regiones y campañas, con sitio-año como unidad",
-             "Si es la primera, el artículo NO afirma transporte, y lo dice en el título o en el alcance",
-             "Si es la segunda, hacen falta dominios genuinamente independientes, y tres bancos no son cuarenta réplicas",
+         ac:["ELEGIDO y declarado: inferencia CONDICIONAL a cada banco, su región y campaña, su partición y su predictor; no se conserva una segunda alternativa para elegirla después",
+             "La población son TODAS las parcelas elegibles del bloque de prueba, incluidas las que no reciben entrega; la parcela es la unidad observacional y patch_id el clúster de dependencia",
+             "Con menos de tres clústeres únicos pareados, el resultado es descriptivo: sin intervalo, sin p y sin Holm",
+             "El punto de operación entero sale de entrenamiento y validación; queda prohibido volver a igualar pérdida, cobertura o tasa usando prueba",
+             "El universo de clases se fija exclusivamente desde entrenamiento y es común a mecanismos y bloques",
+             "No hay promedio inferencial entre bancos y el artículo NO afirma transporte a otras regiones o campañas",
              "Medido y publicado, con los dos conjuntos nombrados por separado: entre ENTRENAMIENTOS el Jaccard medio es 0,4273 y el máximo 0,5510; entre ENTRENAMIENTO MÁS VALIDACIÓN, 0,6000 y 0,8005. El 0,60/0,80 que esta línea atribuía al entrenamiento era el segundo. Con veinticinco bloques sube a 0,9200: partir el mismo territorio más fino no crea réplicas nuevas, produce el mismo dato contado más veces",
-             "El barrido de k deja de presentarse como palanca de potencia y pasa a ser el aviso, con su alcance, de que en este análisis exploratorio la conclusión cambia con k"],
-         out:"docs/paper/preregistro-v2.md", dep:"—"},
+             "k queda como parámetro de sensibilidad espacial, no como número de réplicas ni palanca de potencia; PASTIS y BreizhCrops siguen siendo exploratorios",
+             "Contrato normativo con trece decisiones exactas y gate de coherencia JSON↔prosa probado en negativo"],
+         out:"docs/paper/preregistro-v2-borrador.md; docs/paper/estimando-v1.json; make preregistro-check", dep:"—"},
         {id:"US-174", t:"La banda de equivalencia, desde el usuario y no desde el instrumento", sp:3, st:"idle",
          role:"Como equipo que va a afirmar que dos mecanismos son equivalentes, quiero que el margen salga de lo que le da igual a quien usa el mapa, no de lo que mi experimento alcanza a distinguir.",
          ac:["El margen es la menor diferencia PRÁCTICAMENTE RELEVANTE para un afectado nombrado, derivada de la tabla de pérdidas de US-172",
@@ -776,7 +783,7 @@
              "El preregistro cubre las DOS como una sola: el diagrama de fases hoy no está preregistrado y no tiene criterio inferencial ninguno",
              "Declara el CRITERIO ESPACIAL con el que se fija k —área mínima de bloque o colchón— y el SUELO DE SOPORTE por bloque del estimando. Las dos son grados de libertad que hoy nadie había preregistrado y que deciden la significancia",
              "Declara que la sensibilidad a k se publica entera, gane lo que gane, y que k no se revisa después de ver un contraste",
-             "Se declara EL ESTIMANDO y su población: inferencia condicional al conjunto de datos, con el parche como clúster y el alcance local reconocido; o inferencia entre regiones y campañas, con sitio-año como unidad y bancos genuinamente independientes. Hoy el diseño mezcla las dos y las trata como si fueran una",
+             "El estimando y su población vienen FIJADOS por US-173: inferencia condicional a cada banco, todas las parcelas elegibles de prueba incluida la no entrega, parcela como unidad, patch_id como clúster, punto de operación entero desde entrenamiento y validación, sin promedio entre bancos ni afirmación de transporte",
              "El margen de equivalencia procede de la MENOR DIFERENCIA PRÁCTICAMENTE RELEVANTE para un usuario del mapa, no del efecto mínimo detectable del experimento. Anclarlo en el MDE, como estaba, hace que la resolución del instrumento defina lo que cuenta como equivalente"],
          out:"docs/paper/preregistro-v2.md", dep:"US-172, US-173, US-174, US-175"},
         {id:"US-156", t:"El artículo del resultado nulo, escrito antes de correr", sp:5, st:"idle",
@@ -900,11 +907,19 @@
   document.getElementById("total-sp").textContent = grandTotal;
 
   var stories = EPICS.reduce(function(all,e){ return all.concat(e.us); }, []);
-  var doneStories = stories.filter(function(u){ return u.st === "ok"; });
+  var historicalStories = EPICS.filter(function(e){
+    return Number(e.id.replace("EPIC ", "")) <= 17;
+  }).reduce(function(all,e){ return all.concat(e.us); }, []);
+  var newStories = EPICS.filter(function(e){
+    return Number(e.id.replace("EPIC ", "")) >= 18;
+  }).reduce(function(all,e){ return all.concat(e.us); }, []);
+  var historicalDone = historicalStories.filter(function(u){ return u.st === "ok"; });
+  var newDone = newStories.filter(function(u){ return u.st === "ok"; });
   var retiredStories = stories.filter(function(u){ return u.st === "dead"; });
-  var pendingStories = stories.filter(function(u){ return u.st !== "ok" && u.st !== "dead"; });
+  var pendingStories = newStories.filter(function(u){ return u.st !== "ok" && u.st !== "dead"; });
   var pendingSp = pendingStories.reduce(function(total,u){ return total + u.sp; }, 0);
-  document.getElementById("progress-done").textContent = doneStories.length;
+  document.getElementById("progress-done-historical").textContent = historicalDone.length;
+  document.getElementById("progress-done-new").textContent = newDone.length;
   document.getElementById("progress-retired").textContent = retiredStories.length;
   document.getElementById("progress-pending").textContent = pendingStories.length;
   document.getElementById("progress-pending-sp").textContent = pendingSp + " SP";
