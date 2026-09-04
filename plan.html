@@ -16,8 +16,8 @@
   <div class="masthead">
     <p class="stamp"><a href="index.html" style="color:inherit;text-decoration:none">← Cuaderno AgroSatCopilot</a></p>
     <h1>Plan por épicas</h1>
-    <p class="lede">El trabajo del artículo MICAI 2027, desglosado en catorce épicas y ochenta y
-      cinco historias de usuario con sus criterios de aceptación, puntos de historia,
+    <p class="lede">El trabajo del artículo MICAI 2027, desglosado en quince épicas y ochenta y
+      nueve historias de usuario con sus criterios de aceptación, puntos de historia,
       dependencias y artefacto de salida.</p>
     <div class="callout" style="margin-top:22px">
       <p><b>Reencuadre del 3 de septiembre de 2026.</b> Cuatro revisores a ciegas auditaron el
@@ -28,6 +28,13 @@
       <p>No se parchea: se reencuadra. Las épicas <b>13 a 17</b> quedan como historia, con lo
         hecho y lo retirado marcados; las épicas <b>18 a 25</b> son el trabajo nuevo y se
         reescribieron enteras tras cinco auditorías más.</p>
+      <p><b>Auditoría externa, 3 de septiembre.</b> Después de ocho auditorías internas, un
+        revisor ajeno al proyecto encontró lo que ninguna había visto, incluida una función de
+        utilidad que prometía dejar elegir el precio de abstenerse y lo hacía imposible. Su veredicto
+        fue <b>no arrancar todavía</b>, y su causa raíz una sola: <b>el problema de decisión no tenía
+        una función de pérdida identificada</b>, y la cardinalidad ocupaba ese lugar sin
+        justificación. Por eso el plan se reordena: la <b>EPIC 27</b> va delante de todo y el camino
+        crítico empieza ahí.</p>
       <p><b>Sede única: MICAI 2027, de 16 a 18 páginas.</b> Sin artículo de revista en paralelo. Con
         ese tope la rejilla completa cabe, así que no hay que partir el trabajo — que era la
         alternativa sobre la mesa. Lo que no cabe es la autopsia de nuestros propios errores como
@@ -411,7 +418,44 @@
       ]
     },
     {
-      id:"EPIC 19", name:"El estimando común, y la potencia para usarlo", status:"idle",
+      id:"EPIC 27", name:"Identificar la pérdida, el estimando y la población", status:"idle",
+      goal:"La auditoría externa dio una sola causa raíz: **el problema de decisión no tiene una función de pérdida identificada, y la cardinalidad estaba ocupando ese lugar sin justificación**. Mientras eso siga así, comparar mecanismos es comparar en una moneda que nadie ha acuñado. Esta épica va delante de la 19 y bloquea a todas las demás. No consume cómputo: es la parte del trabajo que decide qué significan los números que vengan después.",
+      us:[
+        {id:"US-172", t:"La tabla de pérdidas, por acción, resultado y afectado", sp:8, st:"idle",
+         role:"Como quien despliega un mapa, mis cuatro errores no cuestan lo mismo: una etiqueta falsa que actúo, un silencio que me deja sin dato, un conjunto ambiguo que me obliga a decidir, y una respuesta gruesa que es cierta pero no me sirve. Sin ese precio, comparar mecanismos no significa nada.",
+         ac:["Tabla L(y, acción, afectado) con las cuatro clases de error nombradas, no una función de la cardinalidad: dos conjuntos del mismo tamaño pueden costar cosas muy distintas",
+             "El precio de no responder se SUMA, no se multiplica por la contención. La primera implementación lo multiplicaba y por eso no se podía elegir",
+             "Cada precio justificado con una fuente citable de su caso de uso, o declarado explícitamente como supuesto del artículo",
+             "Al menos dos afectados distintos con precios distintos: quien controla subvenciones y quien asesora al productor no pierden lo mismo cuando el mapa calla",
+             "Declarada en el preregistro antes de calcular nada",
+             "La cardinalidad sobrevive como descriptor secundario, nunca como moneda"],
+         out:"docs/paper/perdidas.md; ml/eval/decision_cost.py", dep:"—"},
+        {id:"US-173", t:"El estimando y su población, declarados", sp:5, st:"idle",
+         role:"Como revisor, quiero saber sobre qué población generaliza cada intervalo, porque hoy el diseño mezcla dos preguntas distintas y las trata como una.",
+         ac:["Se elige y se declara: inferencia CONDICIONAL al conjunto de datos, con el parche como clúster y el alcance local reconocido; o inferencia ENTRE regiones y campañas, con sitio-año como unidad",
+             "Si es la primera, el artículo NO afirma transporte, y lo dice en el título o en el alcance",
+             "Si es la segunda, hacen falta dominios genuinamente independientes, y tres bancos no son cuarenta réplicas",
+             "Medido y publicado: los folds comparten entrenamiento con Jaccard medio de 0,60 y máximo de 0,80, así que partir el mismo territorio más fino no crea réplicas nuevas",
+             "El barrido de k deja de presentarse como palanca de potencia y pasa a ser el aviso de que la granularidad de la partición decide la significancia"],
+         out:"docs/paper/preregistro-v2.md", dep:"—"},
+        {id:"US-174", t:"La banda de equivalencia, desde el usuario y no desde el instrumento", sp:3, st:"idle",
+         role:"Como equipo que va a afirmar que dos mecanismos son equivalentes, quiero que el margen salga de lo que le da igual a quien usa el mapa, no de lo que mi experimento alcanza a distinguir.",
+         ac:["El margen es la menor diferencia PRÁCTICAMENTE RELEVANTE para un afectado nombrado, derivada de la tabla de pérdidas de US-172",
+             "Prohibido anclarlo en el efecto mínimo detectable: si se ancla ahí, es la resolución del instrumento la que define qué cuenta como equivalente",
+             "Si el margen práctico resulta más estrecho que el MDE, se declara que el diseño NO puede demostrar equivalencia, y eso es un resultado",
+             "Prueba de equivalencia además de la de diferencia: un intervalo que incluye el cero no dice que sean iguales"],
+         out:"docs/paper/preregistro-v2.md", dep:"US-172"},
+        {id:"US-175", t:"La geometría del espacio de costes", sp:3, st:"idle",
+         role:"Como lector de la figura central, quiero saber qué sección del espacio estoy viendo, porque cuatro costes menos una escala dejan tres razones y un mapa plano es una rebanada de algo de más dimensión.",
+         ac:["Corregido: son TRES razones libres, no dos. Estaba escrito dos sin justificación",
+             "O se declara y se justifica una segunda restricción sustantiva —una equivalencia concreta entre dos pérdidas— o el mapa se presenta como símplex de tres",
+             "En cualquiera de los dos casos se publica la sensibilidad FUERA de la sección elegida",
+             "La restricción se declara antes del barrido, no después de ver qué paneles quedan bonitos"],
+         out:"ml/eval/decision_cost.py", dep:"US-172"}
+      ]
+    },
+    {
+      id:"EPIC 19", name:"El protocolo, sobre la pérdida ya identificada", status:"idle",
       goal:"Dos cosas que el plan anterior no tenía y sin las cuales nada de lo demás significa nada. Primero: «a igual cobertura» NO está definido para dos de los cuatro mecanismos, porque un conjunto conforme y una clase gruesa se entregan en el 100 % de las parcelas siempre. Segundo: al componer las dos correcciones de protocolo el contraste pasa de p=0,005 a p=0,130, así que la reparación no arregla el hallazgo, lo disuelve, y hay que saberlo ANTES de diseñar sobre él.",
       us:[
         {id:"US-160", t:"Los cuatro mecanismos como predictores con valores de conjunto", sp:8, st:"idle",
@@ -424,7 +468,7 @@
              "MEDIDO, y la respuesta es que NO: con la utilidad que solo premia el singleton correcto, el estimando se reduce al RECALL macro, no al F1 macro. El marco nuevo no es una reparametrización del anterior, así que las cifras viejas quedan en otra escala y se dice",
              "Y se demuestra la propiedad que el estimando anterior NO tenía: abstenerse nunca puede subir la utilidad, porque al puntuar sobre la población completa una parcela no entregada cuenta como fallo en vez de desaparecer del denominador de su clase. Ese sesgo estructural a favor del brazo que abstiene queda eliminado, con test",
              "Se cita Ha 1997 como el marco del que los cuatro mecanismos son casos particulares. Su implementación como línea base pertenece a US-132, no a esta historia"],
-         out:"ml/eval/set_valued.py", dep:"—"},
+         out:"ml/eval/set_valued.py", dep:"US-172, US-173"},
         {id:"US-124", t:"Denominador común fijado antes de la entrega", sp:5, st:"idle",
          role:"Como autor que denuncia comparar sobre denominadores distintos, quiero no hacerlo yo, porque el estimando promedia sobre las clases presentes en la entrega de cada brazo y esos conjuntos difieren.",
          ac:["El conjunto evaluado se fija una vez por bloque y contraste, sobre las clases presentes en el bloque completo",
@@ -467,7 +511,7 @@
              "Se publica la curva ENTERA de sensibilidad, no el k elegido. Es un resultado que no depende de qué salga, que es más de lo que puede decir cualquier delta del artículo",
              "CORRECCIÓN EXTERNA, y es la que más pesa: partir el mismo territorio más fino NO crea réplicas independientes. Los folds comparten entrenamiento y calibración, con Jaccard medio de 0,60 entre sus conjuntos de entrenamiento y máximo de 0,80. La ganancia de potencia del barrido viene de cambiar la unidad, no de observar territorio nuevo",
              "El barrido de k NO se presenta como aumento de potencia. Se presenta como lo que es: la demostración de que la granularidad de la partición decide la significancia, que es un aviso metodológico y no una palanca"],
-         out:"reports/paper_micai/bloques/", dep:"US-125"},
+         out:"reports/paper_micai/bloques/", dep:"US-125, US-173"},
         {id:"US-127", t:"Los contrastes que faltaban", sp:5, st:"idle",
          role:"Como lector de la introducción, quiero que los criterios que dice ordenar con intervalos tengan intervalos, porque hoy solo existe uno de los pares.",
          ac:["Contraste pareado entre los dos criterios de retirada, con coste igualado en el eje común",
@@ -562,7 +606,7 @@
              "Declarada en el preregistro antes del primer barrido",
              "Test en negativo: una pérdida mal normalizada tiene que hacer fallar el gate",
              "CORREGIDO: cuatro costes menos una escala común dejan TRES razones libres, no dos. Yo había escrito dos sin justificarlo. O se declara y se justifica una segunda restricción sustantiva —una equivalencia concreta entre dos pérdidas—, o el mapa se presenta como un símplex de tres, y en cualquier caso se publica la sensibilidad fuera de esa sección"],
-         out:"ml/eval/decision_cost.py", dep:"US-160, US-140, US-129"},
+         out:"ml/eval/decision_cost.py", dep:"US-172, US-175, US-140, US-129"},
         {id:"US-152", t:"Diagrama de fases: qué mecanismo gana en qué región", sp:8, st:"idle",
          role:"Como revisor, quiero una figura que me diga en qué región de costes está mi propio producto y qué debería usar, porque eso lo recuerdo un año después y una tabla de F1 no.",
          ac:["Barrido del espacio de costes con los cuatro mecanismos sobre todos los bancos",
@@ -703,7 +747,7 @@
              "Declara que la sensibilidad a k se publica entera, gane lo que gane, y que k no se revisa después de ver un contraste",
              "Se declara EL ESTIMANDO y su población: inferencia condicional al conjunto de datos, con el parche como clúster y el alcance local reconocido; o inferencia entre regiones y campañas, con sitio-año como unidad y bancos genuinamente independientes. Hoy el diseño mezcla las dos y las trata como si fueran una",
              "El margen de equivalencia procede de la MENOR DIFERENCIA PRÁCTICAMENTE RELEVANTE para un usuario del mapa, no del efecto mínimo detectable del experimento. Anclarlo en el MDE, como estaba, hace que la resolución del instrumento defina lo que cuenta como equivalente"],
-         out:"docs/paper/preregistro-v2.md", dep:"—"},
+         out:"docs/paper/preregistro-v2.md", dep:"US-172, US-173, US-174, US-175"},
         {id:"US-156", t:"El artículo del resultado nulo, escrito antes de correr", sp:5, st:"idle",
          role:"Como equipo al que ya se le fue de las manos un reporte selectivo, quiero el artículo alternativo escrito antes de ver el resultado, porque un plan sin salida escrita para el nulo no es neutral: tiene una salida implícita.",
          ac:["Banda de equivalencia declarada antes de correr, y prueba de equivalencia además de la de diferencia: un intervalo que incluye el cero no dice que sean iguales, un TOST sí",

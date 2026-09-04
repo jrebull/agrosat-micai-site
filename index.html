@@ -431,6 +431,51 @@
     <div class="ledger-row"><span class="name">Conocimiento nuevo, antes y después</span><span class="note">del total planificado</span><span class="num hi">18 % → 32 %</span></div>
   </div>
 
+  <h2>Lo que encontró una auditoría externa que ocho internas no vieron</h2>
+  <p>El plan se entregó a un revisor ajeno al proyecto, con el encargo de responder a ciegas antes
+    de leer una sola de nuestras conclusiones. Su veredicto fue <strong>no arrancar todavía</strong>,
+    y tenía razón.</p>
+
+  <div class="finding blocker">
+    <div class="top"><span class="chip stop">Fatal</span><h3>La utilidad no podía cobrar la abstención</h3></div>
+    <p>El módulo que escribimos multiplicaba la utilidad por la contención, así que el conjunto vacío
+      caía a cero pasara lo que pasara y el precio de no responder <strong>no se podía elegir</strong>
+      — justo lo que el docstring prometía como «la decisión ética del artículo». Comprobado con
+      precios de 0, 10 y un millón: la cifra no se movía. Y nuestro test no podía detectarlo porque
+      usaba el valor cero, <strong>el único que no distingue</strong>. Es el mismo modo de fallo que
+      el gate de anonimato ciego a sus propios acentos, dos veces en un día.</p>
+  </div>
+
+  <div class="finding blocker">
+    <div class="top"><span class="chip stop">Fatal</span><h3>La cardinalidad no es el coste</h3></div>
+    <p>Dos conjuntos del mismo tamaño reciben el mismo precio aunque uno sea agronómicamente inútil,
+      y el silencio cuesta cero. <strong>El problema de decisión no tenía función de pérdida
+      identificada</strong> y la cardinalidad ocupaba ese lugar sin justificación. Es la causa raíz
+      del veredicto, y por eso hay una épica nueva delante de todas las demás.</p>
+  </div>
+
+  <div class="finding blocker">
+    <div class="top"><span class="chip stop">Fatal</span><h3>Más bloques no son más réplicas</h3></div>
+    <p>Partir el mismo territorio más fino no crea observaciones independientes: los folds comparten
+      entrenamiento con <strong>Jaccard medio de 0,60</strong>. La ganancia de potencia del barrido
+      venía de cambiar la unidad, no de observar territorio nuevo. Y falta declarar el estimando,
+      porque el diseño mezclaba inferencia condicional al conjunto con inferencia entre regiones.</p>
+  </div>
+
+  <div class="finding blocker">
+    <div class="top"><span class="chip stop">Fatal</span><h3>Dos maneras de escoger el resultado antes de medirlo</h3></div>
+    <p>Elegir la variable primaria «donde el diseño tenga potencia» es escoger el resultado antes de
+      verlo, y estaba escrito en nuestro plan. Y la banda de equivalencia estaba anclada en el efecto
+      mínimo detectable: así es <strong>el instrumento</strong> el que define qué cuenta como
+      equivalente, cuando debería salir de la menor diferencia que le importa a quien usa el mapa.</p>
+  </div>
+
+  <div class="callout">
+    <p><b>Y una cifra cruzada, la tercera de la sesión.</b> Atribuíamos al sistema desplegado una
+      cobertura de 0,9054, y esa cifra pertenece a la curva de <em>otro</em> modelo. La real es
+      <strong>14 688 de 16 640, o sea 0,88269</strong>.</p>
+  </div>
+
   <h2>El campo de tiro</h2>
   <p>Un revisor estricto de MICAI no va a discutir el mapeo de cultivos: va a buscar el punto donde
     el resultado se cae. Diez ataques inventariados, cada uno convertido en un experimento que se
