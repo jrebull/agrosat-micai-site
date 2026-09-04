@@ -144,11 +144,13 @@
   <p class="lede">El borrador de quince páginas sigue retirado. Ocho rondas externas cerraron
     defectos de evaluación, custodia y redacción. US-173 cerró el primer contrato científico del
     estudio reencuadrado: estimando y población ya están fijados; quedan pérdida, margen práctico y
-    criterio principal antes de firmar el preregistro. US-121 y US-118 están ahora en curso.</p>
+    criterio principal antes de firmar el preregistro. US-121 y US-118 están ahora en curso. El
+    arnés OOF ya comprueba la longitud temporal realmente usada y su gate corre en CI; la población
+    elegible sigue siendo exactamente 16 640 parcelas.</p>
 
   <div class="callout">
     <p><b>Estado de la conclusión.</b> H1-2026 está <strong>pendiente</strong>: ni «se refutó» ni
-      «no replicó». Las cuatro cifras que sostenían ese veredicto están invalidadas y trece
+      «no replicó». Las cuatro cifras que sostenían ese veredicto están invalidadas y veinticinco
       artefactos permanecen <code>OBSOLETO</code>. Lo único que no depende de esas cifras es que la
       regla de entrega cambió.</p>
   </div>
@@ -165,7 +167,7 @@
 
   <h2>Registro de custodia</h2>
   <div class="ledger">
-    <div class="ledger-row"><span class="name">Artefactos verificados con MD5</span><span class="note">13 son OBSOLETO y no citables</span><span class="num">84</span></div>
+    <div class="ledger-row"><span class="name">Artefactos verificados con MD5</span><span class="note">25 son OBSOLETO y no citables</span><span class="num">91</span></div>
     <div class="ledger-row"><span class="name">Cifras declaradas sin artefacto</span><span class="note">no se imprimen</span><span class="num">8</span></div>
     <div class="ledger-row"><span class="name">Referencias verificadas por API</span><span class="note">cero fuera de OK</span><span class="num">44</span></div>
     <div class="ledger-row"><span class="name">Parcelas puntuadas, los dos bancos</span><span class="note">16 640 + 60 000</span><span class="num">76 640</span></div>
@@ -173,27 +175,29 @@
     <div class="ledger-row"><span class="name">Figuras y tablas del artículo</span><span class="note">todas re-derivables</span><span class="num">6 + 4</span></div>
   </div>
 
-  <h2>Los diez modelos, bajo un solo protocolo</h2>
-  <p>Medidos sobre las mismas parcelas, con el mismo arnés y la misma métrica. Es la primera
-    vez que el proyecto los compara así.</p>
+  <h2>Tabla histórica de diez modelos, ya obsoleta</h2>
+  <p>Se conserva para mostrar qué produjo el arnés anterior, no para comparar modelos ni decidir
+    el panel. Tres miembros dejaron de ser elegibles y <code>tsvit-pheno-fullm</code> fue puntuado
+    con una longitud temporal incorrecta.</p>
   <div class="scroll">
     <table>
       <thead><tr><th>Modelo</th><th class="n">F1-macro</th><th class="n">Exactitud</th></tr></thead>
       <tbody id="members-tbody"></tbody>
     </table>
   </div>
-  <p>El mejor miembro individual de esta tabla es <code>tsvit-pheno</code>, y ninguna de las cuatro
-    reglas de combinación lo mejora bajo un protocolo libre de fuga.</p>
+  <p>La conclusión que acompañaba a esta tabla —que <code>tsvit-pheno</code> era el mejor miembro y
+    ninguna combinación lo mejoraba— cayó con el arreglo del productor. No se traslada al estudio
+    nuevo.</p>
   <p><b>Retirado el 3 de septiembre.</b> Aquí decíamos que «U-TAE rinde 0,19 donde la literatura le
     da alrededor de 0,63». La comparación es <strong>inválida</strong>: 0,19 es F1-macro por parcela
     y 0,63 es mIoU por píxel, que son métricas y niveles distintos. Lo señaló el coautor. Por qué
     ese checkpoint rinde tan por debajo de su propia validación es una pregunta abierta, y se
     responde midiendo mIoU contra mIoU, no citando la literatura de memoria.</p>
   <p><b>Y una advertencia sobre toda esta tabla</b>: <code>tsvit-pheno-fullm</code> aparece con
-    0,2552 y esa cifra es un <strong>bug</strong> del volcado, no un resultado. Corregido vale
-    0,7883, con lo que sería el mejor miembro y no el quinto. El arreglo no está en este
-    repositorio, así que la tabla se publica con el defecto señalado en vez de con la cifra
-    corregida que no podemos re-derivar aquí.</p>
+    0,2552 y esa cifra es un <strong>bug</strong> del volcado, no un resultado. El productor construía
+    el modelo con T=37 y alimentaba al dataset con T=10. El arreglo ya está versionado y la
+    re-materialización correcta da 0,7883; eso obliga a mantener fullm en el panel elegible, pero
+    no lo convierte en ganador del artículo porque esa cifra usa las etiquetas de evaluación.</p>
 
   <h2>Los dos regímenes de la cifra campeona</h2>
   <p>El 0,7486 que el proyecto publicó no es un held-out: el meta-modelo se reentrena sobre las
@@ -960,8 +964,8 @@
   </div>
 
   <div class="finding">
-    <div class="top"><span class="chip dead">13 obsoletos</span><h3>Regenerar, no reinterpretar</h3></div>
-    <p>Los trece artefactos marcados <code>OBSOLETO</code> siguen sellados como registro, pero no son
+    <div class="top"><span class="chip dead">25 obsoletos</span><h3>Regenerar, no reinterpretar</h3></div>
+    <p>Los veinticinco artefactos marcados <code>OBSOLETO</code> siguen sellados como registro, pero no son
       citables. Se regeneran solo después de cerrar US-172 a US-175 y firmar el preregistro; ninguna
       cifra antigua se traslada al artículo por continuidad narrativa.</p>
   </div>
@@ -990,6 +994,14 @@
       NaN; la custodia verifica el blob histórico; y <code>OBSOLETO</code> impide publicar sus cifras,
       también en documentos nuevos y en el cuaderno. Las revisiones recibidas solo se exceptúan por
       una lista cerrada con MD5.</p>
+  </div>
+
+  <div class="finding pass">
+    <div class="top"><span class="chip ok">US-118 parcial</span><h3>El inventario OOF ya protege también CI</h3></div>
+    <p>El gate distingue artefactos canónicos, históricos sin procedencia y excluidos; verifica
+      bytes o punteros DVC y exige que la longitud temporal del dataset coincida con la del
+      checkpoint. Al activarse detectó un volcado no inventariado. La historia sigue en curso
+      porque la tabla inferencial y las 25 filas obsoletas esperan pérdida, panel y preregistro.</p>
   </div>
 </section>
 
@@ -1134,12 +1146,12 @@
   }
   var pending = [
     ["01","US-121 · Firmar alcance, modelo y destino","ADR-014 está escrito y cumple sus cinco criterios; permanece abierto hasta las dos firmas o la fecha de corte del 18 de septiembre.","wip","En curso"],
-    ["02","US-118 · Endurecer el arnés OOF","FullM está reproducido y XGB remat-v1 tiene identidad, informe y blob propios; FarSLIP e Italia quedan fuera de MICAI. El gate ya puede entrar en CI. Se regenera solo la base de población elegible; las curvas esperan la pérdida de US-172.","wip","En curso"],
+    ["02","US-118 · Endurecer el arnés OOF","El productor ya acopla T=37 en checkpoint y dataset, el inventario corre en CI y la población independiente queda en 16 640 parcelas. Sigue abierta hasta que la tabla inferencial se regenere después de fijar pérdida, panel y preregistro.","wip","En curso"],
     ["03","US-141 y US-142 · Trabajo relacionado y bibliografía","Verificar cada precedente desde su texto, delimitar la contribución y publicar referencias localizables.","idle","Sin resultados"],
     ["04","US-172 · Tabla de pérdidas","Completar la moneda común por acción, resultado y afectado; hasta entonces no se comparan mecanismos.","stop","Camino crítico"],
     ["05","US-174 y US-175 · Margen y geometría","Derivar el margen práctico desde la tabla de pérdidas y preregistrar el símplex completo o una sección con justificación sustantiva.","stop","Depende de US-172"],
     ["06","US-140 · Firmar el preregistro","Congelar pérdida, estimando, población, margen, multiplicidad y selección de predictores antes del primer resultado nuevo.","stop","Depende de 172–175"],
-    ["07","EPIC 19 · Reparar y regenerar","Implementar MDE no central, multiplicidad de toda la superficie y selección separada; después regenerar los trece artefactos obsoletos.","stop","Tras la firma"],
+    ["07","EPIC 19 · Reparar y regenerar","Implementar MDE no central, multiplicidad de toda la superficie y selección separada; después regenerar una sola vez los veinticinco artefactos obsoletos.","stop","Tras la firma"],
     ["08","Decisión de continuidad","Contrastar los artefactos regenerados con la afirmación preregistrada y decidir artículo, reducción de alcance o cierre sin mover el criterio.","stop","Go / no-go"]
   ];
   var pe = document.getElementById("pending");

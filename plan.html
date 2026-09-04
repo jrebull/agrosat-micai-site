@@ -50,7 +50,9 @@
         reencuadrado</b>: la inferencia será condicional a cada banco, con la parcela como unidad,
         <code>patch_id</code> como clúster y sin afirmar transporte. Quedan tres parámetros antes
         de firmar el preregistro: pérdida, margen práctico y criterio principal. El camino crítico
-        continúa en <b>US-172</b>; en paralelo, <b>US-121 y US-118 están en curso</b>.</p>
+        continúa en <b>US-172</b>; en paralelo, <b>US-121 y US-118 están en curso</b>. El arnés OOF
+        ya verifica la longitud temporal efectiva y su gate corre en CI, pero <b>25 artefactos
+        siguen obsoletos</b> y no se regeneran antes de fijar la pérdida y el panel.</p>
       <p><b>Sede única: MICAI 2027, hipótesis de planificación de 20 páginas</b> — el tope que
         permitía la edición anterior, <b>a reverificar cuando salga la convocatoria</b>; si baja, el
         recorte sale de resultados hacia el apéndice y nunca de robustez. Sin artículo de revista en
@@ -433,15 +435,15 @@
              "Chequeo que falla si existe un parquet OOF sin entrada en el manifiesto",
              "HECHO: make oof-manifest-check detectó los cinco parquets huérfanos; el inventario global los clasifica y el gate queda verde sin inventarles procedencia",
              "El gate compara por nombre de fichero porque el manifiesto heredado guarda rutas absolutas C:\\Users\\arthu\\...; comparar la ruta completa daría un verde vacío fuera de aquella máquina",
-             "CI AUTORIZADO: el gate ya valida bytes cuando el Parquet está presente y md5/tamaño contra el puntero .dvc en un checkout limpio. Los tests prueban los dos caminos y la ausencia de ambos. Se incorpora ahora a quality-gates",
+             "CI — HECHO: oof-manifest-check forma parte de quality-gates. Valida bytes cuando el Parquet está presente y md5/tamaño contra el puntero .dvc en un checkout limpio. El primer día detectó un volcado denso aportado por otro PR que no estaba inventariado; los tests prueban ambos caminos y la ausencia de ambos",
              "HALLAZGO AL PREPARAR EL RE-VOLCADO: los cinco huérfanos pertenecen a tres productores distintos. manifest.json describe una corrida densa de seis modelos y no debe fingirse como manifiesto de FarSLIP y XGBoost. Además, run_us041_ea pasa un registro de un solo modelo a dump_oof, que sobrescribe manifest.json: el re-volcado debe escribir en staging y fusionarse de forma explícita, nunca ejecutarse in-place",
-             "FULLM — CERRADO: el re-volcado desde tsvit-pheno-fullm-v1 coincide en 28 531 de 28 532 argmax, no en todos, y la diferencia media es 9e-06. Se conservan los bytes históricos y su sello; canonical significa reproducido, no sustituido. El informe con ambos hashes y métricas está sellado. No se sube el denso temporal de 253 MB porque ningún consumidor lo usa",
+             "FULLM — CERRADO TRAS CORREGIR EL PRODUCTOR: la primera reproducción coincidía en 28 531 de 28 532 porque repetía el mismo defecto: el checkpoint esperaba T=37 y el dataset recibía T=10. Tras el fix, el manifiesto registra n_timesteps_checkpoint=37 y n_timesteps_dataset=37, el verificador exige su igualdad y el re-volcado corregido se reproduce exactamente. Una reproducción de un productor defectuoso solo acredita que el defecto es reproducible",
              "XGB — CERRADO COMO ARTEFACTO, ABIERTO COMO DECISIÓN DE PAPER: xgb-alphaearth-remat-v1 tiene identidad propia, informe sellado y un único blob subido por DVC. Cubre 16 640 parcelas, coincide en 94,54 % de los argmax históricos y en 54,74 % bajo confianza 0,5. Nunca sustituye ni se presenta como reproducción del desplegado; el histórico sigue legacy_unverified. El patrón no demuestra que la causa sea semilla u orden porque su configuración histórica no está verificada",
-             "POBLACIÓN — REGENERACIÓN DE BASE AUTORIZADA: se sellan las parcelas elegibles del fold 5 con independencia de los predictores. Los 496 patch_id deben salir de metadata.geojson, propiedad Fold=5, y no de un OOF disponible. La cobertura por miembro se persiste como artefacto, no solo como log. La ausencia se conserva como no entrega; su valoración espera la pérdida de US-172. Se regeneran fase1 y su ledger, pero NO las curvas ni los contrastes todavía; todos los consumidores de las antiguas 16 640 parcelas pasan a OBSOLETO",
+             "POBLACIÓN — HECHO, Y NO CRECIÓ: metadata.geojson produce exactamente las mismas 16 640 parcelas elegibles del fold 5 con etiqueta semantic18 válida. Los 11 892 registros adicionales de cada volcado denso carecen de etiqueta válida y no pertenecen al estimando. Las etiquetas y centroides conservaron sus bytes; la cobertura de los ocho miembros canónicos es 1,0 y quedó sellada. La ausencia futura se conserva como no entrega; su valoración espera la pérdida de US-172",
              "El XGB histórico no se vuelve canónico por añadir una fila: permanece legacy_unverified y fuera del análisis inferencial. El inventario global distingue presencia, procedencia y aptitud para consumo",
              "DECISIÓN DE ALCANCE: farslip-ft18, farslip-zeroshot y xgb-alphaearth-italia pasan a excluded para MICAI 2027, sin borrarse. Su eventual reproducción pertenece a higiene del repositorio y no bloquea el artículo",
              "train_folds, val_folds, n_timesteps y md5 del checkpoint en los parámetros de MLflow",
-             "tsvit-pheno-fullm re-volcado. Tras el re-volcado, o su F1 por parcela es consistente con su métrica densa dentro del umbral de 0,15 de US-119, o la discrepancia residual queda documentada con su causa. La tabla de miembros y el ranking que consume US-139 se recomputan y se sellan CON EL VALOR QUE SALGA, sea cual sea"],
+             "PARCIAL: el arnés y su custodia están cerrados, pero la tabla que consume US-139 todavía no es un artefacto inferencial vigente. El recálculo diagnóstico da 0,7883 a tsvit-pheno-fullm frente a 0,7367 a tsvit-pheno; no selecciona un ganador porque usa evaluación. Las 25 filas OBSOLETO se regeneran una sola vez después de fijar pérdida, panel y preregistro"],
          out:"PR en el fork; ml/eval/oof/; docs/model_cards/", dep:"—"},
         {id:"US-158", t:"Recuperar lo recuperable (deuda del repositorio, NO del artículo)", sp:5, st:"idle",
          role:"Como equipo que dio por perdidos tres checkpoints, quiero saber cuál se regenera con receta verificable, porque producir uno que se PARECE al original no restaura la reproducibilidad: la simula.",
@@ -743,12 +745,13 @@
              "Partición espacial propia del banco, no construida por nosotros",
              "Se declara además que los dos bancos franceses comparten el sistema de etiquetado y no solo el país, y se comprueba si sus regiones solapan"],
          out:"reports/paper_micai/externa/", dep:"US-129"},
-        {id:"US-139", t:"Varios predictores por banco, incluido el desplegado", sp:8, st:"idle",
+        {id:"US-139", t:"Varios predictores por banco, con el desplegado como referencia", sp:8, st:"idle",
          role:"Como revisor, quiero saber si la conclusión es del desbalance o de un modelo, y quiero ver el producto que de verdad se desplegó.",
-         ac:["Al menos tres predictores por banco, de familias distintas, aplicados también a los bancos nuevos",
-             "El campeón desplegado entre ellos, con su cifra",
+         ac:["EL DESPLEGADO Y SU RECONSTRUCCIÓN NO SON EL MISMO PREDICTOR, y el panel no puede fingir que lo son. El panel inferencial usa xgb-alphaearth-remat-v1, reconstrucción reproducible con identidad propia y procedencia sellada. El componente histórico desplegado permanece legacy_unverified y entra SOLO como REFERENCIA DESCRIPTIVA: se reporta su acuerdo global de 0,945433 con la reconstrucción y la divergencia concentrada en baja confianza —0,5474 por debajo de 0,5 frente a 0,9999 por encima de 0,9— y no se usa para inferencia",
+             "Al menos tres predictores por banco, de familias distintas, aplicados también a los bancos nuevos",
+             "NO se declara un campeón con las etiquetas de evaluación. El recálculo diagnóstico sitúa tsvit-pheno-fullm en 0,7883 frente a 0,7367 de tsvit-pheno, por lo que fullm debe permanecer elegible; ese orden no decide el panel ni selecciona el predictor del artículo",
              "La lista de predictores se fija en el preregistro, no se elige después",
-             "El ranking se recomputa y se sella tras el re-volcado; si un miembro no se recupera, se excluye del universo de selección y se declara",
+             "La tabla descriptiva se recomputa y se sella tras el re-volcado. Las contribuciones históricas de FarSLIP, +0,0047 y +0,0009, proceden de artefactos OBSOLETO y miembros excluidos: se conservan como diagnóstico histórico, no justifican la exclusión ni entran a inferencia",
              "La selección de predictores se hace en datos separados: hoy se hacía con las mismas etiquetas de evaluación"],
          out:"reports/paper_micai/", dep:"US-119, US-129, US-136"}
       ]
