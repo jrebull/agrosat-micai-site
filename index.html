@@ -375,13 +375,25 @@
       sigue sin caber es la autopsia de nuestros propios errores como primera contribución.</p>
     <p>Cinco auditorías después, el plan se reescribió entero. La más incómoda devolvió una
       aritmética simple: de 150 puntos planificados, solo 27 producían conocimiento nuevo. El 18 %.
-      Ahora son <b>76 de 191, el 40 %</b>.</p>
+      <b>El reparto actual se lee de <code>make plan-check</code></b> —hoy quince épicas, ochenta y
+      nueve historias, 376 puntos y 255 pendientes— y no se transcribe aquí: las dos veces que lo
+      transcribimos quedaron dos porcentajes incompatibles en esta misma página.</p>
   </div>
 
-  <h2>La afirmación que el artículo puede sostener</h2>
+  <h2>La afirmación a la que aspira el artículo, y por qué hoy no se sostiene</h2>
   <p class="quote-title">A igual coste, las cuatro maneras de prometer menos no se distinguen en
     calidad y se distinguen muchísimo en quién paga<br>
     <span>Y hay una región de costes donde cada una es la correcta</span></p>
+  <div class="callout">
+    <p><b>Esto es una hipótesis, no un resultado, y este encabezado decía lo contrario.</b> Faltan
+      tres cosas y ninguna es menor. <b>«A igual coste» no significa nada todavía</b>, porque no hay
+      función de pérdida: la cardinalidad estuvo ocupando ese lugar sin justificación.
+      <b>«No se distinguen» no se deduce de no haber encontrado diferencia</b> — ausencia de
+      evidencia no es equivalencia, y hace falta una prueba de equivalencia contra una banda que
+      salga del usuario y no del instrumento. Y <b>«se distinguen en quién paga» tampoco está
+      medido</b>: ninguna de las cuatro medidas de disparidad declaradas tiene potencia con cinco
+      bloques.</p>
+  </div>
 
   <div class="finding blocker">
     <div class="top"><span class="chip stop">Ya no es sostenible</span><h3>«A igual cobertura gana la abstención»</h3></div>
@@ -441,7 +453,7 @@
   <h2>Lo que encontró una auditoría externa que ocho internas no vieron</h2>
   <p>El plan se entregó a un revisor ajeno al proyecto, con el encargo de responder a ciegas antes
     de leer una sola de nuestras conclusiones. Su veredicto fue <strong>no arrancar todavía</strong>,
-    y tenía razón. <b>Van cuatro rondas</b>, y cada una verificó a la anterior en el código en vez de
+    y tenía razón. <b>Van cinco rondas</b>, y cada una verificó a la anterior en el código en vez de
     creerse nuestra página de respuestas.</p>
 
   <div class="finding blocker">
@@ -692,6 +704,55 @@
       que las citaban están tachados arriba, con el texto original a la vista.</p>
   </div>
 
+  <h2>La quinta ronda: reparábamos el caso, no la clase de casos</h2>
+  <p>De las tres reparaciones de la ronda anterior, <b>dos tenían el mismo tipo de agujero que
+    arreglaban</b>. Eso ya no es mala suerte. Arreglábamos el ejemplo que nos habían enseñado y no
+    la <em>clase</em> a la que pertenecía, así que el defecto sobrevivía a un metro de distancia.</p>
+
+  <div class="finding blocker">
+    <div class="top"><span class="chip stop">La misma clase</span><h3>«Tres bloques» significaba tres posiciones de una lista</h3></div>
+    <p>Pusimos un mínimo de tres bloques para no publicar intervalos que el diseño no sostiene. El
+      auditor pasó <b>tres puntos que decían ser todos el bloque 0</b> y obtuvo n = 3, intervalo y
+      p = 0,118. El control contaba <em>elementos</em>, no bloques — que es exactamente el error que
+      el mínimo existía para impedir, un nivel más abajo.</p>
+    <p>Ahora la función rechaza bloques repetidos y brazos que no estén pareados por
+      <code>(k, bloque)</code>. Un intervalo pareado sobre brazos no pareados no es pareado.</p>
+  </div>
+
+  <div class="finding blocker">
+    <div class="top"><span class="chip stop">La misma clase</span><h3>El delta publicado no era el centro de su propio intervalo</h3></div>
+    <p>Hicimos que lo indefinido fuera NaN en vez de un cero con pinta de medida. Pero el
+      <b>delta</b> seguía restando dos medias calculadas sobre poblaciones distintas —cada brazo con
+      los bloques donde él estaba definido— mientras el intervalo usaba solo los pares completos. En
+      el caso del auditor: delta 0,175 publicado, intervalo centrado en 0,2333.</p>
+    <p>Y nuestro test no podía verlo porque su brazo derecho valía siempre 0,5, y con un brazo
+      constante las dos fórmulas coinciden. <b>El test nuevo exige explícitamente que el caso
+      distinga las dos fórmulas</b> antes de comprobar nada.</p>
+  </div>
+
+  <div class="finding">
+    <div class="top"><span class="chip wip">Ejecutable</span><h3>«No citable» era un aviso, y los avisos no impiden nada</h3></div>
+    <p>Marcamos trece artefactos como <code>OBSOLETO</code> y el gate los contaba, imprimía un aviso
+      y devolvía éxito. Mientras tanto, <b>ocho documentos activos</b> seguían citando esas cifras
+      como vigentes. Ya nos había pasado con el aviso en la cabecera del ledger: prosa contra estado
+      ejecutable, gana el estado.</p>
+    <p>Existe ahora <code>make paper-obsoletos-check</code>, un gate de publicación: un documento
+      que cite cifras obsoletas lleva marca de cuarentena o <b>falla</b>, y uno que nombre una ruta
+      obsoleta sin estar declarado también. Los ocho la llevan.</p>
+  </div>
+
+  <div class="finding blocker">
+    <div class="top"><span class="chip stop">La salida de emergencia</span><h3>El único bloqueante se podía cerrar sin hablar con nadie</h3></div>
+    <p>Cinco rondas diciendo que todo espera a la tabla de pérdidas — y su criterio de aceptación
+      permitía justificar cada precio «con una fuente citable <em>o declarado explícitamente como
+      supuesto del artículo</em>». Esa segunda mitad vaciaba la historia entera: se podía cerrar
+      inventando los precios con buena letra.</p>
+    <p>Eliminada. Ahora exige protocolo de elicitación escrito antes, <b>al menos tres informantes
+      de cada uno de los dos grupos afectados</b>, respuestas crudas guardadas, síntesis trazable
+      celda por celda, y publicar el desacuerdo cuando lo haya en vez de promediarlo en silencio.
+      Un precio que nadie de fuera del equipo haya dicho en voz alta no entra en la tabla.</p>
+  </div>
+
   <h2>El campo de tiro</h2>
   <p>Un revisor estricto de MICAI no va a discutir el mapeo de cultivos: va a buscar el punto donde
     el resultado se cae. Diez ataques inventariados, cada uno convertido en un experimento que se
@@ -719,7 +780,7 @@
   <div class="ledger">
     <div class="ledger-row"><span class="name">Reparto de las veinte páginas</span><span class="note">robustez es un cuarto de resultados</span><span class="num hi">2,5 pp</span></div>
     <div class="ledger-row"><span class="name">Regla de recorte</span><span class="note">nunca de robustez</span><span class="num hi">del resultado al apéndice</span></div>
-    <div class="ledger-row"><span class="name">Esfuerzo en conocimiento y robustez</span><span class="note">era el 18 %</span><span class="num hi">50 %</span></div>
+    <div class="ledger-row"><span class="name">Esfuerzo en conocimiento y robustez</span><span class="note">el porcentaje se lee de make plan-check, no de aquí</span><span class="num hi">era el 18 %</span></div>
   </div>
 
   <div class="callout">
