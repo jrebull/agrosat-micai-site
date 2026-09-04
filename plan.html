@@ -16,8 +16,8 @@
   <div class="masthead">
     <p class="stamp"><a href="index.html" style="color:inherit;text-decoration:none">← Cuaderno AgroSatCopilot</a></p>
     <h1>Plan por épicas</h1>
-    <p class="lede">El trabajo del artículo MICAI 2027, desglosado en trece épicas y setenta y
-      cuatro historias de usuario con sus criterios de aceptación, puntos de historia,
+    <p class="lede">El trabajo del artículo MICAI 2027, desglosado en catorce épicas y ochenta y
+      cinco historias de usuario con sus criterios de aceptación, puntos de historia,
       dependencias y artefacto de salida.</p>
     <div class="callout" style="margin-top:22px">
       <p><b>Reencuadre del 3 de septiembre de 2026.</b> Cuatro revisores a ciegas auditaron el
@@ -417,10 +417,12 @@
         {id:"US-160", t:"Los cuatro mecanismos como predictores con valores de conjunto", sp:8, st:"idle",
          role:"Como autor que quiere una tabla única con los cuatro mecanismos, necesito un eje de coste que exista para los cuatro, y hoy no lo hay: la cobertura es una constante igual a uno para el conforme y para el retroceso.",
          ac:["SEIS casos, no cinco: sin mecanismo, recorte por F1, recorte por soporte, abstención, conforme y retroceso. El segundo criterio de retirada faltaba y US-127 pide un contraste cuyo brazo nadie construía; añadirlo cuesta reordenar la misma leyenda por soporte en vez de por F1",
-             "Eje de coste único E[|C(x)|], definido para los cinco, con la convención para el conjunto vacío declarada por escrito antes de medir",
+             "CORREGIDO tras auditoría externa: la primera implementación multiplicaba la utilidad por la contención, con lo que el conjunto vacío valía cero pasara lo que pasara y el precio de abstenerse NO se podía elegir. El valor de no responder es ahora un término aparte y sin valor por defecto",
+             "Y la CARDINALIDAD NO ES EL COSTE: dos conjuntos del mismo tamaño reciben el mismo precio aunque uno sea agronómicamente inútil. E[|C|] queda como descriptor secundario; la moneda común es una tabla de pérdidas por acción, resultado y afectado —etiqueta errónea, no respuesta, conjunto ambiguo, retroceso taxonómico— declarada en el preregistro",
              "Utilidad u(y,C) = g(|C|)·1[y ∈ C] con g declarada antes de mirar, y análisis de sensibilidad sobre g",
              "Se evalúa sobre la población COMPLETA de prueba, no sobre la entregada: hoy el estimando condiciona sobre una variable posterior al tratamiento, que es selección sobre un colisionador y es el mismo pecado que el artículo denuncia, un nivel más abajo",
-             "Se demuestra que la utilidad se reduce al F1-macro alineado bajo una parametrización concreta; si no, no es comparable con lo anterior",
+             "MEDIDO, y la respuesta es que NO: con la utilidad que solo premia el singleton correcto, el estimando se reduce al RECALL macro, no al F1 macro. El marco nuevo no es una reparametrización del anterior, así que las cifras viejas quedan en otra escala y se dice",
+             "Y se demuestra la propiedad que el estimando anterior NO tenía: abstenerse nunca puede subir la utilidad, porque al puntuar sobre la población completa una parcela no entregada cuenta como fallo en vez de desaparecer del denominador de su clase. Ese sesgo estructural a favor del brazo que abstiene queda eliminado, con test",
              "Se cita Ha 1997 como el marco del que los cuatro mecanismos son casos particulares. Su implementación como línea base pertenece a US-132, no a esta historia"],
          out:"ml/eval/set_valued.py", dep:"—"},
         {id:"US-124", t:"Denominador común fijado antes de la entrega", sp:5, st:"idle",
@@ -462,7 +464,9 @@
              "k se elige por un criterio ESPACIAL declarado antes de mirar ningún contraste —área mínima de bloque, o el colchón que garantiza una separación dada—, nunca por su resultado. Puede salir cinco y puede salir doce; da igual, y ese es el punto",
              "PROHIBIDO fijar k en quince por ser el valor donde el contraste sale significativo: es el máximo |delta| y la mínima desviación del barrido a la vez, o sea la celda más favorable de siete",
              "El colchón crece con k, o la independencia se degrada al acercarse los bloques: se reporta la distancia mínima real entre prueba y entrenamiento para cada k",
-             "Se publica la curva ENTERA de sensibilidad, no el k elegido. Es un resultado que no depende de qué salga, que es más de lo que puede decir cualquier delta del artículo"],
+             "Se publica la curva ENTERA de sensibilidad, no el k elegido. Es un resultado que no depende de qué salga, que es más de lo que puede decir cualquier delta del artículo",
+             "CORRECCIÓN EXTERNA, y es la que más pesa: partir el mismo territorio más fino NO crea réplicas independientes. Los folds comparten entrenamiento y calibración, con Jaccard medio de 0,60 entre sus conjuntos de entrenamiento y máximo de 0,80. La ganancia de potencia del barrido viene de cambiar la unidad, no de observar territorio nuevo",
+             "El barrido de k NO se presenta como aumento de potencia. Se presenta como lo que es: la demostración de que la granularidad de la partición decide la significancia, que es un aviso metodológico y no una palanca"],
          out:"reports/paper_micai/bloques/", dep:"US-125"},
         {id:"US-127", t:"Los contrastes que faltaban", sp:5, st:"idle",
          role:"Como lector de la introducción, quiero que los criterios que dice ordenar con intervalos tengan intervalos, porque hoy solo existe uno de los pares.",
@@ -476,7 +480,8 @@
          ac:["El criterio principal se reporta sin corregir y la familia exploratoria aparte",
              "Se excluyen los puntos donde los mecanismos son idénticos por construcción: en el banco de réplica, cuatro de los siete miembros de la familia no son hipótesis",
              "La multiplicidad entre bancos, predictores y universos se declara y se trata",
-             "El p bootstrap se reporta con su resolución real: con mil remuestreos el mínimo no nulo es 0,002, así que «menor que 0,0001» es imposible"],
+             "El p bootstrap se reporta con su resolución real: con mil remuestreos el mínimo no nulo es 0,002, así que «menor que 0,0001» es imposible",
+             "Holm sobre seis contrastes NO controla la selección del ganador de todo el diagrama de fases: hay hasta quince pares si se ordenan seis alternativas, y encima se exploran costes, bancos, predictores, universos, semillas, k, profundidades y cuatro medidas de disparidad. El mapa necesita bandas simultáneas o regiones de ganador y no-distinguible por un procedimiento que incluya toda la selección"],
          out:"ml/eval/paper_micai_coverage.py", dep:"US-127"},
         {id:"US-129", t:"Gate de protocolo, probado en negativo", sp:3, st:"idle",
          role:"Como equipo al que se le colaron tres defectos de protocolo, quiero una comprobación que los detecte, y verla fallar antes de confiar en ella.",
@@ -487,7 +492,8 @@
              "Los cuatro casos probados en negativo contra el código anterior, comprobando que la mutación se aplicó de verdad antes de creer el verde",
              "Falla si un artefacto del banco CONFIRMATORIO tiene fecha de commit anterior a la del preregistro. Acotado a ese banco: los de la EPIC 21 sobre los dos bancos exploratorios ya existen y harían fallar el gate el primer día",
              "Falla si un intervalo sobre un estimando por bloque se calculó remuestreando parcelas. Es el defecto cuya corrección llevó p de 0,005 a 0,130 y el gate no lo miraba",
-             "Falla si se imprime un p menor que la resolución del bootstrap declarado: con mil remuestreos el mínimo no nulo es 0,002"],
+             "Falla si se imprime un p menor que la resolución del bootstrap declarado: con mil remuestreos el mínimo no nulo es 0,002",
+             "El gate comprueba la SEMÁNTICA, no la existencia de una historia: denominador, unidad del bootstrap y procedencia del umbral. Una corrección no se marca por haber creado una US, y hoy el código sigue devolviendo cero con intersección vacía, remuestreando dentro de bloques fijos y fijando el número de entregas con las confianzas del propio test"],
          out:"make micai-protocol-check", dep:"US-128"}
       ]
     },
@@ -530,7 +536,7 @@
          out:"reports/paper_micai/equidad/", dep:"US-129"},
         {id:"US-134", t:"La disparidad como criterio principal, con su intervalo", sp:5, st:"idle",
          role:"Como revisor, quiero que la afirmación de equidad tenga incertidumbre y no sea un punto, y quiero que sea el criterio principal si es donde hay efecto.",
-         ac:["El criterio principal se decide DESPUÉS de US-155, no antes: hoy ninguna medida de disparidad tiene potencia con cinco bloques, y la elección entre el delta de calidad y la disparidad depende de esa comprobación",
+         ac:["CORREGIDO tras auditoría externa: elegir la variable primaria según dónde haya potencia es escoger el resultado después de verlo. La primaria se CONGELA en el preregistro antes del banco confirmatorio, junto con el afectado, la pérdida, el margen práctico, la población y la regla de decisión. Lo hecho sobre los dos bancos vistos es exploratorio y se etiqueta así",
              "El estadístico titular NO es la mayor razón observada: es una medida declarada sobre todas las clases con soporte suficiente",
              "Intervalo por bloque para la medida de disparidad, declarada antes de calcularla",
              "NO se preregistra sobre los dos bancos ya mirados: se declaran exploratorios y la medida se preregistra para los bancos nuevos. Preregistrar sobre datos vistos es un ritual, no un compromiso",
@@ -555,7 +561,7 @@
          ac:["Cuatro costes declarados: etiqueta errónea, no responder, conjunto de tamaño k, y respuesta gruesa pero correcta",
              "Declarada en el preregistro antes del primer barrido",
              "Test en negativo: una pérdida mal normalizada tiene que hacer fallar el gate",
-             "La normalización deja el problema en DOS razones libres, declarada antes del barrido: sin eso, cuatro costes menos una normalización son tres razones y el mapa sale como una rejilla de nueve paneles que nadie fotografía"],
+             "CORREGIDO: cuatro costes menos una escala común dejan TRES razones libres, no dos. Yo había escrito dos sin justificarlo. O se declara y se justifica una segunda restricción sustantiva —una equivalencia concreta entre dos pérdidas—, o el mapa se presenta como un símplex de tres, y en cualquier caso se publica la sensibilidad fuera de esa sección"],
          out:"ml/eval/decision_cost.py", dep:"US-160, US-140, US-129"},
         {id:"US-152", t:"Diagrama de fases: qué mecanismo gana en qué región", sp:8, st:"idle",
          role:"Como revisor, quiero una figura que me diga en qué región de costes está mi propio producto y qué debería usar, porque eso lo recuerdo un año después y una tabla de F1 no.",
@@ -572,7 +578,7 @@
          out:"paper/micai/sections/", dep:"US-152"},
         {id:"US-154", t:"La decisión de despliegue real, situada en el mapa", sp:5, st:"idle",
          role:"Como equipo, tenemos una decisión de punto de operación tomada de verdad en un producto, con su contrafactual medible. Cualquiera con una GPU reproduce el resto del artículo; esto no lo reproduce nadie.",
-         ac:["El hecho se cuenta anonimizado: un sistema desplegado recortó su catálogo de 18 clases a 12 con criterio F1 por clase ≥ 0,90 y cobertura resultante 0,9054. El doble ciego exige quitar el nombre, no el hecho",
+         ac:["El hecho se cuenta anonimizado: un sistema desplegado recortó su catálogo de 18 clases a 12 con criterio F1 por clase ≥ 0,90 y cobertura resultante 0,88269 —14 688 parcelas de 16 640—, no 0,9054: esa cifra es el cumulative_support_share de la curva del Stacking-5, y se nos cruzó entre artefactos. El doble ciego exige quitar el nombre, no el hecho",
              "Se sitúa en el diagrama y se responde a la pregunta que nadie publica: dado su coste implícito, ¿acertó?",
              "Contrafactual: qué habría entregado cada uno de los otros tres mecanismos a ese mismo coste",
              "Si la decisión fue subóptima, se dice con su magnitud"],
@@ -605,7 +611,8 @@
          ac:["Al menos tres predictores por banco, de familias distintas, aplicados también a los bancos nuevos",
              "El campeón desplegado entre ellos, con su cifra",
              "La lista de predictores se fija en el preregistro, no se elige después",
-             "El ranking se recomputa y se sella tras el re-volcado; si un miembro no se recupera, se excluye del universo de selección y se declara"],
+             "El ranking se recomputa y se sella tras el re-volcado; si un miembro no se recupera, se excluye del universo de selección y se declara",
+             "La selección de predictores se hace en datos separados: hoy se hacía con las mismas etiquetas de evaluación"],
          out:"reports/paper_micai/", dep:"US-119, US-129, US-136"}
       ]
     },
@@ -693,7 +700,9 @@
              "Se declara qué hacer cuando una clase recibe cobertura cero en un bloque: el número de clases retenidas varía entre 6 y 9 por bloque, así que una razón puede no estar definida. Y un soporte mínimo por clase para entrar al estadístico, porque con dos parcelas cualquier mínimo lo domina esa clase",
              "El preregistro cubre las DOS como una sola: el diagrama de fases hoy no está preregistrado y no tiene criterio inferencial ninguno",
              "Declara el CRITERIO ESPACIAL con el que se fija k —área mínima de bloque o colchón— y el SUELO DE SOPORTE por bloque del estimando. Las dos son grados de libertad que hoy nadie había preregistrado y que deciden la significancia",
-             "Declara que la sensibilidad a k se publica entera, gane lo que gane, y que k no se revisa después de ver un contraste"],
+             "Declara que la sensibilidad a k se publica entera, gane lo que gane, y que k no se revisa después de ver un contraste",
+             "Se declara EL ESTIMANDO y su población: inferencia condicional al conjunto de datos, con el parche como clúster y el alcance local reconocido; o inferencia entre regiones y campañas, con sitio-año como unidad y bancos genuinamente independientes. Hoy el diseño mezcla las dos y las trata como si fueran una",
+             "El margen de equivalencia procede de la MENOR DIFERENCIA PRÁCTICAMENTE RELEVANTE para un usuario del mapa, no del efecto mínimo detectable del experimento. Anclarlo en el MDE, como estaba, hace que la resolución del instrumento defina lo que cuenta como equivalente"],
          out:"docs/paper/preregistro-v2.md", dep:"—"},
         {id:"US-156", t:"El artículo del resultado nulo, escrito antes de correr", sp:5, st:"idle",
          role:"Como equipo al que ya se le fue de las manos un reporte selectivo, quiero el artículo alternativo escrito antes de ver el resultado, porque un plan sin salida escrita para el nulo no es neutral: tiene una salida implícita.",
@@ -701,7 +710,9 @@
              "Tesis alternativa redactada: los mecanismos son intercambiables en calidad agregada dentro de la resolución del diseño, y no en quién paga, de modo que elegir entre ellos es una decisión de reparto y no de exactitud",
              "Criterio de NO ENVÍO escrito: si la disparidad tampoco separa, esto es un informe técnico y no un MICAI",
              "El protocolo no puede ser el resultado de reserva",
-             "Fecha explícita de evaluación, atada al sellado de US-134, y firma en el ADR: es la decisión más cara del plan y sin punto de decisión se evalúa el día del cierre, cuando ya no se puede actuar"],
+             "Fecha explícita de evaluación, atada al sellado de US-134, y firma en el ADR: es la decisión más cara del plan y sin punto de decisión se evalúa el día del cierre, cuando ya no se puede actuar",
+             "Ausencia de significancia NO demuestra equivalencia: el intervalo agregado incluye el cero Y excede la banda, así que el mismo experimento no permite afirmar ninguna de las dos cosas. Se dice tal cual",
+             "El resultado nulo se publica aunque no produzca separación: la existencia del artículo no puede quedar condicionada al resultado exploratorio"],
          out:"docs/paper/articulo-nulo.md", dep:"US-140"},
         {id:"US-141", t:"Trabajo relacionado, con el precedente en la primera página", sp:5, st:"idle",
          role:"Como autor al que un revisor le enseñó que su efecto está documentado desde los noventa, quiero citarlo donde se ve y delimitar qué queda de mío.",
