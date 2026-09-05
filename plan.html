@@ -220,7 +220,8 @@
         <p><b>Corrección verificable.</b> Se restauraron el plan v6, la rúbrica histórica, la
           gobernanza SaaS y las decisiones H100 ratificadas; el workflow normalizado vuelve a ser
           complementario. <code>make check</code>, 158 tests de scripts y los nueve gates quedaron
-          verdes en <code>65e1f4d</code>.</p>
+          verdes en <code>65e1f4d</code>. El CI encontró después que cuatro tests de custodia
+          dependían de PDFs locales; <code>66bc609</code> los trasladó a repositorios sintéticos.</p>
         <p><b>Consecuencia operativa.</b> El workflow no decide resultados científicos ni cambia el
           camino crítico. US-119 conserva un panel de cinco miembros —UNet, SegFormer,
           DeepLabv3+, TSViT-Pheno y TSViT-Pheno-FullM—; AnySat y U-TAE quedan fuera del panel
@@ -292,6 +293,7 @@
       <tr><td><b>US-142</b></td><td>Corrección</td><td>El gate del bib buscaba la ruta en la línea entera y no en su celda: acusaba un cambio que no existía</td><td><code data-author="Javier Rebull">e8dbfb6</code></td></tr>
       <tr><td><b>US-143</b></td><td>Avance</td><td>Contrato ejecutable de figuras: el guardado rechaza lienzos distintos de 4,8031 pulgadas, tipografía menor de 8 pt y series diferenciadas solo por color; PDF y SVG conservan el ancho físico y son reproducibles byte a byte. Queda en curso porque aún no genera figuras empíricas</td><td><code data-author="Javier Rebull">b60f160</code></td></tr>
       <tr><td><b>—</b></td><td>Gobernanza</td><td>Revisión de la integración de Arthur: se conservan gates, LF, rutas Windows, plantillas y Graphify opcional; se restauran las decisiones ratificadas y los históricos. Engram compartido pasa de despliegue implícito a ADR-015 propuesta, con el estado nativo fuera de Git</td><td><code data-author="Javier Rebull">65e1f4d</code></td></tr>
+      <tr><td><b>—</b></td><td>CI</td><td>Cuatro tests de custodia pasaban solo donde estaban materializados los PDF sellados. Ahora crean un repositorio Git sintético y prueban el mecanismo sin depender de DVC ni de los artefactos de esta máquina</td><td><code data-author="Javier Rebull">66bc609</code></td></tr>
       </tbody></table></div>
     <h3 class="dia" data-date="2026-09-04">4 de septiembre · <span>US-173, arnés OOF, US-119 y decisiones del workflow</span></h3>
     <div class="scroll"><table>
