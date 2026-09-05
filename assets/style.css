@@ -414,12 +414,17 @@ h3.dia span{font-weight:400;color:var(--muted)}
 .history-viz-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(320px,1.2fr);gap:30px}
 .history-viz-grid>article{min-width:0}
 .history-viz-grid h4{font-size:14px;margin:0 0 13px}
+.history-legend{display:flex;flex-wrap:wrap;gap:6px 14px;min-height:17px;margin:-5px 0 12px}
+.history-legend span{display:inline-flex;gap:6px;align-items:center;font:9.5px/1.2 var(--mono);
+  color:var(--muted)}
+.history-legend i{display:block;width:9px;height:9px}
 .history-bars{display:grid;gap:10px}
 .history-bar-row{display:grid;grid-template-columns:5ch 1fr 3ch;gap:10px;align-items:center}
 .history-bar-row>span,.history-bar-row>strong{font:11px/1 var(--mono);color:var(--muted)}
 .history-bar-row>strong{text-align:right;color:var(--ink)}
-.history-bar-track{height:12px;background:var(--sheet-2);overflow:hidden}
-.history-bar-track i{display:block;height:100%;background:var(--deep)}
+.history-bar-track{display:flex;height:12px;background:var(--sheet-2);overflow:hidden}
+.history-bar-track i{display:block;height:100%;flex:0 0 auto}
+.history-bar-track i+i{border-left:1px solid var(--panel)}
 .author-board{display:grid;gap:8px}
 .author-card{display:grid;grid-template-columns:38px 1fr auto;gap:12px;align-items:center;
   border-top:1px solid var(--rule-fine);padding-top:9px}

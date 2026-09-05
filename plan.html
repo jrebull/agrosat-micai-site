@@ -252,6 +252,8 @@
       <div class="history-viz-grid">
         <article>
           <h4>Commits por día</h4>
+          <div class="history-legend" id="history-author-legend"
+               aria-label="Colores asignados a los autores"></div>
           <div class="history-bars" id="history-by-day"></div>
         </article>
         <article>
@@ -1094,6 +1096,7 @@
 
   var historyRows = document.querySelectorAll("#historial ~ .scroll tbody[data-date] tr");
   var historyByDate = {};
+  var historyByDateAndAuthor = {};
   var historyByAuthor = {};
   Array.prototype.forEach.call(historyRows, function(row){
     var date = row.parentNode.getAttribute("data-date");
@@ -1102,18 +1105,33 @@
     var author = evidence.getAttribute("data-author");
     var kind = row.children[1].textContent.trim();
     historyByDate[date] = (historyByDate[date] || 0) + 1;
+    if(!historyByDateAndAuthor[date]) historyByDateAndAuthor[date] = {};
+    historyByDateAndAuthor[date][author] =
+      (historyByDateAndAuthor[date][author] || 0) + 1;
     if(!historyByAuthor[author]) historyByAuthor[author] = {total:0, kinds:{}};
     historyByAuthor[author].total += 1;
     historyByAuthor[author].kinds[kind] = (historyByAuthor[author].kinds[kind] || 0) + 1;
   });
 
   var historyDates = Object.keys(historyByDate).sort();
+  var authorPalette = ["var(--deep)", "var(--sienna)", "var(--olive)", "var(--ochre)"];
+  var authorColor = {};
+  Object.keys(historyByAuthor).sort().forEach(function(author, index){
+    authorColor[author] = authorPalette[index % authorPalette.length];
+  });
   var historyAuthors = Object.keys(historyByAuthor).sort(function(a,b){
     return historyByAuthor[b].total - historyByAuthor[a].total || a.localeCompare(b);
   });
   document.getElementById("history-total-commits").textContent = historyRows.length;
   document.getElementById("history-total-days").textContent = historyDates.length;
   document.getElementById("history-total-authors").textContent = historyAuthors.length;
+
+  var legendHost = document.getElementById("history-author-legend");
+  historyAuthors.forEach(function(author){
+    var item = document.createElement("span");
+    item.innerHTML = '<i style="background:' + authorColor[author] + '"></i>' + author;
+    legendHost.appendChild(item);
+  });
 
   var maxDailyCommits = Math.max.apply(null, historyDates.map(function(date){
     return historyByDate[date];
@@ -1125,11 +1143,24 @@
     var parts = date.split("-");
     var label = Number(parts[2]) + " " + monthNames[Number(parts[1]) - 1];
     var count = historyByDate[date];
+    var authorCounts = historyByDateAndAuthor[date];
+    var breakdown = historyAuthors.filter(function(author){
+      return authorCounts[author];
+    }).map(function(author){
+      return author + ": " + authorCounts[author];
+    }).join("; ");
+    var segments = historyAuthors.filter(function(author){
+      return authorCounts[author];
+    }).map(function(author){
+      return '<i aria-hidden="true" title="' + author + ': ' + authorCounts[author] +
+        '" style="width:' + Math.round(10000 * authorCounts[author] / maxDailyCommits) / 100 +
+        '%;background:' + authorColor[author] + '"></i>';
+    }).join("");
     var row = document.createElement("div");
     row.className = "history-bar-row";
     row.innerHTML = '<span>' + label + '</span><div class="history-bar-track" role="img" ' +
-      'aria-label="' + count + ' commits el ' + label + '"><i style="width:' +
-      Math.round(100 * count / maxDailyCommits) + '%"></i></div><strong>' + count + '</strong>';
+      'aria-label="' + count + ' commits el ' + label + '. ' + breakdown + '">' +
+      segments + '</div><strong>' + count + '</strong>';
     dayHost.appendChild(row);
   });
 
@@ -1142,7 +1173,8 @@
     var initials = author.split(/\s+/).map(function(part){ return part.charAt(0); }).join("");
     var card = document.createElement("article");
     card.className = "author-card";
-    card.innerHTML = '<span class="author-initials" aria-hidden="true">' + initials + '</span>' +
+    card.innerHTML = '<span class="author-initials" aria-hidden="true" style="background:' +
+      authorColor[author] + '">' + initials + '</span>' +
       '<div><h5>' + author + '</h5><p>' + kinds.join(" · ") + '</p></div>' +
       '<strong><span>' + record.total + '</span><small>commits</small></strong>';
     authorHost.appendChild(card);
