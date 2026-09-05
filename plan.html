@@ -234,42 +234,69 @@
       sostiene</b>. El estado vigente vive en el tablero superior: el historial no lo suplanta ni
       reescribe el pasado. Se agrupa por la fecha local del commit de evidencia y no incluye los
       commits del sitio que solo reflejan el mismo hito. Sin ancla no entra.</p>
-    <h3 class="dia">5 de septiembre · <span>Catálogo bibliográfico y evidencia normativa</span></h3>
+
+    <section class="history-analytics" aria-labelledby="history-analytics-title">
+      <div class="history-analytics-head">
+        <div>
+          <p class="eyebrow">Derivado del historial · sin segundo recuento</p>
+          <h3 id="history-analytics-title">Actividad por día y por autor Git</h3>
+        </div>
+        <p>Cuenta solo commits elegidos como hitos del plan, no toda la actividad del repositorio.
+          Añadir una fila con fecha y autor actualiza ambos tableros.</p>
+      </div>
+      <div class="history-totals" aria-label="Resumen del historial">
+        <div><span id="history-total-commits">—</span><small>commits con evidencia</small></div>
+        <div><span id="history-total-days">—</span><small>días registrados</small></div>
+        <div><span id="history-total-authors">—</span><small>autores Git</small></div>
+      </div>
+      <div class="history-viz-grid">
+        <article>
+          <h4>Commits por día</h4>
+          <div class="history-bars" id="history-by-day"></div>
+        </article>
+        <article>
+          <h4>Tablero por autor</h4>
+          <div class="author-board" id="history-by-author"></div>
+        </article>
+      </div>
+    </section>
+
+    <h3 class="dia" data-date="2026-09-05">5 de septiembre · <span>Catálogo bibliográfico y evidencia normativa</span></h3>
     <div class="scroll"><table>
       <thead><tr><th>US</th><th>Tipo</th><th>Qué se hizo</th><th>Evidencia</th></tr></thead>
-      <tbody>
-      <tr><td><b>US-141</b></td><td>Avance</td><td>Trabajo relacionado verificado en fuente primaria: tabla con lo que cada referencia sostiene, su límite, y la redacción <b>prohibida</b>. Dieciséis claves comprobadas contra el catálogo</td><td><code>2371eff</code></td></tr>
-      <tr><td><b>US-141</b></td><td>Sello</td><td>Sellado el documento como normativo: fija qué se puede escribir de cada cita</td><td><code>f26613a</code></td></tr>
-      <tr><td><b>US-142</b></td><td>Corrección</td><td>El gate del bib buscaba la ruta en la línea entera y no en su celda: acusaba un cambio que no existía</td><td><code>e8dbfb6</code></td></tr>
+      <tbody data-date="2026-09-05">
+      <tr><td><b>US-141</b></td><td>Avance</td><td>Trabajo relacionado verificado en fuente primaria: tabla con lo que cada referencia sostiene, su límite, y la redacción <b>prohibida</b>. Dieciséis claves comprobadas contra el catálogo</td><td><code data-author="Javier Rebull">2371eff</code></td></tr>
+      <tr><td><b>US-141</b></td><td>Sello</td><td>Sellado el documento como normativo: fija qué se puede escribir de cada cita</td><td><code data-author="Javier Rebull">f26613a</code></td></tr>
+      <tr><td><b>US-142</b></td><td>Corrección</td><td>El gate del bib buscaba la ruta en la línea entera y no en su celda: acusaba un cambio que no existía</td><td><code data-author="Javier Rebull">e8dbfb6</code></td></tr>
       </tbody></table></div>
-    <h3 class="dia">4 de septiembre · <span>US-173, arnés OOF, US-119 y decisiones del workflow</span></h3>
+    <h3 class="dia" data-date="2026-09-04">4 de septiembre · <span>US-173, arnés OOF, US-119 y decisiones del workflow</span></h3>
     <div class="scroll"><table>
       <thead><tr><th>US</th><th>Tipo</th><th>Qué se hizo</th><th>Evidencia</th></tr></thead>
-      <tbody>
-      <tr><td><b>US-173</b></td><td>Cierre</td><td>Estimando condicional al conjunto de datos, con la población, la unidad y el clúster fijados; el artículo <b>no afirma transporte</b></td><td><code>4763efc</code></td></tr>
-      <tr><td><b>US-173</b></td><td>Control</td><td>El contrato del estimando, blindado: tres claves que lo convertirían en otro estudio tienen prueba negativa</td><td><code>7935258</code></td></tr>
-      <tr><td><b>US-118</b></td><td>Avance</td><td>Inventario global de OOF con tres estados, y los consumidores MICAI rechazan lo no canónico</td><td><code>8f77c06</code></td></tr>
-      <tr><td><b>US-118</b></td><td>Corrección</td><td>La verificación certificaba un bug: el re-volcado corrió con el <code>dump_oof</code> defectuoso y reprodujo el fichero histórico porque ambos salían del mismo fallo</td><td><code>1dd6a41</code></td></tr>
-      <tr><td><b>US-118</b></td><td>Decisión</td><td><code>xgb-alphaearth-remat-v1</code> con identidad propia; el histórico queda fuera de inferencia</td><td><code>574ae74</code></td></tr>
-      <tr><td><b>US-119</b></td><td>Cierre</td><td>Cinco miembros dentro del umbral y dos fuera. La premisa era falsa en un tercio: SegFormer <b>mejora</b> en fold 5</td><td><code>0be0920</code></td></tr>
-      <tr><td><b>US-121</b></td><td>Decisión</td><td>ADR-014 fija alcance, destino de lo heredado y fecha de corte del 18 de septiembre</td><td><code>874d74c</code></td></tr>
-      <tr><td><b>US-139</b></td><td>Decisión</td><td>Panel congelado en cinco miembros y cuatro familias, con margen de una</td><td><code>bf592df</code></td></tr>
-      <tr><td><b>US-172</b></td><td>Protocolo</td><td>Protocolo de elicitación v0.2: rejilla completa de siete celdas e identificación resuelta con cinco intercambios</td><td><code>95d645a</code></td></tr>
-      <tr><td><b>US-172</b></td><td>Artefactos</td><td>Los cuatro adjuntos de la consulta ética, reproducibles byte a byte</td><td><code>d5c9e80</code></td></tr>
-      <tr><td><b>US-142</b></td><td>Avance</td><td>Catálogo de 57 referencias del manuscrito nuevo, con fila propia en el ledger y sin tocar el bib histórico. Los cinco registros sin identificador quedaron resueltos en sus fuentes primarias</td><td><code>cfc07f2</code></td></tr>
-      <tr><td><b>—</b></td><td>Corrección</td><td>Retirado el veredicto sostenido por cifras invalidadas: el manuscrito se retira porque su cadena inferencial no vale, no porque se sepa la dirección del resultado</td><td><code>440e018</code></td></tr>
+      <tbody data-date="2026-09-04">
+      <tr><td><b>US-173</b></td><td>Cierre</td><td>Estimando condicional al conjunto de datos, con la población, la unidad y el clúster fijados; el artículo <b>no afirma transporte</b></td><td><code data-author="Javier Rebull">4763efc</code></td></tr>
+      <tr><td><b>US-173</b></td><td>Control</td><td>El contrato del estimando, blindado: tres claves que lo convertirían en otro estudio tienen prueba negativa</td><td><code data-author="Javier Rebull">7935258</code></td></tr>
+      <tr><td><b>US-118</b></td><td>Avance</td><td>Inventario global de OOF con tres estados, y los consumidores MICAI rechazan lo no canónico</td><td><code data-author="Javier Rebull">8f77c06</code></td></tr>
+      <tr><td><b>US-118</b></td><td>Corrección</td><td>La verificación certificaba un bug: el re-volcado corrió con el <code>dump_oof</code> defectuoso y reprodujo el fichero histórico porque ambos salían del mismo fallo</td><td><code data-author="Javier Rebull">1dd6a41</code></td></tr>
+      <tr><td><b>US-118</b></td><td>Decisión</td><td><code>xgb-alphaearth-remat-v1</code> con identidad propia; el histórico queda fuera de inferencia</td><td><code data-author="Javier Rebull">574ae74</code></td></tr>
+      <tr><td><b>US-119</b></td><td>Cierre</td><td>Cinco miembros dentro del umbral y dos fuera. La premisa era falsa en un tercio: SegFormer <b>mejora</b> en fold 5</td><td><code data-author="Javier Rebull">0be0920</code></td></tr>
+      <tr><td><b>US-121</b></td><td>Decisión</td><td>ADR-014 fija alcance, destino de lo heredado y fecha de corte del 18 de septiembre</td><td><code data-author="Javier Rebull">874d74c</code></td></tr>
+      <tr><td><b>US-139</b></td><td>Decisión</td><td>Panel congelado en cinco miembros y cuatro familias, con margen de una</td><td><code data-author="Javier Rebull">bf592df</code></td></tr>
+      <tr><td><b>US-172</b></td><td>Protocolo</td><td>Protocolo de elicitación v0.2: rejilla completa de siete celdas e identificación resuelta con cinco intercambios</td><td><code data-author="Javier Rebull">95d645a</code></td></tr>
+      <tr><td><b>US-172</b></td><td>Artefactos</td><td>Los cuatro adjuntos de la consulta ética, reproducibles byte a byte</td><td><code data-author="Javier Rebull">d5c9e80</code></td></tr>
+      <tr><td><b>US-142</b></td><td>Avance</td><td>Catálogo de 57 referencias del manuscrito nuevo, con fila propia en el ledger y sin tocar el bib histórico. Los cinco registros sin identificador quedaron resueltos en sus fuentes primarias</td><td><code data-author="Javier Rebull">cfc07f2</code></td></tr>
+      <tr><td><b>—</b></td><td>Corrección</td><td>Retirado el veredicto sostenido por cifras invalidadas: el manuscrito se retira porque su cadena inferencial no vale, no porque se sepa la dirección del resultado</td><td><code data-author="Javier Rebull">440e018</code></td></tr>
       </tbody></table></div>
-    <h3 class="dia">3 de septiembre · <span>Auditoría y reencuadre</span></h3>
+    <h3 class="dia" data-date="2026-09-03">3 de septiembre · <span>Auditoría y reencuadre</span></h3>
     <div class="scroll"><table>
       <thead><tr><th>US</th><th>Tipo</th><th>Qué se hizo</th><th>Evidencia</th></tr></thead>
-      <tbody>
-      <tr><td><b>—</b></td><td>Reencuadre</td><td>Reencuadre tras cuatro rechazos a ciegas y la revisión del coautor</td><td><code>9e6fc19</code></td></tr>
-      <tr><td><b>—</b></td><td>Corrección</td><td>Al reparar el protocolo el hallazgo se disuelve: el intervalo pasa a incluir el cero</td><td><code>374ed6b</code></td></tr>
-      <tr><td><b>US-171</b></td><td>Hallazgo</td><td>El criterio de <i>k</i> es espacial, no estadístico, y selecciona el valor donde <b>no</b> hay significancia</td><td><code>96b8af9</code></td></tr>
-      <tr><td><b>US-160</b></td><td>Prototipo</td><td>Los mecanismos como predictores con valores de conjunto</td><td><code>6c5db78</code></td></tr>
-      <tr><td><b>US-140</b></td><td>Registro</td><td>Primer preregistro exploratorio; la auditoría posterior obligó a retirarlo y a mover el contrato detrás de US-172 a US-175</td><td><code>9c3afb4</code></td></tr>
-      <tr><td><b>—</b></td><td>Auditoría</td><td>Encargo de auditoría externa, con la parte A a ciegas</td><td><code>7bdc515</code></td></tr>
-      <tr><td><b>E6</b></td><td>Corrección</td><td><code>dump_oof</code> no propagaba <code>n_timesteps</code>; Full-M pasa de 0,2552 a 0,7883</td><td><code>373acb7</code></td></tr>
+      <tbody data-date="2026-09-03">
+      <tr><td><b>—</b></td><td>Reencuadre</td><td>Reencuadre tras cuatro rechazos a ciegas y la revisión del coautor</td><td><code data-author="Javier Rebull">9e6fc19</code></td></tr>
+      <tr><td><b>—</b></td><td>Corrección</td><td>Al reparar el protocolo el hallazgo se disuelve: el intervalo pasa a incluir el cero</td><td><code data-author="Javier Rebull">374ed6b</code></td></tr>
+      <tr><td><b>US-171</b></td><td>Hallazgo</td><td>El criterio de <i>k</i> es espacial, no estadístico, y selecciona el valor donde <b>no</b> hay significancia</td><td><code data-author="Javier Rebull">96b8af9</code></td></tr>
+      <tr><td><b>US-160</b></td><td>Prototipo</td><td>Los mecanismos como predictores con valores de conjunto</td><td><code data-author="Javier Rebull">6c5db78</code></td></tr>
+      <tr><td><b>US-140</b></td><td>Registro</td><td>Primer preregistro exploratorio; la auditoría posterior obligó a retirarlo y a mover el contrato detrás de US-172 a US-175</td><td><code data-author="Javier Rebull">9c3afb4</code></td></tr>
+      <tr><td><b>—</b></td><td>Auditoría</td><td>Encargo de auditoría externa, con la parte A a ciegas</td><td><code data-author="Javier Rebull">7bdc515</code></td></tr>
+      <tr><td><b>E6</b></td><td>Corrección</td><td><code>dump_oof</code> no propagaba <code>n_timesteps</code>; Full-M pasa de 0,2552 a 0,7883</td><td><code data-author="Arthur Zizumbo">373acb7</code></td></tr>
       </tbody></table></div>
 
     <div id="epics"></div>
@@ -1064,6 +1091,62 @@
   ];
 
   var LABEL = {dead:"Retirada", ok:"Hecha", wip:"En curso", idle:"Lista", stop:"Bloqueada"};
+
+  var historyRows = document.querySelectorAll("#historial ~ .scroll tbody[data-date] tr");
+  var historyByDate = {};
+  var historyByAuthor = {};
+  Array.prototype.forEach.call(historyRows, function(row){
+    var date = row.parentNode.getAttribute("data-date");
+    var evidence = row.querySelector("td:last-child code[data-author]");
+    if(!date || !evidence) return;
+    var author = evidence.getAttribute("data-author");
+    var kind = row.children[1].textContent.trim();
+    historyByDate[date] = (historyByDate[date] || 0) + 1;
+    if(!historyByAuthor[author]) historyByAuthor[author] = {total:0, kinds:{}};
+    historyByAuthor[author].total += 1;
+    historyByAuthor[author].kinds[kind] = (historyByAuthor[author].kinds[kind] || 0) + 1;
+  });
+
+  var historyDates = Object.keys(historyByDate).sort();
+  var historyAuthors = Object.keys(historyByAuthor).sort(function(a,b){
+    return historyByAuthor[b].total - historyByAuthor[a].total || a.localeCompare(b);
+  });
+  document.getElementById("history-total-commits").textContent = historyRows.length;
+  document.getElementById("history-total-days").textContent = historyDates.length;
+  document.getElementById("history-total-authors").textContent = historyAuthors.length;
+
+  var maxDailyCommits = Math.max.apply(null, historyDates.map(function(date){
+    return historyByDate[date];
+  }));
+  var monthNames = ["ene", "feb", "mar", "abr", "may", "jun",
+                    "jul", "ago", "sep", "oct", "nov", "dic"];
+  var dayHost = document.getElementById("history-by-day");
+  historyDates.forEach(function(date){
+    var parts = date.split("-");
+    var label = Number(parts[2]) + " " + monthNames[Number(parts[1]) - 1];
+    var count = historyByDate[date];
+    var row = document.createElement("div");
+    row.className = "history-bar-row";
+    row.innerHTML = '<span>' + label + '</span><div class="history-bar-track" role="img" ' +
+      'aria-label="' + count + ' commits el ' + label + '"><i style="width:' +
+      Math.round(100 * count / maxDailyCommits) + '%"></i></div><strong>' + count + '</strong>';
+    dayHost.appendChild(row);
+  });
+
+  var authorHost = document.getElementById("history-by-author");
+  historyAuthors.forEach(function(author){
+    var record = historyByAuthor[author];
+    var kinds = Object.keys(record.kinds).sort(function(a,b){
+      return record.kinds[b] - record.kinds[a] || a.localeCompare(b);
+    }).map(function(kind){ return record.kinds[kind] + " " + kind.toLowerCase(); });
+    var initials = author.split(/\s+/).map(function(part){ return part.charAt(0); }).join("");
+    var card = document.createElement("article");
+    card.className = "author-card";
+    card.innerHTML = '<span class="author-initials" aria-hidden="true">' + initials + '</span>' +
+      '<div><h5>' + author + '</h5><p>' + kinds.join(" · ") + '</p></div>' +
+      '<strong><span>' + record.total + '</span><small>commits</small></strong>';
+    authorHost.appendChild(card);
+  });
 
   /* Turn each evidence hash into a link without duplicating repository URLs in the record. */
   Array.prototype.forEach.call(
