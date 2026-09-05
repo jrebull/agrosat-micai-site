@@ -61,6 +61,12 @@
         también está en curso</b>: el contrato ejecutable de las figuras ya impide repetir el
         ancho y los canales defectuosos, pero todavía no se ha regenerado ninguna figura
         empírica.</p>
+      <p><b>Correctivo de gobernanza, 5 de septiembre.</b> La integración del PR de Arthur aportó
+        controles útiles, plantillas y compatibilidad entre sistemas, pero también sustituyó
+        decisiones ratificadas y publicó memoria nativa sin una política aprobada. El correctivo
+        <code>65e1f4d</code> conserva lo verificable, restaura las fuentes normativas y convierte
+        la memoria compartida en la propuesta ADR-015. <b>El porcentaje del paper no aumenta por
+        arreglar su arnés</b>: US-172 continúa siendo el camino crítico.</p>
       <p><b>Sede única: MICAI 2027, hipótesis de planificación de 20 páginas</b> — el tope que
         permitía la edición anterior, <b>a reverificar cuando salga la convocatoria</b>; si baja, el
         recorte sale de resultados hacia el apéndice y nunca de robustez. Sin artículo de revista en
@@ -151,7 +157,7 @@
     <section class="decision-register" id="workflow-arthur" aria-labelledby="workflow-title">
       <div class="progress-dashboard-head">
         <div>
-          <p class="eyebrow">Decisión fechada · 4 de septiembre de 2026</p>
+          <p class="eyebrow">Decisión revisada · 5 de septiembre de 2026</p>
           <h2 id="workflow-title">Qué se toma del workflow propuesto por Arthur</h2>
         </div>
         <p>La versión normalizada vive en
@@ -171,6 +177,8 @@
             <li>Distinguir siempre norma vigente, herramienta disponible y propuesta futura.</li>
             <li>Usar fixtures autocontenidos: un test no puede depender de que los blobs DVC estén
               materializados en la máquina que lo ejecuta.</li>
+            <li>Conservar los gates del harness, la normalización LF, el arreglo de rutas Windows,
+              las plantillas de dominio y Graphify como herramienta opcional.</li>
           </ul>
         </article>
 
@@ -178,32 +186,41 @@
           <p class="decision-label">Descartado</p>
           <h3>Comportamiento que no se fingirá</h3>
           <ul>
-            <li><code>graphify</code>, targets de memoria y plantillas de subagentes que no existen
-              en este repositorio.</li>
+            <li>Presentar Graphify, Engram o las plantillas de subagentes como requisitos
+              universales solo porque la herramienta exista.</li>
             <li><code>/clear</code>, el uso obligatorio de subagentes y la regla de «exactamente dos
               archivos» como requisitos universales.</li>
             <li>La afirmación de que copiar literalmente un prompt garantiza caché en cualquier
               cliente o ejecución.</li>
-            <li>Sincronizar o versionar Engram automáticamente, o tratarlo como memoria normativa.</li>
+            <li>Importar o versionar chunks nativos de Engram automáticamente, o tratarlos como
+              memoria normativa.</li>
           </ul>
         </article>
 
         <article class="decision-card deferred">
-          <p class="decision-label">Opcional y futuro</p>
-          <h3>Engram, con una frontera explícita</h3>
+          <p class="decision-label">Planificado, no desplegado</p>
+          <h3>Engram compartido detrás de ADR-015</h3>
           <ul>
             <li>Puede servir como memoria local del entorno de desarrollo cuando esté instalado y
               habilitado; hoy no se presupone ninguna de las dos cosas.</li>
             <li>No es memoria del producto, fuente de verdad, ledger ni sustituto del plan.</li>
             <li>No recibe nombres, correos, tokens, identificadores de sesión, parcelas de clientes
               ni resultados no publicados.</li>
-            <li>Cualquier sincronización futura exige política revisada y un gate propio antes de
-              entrar al flujo compartido.</li>
+            <li>La idea de Arthur se conserva: ADR-015 exige lista de contenido permitido,
+              redacción del payload, digest revisado, transporte, acceso, retención y retirada.</li>
+            <li>Los chunks nativos ya integrados salen del árbol actual; siguen en el historial y
+              no se presenta esa retirada como borrado histórico.</li>
+            <li>Cualquier sincronización futura exige aceptar la ADR y pasar pruebas negativas por
+              todos los caminos laterales antes de entrar al flujo compartido.</li>
           </ul>
         </article>
       </div>
 
       <div class="decision-consequence">
+        <p><b>Corrección verificable.</b> Se restauraron el plan v6, la rúbrica histórica, la
+          gobernanza SaaS y las decisiones H100 ratificadas; el workflow normalizado vuelve a ser
+          complementario. <code>make check</code>, 158 tests de scripts y los nueve gates quedaron
+          verdes en <code>65e1f4d</code>.</p>
         <p><b>Consecuencia operativa.</b> El workflow no decide resultados científicos ni cambia el
           camino crítico. US-119 conserva un panel de cinco miembros —UNet, SegFormer,
           DeepLabv3+, TSViT-Pheno y TSViT-Pheno-FullM—; AnySat y U-TAE quedan fuera del panel
@@ -266,7 +283,7 @@
       </div>
     </section>
 
-    <h3 class="dia" data-date="2026-09-05">5 de septiembre · <span>Catálogo bibliográfico y evidencia normativa</span></h3>
+    <h3 class="dia" data-date="2026-09-05">5 de septiembre · <span>Bibliografía, figuras y correctivo de gobernanza</span></h3>
     <div class="scroll"><table>
       <thead><tr><th>US</th><th>Tipo</th><th>Qué se hizo</th><th>Evidencia</th></tr></thead>
       <tbody data-date="2026-09-05">
@@ -274,6 +291,7 @@
       <tr><td><b>US-141</b></td><td>Sello</td><td>Sellado el documento como normativo: fija qué se puede escribir de cada cita</td><td><code data-author="Javier Rebull">f26613a</code></td></tr>
       <tr><td><b>US-142</b></td><td>Corrección</td><td>El gate del bib buscaba la ruta en la línea entera y no en su celda: acusaba un cambio que no existía</td><td><code data-author="Javier Rebull">e8dbfb6</code></td></tr>
       <tr><td><b>US-143</b></td><td>Avance</td><td>Contrato ejecutable de figuras: el guardado rechaza lienzos distintos de 4,8031 pulgadas, tipografía menor de 8 pt y series diferenciadas solo por color; PDF y SVG conservan el ancho físico y son reproducibles byte a byte. Queda en curso porque aún no genera figuras empíricas</td><td><code data-author="Javier Rebull">b60f160</code></td></tr>
+      <tr><td><b>—</b></td><td>Gobernanza</td><td>Revisión de la integración de Arthur: se conservan gates, LF, rutas Windows, plantillas y Graphify opcional; se restauran las decisiones ratificadas y los históricos. Engram compartido pasa de despliegue implícito a ADR-015 propuesta, con el estado nativo fuera de Git</td><td><code data-author="Javier Rebull">65e1f4d</code></td></tr>
       </tbody></table></div>
     <h3 class="dia" data-date="2026-09-04">4 de septiembre · <span>US-173, arnés OOF, US-119 y decisiones del workflow</span></h3>
     <div class="scroll"><table>
