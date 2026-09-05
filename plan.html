@@ -785,7 +785,7 @@
          ac:["Cuatro razones de coste plausibles, cada una justificada con una fuente citable y no inventada",
              "Cada caso situado en el mapa con el mecanismo que le conviene",
              "Se declara qué tienen de estimado, porque no son medidas"],
-         out:"paper/micai/sections/", dep:"US-152"},
+         out:"paper/micai2027/sections/", dep:"US-152"},
         {id:"US-154", t:"La decisión de despliegue real, situada en el mapa", sp:5, st:"idle",
          role:"Como equipo, tenemos una decisión de punto de operación tomada de verdad en un producto, con su contrafactual medible. Cualquiera con una GPU reproduce el resto del artículo; esto no lo reproduce nadie.",
          ac:["El hecho se cuenta anonimizado: un sistema desplegado recortó su catálogo de 18 clases a 12 con criterio F1 por clase ≥ 0,90. El doble ciego exige quitar el nombre, no el hecho",
@@ -894,7 +894,7 @@
          ac:["Los cuatro se sitúan como puntos del retículo de predictores con valores de conjunto, con lo que la elección deja de ser arbitraria. NO se afirma que cubran el espacio: son cuatro puntos de un retículo cuya región de mecanismos aprendidos queda explícitamente fuera de alcance por US-132",
              "Se nombran los mecanismos que quedan fuera y por qué: cascada, umbral por clase, y rechazo aprendido",
              "Se declara qué región del retículo NO se explora"],
-         out:"paper/micai/sections/", dep:"US-160"}
+         out:"paper/micai2027/sections/", dep:"US-160"}
       ]
     },
     {
@@ -926,24 +926,24 @@
              "Ausencia de significancia NO demuestra equivalencia: el intervalo agregado incluye el cero Y excede la banda, así que el mismo experimento no permite afirmar ninguna de las dos cosas. Se dice tal cual",
              "El resultado nulo se publica aunque no produzca separación: la existencia del artículo no puede quedar condicionada al resultado exploratorio"],
          out:"docs/paper/articulo-nulo.md", dep:"US-140"},
-        {id:"US-141", t:"Trabajo relacionado, con el precedente en la primera página", sp:5, st:"idle",
+        {id:"US-141", t:"Trabajo relacionado, con el precedente en la primera página", sp:5, st:"wip",
          role:"Como autor al que un revisor le enseñó que su efecto está documentado desde los noventa, quiero citarlo donde se ve y delimitar qué queda de mío.",
          ac:["El precedente de agregación de clases se cita en la PRIMERA PÁGINA, no en una nota al pie, y se acota qué queda nuestro",
-             "Rey et al. 2025 citado: excluye píxeles por incertidumbre sobre nuestro mismo banco y nuestras mismas arquitecturas sin nombrar la abstención ni dibujar una curva riesgo-cobertura. Es el trabajo más cercano y hay que decirlo",
+             "Rey et al. 2025 (arXiv 2510.19586) citado con la formulación PRECISA, verificada en el PDF con pdftotext y no en un resumen: usa PASTIS y nuestras tres arquitecturas —TSViT, UNET3D, U-TAE—, IMPLEMENTA el rechazo por umbral de incertidumbre y RECONOCE el intercambio precisión-recall, literal: «predictions for pixels with uncertainty exceeding a threshold are excluded… not making a prediction necessarily reduces recall, but it can increase precision». NO se escribe que ignore la abstención, porque no la ignora. El hueco defendible es más estrecho y más sólido: no lo conecta con clasificación selectiva ni con riesgo-cobertura —abstention, abstain, selective classification, reject option y risk-coverage: CERO apariciones—, no compara los cuatro mecanismos como acciones alternativas, y no modela quién soporta cada pérdida",
              "Ghassemi et al. 2025 citado: ya trata el tamaño del catálogo como variable de diseño medida",
              "Ha 1997, Mortier et al. 2021 y 2022, y Chzhen et al.: el marco de predicción con conjuntos ya existe y nuestra contribución es su primera instanciación en mapeo de cultivos por parcela con la contabilidad de reparto que ese marco no mide",
              "Las cuatro comprobaciones que la auditoría dejó abiertas, verificadas por API con su contraste entre atribución y contenido",
              "Se escribe «no encontramos trabajo que…», nunca «nadie ha…», y se declara el alcance de la búsqueda con su sesgo",
              "Cada cita lleva una frase de su límite metodológico redactada desde el texto: es la prueba de que se leyó"],
-         out:"paper/micai/sections/02-related.tex", dep:"—"},
-        {id:"US-142", t:"Bibliografía verificada y publicada", sp:3, st:"idle",
+         out:"docs/paper/trabajo-relacionado-verificado.md; paper/micai2027/sections/02-related.tex", dep:"—"},
+        {id:"US-142", t:"Bibliografía verificada y publicada", sp:3, st:"wip",
          role:"Como lector, quiero poder localizar cada referencia.",
          ac:["Versión revisada por pares donde exista, no el preprint",
              "Ninguna entrada citada sin venue ni identificador en el PDF",
-             "Ninguna entrada en el bib que no se cite",
-             "Las correcciones entran por el fichero de correcciones con su motivo, no editando el bib generado",
+             "El CATÁLOGO verificado y el refs.bib FINAL son dos cosas. El catálogo es paper/micai2027/refs-candidates.bib, 57 entradas con identificador localizable y autores completos; sus entradas sin citar se reportan y NO hacen fallar el gate, porque mientras no exista el manuscrito nuevo no existen citas nuevas. El refs.bib final se genera después, solo con las claves efectivamente citadas. Las 26 citas del manuscrito retirado NO se atribuyen al contexto de MICAI 2027",
+             "Las correcciones entran por el fichero de correcciones con su motivo, no editando el bib generado. Y NUNCA tocando paper/micai/refs.bib, que es histórico, inmutable y está ligado al PDF retirado: el gate comprueba que conserve su hash sellado",
              "El recuento de referencias sale del artefacto, no de la prosa: hoy el sitio dice cuarenta y tres en un sitio y cuarenta y cuatro en otro de la misma página"],
-         out:"paper/micai/refs.bib", dep:"US-141"},
+         out:"paper/micai2027/refs-candidates.bib y, después del manuscrito, paper/micai2027/refs.bib", dep:"US-141"},
         {id:"US-143", t:"Figuras en inglés, legibles y sin color como único canal", sp:5, st:"idle",
          role:"Como revisor que lee el artículo en inglés, quiero que sus figuras estén en inglés, porque las seis estaban rotuladas en español y su tipografía quedaba a 4 pt.",
          ac:["Generador parametrizado por idioma, con salida en inglés y en español",
@@ -976,7 +976,7 @@
              "El recuento de artefactos del apéndice se genera desde el ledger, no se escribe a mano",
              "El método declara que el fold 5 es la partición externa oficial y que los cinco bloques son sub-folds internos; nunca se escribe «validación cruzada de cinco folds»",
              "Ninguna cifra sale de mezclar dos filas de un artefacto"],
-         out:"paper/micai/", dep:"US-140, US-122, US-135, US-141, US-142, US-143, US-149, US-154"}
+         out:"paper/micai2027/", dep:"US-140, US-122, US-135, US-141, US-142, US-143, US-149, US-154"}
       ]
     },
     {
@@ -1004,7 +1004,7 @@
          ac:["Atribución de Copernicus en los pies de figura",
              "Licencia de cada banco declarada, con su cláusula de compartir-igual",
              "Documentada la incompatibilidad potencial con el contrato editorial y preparada la figura sustituta"],
-         out:"paper/micai/; docs/licenses/", dep:"US-143"},
+         out:"paper/micai2027/; docs/licenses/", dep:"US-143"},
         {id:"US-148", t:"Metadatos, camera-ready y convocatoria", sp:3, st:"idle",
          role:"Como autor de correspondencia, quiero que el nombre coincida carácter a carácter en todas partes.",
          ac:["Forma con guion propagada al repositorio, la licencia y el sistema del congreso",
