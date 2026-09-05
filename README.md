@@ -57,7 +57,10 @@ repositorio citado mientras dure la revisión: identificaría a los autores.
 ## Actualizar el contenido
 
 Las cifras están al final de cada HTML, en arrays de JavaScript con nombres explícitos
-(`support`, `members`, `pending`, `EPICS`). Editar una tabla es editar su array.
+(`support`, `members`, `pending`, `EPICS`). Editar una tabla es editar su array. El historial
+diario de `plan.html` se agrupa por la fecha local del commit de evidencia: cada fila identifica
+la US afectada, el tipo de avance y un commit del repositorio principal. No se añaden logros sin
+ese ancla ni commits del sitio que solo reflejen el mismo cambio.
 
 Cuando cambie una cifra del artículo, la fuente de verdad sigue siendo el registro de
 custodia del repositorio principal, `paper/ARTIFACTS.md`. Este sitio la refleja; no la
