@@ -73,7 +73,7 @@
     <div class="colophon">
       <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
       <span><b>Total</b> <span id="total-sp">—</span> puntos de historia</span>
-      <span><b>Actualizado</b> 4 de septiembre de 2026, US-119 cerrada y workflow de Arthur resuelto</span>
+      <span><b>Actualizado</b> 5 de septiembre de 2026, catálogo bibliográfico y evidencia normativa de US-141</span>
     </div>
   </div>
 </div>
@@ -87,6 +87,7 @@
     <a href="index.html#hallazgos">Hallazgos</a>
     <a href="index.html#pendientes">Pendientes</a>
     <a href="#workflow-arthur">Decisiones del workflow</a>
+    <a href="plan.html#historial">Historial</a>
     <a class="current" href="plan.html">Plan por épicas</a>
   </div>
 </div>
@@ -224,6 +225,47 @@
       arranca en la EPIC 27 ·
       <span class="chip stop">Bloqueada</span> depende de un tercero o de otra US ·
       <span class="chip dead">Retirada</span> una auditoría la tumbó y no se rehace.</p>
+
+
+    <h2 id="historial">Historial diario</h2>
+    <p>Cada línea lleva su historia de usuario, su estado y el <b>commit que la sostiene</b>. Sin ancla no entra: una narración sin commit es una afirmación sobre el trabajo, no el trabajo.</p>
+    <h3 class="dia">5 de septiembre · <span>Catálogo bibliográfico y evidencia normativa</span></h3>
+    <div class="scroll"><table>
+      <thead><tr><th>US</th><th>Estado</th><th>Qué se hizo</th><th>Evidencia</th></tr></thead>
+      <tbody>
+      <tr><td><b>US-141</b></td><td><span class="chip wip">wip</span></td><td>Trabajo relacionado verificado en fuente primaria: tabla con lo que cada referencia sostiene, su límite, y la redacción <b>prohibida</b>. Dieciséis claves comprobadas contra el catálogo</td><td><code>2371eff</code></td></tr>
+      <tr><td><b>US-141</b></td><td><span class="chip wip">wip</span></td><td>Sellado el documento como normativo: fija qué se puede escribir de cada cita</td><td><code>f26613a</code></td></tr>
+      <tr><td><b>US-142</b></td><td><span class="chip wip">wip</span></td><td>Catálogo de 57 referencias del manuscrito nuevo, con fila propia en el ledger y sin tocar el bib histórico. Los cinco sin identificador, resueltos en NeurIPS, PMLR y OpenReview</td><td><code>cfc07f2</code></td></tr>
+      <tr><td><b>US-142</b></td><td><span class="chip wip">wip</span></td><td>El gate del bib buscaba la ruta en la línea entera y no en su celda: acusaba un cambio que no existía</td><td><code>e8dbfb6</code></td></tr>
+      </tbody></table></div>
+    <h3 class="dia">4 de septiembre · <span>US-173, arnés OOF, US-119 y decisiones del workflow</span></h3>
+    <div class="scroll"><table>
+      <thead><tr><th>US</th><th>Estado</th><th>Qué se hizo</th><th>Evidencia</th></tr></thead>
+      <tbody>
+      <tr><td><b>US-173</b></td><td><span class="chip ok">ok</span></td><td>Estimando condicional al conjunto de datos, con la población, la unidad y el clúster fijados; el artículo <b>no afirma transporte</b></td><td><code>4763efc</code></td></tr>
+      <tr><td><b>US-173</b></td><td><span class="chip ok">ok</span></td><td>El contrato del estimando, blindado: tres claves que lo convertirían en otro estudio tienen prueba negativa</td><td><code>7935258</code></td></tr>
+      <tr><td><b>US-118</b></td><td><span class="chip wip">wip</span></td><td>Inventario global de OOF con tres estados, y los consumidores MICAI rechazan lo no canónico</td><td><code>8f77c06</code></td></tr>
+      <tr><td><b>US-118</b></td><td><span class="chip wip">wip</span></td><td>La verificación certificaba un bug: mi re-volcado corrió con el <code>dump_oof</code> defectuoso y reprodujo el fichero histórico porque los dos salían del mismo fallo</td><td><code>1dd6a41</code></td></tr>
+      <tr><td><b>US-118</b></td><td><span class="chip wip">wip</span></td><td><code>xgb-alphaearth-remat-v1</code> con identidad propia; el histórico queda fuera de inferencia</td><td><code>574ae74</code></td></tr>
+      <tr><td><b>US-119</b></td><td><span class="chip ok">ok</span></td><td>Cinco miembros dentro del umbral y dos fuera. La premisa era falsa en un tercio: SegFormer <b>mejora</b> en fold 5</td><td><code>0be0920</code></td></tr>
+      <tr><td><b>US-121</b></td><td><span class="chip wip">wip</span></td><td>ADR-014 firma alcance, destino de lo heredado y fecha de corte del 18 de septiembre</td><td><code>874d74c</code></td></tr>
+      <tr><td><b>US-139</b></td><td><span class="chip wip">wip</span></td><td>Panel congelado en cinco miembros y cuatro familias, con margen de una</td><td><code>bf592df</code></td></tr>
+      <tr><td><b>US-172</b></td><td><span class="chip wip">wip</span></td><td>Protocolo de elicitación v0.2: rejilla completa de siete celdas e identificación resuelta con cinco intercambios</td><td><code>95d645a</code></td></tr>
+      <tr><td><b>US-172</b></td><td><span class="chip wip">wip</span></td><td>Los cuatro adjuntos de la consulta ética, reproducibles byte a byte</td><td><code>d5c9e80</code></td></tr>
+      <tr><td><b>—</b></td><td>—</td><td>Retirado el veredicto sostenido por cifras invalidadas: el manuscrito se retira porque su cadena inferencial no vale, no porque se sepa la dirección del resultado</td><td><code>440e018</code></td></tr>
+      </tbody></table></div>
+    <h3 class="dia">3 de septiembre · <span>Auditoría y reencuadre</span></h3>
+    <div class="scroll"><table>
+      <thead><tr><th>US</th><th>Estado</th><th>Qué se hizo</th><th>Evidencia</th></tr></thead>
+      <tbody>
+      <tr><td><b>—</b></td><td>—</td><td>Reencuadre tras cuatro rechazos a ciegas y la revisión del coautor</td><td><code>9e6fc19</code></td></tr>
+      <tr><td><b>—</b></td><td>—</td><td>Al reparar el protocolo el hallazgo se disuelve: el intervalo pasa a incluir el cero</td><td><code>374ed6b</code></td></tr>
+      <tr><td><b>US-171</b></td><td><span class="chip wip">wip</span></td><td>El criterio de <i>k</i> es espacial, no estadístico, y selecciona el valor donde <b>no</b> hay significancia</td><td><code>96b8af9</code></td></tr>
+      <tr><td><b>US-160</b></td><td><span class="chip wip">wip</span></td><td>Los mecanismos como predictores con valores de conjunto</td><td><code>6c5db78</code></td></tr>
+      <tr><td><b>US-140</b></td><td><span class="chip wip">wip</span></td><td>Arranca el preregistro con el criterio declarado antes de mirar</td><td><code>9c3afb4</code></td></tr>
+      <tr><td><b>—</b></td><td>—</td><td>Encargo de auditoría externa, con la parte A a ciegas</td><td><code>7bdc515</code></td></tr>
+      <tr><td><b>E6</b></td><td><span class="chip ok">ok</span></td><td>Arthur: <code>dump_oof</code> no propagaba <code>n_timesteps</code>; Full-M pasa de 0,2552 a 0,7883</td><td><code>373acb7</code></td></tr>
+      </tbody></table></div>
 
     <div id="epics"></div>
 
