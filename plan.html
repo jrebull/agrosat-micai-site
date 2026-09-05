@@ -57,7 +57,10 @@
         propuesto por Arthur también quedó revisado: este plan registra más abajo qué se adopta,
         qué se descarta y qué queda solo como posibilidad futura. US-141 ya tiene evidencia
         normativa sellada desde fuentes primarias y US-142 un catálogo verificado de 57
-        referencias; ambas siguen en curso hasta integrarse en el manuscrito nuevo.</p>
+        referencias; ambas siguen en curso hasta integrarse en el manuscrito nuevo. <b>US-143
+        también está en curso</b>: el contrato ejecutable de las figuras ya impide repetir el
+        ancho y los canales defectuosos, pero todavía no se ha regenerado ninguna figura
+        empírica.</p>
       <p><b>Sede única: MICAI 2027, hipótesis de planificación de 20 páginas</b> — el tope que
         permitía la edición anterior, <b>a reverificar cuando salga la convocatoria</b>; si baja, el
         recorte sale de resultados hacia el apéndice y nunca de robustez. Sin artículo de revista en
@@ -75,7 +78,7 @@
     <div class="colophon">
       <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
       <span><b>Total</b> <span id="total-sp">—</span> puntos de historia</span>
-      <span><b>Actualizado</b> 5 de septiembre de 2026, catálogo bibliográfico y evidencia normativa de US-141</span>
+      <span><b>Actualizado</b> 5 de septiembre de 2026, contrato físico y accesible de US-143</span>
     </div>
   </div>
 </div>
@@ -270,6 +273,7 @@
       <tr><td><b>US-141</b></td><td>Avance</td><td>Trabajo relacionado verificado en fuente primaria: tabla con lo que cada referencia sostiene, su límite, y la redacción <b>prohibida</b>. Dieciséis claves comprobadas contra el catálogo</td><td><code data-author="Javier Rebull">2371eff</code></td></tr>
       <tr><td><b>US-141</b></td><td>Sello</td><td>Sellado el documento como normativo: fija qué se puede escribir de cada cita</td><td><code data-author="Javier Rebull">f26613a</code></td></tr>
       <tr><td><b>US-142</b></td><td>Corrección</td><td>El gate del bib buscaba la ruta en la línea entera y no en su celda: acusaba un cambio que no existía</td><td><code data-author="Javier Rebull">e8dbfb6</code></td></tr>
+      <tr><td><b>US-143</b></td><td>Avance</td><td>Contrato ejecutable de figuras: el guardado rechaza lienzos distintos de 4,8031 pulgadas, tipografía menor de 8 pt y series diferenciadas solo por color; PDF y SVG conservan el ancho físico y son reproducibles byte a byte. Queda en curso porque aún no genera figuras empíricas</td><td><code data-author="Javier Rebull">b60f160</code></td></tr>
       </tbody></table></div>
     <h3 class="dia" data-date="2026-09-04">4 de septiembre · <span>US-173, arnés OOF, US-119 y decisiones del workflow</span></h3>
     <div class="scroll"><table>
@@ -974,7 +978,7 @@
       ]
     },
     {
-      id:"EPIC 23", name:"Manuscrito: veinte páginas, MICAI y solo MICAI", status:"idle",
+      id:"EPIC 23", name:"Manuscrito: veinte páginas, MICAI y solo MICAI", status:"wip",
       goal:"Sede única: MICAI 2027, edición del cuarenta aniversario, aprovechando el tope de veinte páginas que la edición anterior permitía —a reverificar cuando salga la convocatoria—. Con veinte páginas cabe la rejilla completa Y una sección de robustez de verdad, que es lo que separa un artículo que aguanta a un revisor estricto de uno que solo aguanta a un revisor amable. Lo que sigue sin caber es la autopsia como primera contribución.",
       us:[
         {id:"US-140", t:"Preregistro del experimento central, ANTES de correrlo", sp:3, st:"idle",
@@ -1020,13 +1024,17 @@
              "Las correcciones entran por el fichero de correcciones con su motivo, no editando el bib generado. Y NUNCA tocando paper/micai/refs.bib, que es histórico, inmutable y está ligado al PDF retirado: el gate comprueba que conserve su hash sellado",
              "El recuento de referencias sale del artefacto, no de la prosa: hoy el sitio dice cuarenta y tres en un sitio y cuarenta y cuatro en otro de la misma página"],
          out:"paper/micai2027/refs-candidates.bib y, después del manuscrito, paper/micai2027/refs.bib", dep:"US-141"},
-        {id:"US-143", t:"Figuras en inglés, legibles y sin color como único canal", sp:5, st:"idle",
+        {id:"US-143", t:"Figuras en inglés, legibles y sin color como único canal", sp:5, st:"wip",
          role:"Como revisor que lee el artículo en inglés, quiero que sus figuras estén en inglés, porque las seis estaban rotuladas en español y su tipografía quedaba a 4 pt.",
-         ac:["Generador parametrizado por idioma, con salida en inglés y en español",
+         ac:["INFRAESTRUCTURA TERMINADA, FIGURAS PENDIENTES. ml/report/figuras_micai.py parametriza los rótulos por idioma y quince tests sintéticos comprueban el contrato sin regenerar resultados empíricos",
+             "El guardado común rechaza el lienzo heredado de 7,2 pulgadas; exige 4,8031 pulgadas y comprueba el ancho físico resultante en el MediaBox del PDF y en el SVG. No usa bbox_inches=tight, que cambiaría el ancho después del control",
+             "El control de color inspecciona las series dibujadas y rechaza una llamada directa que solo cambie los colores; comprobar únicamente la tabla de estilos no cuenta",
+             "La estabilidad se verifica sobre los bytes finales de los dos formatos predeterminados, PDF y SVG",
+             "Generador parametrizado por idioma, con salida en inglés y en español",
              "Generadas al ancho final real, con tipografía de al menos 8 pt al tamaño impreso",
              "Ninguna figura codifica su significado solo con color",
              "Reproducibles byte a byte"],
-         out:"scripts/build_paper_micai_*_figure.py", dep:"—"},
+         out:"ml/report/figuras_micai.py; tests/ml/report/test_figuras_micai.py; scripts/build_paper_micai_*_figure.py", dep:"—"},
         {id:"US-149", t:"Registro de afirmaciones retiradas, y su gate", sp:3, st:"idle",
          role:"Como autor que va a reescribir, quiero una lista nominal de lo que la auditoría tumbó, porque «ninguna de las quince afirmaciones» era una cifra sin artefacto.",
          ac:["Una fila por afirmación retirada: cita textual, documento que la refutó y redacción correcta",
