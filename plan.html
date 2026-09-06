@@ -4,21 +4,37 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#102b27">
 <title>Plan por épicas · AgroSatCopilot MICAI 2027</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
 <link rel="stylesheet" href="assets/style.css">
 </head>
-<body>
+<body class="plan-page">
 
-<div class="sheet">
-  <div class="masthead">
-    <p class="stamp"><a href="index.html" style="color:inherit;text-decoration:none">← Cuaderno AgroSatCopilot</a></p>
-    <h1>Plan por épicas</h1>
-    <p class="lede">El trabajo del artículo MICAI 2027, desglosado en quince épicas y ochenta y
-      nueve historias de usuario con sus criterios de aceptación, puntos de historia,
-      dependencias y artefacto de salida.</p>
+<header class="plan-hero">
+  <div class="plan-hero-inner">
+    <div class="plan-topline">
+      <a href="index.html">AgroSatCopilot / cuaderno</a>
+      <span>Actualizado 6 sep 2026</span>
+    </div>
+
+    <div class="plan-intro">
+      <div>
+        <p class="plan-kicker">Plan de investigación · MICAI 2027</p>
+        <h1>Del mapa<br><span>al artículo.</span></h1>
+        <p class="lede">Quince épicas y ochenta y nueve historias convierten un resultado
+          retirado en una comparación defendible de cuatro maneras de prometer menos.</p>
+      </div>
+      <aside class="plan-now" aria-labelledby="plan-now-title">
+        <p class="plan-now-label">Ahora · cuello de botella</p>
+        <h2 id="plan-now-title"><a href="#US-172">US-172</a></h2>
+        <p>El protocolo v0.3 permanece en borrador. La determinación fue verbal; falta un acta
+          escrita real antes de congelar y reclutar.</p>
+        <div class="plan-now-state"><span></span>En curso · sin crédito parcial</div>
+      </aside>
+    </div>
 
     <section class="tablero-cifras" aria-label="Estado ejecutivo derivado del plan">
       <div class="cerrado">
@@ -72,7 +88,8 @@
         <span>Camino crítico · empieza en US-172</span>
         <span id="cadena-resumen">—</span>
       </div>
-      <div class="cadena-via" id="cadena-via"></div>
+      <div class="cadena-via" id="cadena-via"
+           aria-label="Cinco etapas del camino crítico del artículo"></div>
     </div>
     <details class="registro">
       <summary>Cuarentena, reencuadre y el registro largo del estado</summary>
@@ -184,13 +201,13 @@
       <div class="ledger-row"><span class="name">Esfuerzo pendiente</span><span class="note">el camino crítico empieza en US-172</span><span class="num" id="progress-pending-sp">—</span></div>
     </div>
     </details>
-    <div class="colophon">
+    <div class="colophon plan-colophon">
       <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
       <span><b>Total</b> <span id="total-sp">—</span> puntos de historia</span>
       <span><b>Actualizado</b> 6 de septiembre de 2026, main saneada, CI verde y purga de GitHub pendiente</span>
     </div>
   </div>
-</div>
+</header>
 
 <div class="nav">
   <div class="nav-inner">
@@ -209,36 +226,18 @@
 <div class="sheet">
   <div class="panel">
 
-    <p class="lede">Las épicas están ordenadas por dependencia, no por calendario. MICAI 2027
-      todavía no tiene sede ni convocatoria, así que el calendario se fijará hacia atrás desde
-      la fecha de envío cuando se publique.</p>
+    <p class="section-intro">Las épicas están ordenadas por dependencia, no por calendario.
+      La convocatoria de MICAI 2027 aún no está publicada; cuando exista, el calendario se
+      construirá hacia atrás desde la fecha de envío.</p>
 
     <section class="progress-dashboard" aria-labelledby="progress-title">
       <div class="progress-dashboard-head">
         <div>
-          <p class="eyebrow">Avance ejecutable · épicas 18 a 27</p>
-          <h2 id="progress-title">Cuánto está realmente cerrado</h2>
+          <p class="eyebrow">Mapa de ejecución · épicas 18 a 27</p>
+          <h2 id="progress-title">Diez frentes, una sola cuenta</h2>
         </div>
-        <p>El porcentaje usa <b>SP con criterio de aceptación cumplido</b> sobre SP activos. Una
-          historia en curso se ve, pero no recibe crédito parcial; las retiradas no cuentan en el
-          denominador.</p>
-      </div>
-      <div class="progress-overview">
-        <div class="progress-score">
-          <span class="progress-score-value" id="progress-overall-pct">—</span>
-          <span class="progress-score-label">del plan nuevo cerrado</span>
-          <div class="progress-track progress-track-large" role="progressbar"
-               aria-label="Avance general del plan nuevo" aria-valuemin="0" aria-valuemax="100"
-               aria-valuenow="0">
-            <span id="progress-overall-fill"></span>
-          </div>
-          <span class="progress-score-detail" id="progress-overall-sp">—</span>
-        </div>
-        <dl class="progress-facts">
-          <div><dt>Historias cerradas</dt><dd id="progress-new-stories">—</dd></div>
-          <div><dt>En curso</dt><dd id="progress-new-wip">—</dd></div>
-          <div><dt>Épicas activas</dt><dd id="progress-new-epics">—</dd></div>
-        </dl>
+        <p>Cada tarjeta muestra SP cerrados y estado real. El resumen superior y estas tarjetas
+          nacen del mismo objeto <code>EPICS</code>: no hay un segundo recuento que pueda divergir.</p>
       </div>
       <div class="epic-progress-grid" id="epic-progress-grid"
            aria-label="Avance por épica del plan nuevo"></div>
@@ -1464,12 +1463,25 @@
   });
   pon("cadena-resumen", spCadena + " de " + pendingSp + " SP pendientes");
 
+  var FASES_CRITICAS = [
+    {n:"01", t:"Fijar la pérdida", ids:["US-172"]},
+    {n:"02", t:"Cerrar el diseño", ids:["US-160","US-124","US-125","US-171"]},
+    {n:"03", t:"Medir y tensionar", ids:["US-155","US-127","US-128","US-129","US-136","US-139"]},
+    {n:"04", t:"Elegir el mecanismo", ids:["US-152","US-154"]},
+    {n:"05", t:"Escribir y entregar", ids:["US-144","US-146","US-148"]}
+  ];
   var via = document.getElementById("cadena-via");
   if (via) {
-    via.innerHTML = CADENA.map(function(id, i){
-      var tono = i === 0 ? "cuello" : (i < 5 ? "pronto" : "lejos");
-      return '<a class="' + tono + '" href="#' + id + '" title="' + id + '"><i></i><b>' +
-             id.replace("US-", "") + '</b></a>';
+    via.innerHTML = FASES_CRITICAS.map(function(fase){
+      var historias = fase.ids.map(function(id){ return porId[id]; });
+      var abiertas = historias.filter(function(u){ return u.st !== "ok" && u.st !== "dead"; });
+      var puntos = abiertas.reduce(function(total,u){ return total + u.sp; }, 0);
+      var estado = abiertas.length === 0 ? "cerrada" :
+        (historias.some(function(u){ return u.st === "wip"; }) ? "actual" : "espera");
+      var destino = abiertas.length ? abiertas[0].id : historias[0].id;
+      return '<a class="fase-critica ' + estado + '" href="#' + destino + '">' +
+        '<span class="fase-num">' + fase.n + '</span><strong>' + fase.t + '</strong>' +
+        '<small>' + abiertas.length + ' US · ' + puntos + ' SP</small></a>';
     }).join("");
   }
 
@@ -1478,21 +1490,6 @@
            '" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + pct + '">' +
            '<span style="width:' + pct + '%"></span></div>';
   }
-
-  var overallTrack = document.querySelector(".progress-track-large");
-  document.getElementById("progress-overall-pct").textContent = overall.pct + "%";
-  document.getElementById("progress-overall-sp").textContent =
-    overall.doneSp + " de " + overall.totalSp + " SP cerrados";
-  document.getElementById("progress-overall-fill").style.width = overall.pct + "%";
-  overallTrack.setAttribute("aria-valuenow", overall.pct);
-  document.getElementById("progress-new-stories").textContent =
-    overall.done.length + " / " + overall.active.length;
-  document.getElementById("progress-new-wip").textContent = overall.active.filter(function(u){
-    return u.st === "wip";
-  }).length;
-  document.getElementById("progress-new-epics").textContent = newEpics.filter(function(e){
-    return e.status === "wip";
-  }).length + " / " + newEpics.length;
 
   var epicProgress = document.getElementById("epic-progress-grid");
   newEpics.forEach(function(e){
@@ -1567,16 +1564,18 @@
     sec.appendChild(goal);
 
     e.us.forEach(function(u){
-      var d = document.createElement("article");
+      var d = document.createElement("details");
       d.className = "us";
+      d.id = u.id;
+      d.open = u.st === "wip";
       var acs = u.ac.map(function(a){ return "<li><span>" + a + "</span></li>"; }).join("");
       d.innerHTML =
-        '<div class="us-top">' +
+        '<summary class="us-top">' +
           '<span class="us-id">' + u.id + '</span>' +
           '<span class="us-title">' + u.t + '</span>' +
           '<span class="us-sp">' + u.sp + ' SP</span>' +
           '<span class="chip ' + u.st + '">' + LABEL[u.st] + '</span>' +
-        '</div>' +
+        '</summary>' +
         '<div class="us-body">' +
           '<p class="role">' + u.role + '</p>' +
           '<ul class="ac">' + acs + '</ul>' +
