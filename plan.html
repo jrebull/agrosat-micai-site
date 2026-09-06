@@ -86,8 +86,9 @@
         reflogs y la poda dejó este clon sin objetos Engram alcanzables ni inalcanzables. Los cuatro
         espejos temporales se purgaron después de comprobar sus nombres exactos; no se vació el resto
         de la Papelera. Los
-        diez gates, <code>harness-check</code>, <code>make check</code> y 2 461 pruebas están verdes;
-        64 se omiten por recursos o datos externos ausentes. <code>f8051f0</code> prepara el caso
+        diez gates, <code>harness-check</code>, <code>make check</code> y 2 472 pruebas están verdes;
+        64 se omiten por recursos o datos externos ausentes; la suite completa tardó 25:54.
+        <code>f8051f0</code> prepara el caso
         para Support con tres PR afectadas y los dos First Changed Commits, sin copiar los datos
         personales. Falta enviarlo desde una sesión autenticada, así que el repositorio permanece
         privado y el porcentaje científico no aumenta.</p>
@@ -338,6 +339,7 @@
       <tr><td><b>—</b></td><td>CI cerrada</td><td>El caché interno de Poetry queda desactivado y la preparación de ruedas se serializa. Once pruebas negativas vigilan los caminos adyacentes; la CI real termina 6/6 verde, incluido el job pesado con 86 pruebas backend y 1 438 de scripts y ML</td><td><code data-author="Javier Rebull">b4d4bfb</code></td></tr>
       <tr><td><b>—</b></td><td>Poda local</td><td>La historia de <code>main</code> estaba limpia, pero el clon conservaba un ref remoto local de la PR #5. Eliminado el ref, expirados sus reflogs y podados los objetos: las comprobaciones de alcanzables e inalcanzables ya no encuentran <code>.engram/</code></td><td><code data-author="Javier Rebull">68adcf4</code></td></tr>
       <tr><td><b>—</b></td><td>Purga local</td><td>Los cuatro espejos temporales del ensayo y la reescritura seguían recuperables en la Papelera. Se verificaron y eliminaron por sus cuatro rutas exactas; el resto de la Papelera no se tocó</td><td><code data-author="Javier Rebull">a8fbee9</code></td></tr>
+      <tr><td><b>—</b></td><td>Revalidación</td><td>Suite completa rederivada después del gate nuevo: 2 472 pasadas, 64 omitidas y cero fallos en 25:54. El recuento anterior queda obsoleto porque no incluía las once pruebas de recursos de CI</td><td><code data-author="Javier Rebull">faf1431</code></td></tr>
       </tbody></table></div>
 
     <h3 class="dia" data-date="2026-09-05">5 de septiembre · <span>Bibliografía, figuras, gobernanza y revalidación</span></h3>
