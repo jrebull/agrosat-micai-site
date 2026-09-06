@@ -45,7 +45,7 @@
         una función de pérdida identificada</b>, y la cardinalidad ocupaba ese lugar sin
         justificación. Por eso el plan se reordena: la <b>EPIC 27</b> va delante de todo y el camino
         crítico empieza ahí.</p>
-      <p><b>Estado al 5 de septiembre.</b> Las ocho rondas cerraron defectos en código, tests,
+      <p><b>Estado al 6 de septiembre.</b> Las ocho rondas cerraron defectos en código, tests,
         custodia y redacción. <b>US-173 es la primera historia científica cerrada del estudio
         reencuadrado</b>: la inferencia será condicional a cada banco, con la parcela como unidad,
         <code>patch_id</code> como clúster y sin afirmar transporte. Quedan tres parámetros antes
@@ -69,19 +69,21 @@
         <code>48259f1</code>; la revalidación confirmó los nueve gates, el CI completo y que la
         prueba del PDF falla al restaurar la exención antigua. <b>El porcentaje del paper no
         aumenta por arreglar su arnés</b>: US-172 continúa siendo el camino crítico.</p>
-      <p><b>Riesgo histórico pendiente.</b> Retirar los chunks nativos de Engram del árbol actual
-        no los retiró de la historia de este repositorio público. La revisión del contenido
-        comprimido confirmó datos de contacto y rutas locales, aunque no detectó tokens, claves de
-        API ni llaves privadas con los patrones comprobados. La limpieza coordinada de historia y
-        clones es una tarea de contención separada; ningún gate verde se presenta como sustituto.</p>
-      <p><b>Revalidación del ensayo, 6 de septiembre.</b> El diagnóstico de
-        <code>8a6bcd7</code> confirma la exposición y la red de referencias, pero el runbook todavía
-        no es ejecutable: el comando no acotado que documenta reescribe 537 commits no vacíos y
-        deja las 90 filas con SHA del ledger fuera de la nueva historia, no 48 commits y 12 filas.
-        Un ensayo acotado al tramo afectado conserva el árbol de <code>main</code>, cambia 27 commits
-        no vacíos y deja 3 filas por resellar. También hay una ruta Windows en un segundo blob y
-        solo 4 de las 8 IPv4 distintas son públicas. Se recomienda contener ya; la reescritura
-        espera a que el runbook diga exactamente el comando ensayado y sus consumidores.</p>
+      <p><b>Incidente histórico contenido, no cerrado.</b> El repositorio quedó privado y la rama
+        fusionada <code>optimiza-harnees</code> fue borrada; no hubo empuje forzado. Los chunks
+        nativos ya no están en el árbol actual, pero siguen alcanzables desde <code>main</code> y
+        <code>refs/pull/*</code>. La inspección confirmó datos de contacto y de entorno. La
+        afirmación correcta es que <b>los patrones probados no detectaron credenciales</b>, no que se
+        haya demostrado su ausencia. El repositorio no vuelve a público antes del saneamiento y de
+        la confirmación de GitHub Support.</p>
+      <p><b>Runbook corregido, 6 de septiembre.</b> El ensayo acotado de referencia conserva el
+        árbol de <code>main</code>, asigna SHA nuevo a 27 commits, elimina uno que queda vacío y deja
+        3 filas del ledger por resellar. Identificó once SHA citados en cuatro ficheros del
+        repositorio y dos del sitio. Ese mapa es un <b>snapshot</b>, no la autoridad de la operación:
+        los commits usados para documentarlo ampliaron inmediatamente el tramo. La tabla también
+        seguía diciendo que la rama borrada estaba viva. <code>aec8222</code> corrige ambos defectos
+        y obliga a regenerar el mapa desde un espejo fresco durante una ventana sin escrituras. La
+        reescritura espera la confirmación de Arthur sobre trabajo no empujado.</p>
       <p><b>Sede única: MICAI 2027, hipótesis de planificación de 20 páginas</b> — el tope que
         permitía la edición anterior, <b>a reverificar cuando salga la convocatoria</b>; si baja, el
         recorte sale de resultados hacia el apéndice y nunca de robustez. Sin artículo de revista en
@@ -99,7 +101,7 @@
     <div class="colophon">
       <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
       <span><b>Total</b> <span id="total-sp">—</span> puntos de historia</span>
-      <span><b>Actualizado</b> 5 de septiembre de 2026, PR #5 revalidada tras la fusión</span>
+      <span><b>Actualizado</b> 6 de septiembre de 2026, incidente Engram contenido y runbook corregido</span>
     </div>
   </div>
 </div>
@@ -306,6 +308,15 @@
         </article>
       </div>
     </section>
+
+    <h3 class="dia" data-date="2026-09-06">6 de septiembre · <span>Contención y revalidación del saneamiento histórico</span></h3>
+    <div class="scroll"><table>
+      <thead><tr><th>US</th><th>Tipo</th><th>Qué se hizo</th><th>Evidencia</th></tr></thead>
+      <tbody data-date="2026-09-06">
+      <tr><td><b>—</b></td><td>Contención</td><td>Repositorio pasado a privado y rama <code>optimiza-harnees</code> borrada, sin reescribir ni forzar referencias. El inventario distingue apariciones de valores distintos y reemplaza «no hay credenciales» por el resultado limitado de los patrones probados</td><td><code data-author="Javier Rebull">cdd014c</code></td></tr>
+      <tr><td><b>—</b></td><td>Ensayo</td><td>Mapa del snapshot acotado: 27 commits reciben SHA nuevo, uno desaparece, tres filas del ledger requieren resello y once SHA citados alcanzan cuatro ficheros del repositorio y dos del sitio. No se usa como mapa final</td><td><code data-author="Javier Rebull">b5fdeee</code></td></tr>
+      <tr><td><b>—</b></td><td>Corrección</td><td>El runbook aún llamaba viva a la rama borrada y presentaba como vigente un mapa que sus propios commits habían ampliado. Ahora separa el snapshot del inventario final y hace autoridad al <code>commit-map</code> generado en la ventana real</td><td><code data-author="Javier Rebull">aec8222</code></td></tr>
+      </tbody></table></div>
 
     <h3 class="dia" data-date="2026-09-05">5 de septiembre · <span>Bibliografía, figuras, gobernanza y revalidación</span></h3>
     <div class="scroll"><table>

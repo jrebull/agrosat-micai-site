@@ -28,7 +28,7 @@
         <span><b>Autores</b> A. J. Zizumbo Velasco · J. A. Rebull-Saucedo</span>
         <span><b>Universos</b> PASTIS · 16 640 parcelas · 18 clases &nbsp;·&nbsp;
           BreizhCrops 2017 · 60 000 parcelas · 9 clases</span>
-        <span><b>Revisión</b> 6 de septiembre de 2026 · <code>8a6bcd7</code> · <b>saneamiento histórico en contención</b></span>
+        <span><b>Revisión</b> 6 de septiembre de 2026 · <code>aec8222</code> · <b>incidente contenido; reescritura coordinada pendiente</b></span>
       </div>
       <p class="downloads">
         <a class="dl" href="plan.html">El plan nuevo, por épicas</a>
@@ -154,13 +154,16 @@
     revalidada: se conservan sus gates, plantillas y arreglos portables; la gobernanza ratificada
     se restauró y Engram compartido queda planificado en ADR-015, no activo por defecto. La PR #5
     está fusionada en <code>48259f1</code>, con seis jobs de CI y los nueve gates verdes. Los chunks
-    nativos ya no están en el árbol actual, pero su saneamiento de la historia pública sigue
-    pendiente y no se confunde con un gate verde. La H100 existe según ADR-009, pero los comandos
+    nativos ya no están en el árbol actual. El repositorio quedó privado y la rama fusionada fue
+    borrada, sin empuje forzado; su saneamiento histórico sigue pendiente y no se confunde con un
+    gate verde. La H100 existe según ADR-009, pero los comandos
     restaurados apuntan a una VM Linux distinta de la máquina Windows del sponsor; quedan fuera
     de uso hasta reconciliar esa identidad, sin afectar el camino crítico MICAI. El ensayo de
-    saneamiento de <code>8a6bcd7</code> confirma el incidente, pero su comando no acotado cambia casi
-    toda la historia y no solo el tramo declarado; se recomienda contener ahora y corregir el
-    runbook antes de cualquier empuje forzado.</p>
+    saneamiento ya distingue el ensayo base del mapa final: el tramo debe recalcularse sobre un
+    espejo fresco durante una ventana sin escrituras. <code>aec8222</code> corrige la tabla que aún
+    llamaba viva a la rama borrada y el mapa que se invalidaba al commitearse. No se reescribe hasta
+    saber si Arthur conserva trabajo sin empujar; después se resellan las tres filas afectadas y se
+    pide a GitHub Support purgar <code>refs/pull/*</code>.</p>
 
   <div class="callout">
     <p><b>Estado de la conclusión.</b> H1-2026 está <strong>pendiente</strong>: ni «se refutó» ni
