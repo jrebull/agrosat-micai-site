@@ -74,6 +74,14 @@
         comprimido confirmó datos de contacto y rutas locales, aunque no detectó tokens, claves de
         API ni llaves privadas con los patrones comprobados. La limpieza coordinada de historia y
         clones es una tarea de contención separada; ningún gate verde se presenta como sustituto.</p>
+      <p><b>Revalidación del ensayo, 6 de septiembre.</b> El diagnóstico de
+        <code>8a6bcd7</code> confirma la exposición y la red de referencias, pero el runbook todavía
+        no es ejecutable: el comando no acotado que documenta reescribe 537 commits no vacíos y
+        deja las 90 filas con SHA del ledger fuera de la nueva historia, no 48 commits y 12 filas.
+        Un ensayo acotado al tramo afectado conserva el árbol de <code>main</code>, cambia 27 commits
+        no vacíos y deja 3 filas por resellar. También hay una ruta Windows en un segundo blob y
+        solo 4 de las 8 IPv4 distintas son públicas. Se recomienda contener ya; la reescritura
+        espera a que el runbook diga exactamente el comando ensayado y sus consumidores.</p>
       <p><b>Sede única: MICAI 2027, hipótesis de planificación de 20 páginas</b> — el tope que
         permitía la edición anterior, <b>a reverificar cuando salga la convocatoria</b>; si baja, el
         recorte sale de resultados hacia el apéndice y nunca de robustez. Sin artículo de revista en
@@ -312,6 +320,7 @@
       <tr><td><b>—</b></td><td>CI</td><td>Cinco tests de custodia pasaban solo donde estaban materializados los artefactos sellados. Ahora crean un repositorio Git sintético y prueban el mecanismo sin depender de DVC ni de los artefactos de esta máquina</td><td><code data-author="Javier Rebull">66bc609</code></td></tr>
       <tr><td><b>—</b></td><td>Prueba negativa</td><td>La prueba del PDF sintético acompañaba al gate: fallaba por no tener SVG declarado, no por la exención que debía vigilar. Ahora declara el SVG hermano y cae si se restaura la conducta antigua</td><td><code data-author="Javier Rebull">6ea3d50</code></td></tr>
       <tr><td><b>—</b></td><td>Integración</td><td>PR #5 fusionada; seis jobs de CI, nueve gates, <code>harness-check</code> y <code>make check</code> revalidados sobre <code>main</code>. La fusión no añade avance científico</td><td><code data-author="Javier Rebull">48259f1</code></td></tr>
+      <tr><td><b>—</b></td><td>Diagnóstico</td><td>Ensayo de saneamiento de Engram y red de referencias documentados. La revalidación confirma el incidente, pero no las cifras de propagación ni el comando no acotado; queda parcial hasta corregir el runbook</td><td><code data-author="Javier Rebull">8a6bcd7</code></td></tr>
       </tbody></table></div>
     <h3 class="dia" data-date="2026-09-04">4 de septiembre · <span>US-173, arnés OOF, US-119 y decisiones del workflow</span></h3>
     <div class="scroll"><table>
