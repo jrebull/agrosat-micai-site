@@ -488,6 +488,10 @@ h3.dia span{font-weight:400;color:var(--muted)}
 .reparto-leyenda .ok i{background:var(--olive)}
 .reparto-leyenda .wip i{background:var(--ochre)}
 .reparto-leyenda .todo i{border:1px solid var(--rule);background:var(--panel)}
+.reparto-metodo{font-family:var(--mono);font-size:10.5px;line-height:1.5;color:var(--muted);
+                max-width:86ch;margin:11px 0 0}
+.reparto-metodo b{color:var(--ink-2);font-weight:500;text-transform:uppercase;
+                  letter-spacing:.08em}
 
 .cadena{margin:24px 0 0;border-top:1px solid var(--ink);padding-top:14px}
 .cadena-head{display:flex;justify-content:space-between;align-items:baseline;
