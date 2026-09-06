@@ -19,6 +19,59 @@
     <p class="lede">El trabajo del artículo MICAI 2027, desglosado en quince épicas y ochenta y
       nueve historias de usuario con sus criterios de aceptación, puntos de historia,
       dependencias y artefacto de salida.</p>
+
+    <div class="tablero-cifras">
+      <div class="cerrado">
+        <span class="k">Esfuerzo cerrado</span>
+        <span class="v" id="cifra-pct">—</span><span class="u">%</span>
+        <span class="n" id="cifra-pct-sp">—</span>
+      </div>
+      <div class="critico">
+        <span class="k">Camino crítico</span>
+        <span class="v" id="cifra-critico">—</span><span class="u">SP</span>
+        <span class="n" id="cifra-critico-n">—</span>
+      </div>
+      <div>
+        <span class="k">Historias vivas</span>
+        <span class="v" id="cifra-vivas">—</span><span class="u" id="cifra-vivas-de">—</span>
+        <span class="n" id="cifra-retiradas">—</span>
+      </div>
+      <div class="alarma">
+        <span class="k">Artefactos obsoletos</span>
+        <span class="v">31</span><span class="u">de 106</span>
+        <span class="n">no citables hasta regenerarlos</span>
+      </div>
+      <div>
+        <span class="k">Pendiente</span>
+        <span class="v" id="cifra-pendiente">—</span><span class="u">SP</span>
+        <span class="n" id="cifra-pendiente-n">—</span>
+      </div>
+    </div>
+
+    <div class="reparto">
+      <div class="reparto-head">
+        <span>Reparto del esfuerzo vivo</span>
+        <span id="reparto-total">—</span>
+      </div>
+      <div class="reparto-regla">
+        <i class="ok" id="reparto-ok"></i><i class="wip" id="reparto-wip"></i><i class="todo" id="reparto-todo"></i>
+      </div>
+      <div class="reparto-leyenda">
+        <span class="ok"><i></i><b id="ley-ok">—</b></span>
+        <span class="wip"><i></i><b id="ley-wip">—</b></span>
+        <span class="todo"><i></i><b id="ley-todo">—</b></span>
+      </div>
+    </div>
+
+    <div class="cadena">
+      <div class="cadena-head">
+        <span>Camino crítico · empieza en US-172</span>
+        <span id="cadena-resumen">—</span>
+      </div>
+      <div class="cadena-via" id="cadena-via"></div>
+    </div>
+    <details class="registro">
+      <summary>Cuarentena, reencuadre y el registro largo del estado</summary>
     <div class="callout" data-cuarentena style="border-top-color:#b03a2e">
     <p><b>CUARENTENA.</b> Esta página reproduce cifras derivadas de artefactos marcados
       <code>OBSOLETO</code> en el registro de custodia: las produjo el módulo de evaluación cuando
@@ -124,6 +177,7 @@
       <div class="ledger-row"><span class="name">Historias nuevas por ejecutar</span><span class="note">incluye dependencias aún no liberadas</span><span class="num" id="progress-pending">—</span></div>
       <div class="ledger-row"><span class="name">Esfuerzo pendiente</span><span class="note">el camino crítico empieza en US-172</span><span class="num" id="progress-pending-sp">—</span></div>
     </div>
+    </details>
     <div class="colophon">
       <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
       <span><b>Total</b> <span id="total-sp">—</span> puntos de historia</span>
@@ -1336,6 +1390,55 @@
   document.getElementById("progress-retired").textContent = retiredStories.length;
   document.getElementById("progress-pending").textContent = pendingStories.length;
   document.getElementById("progress-pending-sp").textContent = pendingSp + " SP";
+
+  /* ---- Tablero de cabecera: todo se deriva de EPICS, nada se escribe a mano ---- */
+  var vivas = stories.filter(function(u){ return u.st !== "dead"; });
+  var spVivo = vivas.reduce(function(t,u){ return t + u.sp; }, 0);
+  var spOk  = vivas.filter(function(u){ return u.st === "ok";  })
+                   .reduce(function(t,u){ return t + u.sp; }, 0);
+  var spWip = vivas.filter(function(u){ return u.st === "wip"; })
+                   .reduce(function(t,u){ return t + u.sp; }, 0);
+  var nOk  = vivas.filter(function(u){ return u.st === "ok";  }).length;
+  var nWip = vivas.filter(function(u){ return u.st === "wip"; }).length;
+  var nTodo = vivas.filter(function(u){ return u.st !== "ok" && u.st !== "wip"; }).length;
+  var spTodo = spVivo - spOk - spWip;
+  var pct = spVivo ? Math.round(100 * spOk / spVivo) : 0;
+
+  /* El camino critico lo publica `make plan-check`; aqui solo se suman sus puntos. */
+  var CADENA = ["US-172","US-160","US-124","US-125","US-171","US-155","US-127","US-128",
+                "US-129","US-136","US-139","US-152","US-154","US-144","US-146","US-148"];
+  var porId = {};
+  stories.forEach(function(u){ porId[u.id] = u; });
+  var spCadena = CADENA.reduce(function(t,id){ return t + (porId[id] ? porId[id].sp : 0); }, 0);
+
+  function pon(id, valor){ var n = document.getElementById(id); if (n) n.textContent = valor; }
+  pon("cifra-pct", pct);
+  pon("cifra-pct-sp", spOk + " / " + spVivo + " SP vivos");
+  pon("cifra-critico", spCadena);
+  pon("cifra-critico-n", CADENA.length + " historias en cadena");
+  pon("cifra-vivas", vivas.length);
+  pon("cifra-vivas-de", "de " + stories.length);
+  pon("cifra-retiradas", retiredStories.length + " retiradas, se conservan");
+  pon("cifra-pendiente", pendingSp);
+  pon("cifra-pendiente-n", nTodo + " por ejecutar · " + nWip + " en curso");
+  pon("reparto-total", spVivo + " puntos de historia");
+  pon("ley-ok",   spOk   + " SP cerrados · " + nOk   + " historias");
+  pon("ley-wip",  spWip  + " en curso · "    + nWip);
+  pon("ley-todo", spTodo + " por ejecutar · " + nTodo);
+  ["ok","wip","todo"].forEach(function(k, i){
+    var n = document.getElementById("reparto-" + k);
+    if (n) n.style.width = (100 * [spOk, spWip, spTodo][i] / spVivo) + "%";
+  });
+  pon("cadena-resumen", spCadena + " de " + pendingSp + " SP pendientes");
+
+  var via = document.getElementById("cadena-via");
+  if (via) {
+    via.innerHTML = CADENA.map(function(id, i){
+      var tono = i === 0 ? "cuello" : (i < 5 ? "pronto" : "lejos");
+      return '<a class="' + tono + '" href="#' + id + '" title="' + id + '"><i></i><b>' +
+             id.replace("US-", "") + '</b></a>';
+    }).join("");
+  }
 
   function activeStats(epics){
     var active = epics.reduce(function(all,e){

@@ -443,3 +443,76 @@ h3.dia span{font-weight:400;color:var(--muted)}
     border-bottom:1px solid var(--rule-fine)}
   .history-totals div:last-child{border-bottom:0}
 }
+
+
+/* ==========================================================================
+   Tablero de cabecera del plan · las cifras antes que la prosa
+   Libro de cuentas: numerales mono tabulares alineados, filetes de un pelo,
+   y color por significado en vez de gris uniforme.
+   ========================================================================== */
+.tablero-cifras{border-top:2px solid var(--ink);border-bottom:1px solid var(--ink);
+                margin:26px 0 0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}
+.tablero-cifras > div{padding:16px 20px 14px;border-right:1px solid var(--rule-fine)}
+.tablero-cifras > div:last-child{border-right:0}
+.tablero-cifras .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.15em;
+                   text-transform:uppercase;color:var(--muted);display:block}
+.tablero-cifras .v{font-family:var(--mono);font-variant-numeric:tabular-nums;
+                   font-size:40px;font-weight:500;letter-spacing:-.03em;line-height:1;
+                   display:inline-block;margin-top:7px}
+.tablero-cifras .u{font-family:var(--mono);font-size:14px;color:var(--muted);margin-left:4px}
+.tablero-cifras .n{font-family:var(--mono);font-variant-numeric:tabular-nums;
+                   font-size:11px;color:var(--muted);display:block;margin-top:5px}
+.tablero-cifras .cerrado .v{color:var(--olive)}
+.tablero-cifras .critico .v{color:var(--deep)}
+.tablero-cifras .alarma  .v{color:var(--sienna)}
+@media (max-width:900px){
+  .tablero-cifras{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tablero-cifras > div{border-bottom:1px solid var(--rule-fine)}
+  .tablero-cifras .v{font-size:32px}
+}
+
+.reparto{margin:22px 0 0}
+.reparto-head{display:flex;justify-content:space-between;align-items:baseline;
+              gap:16px;margin-bottom:8px}
+.reparto-head span{font-family:var(--mono);font-size:9.5px;letter-spacing:.15em;
+                   text-transform:uppercase;color:var(--muted)}
+.reparto-regla{display:flex;height:24px;border:1px solid var(--ink);background:var(--panel)}
+.reparto-regla i{display:block;height:100%}
+.reparto-regla .ok{background:var(--olive)}
+.reparto-regla .wip{background:var(--ochre)}
+.reparto-regla .todo{background:repeating-linear-gradient(90deg,var(--rule-fine) 0 1px,var(--panel) 1px 9px)}
+.reparto-leyenda{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:9px}
+.reparto-leyenda span{display:flex;align-items:center;gap:7px;
+                      font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:11.5px}
+.reparto-leyenda i{width:10px;height:10px;flex:none}
+.reparto-leyenda .ok i{background:var(--olive)}
+.reparto-leyenda .wip i{background:var(--ochre)}
+.reparto-leyenda .todo i{border:1px solid var(--rule);background:var(--panel)}
+
+.cadena{margin:24px 0 0;border-top:1px solid var(--ink);padding-top:14px}
+.cadena-head{display:flex;justify-content:space-between;align-items:baseline;
+             gap:16px;margin-bottom:12px}
+.cadena-head span{font-family:var(--mono);font-size:9.5px;letter-spacing:.15em;
+                  text-transform:uppercase;color:var(--muted)}
+.cadena-via{display:flex;align-items:flex-start;gap:0}
+.cadena-via a{flex:1 1 0;min-width:0;padding-right:6px;text-decoration:none;display:block}
+.cadena-via i{display:block;height:7px;border-left:1px solid currentColor;
+              border-top:1px solid currentColor}
+.cadena-via b{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:10.5px;
+              font-weight:400;display:block;margin-top:6px;white-space:nowrap;
+              overflow:hidden;text-overflow:ellipsis}
+.cadena-via .cuello{color:var(--sienna)}
+.cadena-via .pronto{color:var(--deep)}
+.cadena-via .lejos{color:var(--rule)}
+.cadena-via a:hover b{color:var(--ink)}
+@media (max-width:760px){ .cadena-via a:nth-child(n+9){display:none} }
+
+.registro{margin:26px 0 0;border-top:1px solid var(--rule)}
+.registro > summary{list-style:none;cursor:pointer;padding:12px 0 0;
+                    display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+                    font-family:var(--mono);font-size:9.5px;letter-spacing:.15em;
+                    text-transform:uppercase;color:var(--muted)}
+.registro > summary::-webkit-details-marker{display:none}
+.registro > summary:hover{color:var(--ink)}
+.registro > summary::after{content:"desplegar";color:var(--deep)}
+.registro[open] > summary::after{content:"plegar"}
