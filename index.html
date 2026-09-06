@@ -28,7 +28,7 @@
         <span><b>Autores</b> A. J. Zizumbo Velasco · J. A. Rebull-Saucedo</span>
         <span><b>Universos</b> PASTIS · 16 640 parcelas · 18 clases &nbsp;·&nbsp;
           BreizhCrops 2017 · 60 000 parcelas · 9 clases</span>
-        <span><b>Revisión</b> 6 de septiembre de 2026 · <code>f8051f0</code> · <b>historia de main saneada; purga de GitHub pendiente</b></span>
+        <span><b>Revisión</b> 6 de septiembre de 2026 · <code>f8860a2</code> · <b>main saneada y CI verde; purga de GitHub pendiente</b></span>
       </div>
       <p class="downloads">
         <a class="dl" href="plan.html">El plan nuevo, por épicas</a>
@@ -161,8 +161,11 @@
     de uso hasta reconciliar esa identidad, sin afectar el camino crítico MICAI. El ensayo de
     saneamiento se ejecutó sobre un espejo fresco con lease exacto: 30 commits recibieron SHA
     nuevo, uno desapareció y el árbol final quedó idéntico. <code>85861b2</code> resella exactamente
-    las tres filas afectadas y actualiza los consumidores del mapa real. Los nueve gates,
-    <code>make check</code> y 2 461 pruebas están verdes. <code>f8051f0</code> deja preparado el caso
+    las tres filas afectadas y actualiza los consumidores del mapa real. Los diez gates,
+    <code>make check</code> y 2 461 pruebas están verdes. La CI posterior al saneamiento agotaba el
+    disco antes de ejecutar pruebas: <code>b4d4bfb</code> elimina los cachés persistentes, impide
+    que Poetry duplique sus descargas y limita el pico de instalación. La ejecución real terminó
+    con sus seis jobs verdes, sin reducir la superficie de pruebas. <code>f8051f0</code> deja preparado el caso
     para Support con tres PR afectadas y los dos primeros commits cambiados, sin copiar ningún dato
     personal. El repositorio no vuelve a público antes de que GitHub purgue las referencias y
     vistas conservadas.</p>
