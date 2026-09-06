@@ -76,7 +76,9 @@
         datos de contacto y de entorno. La
         afirmación correcta es que <b>los patrones probados no detectaron credenciales</b>, no que se
         haya demostrado su ausencia. El repositorio no vuelve a público antes del saneamiento y de
-        la confirmación de GitHub Support.</p>
+        la confirmación de GitHub Support. Mientras esas referencias existan, un clon espejo o un
+        fetch explícito de <code>refs/pull/*</code> puede volver a traer los objetos retirados; el
+        clon y el fetch ordinarios, limitados a <code>refs/heads/*</code>, no son el mismo camino.</p>
       <p><b>Saneamiento ejecutado, 6 de septiembre.</b> El mapa real contiene 31 commits afectados:
         30 reciben SHA nuevo y uno desaparece. El árbol de <code>main</code> queda idéntico, la rama
         independiente <code>fix/E6-US-043-dump-oof-n-timesteps</code> no cambia y cero rutas
@@ -87,7 +89,11 @@
         espejos temporales se purgaron después de comprobar sus nombres exactos; no se vació el resto
         de la Papelera. Los
         diez gates, <code>harness-check</code>, <code>make check</code> y 2 472 pruebas están verdes;
-        64 se omiten por recursos o datos externos ausentes; la suite completa tardó 25:54.
+        64 se omiten por recursos o datos externos ausentes; la suite completa tardó 25:54. El
+        alcance también se comprobó por marcadores: 2 461 pruebas no lentas más once lentas
+        ejecutadas aparte producen el mismo total. <code>04acc34</code> registra la prohibición
+        temporal de traer explícitamente las tres refs de PR y el procedimiento ante una descarga
+        accidental.
         <code>f8051f0</code> prepara el caso
         para Support con tres PR afectadas y los dos First Changed Commits, sin copiar los datos
         personales. Falta enviarlo desde una sesión autenticada, así que el repositorio permanece
@@ -339,7 +345,8 @@
       <tr><td><b>—</b></td><td>CI cerrada</td><td>El caché interno de Poetry queda desactivado y la preparación de ruedas se serializa. Once pruebas negativas vigilan los caminos adyacentes; la CI real termina 6/6 verde, incluido el job pesado con 86 pruebas backend y 1 438 de scripts y ML</td><td><code data-author="Javier Rebull">b4d4bfb</code></td></tr>
       <tr><td><b>—</b></td><td>Poda local</td><td>La historia de <code>main</code> estaba limpia, pero el clon conservaba un ref remoto local de la PR #5. Eliminado el ref, expirados sus reflogs y podados los objetos: las comprobaciones de alcanzables e inalcanzables ya no encuentran <code>.engram/</code></td><td><code data-author="Javier Rebull">68adcf4</code></td></tr>
       <tr><td><b>—</b></td><td>Purga local</td><td>Los cuatro espejos temporales del ensayo y la reescritura seguían recuperables en la Papelera. Se verificaron y eliminaron por sus cuatro rutas exactas; el resto de la Papelera no se tocó</td><td><code data-author="Javier Rebull">a8fbee9</code></td></tr>
-      <tr><td><b>—</b></td><td>Revalidación</td><td>Suite completa rederivada después del gate nuevo: 2 472 pasadas, 64 omitidas y cero fallos en 25:54. El recuento anterior queda obsoleto porque no incluía las once pruebas de recursos de CI</td><td><code data-author="Javier Rebull">faf1431</code></td></tr>
+      <tr><td><b>—</b></td><td>Revalidación</td><td>Suite completa rederivada por dos alcances compatibles: 2 461 pasadas con <code>-m "not slow"</code> más once lentas pasadas aparte; total 2 472 pasadas, 64 omitidas y cero fallos. La diferencia era el filtro, no el resultado</td><td><code data-author="Javier Rebull">faf1431</code></td></tr>
+      <tr><td><b>—</b></td><td>Prevención</td><td>Mientras GitHub conserve <code>refs/pull/{3,4,5}</code>, un fetch explícito de refs de PR o un clon espejo puede reintroducir el blob en un clon limpio. El runbook distingue ese camino del refspec ordinario, prohíbe empujar desde un clon contaminado y exige descartarlo o demostrar la poda</td><td><code data-author="Javier Rebull">04acc34</code></td></tr>
       </tbody></table></div>
 
     <h3 class="dia" data-date="2026-09-05">5 de septiembre · <span>Bibliografía, figuras, gobernanza y revalidación</span></h3>
