@@ -83,7 +83,9 @@
         <code>.engram/</code> son alcanzables desde el nuevo <code>main</code>. <code>85861b2</code>
         resella exactamente las tres filas rotas y actualiza las referencias documentales. Un ref
         local de la PR #5 conservaba todavía la historia antigua; se eliminó, se expiraron sus
-        reflogs y la poda dejó este clon sin objetos Engram alcanzables ni inalcanzables. Los
+        reflogs y la poda dejó este clon sin objetos Engram alcanzables ni inalcanzables. Los cuatro
+        espejos temporales se purgaron después de comprobar sus nombres exactos; no se vació el resto
+        de la Papelera. Los
         diez gates, <code>harness-check</code>, <code>make check</code> y 2 461 pruebas están verdes;
         64 se omiten por recursos o datos externos ausentes. <code>f8051f0</code> prepara el caso
         para Support con tres PR afectadas y los dos First Changed Commits, sin copiar los datos
@@ -335,6 +337,7 @@
       <tr><td><b>—</b></td><td>CI parcial</td><td>Retiradas las cachés persistentes de Python y añadido un gate estructural contra su regreso. La ejecución demostró que no bastaba: Poetry todavía duplicaba las ruedas descargadas y el job científico volvió a agotar el disco antes de probar código</td><td><code data-author="Javier Rebull">259401b</code></td></tr>
       <tr><td><b>—</b></td><td>CI cerrada</td><td>El caché interno de Poetry queda desactivado y la preparación de ruedas se serializa. Once pruebas negativas vigilan los caminos adyacentes; la CI real termina 6/6 verde, incluido el job pesado con 86 pruebas backend y 1 438 de scripts y ML</td><td><code data-author="Javier Rebull">b4d4bfb</code></td></tr>
       <tr><td><b>—</b></td><td>Poda local</td><td>La historia de <code>main</code> estaba limpia, pero el clon conservaba un ref remoto local de la PR #5. Eliminado el ref, expirados sus reflogs y podados los objetos: las comprobaciones de alcanzables e inalcanzables ya no encuentran <code>.engram/</code></td><td><code data-author="Javier Rebull">68adcf4</code></td></tr>
+      <tr><td><b>—</b></td><td>Purga local</td><td>Los cuatro espejos temporales del ensayo y la reescritura seguían recuperables en la Papelera. Se verificaron y eliminaron por sus cuatro rutas exactas; el resto de la Papelera no se tocó</td><td><code data-author="Javier Rebull">a8fbee9</code></td></tr>
       </tbody></table></div>
 
     <h3 class="dia" data-date="2026-09-05">5 de septiembre · <span>Bibliografía, figuras, gobernanza y revalidación</span></h3>
