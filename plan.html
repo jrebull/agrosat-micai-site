@@ -60,7 +60,10 @@
         referencias; ambas siguen en curso hasta integrarse en el manuscrito nuevo. <b>US-143
         también está en curso</b>: el contrato ejecutable de las figuras ya impide repetir el
         ancho y los canales defectuosos, pero todavía no se ha regenerado ninguna figura
-        empírica.</p>
+        empírica. En <b>US-172</b>, ocho decisiones operativas están cerradas —incluido «no aplica»
+        para profesor responsable porque ambos investigadores son egresados— y FileVault está
+        activo. El protocolo v0.3 sigue en <b>BORRADOR</b>: la determinación institucional fue
+        verbal y su confirmación escrita continúa pendiente, así que no se congela ni se recluta.</p>
       <p><b>Correctivo de gobernanza, 5 de septiembre.</b> La integración del PR de Arthur aportó
         controles útiles, plantillas y compatibilidad entre sistemas, pero también sustituyó
         decisiones ratificadas y publicó memoria nativa sin una política aprobada. El correctivo
@@ -332,7 +335,7 @@
       </div>
     </section>
 
-    <h3 class="dia" data-date="2026-09-06">6 de septiembre · <span>Saneamiento histórico y recuperación de la CI</span></h3>
+    <h3 class="dia" data-date="2026-09-06">6 de septiembre · <span>Saneamiento, recuperación de la CI y protocolo US-172</span></h3>
     <div class="scroll"><table>
       <thead><tr><th>US</th><th>Tipo</th><th>Qué se hizo</th><th>Evidencia</th></tr></thead>
       <tbody data-date="2026-09-06">
@@ -347,6 +350,11 @@
       <tr><td><b>—</b></td><td>Purga local</td><td>Los cuatro espejos temporales del ensayo y la reescritura seguían recuperables en la Papelera. Se verificaron y eliminaron por sus cuatro rutas exactas; el resto de la Papelera no se tocó</td><td><code data-author="Javier Rebull">a8fbee9</code></td></tr>
       <tr><td><b>—</b></td><td>Revalidación</td><td>Suite completa rederivada por dos alcances compatibles: 2 461 pasadas con <code>-m "not slow"</code> más once lentas pasadas aparte; total 2 472 pasadas, 64 omitidas y cero fallos. La diferencia era el filtro, no el resultado</td><td><code data-author="Javier Rebull">faf1431</code></td></tr>
       <tr><td><b>—</b></td><td>Prevención</td><td>Mientras GitHub conserve <code>refs/pull/{3,4,5}</code>, un fetch explícito de refs de PR o un clon espejo puede reintroducir el blob en un clon limpio. El runbook distingue ese camino del refspec ordinario, prohíbe empujar desde un clon contaminado y exige descartarlo o demostrar la poda</td><td><code data-author="Javier Rebull">04acc34</code></td></tr>
+      <tr><td><b>US-172</b></td><td>Determinación parcial</td><td>Se registra con nombre, rol y fecha que la institución indicó verbalmente que el estudio no requiere comité. No se convierte la llamada en constancia escrita: el requisito documental permanece pendiente</td><td><code data-author="Javier Rebull">3fd7262</code></td></tr>
+      <tr><td><b>US-172</b></td><td>Operación</td><td>Siete decisiones instanciadas: responsables, custodio único, FileVault activo, permisos, destrucción, retirada y validación de la transcripción. El profesor responsable aún se consultaba por separado</td><td><code data-author="Javier Rebull">2057ff9</code></td></tr>
+      <tr><td><b>US-172</b></td><td>Aplicabilidad</td><td>Profesor responsable pasa a «no aplica» porque ambos investigadores son egresados. Las nueve filas ya tienen texto, pero una sigue declarando que su evidencia escrita está pendiente; rellenar una celda no equivale a cerrar su condición</td><td><code data-author="Javier Rebull">051cb11</code></td></tr>
+      <tr><td><b>US-172</b></td><td>Prueba corregida</td><td>La prueba de congelación ya vacía deliberadamente un campo antes de exigir el fallo; deja de depender de que el documento real venga incompleto</td><td><code data-author="Javier Rebull">114da65</code></td></tr>
+      <tr><td><b>US-172</b></td><td>Revalidación</td><td>El gate enumera las nueve filas, rechaza ausencias, duplicados y determinaciones pendientes o negadas, y exige confirmación escrita para <code>CONGELADO</code>. El borrador sube a v0.3 y los cuatro PDF pinan versión y commit para no sobrescribir la v0.2 sellada</td><td><code data-author="Javier Rebull">29c5f82</code></td></tr>
       </tbody></table></div>
 
     <h3 class="dia" data-date="2026-09-05">5 de septiembre · <span>Bibliografía, figuras, gobernanza y revalidación</span></h3>
@@ -752,7 +760,7 @@
              "El precio de no responder se SUMA, no se multiplica por la contención. La primera implementación lo multiplicaba y por eso no se podía elegir",
              "IDENTIFICACIÓN: con la referencia en cero y una pérdida fijada como unidad quedan CINCO magnitudes libres. Un orden y una razón dan dos, así que hacen falta al menos cinco intercambios independientes más dos comprobaciones de consistencia. Si no se completan, el vector de ese informante queda incompleto y se declara así: no se interpola. La primera versión del protocolo pedía una sola razón, y las otras dos las habríamos puesto nosotros",
              "Si la cardinalidad entra o no en la pérdida se PREGUNTA —¿cambia si el conjunto son cinco clases en vez de dos?— y no se supone. Que no cambie es un resultado",
-             "El orden de lectura de las situaciones se ALEATORIZA por informante y se registra: con seis entrevistas un efecto de orden es indistinguible del efecto de grupo, que es justo el efecto que el artículo quiere medir",
+             "El orden de lectura se BLOQUEA por grupo con tres permutaciones generadas antes: cada grupo recibe cada permutación exactamente una vez y la asignación se aleatoriza y registra dentro del grupo. Aleatorizar cada entrevista sin bloqueo todavía permitiría confundir por azar el orden con el grupo, que es justo el efecto que el artículo quiere medir",
              "NO hay salida por «supuesto del artículo». Cada precio sale de una ELICITACIÓN con usuarios reales: protocolo escrito antes, al menos tres informantes de cada uno de los dos grupos afectados, guion de las preguntas, respuestas crudas guardadas y síntesis trazable de cada celda L(y, acción, afectado) hasta las respuestas que la producen. Un precio que nadie fuera del equipo haya dicho en voz alta no entra en la tabla",
              "Antes de RECLUTAR a nadie —la consulta institucional sí se envía, y bloquearla era bloquear lo que desbloquea— se documentan consentimiento, minimización, custodio nombrado, ubicación cifrada fuera del repositorio, permisos nominales, plazo de retención, destrucción y el vínculo reversible que permite localizar una respuesta si alguien pide retirarla. DVC versiona, no controla acceso. Y se comprueba si la institución exige revisión ética: si la exige, no se recoge ninguna respuesta antes de la aprobación",
              "El artefacto incluye el desacuerdo, y se conserva el VECTOR COMPLETO de cada informante: el análisis se corre una vez por vector y se reporta la dispersión. Combinar el mínimo de una celda con el máximo de otra fabrica una tabla que ningún informante sostuvo y le pone nuestra firma. Cualquier envolvente se declara antes de verla y tiene que ser un vector coherente",

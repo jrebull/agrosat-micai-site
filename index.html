@@ -28,7 +28,7 @@
         <span><b>Autores</b> A. J. Zizumbo Velasco · J. A. Rebull-Saucedo</span>
         <span><b>Universos</b> PASTIS · 16 640 parcelas · 18 clases &nbsp;·&nbsp;
           BreizhCrops 2017 · 60 000 parcelas · 9 clases</span>
-        <span><b>Revisión</b> 6 de septiembre de 2026 · <code>04acc34</code> · <b>main y copias locales saneadas; refs de PR aún retenidas; CI verde</b></span>
+        <span><b>Revisión</b> 6 de septiembre de 2026 · <code>29c5f82</code> · <b>US-172: ocho decisiones cerradas, confirmación institucional escrita pendiente</b></span>
       </div>
       <p class="downloads">
         <a class="dl" href="plan.html">El plan nuevo, por épicas</a>
@@ -148,7 +148,12 @@
     estudio reencuadrado: estimando y población ya están fijados; quedan pérdida, margen práctico y
     criterio principal antes de firmar el preregistro. US-119 cerró la sanidad del panel heredado;
     US-121 y US-118 están en curso. US-141 tiene evidencia normativa sellada desde fuentes primarias
-    y US-142 un catálogo verificado de 57 referencias; ninguna está cerrada todavía. El arnés OOF
+    y US-142 un catálogo verificado de 57 referencias; ninguna está cerrada todavía. US-172 tiene
+    ocho decisiones operativas cerradas y nueve filas reconocidas, pero no nueve condiciones
+    satisfechas: la institución respondió verbalmente y falta la confirmación escrita que el propio
+    protocolo exigía antes del reclutamiento. Por eso v0.3 sigue en borrador. El gate ya rechaza
+    filas ausentes, duplicadas y determinaciones pendientes o negadas; los adjuntos nuevos pinan
+    versión y commit para no sobrescribir la v0.2 sellada. El arnés OOF
     ya comprueba la longitud temporal realmente usada y su gate corre en CI; la población elegible
     sigue siendo exactamente 16 640 parcelas. La integración del workflow de Arthur quedó
     revalidada: se conservan sus gates, plantillas y arreglos portables; la gobernanza ratificada
@@ -979,7 +984,11 @@
       como «supuesto del artículo», pero la tabla aún no se ha obtenido. Debe salir de un protocolo
       previo y de usuarios reales: al menos tres personas de control de subvenciones y tres de
       asesoría agronómica, con respuestas crudas y trazabilidad hasta cada celda.</p>
-    <p><strong>Hasta entonces no hay moneda común y no se corre el experimento.</strong></p>
+    <p>El protocolo v0.3 ya reconoce las nueve filas operativas y ocho están cerradas. La novena
+      contiene una determinación verbal que dice expresamente «pendiente de confirmación escrita».
+      El gate anterior comprobaba que la fila existiera; <code>29c5f82</code> comprueba también su
+      condición y bloquea <code>CONGELADO</code>. <strong>Hasta recibir esa constancia no se recluta;
+      hasta obtener las respuestas no hay moneda común y no se corre el experimento.</strong></p>
   </div>
 
   <div class="callout">
