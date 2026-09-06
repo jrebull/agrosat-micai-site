@@ -64,26 +64,27 @@
       <p><b>Correctivo de gobernanza, 5 de septiembre.</b> La integración del PR de Arthur aportó
         controles útiles, plantillas y compatibilidad entre sistemas, pero también sustituyó
         decisiones ratificadas y publicó memoria nativa sin una política aprobada. El correctivo
-        <code>65e1f4d</code> conserva lo verificable, restaura las fuentes normativas y convierte
+        <code>13aca1f</code> conserva lo verificable, restaura las fuentes normativas y convierte
         la memoria compartida en la propuesta ADR-015. La PR #5 quedó fusionada en
-        <code>48259f1</code>; la revalidación confirmó los nueve gates, el CI completo y que la
+        <code>a2a985a</code>; la revalidación confirmó los nueve gates, el CI completo y que la
         prueba del PDF falla al restaurar la exención antigua. <b>El porcentaje del paper no
         aumenta por arreglar su arnés</b>: US-172 continúa siendo el camino crítico.</p>
-      <p><b>Incidente histórico contenido, no cerrado.</b> El repositorio quedó privado y la rama
-        fusionada <code>optimiza-harnees</code> fue borrada; no hubo empuje forzado. Los chunks
-        nativos ya no están en el árbol actual, pero siguen alcanzables desde <code>main</code> y
-        <code>refs/pull/*</code>. La inspección confirmó datos de contacto y de entorno. La
+      <p><b>Incidente histórico saneado en <code>main</code>, no cerrado.</b> El repositorio quedó
+        privado, la rama fusionada <code>optimiza-harnees</code> fue borrada y <code>main</code> se
+        reescribió con lease exacto. Los chunks nativos ya no son alcanzables desde esa rama, pero
+        GitHub aún conserva los objetos en <code>refs/pull/{3,4,5}</code>. La inspección confirmó
+        datos de contacto y de entorno. La
         afirmación correcta es que <b>los patrones probados no detectaron credenciales</b>, no que se
         haya demostrado su ausencia. El repositorio no vuelve a público antes del saneamiento y de
         la confirmación de GitHub Support.</p>
-      <p><b>Runbook corregido, 6 de septiembre.</b> El ensayo acotado de referencia conserva el
-        árbol de <code>main</code>, asigna SHA nuevo a 27 commits, elimina uno que queda vacío y deja
-        3 filas del ledger por resellar. Identificó once SHA citados en cuatro ficheros del
-        repositorio y dos del sitio. Ese mapa es un <b>snapshot</b>, no la autoridad de la operación:
-        los commits usados para documentarlo ampliaron inmediatamente el tramo. La tabla también
-        seguía diciendo que la rama borrada estaba viva. <code>aec8222</code> corrige ambos defectos
-        y obliga a regenerar el mapa desde un espejo fresco durante una ventana sin escrituras. La
-        reescritura espera la confirmación de Arthur sobre trabajo no empujado.</p>
+      <p><b>Saneamiento ejecutado, 6 de septiembre.</b> El mapa real contiene 31 commits afectados:
+        30 reciben SHA nuevo y uno desaparece. El árbol de <code>main</code> queda idéntico, la rama
+        independiente <code>fix/E6-US-043-dump-oof-n-timesteps</code> no cambia y cero rutas
+        <code>.engram/</code> son alcanzables desde el nuevo <code>main</code>. <code>85861b2</code>
+        resella exactamente las tres filas rotas y actualiza las referencias documentales. Los
+        nueve gates, <code>harness-check</code>, <code>make check</code> y 2 461 pruebas están verdes;
+        64 se omiten por recursos o datos externos ausentes. Falta GitHub Support, así que el
+        repositorio permanece privado y el porcentaje científico no aumenta.</p>
       <p><b>Sede única: MICAI 2027, hipótesis de planificación de 20 páginas</b> — el tope que
         permitía la edición anterior, <b>a reverificar cuando salga la convocatoria</b>; si baja, el
         recorte sale de resultados hacia el apéndice y nunca de robustez. Sin artículo de revista en
@@ -101,7 +102,7 @@
     <div class="colophon">
       <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
       <span><b>Total</b> <span id="total-sp">—</span> puntos de historia</span>
-      <span><b>Actualizado</b> 6 de septiembre de 2026, incidente Engram contenido y runbook corregido</span>
+      <span><b>Actualizado</b> 6 de septiembre de 2026, main saneado y purga de GitHub pendiente</span>
     </div>
   </div>
 </div>
@@ -237,10 +238,10 @@
         <p><b>Corrección verificable.</b> Se restauraron el plan v6, la rúbrica histórica, la
           gobernanza SaaS y las decisiones H100 ratificadas; el workflow normalizado vuelve a ser
           complementario. <code>make check</code>, 158 tests de scripts y los nueve gates quedaron
-          verdes tras la fusión en <code>48259f1</code>. El CI encontró antes que cinco tests de
-          custodia dependían de artefactos locales; <code>66bc609</code> los trasladó a repositorios
+          verdes tras la fusión en <code>a2a985a</code>. El CI encontró antes que cinco tests de
+          custodia dependían de artefactos locales; <code>e2554eb</code> los trasladó a repositorios
           sintéticos. La prueba del PDF perdió allí su condición discriminante y
-          <code>6ea3d50</code> la recuperó: ahora cae si se restaura la exención antigua.</p>
+          <code>8e47a3e</code> la recuperó: ahora cae si se restaura la exención antigua.</p>
         <p><b>Consecuencia operativa.</b> El workflow no decide resultados científicos ni cambia el
           camino crítico. US-119 conserva un panel de cinco miembros —UNet, SegFormer,
           DeepLabv3+, TSViT-Pheno y TSViT-Pheno-FullM—; AnySat y U-TAE quedan fuera del panel
@@ -313,9 +314,10 @@
     <div class="scroll"><table>
       <thead><tr><th>US</th><th>Tipo</th><th>Qué se hizo</th><th>Evidencia</th></tr></thead>
       <tbody data-date="2026-09-06">
-      <tr><td><b>—</b></td><td>Contención</td><td>Repositorio pasado a privado y rama <code>optimiza-harnees</code> borrada, sin reescribir ni forzar referencias. El inventario distingue apariciones de valores distintos y reemplaza «no hay credenciales» por el resultado limitado de los patrones probados</td><td><code data-author="Javier Rebull">cdd014c</code></td></tr>
-      <tr><td><b>—</b></td><td>Ensayo</td><td>Mapa del snapshot acotado: 27 commits reciben SHA nuevo, uno desaparece, tres filas del ledger requieren resello y once SHA citados alcanzan cuatro ficheros del repositorio y dos del sitio. No se usa como mapa final</td><td><code data-author="Javier Rebull">b5fdeee</code></td></tr>
-      <tr><td><b>—</b></td><td>Corrección</td><td>El runbook aún llamaba viva a la rama borrada y presentaba como vigente un mapa que sus propios commits habían ampliado. Ahora separa el snapshot del inventario final y hace autoridad al <code>commit-map</code> generado en la ventana real</td><td><code data-author="Javier Rebull">aec8222</code></td></tr>
+      <tr><td><b>—</b></td><td>Contención</td><td>Repositorio pasado a privado y rama <code>optimiza-harnees</code> borrada, sin reescribir ni forzar referencias. El inventario distingue apariciones de valores distintos y reemplaza «no hay credenciales» por el resultado limitado de los patrones probados</td><td><code data-author="Javier Rebull">b475b78</code></td></tr>
+      <tr><td><b>—</b></td><td>Ensayo</td><td>Mapa del snapshot acotado: 27 commits reciben SHA nuevo, uno desaparece, tres filas del ledger requieren resello y once SHA citados alcanzan cuatro ficheros del repositorio y dos del sitio. No se usa como mapa final</td><td><code data-author="Javier Rebull">e8e7f5a</code></td></tr>
+      <tr><td><b>—</b></td><td>Corrección</td><td>El runbook aún llamaba viva a la rama borrada y presentaba como vigente un mapa que sus propios commits habían ampliado. Ahora separa el snapshot del inventario final y hace autoridad al <code>commit-map</code> generado en la ventana real</td><td><code data-author="Javier Rebull">bb82150</code></td></tr>
+      <tr><td><b>—</b></td><td>Saneamiento</td><td>Reescritura acotada de <code>main</code>: 30 SHA nuevos, un commit vacío eliminado y árbol idéntico. Tres filas reselladas desde Git, referencias documentales migradas y suite completa en verde. GitHub Support sigue pendiente; no suma avance científico</td><td><code data-author="Javier Rebull">85861b2</code></td></tr>
       </tbody></table></div>
 
     <h3 class="dia" data-date="2026-09-05">5 de septiembre · <span>Bibliografía, figuras, gobernanza y revalidación</span></h3>
@@ -326,12 +328,12 @@
       <tr><td><b>US-141</b></td><td>Sello</td><td>Sellado el documento como normativo: fija qué se puede escribir de cada cita</td><td><code data-author="Javier Rebull">f26613a</code></td></tr>
       <tr><td><b>US-142</b></td><td>Corrección</td><td>El gate del bib buscaba la ruta en la línea entera y no en su celda: acusaba un cambio que no existía</td><td><code data-author="Javier Rebull">e8dbfb6</code></td></tr>
       <tr><td><b>US-143</b></td><td>Avance</td><td>Contrato ejecutable de figuras: el guardado rechaza lienzos distintos de 4,8031 pulgadas, tipografía menor de 8 pt y series diferenciadas solo por color; PDF y SVG conservan el ancho físico y son reproducibles byte a byte. Queda en curso porque aún no genera figuras empíricas</td><td><code data-author="Javier Rebull">b60f160</code></td></tr>
-      <tr><td><b>—</b></td><td>Gobernanza</td><td>Revisión de la integración de Arthur: se conservan gates, LF, rutas Windows, plantillas y Graphify opcional; se restauran las decisiones ratificadas y los históricos. Engram compartido pasa de despliegue implícito a ADR-015 propuesta, con el estado nativo fuera de Git</td><td><code data-author="Javier Rebull">65e1f4d</code></td></tr>
-      <tr><td><b>—</b></td><td>Riesgo</td><td>La sincronización de memoria nativa publicó chunks comprimidos con datos de contacto y rutas locales. Salieron del árbol actual, pero siguen alcanzables en la historia pública hasta una limpieza coordinada</td><td><code data-author="Arthur Zizumbo">f8984d8</code></td></tr>
-      <tr><td><b>—</b></td><td>CI</td><td>Cinco tests de custodia pasaban solo donde estaban materializados los artefactos sellados. Ahora crean un repositorio Git sintético y prueban el mecanismo sin depender de DVC ni de los artefactos de esta máquina</td><td><code data-author="Javier Rebull">66bc609</code></td></tr>
-      <tr><td><b>—</b></td><td>Prueba negativa</td><td>La prueba del PDF sintético acompañaba al gate: fallaba por no tener SVG declarado, no por la exención que debía vigilar. Ahora declara el SVG hermano y cae si se restaura la conducta antigua</td><td><code data-author="Javier Rebull">6ea3d50</code></td></tr>
-      <tr><td><b>—</b></td><td>Integración</td><td>PR #5 fusionada; seis jobs de CI, nueve gates, <code>harness-check</code> y <code>make check</code> revalidados sobre <code>main</code>. La fusión no añade avance científico</td><td><code data-author="Javier Rebull">48259f1</code></td></tr>
-      <tr><td><b>—</b></td><td>Diagnóstico</td><td>Ensayo de saneamiento de Engram y red de referencias documentados. La revalidación confirma el incidente, pero no las cifras de propagación ni el comando no acotado; queda parcial hasta corregir el runbook</td><td><code data-author="Javier Rebull">8a6bcd7</code></td></tr>
+      <tr><td><b>—</b></td><td>Gobernanza</td><td>Revisión de la integración de Arthur: se conservan gates, LF, rutas Windows, plantillas y Graphify opcional; se restauran las decisiones ratificadas y los históricos. Engram compartido pasa de despliegue implícito a ADR-015 propuesta, con el estado nativo fuera de Git</td><td><code data-author="Javier Rebull">13aca1f</code></td></tr>
+      <tr><td><b>—</b></td><td>Riesgo</td><td>La PR integrada incluía una sincronización de memoria nativa que publicó chunks comprimidos con datos de contacto y rutas locales. El commit que solo hacía esa sincronización desapareció al sanearse; el merge reescrito conserva la integración y la autoría</td><td><code data-author="Arthur Zizumbo">1be76a7</code></td></tr>
+      <tr><td><b>—</b></td><td>CI</td><td>Cinco tests de custodia pasaban solo donde estaban materializados los artefactos sellados. Ahora crean un repositorio Git sintético y prueban el mecanismo sin depender de DVC ni de los artefactos de esta máquina</td><td><code data-author="Javier Rebull">e2554eb</code></td></tr>
+      <tr><td><b>—</b></td><td>Prueba negativa</td><td>La prueba del PDF sintético acompañaba al gate: fallaba por no tener SVG declarado, no por la exención que debía vigilar. Ahora declara el SVG hermano y cae si se restaura la conducta antigua</td><td><code data-author="Javier Rebull">8e47a3e</code></td></tr>
+      <tr><td><b>—</b></td><td>Integración</td><td>PR #5 fusionada; seis jobs de CI, nueve gates, <code>harness-check</code> y <code>make check</code> revalidados sobre <code>main</code>. La fusión no añade avance científico</td><td><code data-author="Javier Rebull">a2a985a</code></td></tr>
+      <tr><td><b>—</b></td><td>Diagnóstico</td><td>Ensayo de saneamiento de Engram y red de referencias documentados. La revalidación confirma el incidente, pero no las cifras de propagación ni el comando no acotado; queda parcial hasta corregir el runbook</td><td><code data-author="Javier Rebull">a96d1f2</code></td></tr>
       </tbody></table></div>
     <h3 class="dia" data-date="2026-09-04">4 de septiembre · <span>US-173, arnés OOF, US-119 y decisiones del workflow</span></h3>
     <div class="scroll"><table>
