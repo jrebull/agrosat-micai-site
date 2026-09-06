@@ -28,7 +28,7 @@
         <span><b>Autores</b> A. J. Zizumbo Velasco · J. A. Rebull-Saucedo</span>
         <span><b>Universos</b> PASTIS · 16 640 parcelas · 18 clases &nbsp;·&nbsp;
           BreizhCrops 2017 · 60 000 parcelas · 9 clases</span>
-        <span><b>Revisión</b> 6 de septiembre de 2026 · <code>acf2b86</code> · <b>US-172 sigue crítico; US-122 entra en correctivo de gobernanza Engram</b></span>
+        <span><b>Revisión</b> 6 de septiembre de 2026 · <code>8b0be5e</code> · <b>US-172 sigue crítico; US-122 ejerció por primera vez el bloqueo de ADR-015</b></span>
       </div>
       <p class="downloads">
         <a class="dl" href="plan.html">El plan nuevo, por épicas</a>
@@ -183,10 +183,12 @@
     <code>docs/engram/</code> un lote derivado antes de las dos aprobaciones y de la decisión de
     transporte exigidas por ADR-015. Se conserva el permiso mínimo de CI y la base del exportador,
     reducida a un prefiltro local; <code>acf2b86</code> retira el lote del árbol y blinda ambas
-    raíces contra renombrados. <b>US-122 pasa a en curso, no a hecha.</b> La retirada no borra la
-    historia de <code>main</code> ni <code>refs/pull/6/head</code>: el caso de Support debe ampliarse a
-    <code>refs/pull/{3,4,5,6}</code> después de una segunda reescritura acotada. El repositorio no
-    vuelve a público antes de que GitHub purgue las referencias y vistas conservadas.</p>
+    raíces contra renombrados. <b>US-122 pasa a en curso, no a hecha</b>, y el rechazo queda como
+    primer ejercicio real de ADR-015. La ancestría comprobada mediante la API de GitHub corrige el
+    alcance externo: solo <code>refs/pull/{3,4,5}</code> alcanzan el commit sensible; las refs de las
+    PR #6 y #7 divergen y no pertenecen al caso de Support. La rama fusionada de la PR #6 fue
+    borrada. El repositorio no vuelve a público antes de que GitHub purgue las tres referencias y
+    vistas conservadas.</p>
 
   <div class="callout">
     <p><b>Estado de la conclusión.</b> H1-2026 está <strong>pendiente</strong>: ni «se refutó» ni

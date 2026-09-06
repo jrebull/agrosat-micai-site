@@ -143,7 +143,8 @@
         el manifiesto. <code>acf2b86</code> lo retira del árbol actual, prueba el vínculo con el
         manifiesto y hace que el harness rechace cualquier fichero nuevo bajo <code>.engram/</code>
         o <code>docs/engram/</code>, salvo el README permitido. <b>US-122 pasa a en curso, no a
-        hecha</b>: ADR-015 sigue en propuesta y el historial necesita un segundo saneamiento acotado.</p>
+        hecha</b>: ADR-015 sigue en propuesta y este rechazo es la primera vez que su criterio
+        bloquea una publicación real.</p>
       <p><b>Correctivo de gobernanza, 5 de septiembre.</b> La integración del PR de Arthur aportó
         controles útiles, plantillas y compatibilidad entre sistemas, pero también sustituyó
         decisiones ratificadas y publicó memoria nativa sin una política aprobada. El correctivo
@@ -181,11 +182,13 @@
         para Support con tres PR afectadas y los dos First Changed Commits, sin copiar los datos
         personales. Falta enviarlo desde una sesión autenticada, así que el repositorio permanece
         privado y el porcentaje científico no aumenta.</p>
-      <p><b>Segundo saneamiento pendiente.</b> La PR #6 creó además un lote derivado bajo
-        <code>docs/engram/</code>. Retirarlo del árbol no elimina sus objetos: permanecen en la
-        historia de <code>main</code> y en <code>refs/pull/6/head</code>. El caso de Support no se
-        envía hasta ejecutar y medir una segunda reescritura acotada, actualizar el mapa de SHA y
-        ampliar la solicitud a <code>refs/pull/{3,4,5,6}</code>. El repositorio continúa privado.</p>
+      <p><b>Alcance de Support corregido.</b> <code>8b0be5e</code> registra que la ancestría
+        consultada por la API de GitHub confirma
+        que <code>refs/pull/{3,4,5}</code> alcanzan el commit sensible; las refs de las PR #6 y #7
+        divergen y no lo sostienen. Mirar solo el árbol de la punta habría dado un falso cero para
+        las PR #4 y #5. El lote derivado rechazado permanece como registro en la historia privada,
+        pero no amplía el incidente original ni el caso de Support. La rama fusionada de la PR #6
+        fue borrada; el repositorio continúa privado hasta que Support purgue las tres refs reales.</p>
       <p><b>CI recuperada, 6 de septiembre.</b> Dos ejecuciones posteriores al saneamiento agotaron
         el disco del runner antes de alcanzar las pruebas de Python. El primer correctivo retiró la
         restauración persistente, pero dejó abierto el camino estrecho: Poetry seguía conservando
@@ -213,7 +216,7 @@
     <div class="colophon plan-colophon">
       <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
       <span><b>Total</b> <span id="total-sp">—</span> puntos de historia</span>
-      <span><b>Actualizado</b> 6 de septiembre de 2026, árbol vigente contenido; segundo saneamiento y purga de GitHub pendientes</span>
+      <span><b>Actualizado</b> 6 de septiembre de 2026, árbol vigente contenido y purga de tres refs por GitHub pendiente</span>
     </div>
   </div>
 </header>
@@ -451,6 +454,7 @@
       <tr><td><b>US-172</b></td><td>Control positivo</td><td>«Escrita» deja de inferirse de palabras: para congelar, la celda debe citar un acta real dentro del repositorio y el gate comprueba que exista. Ocho casos negativos cubren redacciones verbales, esperas, solicitudes sin respuesta y rutas inexistentes</td><td><code data-author="Javier Rebull">a8c08fd</code></td></tr>
       <tr><td><b>US-122</b></td><td>Integración revisada</td><td>Arthur añade un exportador Engram, un lote derivado y el permiso mínimo de lectura de PR para el job de calidad. Se conserva el permiso y la base del prefiltro; el lote no se acepta porque se publicó antes de cumplir ADR-015</td><td><code data-author="Arthur Zizumbo">aa4ef4b</code></td></tr>
       <tr><td><b>US-122</b></td><td>Correctivo</td><td>El lote no aprobado sale del árbol vigente. El exportador queda como prefiltro local ligado a su manifiesto y el harness rechaza todo contenido versionado en las dos raíces de Engram salvo el README permitido; una prueba negativa cubre el bypass por renombrado</td><td><code data-author="Javier Rebull">acf2b86</code></td></tr>
+      <tr><td><b>US-122</b></td><td>Alcance corregido</td><td>La ancestría, no el árbol de la punta, demuestra que solo las PR #3, #4 y #5 sostienen el commit sensible. Las PR #6 y #7 divergen y salen del caso de Support; la rama fusionada de la PR #6 queda eliminada. ADR-015 registra que el lote rechazado fue su primer bloqueo real</td><td><code data-author="Javier Rebull">8b0be5e</code></td></tr>
       </tbody></table></div>
     </details>
 
@@ -849,7 +853,7 @@
              "El exportador es solo un prefiltro local: escribe fuera del repositorio, verifica esquema, conteo y digest contra el manifiesto, y no publica ni importa memoria",
              "El harness enumera lo único permitido bajo docs/engram/ mientras ADR-015 siga propuesta; una prueba negativa demuestra que renombrar el lote no evita el fallo",
              "PENDIENTE: política semántica para nombres, geometrías y resultados no publicados; dos aprobaciones sobre bytes idénticos; transporte, custodio, acceso, retención y retirada; piloto sintético",
-             "PENDIENTE DE CONTENCIÓN HISTÓRICA: segunda reescritura acotada y purga por Support de refs/pull/{3,4,5,6} antes de volver a público"],
+             "PENDIENTE DE CONTENCIÓN EXTERNA: purga por Support de refs/pull/{3,4,5} antes de volver a público. Las refs de las PR #6 y #7 divergen del commit sensible y quedan fuera del caso"],
          out:"docs/paper/metadatos-autoria.md; docs/us-work/us-122.md; docs/decisions/ADR-015-engram-memoria-compartida.md", dep:"US-121"},
         {id:"US-123", t:"Fuente única de verdad", sp:3, st:"idle",
          role:"Como revisor externo, quiero que el repositorio que el artículo cita sea el mismo donde viven sus cifras, para poder comprobarlas sin pedir acceso a otro sitio.",
