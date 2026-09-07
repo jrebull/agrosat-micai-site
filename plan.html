@@ -129,14 +129,18 @@
         <code>paper/micai2027/refs.bib</code> contiene exactamente las 16 claves citadas, derivadas
         de un catálogo verificado de 57. Las secciones del problema, el estimando y la mecánica ya
         están escritas desde sus contratos, y el registro de afirmaciones retiradas deriva sus 16
-        filas de la revisión externa en vez de mantener otra lista manual. <b>US-160 y US-124 están
-        en curso</b>: el código ya calibra los seis brazos con entrenamiento y validación, los aplica
+        filas de la revisión externa en vez de mantener otra lista manual. <b>US-160, US-124 y
+        US-125 están en curso</b>: el código ya calibra los seis brazos con entrenamiento y
+        validación, los aplica
         sin aceptar etiquetas de prueba y solo después evalúa las siete celdas sobre todas las
         parcelas. El universo neutral de clases sale del soporte de entrenamiento y no puede
         cambiar con validación, prueba ni mecanismo; una clase sin soporte en el bloque permanece
         visible como indefinida, nunca como cero. La PR #13 integró ese flujo en
         <code>28dc201</code> después de seis jobs de CI verdes. La pérdida sigue siendo una entrada
-        obligatoria sin valores predeterminados. El manuscrito LNCS anónimo llega a diez páginas como
+        obligatoria sin valores predeterminados. US-125 ya conecta esas pérdidas por identidad de
+        parcela con intervalos separados por bloque espacial y por <code>patch_id</code>; no
+        remuestrea parcelas sueltas ni deja entrar en Holm una vista con menos de tres unidades.
+        El manuscrito LNCS anónimo llega a once páginas como
         preparación de <b>US-144, que sigue formalmente sin iniciar</b> hasta cumplir sus
         prerrequisitos; resultados y discusión están deliberadamente vacíos. <b>US-143
         también está en curso</b>: el contrato ejecutable de las figuras ya impide repetir el
@@ -238,7 +242,7 @@
     <div class="colophon plan-colophon">
       <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
       <span><b>Total</b> <span id="total-sp">—</span> puntos de historia</span>
-      <span><b>Actualizado</b> 7 de septiembre de 2026, flujo de seis brazos y denominador neutral implementados; US-160 y US-124 en curso</span>
+      <span><b>Actualizado</b> 7 de septiembre de 2026, flujo e inferencia sintética implementados; US-160, US-124 y US-125 en curso</span>
     </div>
   </div>
 </header>
@@ -472,6 +476,9 @@
       <tr><td><b>US-160 / US-124</b></td><td>Flujo ejecutable</td><td>Calibración, aplicación y evaluación quedan separadas por firma: el ajuste no acepta prueba, la entrega no acepta etiquetas y el evaluador recibe la verdad solo con las seis máscaras fijadas. El universo neutral se deriva del soporte de entrenamiento. Una prueba versiona el caso antes citado solo en prosa: seis brazos, 400 parcelas en cada denominador y una sola de las siete celdas por parcela. Son datos sintéticos; no se ejecutó ningún resultado del artículo</td><td><code data-author="Javier Rebull">11e8779</code></td></tr>
       <tr><td><b>E23</b></td><td>CI</td><td>La imagen de PostgreSQL falló al actualizar el índice Debian Security expirado. El primer arreglo, limitado a PGDG, también falló porque ocultaba las dependencias base de PostgreSQL. La corrección final usa una lista temporal cerrada con Debian base y PGDG, sin desactivar la validación temporal; instalación de pgvector y migraciones pasan en un contenedor limpio</td><td><code data-author="Javier Rebull">c968197</code></td></tr>
       <tr><td><b>US-160 / US-124</b></td><td>Integración</td><td>PR #13 fusionada en <code>main</code> con seis jobs de CI verdes, incluidas migraciones y la suite científica. US-160 y US-124 permanecen en curso: quedó integrado el comportamiento sobre datos sintéticos, no los puntos de operación ni las pérdidas empíricas del artículo</td><td><code data-author="Javier Rebull">28dc201</code></td></tr>
+      <tr><td><b>US-160</b></td><td>Auditoría</td><td>La invariancia frente a etiquetas, la inmutabilidad y el punto de operación externo se sostienen. El ataque que reutiliza prueba como validación revela que separar firmas no prueba la disyunción; el primer arreglo compara bytes exactos de posteriores y bloquea incluso una sola fila compartida</td><td><code data-author="Javier Rebull">4cae36c</code></td></tr>
+      <tr><td><b>US-160 / US-125</b></td><td>Camino adyacente</td><td>La huella de posteriores no identifica parcelas: dos parcelas distintas pueden compartir posterior y la misma parcela puede recalcularse con bytes distintos. El flujo exige ahora identidades estables, rechaza solapamientos por ID y conserva una pérdida inmutable por parcela. US-125 empareja por ID aunque cambie el orden, exige metadatos de bloque y parche coincidentes y conecta los cinco brazos no basales con la referencia</td><td><code data-author="Javier Rebull">36dd397</code></td></tr>
+      <tr><td><b>US-125 / US-173</b></td><td>Contrato</td><td>Bloques espaciales y clústeres <code>patch_id</code> dejan de compartir por accidente una sola regla mínima. El contrato fija por separado tres unidades para cada vista; por debajo se conservan los deltas, pero no hay intervalo, p ni elegibilidad para Holm. El preregistro, su gate y el ledger quedan sincronizados</td><td><code data-author="Javier Rebull">eaf06eb</code></td></tr>
       </tbody></table></div>
     </details>
 
@@ -940,7 +947,7 @@
              "No hay promedio inferencial entre bancos y el artículo NO afirma transporte a otras regiones o campañas",
              "Medido y publicado, con los dos conjuntos nombrados por separado: entre ENTRENAMIENTOS el Jaccard medio es 0,4273 y el máximo 0,5510; entre ENTRENAMIENTO MÁS VALIDACIÓN, 0,6000 y 0,8005. El 0,60/0,80 que esta línea atribuía al entrenamiento era el segundo. Con veinticinco bloques sube a 0,9200: partir el mismo territorio más fino no crea réplicas nuevas, produce el mismo dato contado más veces",
              "k queda como parámetro de sensibilidad espacial, no como número de réplicas ni palanca de potencia; PASTIS y BreizhCrops siguen siendo exploratorios",
-             "Contrato normativo con trece decisiones exactas y gate de coherencia JSON↔prosa probado en negativo"],
+             "Contrato normativo con catorce decisiones exactas y gate de coherencia JSON↔prosa probado en negativo"],
          out:"docs/paper/preregistro-v2-borrador.md; docs/paper/estimando-v1.json; make preregistro-check", dep:"—"},
         {id:"US-174", t:"La banda de equivalencia, desde el usuario y no desde el instrumento", sp:3, st:"idle",
          role:"Como equipo que va a afirmar que dos mecanismos son equivalentes, quiero que el margen salga de lo que le da igual a quien usa el mapa, no de lo que mi experimento alcanza a distinguir.",
@@ -990,13 +997,15 @@
              "El 42,1 %, el cambio de signo y el 0,00127 se midieron sobre el conjunto ENTREGADO. Bajo el estimando de US-160, que evalúa la población completa, esas cifras cambian: o se recomputan, o el método las declara explícitamente como medidas bajo el estimando anterior",
              "El suelo se aplica en ENTRENAMIENTO para construir un universo fijo. Aplicarlo dentro de cada bloque evaluado reintroduciría el denominador móvil que esta historia existe para eliminar. Falta regenerar y publicar los deltas empíricos después de fijar pérdida y puntos de operación"],
          out:"ml/eval/micai_actions.py; ml/eval/paper_micai_coverage.py", dep:"US-160"},
-        {id:"US-125", t:"El bloque como unidad de remuestreo", sp:5, st:"idle",
-         role:"Como autor cuyo estimando es la media por bloque, quiero que el intervalo propague la varianza entre bloques, porque hoy remuestrea parcelas dentro del bloque y nunca bloques.",
-         ac:["Remuestreo por bloque, y por parche donde haya coordenadas",
-             "Con dos bloques se renuncia al intervalo y se reportan los dos deltas, sin p ni significancia",
-             "El conjunto de clases evaluadas se congela antes de remuestrear, no se recalcula por réplica",
-             "Se publica el intervalo bajo AMBAS unidades de remuestreo, sea cual sea el resultado. Hoy medido: compuesto con el denominador común pasa de (−0,0430, −0,0147) a (−0,0410, +0,0077) y p de 0,005 a 0,130"],
-         out:"ml/eval/paper_micai_coverage.py", dep:"US-124"},
+        {id:"US-125", t:"Bloque espacial y parche como unidades explícitas", sp:5, st:"wip",
+         role:"Como autor cuyo estimando conserva todas las parcelas pero cuya dependencia vive en el parche, quiero separar la variación entre bloques del remuestreo por patch_id y no fabricar réplicas parcelarias.",
+         ac:["MECÁNICA TERMINADA, REGENERACIÓN PENDIENTE. ml/eval/micai_inference.py reporta dos vistas: t pareada sobre las medias por bloque y bootstrap de patch_id completos dentro de cada bloque. No existe bootstrap por parcela",
+             "Con menos de tres bloques espaciales se conservan sus deltas pero no hay intervalo, p ni Holm. La misma regla existe por separado para menos de tres patch_id pareados: compartir el valor no vuelve idénticas las decisiones",
+             "El emparejamiento se hace por parcel_id y admite que un brazo llegue reordenado; rechaza parcelas ausentes, duplicadas o sustituidas, y exige que bloque y patch_id coincidan entre brazos",
+             "El conjunto común de clases viaja desde entrenamiento dentro del vector de pérdidas y no puede recalcularse por réplica ni desde etiquetas de prueba",
+             "Una prueba end-to-end consume las pérdidas inmutables de los seis brazos y produce cinco contrastes contra la referencia. Todo es sintético: faltan los valores del preregistro y regenerar los artefactos empíricos",
+             "Se publica el intervalo bajo AMBAS unidades, sea cual sea el resultado. Las cifras históricas (−0,0430, −0,0147), (−0,0410, +0,0077), 0,005 y 0,130 siguen en cuarentena hasta esa regeneración"],
+         out:"ml/eval/micai_inference.py; ml/eval/micai_actions.py", dep:"US-124"},
         {id:"US-126", t:"Simetría del punto de operación", sp:3, st:"idle",
          role:"Como autor que afirma elegir el punto de operación fuera de los datos que lo miden, quiero que sea cierto para todos los brazos, porque el umbral de confianza sale del bloque de evaluación y la leyenda no.",
          ac:["El umbral y la cobertura objetivo se fijan en los bloques de entrenamiento y se aplican al de evaluación",
