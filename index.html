@@ -28,7 +28,7 @@
         <span><b>Autores</b> A. J. Zizumbo Velasco · J. A. Rebull-Saucedo</span>
         <span><b>Universos</b> PASTIS · 16 640 parcelas · 18 clases &nbsp;·&nbsp;
           BreizhCrops 2017 · 60 000 parcelas · 9 clases</span>
-        <span><b>Revisión</b> 6 de septiembre de 2026 · <code>8b0be5e</code> · <b>US-172 sigue crítico; US-122 ejerció por primera vez el bloqueo de ADR-015</b></span>
+        <span><b>Revisión</b> 7 de septiembre de 2026 · <code>b117293</code> · <b>US-172 sigue crítico; US-122 cierra el bypass de gzip por ruta</b></span>
       </div>
       <p class="downloads">
         <a class="dl" href="plan.html">El plan nuevo, por épicas</a>
@@ -188,7 +188,12 @@
     alcance externo: solo <code>refs/pull/{3,4,5}</code> alcanzan el commit sensible; las refs de las
     PR #6 y #7 divergen y no pertenecen al caso de Support. La rama fusionada de la PR #6 fue
     borrada. El repositorio no vuelve a público antes de que GitHub purgue las tres referencias y
-    vistas conservadas.</p>
+    vistas conservadas. La auditoría del 7 de septiembre atacó los instrumentos, no solo sus
+    resultados: el árbol de la punta se sustituyó por ancestría remota y apareció un bypass real.
+    Un gzip renombrado fuera de <code>.engram/</code> atravesaba tanto <code>gitleaks</code> como el
+    harness. <code>b117293</code> añade un gate bloqueante que inspecciona los blobs del índice por
+    extensión y firma binaria; nueve contenedores históricos solo pasan con ruta y SHA-256 exactos.
+    Es el undécimo gate del estudio y no aumenta el porcentaje científico.</p>
 
   <div class="callout">
     <p><b>Estado de la conclusión.</b> H1-2026 está <strong>pendiente</strong>: ni «se refutó» ni

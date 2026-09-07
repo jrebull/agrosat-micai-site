@@ -189,6 +189,16 @@
         las PR #4 y #5. El lote derivado rechazado permanece como registro en la historia privada,
         pero no amplía el incidente original ni el caso de Support. La rama fusionada de la PR #6
         fue borrada; el repositorio continúa privado hasta que Support purgue las tres refs reales.</p>
+      <p><b>Auditoría del instrumento, 6–7 de septiembre.</b> El árbol de la punta, la fecha UTC y
+        el historial disponible en un clon local contestaban preguntas parecidas, pero no las que
+        se les estaban haciendo; por eso la revalidación usa ancestría remota, fecha local del autor
+        y la API de GitHub. El hallazgo nuevo sí era reproducible: <code>gitleaks</code> no ve datos
+        personales dentro de gzip y el harness solo cerraba dos carpetas, de modo que mover el blob
+        y llamarlo <code>.dat</code> atravesaba ambos. <code>b117293</code> añade el undécimo gate del
+        estudio: inspecciona los blobs del índice por extensión y firma binaria, incluso cuando el
+        árbol de trabajo contiene otros bytes. Nueve contenedores históricos —un DOCX, un XLSX y
+        siete NPZ— quedan permitidos solo por ruta y SHA-256 exactos; cambiar, borrar o sustituir uno
+        también falla. Es infraestructura de contención y no suma avance científico.</p>
       <p><b>CI recuperada, 6 de septiembre.</b> Dos ejecuciones posteriores al saneamiento agotaron
         el disco del runner antes de alcanzar las pruebas de Python. El primer correctivo retiró la
         restauración persistente, pero dejó abierto el camino estrecho: Poetry seguía conservando
@@ -216,7 +226,7 @@
     <div class="colophon plan-colophon">
       <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
       <span><b>Total</b> <span id="total-sp">—</span> puntos de historia</span>
-      <span><b>Actualizado</b> 6 de septiembre de 2026, árbol vigente contenido y purga de tres refs por GitHub pendiente</span>
+      <span><b>Actualizado</b> 7 de septiembre de 2026, once gates del estudio y purga de tres refs por GitHub pendiente</span>
     </div>
   </div>
 </header>
@@ -455,6 +465,7 @@
       <tr><td><b>US-122</b></td><td>Integración revisada</td><td>Arthur añade un exportador Engram, un lote derivado y el permiso mínimo de lectura de PR para el job de calidad. Se conserva el permiso y la base del prefiltro; el lote no se acepta porque se publicó antes de cumplir ADR-015</td><td><code data-author="Arthur Zizumbo">aa4ef4b</code></td></tr>
       <tr><td><b>US-122</b></td><td>Correctivo</td><td>El lote no aprobado sale del árbol vigente. El exportador queda como prefiltro local ligado a su manifiesto y el harness rechaza todo contenido versionado en las dos raíces de Engram salvo el README permitido; una prueba negativa cubre el bypass por renombrado</td><td><code data-author="Javier Rebull">acf2b86</code></td></tr>
       <tr><td><b>US-122</b></td><td>Alcance corregido</td><td>La ancestría, no el árbol de la punta, demuestra que solo las PR #3, #4 y #5 sostienen el commit sensible. Las PR #6 y #7 divergen y salen del caso de Support; la rama fusionada de la PR #6 queda eliminada. ADR-015 registra que el lote rechazado fue su primer bloqueo real</td><td><code data-author="Javier Rebull">8b0be5e</code></td></tr>
+      <tr><td><b>US-122</b></td><td>Control correctivo</td><td>Un gzip sensible renombrado fuera de <code>.engram/</code> burlaba tanto el escáner de secretos como el harness. El nuevo gate inspecciona los blobs preparados en el índice por extensión y firma binaria; el camino de al lado sigue fallando aunque el árbol de trabajo muestre texto inocuo. Nueve contenedores históricos quedan fijados por ruta y SHA-256 exactos</td><td><code data-author="Javier Rebull">b117293</code></td></tr>
       </tbody></table></div>
     </details>
 
@@ -852,6 +863,7 @@
              "EN CURSO: ADR-015 sigue en PROPUESTA. El lote Engram publicado por la PR #6 fue retirado del árbol porque no tenía las dos aprobaciones ni una decisión de transporte; retirarlo no sanea la historia",
              "El exportador es solo un prefiltro local: escribe fuera del repositorio, verifica esquema, conteo y digest contra el manifiesto, y no publica ni importa memoria",
              "El harness enumera lo único permitido bajo docs/engram/ mientras ADR-015 siga propuesta; una prueba negativa demuestra que renombrar el lote no evita el fallo",
+             "CONTROL POR BYTES: archive-safety-check inspecciona todos los blobs preparados en el índice, sin depender de la carpeta ni del nombre. Rechaza extensiones y firmas de contenedores comprimidos; un gzip renombrado como .dat y oculto tras otros bytes en el árbol de trabajo falla. Los nueve contenedores históricos solo pasan con ruta y SHA-256 exactos, y el gate bloqueante corre en CI y make check",
              "PENDIENTE: política semántica para nombres, geometrías y resultados no publicados; dos aprobaciones sobre bytes idénticos; transporte, custodio, acceso, retención y retirada; piloto sintético",
              "PENDIENTE DE CONTENCIÓN EXTERNA: purga por Support de refs/pull/{3,4,5} antes de volver a público. Las refs de las PR #6 y #7 divergen del commit sensible y quedan fuera del caso"],
          out:"docs/paper/metadatos-autoria.md; docs/us-work/us-122.md; docs/decisions/ADR-015-engram-memoria-compartida.md", dep:"US-121"},
