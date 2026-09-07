@@ -124,10 +124,12 @@
         temporal efectiva y su gate corre en CI, pero <b>31 artefactos
         siguen obsoletos</b> y no se regeneran antes de fijar la pérdida y el panel. El workflow
         propuesto por Arthur también quedó revisado: este plan registra más abajo qué se adopta,
-        qué se descarta y qué queda solo como posibilidad futura. <b>US-141 y US-142 están
+        qué se descarta y qué queda solo como posibilidad futura. <b>US-141, US-142 y US-149 están
         cerradas</b>: el trabajo relacionado ya está en la primera página y en su sección, y
         <code>paper/micai2027/refs.bib</code> contiene exactamente las 16 claves citadas, derivadas
-        de un catálogo verificado de 57. Existe un esqueleto LNCS anónimo de cinco páginas como
+        de un catálogo verificado de 57. La sección del problema y el estimando ya está escrita
+        desde su contrato, y el registro de afirmaciones retiradas deriva sus 16 filas de la
+        revisión externa en vez de mantener otra lista manual. El manuscrito LNCS anónimo llega a ocho páginas como
         preparación de <b>US-144, que sigue formalmente sin iniciar</b> hasta cumplir sus
         prerrequisitos; resultados y discusión están deliberadamente vacíos. <b>US-143
         también está en curso</b>: el contrato ejecutable de las figuras ya impide repetir el
@@ -229,7 +231,7 @@
     <div class="colophon plan-colophon">
       <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
       <span><b>Total</b> <span id="total-sp">—</span> puntos de historia</span>
-      <span><b>Actualizado</b> 7 de septiembre de 2026, US-141 y US-142 cerradas; 16 referencias finales y once gates verdes</span>
+      <span><b>Actualizado</b> 7 de septiembre de 2026, US-141, US-142 y US-149 cerradas; sección 3 integrada y doce gates verdes</span>
     </div>
   </div>
 </header>
@@ -455,6 +457,8 @@
       <tr><td><b>US-142</b></td><td>Cierre</td><td>Bibliografía final derivada de las citas reales: 16 entradas de las 57 verificadas. El gate falla si falta una citada, sobra una no citada o una entrada diverge del catálogo. La revisión encontró y corrigió tres afirmaciones que la primera compilación no detectó: formato Letter pese a declarar A4, encabezado de título suprimido y U-TAE presentada como miembro vigente</td><td><code data-author="Javier Rebull">a798438</code></td></tr>
       <tr><td><b>US-141 / US-142</b></td><td>Custodia</td><td>Reselladas la evidencia normativa integrada y la bibliografía final. El ledger llega a 107 artefactos; el PDF nuevo compila en A4, cinco páginas, sin citas ni cajas sin resolver y pasa el gate anónimo de 16 tokens</td><td><code data-author="Javier Rebull">4875071</code></td></tr>
       <tr><td><b>US-141</b></td><td>Propagación</td><td>La novedad limitada no queda solo en trabajo relacionado: el resumen también dice «dentro de la búsqueda reportada, no encontramos». Se retira la afirmación universal que sobrevivía en la parte más visible del PDF</td><td><code data-author="Javier Rebull">120fc13</code></td></tr>
+      <tr><td><b>US-173 / US-144</b></td><td>Sección 3</td><td>Los cuatro mecanismos entran en un único espacio de acciones; el estimando puntúa todas las parcelas elegibles, fija el punto de operación fuera del bloque evaluado y declara que no se afirma transporte. La pérdida queda deliberadamente sin valor y no se fabrican resultados</td><td><code data-author="Javier Rebull">a73f3b3</code></td></tr>
+      <tr><td><b>US-149</b></td><td>Cierre</td><td>Registro generado desde las 16 correcciones de la revisión externa, más tres nombres excluidos del barrido de bancos. El gate recorre manuscrito, plan y cuaderno completos; catorce pruebas negativas cubren la fila adicional, la fila perdida y los caminos laterales de título y campo</td><td><code data-author="Javier Rebull">4ab4d07</code></td></tr>
       </tbody></table></div>
     </details>
 
@@ -623,7 +627,7 @@
          out:"farslip_cinco_vs_tres.csv · farslip_delta.json", dep:"US-089"},
         {id:"US-093", t:"Auditoría ciega multiagente", sp:5, st:"ok",
          role:"Como autor que no puede auditarse a sí mismo, quiero revisores sin acceso a mis conclusiones, para que encuentren lo que yo no vi.",
-         ac:["Cuatro revisores independientes: estadística, fuga, trazabilidad y coherencia",
+         ac:["Cuatro agentes revisores con ejes independientes: estadística, fuga, trazabilidad y coherencia",
              "Ninguno recibe las conclusiones previas ni lo que se espera encontrar",
              "Cada hallazgo con archivo, línea y el comando que lo demuestra",
              "Los bloqueantes se verifican de forma independiente antes de aceptarlos",
@@ -660,8 +664,8 @@
              "Se reporta se transporte o no"],
          out:"reports/paper_micai/fase3/", dep:"US-094"},
         {id:"US-098", t:"Tercer mecanismo: retirada por soporte", sp:3, st:"dead",
-         role:"Como autor, quiero medir el criterio que el equipo usó de verdad al desplegar, para comparar contra la práctica y no contra una regla inventada.",
-         ac:["Retirada por soporte bajo, que es el criterio declarado por el equipo",
+         role:"RETIRADA: esta historia partía de atribuir al equipo una decisión que sus artefactos desmintieron. El brazo por soporte se conserva solo como alternativa exploratoria.",
+         ac:["Retirada por soporte bajo como criterio alternativo, no como práctica atribuida al equipo",
              "Comparado con la retirada por F1 y con la abstención por confianza",
              "Se coteja con las seis clases que el producto desplegado retiró"],
          out:"reports/paper_micai/fase3/", dep:"US-094"},
@@ -1276,18 +1280,18 @@
              "Ninguna figura codifica su significado solo con color",
              "Reproducibles byte a byte"],
          out:"ml/report/figuras_micai.py; tests/ml/report/test_figuras_micai.py; scripts/build_paper_micai_*_figure.py", dep:"—"},
-        {id:"US-149", t:"Registro de afirmaciones retiradas, y su gate", sp:3, st:"idle",
-         role:"Como autor que va a reescribir, quiero una lista nominal de lo que la auditoría tumbó, porque «ninguna de las quince afirmaciones» era una cifra sin artefacto.",
-         ac:["Una fila por afirmación retirada: cita textual, documento que la refutó y redacción correcta",
-             "Incluye la premisa falsa sobre el criterio del equipo, la comparación inválida de mIoU contra F1, el «ya existía en la columna de al lado», y los tres bancos que no se citan porque no existen",
-             "make micai-claims-check grepea el fuente contra el registro y contra un léxico prohibido, y falla; probado en negativo",
-             "México declarado como limitación: no hay banco público por parcela y el despliegue es mexicano",
-             "make micai-claims-check corre también sobre el HTML del cuaderno y sobre el plan: hoy el sitio sigue imprimiendo la premisa falsa del criterio del equipo y dos absolutos que la regla de redacción prohíbe",
-             "El registro se genera mecánicamente desde los documentos de auditoría y de revisión externa, no se elige a mano: hay dieciséis correcciones documentadas y la lista actual enumera cuatro"],
-         out:"docs/paper/afirmaciones-retiradas.md", dep:"US-121"},
+        {id:"US-149", t:"Registro de afirmaciones retiradas, y su gate", sp:3, st:"ok",
+         role:"Como autor que va a reescribir, quiero una lista nominal de lo que la auditoría tumbó, con un recuento producido desde su fuente y no recordado de memoria.",
+         ac:["CERRADA. El registro se genera desde la tabla completa de la revisión externa: cada fila conserva la cita retirada, la realidad verificada, la acción y el documento que la refuta",
+             "Incluye la premisa falsa sobre el criterio del equipo, la comparación inválida de mIoU contra F1, la atribución errónea de la rederivación al CSV vecino y los tres nombres que no se citan como bancos porque no se verificó que existan",
+             "make micai-claims-check compara el registro byte a byte con sus fuentes y escanea el manuscrito contra un léxico prohibido; las pruebas negativas cubren cada mecanismo",
+             "México está declarado en el manuscrito como limitación: la búsqueda acotada no identificó un banco público mexicano por parcela y la evidencia no valida la geografía del despliegue",
+             "El mismo gate recorre el HTML completo del cuaderno y el objeto entero del plan; mover una afirmación a un título o a otro campo no la oculta",
+             "El conteo se deriva mecánicamente: dieciséis correcciones consecutivas en la fuente y tres nombres excluidos en el barrido de bancos. Una fila nueva deja obsoleto el registro y una fila perdida rompe el suelo auditado"],
+         out:"docs/paper/afirmaciones-retiradas.md; scripts/micai_claims_check.py; tests/scripts/test_micai_claims_check.py", dep:"—"},
         {id:"US-144", t:"El manuscrito", sp:13, st:"idle",
          role:"Como autor, quiero escribir el artículo del ángulo nuevo, no parchear el anterior, porque el anterior arrastra frases que ya no corresponden a ningún dato.",
-         ac:["ESQUELETO ABIERTO, RESULTADOS AUSENTES A PROPÓSITO. paper/micai2027 compila en LNCS anónimo, A4, cinco páginas, con introducción y trabajo relacionado integrados y las secciones restantes declaradas como dependientes", "Veinte páginas. La cuenta honesta dice que la rejilla completa pide unas VEINTISÉIS, así que hay que recortar seis y el recorte se decide AHORA, no cuando salga la convocatoria",
+         ac:["ESQUELETO ABIERTO, RESULTADOS AUSENTES A PROPÓSITO. paper/micai2027 compila en LNCS anónimo, A4, ocho páginas, con introducción, trabajo relacionado, problema y estimando integrados; las secciones restantes siguen declaradas como dependientes", "Veinte páginas. La cuenta honesta dice que la rejilla completa pide unas VEINTISÉIS, así que hay que recortar seis y el recorte se decide AHORA, no cuando salga la convocatoria",
              "Recortes decididos, en orden: la autopsia al depósito con DOI dejando un párrafo en método (−0,9); un predictor preseleccionado por banco en el cuerpo y la rejilla completa al depósito (−0,7); la reducción formal al F1 alineado y la sensibilidad a g al apéndice del depósito (−0,7); el barrido de desbalance a cuatro frases y un panel (−0,6); fuera la curva de riesgo, que el diagrama de fases subsume (−0,6); la frase de límite metodológico solo para los ocho trabajos más cercanos y no para las treinta y cinco citas (−0,6); los casos de uso fundidos en la figura (−0,3); equidad por clase y por área en una figura de dos paneles (−0,4)",
              "Lo que NO se recorta bajo ninguna circunstancia: el sesgo en la estadística de superficie y la decisión de despliegue real. Son las dos únicas cosas del artículo que nadie más puede escribir",
              "La sección de robustez lleva las diez pruebas de la EPIC 26, cada una respondiendo a un ataque nombrado. No es una frase de cortesía: es un cuarto de la sección de resultados",

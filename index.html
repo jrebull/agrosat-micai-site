@@ -97,9 +97,9 @@
         las que el modelo no distingue— o se puede <strong>responder menos parcelas</strong>,
         abstenerse allí donde el modelo no está seguro. Son productos distintos y se eligen
         por intuición.</p>
-      <p><b>Corregido el 3 de septiembre.</b> Aquí decíamos que este equipo «tomó la primera vía
-        sin medirla» y que retiró seis clases porque «tenían muy poca muestra». <strong>Las dos
-        cosas son falsas.</strong> El orden real de entrada de las clases lo decide el F1 por clase
+      <p><b>Corregido el 3 de septiembre.</b> La versión anterior atribuía al equipo un recorte no
+        medido y motivado por la escasez de ejemplos. <strong>Las dos partes de esa atribución eran
+        falsas.</strong> El orden real de entrada de las clases lo decide el F1 por clase
         con umbral 0,90, y existe una columna que prueba que la cobertura sí se midió: 90,5 % con
         doce clases. El equipo usó el criterio bueno, y lo que no midió fue la comparación contra la
         alternativa.</p>
@@ -147,9 +147,11 @@
     defectos de evaluación, custodia y redacción. US-173 cerró el primer contrato científico del
     estudio reencuadrado: estimando y población ya están fijados; quedan pérdida, margen práctico y
     criterio principal antes de firmar el preregistro. US-119 cerró la sanidad del panel heredado;
-    US-121 y US-118 están en curso. US-141 y US-142 están cerradas: el trabajo relacionado ya está
+    US-121 y US-118 están en curso. US-141, US-142 y US-149 están cerradas: el trabajo relacionado ya está
     integrado y la bibliografía final contiene exactamente las 16 claves citadas de un catálogo
-    verificado de 57. Existe un esqueleto LNCS anónimo de cinco páginas como preparación, pero
+    verificado de 57. El registro de afirmaciones retiradas se deriva de las 16 correcciones de la
+    revisión externa y ya bloquea su regreso en manuscrito, plan y cuaderno. Existe un manuscrito
+    LNCS anónimo de ocho páginas con problema y estimando integrados como preparación, pero
     US-144 sigue formalmente sin iniciar hasta cumplir sus prerrequisitos y no tiene resultados
     empíricos. US-172 tiene
     ocho decisiones operativas cerradas y nueve filas reconocidas, pero no nueve condiciones
@@ -238,9 +240,9 @@
   <p>La conclusión que acompañaba a esta tabla —que <code>tsvit-pheno</code> era el mejor miembro y
     ninguna combinación lo mejoraba— cayó con el arreglo del productor. No se traslada al estudio
     nuevo.</p>
-  <p><b>Retirado el 3 de septiembre.</b> Aquí decíamos que «U-TAE rinde 0,19 donde la literatura le
-    da alrededor de 0,63». La comparación es <strong>inválida</strong>: 0,19 es F1-macro por parcela
-    y 0,63 es mIoU por píxel, que son métricas y niveles distintos. Lo señaló el coautor. Por qué
+  <p><b>Retirado el 3 de septiembre.</b> Aquí se equiparaban dos cifras de U-TAE obtenidas con
+    métricas y unidades distintas. La comparación era <strong>inválida</strong>: una medía
+    F1-macro por parcela y la otra mIoU por píxel. Lo señaló el coautor. Por qué
     ese checkpoint rinde tan por debajo de su propia validación es una pregunta abierta, y se
     responde midiendo mIoU contra mIoU, no citando la literatura de memoria.</p>
   <p><b>Y una advertencia sobre toda esta tabla</b>: <code>tsvit-pheno-fullm</code> aparece con
@@ -309,8 +311,8 @@
       quita primero.</figcaption>
   </figure>
 
-  <h2>El criterio que se usa en la práctica es el peor, y empeora al usarlo más</h2>
-  <p>Retirar por soporte bajo —lo que este equipo hizo para desplegar— queda último en los dos
+  <h2>El criterio alternativo por soporte queda último</h2>
+  <p>Retirar por soporte bajo —un brazo alternativo, no la decisión de despliegue del equipo— queda último en los dos
     bancos y además <strong>baja</strong> conforme se retiran más clases. La razón se ve en las
     leyendas: saca la colza, que el modelo separa bien, y conserva las dos praderas, que confunde
     entre sí. Optimiza el tamaño de la muestra, no la calidad de lo que se entrega.</p>
@@ -420,8 +422,8 @@
 
   <div class="finding blocker">
     <div class="top"><span class="chip stop">Fatal</span><h3>Una premisa falsa, señalada por el coautor</h3></div>
-    <p>El artículo repetía en seis sitios que retirar clases por soporte bajo es «lo que hace la
-      práctica», y lo atribuía a este equipo. <strong>Es falso.</strong> El orden real de entrada de
+    <p>El artículo atribuía a la práctica y a este equipo un recorte guiado por soporte.
+      <strong>Es falso.</strong> El orden real de entrada de
       las clases lo decide el F1 por clase con umbral 0,90, y existe una columna que prueba que la
       cobertura sí se midió: 90,5 % en la curva del Stacking-5; el desplegado, Voting-3 v2, cubre el 88,3 %. El equipo usó el criterio bueno.</p>
   </div>
@@ -951,12 +953,12 @@
 
   <div class="finding pass">
     <div class="top"><span class="chip ok">Lo que sí queda</span><h3>Tres piezas que no se hablan entre sí</h3></div>
-    <p>La jerarquía normativa está montada y validada —HCAT4, EuroCrops v2.0 con 47 millones de
-      parcelas— pero solo se usa como supervisión, <strong>nunca como opción de repliegue</strong>.
-      El rechazo existe, pero por <em>novedad</em>. Y lo conforme llega a cobertura del suelo, no a
-      tipo de cultivo por parcela desde series temporales. El único trabajo de observación de la
-      Tierra que dice «abstain», SHRUG-FM en EarthVision 2026, evalúa incendios, inundaciones y
-      deslizamientos: <strong>ninguna tarea agrícola</strong>.</p>
+    <p>En las fuentes revisadas, la jerarquía normativa —HCAT4 y EuroCrops v2.0— aparece como
+      supervisión, no como opción de repliegue evaluada junto a las demás acciones. El rechazo por
+      <em>novedad</em> y la predicción conforme de cobertura del suelo responden preguntas distintas.
+      SHRUG-FM en EarthVision 2026 usa «abstain» para incendios, inundaciones y deslizamientos;
+      Rey et al. aplica rechazo por incertidumbre en cultivos sin conectarlo con clasificación
+      selectiva ni comparar los cuatro mecanismos.</p>
     <p><b>La contribución, reformulada: no es el mecanismo, es la contabilidad.</b> Medir, para cada
       mecanismo, qué cultivos y qué tamaños de parcela absorben la promesa retirada.</p>
   </div>
