@@ -140,6 +140,8 @@
         obligatoria sin valores predeterminados. US-125 ya conecta esas pérdidas por identidad de
         parcela con intervalos separados por bloque espacial y por <code>patch_id</code>; no
         remuestrea parcelas sueltas ni deja entrar en Holm una vista con menos de tres unidades.
+        La corrección exploratoria ya es ejecutable: no mezcla unidades, excluye solo identidades
+        estructurales y no reduce la familia después de descubrir una p indefinida.
         El manuscrito LNCS anónimo llega a once páginas como
         preparación de <b>US-144, que sigue formalmente sin iniciar</b> hasta cumplir sus
         prerrequisitos; resultados y discusión están deliberadamente vacíos. <b>US-143
@@ -479,6 +481,8 @@
       <tr><td><b>US-160</b></td><td>Auditoría</td><td>La invariancia frente a etiquetas, la inmutabilidad y el punto de operación externo se sostienen. El ataque que reutiliza prueba como validación revela que separar firmas no prueba la disyunción; el primer arreglo compara bytes exactos de posteriores y bloquea incluso una sola fila compartida</td><td><code data-author="Javier Rebull">4cae36c</code></td></tr>
       <tr><td><b>US-160 / US-125</b></td><td>Camino adyacente</td><td>La huella de posteriores no identifica parcelas: dos parcelas distintas pueden compartir posterior y la misma parcela puede recalcularse con bytes distintos. El flujo exige ahora identidades estables, rechaza solapamientos por ID y conserva una pérdida inmutable por parcela. US-125 empareja por ID aunque cambie el orden, exige metadatos de bloque y parche coincidentes y conecta los cinco brazos no basales con la referencia</td><td><code data-author="Javier Rebull">36dd397</code></td></tr>
       <tr><td><b>US-125 / US-173</b></td><td>Contrato</td><td>Bloques espaciales y clústeres <code>patch_id</code> dejan de compartir por accidente una sola regla mínima. El contrato fija por separado tres unidades para cada vista; por debajo se conservan los deltas, pero no hay intervalo, p ni elegibilidad para Holm. El preregistro, su gate y el ledger quedan sincronizados</td><td><code data-author="Javier Rebull">eaf06eb</code></td></tr>
+      <tr><td><b>US-125</b></td><td>Varianza cero</td><td>Se separan identidad exacta y efecto constante no nulo. La primera queda como control degenerado con p igual a uno y fuera de la familia; la segunda conserva su delta, pero no inventa una p cuando la varianza entre parches es cero</td><td><code data-author="Javier Rebull">e457e5a</code></td></tr>
+      <tr><td><b>US-125</b></td><td>Multiplicidad</td><td>Holm queda implementado para una familia exploratoria predeclarada de una sola unidad inferencial. Solo excluye comparaciones idénticas por construcción; si cualquier otro contraste planeado no tiene p válida, no encoge la familia a posteriori y reporta por qué no aplica la corrección</td><td><code data-author="Javier Rebull">aaa4c03</code></td></tr>
       </tbody></table></div>
     </details>
 
@@ -1004,6 +1008,8 @@
              "El emparejamiento se hace por parcel_id y admite que un brazo llegue reordenado; rechaza parcelas ausentes, duplicadas o sustituidas, y exige que bloque y patch_id coincidan entre brazos",
              "El conjunto común de clases viaja desde entrenamiento dentro del vector de pérdidas y no puede recalcularse por réplica ni desde etiquetas de prueba",
              "Una prueba end-to-end consume las pérdidas inmutables de los seis brazos y produce cinco contrastes contra la referencia. Todo es sintético: faltan los valores del preregistro y regenerar los artefactos empíricos",
+             "Holm exploratorio acepta una sola unidad inferencial por familia, excluye únicamente identidades estructurales y aborta la familia completa si otro contraste planeado carece de p válida; no se reduce la carga después de ver qué fue estimable",
+             "Varianza cero no equivale automáticamente a evidencia infinita: identidad exacta queda como control degenerado y un efecto constante no nulo no recibe una p inventada",
              "Se publica el intervalo bajo AMBAS unidades, sea cual sea el resultado. Las cifras históricas (−0,0430, −0,0147), (−0,0410, +0,0077), 0,005 y 0,130 siguen en cuarentena hasta esa regeneración"],
          out:"ml/eval/micai_inference.py; ml/eval/micai_actions.py", dep:"US-124"},
         {id:"US-126", t:"Simetría del punto de operación", sp:3, st:"idle",
