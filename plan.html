@@ -127,9 +127,12 @@
         qué se descarta y qué queda solo como posibilidad futura. <b>US-141, US-142 y US-149 están
         cerradas</b>: el trabajo relacionado ya está en la primera página y en su sección, y
         <code>paper/micai2027/refs.bib</code> contiene exactamente las 16 claves citadas, derivadas
-        de un catálogo verificado de 57. La sección del problema y el estimando ya está escrita
-        desde su contrato, y el registro de afirmaciones retiradas deriva sus 16 filas de la
-        revisión externa en vez de mantener otra lista manual. El manuscrito LNCS anónimo llega a ocho páginas como
+        de un catálogo verificado de 57. Las secciones del problema, el estimando y la mecánica ya
+        están escritas desde sus contratos, y el registro de afirmaciones retiradas deriva sus 16
+        filas de la revisión externa en vez de mantener otra lista manual. <b>US-160 pasa a en
+        curso</b>: el código ya representa los seis brazos en un espacio común, clasifica las siete
+        celdas de resultado y exige una tabla completa por afectado, sin precios predeterminados.
+        El manuscrito LNCS anónimo llega a nueve páginas como
         preparación de <b>US-144, que sigue formalmente sin iniciar</b> hasta cumplir sus
         prerrequisitos; resultados y discusión están deliberadamente vacíos. <b>US-143
         también está en curso</b>: el contrato ejecutable de las figuras ya impide repetir el
@@ -231,7 +234,7 @@
     <div class="colophon plan-colophon">
       <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
       <span><b>Total</b> <span id="total-sp">—</span> puntos de historia</span>
-      <span><b>Actualizado</b> 7 de septiembre de 2026, US-141, US-142 y US-149 cerradas; sección 3 integrada y doce gates verdes</span>
+      <span><b>Actualizado</b> 7 de septiembre de 2026, US-160 en curso; secciones 3 y 4 integradas y doce gates verdes</span>
     </div>
   </div>
 </header>
@@ -446,7 +449,7 @@
 
     <div class="history-log">
     <details class="history-day" open>
-    <summary class="dia" data-date="2026-09-07"><time datetime="2026-09-07">7 sep</time><strong>PR #10: seis gates corregidos y sus caminos laterales cerrados</strong></summary>
+    <summary class="dia" data-date="2026-09-07"><time datetime="2026-09-07">7 sep</time><strong>Manuscrito verificable: afirmaciones retiradas, estimando y mecánica</strong></summary>
     <div class="scroll"><table>
       <thead><tr><th>US</th><th>Tipo</th><th>Qué se hizo</th><th>Evidencia</th></tr></thead>
       <tbody data-date="2026-09-07">
@@ -459,6 +462,7 @@
       <tr><td><b>US-141</b></td><td>Propagación</td><td>La novedad limitada no queda solo en trabajo relacionado: el resumen también dice «dentro de la búsqueda reportada, no encontramos». Se retira la afirmación universal que sobrevivía en la parte más visible del PDF</td><td><code data-author="Javier Rebull">120fc13</code></td></tr>
       <tr><td><b>US-173 / US-144</b></td><td>Sección 3</td><td>Los cuatro mecanismos entran en un único espacio de acciones; el estimando puntúa todas las parcelas elegibles, fija el punto de operación fuera del bloque evaluado y declara que no se afirma transporte. La pérdida queda deliberadamente sin valor y no se fabrican resultados</td><td><code data-author="Javier Rebull">a73f3b3</code></td></tr>
       <tr><td><b>US-149</b></td><td>Cierre</td><td>Registro generado desde las 16 correcciones de la revisión externa, más tres nombres excluidos del barrido de bancos. El gate recorre manuscrito, plan y cuaderno completos; catorce pruebas negativas cubren la fila adicional, la fila perdida y los caminos laterales de título y campo</td><td><code data-author="Javier Rebull">4ab4d07</code></td></tr>
+      <tr><td><b>US-160 / US-144</b></td><td>Avance</td><td>Implementada la mecánica independiente de la elicitación: seis brazos, siete celdas de acción y resultado, conjuntos adaptativos, retroceso taxonómico y pérdida completa inyectada por afectado. Cambiar el precio relativo de error y silencio invierte la acción preferida en una prueba sintética; ningún precio se fija en código. La sección 4 entra al manuscrito, que pasa a nueve páginas sin resultados empíricos</td><td><code data-author="Javier Rebull">78edd0a</code></td></tr>
       </tbody></table></div>
     </details>
 
@@ -946,12 +950,16 @@
       ]
     },
     {
-      id:"EPIC 19", name:"El protocolo, sobre la pérdida ya identificada", status:"idle",
+      id:"EPIC 19", name:"El protocolo, sobre la pérdida ya identificada", status:"wip",
       goal:"Dos cosas que el plan anterior no tenía y sin las cuales nada de lo demás significa nada. Primero: «a igual cobertura» NO está definido para dos de los cuatro mecanismos, porque un conjunto conforme y una clase gruesa se entregan en el 100 % de las parcelas siempre. Segundo: al componer las dos correcciones de protocolo el contraste pasa de p=0,005 a p=0,130, así que la reparación no arregla el hallazgo, lo disuelve, y hay que saberlo ANTES de diseñar sobre él.",
       us:[
-        {id:"US-160", t:"Los cuatro mecanismos como predictores con valores de conjunto", sp:8, st:"idle",
+        {id:"US-160", t:"Los cuatro mecanismos como predictores con valores de conjunto", sp:8, st:"wip",
          role:"Como autor que quiere una tabla única con los cuatro mecanismos, necesito un eje de coste que exista para los cuatro, y hoy no lo hay: la cobertura es una constante igual a uno para el conforme y para el retroceso.",
-         ac:["SEIS casos, no cinco: sin mecanismo, recorte por F1, recorte por soporte, abstención, conforme y retroceso. El segundo criterio de retirada faltaba y US-127 pide un contraste cuyo brazo nadie construía; añadirlo cuesta reordenar la misma leyenda por soporte en vez de por F1",
+         ac:["MECÁNICA TERMINADA, PRECIOS PENDIENTES. Cuatro mecanismos producen SEIS brazos experimentales: una referencia sin mecanismo, dos recortes del mismo catálogo —por F1 y por soporte—, abstención, conjunto adaptativo y retroceso. La no-entrega universal es una acción límite para calibrar el precio del silencio, no un séptimo brazo. La sección 4 del manuscrito deja explícita la cuenta",
+             "Los constructores de conjunto adaptativo y retroceso están implementados con puntos de operación inyectados; no calibran dentro de prueba. El retroceso rechaza particiones con hojas ausentes, repetidas o fuera del catálogo",
+             "La rejilla completa ya es comportamiento: R0 y L1–L6 son resultados distintos, incluidos conjunto que no contiene la verdad y retroceso equivocado. Cada parcela cae en una sola celda según lo que recibe el usuario, no según el nombre del algoritmo",
+             "La tabla de pérdida exige las siete celdas, un afectado nombrado, valores finitos no negativos y R0=0. No tiene valores por defecto y el evaluador no puede ejecutarse sin ella. Una prueba sintética demuestra que cambiar el precio relativo de error y silencio puede invertir la acción preferida",
+             "SEIS casos, no cinco: sin mecanismo, recorte por F1, recorte por soporte, abstención, conforme y retroceso. El segundo criterio de retirada faltaba y US-127 pide un contraste cuyo brazo nadie construía; añadirlo cuesta reordenar la misma leyenda por soporte en vez de por F1",
              "CORREGIDO tras auditoría externa: la primera implementación multiplicaba la utilidad por la contención, con lo que el conjunto vacío valía cero pasara lo que pasara y el precio de abstenerse NO se podía elegir. El valor de no responder es ahora un término aparte y sin valor por defecto",
              "Y la CARDINALIDAD NO ES EL COSTE: dos conjuntos del mismo tamaño reciben el mismo precio aunque uno sea agronómicamente inútil. E[|C|] queda como descriptor secundario; la moneda común es una tabla de pérdidas por acción, resultado y afectado —etiqueta errónea, no respuesta, conjunto ambiguo, retroceso taxonómico— declarada en el preregistro",
              "La utilidad u(y,C) = g(|C|)·1[y ∈ C] se conserva SOLO como el premio por acertar con un conjunto de un tamaño dado, con g declarada antes de mirar y su análisis de sensibilidad. NO es la moneda: el coste de cada resultado sale de la tabla de pérdidas de US-172, y en el código la cardinalidad ya vive aparte como descriptor —cardinalidad_esperada no acepta ninguna función de coste—. Mientras las dos cosas se llamaron igual, la cardinalidad ocupaba el lugar de una pérdida que nadie había declarado",
