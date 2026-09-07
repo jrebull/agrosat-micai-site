@@ -134,8 +134,9 @@
         sin aceptar etiquetas de prueba y solo después evalúa las siete celdas sobre todas las
         parcelas. El universo neutral de clases sale del soporte de entrenamiento y no puede
         cambiar con validación, prueba ni mecanismo; una clase sin soporte en el bloque permanece
-        visible como indefinida, nunca como cero. La pérdida sigue siendo una entrada obligatoria
-        sin valores predeterminados. El manuscrito LNCS anónimo llega a diez páginas como
+        visible como indefinida, nunca como cero. La PR #13 integró ese flujo en
+        <code>28dc201</code> después de seis jobs de CI verdes. La pérdida sigue siendo una entrada
+        obligatoria sin valores predeterminados. El manuscrito LNCS anónimo llega a diez páginas como
         preparación de <b>US-144, que sigue formalmente sin iniciar</b> hasta cumplir sus
         prerrequisitos; resultados y discusión están deliberadamente vacíos. <b>US-143
         también está en curso</b>: el contrato ejecutable de las figuras ya impide repetir el
@@ -469,6 +470,8 @@
       <tr><td><b>US-160</b></td><td>Integración</td><td>PR #12 fusionada después de que los dos disparos de CI terminaran 6/6 en verde. US-160 permanece en curso: la mecánica y su sección están integradas, pero los precios reales y la calibración sobre los bancos siguen pendientes</td><td><code data-author="Javier Rebull">9b1eb52</code></td></tr>
       <tr><td><b>US-149 / US-160</b></td><td>Auditoría</td><td>El gate de afirmaciones retiradas pasa a inglés y español y recorre los 384 Markdown del repositorio. Cinco afirmaciones que seguían vivas quedan declaradas en cuarentena. La misma revisión corrige dos defectos del manuscrito: el recorte deja de describirse como si leyera la verdad y el singleton se reconoce como brazo de referencia evaluado</td><td><code data-author="Javier Rebull">8734568</code></td></tr>
       <tr><td><b>US-160 / US-124</b></td><td>Flujo ejecutable</td><td>Calibración, aplicación y evaluación quedan separadas por firma: el ajuste no acepta prueba, la entrega no acepta etiquetas y el evaluador recibe la verdad solo con las seis máscaras fijadas. El universo neutral se deriva del soporte de entrenamiento. Una prueba versiona el caso antes citado solo en prosa: seis brazos, 400 parcelas en cada denominador y una sola de las siete celdas por parcela. Son datos sintéticos; no se ejecutó ningún resultado del artículo</td><td><code data-author="Javier Rebull">11e8779</code></td></tr>
+      <tr><td><b>E23</b></td><td>CI</td><td>La imagen de PostgreSQL falló al actualizar el índice Debian Security expirado. El primer arreglo, limitado a PGDG, también falló porque ocultaba las dependencias base de PostgreSQL. La corrección final usa una lista temporal cerrada con Debian base y PGDG, sin desactivar la validación temporal; instalación de pgvector y migraciones pasan en un contenedor limpio</td><td><code data-author="Javier Rebull">c968197</code></td></tr>
+      <tr><td><b>US-160 / US-124</b></td><td>Integración</td><td>PR #13 fusionada en <code>main</code> con seis jobs de CI verdes, incluidas migraciones y la suite científica. US-160 y US-124 permanecen en curso: quedó integrado el comportamiento sobre datos sintéticos, no los puntos de operación ni las pérdidas empíricas del artículo</td><td><code data-author="Javier Rebull">28dc201</code></td></tr>
       </tbody></table></div>
     </details>
 
