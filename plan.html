@@ -17,7 +17,7 @@
   <div class="plan-hero-inner">
     <div class="plan-topline">
       <a href="index.html">AgroSatCopilot / cuaderno</a>
-      <span>Actualizado 6 sep 2026</span>
+      <span>Actualizado 7 sep 2026</span>
     </div>
 
     <div class="plan-intro">
@@ -114,7 +114,7 @@
         una función de pérdida identificada</b>, y la cardinalidad ocupaba ese lugar sin
         justificación. Por eso el plan se reordena: la <b>EPIC 27</b> va delante de todo y el camino
         crítico empieza ahí.</p>
-      <p><b>Estado al 6 de septiembre.</b> Las ocho rondas cerraron defectos en código, tests,
+      <p><b>Estado al 7 de septiembre.</b> Las ocho rondas cerraron defectos en código, tests,
         custodia y redacción. <b>US-173 es la primera historia científica cerrada del estudio
         reencuadrado</b>: la inferencia será condicional a cada banco, con la parcela como unidad,
         <code>patch_id</code> como clúster y sin afirmar transporte. Quedan tres parámetros antes
@@ -124,9 +124,12 @@
         temporal efectiva y su gate corre en CI, pero <b>31 artefactos
         siguen obsoletos</b> y no se regeneran antes de fijar la pérdida y el panel. El workflow
         propuesto por Arthur también quedó revisado: este plan registra más abajo qué se adopta,
-        qué se descarta y qué queda solo como posibilidad futura. US-141 ya tiene evidencia
-        normativa sellada desde fuentes primarias y US-142 un catálogo verificado de 57
-        referencias; ambas siguen en curso hasta integrarse en el manuscrito nuevo. <b>US-143
+        qué se descarta y qué queda solo como posibilidad futura. <b>US-141 y US-142 están
+        cerradas</b>: el trabajo relacionado ya está en la primera página y en su sección, y
+        <code>paper/micai2027/refs.bib</code> contiene exactamente las 16 claves citadas, derivadas
+        de un catálogo verificado de 57. Existe un esqueleto LNCS anónimo de cinco páginas como
+        preparación de <b>US-144, que sigue formalmente sin iniciar</b> hasta cumplir sus
+        prerrequisitos; resultados y discusión están deliberadamente vacíos. <b>US-143
         también está en curso</b>: el contrato ejecutable de las figuras ya impide repetir el
         ancho y los canales defectuosos, pero todavía no se ha regenerado ninguna figura
         empírica. En <b>US-172</b>, ocho decisiones operativas están cerradas —incluido «no aplica»
@@ -226,7 +229,7 @@
     <div class="colophon plan-colophon">
       <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
       <span><b>Total</b> <span id="total-sp">—</span> puntos de historia</span>
-      <span><b>Actualizado</b> 7 de septiembre de 2026, PR #10 fusionada con CI 6/6 y once gates verdes</span>
+      <span><b>Actualizado</b> 7 de septiembre de 2026, US-141 y US-142 cerradas; 16 referencias finales y once gates verdes</span>
     </div>
   </div>
 </header>
@@ -448,6 +451,10 @@
       <tr><td><b>E23</b></td><td>Correctivos</td><td>Seis defectos rehechos por separado: un job apagado deja de contar como cobertura; las exenciones de PNG, ficheros ocultos, respuestas crudas y punteros DVC dejan de depender solo del nombre; el preregistro se sella entero; la determinación de US-172 exige custodia; y la cuarentena alcanza <code>.bib</code> y <code>.txt</code></td><td><code data-author="Javier Rebull">0bf20e9</code></td></tr>
       <tr><td><b>E23</b></td><td>Revisión</td><td>La primera CI quedó roja porque las pruebas nuevas leían artefactos DVC materializados solo en la máquina local. Las pruebas pasan a repositorios sintéticos. Siete ataques adicionales cierran pasos duplicados atribuidos al job equivocado, condiciones negativas mal clasificadas, PNG con solo firma, falsos punteros DVC, ocultos permitidos por nombre base, alcance de cuarentena divergente y cualquier CSV sellado presentado como acta</td><td><code data-author="Javier Rebull">c163f20</code></td></tr>
       <tr><td><b>E23</b></td><td>Integración</td><td>PR #10 fusionada únicamente después de <code>python-unit-tests</code> verde en checkout limpio: CI 6/6. Verificación local: 271 pruebas de scripts, <code>make check</code> y once gates verdes. No suma avance científico; evita que sus controles certifiquen una conducta distinta de la declarada</td><td><code data-author="Javier Rebull">6b8553d</code></td></tr>
+      <tr><td><b>US-141 / US-144</b></td><td>Preparación</td><td>Abierto el esqueleto del manuscrito nuevo en LNCS: introducción y trabajo relacionado integrados; estimando, mecanismos, protocolo, resultados, discusión y apéndice permanecen como esqueleto explícito. US-144 no cambia de estado porque conserva prerrequisitos sin iniciar</td><td><code data-author="Javier Rebull">852f706</code></td></tr>
+      <tr><td><b>US-142</b></td><td>Cierre</td><td>Bibliografía final derivada de las citas reales: 16 entradas de las 57 verificadas. El gate falla si falta una citada, sobra una no citada o una entrada diverge del catálogo. La revisión encontró y corrigió tres afirmaciones que la primera compilación no detectó: formato Letter pese a declarar A4, encabezado de título suprimido y U-TAE presentada como miembro vigente</td><td><code data-author="Javier Rebull">a798438</code></td></tr>
+      <tr><td><b>US-141 / US-142</b></td><td>Custodia</td><td>Reselladas la evidencia normativa integrada y la bibliografía final. El ledger llega a 107 artefactos; el PDF nuevo compila en A4, cinco páginas, sin citas ni cajas sin resolver y pasa el gate anónimo de 16 tokens</td><td><code data-author="Javier Rebull">4875071</code></td></tr>
+      <tr><td><b>US-141</b></td><td>Propagación</td><td>La novedad limitada no queda solo en trabajo relacionado: el resumen también dice «dentro de la búsqueda reportada, no encontramos». Se retira la afirmación universal que sobrevivía en la parte más visible del PDF</td><td><code data-author="Javier Rebull">120fc13</code></td></tr>
       </tbody></table></div>
     </details>
 
@@ -1240,24 +1247,24 @@
              "Ausencia de significancia NO demuestra equivalencia: el intervalo agregado incluye el cero Y excede la banda, así que el mismo experimento no permite afirmar ninguna de las dos cosas. Se dice tal cual",
              "El resultado nulo se publica aunque no produzca separación: la existencia del artículo no puede quedar condicionada al resultado exploratorio"],
          out:"docs/paper/articulo-nulo.md", dep:"US-140"},
-        {id:"US-141", t:"Trabajo relacionado, con el precedente en la primera página", sp:5, st:"wip",
+        {id:"US-141", t:"Trabajo relacionado, con el precedente en la primera página", sp:5, st:"ok",
          role:"Como autor al que un revisor le enseñó que su efecto está documentado desde los noventa, quiero citarlo donde se ve y delimitar qué queda de mío.",
-         ac:["EVIDENCIA TERMINADA, INSERCIÓN PENDIENTE. docs/paper/trabajo-relacionado-verificado.md recoge alcance y fecha de la búsqueda, las fuentes primarias con sus SESGOS declarados, y una tabla por referencia con lo que cada una SÍ sostiene, su límite metodológico, la redacción permitida y la PROHIBIDA. Esa última columna nace de un caso real: citamos a Jones et al. para respaldar lo contrario de lo que demuestra. Dieciséis claves, todas existentes en refs-candidates.bib", "El párrafo de primera página está redactado y ROTULADO COMO BORRADOR NO INTEGRADO. Integrarlo es US-144, y hasta entonces no está en ningún manuscrito", "La fórmula de novedad es limitada y va con su universo: «No encontramos trabajo que…» más las 61 consultas automáticas y 6 manuales del 2 de septiembre sobre cuatro frentes, restringidas al inglés. NO se declara exhaustividad. Y se declara el sesgo que de verdad nos mordió: las consultas usaban el vocabulario de la clasificación selectiva, y el precedente más cercano no usa ninguno de esos términos, así que apareció por otra vía", "El precedente de agregación de clases se cita en la PRIMERA PÁGINA, no en una nota al pie, y se acota qué queda nuestro",
-             "Rey et al. 2025 (arXiv 2510.19586) citado con la formulación PRECISA, verificada en el PDF con pdftotext y no en un resumen: usa PASTIS y nuestras tres arquitecturas —TSViT, UNET3D, U-TAE—, IMPLEMENTA el rechazo por umbral de incertidumbre y RECONOCE el intercambio precisión-recall, literal: «predictions for pixels with uncertainty exceeding a threshold are excluded… not making a prediction necessarily reduces recall, but it can increase precision». NO se escribe que ignore la abstención, porque no la ignora. El hueco defendible es más estrecho y más sólido: no lo conecta con clasificación selectiva ni con riesgo-cobertura —abstention, abstain, selective classification, reject option y risk-coverage: CERO apariciones—, no compara los cuatro mecanismos como acciones alternativas, y no modela quién soporta cada pérdida",
+         ac:["EVIDENCIA E INSERCIÓN TERMINADAS. docs/paper/trabajo-relacionado-verificado.md fija alcance, fuentes primarias, sesgos, límites y redacción prohibida; paper/micai2027 integra esas restricciones en la primera página y en trabajo relacionado. Dieciséis claves, todas existentes en refs-candidates.bib", "El precedente y la formulación limitada de novedad están integrados en el manuscrito nuevo; el documento normativo conserva la redacción que los gobierna", "La fórmula de novedad es limitada y va con su universo: «No encontramos trabajo que…» más las 61 consultas automáticas y 6 manuales del 2 de septiembre sobre cuatro frentes, restringidas al inglés. NO se declara exhaustividad. Y se declara el sesgo que de verdad nos mordió: las consultas usaban el vocabulario de la clasificación selectiva, y el precedente más cercano no usa ninguno de esos términos, así que apareció por otra vía", "El precedente de agregación de clases se cita en la PRIMERA PÁGINA, no en una nota al pie, y se acota qué queda nuestro",
+             "Rey et al. 2025 (arXiv 2510.19586) citado con la formulación PRECISA, verificada en el PDF con pdftotext y no en un resumen: usa PASTIS con TSViT, UNET3D y U-TAE, tres arquitecturas del banco de candidatos original —U-TAE NO pertenece al panel vigente—, IMPLEMENTA el rechazo por umbral de incertidumbre y RECONOCE el intercambio precisión-recall. NO se escribe que ignore la abstención. El hueco defendible: no lo conecta con clasificación selectiva ni con riesgo-cobertura, no compara los cuatro mecanismos como acciones alternativas y no modela quién soporta cada pérdida",
              "Ghassemi et al. 2025 citado: ya trata el tamaño del catálogo como variable de diseño medida",
-             "Ha 1997, Mortier et al. 2021 y 2022, y Chzhen et al.: el marco de predicción con conjuntos ya existe y nuestra contribución es su primera instanciación en mapeo de cultivos por parcela con la contabilidad de reparto que ese marco no mide",
+             "Ha 1997, Mortier et al. 2021 y Chzhen et al.: el marco de predicción con conjuntos ya existe. El aporte planeado —condicionado a que US-172 produzca la pérdida— es instanciarlo en mapeo de cultivos por parcela con una contabilidad de reparto que ese marco no mide; todavía no se presenta como resultado",
              "Las cuatro comprobaciones que la auditoría dejó abiertas, verificadas por API con su contraste entre atribución y contenido",
              "Se escribe «no encontramos trabajo que…», nunca «nadie ha…», y se declara el alcance de la búsqueda con su sesgo",
              "Cada cita lleva una frase de su límite metodológico redactada desde el texto: es la prueba de que se leyó"],
          out:"docs/paper/trabajo-relacionado-verificado.md; paper/micai2027/sections/02-related.tex", dep:"—"},
-        {id:"US-142", t:"Bibliografía verificada y publicada", sp:3, st:"wip",
+        {id:"US-142", t:"Bibliografía verificada y publicada", sp:3, st:"ok",
          role:"Como lector, quiero poder localizar cada referencia.",
          ac:["Versión revisada por pares donde exista, no el preprint",
              "Ninguna entrada citada sin venue ni identificador en el PDF",
-             "El CATÁLOGO verificado y el refs.bib FINAL son dos cosas. El catálogo es paper/micai2027/refs-candidates.bib, 57 entradas con identificador localizable y autores completos; sus entradas sin citar se reportan y NO hacen fallar el gate, porque mientras no exista el manuscrito nuevo no existen citas nuevas. El refs.bib final se genera después, solo con las claves efectivamente citadas. Las 26 citas del manuscrito retirado NO se atribuyen al contexto de MICAI 2027",
+             "El CATÁLOGO verificado y el refs.bib FINAL son dos cosas. El catálogo es paper/micai2027/refs-candidates.bib, 57 entradas con identificador localizable y autores completos. El refs.bib final se genera desde los .tex y contiene exactamente las 16 claves citadas; el gate rechaza faltantes, sobrantes y divergencias frente al catálogo. Las 26 citas del manuscrito retirado NO se atribuyen al contexto de MICAI 2027",
              "Las correcciones entran por el fichero de correcciones con su motivo, no editando el bib generado. Y NUNCA tocando paper/micai/refs.bib, que es histórico, inmutable y está ligado al PDF retirado: el gate comprueba que conserve su hash sellado",
              "El recuento de referencias sale del artefacto, no de la prosa: hoy el sitio dice cuarenta y tres en un sitio y cuarenta y cuatro en otro de la misma página"],
-         out:"paper/micai2027/refs-candidates.bib y, después del manuscrito, paper/micai2027/refs.bib", dep:"US-141"},
+         out:"paper/micai2027/refs-candidates.bib; paper/micai2027/refs.bib", dep:"US-141"},
         {id:"US-143", t:"Figuras en inglés, legibles y sin color como único canal", sp:5, st:"wip",
          role:"Como revisor que lee el artículo en inglés, quiero que sus figuras estén en inglés, porque las seis estaban rotuladas en español y su tipografía quedaba a 4 pt.",
          ac:["INFRAESTRUCTURA TERMINADA, FIGURAS PENDIENTES. ml/report/figuras_micai.py parametriza los rótulos por idioma y quince tests sintéticos comprueban el contrato sin regenerar resultados empíricos",
@@ -1280,7 +1287,7 @@
          out:"docs/paper/afirmaciones-retiradas.md", dep:"US-121"},
         {id:"US-144", t:"El manuscrito", sp:13, st:"idle",
          role:"Como autor, quiero escribir el artículo del ángulo nuevo, no parchear el anterior, porque el anterior arrastra frases que ya no corresponden a ningún dato.",
-         ac:["Veinte páginas. La cuenta honesta dice que la rejilla completa pide unas VEINTISÉIS, así que hay que recortar seis y el recorte se decide AHORA, no cuando salga la convocatoria",
+         ac:["ESQUELETO ABIERTO, RESULTADOS AUSENTES A PROPÓSITO. paper/micai2027 compila en LNCS anónimo, A4, cinco páginas, con introducción y trabajo relacionado integrados y las secciones restantes declaradas como dependientes", "Veinte páginas. La cuenta honesta dice que la rejilla completa pide unas VEINTISÉIS, así que hay que recortar seis y el recorte se decide AHORA, no cuando salga la convocatoria",
              "Recortes decididos, en orden: la autopsia al depósito con DOI dejando un párrafo en método (−0,9); un predictor preseleccionado por banco en el cuerpo y la rejilla completa al depósito (−0,7); la reducción formal al F1 alineado y la sensibilidad a g al apéndice del depósito (−0,7); el barrido de desbalance a cuatro frases y un panel (−0,6); fuera la curva de riesgo, que el diagrama de fases subsume (−0,6); la frase de límite metodológico solo para los ocho trabajos más cercanos y no para las treinta y cinco citas (−0,6); los casos de uso fundidos en la figura (−0,3); equidad por clase y por área en una figura de dos paneles (−0,4)",
              "Lo que NO se recorta bajo ninguna circunstancia: el sesgo en la estadística de superficie y la decisión de despliegue real. Son las dos únicas cosas del artículo que nadie más puede escribir",
              "La sección de robustez lleva las diez pruebas de la EPIC 26, cada una respondiendo a un ataque nombrado. No es una frase de cortesía: es un cuarto de la sección de resultados",
