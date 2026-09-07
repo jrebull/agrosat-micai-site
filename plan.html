@@ -143,7 +143,7 @@
         La corrección exploratoria ya es ejecutable: no mezcla unidades, excluye solo identidades
         declaradas como estructurales antes de observar pérdidas y no reduce la familia después de
         descubrir una p indefinida.
-        El manuscrito LNCS anónimo llega a once páginas como
+        El manuscrito LNCS anónimo llega a doce páginas como
         preparación de <b>US-144, que sigue formalmente sin iniciar</b> hasta cumplir sus
         prerrequisitos; resultados y discusión están deliberadamente vacíos. <b>US-143
         también está en curso</b>: el contrato ejecutable de las figuras ya impide repetir el
@@ -486,6 +486,7 @@
       <tr><td><b>US-125</b></td><td>Multiplicidad</td><td>Holm queda implementado para una familia exploratoria de una sola unidad inferencial. No reduce la familia si otro contraste planeado carece de p válida; la primera versión aún infería sus exclusiones desde los resultados</td><td><code data-author="Javier Rebull">aaa4c03</code></td></tr>
       <tr><td><b>US-125</b></td><td>Auditoría</td><td>«Todo cero» observado no demuestra identidad por construcción: podía ser cancelación dentro de cada parche y reducía Holm después de mirar. Ahora una identidad solo se excluye si el llamador la declara antes de evaluar; un nombre ajeno a la familia falla y cualquier varianza cero observada queda sin p</td><td><code data-author="Javier Rebull">df815d3</code></td></tr>
       <tr><td><b>US-125</b></td><td>Camino estrecho</td><td>La prueba ya no usa dos brazos con pérdidas iguales: construye pérdidas parcelarias distintas que se cancelan exactamente dentro de cada parche y bloque. El delta observado es cero y cada remuestreo también, pero no se permite convertir esa coincidencia empírica en una exclusión estructural</td><td><code data-author="Javier Rebull">f41657d</code></td></tr>
+      <tr><td><b>US-125 / US-173</b></td><td>Estimando</td><td>El bootstrap de parches se centraba en la media con igual peso por bloque, no en la media de todas las parcelas de la ecuación preregistrada. Con bloques desiguales son objetivos distintos. La vista primaria conserva ahora el estimando parcelario y pondera estratos por su población original; la media de bloques queda rotulada como sensibilidad separada</td><td><code data-author="Javier Rebull">4b02c29</code></td></tr>
       </tbody></table></div>
     </details>
 
@@ -1013,6 +1014,7 @@
              "Una prueba end-to-end consume las pérdidas inmutables de los seis brazos y produce cinco contrastes contra la referencia. Todo es sintético: faltan los valores del preregistro y regenerar los artefactos empíricos",
              "Holm exploratorio acepta una sola unidad inferencial por familia, excluye únicamente identidades declaradas antes de observar pérdidas y aborta la familia completa si otro contraste planeado carece de p válida; no se reduce la carga después de ver qué fue estimable",
              "Varianza cero no equivale a evidencia infinita ni prueba identidad por construcción: con delta cero o no nulo se conserva la estimación, pero no se inventa una p",
+             "La vista primaria por patch_id se centra en la media de las diferencias de TODAS las parcelas, como exige el estimando. La t con igual peso por bloque tiene otro centro cuando sus tamaños difieren y queda rotulada como sensibilidad, no como sustituto silencioso",
              "Se publica el intervalo bajo AMBAS unidades, sea cual sea el resultado. Las cifras históricas (−0,0430, −0,0147), (−0,0410, +0,0077), 0,005 y 0,130 siguen en cuarentena hasta esa regeneración"],
          out:"ml/eval/micai_inference.py; ml/eval/micai_actions.py", dep:"US-124"},
         {id:"US-126", t:"Simetría del punto de operación", sp:3, st:"idle",
