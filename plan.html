@@ -129,10 +129,13 @@
         <code>paper/micai2027/refs.bib</code> contiene exactamente las 16 claves citadas, derivadas
         de un catálogo verificado de 57. Las secciones del problema, el estimando y la mecánica ya
         están escritas desde sus contratos, y el registro de afirmaciones retiradas deriva sus 16
-        filas de la revisión externa en vez de mantener otra lista manual. <b>US-160 pasa a en
-        curso</b>: el código ya representa los seis brazos en un espacio común, clasifica las siete
-        celdas de resultado y exige una tabla completa por afectado, sin precios predeterminados.
-        El manuscrito LNCS anónimo llega a nueve páginas como
+        filas de la revisión externa en vez de mantener otra lista manual. <b>US-160 y US-124 están
+        en curso</b>: el código ya calibra los seis brazos con entrenamiento y validación, los aplica
+        sin aceptar etiquetas de prueba y solo después evalúa las siete celdas sobre todas las
+        parcelas. El universo neutral de clases sale del soporte de entrenamiento y no puede
+        cambiar con validación, prueba ni mecanismo; una clase sin soporte en el bloque permanece
+        visible como indefinida, nunca como cero. La pérdida sigue siendo una entrada obligatoria
+        sin valores predeterminados. El manuscrito LNCS anónimo llega a diez páginas como
         preparación de <b>US-144, que sigue formalmente sin iniciar</b> hasta cumplir sus
         prerrequisitos; resultados y discusión están deliberadamente vacíos. <b>US-143
         también está en curso</b>: el contrato ejecutable de las figuras ya impide repetir el
@@ -234,7 +237,7 @@
     <div class="colophon plan-colophon">
       <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
       <span><b>Total</b> <span id="total-sp">—</span> puntos de historia</span>
-      <span><b>Actualizado</b> 7 de septiembre de 2026, US-160 en curso; secciones 3 y 4 integradas y doce gates verdes</span>
+      <span><b>Actualizado</b> 7 de septiembre de 2026, flujo de seis brazos y denominador neutral implementados; US-160 y US-124 en curso</span>
     </div>
   </div>
 </header>
@@ -464,6 +467,8 @@
       <tr><td><b>US-149</b></td><td>Cierre</td><td>Registro generado desde las 16 correcciones de la revisión externa, más tres nombres excluidos del barrido de bancos. El gate recorre manuscrito, plan y cuaderno completos; catorce pruebas negativas cubren la fila adicional, la fila perdida y los caminos laterales de título y campo</td><td><code data-author="Javier Rebull">4ab4d07</code></td></tr>
       <tr><td><b>US-160 / US-144</b></td><td>Avance</td><td>Implementada la mecánica independiente de la elicitación: seis brazos, siete celdas de acción y resultado, conjuntos adaptativos, retroceso taxonómico y pérdida completa inyectada por afectado. Cambiar el precio relativo de error y silencio invierte la acción preferida en una prueba sintética; ningún precio se fija en código. La sección 4 entra al manuscrito, que pasa a nueve páginas sin resultados empíricos</td><td><code data-author="Javier Rebull">78edd0a</code></td></tr>
       <tr><td><b>US-160</b></td><td>Integración</td><td>PR #12 fusionada después de que los dos disparos de CI terminaran 6/6 en verde. US-160 permanece en curso: la mecánica y su sección están integradas, pero los precios reales y la calibración sobre los bancos siguen pendientes</td><td><code data-author="Javier Rebull">9b1eb52</code></td></tr>
+      <tr><td><b>US-149 / US-160</b></td><td>Auditoría</td><td>El gate de afirmaciones retiradas pasa a inglés y español y recorre los 384 Markdown del repositorio. Cinco afirmaciones que seguían vivas quedan declaradas en cuarentena. La misma revisión corrige dos defectos del manuscrito: el recorte deja de describirse como si leyera la verdad y el singleton se reconoce como brazo de referencia evaluado</td><td><code data-author="Javier Rebull">8734568</code></td></tr>
+      <tr><td><b>US-160 / US-124</b></td><td>Flujo ejecutable</td><td>Calibración, aplicación y evaluación quedan separadas por firma: el ajuste no acepta prueba, la entrega no acepta etiquetas y el evaluador recibe la verdad solo con las seis máscaras fijadas. El universo neutral se deriva del soporte de entrenamiento. Una prueba versiona el caso antes citado solo en prosa: seis brazos, 400 parcelas en cada denominador y una sola de las siete celdas por parcela. Son datos sintéticos; no se ejecutó ningún resultado del artículo</td><td><code data-author="Javier Rebull">11e8779</code></td></tr>
       </tbody></table></div>
     </details>
 
@@ -967,18 +972,21 @@
              "Se evalúa sobre la población COMPLETA de prueba, no sobre la entregada: hoy el estimando condiciona sobre una variable posterior al tratamiento, que es selección sobre un colisionador y es el mismo pecado que el artículo denuncia, un nivel más abajo",
              "MEDIDO, y la respuesta es que NO: con la utilidad que solo premia el singleton correcto, el estimando se reduce al RECALL macro, no al F1 macro. El marco nuevo no es una reparametrización del anterior, así que las cifras viejas quedan en otra escala y se dice",
              "Y se demuestra la propiedad que el estimando anterior NO tenía: abstenerse nunca puede subir la utilidad, porque al puntuar sobre la población completa una parcela no entregada cuenta como fallo en vez de desaparecer del denominador de su clase. Ese sesgo estructural a favor del brazo que abstiene queda eliminado, con test",
+             "FLUJO CONECTADO, SIN RESULTADOS: SixArmDesign exige catálogo, tasas, miscoverage, jerarquía y suelo de soporte sin valores por defecto. fit_six_arm_operating_point acepta solo entrenamiento y validación; apply_six_arms acepta prueba pero NO etiquetas; evaluate_six_arms recibe la verdad cuando las seis entregas ya están fijadas",
+             "La afirmación de auditoría que existía solo en prosa queda ahora como prueba: seis brazos sobre 400 parcelas sintéticas, las 400 permanecen en cada denominador y cada parcela cae exactamente en una de R0 o L1–L6. Permutar las etiquetas cambia la puntuación, nunca la entrega",
              "Se cita Ha 1997 como el marco del que los cuatro mecanismos son casos particulares. Su implementación como línea base pertenece a US-132, no a esta historia"],
-         out:"ml/eval/set_valued.py", dep:"US-172, US-173"},
-        {id:"US-124", t:"Denominador común fijado antes de la entrega", sp:5, st:"idle",
+         out:"ml/eval/set_valued.py; ml/eval/micai_actions.py", dep:"US-172, US-173"},
+        {id:"US-124", t:"Denominador común fijado antes de la entrega", sp:5, st:"wip",
          role:"Como autor que denuncia comparar sobre denominadores distintos, quiero no hacerlo yo, porque el estimando promedia sobre las clases presentes en la entrega de cada brazo y esos conjuntos difieren.",
-         ac:["El conjunto evaluado se fija una vez por bloque y contraste, sobre las clases presentes en el bloque completo",
-             "Caso de intersección vacía explícito, no un cero silencioso que es un valor válido de la métrica",
-             "El conjunto de evaluación deja de elegirlo uno de los brazos: se reporta bajo el elegido por cada brazo Y bajo uno neutral preespecificado. Si el signo depende de cuál se use, eso es el resultado",
+         ac:["IMPLEMENTADO para el estimando nuevo: el universo neutral se fija desde las etiquetas de ENTRENAMIENTO y el suelo predeclarado, una sola vez antes de la entrega. La versión anterior de este AC decía «clases presentes en el bloque completo» y volvía a leer la prueba; se retira",
+             "Caso sin soporte explícito: la clase permanece en la salida común con soporte cero, defined=false y pérdida NaN; nunca se convierte en un cero válido ni desaparece solo de un brazo",
+             "El conjunto de evaluación ya no lo elige un brazo ni un bloque: evaluate_six_arms solo acepta el SixArmOperatingPoint ajustado antes. Intentar inyectar class_universe después falla por firma",
+             "La pérdida primaria usa TODAS las parcelas, incluso las de clases fuera del resumen neutral. El universo común restringe el diagnóstico por clase, no cambia el denominador parcelario de la pérdida",
              "Se publica el delta antes y después con su artefacto, sea cual sea el valor. Hoy medido: encoge un 42,1 % y un bloque cambia de signo",
-             "Test en negativo que falla con la versión anterior",
+             "Tests negativos rechazan cinco brazos, distinto número de parcelas, catálogo de prueba distinto y un universo de clases inyectado después de ver resultados",
              "El 42,1 %, el cambio de signo y el 0,00127 se midieron sobre el conjunto ENTREGADO. Bajo el estimando de US-160, que evalúa la población completa, esas cifras cambian: o se recomputan, o el método las declara explícitamente como medidas bajo el estimando anterior",
-             "SUELO DE SOPORTE POR BLOQUE, que es un defecto que ningún k arregla: medido en el barrido, en TODOS los valores de k algún bloque tiene una sola parcela de alguna clase. El F1 por bloque lleva calculándose desde la fase 3 sobre bloques donde una clase es un único ejemplo. El estimando promedia solo sobre clases con soporte suficiente EN ESE BLOQUE, con el suelo declarado en el preregistro"],
-         out:"ml/eval/paper_micai_coverage.py", dep:"US-160"},
+             "El suelo se aplica en ENTRENAMIENTO para construir un universo fijo. Aplicarlo dentro de cada bloque evaluado reintroduciría el denominador móvil que esta historia existe para eliminar. Falta regenerar y publicar los deltas empíricos después de fijar pérdida y puntos de operación"],
+         out:"ml/eval/micai_actions.py; ml/eval/paper_micai_coverage.py", dep:"US-160"},
         {id:"US-125", t:"El bloque como unidad de remuestreo", sp:5, st:"idle",
          role:"Como autor cuyo estimando es la media por bloque, quiero que el intervalo propague la varianza entre bloques, porque hoy remuestrea parcelas dentro del bloque y nunca bloques.",
          ac:["Remuestreo por bloque, y por parche donde haya coordenadas",
