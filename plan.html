@@ -150,8 +150,8 @@
         propuesto por Arthur también quedó revisado: este plan registra más abajo qué se adopta,
         qué se descarta y qué queda solo como posibilidad futura. <b>US-141, US-142 y US-149 están
         cerradas</b>: el trabajo relacionado ya está en la primera página y en su sección, y
-        <code>paper/micai2027/refs.bib</code> contiene exactamente las 16 claves citadas, derivadas
-        de un catálogo verificado de 57. Las secciones del problema, el estimando y la mecánica ya
+        <code>paper/micai2027/refs.bib</code> contiene exactamente las 17 claves citadas, derivadas
+        de un catálogo verificado de 58. Las secciones del problema, el estimando y la mecánica ya
         están escritas desde sus contratos, y el registro de afirmaciones retiradas deriva sus 16
         filas de la revisión externa en vez de mantener otra lista manual. <b>US-160, US-124 y
         US-125 están en curso</b>: el código ya calibra los seis brazos con entrenamiento y
@@ -174,6 +174,12 @@
         <b>US-130 pasa a en curso</b>: la calibración conforme determinista ya es mecánica
         ejecutable y la auditoría corrigió un orden estadístico finito mal calculado; la cobertura
         marginal empírica sigue prohibida hasta firmar el preregistro.
+        <b>US-131 también pasa a en curso</b>: el corte HCAT4 de siete nodos resuelve las dieciocho
+        hojas del catálogo contra las fuentes locales y el constructor rechaza asignaciones
+        incompletas, repetidas, no ancestrales o inventadas. La revisión corrigió una premisa del
+        propio plan: Türkōglu et al. ya ajustan la granularidad de salida por confianza en mapeo de
+        cultivos. Por eso no reclamamos como nuevo el retroceso, sino su comparación con las otras
+        acciones bajo una pérdida atribuida. Esa comparación aún no se ejecutó.
         El manuscrito LNCS anónimo llega a catorce páginas como
         preparación de <b>US-144, que sigue formalmente sin iniciar</b> hasta cumplir sus
         prerrequisitos; resultados y discusión están deliberadamente vacíos. <b>US-143
@@ -276,7 +282,7 @@
     <div class="colophon plan-colophon">
       <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
       <span><b>Total</b> <span id="total-sp">—</span> puntos de historia</span>
-      <span><b>Actualizado</b> 8 de septiembre de 2026, US-130 con mecánica conforme integrada; cero resultados empíricos</span>
+      <span><b>Actualizado</b> 8 de septiembre de 2026, US-131 con corte HCAT4 integrado; cero resultados empíricos</span>
     </div>
   </div>
 </header>
@@ -502,6 +508,8 @@
       <tr><td><b>US-120</b></td><td>Publicación verificable</td><td>PR #21 incorpora el control de identidad a la pestaña En vivo. El tablero se regenera desde <code>main</code> y publica nueve de nueve gates en verde; una prueba impide que el generador vuelva a omitir este control</td><td><code data-author="Javier Rebull">fd3d4ca</code></td></tr>
       <tr><td><b>US-130</b></td><td>Mecánica y auditoría</td><td>La predicción conforme adaptativa queda separada en calibración, aplicación sin etiquetas y medición posterior. Un caso sintético demuestra que la fórmula anterior entregaba a <code>numpy.quantile</code> una fracción que elegía la observación siguiente al orden estadístico requerido. El arreglo selecciona el rango exacto, entrega el catálogo completo cuando el rango no existe y declara la convención determinista, su conservaduría y el límite de intercambiabilidad</td><td><code data-author="Javier Rebull">bb6c368</code></td></tr>
       <tr><td><b>US-130</b></td><td>Integración</td><td>PR #22 fusionada tras CI 6/6. La pestaña En vivo se regenera desde <code>main</code>: publica catorce páginas, cinco de ocho secciones redactadas y nueve de nueve gates en verde. La historia permanece en curso porque todavía no existe la medición empírica preregistrada</td><td><code data-author="Javier Rebull">49b2845</code></td></tr>
+      <tr><td><b>US-131</b></td><td>Mecánica y auditoría</td><td>Contrato HCAT4 sellado: dieciocho hojas <code>semantic18</code>, siete nodos de retroceso y tres correspondencias aproximadas, todo validado contra EuroCrops y PASTIS. El ataque de propagación encontró que el plan, la evidencia normativa y el protocolo usaban «cereal de invierno», que no es un nodo del HCAT4 local; la regla y el ejemplo pasan a <code>cereal</code>. También se retira la afirmación falsa de que Türkōglu solo usaba la jerarquía para entrenar</td><td><code data-author="Javier Rebull">a70572d</code></td></tr>
+      <tr><td><b>US-131</b></td><td>Integración</td><td>PR #23 fusionada después de dos corridas CI completas, doce jobs verdes. Mortier et al. 2022 entra por la fuente bibliográfica y el catálogo pasa a 58 referencias; la bibliografía final contiene las 17 realmente citadas. La historia sigue en curso: falta la comparación empírica a igual presupuesto de pérdida</td><td><code data-author="Javier Rebull">aa5b3cb</code></td></tr>
       </tbody></table></div>
     </details>
 
@@ -1162,13 +1170,14 @@
              "LÍMITE: la garantía requiere intercambiabilidad entre calibración y prueba y no autoriza transporte. Miscoverage, predictor, banco y pérdida siguen sin fijarse aquí. Cero corridas empíricas antes del preregistro firmado",
              "VERIFICACIÓN: diez pruebas propias y 711 pruebas de evaluación verdes; el PDF anónimo conserva catorce páginas A4, sin desbordes ni citas sin resolver"],
          out:"ml/eval/conformal.py; docs/paper/conformal-v1.json; docs/paper/conformal-v1.md; paper/micai2027/sections/04-mechanisms.tex", dep:"US-129"},
-        {id:"US-131", t:"Retroceso jerárquico como cuarto mecanismo", sp:5, st:"idle",
-         role:"Como agrónomo, prefiero que me digan «cereal de invierno» a que no me digan nada.",
-         ac:["La jerarquía es HCAT4 sobre EuroCrops v2.0, con el mapeo commiteado. No una taxonomía inventada por conveniencia",
-             "Retroceso al nivel grueso cuando la decisión fina no es fiable, expresado como conjunto de hojas bajo el nodo emitido",
-             "Se cita Mortier et al. 2022, que YA formaliza el retroceso jerárquico frente a los conjuntos: lo nuevo es en cultivos, no el mecanismo, y esa distinción la escribimos nosotros antes de que la escriba un revisor",
-             "Comparado a igual coste con los otros tres"],
-         out:"ml/eval/hierarchical_backoff.py", dep:"US-129"},
+        {id:"US-131", t:"Retroceso jerárquico como cuarto mecanismo", sp:5, st:"wip",
+         role:"Como agrónomo, prefiero que me digan «cereal» a que no me digan nada.",
+         ac:["MECÁNICA TERMINADA, COMPARACIÓN EMPÍRICA PENDIENTE. El contrato sellado usa HCAT4 sobre EuroCrops v2: dieciocho hojas semantic18 forman una partición completa en siete nodos, con tres correspondencias aproximadas declaradas. No se inventa una taxonomía desde las confusiones del modelo",
+             "El umbral es una entrada obligatoria de entrenamiento y validación. Por encima conserva el singleton; por debajo devuelve exactamente las hojas representadas bajo el nodo predeclarado. No acepta etiquetas verdaderas ni posteriores de otro catálogo",
+             "CORRECCIÓN DE PREMISA: Türkōglu et al. 2021 ya predicen cultivos a tres granularidades y ajustan la salida por confianza. Mortier et al. 2022 formalizan conjuntos jerárquicos con nodos internos. Lo nuevo NO es el mecanismo ni llevarlo a cultivos; es compararlo con las otras acciones bajo una pérdida atribuida",
+             "CONTROL NEGATIVO: doce pruebas rechazan hojas duplicadas, no ancestrales, nombres HCAT4 o PASTIS inventados, otro ancho de catálogo y cualquier intento de habilitar ejecución empírica antes del preregistro",
+             "PENDIENTE: compararlo a igual presupuesto de pérdida con los otros tres mecanismos. Hasta entonces US-131 permanece en curso y no imprime un ganador"],
+         out:"ml/eval/hierarchical_backoff.py; docs/paper/hcat4-backoff-v1.json; docs/paper/hcat4-backoff-v1.md; paper/micai2027/sections/04-mechanisms.tex", dep:"US-129"},
         {id:"US-132", t:"Líneas base de la literatura", sp:3, st:"idle",
          role:"Como revisor, quiero ver el artículo comparado contra los métodos que dice extender.",
          ac:["Ha 1997 como línea base clásica, implementada desde su publicación",
@@ -1384,7 +1393,7 @@
          role:"Como lector, quiero poder localizar cada referencia.",
          ac:["Versión revisada por pares donde exista, no el preprint",
              "Ninguna entrada citada sin venue ni identificador en el PDF",
-             "El CATÁLOGO verificado y el refs.bib FINAL son dos cosas. El catálogo es paper/micai2027/refs-candidates.bib, 57 entradas con identificador localizable y autores completos. El refs.bib final se genera desde los .tex y contiene exactamente las 16 claves citadas; el gate rechaza faltantes, sobrantes y divergencias frente al catálogo. Las 26 citas del manuscrito retirado NO se atribuyen al contexto de MICAI 2027",
+             "El CATÁLOGO verificado y el refs.bib FINAL son dos cosas. El catálogo es paper/micai2027/refs-candidates.bib, 58 entradas con identificador localizable y autores completos. El refs.bib final se genera desde los .tex y contiene exactamente las 17 claves citadas; el gate rechaza faltantes, sobrantes y divergencias frente al catálogo. Las 26 citas del manuscrito retirado NO se atribuyen al contexto de MICAI 2027",
              "Las correcciones entran por el fichero de correcciones con su motivo, no editando el bib generado. Y NUNCA tocando paper/micai/refs.bib, que es histórico, inmutable y está ligado al PDF retirado: el gate comprueba que conserve su hash sellado",
              "El recuento de referencias sale del artefacto, no de la prosa: hoy el sitio dice cuarenta y tres en un sitio y cuarenta y cuatro en otro de la misma página"],
          out:"paper/micai2027/refs-candidates.bib; paper/micai2027/refs.bib", dep:"US-141"},
