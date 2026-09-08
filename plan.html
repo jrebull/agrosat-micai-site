@@ -17,7 +17,7 @@
   <div class="plan-hero-inner">
     <div class="plan-topline">
       <a href="index.html">AgroSatCopilot / cuaderno</a>
-      <span>Actualizado 7 sep 2026</span>
+      <span>Actualizado 8 sep 2026</span>
     </div>
 
     <div class="plan-intro">
@@ -171,7 +171,10 @@
         auditoría posterior cerró dos caminos laterales: una identidad declarada se contrasta ahora
         parcela por parcela, incluso cuando la suma cancela y no hay intervalo, y la pestaña En vivo
         compara el panel completo y los bytes del PDF en lugar de sus primeros 400 caracteres.
-        El manuscrito LNCS anónimo llega a trece páginas como
+        <b>US-130 pasa a en curso</b>: la calibración conforme determinista ya es mecánica
+        ejecutable y la auditoría corrigió un orden estadístico finito mal calculado; la cobertura
+        marginal empírica sigue prohibida hasta firmar el preregistro.
+        El manuscrito LNCS anónimo llega a catorce páginas como
         preparación de <b>US-144, que sigue formalmente sin iniciar</b> hasta cumplir sus
         prerrequisitos; resultados y discusión están deliberadamente vacíos. <b>US-143
         también está en curso</b>: el contrato ejecutable de las figuras ya impide repetir el
@@ -273,7 +276,7 @@
     <div class="colophon plan-colophon">
       <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
       <span><b>Total</b> <span id="total-sp">—</span> puntos de historia</span>
-      <span><b>Actualizado</b> 8 de septiembre de 2026, US-120 cerrada con identidad de modelos ejecutable; cero resultados empíricos</span>
+      <span><b>Actualizado</b> 8 de septiembre de 2026, US-130 con mecánica conforme integrada; cero resultados empíricos</span>
     </div>
   </div>
 </header>
@@ -488,7 +491,7 @@
 
     <div class="history-log">
     <details class="history-day" open>
-    <summary class="dia" data-date="2026-09-08"><time datetime="2026-09-08">8 sep</time><strong>Custodia del régimen e identidad ejecutable de modelos</strong></summary>
+    <summary class="dia" data-date="2026-09-08"><time datetime="2026-09-08">8 sep</time><strong>Custodia, identidad y mecánica conforme ejecutable</strong></summary>
     <div class="scroll"><table>
       <thead><tr><th>US</th><th>Tipo</th><th>Qué se hizo</th><th>Evidencia</th></tr></thead>
       <tbody data-date="2026-09-08">
@@ -497,6 +500,8 @@
       <tr><td><b>US-120</b></td><td>Identidad y auditoría</td><td><code>tsvit-pheno-fullm-v2</code> deja de compartir alias con otros checkpoints: la clave se propaga al registro, el manifiesto, los dos parquets OOF y el consumidor. La tabla normativa sella checkpoint, MD5, longitud temporal, dimensión y folds para tres variantes. El hallazgo desfavorable queda visible: los folds de entrenamiento de <code>fullm-v2</code> no fueron registrados y ya no se afirma que su fold 5 sea <i>held-out</i></td><td><code data-author="Javier Rebull">6879348</code></td></tr>
       <tr><td><b>US-120</b></td><td>Custodia e integración</td><td>El catálogo estructurado, la tabla legible y el puntero DVC quedan sellados; el blob regenerado se subió al remoto DVC. PR #20 fusionada tras CI 6/6, con un gate sin dependencias científicas que prueba registro, puntero, manifiesto, columnas, hashes y consumidor. El panel del artículo no cambia y no se ejecutó evaluación empírica</td><td><code data-author="Javier Rebull">fae18b2</code></td></tr>
       <tr><td><b>US-120</b></td><td>Publicación verificable</td><td>PR #21 incorpora el control de identidad a la pestaña En vivo. El tablero se regenera desde <code>main</code> y publica nueve de nueve gates en verde; una prueba impide que el generador vuelva a omitir este control</td><td><code data-author="Javier Rebull">fd3d4ca</code></td></tr>
+      <tr><td><b>US-130</b></td><td>Mecánica y auditoría</td><td>La predicción conforme adaptativa queda separada en calibración, aplicación sin etiquetas y medición posterior. Un caso sintético demuestra que la fórmula anterior entregaba a <code>numpy.quantile</code> una fracción que elegía la observación siguiente al orden estadístico requerido. El arreglo selecciona el rango exacto, entrega el catálogo completo cuando el rango no existe y declara la convención determinista, su conservaduría y el límite de intercambiabilidad</td><td><code data-author="Javier Rebull">bb6c368</code></td></tr>
+      <tr><td><b>US-130</b></td><td>Integración</td><td>PR #22 fusionada tras CI 6/6. La pestaña En vivo se regenera desde <code>main</code>: publica catorce páginas, cinco de ocho secciones redactadas y nueve de nueve gates en verde. La historia permanece en curso porque todavía no existe la medición empírica preregistrada</td><td><code data-author="Javier Rebull">49b2845</code></td></tr>
       </tbody></table></div>
     </details>
 
@@ -1143,16 +1148,20 @@
       ]
     },
     {
-      id:"EPIC 20", name:"Los cuatro mecanismos, bajo el eje común", status:"idle",
+      id:"EPIC 20", name:"Los cuatro mecanismos, bajo el eje común", status:"wip",
       goal:"Recorte de leyenda y abstención ya estaban. Faltan los dos que hacían estrecho el artículo: devolver un conjunto de cultivos plausibles y retroceder a una clase más gruesa. Los cuatro, bajo el eje de coste único de la EPIC 19.",
       us:[
-        {id:"US-130", t:"Predicción conforme como tercer mecanismo", sp:8, st:"idle",
+        {id:"US-130", t:"Predicción conforme como tercer mecanismo", sp:8, st:"wip",
          role:"Como producto que no sabe si es trigo o cebada, quiero poder decir «una de estas dos» en vez de callarme o de borrar la clase del catálogo.",
-         ac:["Conjuntos de predicción con calibración fuera del bloque de evaluación",
-             "Cobertura marginal comprobada contra el nivel nominal",
-             "Entra al eje común E[|C|]; no se convierte el conjunto a etiqueta por argmax interno, que lo haría vacuo, ni se cuenta acierto por contención, que mediría otra cosa",
-             "Se declara por escrito cuál de las dos convenciones se usa y por qué"],
-         out:"ml/eval/conformal.py", dep:"US-129"},
+         ac:["MECÁNICA TERMINADA, COBERTURA EMPÍRICA PENDIENTE. La calibración APS usa solo validación; el constructor no acepta etiquetas de prueba y el flujo común rechaza identidades de parcelas reutilizadas desde entrenamiento o validación",
+             "HALLAZGO DE AUDITORÍA. La primera versión calculaba rango/n y lo pasaba a numpy.quantile(method=higher); esa API interpola sobre n-1 huecos y podía seleccionar la observación siguiente. Un caso de regresión obliga a que las dos fórmulas difieran y fija el orden estadístico exacto",
+             "BORDE FINITO EXPLÍCITO. Si ceil((n_cal+1)(1-alpha)) queda fuera de la muestra de calibración, no se sustituye por su máximo: se entrega el catálogo completo, que conserva la garantía en ese borde",
+             "La cobertura marginal se mide como contención de la verdad sobre TODAS las parcelas de prueba y se contrasta con 1-alpha. Una realización inferior se reporta; nunca se elimina del denominador ni se reiguala el umbral en prueba",
+             "El conjunto conserva su máscara completa y su tipo de acción; no se reduce al argmax interno. Singleton, conjunto correcto y conjunto que excluye la verdad siguen entrando en celdas de pérdida distintas",
+             "CONVENCIÓN DECLARADA: split-conformal APS determinista y no aleatorizado, con suma acumulada hasta la etiqueta verdadera y desempate estable por índice. Evita otra semilla; su posible conservaduría se publica mediante tamaño y cobertura",
+             "LÍMITE: la garantía requiere intercambiabilidad entre calibración y prueba y no autoriza transporte. Miscoverage, predictor, banco y pérdida siguen sin fijarse aquí. Cero corridas empíricas antes del preregistro firmado",
+             "VERIFICACIÓN: diez pruebas propias y 711 pruebas de evaluación verdes; el PDF anónimo conserva catorce páginas A4, sin desbordes ni citas sin resolver"],
+         out:"ml/eval/conformal.py; docs/paper/conformal-v1.json; docs/paper/conformal-v1.md; paper/micai2027/sections/04-mechanisms.tex", dep:"US-129"},
         {id:"US-131", t:"Retroceso jerárquico como cuarto mecanismo", sp:5, st:"idle",
          role:"Como agrónomo, prefiero que me digan «cereal de invierno» a que no me digan nada.",
          ac:["La jerarquía es HCAT4 sobre EuroCrops v2.0, con el mapeo commiteado. No una taxonomía inventada por conveniencia",
