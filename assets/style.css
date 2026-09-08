@@ -693,3 +693,55 @@ tbody tr.hi td{background:var(--sienna-soft);font-weight:600}
   .plan-page .us-title{grid-column:1/-1;grid-row:2}
   .plan-page .us-body{padding:0 18px 20px}
 }
+
+/* ---------- pestaña "En vivo": el manuscrito tal y como está ahora ----------
+   Generada por scripts/build_site_paper.py en el repositorio del proyecto. Sin cajas
+   redondeadas: las cifras se alinean como en un libro de cuentas y el visor del PDF se
+   encuadra con una regla de un pelo, igual que las tablas. */
+.callout.stop{border-top-color:var(--sienna);background:var(--sienna-soft);padding:18px 20px}
+
+.cifras{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+        gap:0;margin:28px 0 34px;border-top:2px solid var(--ink);
+        border-bottom:1px solid var(--rule)}
+.cifra{padding:16px 20px 14px 0;border-right:1px solid var(--rule-fine)}
+.cifra:last-child{border-right:0}
+.cifra .n{display:block;font-family:var(--mono);font-variant-numeric:tabular-nums;
+          font-size:clamp(26px,3.4vw,34px);line-height:1.05;color:var(--deep)}
+.cifra .l{display:block;margin-top:6px;font-family:var(--mono);font-size:9.5px;
+          letter-spacing:.11em;text-transform:uppercase;color:var(--muted)}
+
+.nota-tabla{font-size:14.5px;color:var(--ink-2);max-width:70ch;margin:0 0 14px}
+table.secciones td.sec{color:var(--ink);font-weight:600}
+table.secciones td.nota{font-size:13px;color:var(--muted);max-width:44ch}
+
+.gates{list-style:none;padding:0;margin:16px 0 34px;
+       border-top:1px solid var(--rule-fine)}
+.gates li{display:flex;gap:12px;align-items:baseline;padding:10px 0;
+          border-bottom:1px solid var(--rule-fine);font-size:15px;color:var(--ink-2)}
+.gates code{font-family:var(--mono);font-size:12.5px;color:var(--ink)}
+
+.visor{border:1px solid var(--rule);background:var(--panel);margin:16px 0 10px}
+.visor object{display:block;width:100%;height:min(78vh,900px);border:0}
+.visor p{padding:26px 22px;margin:0;color:var(--ink-2)}
+.pie-visor{font-size:13.5px;color:var(--muted);margin:0 0 32px}
+.pie-visor code{font-family:var(--mono);font-size:12.5px}
+
+@media (max-width:640px){
+  .visor object{height:62vh}
+  .cifra{border-right:0;border-bottom:1px solid var(--rule-fine);padding-right:0}
+  .cifra:last-child{border-bottom:0}
+}
+
+/* Anchos fijos: sin ellos la cabecera "Líneas" se pega a "De qué depende" y el conteo
+   se monta sobre la nota. La nota va en monoespaciada porque es texto extraído del
+   fuente tal cual, no prosa redactada para el sitio. */
+table.secciones{table-layout:fixed;min-width:640px}
+table.secciones th,table.secciones td{vertical-align:top}
+table.secciones th:nth-child(1),table.secciones td:nth-child(1){width:26%}
+table.secciones th:nth-child(2),table.secciones td:nth-child(2){width:13%}
+table.secciones th:nth-child(3),table.secciones td:nth-child(3){width:11%;
+  text-align:right;padding-right:28px}
+table.secciones td.nota{font-family:var(--mono);font-size:11.5px;line-height:1.55;
+  max-width:none}
+.gates code{white-space:nowrap}
+.gates li{flex-wrap:wrap}

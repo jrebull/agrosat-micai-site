@@ -47,6 +47,9 @@
       <button role="tab" id="t-que" aria-controls="p-que" aria-selected="true">Qué es</button>
       <button role="tab" id="t-est" aria-controls="p-est" aria-selected="false">Estado</button>
       <button role="tab" id="t-fig" aria-controls="p-fig" aria-selected="false">Resultados</button>
+<!-- GENERADO build_site_paper tab · inicio -->
+      <button role="tab" id="t-vivo" aria-controls="p-vivo" aria-selected="false">En vivo</button>
+      <!-- GENERADO build_site_paper tab · fin -->
       <button role="tab" id="t-paper" aria-controls="p-paper" aria-selected="false">El artículo</button>
       <button role="tab" id="t-hall" aria-controls="p-hall" aria-selected="false">Hallazgos</button>
       <button role="tab" id="t-pend" aria-controls="p-pend" aria-selected="false">Pendientes</button>
@@ -395,6 +398,76 @@
 </section>
 
 <!-- ================= EL ARTÍCULO ================= -->
+<!-- GENERADO build_site_paper · inicio -->
+<section class="panel" id="p-vivo" role="tabpanel" aria-labelledby="t-vivo" hidden>
+  <p class="lede">El artículo que se está escribiendo ahora, tal y como está en este momento. Esta
+    página no se redacta: se genera desde el repositorio cada vez que el manuscrito cambia, así que
+    lo que dice es lo que hay.</p>
+
+  <div class="callout">
+    <p><b>Aquí no hay resultados todavía, y es a propósito.</b> El artículo compara cuatro maneras
+      de prometer menos, y para decir cuál conviene hace falta una función de pérdida que ponga
+      precio a una etiqueta equivocada, a un silencio, a un conjunto ambiguo y a una respuesta más
+      gruesa. Ese precio sale de quienes usan el mapa, y esa elicitación no está hecha. Afirmar qué
+      mecanismo gana bajo un precio supuesto sería exactamente el fallo que este artículo existe
+      para denunciar, así que la sección de resultados está vacía y lo dice en su fuente.</p>
+  </div>
+
+  <div class="cifras">
+    <div class="cifra"><span class="n">12</span>
+      <span class="l">páginas A4, PDF anónimo</span></div>
+    <div class="cifra"><span class="n">5/8</span>
+      <span class="l">secciones redactadas</span></div>
+    <div class="cifra"><span class="n">6/6</span>
+      <span class="l">gates en verde</span></div>
+  </div>
+
+  <h2>Sección por sección</h2>
+  <p class="nota-tabla">Una sección cuenta como redactada a partir de 15 líneas de
+    prosa; el conteo va en la tabla para que la clasificación se pueda discutir en vez de creerse.
+    De las que siguen en esqueleto se muestra lo que su propia fuente dice que le falta.</p>
+  <div class="scroll">
+    <table class="secciones">
+      <thead><tr><th>Sección</th><th>Estado</th><th class="n">Líneas</th>
+        <th>De qué depende</th></tr></thead>
+      <tbody>
+      <tr><td class="sec">Introduction</td><td><span class="chip ok">Redactada</span></td><td class="n">43</td><td class="nota"></td></tr>
+      <tr><td class="sec">Related Work</td><td><span class="chip ok">Redactada</span></td><td class="n">71</td><td class="nota"></td></tr>
+      <tr><td class="sec">Problem Statement and Estimand</td><td><span class="chip ok">Redactada</span></td><td class="n">99</td><td class="nota"></td></tr>
+      <tr><td class="sec">Four Mechanisms as Alternative Actions</td><td><span class="chip ok">Redactada</span></td><td class="n">86</td><td class="nota"></td></tr>
+      <tr><td class="sec">Evaluation Protocol</td><td><span class="chip ok">Redactada</span></td><td class="n">48</td><td class="nota"></td></tr>
+      <tr><td class="sec">Results</td><td><span class="chip wip">Esqueleto</span></td><td class="n">2</td><td class="nota">No hay resultados que presentar, y esto no es un descuido: la perdida que puntua las cuatro acciones se obtiene de usuarios reales (US-172) y esa elicitacion NO se ha hecho. Escrib...</td></tr>
+      <tr><td class="sec">Discussion</td><td><span class="chip wip">Esqueleto</span></td><td class="n">2</td><td class="nota">Se escribe con los resultados delante, no antes.  Debe incluir, por decision tomada y no como relleno: los sesgos declarados de la busqueda bibliografica (idioma, indexacion, vocab...</td></tr>
+      <tr><td class="sec">Appendix</td><td><span class="chip wip">Esqueleto</span></td><td class="n">2</td><td class="nota">Si la convocatoria baja el tope de paginas, el recorte va de resultados hacia aqui, nunca de robustez.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Qué se comprobó antes de publicar esto</h2>
+  <ul class="gates">
+      <li><span class="chip ok">pasa</span> <code>micai2027-src-check</code> — toda cifra impresa sale de un artefacto sellado</li>
+      <li><span class="chip ok">pasa</span> <code>micai2027-anon-check</code> — el PDF no revela identidad</li>
+      <li><span class="chip ok">pasa</span> <code>micai-claims-check</code> — ninguna afirmacion retirada ha vuelto</li>
+      <li><span class="chip ok">pasa</span> <code>paper-cite-check</code> — toda cita tiene entrada en la bibliografia</li>
+      <li><span class="chip ok">pasa</span> <code>preregistro-check</code> — el contrato del estimando no diverge del preregistro</li>
+      <li><span class="chip ok">pasa</span> <code>panel-check</code> — el panel congelado no ha cambiado</li>
+  </ul>
+
+  <h2>El manuscrito</h2>
+  <p>Versión anónima, la misma que iría a revisión ciega. El cuerpo del camera-ready
+    es idéntico.</p>
+  <div class="visor">
+    <object data="paper/agrosat-micai2027-en-vivo.pdf" type="application/pdf"
+            aria-label="Manuscrito MICAI 2027 en curso">
+      <p>Tu navegador no muestra el PDF aquí dentro.
+        <a href="paper/agrosat-micai2027-en-vivo.pdf">Ábrelo en una pestaña nueva</a>.</p>
+    </object>
+  </div>
+  <p class="pie-visor"><a href="paper/agrosat-micai2027-en-vivo.pdf">Abrir el PDF a pantalla completa</a> ·
+    manuscrito al día 2026-09-07, commit <code>5c11e5e</code></p>
+</section>
+<!-- GENERADO build_site_paper · fin -->
+
 <section class="panel" id="p-paper" role="tabpanel" aria-labelledby="t-paper" hidden>
   <p class="lede">El borrador de quince páginas está retirado. Lo que sigue es qué lo tumbó y qué
     se escribe en su lugar.</p>
