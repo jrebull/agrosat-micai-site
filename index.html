@@ -154,7 +154,7 @@
     integrado y la bibliografía final contiene exactamente las 17 claves citadas de un catálogo
     verificado de 58. El registro de afirmaciones retiradas se deriva de las 16 correcciones de la
     revisión externa y ya bloquea su regreso en manuscrito, plan y cuaderno. Existe un manuscrito
-    LNCS anónimo de trece páginas con problema, estimando, mecánica y protocolo inferencial
+    LNCS anónimo de quince páginas con problema, estimando, mecánica y protocolo inferencial
     integrados como preparación. US-160, US-124 y US-125 siguen en curso: el flujo ajusta los seis brazos solo con entrenamiento y
     validación, aplica la entrega sin aceptar etiquetas de prueba y evalúa después sobre las mismas
     parcelas. El universo neutral de clases sale del soporte de entrenamiento; una clase ausente
@@ -174,7 +174,8 @@
     queda como diagnóstico, no como selector. Falta la regeneración empírica.
     <b>US-155 está en curso</b>:
     el MDE de la sensibilidad por bloques ya se resuelve con t no central, sin unidades repetidas
-    ni potencia inventada desde varianza cero. No se atribuye al estimando primario: el bootstrap
+    ni supuestos tomados del mismo resultado. La desviación y el efecto llevan unidad, rol y fuente;
+    sin la primera no hay MDE y sin el segundo no hay detectabilidad ni recuento planificado. No se atribuye al estimando primario: el bootstrap
     por <code>patch_id</code> requiere simulación después de US-172. La tabla por afectado continúa sin valores
     predeterminados y las pérdidas empíricas siguen pendientes. <b>US-127 está en curso</b>: el
     código genera los cinco contrastes contra el control y el par entre criterios de retirada,
@@ -428,7 +429,7 @@
   </div>
 
   <div class="cifras">
-    <div class="cifra"><span class="n">14</span>
+    <div class="cifra"><span class="n">15</span>
       <span class="l">páginas A4, PDF anónimo</span></div>
     <div class="cifra"><span class="n">5/8</span>
       <span class="l">secciones redactadas</span></div>
@@ -449,7 +450,7 @@
       <tr><td class="sec">Related Work</td><td><span class="chip ok">Redactada</span></td><td class="n">74</td><td class="nota"></td></tr>
       <tr><td class="sec">Problem Statement and Estimand</td><td><span class="chip ok">Redactada</span></td><td class="n">99</td><td class="nota"></td></tr>
       <tr><td class="sec">Four Mechanisms as Alternative Actions</td><td><span class="chip ok">Redactada</span></td><td class="n">99</td><td class="nota"></td></tr>
-      <tr><td class="sec">Evaluation Protocol</td><td><span class="chip ok">Redactada</span></td><td class="n">133</td><td class="nota"></td></tr>
+      <tr><td class="sec">Evaluation Protocol</td><td><span class="chip ok">Redactada</span></td><td class="n">136</td><td class="nota"></td></tr>
       <tr><td class="sec">Results</td><td><span class="chip wip">Esqueleto</span></td><td class="n">2</td><td class="nota">No hay resultados que presentar, y esto no es un descuido: la perdida que puntua las cuatro acciones se obtiene de usuarios reales (US-172) y esa elicitacion NO se ha hecho. Escrib...</td></tr>
       <tr><td class="sec">Discussion</td><td><span class="chip wip">Esqueleto</span></td><td class="n">2</td><td class="nota">Se escribe con los resultados delante, no antes.  Debe incluir, por decision tomada y no como relleno: los sesgos declarados de la busqueda bibliografica (idioma, indexacion, vocab...</td></tr>
       <tr><td class="sec">Appendix</td><td><span class="chip wip">Esqueleto</span></td><td class="n">2</td><td class="nota">Si la convocatoria baja el tope de paginas, el recorte va de resultados hacia aqui, nunca de robustez.</td></tr>
@@ -481,7 +482,7 @@
     </object>
   </div>
   <p class="pie-visor"><a href="paper/agrosat-micai2027-en-vivo.pdf">Abrir el PDF a pantalla completa</a> ·
-    manuscrito al día 2026-09-08, commit <code>9e0efb3</code></p>
+    manuscrito al día 2026-09-08, commit <code>39e2767</code></p>
 </section>
 <!-- GENERADO build_site_paper · fin -->
 
@@ -578,18 +579,16 @@
       <b>«No se distinguen» no se deduce de no haber encontrado diferencia</b> — ausencia de
       evidencia no es equivalencia, y hace falta una prueba de equivalencia contra una banda que
       salga del usuario y no del instrumento. Y <b>«se distinguen en quién paga» tampoco está
-      medido</b>: ninguna de las cuatro medidas de disparidad declaradas tiene potencia con cinco
-      bloques.</p>
+      medido</b>. Su potencia también está pendiente: el cálculo anterior reutilizaba como supuestos
+      la desviación y el efecto observados en el mismo contraste.</p>
   </div>
 
   <div class="finding blocker">
     <div class="top"><span class="chip stop">Ya no es sostenible</span><h3>«A igual cobertura gana la abstención»</h3></div>
-    <p>No por falta de trabajo: <strong>por falta de potencia</strong>. Al componer las dos
-      correcciones de protocolo, que nunca se habían aplicado juntas, el contraste pasa de
-      (−0,0430, −0,0147) con p = 0,005 a <strong>(−0,0410, +0,0077) con p = 0,130</strong>. Y con
-      cinco bloques el efecto mínimo detectable es 0,033 con un contraste y 0,051 bajo corrección
-      por multiplicidad, contra un efecto real de 0,017. Harían falta trece y veinte bloques. Hay
-      cinco y dos.</p>
+    <p>La cadena inferencial anterior no es válida: combinaba un denominador móvil, seleccionaba el
+      punto de operación dentro del bloque evaluado y remuestreaba la unidad equivocada. Sus cifras
+      están en cuarentena y no establecen ni la dirección del contraste ni su potencia. El veredicto
+      se vuelve a emitir al regenerar bajo el protocolo vigente.</p>
   </div>
 
   <div class="finding">
@@ -598,9 +597,9 @@
       falso por dos caminos distintos. La clase 10, con 355 parcelas, sí recibe <strong>0,090 de
       cobertura bajo recorte y 0,741 bajo abstención</strong> — pero ocho es la <b>mayor de
       dieciocho razones cuya mediana es 1,00</b>, leída después de mirar la tabla, y no es monótona
-      en soporte: la clase 8, más rara con 167 parcelas, recibe 0,958 bajo recorte. Y medida la
-      potencia con cuatro medidas de disparidad declaradas antes de elegir, <b>ninguna la tiene con
-      cinco bloques</b>: las cuatro incluyen el cero y necesitan entre doce y diecisiete.</p>
+      en soporte: la clase 8, más rara con 167 parcelas, recibe 0,958 bajo recorte. La afirmación de
+      potencia que se añadió después también está retirada: su escala y su efecto salían del mismo
+      resultado, de modo que no identificaba un cálculo prospectivo.</p>
     <p>Peor que el número era la frase que lo seguía: «el criterio principal se muda ahí, que es
       donde el diseño tiene potencia». <b>Mudar el criterio principal a donde hay potencia es elegir
       el resultado antes de medirlo.</b> La disparidad vuelve a ser una hipótesis por medir, y el
@@ -1120,7 +1119,8 @@
 
   <h2>Lo que falta antes de firmar el preregistro</h2>
   <p>Quedan tres parámetros sustantivos abiertos: función de pérdida, margen práctico y criterio
-    principal. También faltan alfa, potencia objetivo, tamaño de familia, bootstrap y semilla. El
+    principal. También faltan alfa, potencia objetivo, tamaño de familia, bootstrap, semilla y la
+    desviación prospectiva con su fuente. El
     estimando y su población ya no forman parte de esta lista.</p>
 
   <div class="finding">
@@ -1131,8 +1131,8 @@
   </div>
 
   <div class="finding">
-    <div class="top"><span class="chip dead">25 obsoletos</span><h3>Regenerar, no reinterpretar</h3></div>
-    <p>Los veinticinco artefactos marcados <code>OBSOLETO</code> siguen sellados como registro, pero no son
+    <div class="top"><span class="chip dead">31 obsoletos</span><h3>Regenerar, no reinterpretar</h3></div>
+    <p>Los treinta y un artefactos marcados <code>OBSOLETO</code> siguen sellados como registro, pero no son
       citables. Se regeneran solo después de cerrar US-172 a US-175 y firmar el preregistro; ninguna
       cifra antigua se traslada al artículo por continuidad narrativa.</p>
   </div>
@@ -1140,7 +1140,8 @@
   <div class="finding">
     <div class="top"><span class="chip wip">Deuda abierta</span><h3>Tres reparaciones estadísticas siguen pendientes</h3></div>
     <p>El MDE t por bloques ya usa la distribución no central, pero solo corresponde a la
-      sensibilidad de medias de bloque. La potencia primaria por <code>patch_id</code>, la
+      sensibilidad de medias de bloque y no produce cifra hasta recibir una desviación prospectiva
+      con fuente. La potencia primaria por <code>patch_id</code>, la
       multiplicidad de toda la superficie de costes y la selección de predictores sobre datos
       separados siguen pendientes. Son trabajo en curso, no resultados disponibles.</p>
   </div>

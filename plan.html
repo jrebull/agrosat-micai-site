@@ -119,15 +119,18 @@
         reencuadrado</b>: la inferencia será condicional a cada banco, con la parcela como unidad,
         <code>patch_id</code> como clúster y sin afirmar transporte. Quedan tres parámetros
         sustantivos antes de firmar el preregistro —pérdida, margen práctico y criterio principal—,
-        además de alfa, potencia objetivo, familia, bootstrap y semilla. El camino crítico
+        además de alfa, potencia objetivo, familia, bootstrap, semilla y la desviación prospectiva
+        con su fuente. El camino crítico
         continúa en <b>US-172</b>; en paralelo, <b>US-121 y US-118 están en curso</b>, y
         <b>US-119 quedó cerrada con evidencia ejecutable</b>. <b>US-171 está en curso</b>: la
         selección de <code>k</code> ya es una regla espacial ejecutable que no acepta resultados;
         selección y sensibilidad rechazan cualquier omisión o adición a la rejilla declarada, y
         el contrato tiene custodia propia. Falta regenerar la curva con las pérdidas reales.
-        <b>US-155 también está en curso</b>: el MDE de la sensibilidad por bloques
-        ya usa la t no central y no admite unidades repetidas; la potencia del estimando primario
-        por <code>patch_id</code> queda separada y requiere simulación después de US-172.
+        <b>US-155 también está en curso</b>: el MDE de la sensibilidad por bloques usa la t no
+        central y ya no puede tomar su desviación ni su efecto del contraste que juzga. Escala y
+        efecto llevan unidad, rol y fuente prospectiva; sin ellos el resultado queda pendiente. La
+        potencia del estimando primario por <code>patch_id</code> permanece separada y requiere
+        simulación después de US-172.
         <b>US-127 está en curso</b>: ya existen los cinco contrastes contra el control, el par entre
         criterios de retirada y el conjunto de confianza de Fieller. El código rechaza mezclar
         presupuestos, afectados, tablas, cohortes o puntos de operación; no hay cifras empíricas.
@@ -181,7 +184,7 @@
         propio plan: Türkōglu et al. ya ajustan la granularidad de salida por confianza en mapeo de
         cultivos. Por eso no reclamamos como nuevo el retroceso, sino su comparación con las otras
         acciones bajo una pérdida atribuida. Esa comparación aún no se ejecutó.
-        El manuscrito LNCS anónimo llega a catorce páginas como
+        El manuscrito LNCS anónimo llega a quince páginas como
         preparación de <b>US-144, que sigue formalmente sin iniciar</b> hasta cumplir sus
         prerrequisitos; resultados y discusión están deliberadamente vacíos. <b>US-143
         también está en curso</b>: el contrato ejecutable de las figuras ya impide repetir el
@@ -514,6 +517,8 @@
       <tr><td><b>US-171</b></td><td>Auditoría por ataque</td><td>La función que decía evaluar la curva completa aceptaba un único <i>k</i>, y la selección aceptaba solo el candidato favorable. El criterio lleva ahora la rejilla completa predeclarada; ambas interfaces rechazan valores omitidos o añadidos y particiones construidas con otro colchón. Las pruebas distinguen el análisis completo del camino estrecho</td><td><code data-author="Javier Rebull">9e0efb3</code></td></tr>
       <tr><td><b>US-171</b></td><td>Gate y custodia</td><td>Una cabecera CSV duplicada podía sustituir silenciosamente la distancia medida, y el gate encontraba las frases del preregistro incluso si se movían fuera del apartado normativo. Se cierran ambos caminos; además, el contrato espacial pasa a ser el artefacto SELLADO 115, porque un perfil sellado no prueba qué regla se aplicó</td><td><code data-author="Javier Rebull">cfcedde</code></td></tr>
       <tr><td><b>US-171</b></td><td>Integración</td><td>PR #24 fusionada con 1.089 pruebas locales de evaluación y controles, trece gates científicos y el PDF anónimo en verde. La historia permanece en curso: la mecánica está integrada, pero la curva empírica depende de la pérdida y no se ejecutó</td><td><code data-author="Javier Rebull">0ddc074</code></td></tr>
+      <tr><td><b>US-155</b></td><td>Auditoría por ataque</td><td>La fórmula ya era t no central, pero el productor llamaba «asumida» a la desviación del mismo contraste y comparaba el delta observado con su propio MDE. Escala y efecto prospectivos llevan ahora unidad, rol y fuente; cambiar la dispersión o desplazar el delta observado no cambia el MDE, la detectabilidad ni el recuento planificado. Sin esas fuentes, las salidas quedan explícitamente pendientes. La propagación retira también «ninguna medida tiene potencia» del ADR y de las enmiendas vigentes</td><td><code data-author="Javier Rebull">39e2767</code></td></tr>
+      <tr><td><b>US-155</b></td><td>Integración</td><td>PR #25 fusionada en <code>main</code> después de <code>make check</code>, catorce gates científicos y 1.095 pruebas de evaluación y scripts en verde. El PDF anónimo llega a quince páginas sin resultados nuevos. US-155 permanece en curso: faltan las fuentes prospectivas, los parámetros inferenciales y la simulación primaria</td><td><code data-author="Javier Rebull">b0215fd</code></td></tr>
       </tbody></table></div>
     </details>
 
@@ -1105,11 +1110,12 @@
          out:"ml/eval/paper_micai_coverage.py", dep:"US-124"},
         {id:"US-155", t:"Potencia con unidad y modelo explícitos", sp:3, st:"wip",
          role:"Como equipo a punto de comparar seis brazos, quiero que cada afirmación de potencia corresponda al estimando y la unidad que realmente analiza, y no a una fórmula conveniente aplicada a otra vista.",
-         ac:["MECÁNICA t TERMINADA, VALORES EMPÍRICOS PENDIENTES. ml/eval/micai_power.py resuelve el MDE bilateral con la distribución t no central; la suma anterior de dos cuantiles t centrales ya no existe en los productores. Alfa familiar, potencia objetivo, regla de multiplicidad, tamaño de familia, desviación asumida y unidades son entradas obligatorias, sin valores por defecto",
+         ac:["MECÁNICA t TERMINADA, VALORES EMPÍRICOS PENDIENTES. ml/eval/micai_power.py resuelve el MDE bilateral con la distribución t no central; la suma anterior de dos cuantiles t centrales ya no existe en los productores. Alfa familiar, potencia objetivo, regla de multiplicidad, tamaño de familia, desviación prospectiva, fuente y unidades son entradas obligatorias, sin valores por defecto",
              "La t no central solo describe la SENSIBILIDAD con medias de bloque de igual peso. No es la potencia del estimando primario de US-125, que conserva la media parcelaria y remuestrea patch_id completos. Esa potencia requiere simulación con la tabla de pérdidas de US-172 y la estructura de clúster observada; queda abierta y no se sustituye por el número de bloques",
-             "La identidad de cada unidad viaja al cálculo: repetir cinco veces el mismo nombre, o esconderlo con espacios, falla. Con menos de tres unidades se rechaza el MDE bajo la regla de publicación; una varianza cero no fabrica MDE cero",
+             "La identidad de cada unidad viaja al cálculo: repetir cinco veces el mismo nombre, o esconderlo con espacios, falla. Con menos de tres unidades se rechaza el MDE bajo la regla de publicación; una varianza cero observada no fabrica una escala prospectiva ni un MDE cero",
+             "AUDITORÍA POR ATAQUE: la primera reparación seguía derivando la desviación y el efecto del mismo contraste evaluado. La escala y el efecto de planificación llevan ahora unidad, rol y fuente predeclarados. Sin escala no hay MDE; sin efecto no hay detectabilidad ni recuento hipotético de unidades. Dos pruebas cambian por separado la dispersión y el centro observados y exigen que la planificación permanezca invariante",
              "Para una familia Holm planificada se usa prospectivamente el primer umbral alfa/m. No se afirma que Holm tenga un único alfa para todos sus pasos, y m se fija antes de saber qué comparaciones producen una p válida",
-             "El barrido de k ya no produce MDE ni tiene_potencia: subdividir el mismo territorio no crea información independiente. El número hipotético de unidades necesarias significa unidades NUEVAS bajo la desviación asumida, no permiso para renombrar subdivisiones",
+             "El barrido de k ya no produce MDE ni tiene_potencia: subdividir el mismo territorio no crea información independiente. El número hipotético de unidades necesarias significa unidades NUEVAS bajo una desviación prospectiva declarada, no permiso para renombrar subdivisiones",
              "Las cifras históricas —0,0196, 0,0326, 0,0508, 0,0167, trece y veinte— siguen OBSOLETO. También cae la conclusión que dejábamos en pie: «ninguna medida de disparidad tiene potencia» vuelve a PENDIENTE y puede cambiar al regenerar",
              "La potencia EVALÚA el criterio sustantivo congelado; nunca lo elige. El criterio principal sigue saliendo de US-172/US-140. Se publican el MDE primario simulado y la sensibilidad t por bloques con nombres distintos, gane lo que gane"],
          out:"ml/eval/micai_power.py; reports/paper_micai/potencia/", dep:"US-125, US-171"},
