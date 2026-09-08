@@ -117,13 +117,16 @@
       <p><b>Estado al 7 de septiembre.</b> Las ocho rondas cerraron defectos en código, tests,
         custodia y redacción. <b>US-173 es la primera historia científica cerrada del estudio
         reencuadrado</b>: la inferencia será condicional a cada banco, con la parcela como unidad,
-        <code>patch_id</code> como clúster y sin afirmar transporte. Quedan tres parámetros antes
-        de firmar el preregistro: pérdida, margen práctico y criterio principal. El camino crítico
+        <code>patch_id</code> como clúster y sin afirmar transporte. Quedan tres parámetros
+        sustantivos antes de firmar el preregistro —pérdida, margen práctico y criterio principal—,
+        además de alfa, potencia objetivo, familia, bootstrap y semilla. El camino crítico
         continúa en <b>US-172</b>; en paralelo, <b>US-121 y US-118 están en curso</b>, y
         <b>US-119 quedó cerrada con evidencia ejecutable</b>. <b>US-171 está en curso</b>: la
         selección de <code>k</code> ya es una regla espacial ejecutable que no acepta resultados,
         y la curva completa puede evaluarse sobre un denominador común; falta regenerarla con las
-        pérdidas reales. El arnés OOF ya verifica la longitud
+        pérdidas reales. <b>US-155 también está en curso</b>: el MDE de la sensibilidad por bloques
+        ya usa la t no central y no admite unidades repetidas; la potencia del estimando primario
+        por <code>patch_id</code> queda separada y requiere simulación después de US-172. El arnés OOF ya verifica la longitud
         temporal efectiva y su gate corre en CI, pero <b>31 artefactos
         siguen obsoletos</b> y no se regeneran antes de fijar la pérdida y el panel. El workflow
         propuesto por Arthur también quedó revisado: este plan registra más abajo qué se adopta,
@@ -252,7 +255,7 @@
     <div class="colophon plan-colophon">
       <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
       <span><b>Total</b> <span id="total-sp">—</span> puntos de historia</span>
-      <span><b>Actualizado</b> 7 de septiembre de 2026, selección espacial y curva de sensibilidad implementadas; US-171 en curso</span>
+      <span><b>Actualizado</b> 7 de septiembre de 2026, US-171 integrada y MDE no central implementado; US-155 en curso</span>
     </div>
   </div>
 </header>
@@ -502,6 +505,9 @@
       <tr><td><b>E23</b></td><td>Control corregido</td><td>El chequeo de vigencia comparaba solo 400 caracteres del panel: una tabla, commit o PDF viejo pasaba si conservaba la entradilla. Ahora compara el bloque generado completo y el PDF byte a byte; dos pruebas fijan ambos caminos</td><td><code data-author="Javier Rebull">f46f84b</code></td></tr>
       <tr><td><b>US-171</b></td><td>Mecánica</td><td>Selección y sensibilidad dejan de compartir interfaz. La primera solo recibe perfiles espaciales y se detiene ante cero o varios valores elegibles; la segunda publica todos los <i>k</i> declarados sobre las mismas pérdidas pareadas y el mismo universo de parcelas</td><td><code data-author="Javier Rebull">31aca63</code></td></tr>
       <tr><td><b>US-171</b></td><td>Contrato</td><td>El criterio sellado selecciona <i>k</i>=5 por separación entre centroides respecto del colchón, sin columnas de resultado. La exigencia de ocho clases sale de la selección: pertenecía al F1-macro retirado y queda solo como diagnóstico. Un gate en CI comprueba fuente, custodia, columnas, unicidad y propagación al preregistro</td><td><code data-author="Javier Rebull">2dcf9bd</code></td></tr>
+      <tr><td><b>US-171</b></td><td>Integración</td><td>PR #15 fusionada después de CI 6/6. La mecánica y el criterio espacial quedan en <code>main</code>; US-171 sigue en curso porque la curva empírica no se regenera antes de que exista la pérdida</td><td><code data-author="Javier Rebull">b0e68c0</code></td></tr>
+      <tr><td><b>US-155</b></td><td>MDE exacto</td><td>La suma de cuantiles t centrales sale de los productores. El módulo resuelve la potencia bilateral con la distribución t no central, exige alfa, potencia objetivo, familia y unidades explícitas, rechaza unidades repetidas y no convierte varianza cero en MDE cero. El barrido de <i>k</i> deja de calcular potencia sobre subdivisiones del mismo territorio</td><td><code data-author="Javier Rebull">0d297e7</code></td></tr>
+      <tr><td><b>US-155 / US-125</b></td><td>Propagación</td><td>El arreglo cambia el alcance: la t describe la sensibilidad con bloques de igual peso, no el bootstrap primario por <code>patch_id</code>. «Ninguna medida tiene potencia» vuelve a PENDIENTE porque dependía de cifras obsoletas; la vista primaria requerirá simulación con la pérdida real. El preregistro y el manuscrito ya separan las dos preguntas</td><td><code data-author="Javier Rebull">c1f531c</code></td></tr>
       </tbody></table></div>
     </details>
 
@@ -1038,15 +1044,16 @@
              "Medido y publicado cuánto valía la asimetría. Hoy: 0,00127, un 4,4 % del delta, así que el defecto es real y casi inconsecuente, y se dirá con su número en vez de suponer que los tres pesaban igual",
              "El protocolo NO puede ser el resultado de reserva: si el experimento central no da nada, se ejecuta el plan del resultado nulo, no se envía el andamio"],
          out:"ml/eval/paper_micai_coverage.py", dep:"US-124"},
-        {id:"US-155", t:"Potencia sobre la unidad de análisis real", sp:3, st:"idle",
-         role:"Como equipo a punto de pasar de dos mecanismos a cuatro, quiero saber si el diseño puede detectar el efecto que busca, porque si no puede, añadir mecanismos solo sube el umbral de detección.",
-         ac:["SE RECALCULA Y SE ACEPTA LO QUE SALGA. Las cifras que esta línea traía —desviación entre bloques 0,0196, MDE 0,0326 con un contraste y 0,0508 bajo Holm, efecto 0,0167— salieron del módulo con los tres defectos y su artefacto está marcado OBSOLETO. Se conservan aquí como lo que se creía, no como criterio de aceptación: el criterio es que se recalculen con el módulo reparado y con t no central, y que el número resultante se publique gane lo que gane",
-             "El «harían falta trece bloques con un contraste y veinte bajo Holm» viene del mismo cálculo obsoleto. Lo que NO depende de él y sigue en pie: hay cinco bloques y dos regiones, y ninguna subdivisión los convierte en más",
-             "Consecuencia declarada: el diseño NO puede sostener «un mecanismo domina», y deja de escribirse como si pudiera",
-             "RETIRADO por auditoría externa, y era el criterio que este plan más se repetía a sí mismo: «el criterio principal se mueve a una magnitud donde el diseño sí tenga potencia». Eso es elegir la variable primaria por dónde se la puede detectar, o sea escoger el resultado antes de medirlo. La potencia EVALÚA una variable elegida por la decisión sustantiva; no la elige. El criterio principal sale de la tabla de pérdidas de US-172 y se congela en US-140",
-             "Se computa desde los artefactos ya sellados y se sella en reports/paper_micai/potencia/, en vez de afirmarse en prosa: es exactamente lo que este proyecto reprocha en otros sitios",
-             "Incluye la potencia del criterio principal NUEVO, la disparidad, y no solo la del delta de calidad: mover el titular sin recalcular el MDE es el mismo error un piso más arriba"],
-         out:"reports/paper_micai/potencia/", dep:"US-125, US-171"},
+        {id:"US-155", t:"Potencia con unidad y modelo explícitos", sp:3, st:"wip",
+         role:"Como equipo a punto de comparar seis brazos, quiero que cada afirmación de potencia corresponda al estimando y la unidad que realmente analiza, y no a una fórmula conveniente aplicada a otra vista.",
+         ac:["MECÁNICA t TERMINADA, VALORES EMPÍRICOS PENDIENTES. ml/eval/micai_power.py resuelve el MDE bilateral con la distribución t no central; la suma anterior de dos cuantiles t centrales ya no existe en los productores. Alfa familiar, potencia objetivo, regla de multiplicidad, tamaño de familia, desviación asumida y unidades son entradas obligatorias, sin valores por defecto",
+             "La t no central solo describe la SENSIBILIDAD con medias de bloque de igual peso. No es la potencia del estimando primario de US-125, que conserva la media parcelaria y remuestrea patch_id completos. Esa potencia requiere simulación con la tabla de pérdidas de US-172 y la estructura de clúster observada; queda abierta y no se sustituye por el número de bloques",
+             "La identidad de cada unidad viaja al cálculo: repetir cinco veces el mismo nombre, o esconderlo con espacios, falla. Con menos de tres unidades se rechaza el MDE bajo la regla de publicación; una varianza cero no fabrica MDE cero",
+             "Para una familia Holm planificada se usa prospectivamente el primer umbral alfa/m. No se afirma que Holm tenga un único alfa para todos sus pasos, y m se fija antes de saber qué comparaciones producen una p válida",
+             "El barrido de k ya no produce MDE ni tiene_potencia: subdividir el mismo territorio no crea información independiente. El número hipotético de unidades necesarias significa unidades NUEVAS bajo la desviación asumida, no permiso para renombrar subdivisiones",
+             "Las cifras históricas —0,0196, 0,0326, 0,0508, 0,0167, trece y veinte— siguen OBSOLETO. También cae la conclusión que dejábamos en pie: «ninguna medida de disparidad tiene potencia» vuelve a PENDIENTE y puede cambiar al regenerar",
+             "La potencia EVALÚA el criterio sustantivo congelado; nunca lo elige. El criterio principal sigue saliendo de US-172/US-140. Se publican el MDE primario simulado y la sensibilidad t por bloques con nombres distintos, gane lo que gane"],
+         out:"ml/eval/micai_power.py; reports/paper_micai/potencia/", dep:"US-125, US-171"},
         {id:"US-171", t:"El número de bloques: un grado de libertad con el que cambia la conclusión", sp:8, st:"wip",
          role:"Como equipo al que le dijeron que hacen falta trece bloques y solo tiene cinco, quiero saber si el cinco es una restricción del dato o el valor por defecto de una función. Es lo segundo, y lo que se encuentra al mirarlo es más interesante que el permiso para usar quince.",
          ac:["MEDIDO y sellado: cinco es el valor por defecto de build_spatial_kfold y el fold retenido tiene 176 celdas H3. Con cinco el intervalo incluye el cero; con diez, doce, quince, veinte y veinticinco lo excluye. El artefacto trae una columna tiene_potencia que compara el efecto con un MDE calculado tratando las subdivisiones como si fueran n réplicas independientes: NO LO SON, y esa columna se renombra y se acompaña del Jaccard antes de que nadie la cite. Un MDE que baja porque partes más el mismo territorio no es potencia, es aritmética",
@@ -1117,7 +1124,7 @@
     },
     {
       id:"EPIC 21", name:"Quién paga: la tesis", status:"idle",
-      goal:"**Corregido el 3 de septiembre, y la corrección es contra nosotros.** Esta épica decía «aquí es donde el efecto es grande», apoyándose en un factor de ocho que resultó ser el MÁXIMO de dieciocho razones cuya mediana es 1,00, leído tras mirar la tabla, y que no es monótono en soporte: la clase 8, con 167 parcelas, es más rara que la 10 con 355 y recibe 0,958 de cobertura bajo recorte. Medida ahora la potencia con cuatro medidas declaradas antes de elegir, **ninguna la tiene con cinco bloques**: las cuatro incluyen el cero y necesitan entre doce y diecisiete. La disparidad es una HIPÓTESIS por medir, no un hallazgo, y de US-155 depende que sea el criterio principal.",
+      goal:"**Corregido otra vez el 7 de septiembre, y la corrección vuelve a ser contra nosotros.** Esta épica decía «aquí es donde el efecto es grande», apoyándose en un factor de ocho que resultó ser el MÁXIMO de dieciocho razones cuya mediana es 1,00. Después conservó «ninguna medida tiene potencia» cuando sus cuatro intervalos y el MDE estaban invalidados. Ese veredicto queda PENDIENTE. La disparidad es una HIPÓTESIS por medir, no un hallazgo; su potencia se evalúa después de fijarla por razones sustantivas y se separan el bootstrap primario por patch_id y la sensibilidad t por bloques.",
       us:[
         {id:"US-133", t:"Cobertura por clase y por tamaño de parcela", sp:5, st:"idle",
          role:"Como productor de un cultivo raro, quiero saber qué probabilidad tengo de recibir respuesta bajo cada mecanismo, porque una media de cobertura no me dice nada.",
@@ -1192,7 +1199,7 @@
          role:"Como revisor de validez externa, quiero ver el protocolo en otra geografía y otra nomenclatura, con un catálogo que permita los cuatro mecanismos.",
          ac:["CANDIDATO POR DEFECTO: GEO-Bench m-SA-crop-type (Zenodo 10.5281/zenodo.8008825, CC BY 4.0, Sudáfrica, nueve clases, partición propia). El barrido se reduce a verificarlo o batirlo, no a rehacerse entero: la respuesta ya está escrita en bancos-candidatos.md",
              "PRIMER CRITERIO DE ADMISIÓN: la tarea de referencia tiene K mayor o igual que 5 clases. CropHarvest NO lo cumple, porque sus tareas de referencia son binarias y con K=2 los cuatro mecanismos colapsan en uno",
-             "SEGUNDO CRITERIO, que faltaba: la partición ajena define bloques espaciales suficientes para el MDE de US-155. Si no los define, el banco entra como descriptivo y no como confirmatorio, y se declara en el preregistro. Descubrirlo tras descargar sería tarde",
+             "SEGUNDO CRITERIO, corregido tras separar las unidades: la partición ajena identifica patch_id para la simulación de potencia del estimando primario. Sus bloques espaciales determinan si puede publicarse la sensibilidad t por bloques, pero NO deciden por sí solos si todo el banco es confirmatorio ni se cuentan como el n del bootstrap primario",
              "Avisos verificados de GEO-Bench: es segmentación por píxel y no clasificación por parcela, las fichas públicas listan diez categorías y no nueve, y el banco submuestrea, lo que reconfigura el desbalance que es nuestra variable independiente. Las tres cosas se deciden y se declaran antes de usarlo",
              "Se rehace el barrido de bancos con la cardinalidad como criterio, que el barrido anterior no aplicó porque priorizó partición y licencia",
              "Partición espacial propia del banco, no construida por nosotros",
