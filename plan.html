@@ -114,7 +114,7 @@
         una función de pérdida identificada</b>, y la cardinalidad ocupaba ese lugar sin
         justificación. Por eso el plan se reordena: la <b>EPIC 27</b> va delante de todo y el camino
         crítico empieza ahí.</p>
-      <p><b>Estado al 7 de septiembre.</b> Las ocho rondas cerraron defectos en código, tests,
+      <p><b>Estado al 8 de septiembre.</b> Las ocho rondas cerraron defectos en código, tests,
         custodia y redacción. <b>US-173 es la primera historia científica cerrada del estudio
         reencuadrado</b>: la inferencia será condicional a cada banco, con la parcela como unidad,
         <code>patch_id</code> como clúster y sin afirmar transporte. Quedan tres parámetros
@@ -134,7 +134,13 @@
         numerador, denominador ni unidad, y que igualar pérdidas depende de US-172. <b>US-128 está
         en curso</b>: la superficie completa exige los quince pares por estrato, deja el criterio
         principal fuera de Holm y produce regiones de ganador compatible; faltan congelar los
-        valores empíricos de todos sus ejes. El arnés OOF ya verifica la longitud
+        valores empíricos de todos sus ejes.
+        <b>US-129 quedó cerrada</b>: el inventario cerrado enlaza cada artefacto nuevo con su
+        régimen evidencial, su fila de custodia y, para confirmatorios, la ancestría respecto del
+        preregistro. El manifiesto actual declara explícitamente cero resultados empíricos; el gate
+        fue atacado por extensión, ubicación, reclasificación y enlaces simbólicos antes de entrar
+        en CI.
+        El arnés OOF ya verifica la longitud
         temporal efectiva y su gate corre en CI, pero <b>31 artefactos
         siguen obsoletos</b> y no se regeneran antes de fijar la pérdida y el panel. El workflow
         propuesto por Arthur también quedó revisado: este plan registra más abajo qué se adopta,
@@ -263,7 +269,7 @@
     <div class="colophon plan-colophon">
       <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
       <span><b>Total</b> <span id="total-sp">—</span> puntos de historia</span>
-      <span><b>Actualizado</b> 7 de septiembre de 2026, US-128 con superficie completa ejecutable; valores empíricos pendientes</span>
+      <span><b>Actualizado</b> 8 de septiembre de 2026, US-129 cerrada con custodia del régimen ejecutable; cero resultados empíricos</span>
     </div>
   </div>
 </header>
@@ -477,6 +483,16 @@
     </section>
 
     <div class="history-log">
+    <details class="history-day" open>
+    <summary class="dia" data-date="2026-09-08"><time datetime="2026-09-08">8 sep</time><strong>Custodia ejecutable del régimen evidencial</strong></summary>
+    <div class="scroll"><table>
+      <thead><tr><th>US</th><th>Tipo</th><th>Qué se hizo</th><th>Evidencia</th></tr></thead>
+      <tbody data-date="2026-09-08">
+      <tr><td><b>US-129</b></td><td>Gate y auditoría</td><td>Inventario cerrado de todo <code>reports/micai2027</code>: cada resultado CSV o JSON plano repite su régimen en cada registro, en el manifiesto y en el ledger; un confirmatorio exige banco congelado, <code>held_out</code> y ancestría posterior al preregistro. Veinticuatro ataques directos cerraron además el cambio de extensión, el traslado junto a figuras, la reclasificación como diagnóstico, regímenes ambiguos y enlaces simbólicos de artefacto, productor, directorio o raíz. La lectura completa retiró otra vez la conclusión «no replicaba» que seguía en pie junto a sus cuatro cifras invalidadas</td><td><code data-author="Javier Rebull">1906ef9</code></td></tr>
+      <tr><td><b>US-129</b></td><td>Integración y cierre</td><td>PR #19 fusionada después de CI 6/6 sobre el HEAD final. El gate entra en el job barato de calidad y en la pestaña En vivo; la historia se cierra porque todos sus criterios son controles ejecutables probados en negativo. El manifiesto sigue en <code>mechanics_only</code>: cerrar el control no afirma que exista un resultado</td><td><code data-author="Javier Rebull">4f31dd3</code></td></tr>
+      </tbody></table></div>
+    </details>
+
     <details class="history-day" open>
     <summary class="dia" data-date="2026-09-07"><time datetime="2026-09-07">7 sep</time><strong>Manuscrito verificable: afirmaciones retiradas, estimando y mecánica</strong></summary>
     <div class="scroll"><table>
@@ -1103,18 +1119,17 @@
              "DOS CAMINOS ESTRECHOS CERRADOS: los contrastes ya no pueden definir por sí mismos qué estratos existían, y las medias del mapa llevan su unidad explícita. Una coincidencia numérica no permite mezclar la media parcelaria con la sensibilidad de bloques",
              "LÍMITE DECLARADO: el convertidor verifica presupuesto y afectado contra los contrastes, pero las etiquetas de banco, predictor, partición y demás ejes necesitan aún la procedencia del productor empírico. Por eso US-128 sigue en curso y no hay resultados"],
          out:"ml/eval/micai_multiplicity.py; ml/eval/micai_contrasts.py; paper/micai2027/sections/05-protocol.tex", dep:"US-127, US-172"},
-        {id:"US-129", t:"Gate de protocolo, probado en negativo", sp:3, st:"idle",
+        {id:"US-129", t:"Gate de protocolo, probado en negativo", sp:3, st:"ok",
          role:"Como equipo al que se le colaron tres defectos de protocolo, quiero una comprobación que los detecte, y verla fallar antes de confiar en ella.",
-         ac:["Falla si dos brazos de un contraste evalúan sobre conjuntos de clases distintos",
-             "Falla si un punto de operación se elige dentro del bloque de evaluación",
-             "Falla si se compara a costes distintos sin declararlo",
-             "Falla si una fila del ledger o una celda de tabla carece de campo de régimen entre in-sample, libre de fuga y held-out",
-             "Los cuatro casos probados en negativo contra el código anterior, comprobando que la mutación se aplicó de verdad antes de creer el verde",
-             "Falla si un artefacto del banco CONFIRMATORIO tiene fecha de commit anterior a la del preregistro. Acotado a ese banco: los de la EPIC 21 sobre los dos bancos exploratorios ya existen y harían fallar el gate el primer día",
-             "Falla si un intervalo sobre un estimando por bloque se calculó remuestreando parcelas. Es el defecto cuya corrección llevó p de 0,005 a 0,130 y el gate no lo miraba",
-             "Falla si se imprime un p menor que la resolución del bootstrap declarado: con mil remuestreos el mínimo no nulo es 0,002",
-             "El gate comprueba la SEMÁNTICA, no la existencia de una historia: denominador, unidad del bootstrap y procedencia del umbral. Una corrección no se marca por haber creado una US, y hoy el código sigue devolviendo cero con intersección vacía, remuestreando dentro de bloques fijos y fijando el número de entregas con las confianzas del propio test"],
-         out:"make micai-protocol-check", dep:"US-128"}
+         ac:["El inventario cerrado enumera TODOS los objetos bajo reports/micai2027. Cambiar extensión, mover a figuras o crear un directorio enlazado no oculta un resultado",
+             "Cada fila de CSV o registro plano de JSON lleva exactamente un régimen entre in_sample, leakage_free y held_out; el manifiesto y la nota SELLADO del ledger repiten el mismo valor sin prefijos ni valores contradictorios",
+             "Un confirmatorio solo puede ser held_out, usar el banco congelado y tener un commit de procedencia descendiente del preregistro. La prueba ejecuta repositorios Git reales en las dos direcciones temporales",
+             "La fase mechanics_only admite cero artefactos empíricos y lo comprueba contra el directorio real. Los cuatro soportes visuales están declarados aparte; solo PDF o SVG directos de figuras y nunca enlaces simbólicos",
+             "El mismo objetivo ejecuta los negativos semánticos: universo de clases común, punto de operación ajeno a prueba, presupuesto comparable, unidad inferencial y resolución bilateral del bootstrap",
+             "CAMINOS ESTRECHOS CERRADOS: un resultado no puede declararse diagnóstico no empírico; regime=held_outish no cuenta como held_out; un productor, artefacto, subdirectorio o la propia raíz no puede tomar prestados bytes mediante un enlace simbólico",
+             "PROPAGACIÓN: el preregistro y la sección de protocolo describen el inventario, las tres etiquetas y la regla de ancestría. La lectura completa retiró una frase que aún afirmaba falta de réplica con cuatro cifras invalidadas",
+             "LÍMITE DECLARADO: el gate prueba estructura, custodia y orden temporal; no puede deducir de los bytes si una figura sellada es conceptualmente un diagnóstico. La excepción queda pequeña y visible para revisión"],
+         out:"docs/paper/micai-protocol-v1.json; scripts/micai_protocol_check.py; make micai-protocol-check", dep:"US-128"}
       ]
     },
     {
