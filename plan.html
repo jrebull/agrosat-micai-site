@@ -189,9 +189,12 @@
         propio plan: Türkōglu et al. ya ajustan la granularidad de salida por confianza en mapeo de
         cultivos. Por eso no reclamamos como nuevo el retroceso, sino su comparación con las otras
         acciones bajo una pérdida atribuida. Esa comparación aún no se ejecutó.
-        El manuscrito LNCS anónimo llega a quince páginas como
-        preparación de <b>US-144, que sigue formalmente sin iniciar</b> hasta cumplir sus
-        prerrequisitos; resultados y discusión están deliberadamente vacíos. <b>US-143
+        <b>US-157 sigue en curso</b>: la rejilla de veinte perfiles, los adaptadores semánticos y
+        el productor están congelados y auditados sin ejecutar resultados; seis salidas permanecen
+        declaradas pero ausentes hasta el preregistro. El manuscrito LNCS anónimo llega a
+        <b>dieciséis páginas y seis de ocho secciones redactadas</b>. <b>US-144 pasa a en curso</b>:
+        el apéndice se genera desde siete contratos sellados y resultados y discusión están
+        deliberadamente vacíos. <b>US-143
         también está en curso</b>: el contrato ejecutable de las figuras ya impide repetir el
         ancho y los canales defectuosos, pero todavía no se ha regenerado ninguna figura
         empírica. En <b>US-172</b>, ocho decisiones operativas están cerradas —incluido «no aplica»
@@ -291,7 +294,7 @@
     <div class="colophon plan-colophon">
       <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
       <span><b>Total</b> <span id="total-sp">—</span> puntos de historia</span>
-      <span><b>Actualizado</b> 8 de septiembre de 2026, US-131 con corte HCAT4 integrado; cero resultados empíricos</span>
+      <span><b>Actualizado</b> 8 de septiembre de 2026, US-144 con apéndice verificable; cero resultados empíricos</span>
     </div>
   </div>
 </header>
@@ -538,6 +541,9 @@
       <tr><td><b>US-157</b></td><td>Correctivo de CI</td><td>La primera CI de la PR #30 encontró que <code>imbalance-check</code> dependía implícitamente de Poetry para resolver el paquete <code>ml</code>, aunque el job barato lo invoca con Python del sistema. El gate queda en biblioteca estándar, verifica por sí mismo esquema, custodia y MD5, y una prueba aislada reproduce el comando real de CI</td><td><code data-author="Javier Rebull">64479e9</code></td></tr>
       <tr><td><b>US-157</b></td><td>Integración de infraestructura</td><td>PR #30 fusionada únicamente después de que las dos ejecuciones del SHA final cerraran doce de doce jobs; la CI posterior sobre <code>main</code> volvió a cerrar seis de seis. La infraestructura está completa, pero la historia sigue en curso: no existe ningún artefacto empírico y la ejecución permanece bloqueada hasta el preregistro firmado; entonces deberá producir y sellar las seis salidas declaradas</td><td><code data-author="Javier Rebull">ba66cf1</code></td></tr>
       <tr><td><b>US-157</b></td><td>Dashboard verificable</td><td>PR #31 añade <code>imbalance-check</code> al generador de la pestaña En vivo y fija con una prueba que una publicación futura no pueda omitirlo. El tablero pasa de diez a once controles ejecutados, todos verdes; no es una cifra escrita a mano ni una tarjeta añadida después</td><td><code data-author="Javier Rebull">fa559ed</code></td></tr>
+      <tr><td><b>US-144</b></td><td>Apéndice verificable</td><td>PR #32 genera el apéndice desde siete contratos SELLADO —estimando, panel, conformal, HCAT4, partición espacial, desbalance e identidades de modelo— y comprueba ruta, estado y MD5 antes de compilar. El contrato conforme, que carecía de fila propia, entra en custodia. El manuscrito llega a dieciséis páginas y seis de ocho secciones redactadas, sin resultados empíricos</td><td><code data-author="Javier Rebull">43bc64a</code></td></tr>
+      <tr><td><b>US-144</b></td><td>Correctivo del tablero</td><td>El fragmento generado hacía que el contador publicara nueve secciones aunque el manuscrito solo declara ocho. La unidad deja de ser «todo fichero TeX bajo la carpeta» y pasa a ser cada entrada superior de <code>main.tex</code>, incluyendo recursivamente su contenido. La pestaña En vivo deriva ahora dieciséis páginas, seis de ocho secciones y veintiún controles de veintiuno</td><td><code data-author="Javier Rebull">5a89b18</code></td></tr>
+      <tr><td><b>US-144</b></td><td>Estado verificable</td><td>El gate confundía las dependencias necesarias para terminar con las necesarias para empezar y obligaba a publicar «sin iniciar» una historia con seis secciones escritas. <code>dep</code> conserva el camino crítico completo; <code>start_dep</code> declara el subconjunto que autoriza trabajo parcial. El control rechaza IDs ajenos al grafo, texto residual y duplicados. US-144 pasa a en curso sin presentar como resueltos sus tres prerrequisitos pendientes</td><td><code data-author="Javier Rebull">4b5decd</code></td></tr>
       </tbody></table></div>
     </details>
 
@@ -1453,9 +1459,9 @@
              "El mismo gate recorre el HTML completo del cuaderno y el objeto entero del plan; mover una afirmación a un título o a otro campo no la oculta",
              "El conteo se deriva mecánicamente: dieciséis correcciones consecutivas en la fuente y tres nombres excluidos en el barrido de bancos. Una fila nueva deja obsoleto el registro y una fila perdida rompe el suelo auditado"],
          out:"docs/paper/afirmaciones-retiradas.md; scripts/micai_claims_check.py; tests/scripts/test_micai_claims_check.py", dep:"—"},
-        {id:"US-144", t:"El manuscrito", sp:13, st:"idle",
+        {id:"US-144", t:"El manuscrito", sp:13, st:"wip",
          role:"Como autor, quiero escribir el artículo del ángulo nuevo, no parchear el anterior, porque el anterior arrastra frases que ya no corresponden a ningún dato.",
-         ac:["ESQUELETO ABIERTO, RESULTADOS AUSENTES A PROPÓSITO. paper/micai2027 compila en LNCS anónimo, A4, ocho páginas, con introducción, trabajo relacionado, problema y estimando integrados; las secciones restantes siguen declaradas como dependientes", "Veinte páginas. La cuenta honesta dice que la rejilla completa pide unas VEINTISÉIS, así que hay que recortar seis y el recorte se decide AHORA, no cuando salga la convocatoria",
+         ac:["EN CURSO, RESULTADOS AUSENTES A PROPÓSITO. paper/micai2027 compila en LNCS anónimo, A4, dieciséis páginas y seis de ocho secciones redactadas: introducción, trabajo relacionado, problema y estimando, mecánica, protocolo y apéndice. Resultados y discusión permanecen como esqueleto dependiente", "Veinte páginas. La cuenta honesta dice que la rejilla completa pide unas VEINTISÉIS, así que hay que recortar seis y el recorte se decide AHORA, no cuando salga la convocatoria",
              "Recortes decididos, en orden: la autopsia al depósito con DOI dejando un párrafo en método (−0,9); un predictor preseleccionado por banco en el cuerpo y la rejilla completa al depósito (−0,7); la reducción formal al F1 alineado y la sensibilidad a g al apéndice del depósito (−0,7); el barrido de desbalance a cuatro frases y un panel (−0,6); fuera la curva de riesgo, que el diagrama de fases subsume (−0,6); la frase de límite metodológico solo para los ocho trabajos más cercanos y no para las treinta y cinco citas (−0,6); los casos de uso fundidos en la figura (−0,3); equidad por clase y por área en una figura de dos paneles (−0,4)",
              "Lo que NO se recorta bajo ninguna circunstancia: el sesgo en la estadística de superficie y la decisión de despliegue real. Son las dos únicas cosas del artículo que nadie más puede escribir",
              "La sección de robustez lleva las diez pruebas de la EPIC 26, cada una respondiendo a un ataque nombrado. No es una frase de cortesía: es un cuarto de la sección de resultados",
@@ -1466,10 +1472,11 @@
              "Los dos universos preregistrados se reportan, no el que conviene",
              "Régimen y número de clases junto a toda cifra promediada; ninguna tabla muestra un subconjunto sin declarar la regla",
              "El preámbulo no agrupa la parte decimal: hoy imprime 0.2155 como 0.215 5 en unos veinticinco números",
-             "El recuento de artefactos del apéndice se genera desde el ledger, no se escribe a mano",
+             "CUMPLIDO: el apéndice se genera desde siete contratos congelados y exige para cada uno ruta única, estado SELLADO y MD5 vigente en el ledger; un contrato añadido, retirado o alterado rompe el gate",
              "El método declara que el fold 5 es la partición externa oficial y que los cinco bloques son sub-folds internos; nunca se escribe «validación cruzada de cinco folds»",
              "Ninguna cifra sale de mezclar dos filas de un artefacto"],
-         out:"paper/micai2027/", dep:"US-140, US-122, US-135, US-141, US-142, US-143, US-149, US-154"}
+         out:"paper/micai2027/", dep:"US-140, US-122, US-135, US-141, US-142, US-143, US-149, US-154",
+         start_dep:"US-141, US-142, US-143, US-149"}
       ]
     },
     {
