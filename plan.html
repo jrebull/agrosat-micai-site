@@ -142,7 +142,8 @@
         remuestrea parcelas sueltas ni deja entrar en Holm una vista con menos de tres unidades.
         La corrección exploratoria ya es ejecutable: no mezcla unidades, excluye solo identidades
         declaradas como estructurales antes de observar pérdidas y no reduce la familia después de
-        descubrir una p indefinida.
+        descubrir una p indefinida. La PR #14 integró esa mecánica en <code>1f16145</code> con los
+        seis jobs de CI verdes; US-125 permanece en curso hasta la regeneración empírica.
         El manuscrito LNCS anónimo llega a doce páginas como
         preparación de <b>US-144, que sigue formalmente sin iniciar</b> hasta cumplir sus
         prerrequisitos; resultados y discusión están deliberadamente vacíos. <b>US-143
@@ -488,6 +489,7 @@
       <tr><td><b>US-125</b></td><td>Camino estrecho</td><td>La prueba ya no usa dos brazos con pérdidas iguales: construye pérdidas parcelarias distintas que se cancelan exactamente dentro de cada parche y bloque. El delta observado es cero y cada remuestreo también, pero no se permite convertir esa coincidencia empírica en una exclusión estructural</td><td><code data-author="Javier Rebull">f41657d</code></td></tr>
       <tr><td><b>US-125 / US-173</b></td><td>Estimando</td><td>El bootstrap de parches se centraba en la media con igual peso por bloque, no en la media de todas las parcelas de la ecuación preregistrada. Con bloques desiguales son objetivos distintos. La vista primaria conserva ahora el estimando parcelario y pondera estratos por su población original; la media de bloques queda rotulada como sensibilidad separada</td><td><code data-author="Javier Rebull">4b02c29</code></td></tr>
       <tr><td><b>US-125 / US-173</b></td><td>Control</td><td>La prueba usa tres bloques deliberadamente desiguales y un parche por bloque: la media parcelaria y la media con igual peso por bloque difieren. Exige que tanto el centro como cada extremo degenerado del bootstrap coincidan con la primera, de modo que cambiar solo la etiqueta o el delta ya no basta para pasar</td><td><code data-author="Javier Rebull">4257ac9</code></td></tr>
+      <tr><td><b>US-125</b></td><td>Integración</td><td>PR #14 fusionada en <code>main</code> después de seis jobs verdes sobre el HEAD final. Integra identidad parcelaria, dos vistas inferenciales, bootstrap por parche, fallos explícitos y Holm exploratorio; no regenera artefactos ni convierte datos sintéticos en resultado</td><td><code data-author="Javier Rebull">1f16145</code></td></tr>
       </tbody></table></div>
     </details>
 
