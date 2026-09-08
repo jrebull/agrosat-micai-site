@@ -433,7 +433,7 @@
       <span class="l">páginas A4, PDF anónimo</span></div>
     <div class="cifra"><span class="n">5/8</span>
       <span class="l">secciones redactadas</span></div>
-    <div class="cifra"><span class="n">11/11</span>
+    <div class="cifra"><span class="n">20/20</span>
       <span class="l">gates en verde</span></div>
   </div>
 
@@ -460,17 +460,26 @@
 
   <h2>Qué se comprobó antes de publicar esto</h2>
   <ul class="gates">
-      <li><span class="chip ok">pasa</span> <code>micai2027-src-check</code> — toda cifra impresa sale de un artefacto sellado</li>
-      <li><span class="chip ok">pasa</span> <code>micai2027-anon-check</code> — el PDF no revela identidad</li>
-      <li><span class="chip ok">pasa</span> <code>micai-claims-check</code> — ninguna afirmacion retirada ha vuelto</li>
-      <li><span class="chip ok">pasa</span> <code>paper-cite-check</code> — toda cita tiene entrada en la bibliografia</li>
-      <li><span class="chip ok">pasa</span> <code>preregistro-check</code> — el contrato del estimando no diverge del preregistro</li>
-      <li><span class="chip ok">pasa</span> <code>spatial-partition-check</code> — la partición espacial se elige sin mirar resultados</li>
+      <li><span class="chip ok">pasa</span> <code>archive-safety-check</code> — el archivo ajeno no entra al repositorio sin revisar</li>
       <li><span class="chip ok">pasa</span> <code>banco-tercero-check</code> — el tercer banco se decide desde evidencia primaria capturada</li>
+      <li><span class="chip ok">pasa</span> <code>ci-resource-check</code> — los recursos declarados en CI existen</li>
+      <li><span class="chip ok">pasa</span> <code>ci-test-coverage-check</code> — ningun job de CI esta apagado ni se traga sus fallos</li>
       <li><span class="chip ok">pasa</span> <code>imbalance-check</code> — la rejilla de desbalance permanece congelada y sin resultados</li>
-      <li><span class="chip ok">pasa</span> <code>panel-check</code> — el panel congelado no ha cambiado</li>
+      <li><span class="chip ok">pasa</span> <code>micai-claims-check</code> — ninguna afirmacion retirada ha vuelto</li>
+      <li><span class="chip ok">pasa</span> <code>micai-protocol-check</code> — cada artefacto declara su regimen y procedencia</li>
+      <li><span class="chip ok">pasa</span> <code>micai2027-anon-check</code> — el PDF no revela identidad</li>
+      <li><span class="chip ok">pasa</span> <code>micai2027-src-check</code> — toda cifra impresa sale de un artefacto sellado</li>
       <li><span class="chip ok">pasa</span> <code>model-identity-check</code> — cada checkpoint, OOF y consumidor usa una identidad unica y trazable</li>
-      <li><span class="chip ok">pasa</span> <code>micai-protocol-check</code> — cada artefacto declara su régimen y procedencia</li>
+      <li><span class="chip ok">pasa</span> <code>oof-manifest-check</code> — el inventario de predicciones fuera de muestra esta completo</li>
+      <li><span class="chip ok">pasa</span> <code>panel-check</code> — el panel congelado no ha cambiado</li>
+      <li><span class="chip ok">pasa</span> <code>paper-artifacts-check</code> — el ledger de custodia cuadra en las dos direcciones</li>
+      <li><span class="chip ok">pasa</span> <code>paper-bib-check</code> — la bibliografia heredada sigue resolviendo</li>
+      <li><span class="chip ok">pasa</span> <code>paper-cite-check</code> — toda cita tiene entrada en la bibliografia</li>
+      <li><span class="chip ok">pasa</span> <code>paper-obsoletos-check</code> — ningun documento activo cita cifras OBSOLETO sin cuarentena</li>
+      <li><span class="chip ok">pasa</span> <code>plan-check</code> — el plan por epicas no tiene ciclos ni estados imposibles</li>
+      <li><span class="chip ok">pasa</span> <code>preregistro-check</code> — el contrato del estimando no diverge del preregistro</li>
+      <li><span class="chip ok">pasa</span> <code>protocolo-check</code> — el protocolo con personas no se declara congelado sin su acta</li>
+      <li><span class="chip ok">pasa</span> <code>spatial-partition-check</code> — la particion espacial se elige sin mirar resultados</li>
   </ul>
 
   <h2>El manuscrito</h2>
