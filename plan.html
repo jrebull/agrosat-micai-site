@@ -131,7 +131,10 @@
         criterios de retirada y el conjunto de confianza de Fieller. El código rechaza mezclar
         presupuestos, afectados, tablas, cohortes o puntos de operación; no hay cifras empíricas.
         La propia implementación encontró que «razón denominador sobre ganancia» no define todavía
-        numerador, denominador ni unidad, y que igualar pérdidas depende de US-172. El arnés OOF ya verifica la longitud
+        numerador, denominador ni unidad, y que igualar pérdidas depende de US-172. <b>US-128 está
+        en curso</b>: la superficie completa exige los quince pares por estrato, deja el criterio
+        principal fuera de Holm y produce regiones de ganador compatible; faltan congelar los
+        valores empíricos de todos sus ejes. El arnés OOF ya verifica la longitud
         temporal efectiva y su gate corre en CI, pero <b>31 artefactos
         siguen obsoletos</b> y no se regeneran antes de fijar la pérdida y el panel. El workflow
         propuesto por Arthur también quedó revisado: este plan registra más abajo qué se adopta,
@@ -260,7 +263,7 @@
     <div class="colophon plan-colophon">
       <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
       <span><b>Total</b> <span id="total-sp">—</span> puntos de historia</span>
-      <span><b>Actualizado</b> 7 de septiembre de 2026, US-171 integrada y MDE no central implementado; US-155 en curso</span>
+      <span><b>Actualizado</b> 7 de septiembre de 2026, US-128 con superficie completa ejecutable; valores empíricos pendientes</span>
     </div>
   </div>
 </header>
@@ -518,6 +521,8 @@
       <tr><td><b>US-127</b></td><td>Camino estrecho</td><td>El primer contrato aceptaba identificadores de unidad sin declarar si eran bloques o parches; una lista de parcelas podía disfrazarse de unidades independientes. Fieller exige ahora la unidad inferencial explícita y la devuelve en el resultado. También rechaza complejos, booleanos y momentos que desbordan, en vez de convertirlos silenciosamente</td><td><code data-author="Javier Rebull">844c8f6</code></td></tr>
       <tr><td><b>US-127</b></td><td>Propagación</td><td>La respuesta de auditoría registra que lo ejecutable es la mecánica, no el resultado: seleccionar el presupuesto real sigue dependiendo de US-172 y la razón sigue sin un estimando identificado. Retirar esa distinción habría convertido un contrato sintético en evidencia empírica</td><td><code data-author="Javier Rebull">cd060dd</code></td></tr>
       <tr><td><b>US-127</b></td><td>Integración</td><td>PR #17 fusionada después de CI 6/6 sobre el HEAD final. La familia comparable y Fieller quedan en <code>main</code>; US-127 sigue en curso hasta identificar la razón, fijar la pérdida y ejecutar los contrastes empíricos</td><td><code data-author="Javier Rebull">c575055</code></td></tr>
+      <tr><td><b>US-128</b></td><td>Superficie ejecutable</td><td>La multiplicidad deja de definirse por las filas que sobreviven: bancos, predictores, universos, afectados, presupuestos, puntos de operación, particiones, profundidades, disparidades y semillas forman estratos predeclarados aparte. Una selección entre seis brazos exige sus quince pares en cada estrato; quitar un par o una capa completa falla. La tabla focal de seis filas usa la misma validación de presupuesto, cohorte y bloque retenido</td><td><code data-author="Javier Rebull">f36859f</code></td></tr>
+      <tr><td><b>US-128</b></td><td>Camino estrecho y propagación</td><td>El primer diseño dejaba que los propios contrastes definieran qué estratos existían y aceptaba medias sin unidad explícita: podía perderse un predictor entero o disfrazarse la media parcelaria como media de bloque. Ambos caminos quedan cerrados. El preregistro y el manuscrito distinguen ahora las seis filas focales de los quince pares necesarios para una región simultánea y publican la resolución real del bootstrap</td><td><code data-author="Javier Rebull">a3c846b</code></td></tr>
       </tbody></table></div>
     </details>
 
@@ -1079,20 +1084,24 @@
         {id:"US-127", t:"Los contrastes que faltaban", sp:5, st:"wip",
          role:"Como lector de la introducción, quiero que los criterios que dice ordenar con intervalos tengan intervalos, porque hoy solo existe uno de los pares.",
          ac:["MECÁNICA TERMINADA, ESTIMANDOS Y EJECUCIÓN EMPÍRICA PENDIENTES. ml/eval/micai_contrasts.py produce el contraste pareado entre los dos criterios de retirada y lo rechaza si sus registros no comparten el presupuesto completo",
-             "La familia contiene los cinco brazos no basales contra el singleton preciso y el par adicional entre criterios de retirada. No inventa los otros pares posibles ni los presenta como una familia completa de selección",
+             "La TABLA FOCAL contiene los cinco brazos no basales contra el singleton preciso y el par adicional entre criterios de retirada. No se presenta como familia completa de selección: US-128 genera además los nueve pares restantes dentro de cada estrato cuando se construye la región de ganador",
              "Coste igualado significa el mismo identificador de presupuesto, afectado, tabla de pérdidas, objetivo y fuente entrenamiento-validación. También exige la misma cohorte, una huella del punto de operación vigente y ninguna identidad del bloque de prueba. Compartir solo tamaño de catálogo o valor numérico falla",
              "Fieller está implementado sobre resúmenes pareados de la unidad independiente declarada. Si el denominador no se separa de cero devuelve un conjunto disjunto, semirrecta o toda la recta; nunca lo disfraza con percentiles finitos",
              "HALLAZGO DE IDENTIFICACIÓN: «razón denominador sobre ganancia» no nombra qué cantidad es numerador, cuál denominador ni la unidad de agregación. Esas tres decisiones se congelan antes de calcularla; hasta entonces no existe una razón empírica",
              "DEPENDENCIA CORREGIDA: seleccionar puntos bajo una pérdida común requiere la tabla de US-172. US-155 aporta la potencia, no identifica el eje de coste. Por eso la historia no se cierra con datos sintéticos"],
          out:"ml/eval/micai_contrasts.py; reports/paper_micai/", dep:"US-155, US-172"},
-        {id:"US-128", t:"Multiplicidad bien definida", sp:3, st:"idle",
-         role:"Como revisor de la corrección por multiplicidad, quiero que el criterio principal esté protegido y que la familia no incluya hipótesis degeneradas.",
-         ac:["El criterio principal se reporta sin corregir y la familia exploratoria aparte",
-             "Se excluyen los puntos donde los mecanismos son idénticos por construcción: en el banco de réplica, cuatro de los siete miembros de la familia no son hipótesis",
-             "La multiplicidad entre bancos, predictores y universos se declara y se trata",
-             "El p bootstrap se reporta con su resolución real: con mil remuestreos el mínimo no nulo es 0,002, así que «menor que 0,0001» es imposible",
-             "Holm sobre seis contrastes NO controla la selección del ganador de todo el diagrama de fases: hay hasta quince pares si se ordenan seis alternativas, y encima se exploran costes, bancos, predictores, universos, semillas, k, profundidades y cuatro medidas de disparidad. El mapa necesita bandas simultáneas o regiones de ganador y no-distinguible por un procedimiento que incluya toda la selección"],
-         out:"ml/eval/paper_micai_coverage.py", dep:"US-127"},
+        {id:"US-128", t:"Multiplicidad bien definida", sp:3, st:"wip",
+         role:"Como revisor de la corrección por multiplicidad, quiero que ninguna tabla corta, capa omitida o cambio de unidad pueda hacerse pasar por control del ganador de toda la superficie.",
+         ac:["MECÁNICA TERMINADA, SUPERFICIE EMPÍRICA PENDIENTE. ml/eval/micai_multiplicity.py recibe una lista explícita de estratos y otra de contrastes; ninguna se infiere de la otra. Quitar un par, añadir uno después o retirar un estrato completo falla",
+             "El criterio principal se reporta sin corregir, queda fuera de Holm y no se reutiliza para eliminar un brazo en el mapa exploratorio. Todo lo demás entra en una sola familia predeclarada",
+             "Cada estrato identifica banco, predictor, universo de clases, afectado, presupuesto de pérdida, punto de operación, partición espacial, profundidad taxonómica, medida de disparidad y semilla. Los valores concretos todavía no están congelados y dependen en parte de US-172",
+             "Una selección entre los seis brazos exige los quince pares en CADA estrato. La tabla focal de US-127 conserva sus seis filas, pero ya no se confunde con la familia de selección: all_pairwise_budgeted_contrasts produce los nueve pares restantes bajo la misma validación de presupuesto, cohorte y separación de prueba",
+             "La única exclusión es una identidad por construcción predeclarada. Una sola diferencia parcelaria la refuta; una igualdad observada no la inventa. Si cualquier otra comparación carece de p válida, Holm no se aplica a toda la familia",
+             "La vista bootstrap publica y hace cumplir su resolución bilateral 2/(B+1). Con mil remuestreos el mínimo no nulo es aproximadamente 0,001998; una p menor que 0,0001 es imposible y el código la rechaza",
+             "El mapa devuelve una REGIÓN DE GANADOR COMPATIBLE: el mínimo observado y los brazos que la familia simultánea no logra excluir. Si la familia falla, devuelve los seis brazos y no fabrica un ganador",
+             "DOS CAMINOS ESTRECHOS CERRADOS: los contrastes ya no pueden definir por sí mismos qué estratos existían, y las medias del mapa llevan su unidad explícita. Una coincidencia numérica no permite mezclar la media parcelaria con la sensibilidad de bloques",
+             "LÍMITE DECLARADO: el convertidor verifica presupuesto y afectado contra los contrastes, pero las etiquetas de banco, predictor, partición y demás ejes necesitan aún la procedencia del productor empírico. Por eso US-128 sigue en curso y no hay resultados"],
+         out:"ml/eval/micai_multiplicity.py; ml/eval/micai_contrasts.py; paper/micai2027/sections/05-protocol.tex", dep:"US-127, US-172"},
         {id:"US-129", t:"Gate de protocolo, probado en negativo", sp:3, st:"idle",
          role:"Como equipo al que se le colaron tres defectos de protocolo, quiero una comprobación que los detecte, y verla fallar antes de confiar en ella.",
          ac:["Falla si dos brazos de un contraste evalúan sobre conjuntos de clases distintos",
