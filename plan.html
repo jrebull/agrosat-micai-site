@@ -120,7 +120,10 @@
         <code>patch_id</code> como clúster y sin afirmar transporte. Quedan tres parámetros antes
         de firmar el preregistro: pérdida, margen práctico y criterio principal. El camino crítico
         continúa en <b>US-172</b>; en paralelo, <b>US-121 y US-118 están en curso</b>, y
-        <b>US-119 quedó cerrada con evidencia ejecutable</b>. El arnés OOF ya verifica la longitud
+        <b>US-119 quedó cerrada con evidencia ejecutable</b>. <b>US-171 está en curso</b>: la
+        selección de <code>k</code> ya es una regla espacial ejecutable que no acepta resultados,
+        y la curva completa puede evaluarse sobre un denominador común; falta regenerarla con las
+        pérdidas reales. El arnés OOF ya verifica la longitud
         temporal efectiva y su gate corre en CI, pero <b>31 artefactos
         siguen obsoletos</b> y no se regeneran antes de fijar la pérdida y el panel. El workflow
         propuesto por Arthur también quedó revisado: este plan registra más abajo qué se adopta,
@@ -143,7 +146,10 @@
         La corrección exploratoria ya es ejecutable: no mezcla unidades, excluye solo identidades
         declaradas como estructurales antes de observar pérdidas y no reduce la familia después de
         descubrir una p indefinida. La PR #14 integró esa mecánica en <code>1f16145</code> con los
-        seis jobs de CI verdes; US-125 permanece en curso hasta la regeneración empírica.
+        seis jobs de CI verdes; US-125 permanece en curso hasta la regeneración empírica. La
+        auditoría posterior cerró dos caminos laterales: una identidad declarada se contrasta ahora
+        parcela por parcela, incluso cuando la suma cancela y no hay intervalo, y la pestaña En vivo
+        compara el panel completo y los bytes del PDF en lugar de sus primeros 400 caracteres.
         El manuscrito LNCS anónimo llega a doce páginas como
         preparación de <b>US-144, que sigue formalmente sin iniciar</b> hasta cumplir sus
         prerrequisitos; resultados y discusión están deliberadamente vacíos. <b>US-143
@@ -246,7 +252,7 @@
     <div class="colophon plan-colophon">
       <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
       <span><b>Total</b> <span id="total-sp">—</span> puntos de historia</span>
-      <span><b>Actualizado</b> 7 de septiembre de 2026, flujo e inferencia sintética implementados; US-160, US-124 y US-125 en curso</span>
+      <span><b>Actualizado</b> 7 de septiembre de 2026, selección espacial y curva de sensibilidad implementadas; US-171 en curso</span>
     </div>
   </div>
 </header>
@@ -490,6 +496,12 @@
       <tr><td><b>US-125 / US-173</b></td><td>Estimando</td><td>El bootstrap de parches se centraba en la media con igual peso por bloque, no en la media de todas las parcelas de la ecuación preregistrada. Con bloques desiguales son objetivos distintos. La vista primaria conserva ahora el estimando parcelario y pondera estratos por su población original; la media de bloques queda rotulada como sensibilidad separada</td><td><code data-author="Javier Rebull">4b02c29</code></td></tr>
       <tr><td><b>US-125 / US-173</b></td><td>Control</td><td>La prueba usa tres bloques deliberadamente desiguales y un parche por bloque: la media parcelaria y la media con igual peso por bloque difieren. Exige que tanto el centro como cada extremo degenerado del bootstrap coincidan con la primera, de modo que cambiar solo la etiqueta o el delta ya no basta para pasar</td><td><code data-author="Javier Rebull">4257ac9</code></td></tr>
       <tr><td><b>US-125</b></td><td>Integración</td><td>PR #14 fusionada en <code>main</code> después de seis jobs verdes sobre el HEAD final. Integra identidad parcelaria, dos vistas inferenciales, bootstrap por parche, fallos explícitos y Holm exploratorio; no regenera artefactos ni convierte datos sintéticos en resultado</td><td><code data-author="Javier Rebull">1f16145</code></td></tr>
+      <tr><td><b>US-125</b></td><td>Auditoría</td><td>Declarar una comparación idéntica después de ver su p podía encoger Holm. El primer correctivo exige que la declaración sobreviva al contraste agregado; una identidad legítima queda excluida y una declaración contradicha falla</td><td><code data-author="Javier Rebull">5c11e5e</code></td></tr>
+      <tr><td><b>US-125</b></td><td>Camino estrecho</td><td>El agregado todavía dejaba pasar dos diferencias parcelarias opuestas cuando había menos de tres unidades: delta cero, sin intervalo, pero brazos distintos. La validación conserva ahora la igualdad parcela por parcela antes de agregar y ese caso vuelve a fallar</td><td><code data-author="Javier Rebull">aea1916</code></td></tr>
+      <tr><td><b>E23</b></td><td>Publicación</td><td>La pestaña En vivo se genera desde el manuscrito: páginas del PDF, estado de ocho secciones y seis gates medidos, con el PDF anónimo incrustado y sin resultados inventados</td><td><code data-author="Javier Rebull">c75fc11</code></td></tr>
+      <tr><td><b>E23</b></td><td>Control corregido</td><td>El chequeo de vigencia comparaba solo 400 caracteres del panel: una tabla, commit o PDF viejo pasaba si conservaba la entradilla. Ahora compara el bloque generado completo y el PDF byte a byte; dos pruebas fijan ambos caminos</td><td><code data-author="Javier Rebull">f46f84b</code></td></tr>
+      <tr><td><b>US-171</b></td><td>Mecánica</td><td>Selección y sensibilidad dejan de compartir interfaz. La primera solo recibe perfiles espaciales y se detiene ante cero o varios valores elegibles; la segunda publica todos los <i>k</i> declarados sobre las mismas pérdidas pareadas y el mismo universo de parcelas</td><td><code data-author="Javier Rebull">31aca63</code></td></tr>
+      <tr><td><b>US-171</b></td><td>Contrato</td><td>El criterio sellado selecciona <i>k</i>=5 por separación entre centroides respecto del colchón, sin columnas de resultado. La exigencia de ocho clases sale de la selección: pertenecía al F1-macro retirado y queda solo como diagnóstico. Un gate en CI comprueba fuente, custodia, columnas, unicidad y propagación al preregistro</td><td><code data-author="Javier Rebull">2dcf9bd</code></td></tr>
       </tbody></table></div>
     </details>
 
@@ -1035,17 +1047,18 @@
              "Se computa desde los artefactos ya sellados y se sella en reports/paper_micai/potencia/, en vez de afirmarse en prosa: es exactamente lo que este proyecto reprocha en otros sitios",
              "Incluye la potencia del criterio principal NUEVO, la disparidad, y no solo la del delta de calidad: mover el titular sin recalcular el MDE es el mismo error un piso más arriba"],
          out:"reports/paper_micai/potencia/", dep:"US-125, US-171"},
-        {id:"US-171", t:"El número de bloques: un grado de libertad con el que cambia la conclusión", sp:8, st:"idle",
+        {id:"US-171", t:"El número de bloques: un grado de libertad con el que cambia la conclusión", sp:8, st:"wip",
          role:"Como equipo al que le dijeron que hacen falta trece bloques y solo tiene cinco, quiero saber si el cinco es una restricción del dato o el valor por defecto de una función. Es lo segundo, y lo que se encuentra al mirarlo es más interesante que el permiso para usar quince.",
          ac:["MEDIDO y sellado: cinco es el valor por defecto de build_spatial_kfold y el fold retenido tiene 176 celdas H3. Con cinco el intervalo incluye el cero; con diez, doce, quince, veinte y veinticinco lo excluye. El artefacto trae una columna tiene_potencia que compara el efecto con un MDE calculado tratando las subdivisiones como si fueran n réplicas independientes: NO LO SON, y esa columna se renombra y se acompaña del Jaccard antes de que nadie la cite. Un MDE que baja porque partes más el mismo territorio no es potencia, es aritmética",
              "EL HALLAZGO, y es esto y no el permiso para usar quince: EN ESTE ANÁLISIS EXPLORATORIO, la conclusión cambia con k. El estimador se mueve 0,0122 entre valores de k, un 73 % del propio efecto, y sin tendencia monótona. Dicho con el alcance que el diseño sostiene y no más: es un territorio, con folds solapados y cifras producidas por el módulo que aún tenía los tres defectos. NO se escribe «la granularidad decide la significancia» ni «lo demuestra» hasta rehacerlo con US-124, US-125 y el estimando de US-173",
-             "k se elige por un criterio ESPACIAL declarado antes de mirar ningún contraste —área mínima de bloque, o el colchón que garantiza una separación dada—, nunca por su resultado. Puede salir cinco y puede salir doce; da igual, y ese es el punto",
+             "IMPLEMENTADO: k se elige por un único criterio ESPACIAL declarado antes de mirar ningún contraste: la separación mínima exacta entre centroides debe ser al menos diez veces el colchón de construcción fijado en 1 km. Con el perfil SELLADO identifica k=5; si identifica cero o más de uno, el análisis se detiene y no inventa un desempate. La interfaz no acepta pérdida, intervalo, p ni potencia",
+             "CORRECCIÓN DE PROPAGACIÓN: la condición de ocho clases estimables pertenecía al F1-macro retirado y no identifica la pérdida media sobre todas las parcelas de US-173. Sale del criterio de selección y queda solo como diagnóstico descriptivo; mantenerla porque todavía elegía cinco habría conservado una decisión obsoleta con el mismo resultado",
              "PROHIBIDO fijar k en quince por ser el valor donde el contraste sale significativo: es el máximo |delta| y la mínima desviación del barrido a la vez, o sea la celda más favorable de siete",
              "La distancia mínima entre prueba y entrenamiento se reporta para cada k con NEAREST-NEIGHBOR EXACTO, y se nombra por lo que es: DISTANCIA ENTRE CENTROIDES en EPSG:3035, no entre límites de parcela. Es una cota superior de la separación real y por sí sola no demuestra independencia; el diagnóstico de autocorrelación que sí lo haría no está hecho. La versión anterior submuestreaba unos 300 puntos por lado antes de tomar el mínimo, lo que sesga el número hacia arriba por construcción —quitar candidatos solo puede mantener o subir un mínimo— y publicaba 23,505 km con k=5 donde el exacto es 22,972, y 2,877 con k=8 donde es 1,975. El veredicto del criterio no cambia; el número publicado sí, y lo que se publica es el número",
              "Se publica la curva ENTERA de sensibilidad, no el k elegido. Es un resultado que no depende de qué salga, que es más de lo que puede decir cualquier delta del artículo",
              "CORRECCIÓN EXTERNA, y es la que más pesa: partir el mismo territorio más fino NO crea réplicas independientes. MEDIDO y sellado, con los dos conjuntos nombrados por separado porque no son el mismo número y una auditoría nos pilló citando uno por el otro: entre ENTRENAMIENTOS el Jaccard medio es 0,4273 y el máximo 0,5510; entre ENTRENAMIENTO MÁS VALIDACIÓN, 0,6000 y 0,8005. Y la tendencia es lo que importa: con veinticinco bloques sube a 0,9200. Cuanto más se parte, más comparten los folds. La ganancia de potencia del barrido viene de cambiar la unidad, no de observar territorio nuevo",
              "El barrido de k NO se presenta como aumento de potencia, ni como demostración de nada. Se presenta como lo que es: en este análisis exploratorio y en este territorio, la etiqueta «excluye el cero» cambia al variar k. Es un aviso metodológico con su alcance escrito, no una palanca ni una ley"],
-         out:"reports/paper_micai/bloques/", dep:"US-125, US-173"},
+         out:"ml/eval/micai_spatial_sensitivity.py; docs/paper/spatial-partition-v1.json; reports/paper_micai/bloques/", dep:"US-125, US-173"},
         {id:"US-127", t:"Los contrastes que faltaban", sp:5, st:"idle",
          role:"Como lector de la introducción, quiero que los criterios que dice ordenar con intervalos tengan intervalos, porque hoy solo existe uno de los pares.",
          ac:["Contraste pareado entre los dos criterios de retirada, con coste igualado en el eje común",
