@@ -139,7 +139,11 @@
         régimen evidencial, su fila de custodia y, para confirmatorios, la ancestría respecto del
         preregistro. El manifiesto actual declara explícitamente cero resultados empíricos; el gate
         fue atacado por extensión, ubicación, reclasificación y enlaces simbólicos antes de entrar
-        en CI.
+        en CI. <b>US-120 también quedó cerrada</b>: los tres TSViT temporales tienen identidades
+        distintas en registro, checkpoint, manifiesto, fichero, columna y consumidor. La revisión
+        retiró una afirmación favorable: del checkpoint <code>fullm-v2</code> no se conservaron los
+        folds de entrenamiento, por lo que su fold 5 no se presenta como <i>held-out</i> ni libre de
+        fuga. El panel inferencial vigente no cambia y no se generaron resultados.
         El arnés OOF ya verifica la longitud
         temporal efectiva y su gate corre en CI, pero <b>31 artefactos
         siguen obsoletos</b> y no se regeneran antes de fijar la pérdida y el panel. El workflow
@@ -269,7 +273,7 @@
     <div class="colophon plan-colophon">
       <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
       <span><b>Total</b> <span id="total-sp">—</span> puntos de historia</span>
-      <span><b>Actualizado</b> 8 de septiembre de 2026, US-129 cerrada con custodia del régimen ejecutable; cero resultados empíricos</span>
+      <span><b>Actualizado</b> 8 de septiembre de 2026, US-120 cerrada con identidad de modelos ejecutable; cero resultados empíricos</span>
     </div>
   </div>
 </header>
@@ -484,12 +488,15 @@
 
     <div class="history-log">
     <details class="history-day" open>
-    <summary class="dia" data-date="2026-09-08"><time datetime="2026-09-08">8 sep</time><strong>Custodia ejecutable del régimen evidencial</strong></summary>
+    <summary class="dia" data-date="2026-09-08"><time datetime="2026-09-08">8 sep</time><strong>Custodia del régimen e identidad ejecutable de modelos</strong></summary>
     <div class="scroll"><table>
       <thead><tr><th>US</th><th>Tipo</th><th>Qué se hizo</th><th>Evidencia</th></tr></thead>
       <tbody data-date="2026-09-08">
       <tr><td><b>US-129</b></td><td>Gate y auditoría</td><td>Inventario cerrado de todo <code>reports/micai2027</code>: cada resultado CSV o JSON plano repite su régimen en cada registro, en el manifiesto y en el ledger; un confirmatorio exige banco congelado, <code>held_out</code> y ancestría posterior al preregistro. Veinticuatro ataques directos cerraron además el cambio de extensión, el traslado junto a figuras, la reclasificación como diagnóstico, regímenes ambiguos y enlaces simbólicos de artefacto, productor, directorio o raíz. La lectura completa retiró otra vez la conclusión «no replicaba» que seguía en pie junto a sus cuatro cifras invalidadas</td><td><code data-author="Javier Rebull">1906ef9</code></td></tr>
       <tr><td><b>US-129</b></td><td>Integración y cierre</td><td>PR #19 fusionada después de CI 6/6 sobre el HEAD final. El gate entra en el job barato de calidad y en la pestaña En vivo; la historia se cierra porque todos sus criterios son controles ejecutables probados en negativo. El manifiesto sigue en <code>mechanics_only</code>: cerrar el control no afirma que exista un resultado</td><td><code data-author="Javier Rebull">4f31dd3</code></td></tr>
+      <tr><td><b>US-120</b></td><td>Identidad y auditoría</td><td><code>tsvit-pheno-fullm-v2</code> deja de compartir alias con otros checkpoints: la clave se propaga al registro, el manifiesto, los dos parquets OOF y el consumidor. La tabla normativa sella checkpoint, MD5, longitud temporal, dimensión y folds para tres variantes. El hallazgo desfavorable queda visible: los folds de entrenamiento de <code>fullm-v2</code> no fueron registrados y ya no se afirma que su fold 5 sea <i>held-out</i></td><td><code data-author="Javier Rebull">6879348</code></td></tr>
+      <tr><td><b>US-120</b></td><td>Custodia e integración</td><td>El catálogo estructurado, la tabla legible y el puntero DVC quedan sellados; el blob regenerado se subió al remoto DVC. PR #20 fusionada tras CI 6/6, con un gate sin dependencias científicas que prueba registro, puntero, manifiesto, columnas, hashes y consumidor. El panel del artículo no cambia y no se ejecutó evaluación empírica</td><td><code data-author="Javier Rebull">fae18b2</code></td></tr>
+      <tr><td><b>US-120</b></td><td>Publicación verificable</td><td>PR #21 incorpora el control de identidad a la pestaña En vivo. El tablero se regenera desde <code>main</code> y publica nueve de nueve gates en verde; una prueba impide que el generador vuelva a omitir este control</td><td><code data-author="Javier Rebull">fd3d4ca</code></td></tr>
       </tbody></table></div>
     </details>
 
@@ -941,12 +948,15 @@
              "Decisión por miembro: incluir, corregir o excluir",
              "Ninguna comparación con la literatura mezcla F1 por parcela con mIoU por píxel"],
          out:"docs/paper/sanidad-miembros.md", dep:"US-118"},
-        {id:"US-120", t:"Identidad única de cada modelo", sp:2, st:"idle",
+        {id:"US-120", t:"Identidad única de cada modelo", sp:2, st:"ok",
          role:"Como equipo con tres checkpoints distintos llamados «tsvit-pheno», quiero que cada modelo tenga una identidad y una sola, porque esa ambigüedad es la que produjo el bug.",
-         ac:["Clave propia para tsvit-pheno-fullm-v2 en el registro y en el manifiesto",
-             "Renombrado del alias duplicado",
-             "Tabla de miembros con checkpoint, md5, T, dimensión y folds de entrenamiento"],
-         out:"ml/eval/oof/manifest.json", dep:"US-118"},
+         ac:["HECHO. Clave propia tsvit-pheno-fullm-v2 en el registro, manifiesto, nombres de fichero, columna model y consumidor. El nombre de arquitectura sigue siendo tsvit-pheno-fullm: identidad de corrida y familia dejan de confundirse",
+             "El bundle OOF cambia solo su identidad declarada: antes de retirar los nombres viejos se compararon exactamente todas las columnas ajenas a model. El puntero DVC nuevo está en remoto y sellado",
+             "Tabla normativa con checkpoint, MD5, T y dimensión para v1, fullm-v1 y fullm-v2. Los folds se publican solo cuando existe procedencia: para fullm-v2 figuran como no registrados, nunca inferidos",
+             "CORRECCIÓN DESFAVORABLE. Se retira de superficies activas la afirmación de que fullm-v2 es held-out o libre de fuga: el checkpoint, el manifiesto y la corrida conservada no demuestran qué folds lo entrenaron",
+             "GATE EJECUTABLE. model-identity-check cruza por AST el registro y el consumidor, verifica el puntero DVC y, si está materializado, manifiesto, nombres, columnas y hashes. Cinco pruebas negativas cubren alias duplicado, ruta divergente, alias dentro del parquet y folds inventados",
+             "INTEGRADO en PR #20 tras seis jobs de CI verdes. No cambia el panel inferencial congelado y no genera ningún resultado empírico"],
+         out:"docs/paper/model-identities-v1.json; docs/paper/identidad-modelos.md; ml/eval/oof_new32.dvc; make model-identity-check", dep:"US-118"},
         {id:"US-121", t:"ADR-014: alcance, modelo y destino", sp:3, st:"wip",
          role:"Como equipo que cambia de tesis por tercera vez, quiero que el cambio quede firmado, para que dentro de seis meses nadie reconstruya el ángulo viejo de memoria.",
          ac:["Ángulo, contribuciones y lo que baja de rango, con la evidencia que lo obligó",
