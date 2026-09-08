@@ -168,9 +168,11 @@
     de p válida. La PR #14 integra esa mecánica en <code>1f16145</code> con CI 6/6. Una auditoría
     posterior cerró la cancelación bajo el mínimo de unidades: la igualdad estructural se valida
     ahora sobre cada pérdida parcelaria antes de agregar. <b>US-171 está en curso</b>: un contrato
-    ejecutable selecciona <i>k</i> únicamente con el perfil espacial sellado y la curva completa
-    conserva las mismas parcelas; la exigencia de ocho clases del antiguo F1-macro queda como
-    diagnóstico, no como selector. Falta la regeneración empírica. <b>US-155 está en curso</b>:
+    ejecutable y sellado selecciona <i>k</i> únicamente con el perfil espacial; selección y
+    sensibilidad rechazan omitir o añadir valores de la rejilla, cambiar el colchón y repetir una
+    cabecera que sustituya la distancia medida. La exigencia de ocho clases del antiguo F1-macro
+    queda como diagnóstico, no como selector. Falta la regeneración empírica.
+    <b>US-155 está en curso</b>:
     el MDE de la sensibilidad por bloques ya se resuelve con t no central, sin unidades repetidas
     ni potencia inventada desde varianza cero. No se atribuye al estimando primario: el bootstrap
     por <code>patch_id</code> requiere simulación después de US-172. La tabla por afectado continúa sin valores
@@ -447,7 +449,7 @@
       <tr><td class="sec">Related Work</td><td><span class="chip ok">Redactada</span></td><td class="n">74</td><td class="nota"></td></tr>
       <tr><td class="sec">Problem Statement and Estimand</td><td><span class="chip ok">Redactada</span></td><td class="n">99</td><td class="nota"></td></tr>
       <tr><td class="sec">Four Mechanisms as Alternative Actions</td><td><span class="chip ok">Redactada</span></td><td class="n">99</td><td class="nota"></td></tr>
-      <tr><td class="sec">Evaluation Protocol</td><td><span class="chip ok">Redactada</span></td><td class="n">132</td><td class="nota"></td></tr>
+      <tr><td class="sec">Evaluation Protocol</td><td><span class="chip ok">Redactada</span></td><td class="n">133</td><td class="nota"></td></tr>
       <tr><td class="sec">Results</td><td><span class="chip wip">Esqueleto</span></td><td class="n">2</td><td class="nota">No hay resultados que presentar, y esto no es un descuido: la perdida que puntua las cuatro acciones se obtiene de usuarios reales (US-172) y esa elicitacion NO se ha hecho. Escrib...</td></tr>
       <tr><td class="sec">Discussion</td><td><span class="chip wip">Esqueleto</span></td><td class="n">2</td><td class="nota">Se escribe con los resultados delante, no antes.  Debe incluir, por decision tomada y no como relleno: los sesgos declarados de la busqueda bibliografica (idioma, indexacion, vocab...</td></tr>
       <tr><td class="sec">Appendix</td><td><span class="chip wip">Esqueleto</span></td><td class="n">2</td><td class="nota">Si la convocatoria baja el tope de paginas, el recorte va de resultados hacia aqui, nunca de robustez.</td></tr>
@@ -479,7 +481,7 @@
     </object>
   </div>
   <p class="pie-visor"><a href="paper/agrosat-micai2027-en-vivo.pdf">Abrir el PDF a pantalla completa</a> ·
-    manuscrito al día 2026-09-08, commit <code>a70572d</code></p>
+    manuscrito al día 2026-09-08, commit <code>9e0efb3</code></p>
 </section>
 <!-- GENERADO build_site_paper · fin -->
 
