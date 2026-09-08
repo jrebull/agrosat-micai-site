@@ -148,6 +148,11 @@
         retiró una afirmación favorable: del checkpoint <code>fullm-v2</code> no se conservaron los
         folds de entrenamiento, por lo que su fold 5 no se presenta como <i>held-out</i> ni libre de
         fuga. El panel inferencial vigente no cambia y no se generaron resultados.
+        <b>US-136 está en curso</b>: GEO-Bench <code>m-SA-crop-type</code> quedó descartado como
+        confirmatorio al verificar su conversor oficial —unidad píxel y partición aleatoria—, y
+        la segunda criba no asciende ningún sustituto por conveniencia. El sitio deriva ahora este
+        estado del contrato auditado, en vez de conservar la tabla manual que aún decía «cuatro
+        bancos elegidos».
         El arnés OOF ya verifica la longitud
         temporal efectiva y su gate corre en CI, pero <b>31 artefactos
         siguen obsoletos</b> y no se regeneran antes de fijar la pérdida y el panel. El workflow
@@ -519,6 +524,10 @@
       <tr><td><b>US-171</b></td><td>Integración</td><td>PR #24 fusionada con 1.089 pruebas locales de evaluación y controles, trece gates científicos y el PDF anónimo en verde. La historia permanece en curso: la mecánica está integrada, pero la curva empírica depende de la pérdida y no se ejecutó</td><td><code data-author="Javier Rebull">0ddc074</code></td></tr>
       <tr><td><b>US-155</b></td><td>Auditoría por ataque</td><td>La fórmula ya era t no central, pero el productor llamaba «asumida» a la desviación del mismo contraste y comparaba el delta observado con su propio MDE. Escala y efecto prospectivos llevan ahora unidad, rol y fuente; cambiar la dispersión o desplazar el delta observado no cambia el MDE, la detectabilidad ni el recuento planificado. Sin esas fuentes, las salidas quedan explícitamente pendientes. La propagación retira también «ninguna medida tiene potencia» del ADR y de las enmiendas vigentes</td><td><code data-author="Javier Rebull">39e2767</code></td></tr>
       <tr><td><b>US-155</b></td><td>Integración</td><td>PR #25 fusionada en <code>main</code> después de <code>make check</code>, catorce gates científicos y 1.095 pruebas de evaluación y scripts en verde; las dos corridas CI duplicadas cerraron 12/12 jobs. El PDF anónimo llega a quince páginas sin resultados nuevos. US-155 permanece en curso: faltan las fuentes prospectivas, los parámetros inferenciales y la simulación primaria</td><td><code data-author="Javier Rebull">b0215fd</code></td></tr>
+      <tr><td><b>US-155</b></td><td>Procedencia prospectiva</td><td>Un <code>source_id</code> no vacío deja de contar como fuente: un piloto o simulación de potencia debe apuntar a un artefacto SELLADO y a un rol prospectivo declarado en el inventario del protocolo. Un resultado observado sellado no puede usurpar ese papel</td><td><code data-author="Javier Rebull">76b6a87</code></td></tr>
+      <tr><td><b>US-136</b></td><td>Verificación primaria</td><td>GEO-Bench <code>m-SA-crop-type</code> no entra como confirmatorio. El conversor oficial produce segmentación por píxel, sortea la partición por directorio y declara diez etiquetas, una de ausencia; permitir submuestreo no demuestra que el artefacto publicado esté submuestreado. El veredicto permanece falsable sobre el banco completo</td><td><code data-author="Javier Rebull">f885e75</code></td></tr>
+      <tr><td><b>US-136</b></td><td>Auditoría del control</td><td>Seis caminos laterales burlaban el gate: sintaxis equivalente del sorteo, comentario que fingía el constructor, reasignación efectiva de etiquetas, atribución libre, veredicto abierto y ausencia de vínculo con el blob Git. El control pasa a derivar mecanismos por AST, cierra vocabulario y exige la identidad del código capturado</td><td><code data-author="Javier Rebull">c5c0a81</code></td></tr>
+      <tr><td><b>US-136</b></td><td>Integración</td><td>PR #26 fusionada tras CI 6/6. El gate entra en CI y en la pestaña En vivo; la propagación corrige el documento candidato y el cuaderno público. La historia sigue en curso porque el candidato quedó descartado y todavía no hay un tercer banco admisible</td><td><code data-author="Javier Rebull">42ee06b</code></td></tr>
       </tbody></table></div>
     </details>
 
@@ -1264,22 +1273,22 @@
     },
     {
       id:"EPIC 22", name:"Validez externa, y separar el hallazgo del artefacto", status:"idle",
-      goal:"Dos bancos franceses no demuestran transporte, y peor: comparten el sistema de etiquetado, no solo el país. Y con cuatro bancos la geografía y la forma del desbalance están perfectamente confundidas. La manipulación dentro de banco es lo único que las separa.",
+      goal:"Dos bancos franceses no demuestran transporte, y peor: comparten el sistema de etiquetado, no solo el país. Sin un tercer banco admisible, la geografía y la forma del desbalance siguen confundidas. La manipulación dentro de banco las separa parcialmente, pero no autoriza una afirmación de transporte.",
       us:[
         {id:"US-157", t:"Barrido del desbalance con la geografía fija", sp:5, st:"idle",
          role:"Como revisor que pregunta si esto es un hallazgo o un artefacto europeo, quiero ver la variable independiente manipulada dentro de un banco.",
          ac:["Remuestreo de las clases del banco primario para generar veinte perfiles de desbalance, con la región y el modelo fijos",
              "Y al revés: cada banco remuestreado al mismo perfil, para comparar geografías con el desbalance fijo",
-             "Cada punto parametrizado por K, entropía del soporte y profundidad de la taxonomía. Se declara que el barrido DESCRIBE la superficie de respuesta y NO contrasta la identidad del banco: los cuarenta puntos son remuestreos de las mismas parcelas, no unidades independientes, y con tres bancos la identidad tiene tres niveles. Tratarlos como n=40 sería la pseudorreplicación que US-125 acaba de corregir",
-             "No exige reentrenar: convierte cuatro bancos en más de cuarenta puntos de diseño sobre posteriores ya volcadas, y es la respuesta a la objeción de validez externa que no depende de conseguir más bancos"],
+             "Cada punto parametrizado por K, entropía del soporte y profundidad de la taxonomía. Se declara que el barrido DESCRIBE la superficie de respuesta y NO contrasta la identidad del banco: los cuarenta puntos son remuestreos de las mismas parcelas, no unidades independientes, y la identidad del banco solo tiene dos niveles. Tratarlos como n=40 sería la pseudorreplicación que US-125 acaba de corregir",
+             "No exige reentrenar: convierte los dos bancos vigentes en cuarenta puntos de diseño sobre posteriores ya volcadas. Responde si el patrón cambia al manipular el desbalance con la geografía fija, pero NO sustituye una prueba de transporte"],
          out:"reports/paper_micai/desbalance/", dep:"US-129"},
-        {id:"US-136", t:"Tercer banco, con cardinalidad suficiente", sp:8, st:"idle",
+        {id:"US-136", t:"Criba del tercer banco, con cardinalidad suficiente", sp:8, st:"wip",
          role:"Como revisor de validez externa, quiero ver el protocolo en otra geografía y otra nomenclatura, con un catálogo que permita los cuatro mecanismos.",
-         ac:["CANDIDATO POR DEFECTO: GEO-Bench m-SA-crop-type (Zenodo 10.5281/zenodo.8008825, CC BY 4.0, Sudáfrica, nueve clases, partición propia). El barrido se reduce a verificarlo o batirlo, no a rehacerse entero: la respuesta ya está escrita en bancos-candidatos.md",
+         ac:["CANDIDATO ANTERIOR DESCARTADO: GEO-Bench m-SA-crop-type (Zenodo 10.5281/zenodo.8008825, CC BY 4.0) no entra como confirmatorio. La decisión está en banco-tercero-v1.json y el gate la re-deriva desde la evidencia primaria capturada",
              "PRIMER CRITERIO DE ADMISIÓN: la tarea de referencia tiene K mayor o igual que 5 clases. CropHarvest NO lo cumple, porque sus tareas de referencia son binarias y con K=2 los cuatro mecanismos colapsan en uno",
              "SEGUNDO CRITERIO, corregido tras separar las unidades: la partición ajena identifica patch_id para la simulación de potencia del estimando primario. Sus bloques espaciales determinan si puede publicarse la sensibilidad t por bloques, pero NO deciden por sí solos si todo el banco es confirmatorio ni se cuentan como el n del bootstrap primario",
-             "Avisos verificados de GEO-Bench: es segmentación por píxel y no clasificación por parcela, las fichas públicas listan diez categorías y no nueve, y el banco submuestrea, lo que reconfigura el desbalance que es nuestra variable independiente. Las tres cosas se deciden y se declaran antes de usarlo",
-             "Se rehace el barrido de bancos con la cardinalidad como criterio, que el barrido anterior no aplicó porque priorizó partición y licencia",
+             "HECHO PARA GEO-BENCH: es segmentación por píxel y no clasificación por parcela; declara diez etiquetas, nueve no ausentes; su partición es aleatoria por directorio; y solo se sabe que el conversor permite submuestrear, no que el artefacto publicado lo esté. Ninguna de esas cuatro afirmaciones vuelve a quedar en prosa sin control",
+             "EN CURSO: se rehace el barrido con cardinalidad, unidad parcelaria y partición espacial como criterios conjuntos. Ningún candidato se asciende por calendario; si ninguno cumple, la salida es declarar dos bancos confirmatorios y ninguna afirmación de transporte",
              "Partición espacial propia del banco, no construida por nosotros",
              "Se declara además que los dos bancos franceses comparten el sistema de etiquetado y no solo el país, y se comprueba si sus regiones solapan"],
          out:"reports/paper_micai/externa/", dep:"US-129"},
