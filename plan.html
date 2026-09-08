@@ -126,7 +126,12 @@
         y la curva completa puede evaluarse sobre un denominador común; falta regenerarla con las
         pérdidas reales. <b>US-155 también está en curso</b>: el MDE de la sensibilidad por bloques
         ya usa la t no central y no admite unidades repetidas; la potencia del estimando primario
-        por <code>patch_id</code> queda separada y requiere simulación después de US-172. El arnés OOF ya verifica la longitud
+        por <code>patch_id</code> queda separada y requiere simulación después de US-172.
+        <b>US-127 está en curso</b>: ya existen los cinco contrastes contra el control, el par entre
+        criterios de retirada y el conjunto de confianza de Fieller. El código rechaza mezclar
+        presupuestos, afectados, tablas, cohortes o puntos de operación; no hay cifras empíricas.
+        La propia implementación encontró que «razón denominador sobre ganancia» no define todavía
+        numerador, denominador ni unidad, y que igualar pérdidas depende de US-172. El arnés OOF ya verifica la longitud
         temporal efectiva y su gate corre en CI, pero <b>31 artefactos
         siguen obsoletos</b> y no se regeneran antes de fijar la pérdida y el panel. El workflow
         propuesto por Arthur también quedó revisado: este plan registra más abajo qué se adopta,
@@ -508,6 +513,8 @@
       <tr><td><b>US-171</b></td><td>Integración</td><td>PR #15 fusionada después de CI 6/6. La mecánica y el criterio espacial quedan en <code>main</code>; US-171 sigue en curso porque la curva empírica no se regenera antes de que exista la pérdida</td><td><code data-author="Javier Rebull">b0e68c0</code></td></tr>
       <tr><td><b>US-155</b></td><td>MDE exacto</td><td>La suma de cuantiles t centrales sale de los productores. El módulo resuelve la potencia bilateral con la distribución t no central, exige alfa, potencia objetivo, familia y unidades explícitas, rechaza unidades repetidas y no convierte varianza cero en MDE cero. El barrido de <i>k</i> deja de calcular potencia sobre subdivisiones del mismo territorio</td><td><code data-author="Javier Rebull">0d297e7</code></td></tr>
       <tr><td><b>US-155 / US-125</b></td><td>Propagación</td><td>El arreglo cambia el alcance: la t describe la sensibilidad con bloques de igual peso, no el bootstrap primario por <code>patch_id</code>. «Ninguna medida tiene potencia» vuelve a PENDIENTE porque dependía de cifras obsoletas; la vista primaria requerirá simulación con la pérdida real. El preregistro y el manuscrito ya separan las dos preguntas</td><td><code data-author="Javier Rebull">c1f531c</code></td></tr>
+      <tr><td><b>US-155</b></td><td>Integración</td><td>PR #16 fusionada después de CI 6/6. La t no central queda en <code>main</code>; US-155 sigue en curso hasta fijar los parámetros y ejecutar tanto la sensibilidad como la simulación primaria</td><td><code data-author="Javier Rebull">77acc59</code></td></tr>
+      <tr><td><b>US-127</b></td><td>Contratos ejecutables</td><td>La familia planeada produce cinco pares contra el singleton y un par directo entre criterios de retirada. Todos los puntos deben compartir afectado, tabla, objetivo, fuente y cohorte de selección; la huella los vincula al punto ajustado y cualquier identidad de prueba en la selección bloquea la comparación. Fieller conserva conjuntos disjuntos o no acotados cuando el denominador no se separa de cero</td><td><code data-author="Javier Rebull">55c35ba</code></td></tr>
       </tbody></table></div>
     </details>
 
@@ -1066,13 +1073,15 @@
              "CORRECCIÓN EXTERNA, y es la que más pesa: partir el mismo territorio más fino NO crea réplicas independientes. MEDIDO y sellado, con los dos conjuntos nombrados por separado porque no son el mismo número y una auditoría nos pilló citando uno por el otro: entre ENTRENAMIENTOS el Jaccard medio es 0,4273 y el máximo 0,5510; entre ENTRENAMIENTO MÁS VALIDACIÓN, 0,6000 y 0,8005. Y la tendencia es lo que importa: con veinticinco bloques sube a 0,9200. Cuanto más se parte, más comparten los folds. La ganancia de potencia del barrido viene de cambiar la unidad, no de observar territorio nuevo",
              "El barrido de k NO se presenta como aumento de potencia, ni como demostración de nada. Se presenta como lo que es: en este análisis exploratorio y en este territorio, la etiqueta «excluye el cero» cambia al variar k. Es un aviso metodológico con su alcance escrito, no una palanca ni una ley"],
          out:"ml/eval/micai_spatial_sensitivity.py; docs/paper/spatial-partition-v1.json; reports/paper_micai/bloques/", dep:"US-125, US-173"},
-        {id:"US-127", t:"Los contrastes que faltaban", sp:5, st:"idle",
+        {id:"US-127", t:"Los contrastes que faltaban", sp:5, st:"wip",
          role:"Como lector de la introducción, quiero que los criterios que dice ordenar con intervalos tengan intervalos, porque hoy solo existe uno de los pares.",
-         ac:["Contraste pareado entre los dos criterios de retirada, con coste igualado en el eje común",
-             "Contraste entre cada mecanismo y el control sin mecanismo",
-             "Intervalo para la razón denominador sobre ganancia por Fieller o delta, no por percentil: es una razón con denominador cercano a cero y su bootstrap tiene cola pesada",
-             "Ninguna comparación entre mecanismos a costes distintos"],
-         out:"reports/paper_micai/", dep:"US-155"},
+         ac:["MECÁNICA TERMINADA, ESTIMANDOS Y EJECUCIÓN EMPÍRICA PENDIENTES. ml/eval/micai_contrasts.py produce el contraste pareado entre los dos criterios de retirada y lo rechaza si sus registros no comparten el presupuesto completo",
+             "La familia contiene los cinco brazos no basales contra el singleton preciso y el par adicional entre criterios de retirada. No inventa los otros pares posibles ni los presenta como una familia completa de selección",
+             "Coste igualado significa el mismo identificador de presupuesto, afectado, tabla de pérdidas, objetivo y fuente entrenamiento-validación. También exige la misma cohorte, una huella del punto de operación vigente y ninguna identidad del bloque de prueba. Compartir solo tamaño de catálogo o valor numérico falla",
+             "Fieller está implementado sobre resúmenes pareados de la unidad independiente declarada. Si el denominador no se separa de cero devuelve un conjunto disjunto, semirrecta o toda la recta; nunca lo disfraza con percentiles finitos",
+             "HALLAZGO DE IDENTIFICACIÓN: «razón denominador sobre ganancia» no nombra qué cantidad es numerador, cuál denominador ni la unidad de agregación. Esas tres decisiones se congelan antes de calcularla; hasta entonces no existe una razón empírica",
+             "DEPENDENCIA CORREGIDA: seleccionar puntos bajo una pérdida común requiere la tabla de US-172. US-155 aporta la potencia, no identifica el eje de coste. Por eso la historia no se cierra con datos sintéticos"],
+         out:"ml/eval/micai_contrasts.py; reports/paper_micai/", dep:"US-155, US-172"},
         {id:"US-128", t:"Multiplicidad bien definida", sp:3, st:"idle",
          role:"Como revisor de la corrección por multiplicidad, quiero que el criterio principal esté protegido y que la familia no incluya hipótesis degeneradas.",
          ac:["El criterio principal se reporta sin corregir y la familia exploratoria aparte",
