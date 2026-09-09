@@ -31,9 +31,9 @@
       <aside class="plan-now" aria-labelledby="plan-now-title">
         <p class="plan-now-label">Ahora · cuello de botella</p>
         <h2 id="plan-now-title"><a href="#US-172">US-172</a></h2>
-        <p>La determinación institucional ya está por escrito y sellada: el estudio no requiere
-          revisión de comité. El protocolo puede congelarse. Falta reclutar seis informantes, tres
-          por cada afectado.</p>
+        <p>La determinación institucional está por escrito y sellada. El protocolo v0.3 ya quedó
+          congelado antes del primer reclutamiento, con cuatro adjuntos reproducibles bajo custodia.
+          Falta obtener las respuestas de seis informantes, tres por cada afectado.</p>
         <div class="plan-now-state"><span></span>En curso · sin crédito parcial</div>
       </aside>
     </div>
@@ -116,7 +116,7 @@
         una función de pérdida identificada</b>, y la cardinalidad ocupaba ese lugar sin
         justificación. Por eso el plan se reordena: la <b>EPIC 27</b> va delante de todo y el camino
         crítico empieza ahí.</p>
-      <p><b>Estado al 8 de septiembre.</b> Las ocho rondas cerraron defectos en código, tests,
+      <p><b>Estado al 9 de septiembre.</b> Las ocho rondas cerraron defectos en código, tests,
         custodia y redacción. <b>US-173 es la primera historia científica cerrada del estudio
         reencuadrado</b>: la inferencia será condicional a cada banco, con la parcela como unidad,
         <code>patch_id</code> como clúster y sin afirmar transporte. Quedan tres parámetros
@@ -202,12 +202,12 @@
         paquete final depende de que US-144 termine. <b>US-143
         también está en curso</b>: el contrato ejecutable de las figuras ya impide repetir el
         ancho y los canales defectuosos, pero todavía no se ha regenerado ninguna figura
-        empírica. En <b>US-172</b>, ocho decisiones operativas están cerradas —incluido «no aplica»
-        para profesor responsable porque ambos investigadores son egresados— y FileVault está
-        activo. El protocolo v0.3 sigue en <b>BORRADOR</b>: la determinación institucional fue
-        verbal y su confirmación escrita continúa pendiente, así que no se congela ni se recluta.
-        Para congelar, el gate exige citar la ruta de un acta existente en el repositorio; una frase
-        que solo diga «confirmación escrita» ya no cuenta como evidencia.</p>
+        empírica. En <b>US-172</b>, las nueve decisiones operativas están cerradas y la determinación
+        institucional escrita está sellada. El protocolo v0.3 quedó <b>CONGELADO el 9 de
+        septiembre</b>, antes del primer reclutamiento, y sus cuatro adjuntos fijan el commit fuente,
+        se reproducen byte a byte y tienen fila propia en el ledger. El bloqueo formal está cerrado;
+        el sustantivo no: faltan las respuestas de seis informantes y la tabla trazable que sale de
+        ellas. Por eso US-172 permanece en curso y aún no se ejecutan resultados.</p>
       <p><b>Revalidación de la PR #6, 6 de septiembre.</b> Se conserva el permiso mínimo de lectura
         de PR que necesita el job de calidad y el exportador queda reducido a un prefiltro local.
         No se adopta el lote de memoria que la PR publicó como «saneado»: entró antes de las dos
@@ -513,6 +513,24 @@
     </section>
 
     <div class="history-log">
+    <details class="history-day" open>
+    <summary class="dia" data-date="2026-09-09"><time datetime="2026-09-09">9 sep</time><strong>Congelación verificable de US-172 y control visual del plan</strong></summary>
+    <div class="scroll">
+            <table>
+              <colgroup><col class="c-us"><col class="c-tipo"><col class="c-que"><col class="c-ev"></colgroup>
+      <thead><tr><th>US</th><th>Tipo</th><th>Qué se hizo</th><th>Evidencia</th></tr></thead>
+      <tbody data-date="2026-09-09">
+      <tr><td><b>E23</b></td><td>Contraste por tema</td><td>Un fondo literal ya no puede heredar una tinta que cambia con el tema sin fijarla localmente. El gate convierte en regla el defecto que volvió ilegible la banda del historial en modo oscuro y conserva una lista cerrada de excepciones con motivo</td><td><code data-author="Javier Rebull">413c6c1</code></td></tr>
+      <tr><td><b>US-172</b></td><td>Determinación escrita</td><td>La respuesta institucional deja de ser una llamada interpretada: el acta registra una determinación explícita de que el estudio no requiere revisión ni aprobación de comité, junto con las condiciones sobre las que se pronunció y sin copiar datos de contacto al repositorio</td><td><code data-author="Javier Rebull">4af0b6c</code></td></tr>
+      <tr><td><b>US-172</b></td><td>Custodia</td><td>El acta queda SELLADO con MD5, bytes y procedencia; alterar su contenido o sustituirla por una ruta sin custodia vuelve rojo el gate</td><td><code data-author="Javier Rebull">31a885f</code></td></tr>
+      <tr><td><b>US-172</b></td><td>Pruebas desacopladas</td><td>Las pruebas de determinación pendiente construyen ese estado en una copia en vez de esperar que el documento vivo siga en el pasado; la contraparte exige que la confirmación vigente exista y conserve su sello</td><td><code data-author="Javier Rebull">3af603e</code></td></tr>
+      <tr><td><b>US-172</b></td><td>Congelación</td><td>El protocolo v0.3 pasa a CONGELADO el 9 de septiembre, antes del primer reclutamiento. El gate conserva visibles después de congelar las nueve filas, cero pendientes y la determinación escrita; cualquier desviación futura requiere una enmienda fechada antes de la respuesta afectada</td><td><code data-author="Javier Rebull">04432ed</code></td></tr>
+      <tr><td><b>US-172</b></td><td>Auditoría visual</td><td>La primera generación recortaba el título del filtro y sacaba una ruta larga del lienzo del plan de custodia. El generador elimina encabezados redundantes y permite partir rutas; los trece folios de los cuatro PDF se inspeccionaron completos</td><td><code data-author="Javier Rebull">3eff083</code></td></tr>
+      <tr><td><b>US-172</b></td><td>Sellado de adjuntos</td><td>Protocolo, consentimiento, filtro y plan de custodia se generan dos veces con bytes idénticos, fijan el commit fuente en nombre y pie, y entran al ledger mediante un sellador que deriva MD5 y tamaño del fichero en vez de copiarlos desde prosa</td><td><code data-author="Javier Rebull">0343922</code></td></tr>
+      <tr><td><b>US-145</b></td><td>Portabilidad del CI</td><td>Tres pruebas del paquete anónimo dependían del <code>main.pdf</code> ignorado y solo pasaban en una máquina que ya lo había compilado. Ahora construyen una raíz sintética cerrada, ejercen los mismos bytes y recursos de ejecución, y pasan también en un checkout limpio</td><td><code data-author="Javier Rebull">ea637c3</code></td></tr>
+      </tbody></table></div>
+    </details>
+
     <details class="history-day" open>
     <summary class="dia" data-date="2026-09-08"><time datetime="2026-09-08">8 sep</time><strong>Custodia, identidad y mecánica conforme ejecutable</strong></summary>
     <div class="scroll">
@@ -1071,6 +1089,7 @@
              "El orden de lectura se BLOQUEA por grupo con tres permutaciones generadas antes: cada grupo recibe cada permutación exactamente una vez y la asignación se aleatoriza y registra dentro del grupo. Aleatorizar cada entrevista sin bloqueo todavía permitiría confundir por azar el orden con el grupo, que es justo el efecto que el artículo quiere medir",
              "NO hay salida por «supuesto del artículo». Cada precio sale de una ELICITACIÓN con usuarios reales: protocolo escrito antes, al menos tres informantes de cada uno de los dos grupos afectados, guion de las preguntas, respuestas crudas guardadas y síntesis trazable de cada celda L(y, acción, afectado) hasta las respuestas que la producen. Un precio que nadie fuera del equipo haya dicho en voz alta no entra en la tabla",
              "Antes de RECLUTAR a nadie —la consulta institucional sí se envía, y bloquearla era bloquear lo que desbloquea— se documentan consentimiento, minimización, custodio nombrado, ubicación cifrada fuera del repositorio, permisos nominales, plazo de retención, destrucción y el vínculo reversible que permite localizar una respuesta si alguien pide retirarla. DVC versiona, no controla acceso. Y se comprueba si la institución exige revisión ética: si la exige, no se recoge ninguna respuesta antes de la aprobación",
+             "BLOQUEO FORMAL CERRADO: la determinación institucional escrita está registrada en un acta SELLADO y el protocolo v0.3 quedó CONGELADO el 9 de septiembre de 2026 antes del primer reclutamiento. Sus cuatro adjuntos fijan el commit fuente, se reproducen byte a byte y tienen custodia propia. Esto autoriza reclutar; no sustituye las seis respuestas ni cierra la historia",
              "El artefacto incluye el desacuerdo, y se conserva el VECTOR COMPLETO de cada informante: el análisis se corre una vez por vector y se reporta la dispersión. Combinar el mínimo de una celda con el máximo de otra fabrica una tabla que ningún informante sostuvo y le pone nuestra firma. Cualquier envolvente se declara antes de verla y tiene que ser un vector coherente",
              "COSTE NO COMPENSATORIO, con su rama analítica escrita antes: se confirma que es una prohibición y no un «muy caro» ofreciendo un intercambio extremo; si se sostiene, se impone una restricción lexicográfica y los mecanismos que producen esa celda quedan descartados antes de comparar; y la suma deja de usarse para ese afectado, cuyo resultado se reporta aparte",
              "Al menos dos afectados distintos con precios distintos: quien controla subvenciones y quien asesora al productor no pierden lo mismo cuando el mapa calla",
