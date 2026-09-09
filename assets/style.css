@@ -389,15 +389,24 @@ tbody tr.hi td{background:var(--sienna-soft);font-weight:600}
 .epic[data-status="dead"] .epic-head h2{text-decoration:line-through;color:var(--muted)}
 
 /* Daily history: activity is visually separate from scientific progress. */
-.plan-page .history-section{margin:8px 0 82px;padding:clamp(28px,5vw,58px);
-  background:#e8e6d9;border-top:6px solid var(--deep);scroll-margin-top:78px}
+/* Banda de papel: se fija clara en LOS DOS temas, igual que el hero se fija oscuro. Antes el
+   fondo iba en duro y el texto por token, asi que en modo noche `--ink` se volvia crema y el
+   titulo salia crema sobre crema, ilegible. Redefinir el juego de tokens aqui arregla de una vez
+   todo lo que cuelga de la banda, en vez de parchear color a color. */
+.plan-page .history-section{
+  --sheet:#e8e6d9; --sheet-2:#dedcce; --panel:#f6f5ec;
+  --ink:#131A17; --ink-2:#3D4A43; --muted:#6E7A72;
+  --rule:#C9CEC5; --rule-fine:#d7d5c7; --deep:#174C4A;
+  margin:8px 0 82px;padding:clamp(28px,5vw,58px);
+  background:var(--sheet);color:var(--ink);
+  border-top:6px solid var(--deep);scroll-margin-top:78px}
 .plan-page .history-heading{display:grid;grid-template-columns:minmax(260px,.8fr) minmax(0,1.2fr);
   column-gap:clamp(36px,7vw,92px);align-items:end;margin-bottom:30px}
 .plan-page .history-heading .eyebrow{grid-column:1/-1;margin-bottom:20px}
 .plan-page .history-heading h2{font-size:clamp(42px,6vw,68px);line-height:.92;
   letter-spacing:-.055em;margin:0;max-width:9ch}
 .plan-page .history-heading>p:last-child{max-width:58ch;margin:0;font-size:15px;line-height:1.65;
-  color:#4f5b55}
+  color:var(--ink-2)}
 .plan-page .history-analytics{background:#102b27;color:#f6f3e8;border:0;padding:clamp(24px,4vw,42px);
   margin:0 0 34px}
 .plan-page .history-analytics-head{display:grid;
