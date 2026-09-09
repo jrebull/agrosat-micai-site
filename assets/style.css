@@ -5,48 +5,81 @@
    verde azulado de agua para la estructura. Las cifras se alinean como en un libro de
    cuentas, con reglas de un pelo y sin una sola caja redondeada. */
 
+/* ---------- colorimetria severa, dos luces ----------
+   Un solo suelo por tema, dos escalones de superficie, tinta en tres pesos, reglas de un pelo y
+   DOS croma: verde azulado para lo que estructura y mide, siena para lo que alarma. El lima, el
+   ocre y el olivo decorativos salen: cada hue extra era una decision menos y una lectura mas.
+   Lo que antes fijaba su color en duro ---heroe, banda del historial, tarjeta de analitica---
+   ahora depende del tema, que es la razon de que en modo noche hubiera una losa crema sobre
+   negro. Todos los pares texto/fondo estan medidos por encima de 4,5:1. */
 :root{
-  --sheet:#F1F2EE;        /* papel de plano, bone con sesgo verde */
-  --sheet-2:#E7E9E3;
-  --panel:#FBFBF9;
-  --ink:#131A17;          /* tinta */
-  --ink-2:#3D4A43;
-  --muted:#6E7A72;
-  --rule:#C9CEC5;
-  --rule-fine:#DDE0D8;
+  --ground:#EFEEE7;       /* papel de plano */
+  --surface:#F7F6F0;      /* lo que se levanta: fichas y tablas */
+  --surface-2:#E3E2D8;    /* lo que se hunde: bandas y cabeceras */
+  --ink:#121614;          /* tinta */
+  --ink-2:#454E49;
+  --muted:#5B635C;
+  --rule:#CFCEC3;
+  --rule-fine:#E0DFD5;
 
-  --deep:#174C4A;         /* verde azulado: estructura, medida */
-  --deep-soft:#DCE6E4;
-  --sienna:#B4522F;       /* tierra desnuda: lo que alarma */
-  --sienna-soft:#F2E0D9;
-  --olive:#5E7A3A;        /* cultivo sano: lo que pasa */
-  --olive-soft:#E4EAD9;
-  --ochre:#A87A1E;        /* en curso */
-  --ochre-soft:#F2E8CF;
+  --accent:#14524F;       /* estructura y medida */
+  --accent-soft:#D9E4E2;
+  --alarm:#9E4227;        /* lo que alarma */
+  --alarm-soft:#EFDED6;
+
+  /* La inversion, un solo recurso usado dos veces: heroe y tarjeta de analitica. */
+  --inv-bg:#101D1B;
+  --inv-fg:#EFEEE7;
+  --inv-fg-2:#A9B2AB;
+  --inv-rule:rgba(239,238,231,.16);
+  --inv-accent:#78BDB6;
+  --inv-alarm:#E08A66;
+  --inv-rule-soft:rgba(239,238,231,.07);
+  --inv-accent-soft:rgba(120,189,182,.12);
+
+  /* Series de datos. Dos series necesitan DOS hues: el acento y una arena, declarada solo para
+     datos y separada de los colores semanticos, para que la arena no se lea nunca como alarma.
+     Ambas se eligieron por contraste contra la pista, no por gusto. */
+  --data-1:#14524F;
+  --data-2:#7A5C16;
+  --data-track:#DCDBD0;
 
   --display:"Archivo","Helvetica Neue",Arial,sans-serif;
   --body:"Source Serif 4",Georgia,"Times New Roman",serif;
   --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,monospace;
+
+  /* Alias heredados: hay codigo y marcado que todavia los nombra. Apuntan al sistema nuevo para
+     que no quede ningun color fuera del tema. */
+  --sheet:var(--ground); --sheet-2:var(--surface-2); --panel:var(--surface);
+  --deep:var(--accent); --deep-soft:var(--accent-soft);
+  --sienna:var(--alarm); --sienna-soft:var(--alarm-soft);
+  --olive:var(--accent); --olive-soft:var(--accent-soft);
+  --ochre:var(--ink-2); --ochre-soft:var(--surface-2);
 }
+
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --sheet:#0E1412; --sheet-2:#161E1B; --panel:#141C19;
-    --ink:#E8EBE5; --ink-2:#B3BEB6; --muted:#7E8C84;
-    --rule:#2A3531; --rule-fine:#212B27;
-    --deep:#69B0AC; --deep-soft:#16302E;
-    --sienna:#D9805E; --sienna-soft:#33201A;
-    --olive:#93B368; --olive-soft:#1D2917;
-    --ochre:#CFA249; --ochre-soft:#2E2614;
+    --ground:#0D100F; --surface:#151A18; --surface-2:#1C2220;
+    --ink:#E7E9E4; --ink-2:#AAB2AC; --muted:#8B938C;
+    --rule:#2B312D; --rule-fine:#1F2522;
+    --accent:#78BDB6; --accent-soft:#16302E;
+    --alarm:#E08A66; --alarm-soft:#33201A;
+    --inv-bg:#15201E; --inv-fg:#E7E9E4; --inv-fg-2:#AAB2AC;
+    --inv-rule:rgba(231,233,228,.14); --inv-accent:#78BDB6; --inv-alarm:#E08A66;
+    --inv-rule-soft:rgba(231,233,228,.06); --inv-accent-soft:rgba(120,189,182,.12);
+    --data-1:#78BDB6; --data-2:#D4B060; --data-track:#2B312D;
   }
 }
 :root[data-theme="dark"]{
-  --sheet:#0E1412; --sheet-2:#161E1B; --panel:#141C19;
-  --ink:#E8EBE5; --ink-2:#B3BEB6; --muted:#7E8C84;
-  --rule:#2A3531; --rule-fine:#212B27;
-  --deep:#69B0AC; --deep-soft:#16302E;
-  --sienna:#D9805E; --sienna-soft:#33201A;
-  --olive:#93B368; --olive-soft:#1D2917;
-  --ochre:#CFA249; --ochre-soft:#2E2614;
+  --ground:#0D100F; --surface:#151A18; --surface-2:#1C2220;
+  --ink:#E7E9E4; --ink-2:#AAB2AC; --muted:#8B938C;
+  --rule:#2B312D; --rule-fine:#1F2522;
+  --accent:#78BDB6; --accent-soft:#16302E;
+  --alarm:#E08A66; --alarm-soft:#33201A;
+  --inv-bg:#15201E; --inv-fg:#E7E9E4; --inv-fg-2:#AAB2AC;
+  --inv-rule:rgba(231,233,228,.14); --inv-accent:#78BDB6; --inv-alarm:#E08A66;
+    --inv-rule-soft:rgba(231,233,228,.06); --inv-accent-soft:rgba(120,189,182,.12);
+  --data-1:#78BDB6; --data-2:#D4B060; --data-track:#2B312D;
 }
 
 *{box-sizing:border-box}
@@ -393,13 +426,9 @@ tbody tr.hi td{background:var(--sienna-soft);font-weight:600}
    fondo iba en duro y el texto por token, asi que en modo noche `--ink` se volvia crema y el
    titulo salia crema sobre crema, ilegible. Redefinir el juego de tokens aqui arregla de una vez
    todo lo que cuelga de la banda, en vez de parchear color a color. */
-.plan-page .history-section{
-  --sheet:#e8e6d9; --sheet-2:#dedcce; --panel:#f6f5ec;
-  --ink:#131A17; --ink-2:#3D4A43; --muted:#6E7A72;
-  --rule:#C9CEC5; --rule-fine:#d7d5c7; --deep:#174C4A;
-  margin:8px 0 82px;padding:clamp(28px,5vw,58px);
-  background:var(--sheet);color:var(--ink);
-  border-top:6px solid var(--deep);scroll-margin-top:78px}
+.plan-page .history-section{margin:8px 0 82px;padding:clamp(28px,5vw,58px);
+  background:var(--surface);color:var(--ink);
+  border-top:6px solid var(--accent);scroll-margin-top:78px}
 .plan-page .history-heading{display:grid;grid-template-columns:minmax(260px,.8fr) minmax(0,1.2fr);
   column-gap:clamp(36px,7vw,92px);align-items:end;margin-bottom:30px}
 .plan-page .history-heading .eyebrow{grid-column:1/-1;margin-bottom:20px;
@@ -408,54 +437,54 @@ tbody tr.hi td{background:var(--sienna-soft);font-weight:600}
   letter-spacing:-.055em;margin:0;max-width:9ch}
 .plan-page .history-heading>p:last-child{max-width:58ch;margin:0;font-size:15px;line-height:1.65;
   color:var(--ink-2)}
-.plan-page .history-analytics{background:#102b27;color:#f6f3e8;border:0;padding:clamp(24px,4vw,42px);
+.plan-page .history-analytics{background:var(--surface-2);color:var(--ink);border:1px solid var(--rule);padding:clamp(24px,4vw,42px);
   margin:0 0 34px}
 .plan-page .history-analytics-head{display:grid;
   grid-template-columns:minmax(0,1fr) minmax(260px,.72fr);gap:42px;align-items:end;margin-bottom:28px}
 .plan-page .history-analytics-head h3{font-size:clamp(24px,3vw,36px);line-height:1.05;
-  color:#f6f3e8;margin:5px 0 0;letter-spacing:-.035em}
-.plan-page .history-analytics-head>p{font-size:14px;line-height:1.55;color:#b9cbc2;margin:0;max-width:48ch}
-.plan-page .history-analytics .eyebrow{color:#c8df70}
+  color:var(--ink);margin:5px 0 0;letter-spacing:-.035em}
+.plan-page .history-analytics-head>p{font-size:14px;line-height:1.55;color:var(--muted);margin:0;max-width:48ch}
+.plan-page .history-analytics .eyebrow{color:var(--accent)}
 .plan-page .history-totals{display:grid;grid-template-columns:repeat(3,1fr);
-  border-top:1px solid rgba(246,243,232,.18);border-bottom:1px solid rgba(246,243,232,.18);
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
   margin-bottom:32px}
 .plan-page .history-totals div{padding:20px 20px 18px 0;
-  border-right:1px solid rgba(246,243,232,.18)}
+  border-right:1px solid var(--rule)}
 .plan-page .history-totals div+div{padding-left:20px}
 .plan-page .history-totals div:last-child{border-right:0}
 .plan-page .history-totals span{display:block;font:600 clamp(36px,5vw,58px)/.9 var(--display);
-  letter-spacing:-.05em;color:#f6f3e8}
+  letter-spacing:-.05em;color:var(--ink)}
 .plan-page .history-totals small{display:block;font:500 10px/1.3 var(--mono);
-  text-transform:uppercase;letter-spacing:.08em;color:#b9cbc2;margin-top:10px}
+  text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-top:10px}
 .plan-page .history-viz-grid{display:grid;
   grid-template-columns:minmax(0,1.15fr) minmax(300px,.85fr);gap:clamp(32px,6vw,72px)}
 .plan-page .history-viz-grid>article{min-width:0}
-.plan-page .history-viz-grid h4{font-size:15px;color:#f6f3e8;margin:0 0 16px}
+.plan-page .history-viz-grid h4{font-size:15px;color:var(--ink);margin:0 0 16px}
 .plan-page .history-legend{display:flex;flex-wrap:wrap;gap:7px 16px;min-height:18px;margin:-4px 0 17px}
 .plan-page .history-legend span{display:inline-flex;gap:7px;align-items:center;
-  font:11px/1.2 var(--mono);color:#b9cbc2}
+  font:11px/1.2 var(--mono);color:var(--muted)}
 .plan-page .history-legend i{display:block;width:10px;height:10px}
 .plan-page .history-bars{display:grid;gap:14px}
 .plan-page .history-bar-row{display:grid;grid-template-columns:5ch 1fr 3ch;gap:12px;align-items:center}
 .plan-page .history-bar-row>span,.plan-page .history-bar-row>strong{
-  font:12px/1 var(--mono);color:#b9cbc2}
-.plan-page .history-bar-row>strong{text-align:right;color:#f6f3e8}
-.plan-page .history-bar-track{display:flex;height:16px;background:rgba(246,243,232,.09);overflow:hidden}
+  font:12px/1 var(--mono);color:var(--muted)}
+.plan-page .history-bar-row>strong{text-align:right;color:var(--ink)}
+.plan-page .history-bar-track{display:flex;height:16px;background:var(--rule-fine);overflow:hidden}
 .plan-page .history-bar-track i{display:block;height:100%;flex:0 0 auto}
-.plan-page .history-bar-track i+i{border-left:2px solid #102b27}
-.plan-page .author-board{display:grid;gap:0;border-top:1px solid rgba(246,243,232,.18)}
+.plan-page .history-bar-track i+i{border-left:2px solid var(--surface-2)}
+.plan-page .author-board{display:grid;gap:0;border-top:1px solid var(--rule)}
 .plan-page .author-card{display:grid;grid-template-columns:40px 1fr auto;gap:14px;align-items:center;
-  border-bottom:1px solid rgba(246,243,232,.18);padding:14px 0}
+  border-bottom:1px solid var(--rule);padding:14px 0}
 .plan-page .author-initials{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;
-  color:#102b27;font:600 10px/1 var(--mono);letter-spacing:.05em}
-.plan-page .author-card h5{font-size:15px;color:#f6f3e8;margin:0 0 4px}
-.plan-page .author-card p{font:10px/1.4 var(--mono);color:#b9cbc2;margin:0;text-transform:lowercase}
-.plan-page .author-card>strong{text-align:right;font:600 28px/1 var(--display);color:#f6f3e8}
+  color:var(--surface-2);font:600 10px/1 var(--mono);letter-spacing:.05em}
+.plan-page .author-card h5{font-size:15px;color:var(--ink);margin:0 0 4px}
+.plan-page .author-card p{font:10px/1.4 var(--mono);color:var(--muted);margin:0;text-transform:lowercase}
+.plan-page .author-card>strong{text-align:right;font:600 28px/1 var(--display);color:var(--ink)}
 .plan-page .author-card>strong span,.plan-page .author-card>strong small{display:block}
 .plan-page .author-card>strong small{font:8.5px/1.2 var(--mono);text-transform:uppercase;
-  letter-spacing:.08em;color:#b9cbc2;margin-top:4px}
+  letter-spacing:.08em;color:var(--muted);margin-top:4px}
 .plan-page .history-log{border-top:1px solid var(--ink)}
-.plan-page .history-day{border-bottom:1px solid rgba(19,26,23,.24)}
+.plan-page .history-day{border-bottom:1px solid var(--rule)}
 .plan-page .history-day>.dia{display:grid;grid-template-columns:86px 1fr auto 28px;gap:20px;
   align-items:center;cursor:pointer;list-style:none;padding:18px 2px;margin:0;color:var(--ink)}
 .plan-page .history-day>.dia::-webkit-details-marker{display:none}
@@ -496,7 +525,7 @@ tbody tr.hi td{background:var(--sienna-soft);font-weight:600}
   .plan-page .history-heading h2{max-width:none}
   .plan-page .history-totals{grid-template-columns:repeat(3,1fr)}
   .plan-page .history-totals div,.plan-page .history-totals div+div{padding:14px 8px;
-    border-right:1px solid rgba(246,243,232,.18);border-bottom:0}
+    border-right:1px solid var(--inv-rule);border-bottom:0}
   .plan-page .history-totals div:first-child{padding-left:0}
   .plan-page .history-totals div:last-child{padding-right:0;border-right:0}
   .plan-page .history-totals span{font-size:34px}
@@ -510,8 +539,8 @@ tbody tr.hi td{background:var(--sienna-soft);font-weight:600}
    ========================================================================== */
 .plan-page{background:var(--sheet)}
 .plan-page .sheet{max-width:1240px}
-.plan-hero{--hero-night:#102b27;--hero-ink:#f6f3e8;--hero-muted:#a9b9b1;
-  --hero-line:rgba(246,243,232,.16);--hero-lime:#c8df70;--hero-coral:#f17b5d;
+.plan-hero{--hero-night:var(--inv-bg);--hero-ink:var(--inv-fg);--hero-muted:var(--inv-fg-2);
+  --hero-line:var(--inv-rule);--hero-lime:var(--inv-accent);--hero-coral:var(--inv-alarm);
   position:relative;overflow:hidden;background:var(--hero-night);color:var(--hero-ink)}
 .plan-hero::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.32;
   background-image:linear-gradient(var(--hero-line) 1px,transparent 1px),
@@ -536,32 +565,32 @@ tbody tr.hi td{background:var(--sienna-soft);font-weight:600}
 .plan-hero h1 span{color:var(--hero-lime);font-weight:500}
 .plan-hero .lede{font-family:var(--display);font-size:clamp(17px,2vw,22px);line-height:1.42;
   color:var(--hero-muted);max-width:46ch;margin:28px 0 0}
-.plan-now{background:var(--hero-ink);color:var(--hero-night);padding:24px;
+.plan-now{background:var(--ground);color:var(--ink);padding:24px;
   border-top:6px solid var(--hero-coral);box-shadow:14px 14px 0 rgba(0,0,0,.14)}
 .plan-now-label{font:500 9px/1.2 var(--mono);letter-spacing:.16em;text-transform:uppercase;
-  color:#55655e;margin:0 0 20px}
+  color:var(--ink-2);margin:0 0 20px}
 .plan-now h2{font-size:clamp(42px,6vw,70px);line-height:.9;letter-spacing:-.055em;
   margin:0 0 16px;max-width:none}
-.plan-now h2 a{color:var(--hero-night);text-decoration:none}
-.plan-now>p:not(.plan-now-label){font:500 15px/1.45 var(--display);color:#334840;margin:0}
+.plan-now h2 a{color:var(--ink);text-decoration:none}
+.plan-now>p:not(.plan-now-label){font:500 15px/1.45 var(--display);color:var(--ink-2);margin:0}
 .plan-now-state{display:flex;align-items:center;gap:9px;margin-top:24px;padding-top:14px;
-  border-top:1px solid #d4d8cf;font:500 9.5px/1.3 var(--mono);letter-spacing:.08em;
-  text-transform:uppercase;color:#55655e}
+  border-top:1px solid var(--rule);font:500 9.5px/1.3 var(--mono);letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink-2)}
 .plan-now-state span{width:9px;height:9px;border-radius:50%;background:var(--hero-coral);
-  box-shadow:0 0 0 4px rgba(241,123,93,.16)}
+  box-shadow:0 0 0 4px var(--inv-accent-soft)}
 
 .plan-page .tablero-cifras{display:grid;grid-template-columns:1fr 1fr 1.3fr 1fr;
-  border:1px solid var(--hero-line);background:rgba(4,20,18,.22);margin:0}
+  border:1px solid var(--hero-line);background:var(--inv-rule);margin:0}
 .plan-page .tablero-cifras>div{min-width:0;padding:22px clamp(14px,2vw,24px) 20px;
   border-right:1px solid var(--hero-line)}
 .plan-page .tablero-cifras>div:last-child{border-right:0}
 .plan-page .tablero-cifras .k{display:block;min-height:2.6em;font:500 11px/1.3 var(--mono);
-  letter-spacing:.08em;text-transform:uppercase;color:#cfe0d6}
+  letter-spacing:.08em;text-transform:uppercase;color:var(--inv-fg-2)}
 .plan-page .tablero-cifras .v{display:inline-block;margin-top:11px;font:600 clamp(34px,4vw,52px)/.9 var(--display);
   letter-spacing:-.05em;font-variant-numeric:tabular-nums;color:var(--hero-ink)}
-.plan-page .tablero-cifras .u{margin-left:6px;font:500 14px/1 var(--mono);color:#b9cbc2}
+.plan-page .tablero-cifras .u{margin-left:6px;font:500 14px/1 var(--mono);color:var(--inv-fg-2)}
 .plan-page .tablero-cifras .n{display:block;margin-top:10px;min-height:2.9em;
-  font:400 13px/1.45 var(--body);font-variant-numeric:tabular-nums;color:#b9cbc2}
+  font:400 13px/1.45 var(--body);font-variant-numeric:tabular-nums;color:var(--inv-fg-2)}
 .plan-page .tablero-cifras .cerrado .v{color:var(--hero-lime)}
 .plan-page .tablero-cifras .critico .v{color:var(--hero-ink)}
 
@@ -569,25 +598,25 @@ tbody tr.hi td{background:var(--sienna-soft);font-weight:600}
   column-gap:28px;row-gap:10px;margin:26px 0 0;align-items:end}
 .plan-page .reparto-head{display:block;margin:0;grid-row:1/3}
 .plan-page .reparto-head span{display:block;font:500 11px/1.35 var(--mono);
-  letter-spacing:.08em;text-transform:uppercase;color:#cfe0d6}
+  letter-spacing:.08em;text-transform:uppercase;color:var(--inv-fg-2)}
 .plan-page .reparto-head span:last-child{margin-top:8px;font-size:15px;letter-spacing:0;
   text-transform:none;color:var(--hero-ink)}
 .plan-page .reparto-regla{display:flex;height:20px;border:1px solid var(--hero-line);
-  background:rgba(255,255,255,.05)}
+  background:var(--inv-rule-soft)}
 .plan-page .reparto-regla i{display:block;height:100%}
 .plan-page .reparto-regla .ok{background:var(--hero-lime)}
 .plan-page .reparto-regla .wip{background:var(--ochre)}
 .plan-page .reparto-regla .todo{background:repeating-linear-gradient(90deg,
-  rgba(255,255,255,.18) 0 1px,transparent 1px 8px)}
+  var(--inv-rule) 0 1px,transparent 1px 8px)}
 .plan-page .reparto-leyenda{display:flex;flex-wrap:wrap;gap:8px 24px;margin:0}
 .plan-page .reparto-leyenda span{display:flex;align-items:center;gap:8px;
-  font:400 12.5px/1.4 var(--mono);font-variant-numeric:tabular-nums;color:#b9cbc2}
+  font:400 12.5px/1.4 var(--mono);font-variant-numeric:tabular-nums;color:var(--inv-fg-2)}
 .plan-page .reparto-leyenda i{width:8px;height:8px;flex:none}
 .plan-page .reparto-leyenda .ok i{background:var(--hero-lime)}
 .plan-page .reparto-leyenda .wip i{background:var(--ochre)}
 .plan-page .reparto-leyenda .todo i{border:1px solid var(--hero-muted)}
 .plan-page .reparto-metodo{grid-column:1/-1;margin:14px 0 0;max-width:78ch;
-  font:400 14.5px/1.6 var(--body);color:#b9cbc2}
+  font:400 14.5px/1.6 var(--body);color:var(--inv-fg-2)}
 .plan-page .reparto-metodo b{color:var(--hero-ink);font-weight:600;letter-spacing:0;
   text-transform:none}
 
@@ -595,7 +624,7 @@ tbody tr.hi td{background:var(--sienna-soft);font-weight:600}
 .plan-page .cadena-head{display:flex;justify-content:space-between;gap:20px;align-items:baseline;
   margin:0 0 14px}
 .plan-page .cadena-head span{font:500 11px/1.3 var(--mono);letter-spacing:.08em;
-  text-transform:uppercase;color:#cfe0d6}
+  text-transform:uppercase;color:var(--inv-fg-2)}
 .plan-page .cadena-head span:last-child{letter-spacing:0;text-transform:none}
 .plan-page .cadena-via{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;
   background:var(--hero-line);border:1px solid var(--hero-line)}
@@ -606,7 +635,7 @@ tbody tr.hi td{background:var(--sienna-soft);font-weight:600}
   color:var(--hero-line);font:400 13px/1 var(--mono)}
 .plan-page .fase-critica:last-child::after{display:none}
 .plan-page .fase-critica.actual{background:var(--hero-lime);color:var(--hero-night)}
-.plan-page .fase-critica.cerrada{background:rgba(200,223,112,.13);color:var(--hero-lime)}
+.plan-page .fase-critica.cerrada{background:var(--inv-accent-soft);color:var(--hero-lime)}
 .plan-page .fase-num{grid-row:1/3;font:500 10px/1.2 var(--mono);opacity:.75}
 .plan-page .fase-critica strong{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
   padding-right:14px;font:600 13px/1.2 var(--display);color:inherit}
@@ -628,7 +657,7 @@ tbody tr.hi td{background:var(--sienna-soft);font-weight:600}
 
 /* ---------- contenido del plan ---------- */
 .plan-page>.nav{background:var(--sheet);
-  border-bottom:1px solid rgba(19,26,23,.18)}
+  border-bottom:1px solid var(--rule)}
 .plan-page>.nav .nav-inner{max-width:1240px}
 .plan-page>.sheet>.panel{padding-top:58px}
 .plan-page .section-intro{max-width:74ch;margin:0 0 28px;padding-left:20px;
@@ -675,7 +704,7 @@ tbody tr.hi td{background:var(--sienna-soft);font-weight:600}
 .plan-page .us{display:block;margin:8px 0;padding:0;border:1px solid var(--rule-fine);
   background:var(--panel);scroll-margin-top:76px}
 .plan-page .us[open]{border-color:var(--rule);background:var(--panel);
-  box-shadow:0 7px 24px rgba(19,26,23,.05)}
+  box-shadow:0 7px 24px var(--surface-2)}
 .plan-page .us-top{grid-template-columns:auto 1fr auto auto auto;gap:16px;align-items:center;
   padding:15px 16px;cursor:pointer;list-style:none}
 .plan-page .us-top::-webkit-details-marker{display:none}

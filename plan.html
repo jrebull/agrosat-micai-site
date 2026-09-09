@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<meta name="theme-color" content="#102b27">
+<meta name="theme-color" content="#EFEEE7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0D100F" media="(prefers-color-scheme: dark)">
 <title>Plan por épicas · AgroSatCopilot MICAI 2027</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -89,7 +90,7 @@
     </div>
     <details class="registro">
       <summary>Cuarentena, reencuadre y el registro largo del estado</summary>
-    <div class="callout" data-cuarentena style="border-top-color:#b03a2e">
+    <div class="callout" data-cuarentena style="border-top-color:var(--alarm)">
     <p><b>CUARENTENA.</b> Esta página reproduce cifras derivadas de artefactos marcados
       <code>OBSOLETO</code> en el registro de custodia: las produjo el módulo de evaluación cuando
       aún tenía tres defectos —denominador móvil, punto de operación elegido dentro del bloque que
@@ -1564,7 +1565,7 @@
   });
 
   var historyDates = Object.keys(historyByDate).sort();
-  var authorPalette = ["#c8df70", "#f17b5d", "#f6f3e8", "#d7a541"];
+  var authorPalette = ["var(--data-2)", "var(--data-1)", "var(--ink)", "var(--muted)"];
   var authorColor = {};
   Object.keys(historyByAuthor).sort().forEach(function(author, index){
     authorColor[author] = authorPalette[index % authorPalette.length];
