@@ -192,9 +192,12 @@
         <b>US-157 sigue en curso</b>: la rejilla de veinte perfiles, los adaptadores semánticos y
         el productor están congelados y auditados sin ejecutar resultados; seis salidas permanecen
         declaradas pero ausentes hasta el preregistro. El manuscrito LNCS anónimo llega a
-        <b>dieciséis páginas y seis de ocho secciones redactadas</b>. <b>US-144 pasa a en curso</b>:
+        <b>diecisiete páginas y seis de ocho secciones redactadas</b>. <b>US-144 sigue en curso</b>:
         el apéndice se genera desde siete contratos sellados y resultados y discusión están
-        deliberadamente vacíos. <b>US-143
+        deliberadamente vacíos; la declaración de disponibilidad ya está integrada. <b>US-145
+        pasa a en curso</b>: el ZIP anónimo se construye desde una lista blanca, se audita completo
+        y recompila el PDF byte a byte en un directorio limpio. No se declara cerrado porque el
+        paquete final depende de que US-144 termine. <b>US-143
         también está en curso</b>: el contrato ejecutable de las figuras ya impide repetir el
         ancho y los canales defectuosos, pero todavía no se ha regenerado ninguna figura
         empírica. En <b>US-172</b>, ocho decisiones operativas están cerradas —incluido «no aplica»
@@ -294,7 +297,7 @@
     <div class="colophon plan-colophon">
       <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
       <span><b>Total</b> <span id="total-sp">—</span> puntos de historia</span>
-      <span><b>Actualizado</b> 8 de septiembre de 2026, US-144 con apéndice verificable; cero resultados empíricos</span>
+      <span><b>Actualizado</b> 8 de septiembre de 2026, US-145 con paquete anónimo verificable; cero resultados empíricos</span>
     </div>
   </div>
 </header>
@@ -544,6 +547,10 @@
       <tr><td><b>US-144</b></td><td>Apéndice verificable</td><td>PR #32 genera el apéndice desde siete contratos SELLADO —estimando, panel, conformal, HCAT4, partición espacial, desbalance e identidades de modelo— y comprueba ruta, estado y MD5 antes de compilar. El contrato conforme, que carecía de fila propia, entra en custodia. El manuscrito llega a dieciséis páginas y seis de ocho secciones redactadas, sin resultados empíricos</td><td><code data-author="Javier Rebull">43bc64a</code></td></tr>
       <tr><td><b>US-144</b></td><td>Correctivo del tablero</td><td>El fragmento generado hacía que el contador publicara nueve secciones aunque el manuscrito solo declara ocho. La unidad deja de ser «todo fichero TeX bajo la carpeta» y pasa a ser cada entrada superior de <code>main.tex</code>, incluyendo recursivamente su contenido. La pestaña En vivo deriva ahora dieciséis páginas, seis de ocho secciones y veintiún controles de veintiuno</td><td><code data-author="Javier Rebull">5a89b18</code></td></tr>
       <tr><td><b>US-144</b></td><td>Estado verificable</td><td>El gate confundía las dependencias necesarias para terminar con las necesarias para empezar y obligaba a publicar «sin iniciar» una historia con seis secciones escritas. <code>dep</code> conserva el camino crítico completo; <code>start_dep</code> declara el subconjunto que autoriza trabajo parcial. El control rechaza IDs ajenos al grafo, texto residual y duplicados. US-144 pasa a en curso sin presentar como resueltos sus tres prerrequisitos pendientes</td><td><code data-author="Javier Rebull">4b5decd</code></td></tr>
+      <tr><td><b>US-143 / US-144</b></td><td>Figura conceptual</td><td>Las cuatro acciones y sus dos fronteras se dibujan en un mismo espacio de entrega: la figura distingue qué se fija una vez, qué se decide por parcela y qué queda restringido por la jerarquía. No contiene resultados ni magnitudes de ningún banco y sus canales siguen siendo legibles sin color</td><td><code data-author="Javier Rebull">59cf359</code></td></tr>
+      <tr><td><b>US-143</b></td><td>Custodia</td><td>Los dos SVG de la figura conceptual quedan sellados con procedencia Git; los PDF derivados se sellan por sus bytes porque el repositorio los excluye de Git. El gate comprueba ambas representaciones</td><td><code data-author="Javier Rebull">0e38ece</code></td></tr>
+      <tr><td><b>US-145</b></td><td>Anonimato por ataque</td><td>El detector deja de comparar cadenas sin acentos, incorpora el ORCID y el correo que faltaban y prueba formas realmente renderizadas. Retirar la normalización vuelve roja la autoprueba; el camera-ready completo dispara el control como debe</td><td><code data-author="Javier Rebull">b9a01bf</code></td></tr>
+      <tr><td><b>US-145</b></td><td>Paquete verificable</td><td>Las identidades salen del árbol anónimo y solo entran con el testigo local del camera-ready. <code>make micai-zip</code> prepara en un directorio vacío una lista blanca cerrada, inspecciona rutas, fuentes, texto y metadatos PDF, fija los metadatos ZIP y recompila el manuscrito byte a byte en un segundo directorio limpio. La declaración de disponibilidad dice expresamente qué contiene hoy el envío y qué todavía no existe</td><td><code data-author="Javier Rebull">79c0e23</code></td></tr>
       </tbody></table></div>
     </details>
 
@@ -1461,7 +1468,7 @@
          out:"docs/paper/afirmaciones-retiradas.md; scripts/micai_claims_check.py; tests/scripts/test_micai_claims_check.py", dep:"—"},
         {id:"US-144", t:"El manuscrito", sp:13, st:"wip",
          role:"Como autor, quiero escribir el artículo del ángulo nuevo, no parchear el anterior, porque el anterior arrastra frases que ya no corresponden a ningún dato.",
-         ac:["EN CURSO, RESULTADOS AUSENTES A PROPÓSITO. paper/micai2027 compila en LNCS anónimo, A4, dieciséis páginas y seis de ocho secciones redactadas: introducción, trabajo relacionado, problema y estimando, mecánica, protocolo y apéndice. Resultados y discusión permanecen como esqueleto dependiente", "Veinte páginas. La cuenta honesta dice que la rejilla completa pide unas VEINTISÉIS, así que hay que recortar seis y el recorte se decide AHORA, no cuando salga la convocatoria",
+         ac:["EN CURSO, RESULTADOS AUSENTES A PROPÓSITO. paper/micai2027 compila en LNCS anónimo, A4, diecisiete páginas y seis de ocho secciones redactadas: introducción, trabajo relacionado, problema y estimando, mecánica, protocolo y apéndice. La declaración de disponibilidad también está integrada; resultados y discusión permanecen como esqueleto dependiente", "Veinte páginas. La cuenta honesta dice que la rejilla completa pide unas VEINTISÉIS, así que hay que recortar seis y el recorte se decide AHORA, no cuando salga la convocatoria",
              "Recortes decididos, en orden: la autopsia al depósito con DOI dejando un párrafo en método (−0,9); un predictor preseleccionado por banco en el cuerpo y la rejilla completa al depósito (−0,7); la reducción formal al F1 alineado y la sensibilidad a g al apéndice del depósito (−0,7); el barrido de desbalance a cuatro frases y un panel (−0,6); fuera la curva de riesgo, que el diagrama de fases subsume (−0,6); la frase de límite metodológico solo para los ocho trabajos más cercanos y no para las treinta y cinco citas (−0,6); los casos de uso fundidos en la figura (−0,3); equidad por clase y por área en una figura de dos paneles (−0,4)",
              "Lo que NO se recorta bajo ninguna circunstancia: el sesgo en la estadística de superficie y la decisión de despliegue real. Son las dos únicas cosas del artículo que nadie más puede escribir",
              "La sección de robustez lleva las diez pruebas de la EPIC 26, cada una respondiendo a un ataque nombrado. No es una frase de cortesía: es un cuarto de la sección de resultados",
@@ -1480,19 +1487,20 @@
       ]
     },
     {
-      id:"EPIC 24", name:"Entrega", status:"idle",
+      id:"EPIC 24", name:"Entrega", status:"wip",
       goal:"Cerrar el envío sin los agujeros que la auditoría encontró: el anonimato roto por el sobre, las licencias sin atribución, y un apéndice de reproducibilidad que el lector no puede alcanzar.",
       us:[
-        {id:"US-145", t:"Empaquetado con gate sobre todo el archivo", sp:5, st:"idle",
+        {id:"US-145", t:"Empaquetado con gate sobre todo el archivo", sp:5, st:"wip",
          role:"Como autor que envía un zip del proyecto LaTeX, quiero que el gate mire todos los archivos del zip y no solo el PDF, porque el fuente lleva los nombres, los ORCID y los correos.",
-         ac:["Bloque de firmas fuera del fuente principal, en un archivo que solo entra en el camera-ready",
-             "Zip construido desde una lista blanca en un directorio limpio, nunca comprimiendo el árbol entero",
-             "El gate recorre todos los archivos del zip, sus metadatos de documento y los nombres de ruta de cada entrada",
-             "El gate normaliza acentos: hoy «tecnologico» no puede coincidir con «Tecnológico» y tres de dieciséis tokens son inertes",
-             "Tokens que faltan añadidos, incluido el ORCID del segundo autor",
-             "La autoprueba inyecta la forma RENDERIZADA, no el token, que es lo que dejaba pasar el fallo",
-             "Comprobado que la mutación se aplica de verdad antes de creer ningún verde"],
-         out:"make micai-zip", dep:"US-144"},
+         ac:["INFRAESTRUCTURA TERMINADA, CIERRE PENDIENTE DEL MANUSCRITO. El bloque de firmas vive fuera de paper/micai2027 y solo entra cuando existe el testigo local del camera-ready; ni el bloque ni el testigo pertenecen a la lista blanca anónima",
+             "make micai-zip construye el archivo desde una lista blanca en un directorio vacío, nunca comprimiendo el árbol entero, e incluye las dependencias LNCS necesarias para recompilar",
+             "El gate recorre en las dos direcciones todos los archivos del ZIP, sus nombres de ruta, todo contenido textual y el texto y metadatos de cada PDF; una entrada añadida o perdida falla",
+             "El gate normaliza Unicode y acentos: «tecnologico» sí detecta «Tecnológico»",
+             "La lista añade las identidades que faltaban, incluidos el ORCID del segundo autor y los correos vigentes",
+             "La autoprueba inyecta la forma RENDERIZADA de cada identidad, no el token canónico; retirar la normalización hace fallar una prueba dedicada",
+             "El camera-ready armado se comprueba en negativo y revela las identidades esperadas; el ZIP anónimo recompila main.pdf byte a byte en un segundo directorio limpio",
+             "La declaración de disponibilidad distingue el proyecto LaTeX incluido, los resultados que todavía no existen, el código aún privado y los datos fuente que no se redistribuyen"],
+         out:"make micai-zip", dep:"US-144", start_dep:"US-144"},
         {id:"US-146", t:"Depósito citable con DOI", sp:3, st:"idle",
          role:"Como revisor, quiero alcanzar el ledger, el preregistro y los datos derivados, porque el apéndice los describe y no los enlaza.",
          ac:["Ledger, preregistro, enmiendas, artefactos derivados y código en un depósito con DOI",
