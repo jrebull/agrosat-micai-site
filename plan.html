@@ -30,10 +30,11 @@
       </div>
       <aside class="plan-now" aria-labelledby="plan-now-title">
         <p class="plan-now-label">Ahora · cuello de botella</p>
-        <h2 id="plan-now-title"><a href="#US-160">Ejecución empírica</a></h2>
-        <p>US-140 cerró estimando, geometría, puntos de operación, familia simultánea, potencia y
-          alternativa prospectiva antes de mirar resultados. El cuello de botella pasa a ejecutar
-          los seis brazos y regenerar los artefactos bajo ese contrato, sin reabrir sus valores.</p>
+        <h2 id="plan-now-title"><a href="#US-136">Banco y posteriores</a></h2>
+        <p>La inferencia simultánea y la potencia prospectiva ya son ejecutables, pero el manifiesto
+          sigue en <code>mechanics_only</code>: GEO-Bench fue descartado, no existe otro banco
+          confirmatorio congelado y los OOF disponibles solo cubren el fold 5, sin los posteriores
+          de entrenamiento y validación que fijan el punto de operación.</p>
         <div class="plan-now-state"><span></span>En curso · sin crédito parcial</div>
       </aside>
     </div>
@@ -82,7 +83,7 @@
 
     <div class="cadena">
       <div class="cadena-head">
-        <span>Camino crítico · continúa en US-160</span>
+        <span>Camino crítico · continúa en US-136</span>
         <span id="cadena-resumen">—</span>
       </div>
       <div class="cadena-via" id="cadena-via"
@@ -129,6 +130,19 @@
         ejecutar resultados</b>: alfa, potencia objetivo, familia simultánea, remuestreos, semilla,
         puntos de operación, estadístico de disparidad y alternativa prospectiva tienen contrato
         sellado y control ejecutable. Son elecciones del estudio, no restricciones del problema.</p>
+      <p><b>Infraestructura primaria ejecutable, 9 de septiembre.</b>
+        <code>micai_profile_inference.py</code> implementa la familia simultánea de quince pares por
+        seis coordenadas con remuestreo pareado de <code>patch_id</code> dentro de bloque; conserva
+        las noventa coordenadas, evalúa las dos direcciones y retira una afirmación si alguna de sus
+        coordenadas tiene error estándar cero. <code>micai_profile_power.py</code> aplica la misma
+        regla a la alternativa prospectiva Dirichlet–multinomial en las seis colocaciones y la
+        rejilla ICC completa, y decide admisión por el mínimo de las cotas Wilson. Veintidós pruebas
+        nuevas atacan pareo, denominador, familia incompleta, semilla, varianza cero, rejilla
+        recortada y divergencia de contratos. <b>No es un resultado empírico.</b> La ejecución sigue
+        bloqueada por dos ausencias verificadas: ningún banco confirmatorio pasó US-136 y los
+        parquets disponibles contienen solo posteriores del fold 5, no entrenamiento y validación.
+        El runner heredado no puede rellenar esos huecos sin reintroducir la fuga que el protocolo
+        prohíbe.</p>
       <p><b>Estado previo al pivote del 9 de septiembre; conservado como registro.</b> Las ocho rondas cerraron defectos en código, tests,
         custodia y redacción. <b>US-173 es la primera historia científica cerrada del estudio
         reencuadrado</b>: la inferencia será condicional a cada banco, con la parcela como unidad,
@@ -144,16 +158,18 @@
         <b>US-155 también está en curso</b>: el MDE de la sensibilidad por bloques usa la t no
         central y ya no puede tomar su desviación ni su efecto del contraste que juzga. Escala y
         efecto llevan unidad, rol y fuente prospectiva; sin ellos el resultado queda pendiente. La
-        potencia del estimando primario por <code>patch_id</code> permanece separada y requiere
-        simulación después de US-172.
+        potencia del estimando primario por <code>patch_id</code> permanece separada; su simulador
+        prospectivo ya existe, y falta ejecutarlo sobre la estructura sin resultados del banco que
+        finalmente pase US-136.
         <b>US-127 está en curso</b>: ya existen los cinco contrastes contra el control, el par entre
         criterios de retirada y el conjunto de confianza de Fieller. El código rechaza mezclar
         presupuestos, afectados, tablas, cohortes o puntos de operación; no hay cifras empíricas.
         La propia implementación encontró que «razón denominador sobre ganancia» no define todavía
         numerador, denominador ni unidad, y que igualar pérdidas depende de US-172. <b>US-128 está
-        en curso</b>: la superficie completa exige los quince pares por estrato, deja el criterio
-        principal fuera de Holm y produce regiones de ganador compatible; faltan congelar los
-        valores empíricos de todos sus ejes.
+        en curso</b>: la vía primaria ya ejecuta el máximo absoluto studentizado sobre los quince
+        pares por seis coordenadas y conserva las dos direcciones sin elegir el signo después.
+        Holm queda para H2 y sensibilidades escalares; falta la superficie empírica con la
+        procedencia de todos sus ejes.
         <b>US-129 quedó cerrada</b>: el inventario cerrado enlaza cada artefacto nuevo con su
         régimen evidencial, su fila de custodia y, para confirmatorios, la ancestría respecto del
         preregistro. El manifiesto actual declara explícitamente cero resultados empíricos; el gate
@@ -306,7 +322,7 @@
       <div class="ledger-row"><span class="name">Historias nuevas terminadas</span><span class="note">épicas 18 a 27</span><span class="num" id="progress-done-new">—</span></div>
       <div class="ledger-row"><span class="name">Historias retiradas</span><span class="note">se conservan como registro</span><span class="num" id="progress-retired">—</span></div>
       <div class="ledger-row"><span class="name">Historias nuevas por ejecutar</span><span class="note">incluye dependencias aún no liberadas</span><span class="num" id="progress-pending">—</span></div>
-      <div class="ledger-row"><span class="name">Esfuerzo pendiente</span><span class="note">el camino crítico continúa en US-160</span><span class="num" id="progress-pending-sp">—</span></div>
+      <div class="ledger-row"><span class="name">Esfuerzo pendiente</span><span class="note">el camino crítico continúa en US-136</span><span class="num" id="progress-pending-sp">—</span></div>
     </div>
     </details>
     <div class="colophon plan-colophon">
@@ -503,8 +519,9 @@
           <p class="eyebrow">Derivado del historial · sin segundo recuento</p>
           <h3 id="history-analytics-title">Actividad por día y por autor Git</h3>
         </div>
-        <p>Cuenta solo commits elegidos como hitos del plan, no toda la actividad del repositorio.
-          Añadir una fila con fecha y autor actualiza ambos tableros.</p>
+        <p>Cuenta commits únicos elegidos como hitos del plan, no toda la actividad del repositorio.
+          Añadir una fila con fecha y autor actualiza ambos tableros; si dos hitos comparten SHA,
+          el gráfico cuenta ese commit una sola vez.</p>
       </div>
       <div class="history-totals" aria-label="Resumen del historial">
         <div><span id="history-total-commits">—</span><small>commits con evidencia</small></div>
@@ -558,6 +575,9 @@
       <tr><td><b>US-140</b></td><td>Camino estrecho</td><td>El control no se limita a encontrar una cifra en cualquier lugar del JSON: exige que cada literal impreso proceda del campo sellado que afirma citar. El primer uso real encontró cinco valores tipográficamente parecidos pero no idénticos y obligó a corregir la fuente</td><td><code data-author="Javier Rebull">52b90c7</code></td></tr>
       <tr><td><b>US-140</b></td><td>Pruebas semánticas</td><td>Las pruebas atacan alfa, tamaño de familia, alternativa no dominante, tipo de fuente, custodia y lenguaje residual de parámetros abiertos. Los tests antiguos que dependían del día del documento ahora construyen explícitamente el estado abierto que dicen comprobar</td><td><code data-author="Javier Rebull">46c173c</code></td></tr>
       <tr><td><b>US-140</b></td><td>Integración y cierre</td><td>PR #38 fusionada únicamente después de dos ejecuciones completas de CI sobre el SHA final. US-140 aporta sus tres SP: el manifiesto sigue en <code>mechanics_only</code>, el siguiente cuello de botella es la ejecución empírica y ningún resultado se cuenta por haber congelado el diseño</td><td><code data-author="Javier Rebull">47c07b5</code></td></tr>
+      <tr><td><b>US-140</b></td><td>Auditoría del congelado</td><td>El sello deja de ser la única defensa del contrato inferencial: ocho cruces derivados de <code>inference-v1.json</code> exigen que alfa, potencia, semilla, remuestreos y familia sigan coincidiendo con la prosa del preregistro incluso después de un resellado legítimo</td><td><code data-author="Javier Rebull">69b1419</code></td></tr>
+      <tr><td><b>US-128/155</b></td><td>Mecánica primaria</td><td>La familia simultánea de noventa coordenadas y ciento ochenta direcciones, y la potencia prospectiva sobre veinticuatro escenarios, pasan de contrato a implementación atacada por veintidós pruebas. No se publica resultado empírico: faltan un banco confirmatorio admisible y posteriores separados de entrenamiento y validación</td><td><code data-author="Javier Rebull">b320843</code></td></tr>
+      <tr><td><b>US-155</b></td><td>Camino de invocación</td><td>El cargador del contrato reconoce la misma fuente prospectiva al recibir rutas relativas o absolutas, pero sigue rechazando cualquier fichero distinto. La prueba ejecuta ambas formas para que el directorio de trabajo no cambie el estudio aceptado</td><td><code data-author="Javier Rebull">d939b68</code></td></tr>
       </tbody></table></div>
     </details>
 
@@ -700,7 +720,7 @@
       <tr><td><b>US-141</b></td><td>Avance</td><td>Trabajo relacionado verificado en fuente primaria: tabla con lo que cada referencia sostiene, su límite, y la redacción <b>prohibida</b>. Dieciséis claves comprobadas contra el catálogo</td><td><code data-author="Javier Rebull">2371eff</code></td></tr>
       <tr><td><b>US-141</b></td><td>Sello</td><td>Sellado el documento como normativo: fija qué se puede escribir de cada cita</td><td><code data-author="Javier Rebull">f26613a</code></td></tr>
       <tr><td><b>US-142</b></td><td>Corrección</td><td>El gate del bib buscaba la ruta en la línea entera y no en su celda: acusaba un cambio que no existía</td><td><code data-author="Javier Rebull">e8dbfb6</code></td></tr>
-      <tr><td><b>US-143</b></td><td>Avance</td><td>Contrato ejecutable de figuras: el guardado rechaza lienzos distintos de 4,8031 pulgadas, tipografía menor de 8 pt y series diferenciadas solo por color; PDF y SVG conservan el ancho físico y son reproducibles byte a byte. Queda en curso porque aún no genera figuras empíricas</td><td><code data-author="Javier Rebull">b60f160</code></td></tr>
+      <tr><td><b>US-143</b></td><td>Avance</td><td>Contrato ejecutable de figuras: el guardado rechaza lienzos distintos de 4,8031 pulgadas, tipografía menor de 8 pt y series diferenciadas solo por color; PDF y SVG conservan el ancho físico y son reproducibles byte a byte. Queda en curso porque aún no genera figuras empíricas</td><td><code data-author="Javier Rebull">978bffc</code></td></tr>
       <tr><td><b>—</b></td><td>Gobernanza</td><td>Revisión de la integración de Arthur: se conservan gates, LF, rutas Windows, plantillas y Graphify opcional; se restauran las decisiones ratificadas y los históricos. Engram compartido pasa de despliegue implícito a ADR-015 propuesta, con el estado nativo fuera de Git</td><td><code data-author="Javier Rebull">13aca1f</code></td></tr>
       <tr><td><b>—</b></td><td>Riesgo</td><td>La PR integrada incluía una sincronización de memoria nativa que publicó chunks comprimidos con datos de contacto y rutas locales. El commit que solo hacía esa sincronización desapareció al sanearse; el merge reescrito conserva la integración y la autoría</td><td><code data-author="Arthur Zizumbo">1be76a7</code></td></tr>
       <tr><td><b>—</b></td><td>CI</td><td>Cinco tests de custodia pasaban solo donde estaban materializados los artefactos sellados. Ahora crean un repositorio Git sintético y prueban el mecanismo sin depender de DVC ni de los artefactos de esta máquina</td><td><code data-author="Javier Rebull">e2554eb</code></td></tr>
@@ -1209,15 +1229,17 @@
          out:"ml/eval/paper_micai_coverage.py", dep:"US-124"},
         {id:"US-155", t:"Potencia con unidad y modelo explícitos", sp:3, st:"wip",
          role:"Como equipo a punto de comparar seis brazos, quiero que cada afirmación de potencia corresponda al estimando y la unidad que realmente analiza, y no a una fórmula conveniente aplicada a otra vista.",
-         ac:["MECÁNICA t TERMINADA, VALORES EMPÍRICOS PENDIENTES. ml/eval/micai_power.py resuelve el MDE bilateral con la distribución t no central; la suma anterior de dos cuantiles t centrales ya no existe en los productores. Alfa familiar, potencia objetivo, regla de multiplicidad, tamaño de familia, desviación prospectiva, fuente y unidades son entradas obligatorias, sin valores por defecto",
-             "La t no central solo describe la SENSIBILIDAD con medias de bloque de igual peso. No es la potencia del estimando primario de US-125, que conserva la media parcelaria y remuestrea patch_id completos. Esa potencia requiere simulación prospectiva sobre las seis coordenadas y la estructura de clúster observada; queda abierta y no se sustituye por el número de bloques",
+         ac:["MECÁNICA t Y SIMULACIÓN PRIMARIA TERMINADAS, EJECUCIÓN PENDIENTE. ml/eval/micai_power.py conserva el diagnóstico bilateral con t no central; ml/eval/micai_profile_power.py implementa la potencia prospectiva del criterio primario sin aceptar resultados observados",
+             "La t no central solo describe la SENSIBILIDAD con medias de bloque de igual peso. La potencia primaria simula perfiles de siete celdas con Dirichlet–multinomial sobre tamaños de patch y bloques planeados sin resultados, y aplica el mismo máximo studentizado de la inferencia primaria; no se sustituye por el número de bloques",
+             "La rejilla es cerrada: seis colocaciones del brazo dominante por cuatro ICC. Quitar un escenario falla; la admisión usa el mínimo de las veinticuatro cotas inferiores Wilson unilaterales, no la media ni el escenario favorable",
+             "El consumidor cruza la alternativa con el contrato: perfil, margen por coordenada, acoplamiento entre brazos, conteos, semillas, remuestreos, regla de éxito y estadístico de admisión. Volver a sellar dos JSON divergentes no basta para cambiar el análisis",
              "La identidad de cada unidad viaja al cálculo: repetir cinco veces el mismo nombre, o esconderlo con espacios, falla. Con menos de tres unidades se rechaza el MDE bajo la regla de publicación; una varianza cero observada no fabrica una escala prospectiva ni un MDE cero",
              "AUDITORÍA POR ATAQUE: la primera reparación seguía derivando la desviación y el efecto del mismo contraste evaluado. La escala y el efecto de planificación llevan ahora unidad, rol y fuente predeclarados. Sin escala no hay MDE; sin efecto no hay detectabilidad ni recuento hipotético de unidades. Dos pruebas cambian por separado la dispersión y el centro observados y exigen que la planificación permanezca invariante",
              "Para una familia Holm planificada se usa prospectivamente el primer umbral alfa/m. No se afirma que Holm tenga un único alfa para todos sus pasos, y m se fija antes de saber qué comparaciones producen una p válida",
              "El barrido de k ya no produce MDE ni tiene_potencia: subdividir el mismo territorio no crea información independiente. El número hipotético de unidades necesarias significa unidades NUEVAS bajo una desviación prospectiva declarada, no permiso para renombrar subdivisiones",
              "Las cifras históricas —0,0196, 0,0326, 0,0508, 0,0167, trece y veinte— siguen OBSOLETO. También cae la conclusión que dejábamos en pie: «ninguna medida de disparidad tiene potencia» vuelve a PENDIENTE y puede cambiar al regenerar",
-             "La potencia EVALÚA el criterio sustantivo congelado; nunca lo elige. El criterio principal es la dominancia de US-175 y sus parámetros se cierran en US-140. Se publican la simulación primaria y la sensibilidad t por bloques con nombres distintos, gane lo que gane"],
-         out:"ml/eval/micai_power.py; reports/paper_micai/potencia/", dep:"US-125, US-171"},
+             "La potencia EVALÚA el criterio sustantivo congelado; nunca lo elige. El criterio principal es la dominancia de US-175 y sus parámetros se cierran en US-140. Falta un banco admisible y su estructura sin resultados; hasta entonces no hay cifra de potencia ni ascenso confirmatorio"],
+         out:"ml/eval/micai_power.py; ml/eval/micai_profile_power.py; reports/paper_micai/potencia/", dep:"US-125, US-136, US-171"},
         {id:"US-171", t:"El número de bloques: un grado de libertad con el que cambia la conclusión", sp:8, st:"wip",
          role:"Como equipo al que le dijeron que hacen falta trece bloques y solo tiene cinco, quiero saber si el cinco es una restricción del dato o el valor por defecto de una función. Es lo segundo, y lo que se encuentra al mirarlo es más interesante que el permiso para usar quince.",
          ac:["MEDIDO y sellado: cinco es el valor por defecto de build_spatial_kfold y el fold retenido tiene 176 celdas H3. Con cinco el intervalo incluye el cero; con diez, doce, quince, veinte y veinticinco lo excluye. El artefacto trae una columna tiene_potencia que compara el efecto con un MDE calculado tratando las subdivisiones como si fueran n réplicas independientes: NO LO SON, y esa columna se renombra y se acompaña del Jaccard antes de que nadie la cite. Un MDE que baja porque partes más el mismo territorio no es potencia, es aritmética",
@@ -1245,16 +1267,16 @@
          out:"ml/eval/micai_contrasts.py; reports/paper_micai/", dep:"US-155, US-175"},
         {id:"US-128", t:"Multiplicidad bien definida", sp:3, st:"wip",
          role:"Como revisor de la corrección por multiplicidad, quiero que ninguna tabla corta, capa omitida o cambio de unidad pueda hacerse pasar por control del ganador de toda la superficie.",
-         ac:["MECÁNICA TERMINADA, SUPERFICIE EMPÍRICA PENDIENTE. ml/eval/micai_multiplicity.py recibe una lista explícita de estratos y otra de contrastes; ninguna se infiere de la otra. Quitar un par, añadir uno después o retirar un estrato completo falla",
-             "El criterio principal se reporta sin corregir, queda fuera de Holm y no se reutiliza para eliminar un brazo en el mapa exploratorio. Todo lo demás entra en una sola familia predeclarada",
-             "Cada estrato identifica banco, predictor, universo de clases, punto de operación, partición espacial, profundidad taxonómica, coordenada de resultado y semilla. US-140 congela alfa 0,05, 9 999 remuestreos, semilla 20260909 y la familia simultánea completa; el productor empírico aún debe aportar la procedencia de los ejes observados",
-             "Una selección entre los seis brazos exige los quince pares en CADA estrato. La tabla focal de US-127 conserva sus seis filas, pero ya no se confunde con la familia de selección: all_pairwise_budgeted_contrasts produce los nueve pares restantes bajo la misma validación de presupuesto, cohorte y separación de prueba",
-             "La única exclusión es una identidad por construcción predeclarada. Una sola diferencia parcelaria la refuta; una igualdad observada no la inventa. Si cualquier otra comparación carece de p válida, Holm no se aplica a toda la familia",
-             "La vista bootstrap publica y hace cumplir su resolución bilateral 2/(B+1). Con mil remuestreos el mínimo no nulo es aproximadamente 0,001998; una p menor que 0,0001 es imposible y el código la rechaza",
-             "El mapa devuelve una REGIÓN DE GANADOR COMPATIBLE: el mínimo observado y los brazos que la familia simultánea no logra excluir. Si la familia falla, devuelve los seis brazos y no fabrica un ganador",
+         ac:["MECÁNICA PRIMARIA TERMINADA, SUPERFICIE EMPÍRICA PENDIENTE. ml/eval/micai_profile_inference.py construye en una sola ejecución los quince pares por seis coordenadas y las dos direcciones; quitar un brazo, sustituir parcelas o desalinear patch y bloque falla",
+             "El criterio primario no usa Holm ni una pérdida puntual: el máximo absoluto de las noventa diferencias centradas y studentizadas produce cotas simultáneas. Holm permanece limitado a H2 y a sensibilidades escalares explícitamente separadas",
+             "Cada ejecución confirmatoria todavía debe identificar banco, predictor, universo de clases, punto de operación y partición. US-140 congela alfa 0,05, 9 999 remuestreos y semilla 20260909; el productor empírico debe aportar la procedencia de esos ejes sin elegirlos del resultado",
+             "SENSIBILIDAD ESCALAR HEREDADA: si se declara un vector de pérdida, una selección entre seis brazos exige quince pares por estrato. La tabla focal de US-127 conserva sus seis filas y all_pairwise_budgeted_contrasts completa los nueve pares restantes sin confundirse con la familia primaria",
+             "SENSIBILIDAD ESCALAR HEREDADA: la única exclusión de Holm es una identidad por construcción predeclarada. Una diferencia parcelaria la refuta; una igualdad observada no la inventa. Si otra comparación carece de p válida, Holm no se aplica a esa familia",
+             "La vía primaria conserva las noventa coordenadas aunque alguna tenga error estándar cero: esa coordenada no recibe intervalo ni p y bloquea la afirmación ordenada que la necesita. Con menos de tres patch_id pareados conserva los perfiles y retira toda inferencia",
+             "Una dominancia exige que las seis cotas superiores simultáneas de la misma relación ordenada queden bajo cero. El código evalúa las treinta direcciones predeclaradas; no abre una familia favorable después de ver el signo",
              "DOS CAMINOS ESTRECHOS CERRADOS: los contrastes ya no pueden definir por sí mismos qué estratos existían, y las medias del mapa llevan su unidad explícita. Una coincidencia numérica no permite mezclar la media parcelaria con la sensibilidad de bloques",
-             "LÍMITE DECLARADO: el convertidor verifica presupuesto y afectado contra los contrastes, pero las etiquetas de banco, predictor, partición y demás ejes necesitan aún la procedencia del productor empírico. Por eso US-128 sigue en curso y no hay resultados"],
-         out:"ml/eval/micai_multiplicity.py; ml/eval/decision_cost.py; paper/micai2027/sections/05-protocol.tex", dep:"US-125, US-140, US-175"},
+             "LÍMITE DECLARADO: no existe todavía banco confirmatorio ni un productor con posteriores separados de entrenamiento, validación y prueba. Por eso US-128 sigue en curso y no hay resultados; los OOF del fold 5 no pueden calibrar su propio punto de operación"],
+         out:"ml/eval/micai_profile_inference.py; ml/eval/micai_multiplicity.py; ml/eval/decision_cost.py; paper/micai2027/sections/05-protocol.tex", dep:"US-125, US-140, US-175"},
         {id:"US-129", t:"Gate de protocolo, probado en negativo", sp:3, st:"ok",
          role:"Como equipo al que se le colaron tres defectos de protocolo, quiero una comprobación que los detecte, y verla fallar antes de confiar en ella.",
          ac:["El inventario cerrado enumera TODOS los objetos bajo reports/micai2027. Cambiar extensión, mover a figuras o crear un directorio enlazado no oculta un resultado",
@@ -1609,10 +1631,16 @@
   var historyByDate = {};
   var historyByDateAndAuthor = {};
   var historyByAuthor = {};
+  var seenHistoryCommits = {};
+  var historyCommitCount = 0;
   Array.prototype.forEach.call(historyRows, function(row){
     var date = row.parentNode.getAttribute("data-date");
     var evidence = row.querySelector("td:last-child code[data-author]");
     if(!date || !evidence) return;
+    var commit = evidence.textContent.trim();
+    if(!/^[0-9a-f]{7,40}$/.test(commit) || seenHistoryCommits[commit]) return;
+    seenHistoryCommits[commit] = true;
+    historyCommitCount += 1;
     var author = evidence.getAttribute("data-author");
     var kind = row.children[1].textContent.trim();
     historyByDate[date] = (historyByDate[date] || 0) + 1;
@@ -1633,7 +1661,7 @@
   var historyAuthors = Object.keys(historyByAuthor).sort(function(a,b){
     return historyByAuthor[b].total - historyByAuthor[a].total || a.localeCompare(b);
   });
-  document.getElementById("history-total-commits").textContent = historyRows.length;
+  document.getElementById("history-total-commits").textContent = historyCommitCount;
   document.getElementById("history-total-days").textContent = historyDates.length;
   document.getElementById("history-total-authors").textContent = historyAuthors.length;
 
@@ -1787,8 +1815,8 @@
   var spTodo = spVivo - spOk - spWip;
 
   /* La secuencia es una decision del plan; sus conteos y puntos se derivan de EPICS. */
-  var CADENA = ["US-140","US-160","US-124","US-125","US-171","US-155","US-128",
-                "US-129","US-136","US-139","US-152","US-154","US-144","US-146","US-148"];
+  var CADENA = ["US-140","US-136","US-139","US-160","US-124","US-125","US-171",
+                "US-155","US-128","US-129","US-152","US-154","US-144","US-146","US-148"];
   var porId = {};
   stories.forEach(function(u){ porId[u.id] = u; });
   var cadenaPendiente = CADENA.filter(function(id){
@@ -1819,8 +1847,8 @@
 
   var FASES_CRITICAS = [
     {n:"01", t:"Congelar inferencia", ids:["US-140"]},
-    {n:"02", t:"Cerrar el diseño", ids:["US-160","US-124","US-125","US-171"]},
-    {n:"03", t:"Medir y tensionar", ids:["US-155","US-128","US-129","US-136","US-139"]},
+    {n:"02", t:"Admitir banco y panel", ids:["US-136","US-139"]},
+    {n:"03", t:"Medir y tensionar", ids:["US-160","US-124","US-125","US-171","US-155","US-128","US-129"]},
     {n:"04", t:"Elegir el mecanismo", ids:["US-152","US-154"]},
     {n:"05", t:"Escribir y entregar", ids:["US-144","US-146","US-148"]}
   ];
