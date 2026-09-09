@@ -30,10 +30,11 @@
       </div>
       <aside class="plan-now" aria-labelledby="plan-now-title">
         <p class="plan-now-label">Ahora · cuello de botella</p>
-        <h2 id="plan-now-title"><a href="#US-172">US-172</a></h2>
-        <p>La determinación institucional está por escrito y sellada. El protocolo v0.3 ya quedó
-          congelado antes del primer reclutamiento, con cuatro adjuntos reproducibles bajo custodia.
-          Falta obtener las respuestas de seis informantes, tres por cada afectado.</p>
+        <h2 id="plan-now-title"><a href="#US-140">US-140</a></h2>
+        <p>La vía de entrevistas se retiró antes de ejecutarse. Ya están congelados el estimando y
+          el espacio completo de seis pérdidas: perfiles por brazo, dominancia uniforme y fronteras
+          exactas en un símplex de dimensión cinco. Falta congelar los parámetros inferenciales y
+          ejecutar la evaluación, sin inventar preferencias ni afirmar quién paga.</p>
         <div class="plan-now-state"><span></span>En curso · sin crédito parcial</div>
       </aside>
     </div>
@@ -82,7 +83,7 @@
 
     <div class="cadena">
       <div class="cadena-head">
-        <span>Camino crítico · empieza en US-172</span>
+        <span>Camino crítico · empieza en US-140</span>
         <span id="cadena-resumen">—</span>
       </div>
       <div class="cadena-via" id="cadena-via"
@@ -116,7 +117,19 @@
         una función de pérdida identificada</b>, y la cardinalidad ocupaba ese lugar sin
         justificación. Por eso el plan se reordena: la <b>EPIC 27</b> va delante de todo y el camino
         crítico empieza ahí.</p>
-      <p><b>Estado al 9 de septiembre.</b> Las ocho rondas cerraron defectos en código, tests,
+      <p><b>Pivote vigente, 9 de septiembre.</b> La elicitación con informantes se retira del camino
+        crítico antes de recoger una sola respuesta. El protocolo v0.3 y sus adjuntos se conservan
+        congelados como vía válida pero no ejecutada. La salida normativa es
+        <code>loss-space-v1.json</code>: R0 como referencia, seis resultados con coste y, al quitar
+        solo la escala común, un símplex de dimensión cinco. Cada brazo produce su vector de
+        frecuencias; la inferencia primaria pregunta por dominancia componente a componente y por
+        hiperplanos de cambio de ganador condicionados a las demás pérdidas. No existe un umbral
+        escalar único, las vistas bidimensionales son sensibilidad y el artículo no atribuye una
+        preferencia a usuarios ni afirma quién soporta cada coste. <b>US-175 y la EPIC 27 quedan
+        cerradas; US-172 y US-174 se retiran sin crédito.</b> El siguiente cierre es US-140: fijar
+        alfa, potencia objetivo, familia simultánea, remuestreos, semilla y alternativa prospectiva
+        antes de ejecutar resultados.</p>
+      <p><b>Estado previo al pivote del 9 de septiembre; conservado como registro.</b> Las ocho rondas cerraron defectos en código, tests,
         custodia y redacción. <b>US-173 es la primera historia científica cerrada del estudio
         reencuadrado</b>: la inferencia será condicional a cada banco, con la parcela como unidad,
         <code>patch_id</code> como clúster y sin afirmar transporte. Quedan tres parámetros
@@ -293,13 +306,13 @@
       <div class="ledger-row"><span class="name">Historias nuevas terminadas</span><span class="note">épicas 18 a 27</span><span class="num" id="progress-done-new">—</span></div>
       <div class="ledger-row"><span class="name">Historias retiradas</span><span class="note">se conservan como registro</span><span class="num" id="progress-retired">—</span></div>
       <div class="ledger-row"><span class="name">Historias nuevas por ejecutar</span><span class="note">incluye dependencias aún no liberadas</span><span class="num" id="progress-pending">—</span></div>
-      <div class="ledger-row"><span class="name">Esfuerzo pendiente</span><span class="note">el camino crítico empieza en US-172</span><span class="num" id="progress-pending-sp">—</span></div>
+      <div class="ledger-row"><span class="name">Esfuerzo pendiente</span><span class="note">el camino crítico empieza en US-140</span><span class="num" id="progress-pending-sp">—</span></div>
     </div>
     </details>
     <div class="colophon plan-colophon">
       <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
       <span><b>Total</b> <span id="total-sp">—</span> puntos de historia</span>
-      <span><b>Actualizado</b> 9 de septiembre de 2026, determinación ética por escrito y sellada; cero resultados empíricos</span>
+      <span><b>Actualizado</b> 9 de septiembre de 2026, espacio completo de pérdidas congelado; cero resultados empíricos</span>
     </div>
   </div>
 </header>
@@ -448,9 +461,9 @@
           <code>train-h100</code> y la skill restaurada apuntan a otra VM Linux administrada por
           Azure. Ninguno de esos comandos debe ejecutarse hasta reconciliar la identidad y el modo
           de acceso. No bloquea el artículo MICAI, cuyo camino crítico no usa H100.</p>
-        <p><b>Lo que no resuelve.</b> US-172 sigue siendo el bloqueo sustantivo: sin una tabla de
-          pérdidas obtenida de personas reales, el artículo todavía no tiene la moneda con la que
-          comparar retirada, abstención, conjuntos y retroceso.</p>
+        <p><b>Lo que no resuelve.</b> El trabajo de Arthur no fija el diseño inferencial del
+          artículo. Ese cierre vive ahora en US-140: los perfiles y el espacio completo ya están
+          congelados, pero faltan los parámetros prospectivos antes de ejecutar.</p>
         <p><b>Revalidación de la PR #6.</b> El lote real no cumplía ADR-015 y se retiró. El
           prefiltro conserva la parte reutilizable del trabajo de Arthur, pero no comparte ni
           importa memoria. El harness enumera lo permitido en <code>docs/engram/</code>, de modo que
@@ -520,6 +533,17 @@
               <colgroup><col class="c-us"><col class="c-tipo"><col class="c-que"><col class="c-ev"></colgroup>
       <thead><tr><th>US</th><th>Tipo</th><th>Qué se hizo</th><th>Evidencia</th></tr></thead>
       <tbody data-date="2026-09-09">
+      <tr><td><b>US-175</b></td><td>Pivote metodológico</td><td>La vía de entrevistas se retira antes de ejecutarse. R0 y L1–L6 definen perfiles por brazo sobre el símplex completo de dimensión cinco; la salida primaria es dominancia uniforme y fronteras lineales, no un punto de preferencia atribuido</td><td><code data-author="Javier Rebull">067c606</code></td></tr>
+      <tr><td><b>US-175</b></td><td>Custodia derivada</td><td>El contrato, la enmienda y todos sus consumidores activos entran al sellador específico; sus MD5 y notas se derivan del fichero en vez de copiarse desde prosa</td><td><code data-author="Javier Rebull">0021a57</code></td></tr>
+      <tr><td><b>US-175</b></td><td>Propagación sellada</td><td>Preregistro, estimando, trabajo relacionado y enmienda quedan enlazados al nuevo contrato sin alterar el protocolo histórico no ejecutado</td><td><code data-author="Javier Rebull">ed5f344</code></td></tr>
+      <tr><td><b>US-175</b></td><td>Apéndice verificable</td><td>El apéndice publica ocho contratos, incluida la geometría completa. Una prueba que dependía de la posición de la lista fue corregida para localizar el contrato por ruta</td><td><code data-author="Javier Rebull">c899a94</code></td></tr>
+      <tr><td><b>US-130/131</b></td><td>Propagación completa</td><td>Los contratos conforme y HCAT4 dejan de remitir el ordenamiento a US-172: ambos conservan el perfil común de seis resultados para el análisis del espacio completo</td><td><code data-author="Javier Rebull">f8536f8</code></td></tr>
+      <tr><td><b>US-175</b></td><td>Resellado</td><td>Los dos consumidores corregidos vuelven a quedar bajo custodia con sus bytes vigentes; ninguna aparición activa mantiene la regla de entrevistas</td><td><code data-author="Javier Rebull">c82571d</code></td></tr>
+      <tr><td><b>US-155/133</b></td><td>Productores activos</td><td>Potencia y cobertura por clase dejan de prometer una pérdida elicitada o una atribución de quién paga; trabajan sobre perfiles de seis coordenadas y distribución observada</td><td><code data-author="Javier Rebull">bcdf62b</code></td></tr>
+      <tr><td><b>US-175</b></td><td>Control antirregresión</td><td>El gate del plan fija la transición completa: US-172 y US-174 retiradas, US-175 cerrada y US-140 en curso. Dos pruebas negativas impiden reabrir entrevistas o cerrar la geometría sin dimensión, dominancia y fronteras</td><td><code data-author="Javier Rebull">8a67f40</code></td></tr>
+      <tr><td><b>US-175</b></td><td>Calidad</td><td>El lint impide que el propio control use puntuación Unicode ambigua; la marca L1/L6 se comprueba sin depender de una raya concreta</td><td><code data-author="Javier Rebull">15fa4f7</code></td></tr>
+      <tr><td><b>US-175</b></td><td>Formato canónico</td><td>Los seis ficheros nuevos o ampliados pasan el formateador que ejecuta CI; el primer make check detectó que todavía no cumplían esa condición</td><td><code data-author="Javier Rebull">f41e524</code></td></tr>
+      <tr><td><b>US-175</b></td><td>Tipos</td><td>OutcomeProfile acepta de forma tipada mapas con claves LossOutcome; el error apareció en mypy de la validación integral y queda cubierto por las pruebas focales</td><td><code data-author="Javier Rebull">f93b3ae</code></td></tr>
       <tr><td><b>E23</b></td><td>Contraste por tema</td><td>Un fondo literal ya no puede heredar una tinta que cambia con el tema sin fijarla localmente. El gate convierte en regla el defecto que volvió ilegible la banda del historial en modo oscuro y conserva una lista cerrada de excepciones con motivo</td><td><code data-author="Javier Rebull">413c6c1</code></td></tr>
       <tr><td><b>US-172</b></td><td>Determinación escrita</td><td>La respuesta institucional deja de ser una llamada interpretada: el acta registra una determinación explícita de que el estudio no requiere revisión ni aprobación de comité, junto con las condiciones sobre las que se pronunció y sin copiar datos de contacto al repositorio</td><td><code data-author="Javier Rebull">4af0b6c</code></td></tr>
       <tr><td><b>US-172</b></td><td>Custodia</td><td>El acta queda SELLADO con MD5, bytes y procedencia; alterar su contenido o sustituirla por una ruta sin custodia vuelve rojo el gate</td><td><code data-author="Javier Rebull">31a885f</code></td></tr>
@@ -1005,7 +1029,7 @@
              "HALLAZGO AL PREPARAR EL RE-VOLCADO: los cinco huérfanos pertenecen a tres productores distintos. manifest.json describe una corrida densa de seis modelos y no debe fingirse como manifiesto de FarSLIP y XGBoost. Además, run_us041_ea pasa un registro de un solo modelo a dump_oof, que sobrescribe manifest.json: el re-volcado debe escribir en staging y fusionarse de forma explícita, nunca ejecutarse in-place",
              "FULLM — CERRADO TRAS CORREGIR EL PRODUCTOR: la primera reproducción coincidía en 28 531 de 28 532 porque repetía el mismo defecto: la especificación del modelo exigía T=37 y el dataset recibía T=10. El re-volcado corregido se reproduce exactamente. El manifest.json v1 queda como registro de su corrida original de seis modelos; la procedencia de Full-M vive en el inventario y el informe sellado. Los manifiestos v2 registran code_version y data_version por entrada, más n_timesteps_model_spec y n_timesteps_dataset para temporales; el gate exige que coincidan. Una reproducción de un productor defectuoso solo acredita que el defecto es reproducible",
              "XGB — CERRADO COMO ARTEFACTO, ABIERTO COMO DECISIÓN DE PAPER: xgb-alphaearth-remat-v1 tiene identidad propia, informe sellado y un único blob subido por DVC. Cubre 16 640 parcelas, coincide en 94,54 % de los argmax históricos y en 54,74 % bajo confianza 0,5. Nunca sustituye ni se presenta como reproducción del desplegado; el histórico sigue legacy_unverified. El patrón no demuestra que la causa sea semilla u orden porque su configuración histórica no está verificada",
-             "POBLACIÓN — HECHO, Y NO CRECIÓ: metadata.geojson produce exactamente las mismas 16 640 parcelas elegibles del fold 5 con etiqueta semantic18 válida. Los 11 892 registros adicionales de cada volcado denso carecen de etiqueta válida y no pertenecen al estimando. Las etiquetas y centroides conservaron sus bytes; la cobertura de los ocho miembros canónicos es 1,0 y quedó sellada. La ausencia futura se conserva como no entrega; su valoración espera la pérdida de US-172",
+             "POBLACIÓN — HECHO, Y NO CRECIÓ: metadata.geojson produce exactamente las mismas 16 640 parcelas elegibles del fold 5 con etiqueta semantic18 válida. Los 11 892 registros adicionales de cada volcado denso carecen de etiqueta válida y no pertenecen al estimando. Las etiquetas y centroides conservaron sus bytes; la cobertura de los ocho miembros canónicos es 1,0 y quedó sellada. La ausencia futura se conserva como no entrega dentro del perfil L1–L6",
              "El XGB histórico no se vuelve canónico por añadir una fila: permanece legacy_unverified y fuera del análisis inferencial. El inventario global distingue presencia, procedencia y aptitud para consumo",
              "DECISIÓN DE ALCANCE: farslip-ft18, farslip-zeroshot y xgb-alphaearth-italia pasan a excluded para MICAI 2027, sin borrarse. Su eventual reproducción pertenece a higiene del repositorio y no bloquea el artículo",
              "train_folds, val_folds, n_timesteps y md5 del checkpoint en los parámetros de MLflow",
@@ -1077,12 +1101,13 @@
       ]
     },
     {
-      id:"EPIC 27", name:"Identificar la pérdida, el estimando y la población", status:"wip",
-      goal:"La auditoría externa dio una sola causa raíz: **el problema de decisión no tiene una función de pérdida identificada, y la cardinalidad estaba ocupando ese lugar sin justificación**. Mientras eso siga así, comparar mecanismos es comparar en una moneda que nadie ha acuñado. Esta épica va delante de la 19 y bloquea a todas las demás. No consume cómputo: es la parte del trabajo que decide qué significan los números que vengan después.",
+      id:"EPIC 27", name:"Cerrar el espacio de pérdidas, el estimando y la población", status:"ok",
+      goal:"La comparación ya no necesita inventar una moneda ni entrevistar para fijar un punto. El estimando conserva, para cada brazo, las frecuencias de los seis resultados con coste; la decisión se estudia sobre todo el símplex normalizado de dimensión cinco mediante dominancia uniforme y fronteras lineales. El artículo no atribuye preferencias ni afirma quién paga.",
       us:[
-        {id:"US-172", t:"La tabla de pérdidas, por acción, resultado y afectado", sp:8, st:"wip",
-         role:"Como quien despliega un mapa, mis cuatro errores no cuestan lo mismo: una etiqueta falsa que actúo, un silencio que me deja sin dato, un conjunto ambiguo que me obliga a decidir, y una respuesta gruesa que es cierta pero no me sirve. Sin ese precio, comparar mecanismos no significa nada.",
-         ac:["La rejilla COMPLETA de pares (acción, resultado) declarada ANTES de elicitar, y son SIETE celdas, no cuatro: etiqueta precisa que acierta —la referencia, sin la cual no hay escala—, etiqueta precisa que falla, no respuesta, conjunto que contiene la verdad, conjunto que NO la contiene, clase gruesa con la verdad dentro y clase gruesa con la verdad fuera. Las tres que faltaban son justo las que hacen que un conjunto o un retroceso no sean gratis, y si aparecen después de elicitar serán supuestos nuestros",
+        {id:"US-172", t:"Vía retirada: elicitación de pérdidas con informantes", sp:8, st:"dead",
+         role:"Registro histórico de una vía metodológicamente válida que se congeló, pero se retiró antes de reclutar o recoger una sola respuesta.",
+         ac:["RETIRADA SIN EJECUTAR el 9 de septiembre. El protocolo v0.3, la determinación institucional y cuatro adjuntos permanecen sellados como evidencia histórica; no producen pérdidas, no entran al análisis y no reciben crédito de avance",
+             "La rejilla COMPLETA de pares (acción, resultado) declarada ANTES de elicitar, y son SIETE celdas, no cuatro: etiqueta precisa que acierta —la referencia, sin la cual no hay escala—, etiqueta precisa que falla, no respuesta, conjunto que contiene la verdad, conjunto que NO la contiene, clase gruesa con la verdad dentro y clase gruesa con la verdad fuera. Las tres que faltaban son justo las que hacen que un conjunto o un retroceso no sean gratis, y si aparecen después de elicitar serán supuestos nuestros",
              "El precio de no responder se SUMA, no se multiplica por la contención. La primera implementación lo multiplicaba y por eso no se podía elegir",
              "IDENTIFICACIÓN: con la referencia en cero y una pérdida fijada como unidad quedan CINCO magnitudes libres. Un orden y una razón dan dos, así que hacen falta al menos cinco intercambios independientes más dos comprobaciones de consistencia. Si no se completan, el vector de ese informante queda incompleto y se declara así: no se interpola. La primera versión del protocolo pedía una sola razón, y las otras dos las habríamos puesto nosotros",
              "Si la cardinalidad entra o no en la pérdida se PREGUNTA —¿cambia si el conjunto son cinco clases en vez de dos?— y no se supone. Que no cambie es un resultado",
@@ -1108,43 +1133,45 @@
              "k queda como parámetro de sensibilidad espacial, no como número de réplicas ni palanca de potencia; PASTIS y BreizhCrops siguen siendo exploratorios",
              "Contrato normativo con catorce decisiones exactas y gate de coherencia JSON↔prosa probado en negativo"],
          out:"docs/paper/preregistro-v2-borrador.md; docs/paper/estimando-v1.json; make preregistro-check", dep:"—"},
-        {id:"US-174", t:"La banda de equivalencia, desde el usuario y no desde el instrumento", sp:3, st:"idle",
-         role:"Como equipo que va a afirmar que dos mecanismos son equivalentes, quiero que el margen salga de lo que le da igual a quien usa el mapa, no de lo que mi experimento alcanza a distinguir.",
-         ac:["El margen es la menor diferencia PRÁCTICAMENTE RELEVANTE para un afectado nombrado, derivada de la tabla de pérdidas de US-172",
+        {id:"US-174", t:"Vía retirada: banda de equivalencia atribuida al usuario", sp:3, st:"dead",
+         role:"Registro histórico del margen práctico que dependía de la elicitación retirada y no se sustituye por el MDE del instrumento.",
+         ac:["RETIRADA antes de ejecutar resultados: el criterio primario ya no afirma equivalencia escalar, sino dominancia uniforme y regiones de ganador sobre el espacio completo",
+             "El margen es la menor diferencia PRÁCTICAMENTE RELEVANTE para un afectado nombrado, derivada de la tabla de pérdidas de US-172",
              "Prohibido anclarlo en el efecto mínimo detectable: si se ancla ahí, es la resolución del instrumento la que define qué cuenta como equivalente",
              "Si el margen práctico resulta más estrecho que el MDE, se declara que el diseño NO puede demostrar equivalencia, y eso es un resultado",
              "Prueba de equivalencia además de la de diferencia: un intervalo que incluye el cero no dice que sean iguales"],
-         out:"docs/paper/preregistro-v2.md", dep:"US-172"},
-        {id:"US-175", t:"La geometría del espacio de costes", sp:3, st:"idle",
-         role:"Como lector de la figura central, quiero saber qué sección del espacio estoy viendo, porque cuatro costes menos una escala dejan tres razones y un mapa plano es una rebanada de algo de más dimensión.",
-         ac:["Corregido: son TRES razones libres, no dos. Estaba escrito dos sin justificación",
-             "O se declara y se justifica una segunda restricción sustantiva —una equivalencia concreta entre dos pérdidas— o el mapa se presenta como símplex de tres",
-             "En cualquiera de los dos casos se publica la sensibilidad FUERA de la sección elegida",
-             "La restricción se declara antes del barrido, no después de ver qué paneles quedan bonitos"],
-         out:"ml/eval/decision_cost.py", dep:"US-172"}
+         out:"docs/paper/perdidas-protocolo.md", dep:"—"},
+        {id:"US-175", t:"La geometría completa del espacio de pérdidas", sp:3, st:"ok",
+         role:"Como lector, quiero saber qué preferencias determina la evidencia y en qué frontera cambia la acción, sin que el equipo invente un vector de costes.",
+         ac:["R0 es la referencia sin coste y L1–L6 son seis coordenadas finitas y no negativas; quitar solo la escala común produce el símplex de dimensión cinco Δ⁵, no tres razones libres",
+             "Cada brazo conserva su vector de frecuencias de resultados y su riesgo es el producto interno con cualquier vector del símplex; no hace falta un punto elicitado",
+             "La dominancia uniforme es componente a componente. Las regiones de ganador son intersecciones exactas de semiespacios y cada frontera por pares es un hiperplano condicionado a las otras pérdidas, nunca un umbral escalar universal",
+             "Las vistas de dos dimensiones se declaran sensibilidad, sin medida uniforme ni porcentaje del símplex. No se atribuye una preferencia a afectados",
+             "Contrato JSON, preregistro, implementación, pruebas negativas, manuscrito, apéndice y ledger están sincronizados antes de resultados"],
+         out:"docs/paper/loss-space-v1.json; ml/eval/decision_cost.py; docs/paper/enmienda-espacio-perdidas-2026-09-09.md", dep:"US-173"}
       ]
     },
     {
-      id:"EPIC 19", name:"El protocolo, sobre la pérdida ya identificada", status:"wip",
-      goal:"Dos cosas que el plan anterior no tenía y sin las cuales nada de lo demás significa nada. Primero: «a igual cobertura» NO está definido para dos de los cuatro mecanismos, porque un conjunto conforme y una clase gruesa se entregan en el 100 % de las parcelas siempre. Segundo: al componer las dos correcciones de protocolo el contraste pasa de p=0,005 a p=0,130, así que la reparación no arregla el hallazgo, lo disuelve, y hay que saberlo ANTES de diseñar sobre él.",
+      id:"EPIC 19", name:"El protocolo sobre perfiles completos de resultado", status:"wip",
+      goal:"Los seis brazos comparten población, catálogo y seis celdas con coste. La comparación primaria conserva esas frecuencias y estudia toda la geometría de pérdidas; cobertura y cardinalidad quedan como descriptores, y cualquier vector puntual es solo sensibilidad declarada.",
       us:[
         {id:"US-160", t:"Los cuatro mecanismos como predictores con valores de conjunto", sp:8, st:"wip",
-         role:"Como autor que quiere una tabla única con los cuatro mecanismos, necesito un eje de coste que exista para los cuatro, y hoy no lo hay: la cobertura es una constante igual a uno para el conforme y para el retroceso.",
-         ac:["MECÁNICA TERMINADA, PRECIOS PENDIENTES. Cuatro mecanismos producen SEIS brazos experimentales: una referencia sin mecanismo, dos recortes del mismo catálogo —por F1 y por soporte—, abstención, conjunto adaptativo y retroceso. La no-entrega universal es una acción límite para calibrar el precio del silencio, no un séptimo brazo. La sección 4 del manuscrito deja explícita la cuenta",
+         role:"Como autor que quiere comparar los cuatro mecanismos sin imponer una moneda, necesito que todos produzcan el mismo vector de resultados sobre la misma población.",
+         ac:["MECÁNICA TERMINADA, EJECUCIÓN EMPÍRICA PENDIENTE. Cuatro mecanismos producen SEIS brazos experimentales: una referencia sin mecanismo, dos recortes del mismo catálogo —por F1 y por soporte—, abstención, conjunto adaptativo y retroceso. La no-entrega universal es una acción límite, no un séptimo brazo. La sección 4 del manuscrito deja explícita la cuenta",
              "Los constructores de conjunto adaptativo y retroceso están implementados con puntos de operación inyectados; no calibran dentro de prueba. El retroceso rechaza particiones con hojas ausentes, repetidas o fuera del catálogo",
              "La rejilla completa ya es comportamiento: R0 y L1–L6 son resultados distintos, incluidos conjunto que no contiene la verdad y retroceso equivocado. Cada parcela cae en una sola celda según lo que recibe el usuario, no según el nombre del algoritmo",
-             "La tabla de pérdida exige las siete celdas, un afectado nombrado, valores finitos no negativos y R0=0. No tiene valores por defecto y el evaluador no puede ejecutarse sin ella. Una prueba sintética demuestra que cambiar el precio relativo de error y silencio puede invertir la acción preferida",
+             "El perfil exige las siete celdas R0 y L1–L6, conserva toda parcela y no recibe valores de pérdida. El riesgo puntual sigue disponible solo como sensibilidad explícita, sin valor predeterminado",
              "SEIS casos, no cinco: sin mecanismo, recorte por F1, recorte por soporte, abstención, conforme y retroceso. El segundo criterio de retirada faltaba y US-127 pide un contraste cuyo brazo nadie construía; añadirlo cuesta reordenar la misma leyenda por soporte en vez de por F1",
              "CORREGIDO tras auditoría externa: la primera implementación multiplicaba la utilidad por la contención, con lo que el conjunto vacío valía cero pasara lo que pasara y el precio de abstenerse NO se podía elegir. El valor de no responder es ahora un término aparte y sin valor por defecto",
-             "Y la CARDINALIDAD NO ES EL COSTE: dos conjuntos del mismo tamaño reciben el mismo precio aunque uno sea agronómicamente inútil. E[|C|] queda como descriptor secundario; la moneda común es una tabla de pérdidas por acción, resultado y afectado —etiqueta errónea, no respuesta, conjunto ambiguo, retroceso taxonómico— declarada en el preregistro",
-             "La utilidad u(y,C) = g(|C|)·1[y ∈ C] se conserva SOLO como el premio por acertar con un conjunto de un tamaño dado, con g declarada antes de mirar y su análisis de sensibilidad. NO es la moneda: el coste de cada resultado sale de la tabla de pérdidas de US-172, y en el código la cardinalidad ya vive aparte como descriptor —cardinalidad_esperada no acepta ninguna función de coste—. Mientras las dos cosas se llamaron igual, la cardinalidad ocupaba el lugar de una pérdida que nadie había declarado",
+             "Y la CARDINALIDAD NO ES EL COSTE: dos conjuntos del mismo tamaño pueden caer en celdas distintas. E[|C|] queda como descriptor secundario; la moneda no se fija, sino que el perfil de seis resultados se evalúa sobre todo Δ⁵",
+             "La utilidad u(y,C) = g(|C|)·1[y ∈ C] se conserva SOLO como descriptor de una sensibilidad predeclarada. NO es la moneda primaria: cardinalidad_esperada no acepta ninguna función de coste y no reemplaza el perfil completo",
              "Se evalúa sobre la población COMPLETA de prueba, no sobre la entregada: hoy el estimando condiciona sobre una variable posterior al tratamiento, que es selección sobre un colisionador y es el mismo pecado que el artículo denuncia, un nivel más abajo",
              "MEDIDO, y la respuesta es que NO: con la utilidad que solo premia el singleton correcto, el estimando se reduce al RECALL macro, no al F1 macro. El marco nuevo no es una reparametrización del anterior, así que las cifras viejas quedan en otra escala y se dice",
              "Y se demuestra la propiedad que el estimando anterior NO tenía: abstenerse nunca puede subir la utilidad, porque al puntuar sobre la población completa una parcela no entregada cuenta como fallo en vez de desaparecer del denominador de su clase. Ese sesgo estructural a favor del brazo que abstiene queda eliminado, con test",
              "FLUJO CONECTADO, SIN RESULTADOS: SixArmDesign exige catálogo, tasas, miscoverage, jerarquía y suelo de soporte sin valores por defecto. fit_six_arm_operating_point acepta solo entrenamiento y validación; apply_six_arms acepta prueba pero NO etiquetas; evaluate_six_arms recibe la verdad cuando las seis entregas ya están fijadas",
              "La afirmación de auditoría que existía solo en prosa queda ahora como prueba: seis brazos sobre 400 parcelas sintéticas, las 400 permanecen en cada denominador y cada parcela cae exactamente en una de R0 o L1–L6. Permutar las etiquetas cambia la puntuación, nunca la entrega",
              "Se cita Ha 1997 como el marco del que los cuatro mecanismos son casos particulares. Su implementación como línea base pertenece a US-132, no a esta historia"],
-         out:"ml/eval/set_valued.py; ml/eval/micai_actions.py", dep:"US-172, US-173"},
+         out:"ml/eval/set_valued.py; ml/eval/micai_actions.py; ml/eval/decision_cost.py", dep:"US-173, US-175"},
         {id:"US-124", t:"Denominador común fijado antes de la entrega", sp:5, st:"wip",
          role:"Como autor que denuncia comparar sobre denominadores distintos, quiero no hacerlo yo, porque el estimando promedia sobre las clases presentes en la entrega de cada brazo y esos conjuntos difieren.",
          ac:["IMPLEMENTADO para el estimando nuevo: el universo neutral se fija desde las etiquetas de ENTRENAMIENTO y el suelo predeclarado, una sola vez antes de la entrega. La versión anterior de este AC decía «clases presentes en el bloque completo» y volvía a leer la prueba; se retira",
@@ -1177,13 +1204,13 @@
         {id:"US-155", t:"Potencia con unidad y modelo explícitos", sp:3, st:"wip",
          role:"Como equipo a punto de comparar seis brazos, quiero que cada afirmación de potencia corresponda al estimando y la unidad que realmente analiza, y no a una fórmula conveniente aplicada a otra vista.",
          ac:["MECÁNICA t TERMINADA, VALORES EMPÍRICOS PENDIENTES. ml/eval/micai_power.py resuelve el MDE bilateral con la distribución t no central; la suma anterior de dos cuantiles t centrales ya no existe en los productores. Alfa familiar, potencia objetivo, regla de multiplicidad, tamaño de familia, desviación prospectiva, fuente y unidades son entradas obligatorias, sin valores por defecto",
-             "La t no central solo describe la SENSIBILIDAD con medias de bloque de igual peso. No es la potencia del estimando primario de US-125, que conserva la media parcelaria y remuestrea patch_id completos. Esa potencia requiere simulación con la tabla de pérdidas de US-172 y la estructura de clúster observada; queda abierta y no se sustituye por el número de bloques",
+             "La t no central solo describe la SENSIBILIDAD con medias de bloque de igual peso. No es la potencia del estimando primario de US-125, que conserva la media parcelaria y remuestrea patch_id completos. Esa potencia requiere simulación prospectiva sobre las seis coordenadas y la estructura de clúster observada; queda abierta y no se sustituye por el número de bloques",
              "La identidad de cada unidad viaja al cálculo: repetir cinco veces el mismo nombre, o esconderlo con espacios, falla. Con menos de tres unidades se rechaza el MDE bajo la regla de publicación; una varianza cero observada no fabrica una escala prospectiva ni un MDE cero",
              "AUDITORÍA POR ATAQUE: la primera reparación seguía derivando la desviación y el efecto del mismo contraste evaluado. La escala y el efecto de planificación llevan ahora unidad, rol y fuente predeclarados. Sin escala no hay MDE; sin efecto no hay detectabilidad ni recuento hipotético de unidades. Dos pruebas cambian por separado la dispersión y el centro observados y exigen que la planificación permanezca invariante",
              "Para una familia Holm planificada se usa prospectivamente el primer umbral alfa/m. No se afirma que Holm tenga un único alfa para todos sus pasos, y m se fija antes de saber qué comparaciones producen una p válida",
              "El barrido de k ya no produce MDE ni tiene_potencia: subdividir el mismo territorio no crea información independiente. El número hipotético de unidades necesarias significa unidades NUEVAS bajo una desviación prospectiva declarada, no permiso para renombrar subdivisiones",
              "Las cifras históricas —0,0196, 0,0326, 0,0508, 0,0167, trece y veinte— siguen OBSOLETO. También cae la conclusión que dejábamos en pie: «ninguna medida de disparidad tiene potencia» vuelve a PENDIENTE y puede cambiar al regenerar",
-             "La potencia EVALÚA el criterio sustantivo congelado; nunca lo elige. El criterio principal sigue saliendo de US-172/US-140. Se publican el MDE primario simulado y la sensibilidad t por bloques con nombres distintos, gane lo que gane"],
+             "La potencia EVALÚA el criterio sustantivo congelado; nunca lo elige. El criterio principal es la dominancia de US-175 y sus parámetros se cierran en US-140. Se publican la simulación primaria y la sensibilidad t por bloques con nombres distintos, gane lo que gane"],
          out:"ml/eval/micai_power.py; reports/paper_micai/potencia/", dep:"US-125, US-171"},
         {id:"US-171", t:"El número de bloques: un grado de libertad con el que cambia la conclusión", sp:8, st:"wip",
          role:"Como equipo al que le dijeron que hacen falta trece bloques y solo tiene cinco, quiero saber si el cinco es una restricción del dato o el valor por defecto de una función. Es lo segundo, y lo que se encuentra al mirarlo es más interesante que el permiso para usar quince.",
@@ -1200,27 +1227,28 @@
              "CORRECCIÓN EXTERNA, y es la que más pesa: partir el mismo territorio más fino NO crea réplicas independientes. MEDIDO y sellado, con los dos conjuntos nombrados por separado porque no son el mismo número y una auditoría nos pilló citando uno por el otro: entre ENTRENAMIENTOS el Jaccard medio es 0,4273 y el máximo 0,5510; entre ENTRENAMIENTO MÁS VALIDACIÓN, 0,6000 y 0,8005. Y la tendencia es lo que importa: con veinticinco bloques sube a 0,9200. Cuanto más se parte, más comparten los folds. La ganancia de potencia del barrido viene de cambiar la unidad, no de observar territorio nuevo",
              "El barrido de k NO se presenta como aumento de potencia, ni como demostración de nada. Se presenta como lo que es: en este análisis exploratorio y en este territorio, la etiqueta «excluye el cero» cambia al variar k. Es un aviso metodológico con su alcance escrito, no una palanca ni una ley"],
          out:"ml/eval/micai_spatial_sensitivity.py; docs/paper/spatial-partition-v1.json; reports/paper_micai/bloques/", dep:"US-125, US-173"},
-        {id:"US-127", t:"Los contrastes que faltaban", sp:5, st:"wip",
-         role:"Como lector de la introducción, quiero que los criterios que dice ordenar con intervalos tengan intervalos, porque hoy solo existe uno de los pares.",
-         ac:["MECÁNICA TERMINADA, ESTIMANDOS Y EJECUCIÓN EMPÍRICA PENDIENTES. ml/eval/micai_contrasts.py produce el contraste pareado entre los dos criterios de retirada y lo rechaza si sus registros no comparten el presupuesto completo",
+        {id:"US-127", t:"Vía retirada: contrastes escalares a presupuesto igualado", sp:5, st:"dead",
+         role:"Registro de una comparación que necesitaba un vector de pérdida puntual y queda fuera del criterio primario de espacio completo.",
+         ac:["RETIRADA SIN CRÉDITO: ml/eval/micai_contrasts.py permanece como sensibilidad heredada, pero sus contrastes escalares no seleccionan brazos ni bloquean el artículo",
+             "MECÁNICA TERMINADA, ESTIMANDOS Y EJECUCIÓN EMPÍRICA PENDIENTES. ml/eval/micai_contrasts.py produce el contraste pareado entre los dos criterios de retirada y lo rechaza si sus registros no comparten el presupuesto completo",
              "La TABLA FOCAL contiene los cinco brazos no basales contra el singleton preciso y el par adicional entre criterios de retirada. No se presenta como familia completa de selección: US-128 genera además los nueve pares restantes dentro de cada estrato cuando se construye la región de ganador",
              "Coste igualado significa el mismo identificador de presupuesto, afectado, tabla de pérdidas, objetivo y fuente entrenamiento-validación. También exige la misma cohorte, una huella del punto de operación vigente y ninguna identidad del bloque de prueba. Compartir solo tamaño de catálogo o valor numérico falla",
              "Fieller está implementado sobre resúmenes pareados de la unidad independiente declarada. Si el denominador no se separa de cero devuelve un conjunto disjunto, semirrecta o toda la recta; nunca lo disfraza con percentiles finitos",
              "HALLAZGO DE IDENTIFICACIÓN: «razón denominador sobre ganancia» no nombra qué cantidad es numerador, cuál denominador ni la unidad de agregación. Esas tres decisiones se congelan antes de calcularla; hasta entonces no existe una razón empírica",
-             "DEPENDENCIA CORREGIDA: seleccionar puntos bajo una pérdida común requiere la tabla de US-172. US-155 aporta la potencia, no identifica el eje de coste. Por eso la historia no se cierra con datos sintéticos"],
-         out:"ml/eval/micai_contrasts.py; reports/paper_micai/", dep:"US-155, US-172"},
+             "REENCUADRADO: estos contrastes escalares quedan como sensibilidad para un vector declarado. La inferencia primaria compara las seis coordenadas y las fronteras del espacio completo; no selecciona puntos de operación con un coste aprendido en prueba"],
+         out:"ml/eval/micai_contrasts.py; reports/paper_micai/", dep:"US-155, US-175"},
         {id:"US-128", t:"Multiplicidad bien definida", sp:3, st:"wip",
          role:"Como revisor de la corrección por multiplicidad, quiero que ninguna tabla corta, capa omitida o cambio de unidad pueda hacerse pasar por control del ganador de toda la superficie.",
          ac:["MECÁNICA TERMINADA, SUPERFICIE EMPÍRICA PENDIENTE. ml/eval/micai_multiplicity.py recibe una lista explícita de estratos y otra de contrastes; ninguna se infiere de la otra. Quitar un par, añadir uno después o retirar un estrato completo falla",
              "El criterio principal se reporta sin corregir, queda fuera de Holm y no se reutiliza para eliminar un brazo en el mapa exploratorio. Todo lo demás entra en una sola familia predeclarada",
-             "Cada estrato identifica banco, predictor, universo de clases, afectado, presupuesto de pérdida, punto de operación, partición espacial, profundidad taxonómica, medida de disparidad y semilla. Los valores concretos todavía no están congelados y dependen en parte de US-172",
+             "Cada estrato identifica banco, predictor, universo de clases, punto de operación, partición espacial, profundidad taxonómica, coordenada de resultado y semilla. Los valores inferenciales concretos todavía no están congelados en US-140",
              "Una selección entre los seis brazos exige los quince pares en CADA estrato. La tabla focal de US-127 conserva sus seis filas, pero ya no se confunde con la familia de selección: all_pairwise_budgeted_contrasts produce los nueve pares restantes bajo la misma validación de presupuesto, cohorte y separación de prueba",
              "La única exclusión es una identidad por construcción predeclarada. Una sola diferencia parcelaria la refuta; una igualdad observada no la inventa. Si cualquier otra comparación carece de p válida, Holm no se aplica a toda la familia",
              "La vista bootstrap publica y hace cumplir su resolución bilateral 2/(B+1). Con mil remuestreos el mínimo no nulo es aproximadamente 0,001998; una p menor que 0,0001 es imposible y el código la rechaza",
              "El mapa devuelve una REGIÓN DE GANADOR COMPATIBLE: el mínimo observado y los brazos que la familia simultánea no logra excluir. Si la familia falla, devuelve los seis brazos y no fabrica un ganador",
              "DOS CAMINOS ESTRECHOS CERRADOS: los contrastes ya no pueden definir por sí mismos qué estratos existían, y las medias del mapa llevan su unidad explícita. Una coincidencia numérica no permite mezclar la media parcelaria con la sensibilidad de bloques",
              "LÍMITE DECLARADO: el convertidor verifica presupuesto y afectado contra los contrastes, pero las etiquetas de banco, predictor, partición y demás ejes necesitan aún la procedencia del productor empírico. Por eso US-128 sigue en curso y no hay resultados"],
-         out:"ml/eval/micai_multiplicity.py; ml/eval/micai_contrasts.py; paper/micai2027/sections/05-protocol.tex", dep:"US-127, US-172"},
+         out:"ml/eval/micai_multiplicity.py; ml/eval/decision_cost.py; paper/micai2027/sections/05-protocol.tex", dep:"US-125, US-140, US-175"},
         {id:"US-129", t:"Gate de protocolo, probado en negativo", sp:3, st:"ok",
          role:"Como equipo al que se le colaron tres defectos de protocolo, quiero una comprobación que los detecte, y verla fallar antes de confiar en ella.",
          ac:["El inventario cerrado enumera TODOS los objetos bajo reports/micai2027. Cambiar extensión, mover a figuras o crear un directorio enlazado no oculta un resultado",
@@ -1253,7 +1281,7 @@
          role:"Como agrónomo, prefiero que me digan «cereal» a que no me digan nada.",
          ac:["MECÁNICA TERMINADA, COMPARACIÓN EMPÍRICA PENDIENTE. El contrato sellado usa HCAT4 sobre EuroCrops v2: dieciocho hojas semantic18 forman una partición completa en siete nodos, con tres correspondencias aproximadas declaradas. No se inventa una taxonomía desde las confusiones del modelo",
              "El umbral es una entrada obligatoria de entrenamiento y validación. Por encima conserva el singleton; por debajo devuelve exactamente las hojas representadas bajo el nodo predeclarado. No acepta etiquetas verdaderas ni posteriores de otro catálogo",
-             "CORRECCIÓN DE PREMISA: Türkōglu et al. 2021 ya predicen cultivos a tres granularidades y ajustan la salida por confianza. Mortier et al. 2022 formalizan conjuntos jerárquicos con nodos internos. Lo nuevo NO es el mecanismo ni llevarlo a cultivos; es compararlo con las otras acciones bajo una pérdida atribuida",
+             "CORRECCIÓN DE PREMISA: Türkōglu et al. 2021 ya predicen cultivos a tres granularidades y ajustan la salida por confianza. Mortier et al. 2022 formalizan conjuntos jerárquicos con nodos internos. Lo nuevo NO es el mecanismo ni llevarlo a cultivos; es compararlo con las otras acciones mediante perfiles comunes y la geometría completa de pérdidas",
              "CONTROL NEGATIVO: doce pruebas rechazan hojas duplicadas, no ancestrales, nombres HCAT4 o PASTIS inventados, otro ancho de catálogo y cualquier intento de habilitar ejecución empírica antes del preregistro",
              "PENDIENTE: compararlo a igual presupuesto de pérdida con los otros tres mecanismos. Hasta entonces US-131 permanece en curso y no imprime un ganador"],
          out:"ml/eval/hierarchical_backoff.py; docs/paper/hcat4-backoff-v1.json; docs/paper/hcat4-backoff-v1.md; paper/micai2027/sections/04-mechanisms.tex", dep:"US-129"},
@@ -1267,8 +1295,8 @@
       ]
     },
     {
-      id:"EPIC 21", name:"Quién paga: la tesis", status:"idle",
-      goal:"**Corregido otra vez el 7 de septiembre, y la corrección vuelve a ser contra nosotros.** Esta épica decía «aquí es donde el efecto es grande», apoyándose en un factor de ocho que resultó ser el MÁXIMO de dieciocho razones cuya mediana es 1,00. Después conservó «ninguna medida tiene potencia» cuando sus cuatro intervalos y el MDE estaban invalidados. Ese veredicto queda PENDIENTE. La disparidad es una HIPÓTESIS por medir, no un hallazgo; su potencia se evalúa después de fijarla por razones sustantivas y se separan el bootstrap primario por patch_id y la sensibilidad t por bloques.",
+      id:"EPIC 21", name:"Distribución de cobertura y sesgo de superficie", status:"idle",
+      goal:"La disparidad es una hipótesis por medir, no un hallazgo ni una inferencia sobre quién paga. Esta épica describe cómo se distribuyen la entrega y el sesgo de superficie por clase y tamaño de parcela, con incertidumbre y sin convertir un grupo observado en una preferencia de usuario.",
       us:[
         {id:"US-133", t:"Cobertura por clase y por tamaño de parcela", sp:5, st:"idle",
          role:"Como productor de un cultivo raro, quiero saber qué probabilidad tengo de recibir respuesta bajo cada mecanismo, porque una media de cobertura no me dice nada.",
@@ -1278,7 +1306,7 @@
          out:"reports/paper_micai/equidad/", dep:"US-129"},
         {id:"US-134", t:"La disparidad como criterio principal, con su intervalo", sp:5, st:"idle",
          role:"Como revisor, quiero que la afirmación de equidad tenga incertidumbre y no sea un punto, y quiero que sea el criterio principal si es donde hay efecto.",
-         ac:["CORREGIDO tras auditoría externa: elegir la variable primaria según dónde haya potencia es escoger el resultado después de verlo. La primaria se CONGELA en el preregistro antes del banco confirmatorio, junto con el afectado, la pérdida, el margen práctico, la población y la regla de decisión. Lo hecho sobre los dos bancos vistos es exploratorio y se etiqueta así",
+         ac:["CORREGIDO tras auditoría externa: elegir la variable primaria según dónde haya potencia es escoger el resultado después de verlo. La primaria se CONGELA en US-140 junto con población, coordenadas, familia y regla de decisión. Lo hecho sobre los dos bancos vistos es exploratorio y se etiqueta así",
              "El estadístico titular NO es la mayor razón observada: es una medida declarada sobre todas las clases con soporte suficiente",
              "Intervalo por bloque para la medida de disparidad, declarada antes de calcularla",
              "NO se preregistra sobre los dos bancos ya mirados: se declaran exploratorios y la medida se preregistra para los bancos nuevos. Preregistrar sobre datos vistos es un ritual, no un compromiso",
@@ -1295,36 +1323,35 @@
       ]
     },
     {
-      id:"EPIC 25", name:"El criterio: qué mecanismo conviene y a quién", status:"idle",
-      goal:"Los cuatro mecanismos producen errores cualitativamente distintos y ninguna métrica escalar de acierto los ordena. Aquí se ordenan en espacio de costes y sale la figura central del artículo. Cero horas de GPU **sobre los bancos ya volcados**; el tercero entra cuando US-139 produzca sus posteriores, así que la épica hereda ese coste y no es gratis del todo. Aun así es el mejor cociente entre impacto y esfuerzo del plan.",
+      id:"EPIC 25", name:"El criterio: qué determina la evidencia en el espacio de pérdidas", status:"wip",
+      goal:"Los mecanismos producen perfiles cualitativamente distintos y ninguna métrica escalar los ordena sin imponer preferencias. Aquí se estiman los seis resultados, la dominancia uniforme y las fronteras donde cambia el ganador. El artículo publica lo que los datos identifican y deja cualquier punto de uso como sensibilidad externa, sin afirmar a costa de quién.",
       us:[
-        {id:"US-151", t:"Familia de pérdidas y su normalización", sp:5, st:"idle",
-         role:"Como quien despliega un mapa, no me sirve saber cuál acierta más: necesito saber cuál me cuesta menos, y eso depende de qué me cuesta a mí cada tipo de error.",
-         ac:["Cuatro costes declarados: etiqueta errónea, no responder, conjunto de tamaño k, y respuesta gruesa pero correcta",
-             "Declarada en el preregistro antes del primer barrido",
-             "Test en negativo: una pérdida mal normalizada tiene que hacer fallar el gate",
-             "CORREGIDO: cuatro costes menos una escala común dejan TRES razones libres, no dos. Yo había escrito dos sin justificarlo. O se declara y se justifica una segunda restricción sustantiva —una equivalencia concreta entre dos pérdidas—, o el mapa se presenta como un símplex de tres, y en cualquier caso se publica la sensibilidad fuera de esa sección"],
-         out:"ml/eval/decision_cost.py", dep:"US-172, US-175, US-140, US-129"},
+        {id:"US-151", t:"Vía absorbida: familia y normalización del espacio", sp:5, st:"dead",
+         role:"La historia se retira para no acreditar dos veces el mismo contrato: su alcance quedó cerrado íntegramente por US-175.",
+         ac:["ABSORBIDA SIN CRÉDITO por US-175. La versión de cuatro costes y tres razones se retira: la rejilla vigente tiene seis coordenadas y dimensión cinco",
+             "El contrato normaliza por suma uno, rechaza valores negativos o no finitos y no supone una distribución uniforme sobre el símplex"],
+         out:"docs/paper/loss-space-v1.json; ml/eval/decision_cost.py", dep:"US-175"},
         {id:"US-152", t:"Diagrama de fases: qué mecanismo gana en qué región", sp:8, st:"idle",
          role:"Como revisor, quiero una figura que me diga en qué región de costes está mi propio producto y qué debería usar, porque eso lo recuerdo un año después y una tabla de F1 no.",
-         ac:["Barrido del espacio de costes con los cuatro mecanismos sobre todos los bancos",
-             "Mapa de regiones de dominancia, legible en blanco y negro y sin color como único canal",
-             "Las fronteras llevan su incertidumbre: no son líneas nítidas sobre estimaciones ruidosas",
+         ac:["Perfiles de seis resultados por brazo y banco, con intervalos simultáneos por clúster sobre la misma población",
+             "Atlas de dominancia uniforme y semiespacios de ganador en Δ⁵; cualquier corte bidimensional se rotula como sensibilidad condicionada",
+             "Las fronteras llevan su incertidumbre: no son hiperplanos nítidos sobre estimaciones ruidosas",
+             "Se publican los brazos no dominados aunque no exista un ganador uniforme; eso es un resultado, no un fallo del diseño",
              "Reproducible byte a byte"],
          out:"reports/paper_micai/decision/", dep:"US-151, US-130, US-131, US-139"},
-        {id:"US-153", t:"Cuatro casos de uso agrícolas sobre el mapa", sp:3, st:"idle",
-         role:"Como lector, quiero que las regiones tengan nombre: control de subvenciones, seguro, estadística de superficie y asesoría al productor no tienen los mismos costes.",
-         ac:["Cuatro razones de coste plausibles, cada una justificada con una fuente citable y no inventada",
-             "Cada caso situado en el mapa con el mecanismo que le conviene",
-             "Se declara qué tienen de estimado, porque no son medidas"],
+        {id:"US-153", t:"Anclas documentales opcionales sobre el mapa", sp:3, st:"idle",
+         role:"Como lector, quiero ejemplos localizables sin confundirlos con preferencias medidas ni convertirlos en el criterio principal.",
+         ac:["Solo entran vectores o restricciones recuperables de fuentes primarias; una narrativa plausible no cuenta como dato",
+             "Cada ancla se publica como sensibilidad no confirmatoria y nunca como representativa de un grupo de afectados",
+             "La ausencia de una fuente defendible no bloquea el artículo ni autoriza inventar un punto"],
          out:"paper/micai2027/sections/", dep:"US-152"},
-        {id:"US-154", t:"La decisión de despliegue real, situada en el mapa", sp:5, st:"idle",
-         role:"Como equipo, tenemos una decisión de punto de operación tomada de verdad en un producto, con su contrafactual medible. Cualquiera con una GPU reproduce el resto del artículo; esto no lo reproduce nadie.",
+        {id:"US-154", t:"La decisión de despliegue real como perfil de resultados", sp:5, st:"idle",
+         role:"Como equipo, tenemos una acción tomada en un producto y podemos medir su perfil contrafactual sin atribuirle después un coste implícito que nadie declaró.",
          ac:["El hecho se cuenta anonimizado: un sistema desplegado recortó su catálogo de 18 clases a 12 con criterio F1 por clase ≥ 0,90. El doble ciego exige quitar el nombre, no el hecho",
              "LA COBERTURA DE ENTREGA ESTÁ POR MEDIR, y es el trabajo de esta historia. Dos cifras se han atribuido ya a ese sistema y ninguna lo era: 0,9054 es el cumulative_support_share de la curva del Stacking-5, y 0,88269 —14 688 de 16 640— es la CUOTA DE SOPORTE DE LA VERDAD, porque el filtro que la produce descarta por la etiqueta verdadera, no por lo que el sistema responde. Se mide desde la regla que de verdad se desplegó y desde sus predicciones, se nombra cuota_de_soporte_de_la_verdad a la vieja, y no se publica ninguna de las dos como cobertura",
-             "Se sitúa en el diagrama y se responde a la pregunta que nadie publica: dado su coste implícito, ¿acertó?",
-             "Contrafactual: qué habría entregado cada uno de los otros tres mecanismos a ese mismo coste",
-             "Si la decisión fue subóptima, se dice con su magnitud"],
+             "Se publica su vector R0/L1–L6 y se compara por dominancia uniforme; no se infiere un coste implícito a partir de la acción elegida",
+             "Contrafactual: qué perfil habría producido cada uno de los otros mecanismos sobre las mismas parcelas",
+             "Si ninguna acción domina a la desplegada, se dice; elegir un ganador requeriría una preferencia externa"],
          out:"reports/paper_micai/decision/", dep:"US-152"}
       ]
     },
@@ -1341,8 +1368,8 @@
              "Cada punto parametrizado por K, entropía del soporte y profundidad de la taxonomía. Se declara que el barrido DESCRIBE la superficie de respuesta y NO contrasta la identidad del banco: los cuarenta puntos son reponderaciones de las mismas parcelas, no unidades independientes, y la identidad del banco solo tiene dos niveles. Tratarlos como n=40 sería la pseudorreplicación que US-125 acaba de corregir",
              "No exige reentrenar: convierte los dos bancos vigentes en cuarenta puntos de diseño sobre posteriores ya volcadas. Responde si el patrón cambia al manipular el desbalance con la geografía fija, pero NO sustituye una prueba de transporte",
              "PRODUCTOR CERRADO: scripts/run_paper_micai_imbalance.py solo abre tres tablas de etiquetas si contrato y preregistro están congelados, cada entrada conserva un sello MD5 vigente y las seis salidas exactas ya están predeclaradas. No sobrescribe una corrida existente",
-             "PENDIENTE EMPÍRICO: no se ha creado reports/micai2027/desbalance/. Después de US-172 y del preregistro firmado se ejecutan, verifican y sellan targets, pesos y tamaño efectivo por banco más la procedencia; hasta entonces la historia permanece en curso"],
-         out:"reports/micai2027/desbalance/", dep:"US-129, US-172"},
+             "PENDIENTE EMPÍRICO: no se ha creado reports/micai2027/desbalance/. Después de congelar US-140 se ejecutan, verifican y sellan targets, pesos y tamaño efectivo por banco más la procedencia; hasta entonces la historia permanece en curso"],
+         out:"reports/micai2027/desbalance/", dep:"US-129, US-140"},
         {id:"US-136", t:"Criba del tercer banco, con cardinalidad suficiente", sp:8, st:"wip",
          role:"Como revisor de validez externa, quiero ver el protocolo en otra geografía y otra nomenclatura, con un catálogo que permita los cuatro mecanismos.",
          ac:["CANDIDATO ANTERIOR DESCARTADO: GEO-Bench m-SA-crop-type (Zenodo 10.5281/zenodo.8008825, CC BY 4.0) no entra como confirmatorio. La decisión está en banco-tercero-v1.json y el gate la re-deriva desde la evidencia primaria capturada",
@@ -1437,37 +1464,37 @@
       id:"EPIC 23", name:"Manuscrito: veinte páginas, MICAI y solo MICAI", status:"wip",
       goal:"Sede única: MICAI 2027, edición del cuarenta aniversario, aprovechando el tope de veinte páginas que la edición anterior permitía —a reverificar cuando salga la convocatoria—. Con veinte páginas cabe la rejilla completa Y una sección de robustez de verdad, que es lo que separa un artículo que aguanta a un revisor estricto de uno que solo aguanta a un revisor amable. Lo que sigue sin caber es la autopsia como primera contribución.",
       us:[
-        {id:"US-140", t:"Preregistro del experimento central, ANTES de correrlo", sp:3, st:"idle",
-         role:"Como equipo que observó que su hipótesis H1-2026 no replicaba y no lo dijo —y que hoy tampoco puede afirmarlo, porque las cifras que lo sostenían están invalidadas—, quiero declarar por escrito qué espero y qué me haría cambiar de opinión, antes de correr nada. En el plan anterior el preregistro dependía del experimento, que es insatisfacible.",
-         ac:["Se escribe y se commitea ANTES que la EPIC 20, la 21 y la 25, y DESPUÉS del contrato de decisión de la EPIC 27: sin pérdida, estimando y margen no hay nada que preregistrar. Esta línea afirmaba no tener ninguna mientras la historia declaraba cuatro, y la contradicción vivía dentro del mismo objeto: ahora la comprueba el gate",
-             "Hipótesis SUSTANTIVA sobre qué mecanismo debería ganar y por qué, no solo un criterio. Un preregistro sin hipótesis es un sello de fecha",
-             "El criterio principal se fija AQUÍ, uno solo y SIN REGLA CONDICIONAL, derivado de la tabla de pérdidas de US-172. Queda prohibido elegirlo por dónde el diseño tenga potencia: el borrador anterior fijaba la disparidad y dos líneas después permitía cambiarla si no la tenía, que es escoger el resultado antes de medirlo. Y qué lo refutaría",
+        {id:"US-140", t:"Preregistro del experimento central, ANTES de correrlo", sp:3, st:"wip",
+         role:"Como equipo que ya invalidó un veredicto por depender de cifras defectuosas, quiero congelar qué pregunta la geometría completa y qué la refutaría antes de ejecutar resultados.",
+         ac:["EN CURSO: estimando, población, seis resultados, normalización, hipótesis y criterio primario ya están escritos y sellados; siguen abiertos alfa, potencia objetivo, familia simultánea, número de remuestreos, semilla y alternativa prospectiva con fuente",
+             "Se commitea ANTES que cualquier resultado de las EPIC 20, 21, 22 o 25 y DESPUÉS de los contratos US-173 y US-175",
+             "H1 espera que ningún brazo domine uniformemente a los demás. La refuta un brazo no peor en las seis coordenadas frente a cada competidor y estrictamente mejor en al menos una por comparación",
+             "El criterio principal es el orden parcial de dominancia sobre Δ⁵, no un ganador bajo un punto elegido ni una regla condicional a la potencia",
              "Ningún resultado de las EPIC 20, 21, 22 ni 25 se computa antes del commit fechado. La 22 faltaba, y produce dos resultados del artículo",
              "Enmienda 3 al preregistro anterior, fechada. Declara sin depender de ninguna cifra que la REGLA DE ENTREGA CAMBIÓ del oráculo de etiqueta a la predicción. Y declara que el VEREDICTO SOBRE H1-2026 ESTÁ PENDIENTE: lo observado fue que no replicaba bajo el análisis exploratorio corregido, pero las cuatro cifras que lo sostienen salieron del módulo con los tres defectos y están marcadas OBSOLETO. Un veredicto cuyos números se reconocen invalidados está invalidado también. No se dice «se refutó» —el identificador H1 queda para la confirmatoria, y un exploratorio corregido a posteriori no refuta— y tampoco «no replicó» hasta recalcular. Puede salir en cualquiera de los dos sentidos",
              "La DEFINICIÓN EXACTA del estadístico de disparidad se declara aquí, no en la historia que lo calcula: si la medida se define donde se computa, no está preregistrada",
              "Se declara qué hacer cuando una clase recibe cobertura cero en un bloque: el número de clases retenidas varía entre 6 y 9 por bloque, así que una razón puede no estar definida. Y un soporte mínimo por clase para entrar al estadístico, porque con dos parcelas cualquier mínimo lo domina esa clase",
-             "El preregistro cubre las DOS como una sola: el diagrama de fases hoy no está preregistrado y no tiene criterio inferencial ninguno",
+             "El preregistro cubre perfiles, dominancia y fronteras como una sola familia; las vistas bidimensionales no sustituyen la superficie completa",
              "Declara el CRITERIO ESPACIAL con el que se fija k —área mínima de bloque o colchón— y el SUELO DE SOPORTE por bloque del estimando. Las dos son grados de libertad que hoy nadie había preregistrado y que deciden la significancia",
              "Declara que la sensibilidad a k se publica entera, gane lo que gane, y que k no se revisa después de ver un contraste",
              "El estimando y su población vienen FIJADOS por US-173: inferencia condicional a cada banco, todas las parcelas elegibles de prueba incluida la no entrega, parcela como unidad, patch_id como clúster, punto de operación entero desde entrenamiento y validación, sin promedio entre bancos ni afirmación de transporte",
-             "El margen de equivalencia procede de la MENOR DIFERENCIA PRÁCTICAMENTE RELEVANTE para un usuario del mapa, no del efecto mínimo detectable del experimento. Anclarlo en el MDE, como estaba, hace que la resolución del instrumento defina lo que cuenta como equivalente"],
-         out:"docs/paper/preregistro-v2.md", dep:"US-172, US-173, US-174, US-175"},
-        {id:"US-156", t:"El artículo del resultado nulo, escrito antes de correr", sp:5, st:"idle",
-         role:"Como equipo al que ya se le fue de las manos un reporte selectivo, quiero el artículo alternativo escrito antes de ver el resultado, porque un plan sin salida escrita para el nulo no es neutral: tiene una salida implícita.",
-         ac:["Banda de equivalencia declarada antes de correr, y prueba de equivalencia además de la de diferencia: un intervalo que incluye el cero no dice que sean iguales, un TOST sí",
-             "Tesis alternativa redactada: los mecanismos son intercambiables en calidad agregada dentro de la resolución del diseño, y no en quién paga, de modo que elegir entre ellos es una decisión de reparto y no de exactitud",
-             "Criterio de NO ENVÍO escrito: si la disparidad tampoco separa, esto es un informe técnico y no un MICAI",
+             "No se reclama equivalencia escalar ni se usa el MDE como margen práctico. Si los seis brazos quedan no dominados, se publica esa identificación parcial"],
+         out:"docs/paper/preregistro-v2-borrador.md; docs/paper/loss-space-v1.json", dep:"US-173, US-175"},
+        {id:"US-156", t:"La salida sin ganador uniforme, escrita antes de correr", sp:5, st:"idle",
+         role:"Como equipo expuesto al reporte selectivo, quiero escribir antes de medir qué significa que la dominancia no ordene los brazos.",
+         ac:["Tesis alternativa redactada: varios brazos pueden permanecer no dominados y la evidencia solo identifica regiones de preferencia, no un ganador universal",
+             "Criterio de NO ENVÍO basado en informatividad y robustez de los perfiles, no en que aparezca el ganador deseado",
              "El protocolo no puede ser el resultado de reserva",
              "Fecha explícita de evaluación, atada al sellado de US-134, y firma en el ADR: es la decisión más cara del plan y sin punto de decisión se evalúa el día del cierre, cuando ya no se puede actuar",
-             "Ausencia de significancia NO demuestra equivalencia: el intervalo agregado incluye el cero Y excede la banda, así que el mismo experimento no permite afirmar ninguna de las dos cosas. Se dice tal cual",
+             "Ausencia de dominancia NO demuestra equivalencia: significa que ningún perfil es componente a componente mejor con la incertidumbre declarada",
              "El resultado nulo se publica aunque no produzca separación: la existencia del artículo no puede quedar condicionada al resultado exploratorio"],
          out:"docs/paper/articulo-nulo.md", dep:"US-140"},
         {id:"US-141", t:"Trabajo relacionado, con el precedente en la primera página", sp:5, st:"ok",
          role:"Como autor al que un revisor le enseñó que su efecto está documentado desde los noventa, quiero citarlo donde se ve y delimitar qué queda de mío.",
          ac:["EVIDENCIA E INSERCIÓN TERMINADAS. docs/paper/trabajo-relacionado-verificado.md fija alcance, fuentes primarias, sesgos, límites y redacción prohibida; paper/micai2027 integra esas restricciones en la primera página y en trabajo relacionado. Dieciséis claves, todas existentes en refs-candidates.bib", "El precedente y la formulación limitada de novedad están integrados en el manuscrito nuevo; el documento normativo conserva la redacción que los gobierna", "La fórmula de novedad es limitada y va con su universo: «No encontramos trabajo que…» más las 61 consultas automáticas y 6 manuales del 2 de septiembre sobre cuatro frentes, restringidas al inglés. NO se declara exhaustividad. Y se declara el sesgo que de verdad nos mordió: las consultas usaban el vocabulario de la clasificación selectiva, y el precedente más cercano no usa ninguno de esos términos, así que apareció por otra vía", "El precedente de agregación de clases se cita en la PRIMERA PÁGINA, no en una nota al pie, y se acota qué queda nuestro",
-             "Rey et al. 2025 (arXiv 2510.19586) citado con la formulación PRECISA, verificada en el PDF con pdftotext y no en un resumen: usa PASTIS con TSViT, UNET3D y U-TAE, tres arquitecturas del banco de candidatos original —U-TAE NO pertenece al panel vigente—, IMPLEMENTA el rechazo por umbral de incertidumbre y RECONOCE el intercambio precisión-recall. NO se escribe que ignore la abstención. El hueco defendible: no lo conecta con clasificación selectiva ni con riesgo-cobertura, no compara los cuatro mecanismos como acciones alternativas y no modela quién soporta cada pérdida",
+             "Rey et al. 2025 (arXiv 2510.19586) citado con la formulación PRECISA, verificada en el PDF con pdftotext y no en un resumen: usa PASTIS con TSViT, UNET3D y U-TAE, tres arquitecturas del banco de candidatos original —U-TAE NO pertenece al panel vigente—, IMPLEMENTA el rechazo por umbral de incertidumbre y RECONOCE el intercambio precisión-recall. NO se escribe que ignore la abstención. El hueco defendible: no lo conecta con clasificación selectiva ni con riesgo-cobertura, ni compara los cuatro mecanismos en un espacio común de resultados y pérdidas",
              "Ghassemi et al. 2025 citado: ya trata el tamaño del catálogo como variable de diseño medida",
-             "Ha 1997, Mortier et al. 2021 y Chzhen et al.: el marco de predicción con conjuntos ya existe. El aporte planeado —condicionado a que US-172 produzca la pérdida— es instanciarlo en mapeo de cultivos por parcela con una contabilidad de reparto que ese marco no mide; todavía no se presenta como resultado",
+             "Ha 1997, Mortier et al. 2021 y Chzhen et al.: el marco de predicción con conjuntos ya existe. El aporte planeado es comparar cuatro acciones mediante perfiles de seis resultados, dominancia sobre Δ⁵ y fronteras condicionadas; todavía no se presenta como resultado",
              "Las cuatro comprobaciones que la auditoría dejó abiertas, verificadas por API con su contraste entre atribución y contenido",
              "Se escribe «no encontramos trabajo que…», nunca «nadie ha…», y se declara el alcance de la búsqueda con su sesgo",
              "Cada cita lleva una frase de su límite metodológico redactada desde el texto: es la prueba de que se leyó"],
@@ -1507,7 +1534,7 @@
              "Lo que NO se recorta bajo ninguna circunstancia: el sesgo en la estadística de superficie y la decisión de despliegue real. Son las dos únicas cosas del artículo que nadie más puede escribir",
              "La sección de robustez lleva las diez pruebas de la EPIC 26, cada una respondiendo a un ataque nombrado. No es una frase de cortesía: es un cuarto de la sección de resultados",
              "Si al final sobran páginas, se recorta de resultados hacia el apéndice, nunca de robustez",
-             "UNA sola primera contribución, no dos: el diagrama de fases es el marco y la contabilidad de reparto es su contenido, o sea una figura cuyos ejes son razones de coste y cuyas regiones están anotadas con quién paga. Se presentan fusionadas, no compitiendo por las mismas cuatro páginas",
+             "UNA sola primera contribución, no dos: los perfiles completos y su geometría de dominancia forman el mismo objeto. Ninguna figura plana se presenta como todo Δ⁵ ni se anota con quién paga",
              "La autopsia de los tres defectos va en método y apéndice, nunca en la introducción",
              "El abstract dice lo mismo que los resultados, incluidos los nulos, y ninguna afirmación suya carece de tabla y de fila del ledger",
              "Los dos universos preregistrados se reportan, no el que conviene",
@@ -1746,7 +1773,7 @@
   var spTodo = spVivo - spOk - spWip;
 
   /* La secuencia es una decision del plan; sus conteos y puntos se derivan de EPICS. */
-  var CADENA = ["US-172","US-160","US-124","US-125","US-171","US-155","US-127","US-128",
+  var CADENA = ["US-140","US-160","US-124","US-125","US-171","US-155","US-128",
                 "US-129","US-136","US-139","US-152","US-154","US-144","US-146","US-148"];
   var porId = {};
   stories.forEach(function(u){ porId[u.id] = u; });
@@ -1777,9 +1804,9 @@
   pon("cadena-resumen", spCadena + " de " + pendingSp + " SP pendientes");
 
   var FASES_CRITICAS = [
-    {n:"01", t:"Fijar la pérdida", ids:["US-172"]},
+    {n:"01", t:"Congelar inferencia", ids:["US-140"]},
     {n:"02", t:"Cerrar el diseño", ids:["US-160","US-124","US-125","US-171"]},
-    {n:"03", t:"Medir y tensionar", ids:["US-155","US-127","US-128","US-129","US-136","US-139"]},
+    {n:"03", t:"Medir y tensionar", ids:["US-155","US-128","US-129","US-136","US-139"]},
     {n:"04", t:"Elegir el mecanismo", ids:["US-152","US-154"]},
     {n:"05", t:"Escribir y entregar", ids:["US-144","US-146","US-148"]}
   ];
@@ -1824,13 +1851,13 @@
     {n:"00", t:"Fundación verificable", ids:["EPIC 18"],
      note:"Gobernanza, manifiestos y arnés OOF"},
     {n:"01", t:"Decisión definida", ids:["EPIC 27"],
-     note:"Pérdida, estimando, población y margen"},
-    {n:"02", t:"Protocolo firmado", ids:["EPIC 19"],
-     note:"Una regla común antes de calcular"},
+     note:"Perfiles, estimando, población y geometría"},
+    {n:"02", t:"Protocolo congelado", ids:["EPIC 19"],
+     note:"Una población y seis resultados por brazo"},
     {n:"03", t:"Mecanismos comparables", ids:["EPIC 20"],
      note:"Cuatro promesas bajo el mismo eje"},
-    {n:"04", t:"Quién gana y quién paga", ids:["EPIC 21","EPIC 25"],
-     note:"Equidad y mapa de decisión"},
+    {n:"04", t:"Mapear la decisión", ids:["EPIC 21","EPIC 25"],
+     note:"Distribución, dominancia y fronteras"},
     {n:"05", t:"Resultado que aguanta", ids:["EPIC 22","EPIC 26"],
      note:"Validez externa y campo de tiro"},
     {n:"06", t:"Paper defendible", ids:["EPIC 23","EPIC 24"],
