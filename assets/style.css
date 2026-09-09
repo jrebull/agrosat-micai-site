@@ -402,7 +402,8 @@ tbody tr.hi td{background:var(--sienna-soft);font-weight:600}
   border-top:6px solid var(--deep);scroll-margin-top:78px}
 .plan-page .history-heading{display:grid;grid-template-columns:minmax(260px,.8fr) minmax(0,1.2fr);
   column-gap:clamp(36px,7vw,92px);align-items:end;margin-bottom:30px}
-.plan-page .history-heading .eyebrow{grid-column:1/-1;margin-bottom:20px}
+.plan-page .history-heading .eyebrow{grid-column:1/-1;margin-bottom:20px;
+  max-width:none;white-space:nowrap}
 .plan-page .history-heading h2{font-size:clamp(42px,6vw,68px);line-height:.92;
   letter-spacing:-.055em;margin:0;max-width:9ch}
 .plan-page .history-heading>p:last-child{max-width:58ch;margin:0;font-size:15px;line-height:1.65;
@@ -466,7 +467,23 @@ tbody tr.hi td{background:var(--sienna-soft);font-weight:600}
 .plan-page .history-day>.dia strong{font:600 clamp(16px,2vw,20px)/1.25 var(--display)}
 .plan-page .history-day-count{font:500 10px/1.2 var(--mono);letter-spacing:.07em;
   text-transform:uppercase;color:var(--muted);white-space:nowrap}
+/* El registro se leia a ~105 caracteres por linea, muy por encima de los 65-75 que se leen sin
+   perder el renglon, mientras la columna de la historia se estrangulaba a 53px y partia «US-129»
+   en dos. La tabla no fijaba ningun ancho, asi que el navegador repartia a su aire. Ahora las
+   columnas estrechas van fijas, la de texto absorbe el resto, y el conjunto se acota para que la
+   medida de lectura no crezca con la pantalla. */
 .plan-page .history-day>.scroll{margin:0 0 24px;background:var(--panel)}
+.plan-page .history-day table{table-layout:fixed;min-width:720px}
+.plan-page .history-day col.c-us{width:78px}
+.plan-page .history-day col.c-tipo{width:132px}
+/* La columna de texto va FIJA: es la que fija la medida de lectura, y si la dejo absorber el
+   sobrante crece con la pantalla y vuelve a pasar de noventa caracteres. El sobrante lo absorbe
+   la de evidencia, que va alineada a la derecha y no se lee en renglon. */
+.plan-page .history-day col.c-que{width:560px}
+.plan-page .history-day col.c-ev{width:auto}
+.plan-page .history-day td:last-child,.plan-page .history-day th:last-child{text-align:right}
+.plan-page .history-day td:first-child,.plan-page .history-day th:first-child{white-space:nowrap}
+.plan-page .history-day td:nth-child(3){padding-right:26px}
 .plan-page .history-day td:nth-child(2){font-family:var(--mono);font-size:10px;
   letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .plan-page .history-day td:last-child a{color:var(--deep);text-decoration-thickness:1px;
