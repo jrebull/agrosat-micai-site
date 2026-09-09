@@ -12,7 +12,12 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "no-referrer"
 
+# La hoja de estilo se revalida en cada visita. Antes iba con una hora de cache sin revalidar, y
+# eso convertia cualquier correccion de estilo en una hora de espera para quien ya habia entrado:
+# el arreglo de contraste del 9 de septiembre se publico y se seguia viendo el fallo. Un cuaderno
+# que publica correcciones no puede servir la version anterior durante una hora. El coste es una
+# peticion condicional por visita, que responde 304 cuando no ha cambiado nada.
 [[headers]]
   for = "/assets/*"
   [headers.values]
-    Cache-Control = "public, max-age=3600"
+    Cache-Control = "public, max-age=0, must-revalidate"
