@@ -427,20 +427,20 @@
     lo que dice es lo que hay.</p>
 
   <div class="callout">
-    <p><b>Aquí no hay resultados todavía, y es a propósito.</b> El artículo compara cuatro maneras
-      de prometer menos sobre el espacio completo de pérdidas: el dato dará los perfiles de
-      resultado, la dominancia uniforme y las fronteras donde cambia la acción preferida. No se
-      elegirá un precio ni se atribuirá a usuarios que no fueron observados. Los valores
-      inferenciales restantes aún deben congelarse y la corrida preregistrada no se ha ejecutado;
-      por eso la sección de resultados sigue vacía.</p>
+    <p><b>Ya hay un diagnóstico exploratorio; todavía no hay veredicto comparativo.</b> La cobertura
+      conforme se ejecutó sobre PASTIS y BreizhCrops y se reporta con sus denominadores sellados.
+      Los dos bancos habían sido inspeccionados antes y, dentro de las catorce entradas
+      documentadas, no se admitió un banco confirmatorio; las otras acciones aún no comparten
+      vectores de resultado. Por eso esta primera tabla no decide qué mecanismo conviene, no
+      demuestra transporte y no fija un precio ni una preferencia de usuarios no observados.</p>
   </div>
 
   <div class="cifras">
-    <div class="cifra"><span class="n">19</span>
+    <div class="cifra"><span class="n">20</span>
       <span class="l">páginas A4, PDF anónimo</span></div>
-    <div class="cifra"><span class="n">6/8</span>
+    <div class="cifra"><span class="n">7/8</span>
       <span class="l">secciones redactadas</span></div>
-    <div class="cifra"><span class="n">27/27</span>
+    <div class="cifra"><span class="n">28/28</span>
       <span class="l">gates en verde</span></div>
   </div>
 
@@ -457,9 +457,9 @@
       <tr><td class="sec">Related Work</td><td><span class="chip ok">Redactada</span></td><td class="n">76</td><td class="nota"></td></tr>
       <tr><td class="sec">Problem Statement and Estimand</td><td><span class="chip ok">Redactada</span></td><td class="n">121</td><td class="nota"></td></tr>
       <tr><td class="sec">Four Mechanisms as Alternative Actions</td><td><span class="chip ok">Redactada</span></td><td class="n">100</td><td class="nota"></td></tr>
-      <tr><td class="sec">Evaluation Protocol</td><td><span class="chip ok">Redactada</span></td><td class="n">157</td><td class="nota"></td></tr>
-      <tr><td class="sec">Results</td><td><span class="chip wip">Esqueleto</span></td><td class="n">2</td><td class="nota">No hay resultados que presentar, y esto no es un descuido: el espacio de perdidas, el criterio principal y los valores inferenciales ya estan cerrados, pero la corrida preregistrad...</td></tr>
-      <tr><td class="sec">Discussion</td><td><span class="chip wip">Esqueleto</span></td><td class="n">2</td><td class="nota">Se escribe con los resultados delante, no antes.  Debe incluir, por decision tomada y no como relleno: los sesgos declarados de la busqueda bibliografica (idioma, indexacion, vocab...</td></tr>
+      <tr><td class="sec">Evaluation Protocol</td><td><span class="chip ok">Redactada</span></td><td class="n">158</td><td class="nota"></td></tr>
+      <tr><td class="sec">Results</td><td><span class="chip ok">Redactada</span></td><td class="n">44</td><td class="nota"></td></tr>
+      <tr><td class="sec">Discussion</td><td><span class="chip wip">Esqueleto</span></td><td class="n">14</td><td class="nota">src: reports/micai2027/conformal/pastis-coverage.csv src: reports/micai2027/conformal/breizhcrops-coverage.csv</td></tr>
       <tr><td class="sec">Frozen Analysis Contracts</td><td><span class="chip ok">Redactada</span></td><td class="n">36</td><td class="nota"></td></tr>
       </tbody>
     </table>
@@ -472,6 +472,7 @@
       <li><span class="chip ok">pasa</span> <code>banco-tercero-check</code> — el tercer banco se decide desde evidencia primaria capturada</li>
       <li><span class="chip ok">pasa</span> <code>ci-resource-check</code> — los recursos declarados en CI existen</li>
       <li><span class="chip ok">pasa</span> <code>ci-test-coverage-check</code> — ningun job de CI esta apagado ni se traga sus fallos</li>
+      <li><span class="chip ok">pasa</span> <code>conformal-coverage-check</code> — la cobertura conforme exploratoria conserva splits, denominadores y procedencia</li>
       <li><span class="chip ok">pasa</span> <code>imbalance-check</code> — la rejilla de desbalance permanece congelada y sin resultados</li>
       <li><span class="chip ok">pasa</span> <code>inference-contract-check</code> — inference-contract-check</li>
       <li><span class="chip ok">pasa</span> <code>micai-claims-check</code> — ninguna afirmacion retirada ha vuelto</li>
@@ -507,7 +508,7 @@
     </object>
   </div>
   <p class="pie-visor"><a href="paper/agrosat-micai2027-en-vivo.pdf">Abrir el PDF a pantalla completa</a> ·
-    manuscrito al día 2026-09-09, commit <code>bac69ec</code></p>
+    manuscrito al día 2026-09-10, commit <code>5f42ca9</code></p>
 </section>
 <!-- GENERADO build_site_paper · fin -->
 

@@ -29,12 +29,12 @@
           retirado en una comparación defendible de cuatro maneras de prometer menos.</p>
       </div>
       <aside class="plan-now" aria-labelledby="plan-now-title">
-        <p class="plan-now-label">Ahora · cuello de botella</p>
-        <h2 id="plan-now-title"><a href="#US-130">Cobertura conforme</a></h2>
-        <p>US-139 cerró los paneles y materializó posteriores separados de entrenamiento y
-          validación sin abrir el estrato evaluado. El siguiente cierre es conectar ese bundle al
-          flujo de seis brazos y medir la cobertura conforme sobre la población completa, siempre
-          como resultado exploratorio y sin reigualar el punto de operación.</p>
+        <p class="plan-now-label">Ahora · siguiente cierre</p>
+        <h2 id="plan-now-title"><a href="#US-131">Retroceso jerárquico</a></h2>
+        <p>US-130 ya ejecutó y selló el diagnóstico conforme exploratorio sobre once combinaciones
+          de modelo y estrato. El siguiente cierre es US-131: decidir y congelar el alcance del
+          retroceso HCAT4 para BreizhCrops, cuyo contrato vigente solo cubre las dieciocho hojas
+          <code>semantic18</code> de PASTIS, antes de producir otro brazo empírico.</p>
         <div class="plan-now-state"><span></span>En curso · sin crédito parcial</div>
       </aside>
     </div>
@@ -83,7 +83,7 @@
 
     <div class="cadena">
       <div class="cadena-head">
-        <span>Camino crítico · continúa en US-130</span>
+        <span>Camino crítico · continúa en US-133</span>
         <span id="cadena-resumen">—</span>
       </div>
       <div class="cadena-via" id="cadena-via"
@@ -145,9 +145,14 @@
         estrato confirmatorio. <b>Actualización del 10 de septiembre:</b> US-139 cerró la ausencia
         colindante sin recurrir a los OOF evaluados: treinta parquets contienen únicamente
         entrenamiento y validación para los paneles congelados de PASTIS y BreizhCrops. El runner
-        heredado dejó de ordenar predictores con etiquetas de evaluación. Todavía no se ha producido
-        ningún resultado del artículo; el siguiente paso es aplicar el flujo de seis brazos al
-        estrato externo y medir la cobertura conforme.</p>
+        heredado dejó de ordenar predictores con etiquetas de evaluación. <b>US-130 queda cerrada
+        el 10 de septiembre</b>: el punto de operación completo sale de entrenamiento y validación,
+        las entregas se fijan antes de abrir la referencia y cinco artefactos sellados publican
+        cobertura y tamaño de conjunto para once combinaciones de modelo y estrato. El diagnóstico
+        es exploratorio: no elige mecanismo, no afirma transporte y no convierte PASTIS ni
+        BreizhCrops en confirmatorios. El siguiente hueco es US-131; HCAT4 está definido sobre
+        <code>semantic18</code>, pero no existe todavía una decisión equivalente para el catálogo de
+        BreizhCrops.</p>
       <p><b>Auditoría de calibración, 9 de septiembre.</b> Una simulación bajo nulo global encontró
         que la primera implementación excedía el alfa familiar nominal. El hallazgo era real, pero
         su atribución al número de clústeres no estaba identificada: la comparación publicada
@@ -339,13 +344,13 @@
       <div class="ledger-row"><span class="name">Historias nuevas terminadas</span><span class="note">épicas 18 a 27</span><span class="num" id="progress-done-new">—</span></div>
       <div class="ledger-row"><span class="name">Historias retiradas</span><span class="note">se conservan como registro</span><span class="num" id="progress-retired">—</span></div>
       <div class="ledger-row"><span class="name">Historias nuevas por ejecutar</span><span class="note">incluye dependencias aún no liberadas</span><span class="num" id="progress-pending">—</span></div>
-      <div class="ledger-row"><span class="name">Esfuerzo pendiente</span><span class="note">el camino crítico continúa en US-130</span><span class="num" id="progress-pending-sp">—</span></div>
+      <div class="ledger-row"><span class="name">Esfuerzo pendiente</span><span class="note">el camino crítico continúa en US-133; el siguiente cierre operativo es US-131</span><span class="num" id="progress-pending-sp">—</span></div>
     </div>
     </details>
     <div class="colophon plan-colophon">
       <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
       <span><b>Total</b> <span id="total-sp">—</span> puntos de historia</span>
-      <span><b>Actualizado</b> 9 de septiembre de 2026, espacio completo de pérdidas congelado; cero resultados empíricos</span>
+      <span><b>Actualizado</b> 10 de septiembre de 2026, diagnóstico conforme exploratorio sellado; sin veredicto comparativo</span>
     </div>
   </div>
 </header>
@@ -561,7 +566,7 @@
 
     <div class="history-log">
     <details class="history-day" open>
-    <summary class="dia" data-date="2026-09-10"><time datetime="2026-09-10">10 sep</time><strong>US-136 cerrada; US-139 separa selección de evaluación</strong></summary>
+    <summary class="dia" data-date="2026-09-10"><time datetime="2026-09-10">10 sep</time><strong>US-139 cierra la selección; US-130 ejecuta el primer diagnóstico exploratorio</strong></summary>
     <div class="scroll">
             <table>
               <colgroup><col class="c-us"><col class="c-tipo"><col class="c-que"><col class="c-ev"></colgroup>
@@ -576,6 +581,15 @@
       <tr><td><b>US-139</b></td><td>Camino lateral de DVC</td><td>El gate ya no comprueba por separado un puntero bien formado y un payload válido: cuando el directorio está materializado exige que <code>dvc status</code> vincule ambos. Dos pruebas distinguen un directorio cambiado del estado vacío correcto</td><td><code data-author="Javier Rebull">87cbdb7</code></td></tr>
       <tr><td><b>US-139</b></td><td>Suite amplia</td><td>La primera corrida amplia encontró que una prueba de acoplamiento temporal omitía el nuevo parámetro obligatorio del volcador. Se reparó sin cambiar su espía ni su afirmación; la repetición terminó con 1 417 pruebas pasadas y 28 omitidas</td><td><code data-author="Javier Rebull">9b3c823</code></td></tr>
       <tr><td><b>US-139</b></td><td>Integración y cierre</td><td>PR #46 fusionada con commit de merge después de doce de doce jobs verdes. Se conserva la ancestría de <code>ee4b0f3</code>, que el manifiesto registra como productor limpio; <code>dvc status</code> queda vacío y US-139 aporta sus ocho SP sin atribuirse ningún resultado empírico</td><td><code data-author="Javier Rebull">4315e36</code></td></tr>
+      <tr><td><b>US-130</b></td><td>Contrato previo</td><td>La ejecución conforme queda congelada antes de resultados: paneles, splits, población, punto de operación, cinco rutas de salida, régimen exploratorio y prohibición de reigualar sobre evaluación. El mismo bloque añade el adaptador reproducible de BreizhCrops y separa ajuste, entrega y medición</td><td><code data-author="Javier Rebull">e52cab2</code></td></tr>
+      <tr><td><b>US-130</b></td><td>Custodia de entradas</td><td>Los contratos de ejecución y conformal, la descripción legible y el inventario OOF quedan sellados. La salida del gate deja de llamar «modelos» a once evaluaciones modelo-estrato</td><td><code data-author="Javier Rebull">8789259</code></td></tr>
+      <tr><td><b>US-130</b></td><td>Transición antes de resultados</td><td>El protocolo pasa de <code>mechanics_only</code> a <code>exploratory_only</code> antes de materializar cifras. Declara exactamente cinco salidas, mantiene nulo el banco confirmatorio y registra la enmienda que impide reclasificar después lo ya inspeccionado</td><td><code data-author="Javier Rebull">bdaf4ba</code></td></tr>
+      <tr><td><b>US-130</b></td><td>Materialización</td><td>Se generan cinco CSV deterministas para once combinaciones modelo-estrato. PASTIS usa la referencia sellada del banco en lugar de una raíz cruda no versionada de 68 GB; las entregas quedan fijadas antes de cruzarlas con las etiquetas</td><td><code data-author="Javier Rebull">ab7cacd</code></td></tr>
+      <tr><td><b>US-130</b></td><td>Sello de resultados</td><td>Cobertura, distribuciones de tamaño y procedencia quedan bajo custodia. Dos ejecuciones limpias producen los mismos bytes; el inventario cerrado rechaza una sexta salida colocada al lado</td><td><code data-author="Javier Rebull">48e44b7</code></td></tr>
+      <tr><td><b>US-130 / US-144</b></td><td>Manuscrito</td><td>El PDF anónimo llega al límite de veinte páginas e incorpora la primera tabla exploratoria. Resultados y discusión distinguen contención de utilidad, declaran los denominadores y no convierten cobertura en preferencia, dominancia, transporte ni confirmación</td><td><code data-author="Javier Rebull">5f42ca9</code></td></tr>
+      <tr><td><b>US-130</b></td><td>Correctivo de CI</td><td>El checkout limpio encontró una asimetría: la custodia aceptaba un payload DVC ausente mediante su puntero, pero la comprobación de procedencia intentaba abrir después el fichero ausente. El gate usa ahora la identidad ya certificada por puntero y ledger, con prueba positiva y negativa</td><td><code data-author="Javier Rebull">b4afe89</code></td></tr>
+      <tr><td><b>US-130 / US-144</b></td><td>Propagación pública</td><td>El primer pase de publicación generó una frase absoluta sobre la inexistencia de un banco y el segundo pase la rechazó. El tablero usa ahora el alcance que sí sostiene el contrato: dentro de las catorce entradas documentadas no se admitió un banco confirmatorio</td><td><code data-author="Javier Rebull">c7a17c6</code></td></tr>
+      <tr><td><b>US-130</b></td><td>Cierre integrado</td><td>PR #47 fusionada tras dos ejecuciones completas de CI, con doce de doce trabajos verdes. El diagnóstico conforme exploratorio queda en <code>main</code>; suma ocho puntos cerrados sin declarar un veredicto comparativo ni un banco confirmatorio</td><td><code data-author="Javier Rebull">9426360</code></td></tr>
       </tbody></table></div>
     </details>
 
@@ -1340,17 +1354,20 @@
       id:"EPIC 20", name:"Los cuatro mecanismos, bajo el eje común", status:"wip",
       goal:"Recorte de leyenda y abstención ya estaban. Faltan los dos que hacían estrecho el artículo: devolver un conjunto de cultivos plausibles y retroceder a una clase más gruesa. Los cuatro, bajo el eje de coste único de la EPIC 19.",
       us:[
-        {id:"US-130", t:"Predicción conforme como tercer mecanismo", sp:8, st:"wip",
+        {id:"US-130", t:"Predicción conforme como tercer mecanismo", sp:8, st:"ok",
          role:"Como producto que no sabe si es trigo o cebada, quiero poder decir «una de estas dos» en vez de callarme o de borrar la clase del catálogo.",
-         ac:["MECÁNICA TERMINADA, COBERTURA EMPÍRICA PENDIENTE. La calibración APS usa solo validación; el constructor no acepta etiquetas de prueba y el flujo común rechaza identidades de parcelas reutilizadas desde entrenamiento o validación",
+         ac:["EJECUCIÓN EXPLORATORIA CERRADA. La calibración APS usa solo validación; el constructor no acepta etiquetas de prueba y el flujo común rechaza identidades de parcelas reutilizadas desde entrenamiento o validación",
              "HALLAZGO DE AUDITORÍA. La primera versión calculaba rango/n y lo pasaba a numpy.quantile(method=higher); esa API interpola sobre n-1 huecos y podía seleccionar la observación siguiente. Un caso de regresión obliga a que las dos fórmulas difieran y fija el orden estadístico exacto",
              "BORDE FINITO EXPLÍCITO. Si ceil((n_cal+1)(1-alpha)) queda fuera de la muestra de calibración, no se sustituye por su máximo: se entrega el catálogo completo, que conserva la garantía en ese borde",
-             "La cobertura marginal se mide como contención de la verdad sobre TODAS las parcelas de prueba y se contrasta con 1-alpha. Una realización inferior se reporta; nunca se elimina del denominador ni se reiguala el umbral en prueba",
+             "El punto de operación completo —tasa incluida— sale de entrenamiento y validación. Las entregas se fijan para todo el estrato antes de abrir la referencia; una huella por fila impide reutilizar total o parcialmente un bloque de ajuste como evaluación",
+             "POBLACIÓN PASTIS CORREGIDA ANTES DE EJECUTAR. La primera ruta propuesta apuntaba a 68 GB crudos sin versión. La corrida usa la referencia sellada del banco: 28 532 posteriores, 16 640 parcelas elegibles y 11 892 exclusiones por ausencia de referencia aplicadas después de fijar los conjuntos",
+             "RESULTADO EXPLORATORIO. Once combinaciones modelo-estrato alcanzan la cobertura nominal marginal declarada. Las medianas de tamaño quedan entre 5 y 12 etiquetas en PASTIS y entre 4 y 6 en BreizhCrops: contener la verdad no decide si el conjunto compensa su amplitud",
              "El conjunto conserva su máscara completa y su tipo de acción; no se reduce al argmax interno. Singleton, conjunto correcto y conjunto que excluye la verdad siguen entrando en celdas de pérdida distintas",
              "CONVENCIÓN DECLARADA: split-conformal APS determinista y no aleatorizado, con suma acumulada hasta la etiqueta verdadera y desempate estable por índice. Evita otra semilla; su posible conservaduría se publica mediante tamaño y cobertura",
-             "LÍMITE: la garantía requiere intercambiabilidad entre calibración y prueba y no autoriza transporte. Miscoverage, predictor, banco y pérdida siguen sin fijarse aquí. Cero corridas empíricas antes del preregistro firmado",
-             "VERIFICACIÓN: diez pruebas propias y 711 pruebas de evaluación verdes; el PDF anónimo conserva catorce páginas A4, sin desbordes ni citas sin resolver"],
-         out:"ml/eval/conformal.py; docs/paper/conformal-v1.json; docs/paper/conformal-v1.md; paper/micai2027/sections/04-mechanisms.tex", dep:"US-129"},
+             "LÍMITE: la garantía requiere intercambiabilidad entre calibración y evaluación y no autoriza transporte. PASTIS y BreizhCrops fueron inspeccionados antes; las cinco salidas declaran dataset_role=exploratory y ninguna contiene un veredicto de dominancia",
+             "REPRODUCIBILIDAD Y CUSTODIA. Los cinco artefactos se reprodujeron byte a byte en dos ejecuciones limpias, tienen fila SELLADO y conformal-coverage-check rederiva aritmética, distribución, splits, procedencia e inventario cerrado incluso sin materializar el payload DVC grande en CI",
+             "VERIFICACIÓN: 633 pruebas de scripts y módulos conformes/panel, make check y gates de preregistro, panel, protocolo, custodia y cobertura en verde; PDF anónimo de veinte páginas inspeccionado visualmente"],
+         out:"ml/eval/conformal.py; ml/eval/conformal_reporting.py; docs/paper/conformal-execution-v1.json; reports/micai2027/conformal/; scripts/conformal_coverage_check.py; paper/micai2027/sections/06-results.tex", dep:"US-129"},
         {id:"US-131", t:"Retroceso jerárquico como cuarto mecanismo", sp:5, st:"wip",
          role:"Como agrónomo, prefiero que me digan «cereal» a que no me digan nada.",
          ac:["MECÁNICA TERMINADA, COMPARACIÓN EMPÍRICA PENDIENTE. El contrato sellado usa HCAT4 sobre EuroCrops v2: dieciocho hojas semantic18 forman una partición completa en siete nodos, con tres correspondencias aproximadas declaradas. No se inventa una taxonomía desde las confusiones del modelo",
