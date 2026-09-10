@@ -30,11 +30,12 @@
       </div>
       <aside class="plan-now" aria-labelledby="plan-now-title">
         <p class="plan-now-label">Ahora · siguiente cierre</p>
-        <h2 id="plan-now-title"><a href="#US-134">Disparidad con intervalo</a></h2>
-        <p>US-133 ya cerró la distribución de entrega para los seis brazos: por clase verdadera
-          en ambos bancos y por decil de área en PASTIS. BreizhCrops no aporta área de parcela y
-          queda como no estimable, sin fabricar un proxy. El siguiente cierre es US-134.</p>
-        <div class="plan-now-state"><span></span>Lista · depende de US-133, US-131 y US-140, ya cerradas</div>
+        <h2 id="plan-now-title"><a href="#US-135">Sesgo de superficie</a></h2>
+        <p>US-134 cerró la pregunta de estimabilidad antes de calcular contrastes: PASTIS solo
+          conserva dos de cinco bloques completos para sus dieciocho clases y cada estrato de
+          BreizhCrops aporta un único bloque. La familia H2 queda íntegra sin intervalo, p ni Holm;
+          el siguiente cierre es US-135.</p>
+        <div class="plan-now-state"><span></span>Lista · depende de US-134, ya cerrada</div>
       </aside>
     </div>
 
@@ -82,7 +83,7 @@
 
     <div class="cadena">
       <div class="cadena-head">
-        <span>Camino crítico · continúa en US-134</span>
+        <span>Camino crítico · continúa en US-135</span>
         <span id="cadena-resumen">—</span>
       </div>
       <div class="cadena-via" id="cadena-via"
@@ -356,13 +357,13 @@
       <div class="ledger-row"><span class="name">Historias nuevas terminadas</span><span class="note">épicas 18 a 27</span><span class="num" id="progress-done-new">—</span></div>
       <div class="ledger-row"><span class="name">Historias retiradas</span><span class="note">se conservan como registro</span><span class="num" id="progress-retired">—</span></div>
       <div class="ledger-row"><span class="name">Historias nuevas por ejecutar</span><span class="note">incluye dependencias aún no liberadas</span><span class="num" id="progress-pending">—</span></div>
-      <div class="ledger-row"><span class="name">Esfuerzo pendiente</span><span class="note">el camino crítico y el siguiente cierre operativo continúan en US-134</span><span class="num" id="progress-pending-sp">—</span></div>
+      <div class="ledger-row"><span class="name">Esfuerzo pendiente</span><span class="note">el camino crítico y el siguiente cierre operativo continúan en US-135</span><span class="num" id="progress-pending-sp">—</span></div>
     </div>
     </details>
     <div class="colophon plan-colophon">
       <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
       <span><b>Total</b> <span id="total-sp">—</span> puntos de historia</span>
-      <span><b>Actualizado</b> 10 de septiembre de 2026, Ha implementada como familia mecánica sin séptimo brazo; sin veredicto comparativo</span>
+      <span><b>Actualizado</b> 10 de septiembre de 2026, H2 cerrada como no estimable en ambos bancos; sin equivalencia ni dirección inferida</span>
     </div>
   </div>
 </header>
@@ -578,12 +579,22 @@
 
     <div class="history-log">
     <details class="history-day" open>
-    <summary class="dia" data-date="2026-09-10"><time datetime="2026-09-10">10 sep</time><strong>Panel, mecanismos y cobertura distribuida llegan a evidencia sellada</strong></summary>
+    <summary class="dia" data-date="2026-09-10"><time datetime="2026-09-10">10 sep</time><strong>Panel, mecanismos, cobertura y estimabilidad llegan a evidencia sellada</strong></summary>
     <div class="scroll">
             <table>
               <colgroup><col class="c-us"><col class="c-tipo"><col class="c-que"><col class="c-ev"></colgroup>
       <thead><tr><th>US</th><th>Tipo</th><th>Qué se hizo</th><th>Evidencia</th></tr></thead>
       <tbody data-date="2026-09-10">
+      <tr><td><b>US-134</b></td><td>Integración y cierre</td><td>PR #52 fusionada después de doce de doce jobs verdes sobre el HEAD final. US-134 aporta cinco SP como decisión de no estimabilidad, no como ausencia de disparidad; el tablero avanza a US-135</td><td><code data-author="Javier Rebull">0750699</code></td></tr>
+      <tr><td><b>US-134 / web</b></td><td>Estado verificable</td><td>La pestaña En vivo deja de contar dos diagnósticos cuando ya existen más salidas exploratorias. Publica la retirada íntegra de H2, sus causas por banco y el límite inferencial: no estimable no significa igual ni equivalente</td><td><code data-author="Javier Rebull">4f752e9</code></td></tr>
+      <tr><td><b>US-134</b></td><td>Frontera de CI</td><td>El gate conserva dos niveles explícitos: en local rederiva el soporte desde las etiquetas selladas; en el job barato y sin dependencias valida contrato, custodia, inventarios, aritmética y retirada completa de la familia. El modo reducido declara que no rederiva la fuente en vez de fingir el mismo alcance</td><td><code data-author="Javier Rebull">e3c3ab3</code></td></tr>
+      <tr><td><b>US-134 / US-144</b></td><td>Manuscrito</td><td>Resultados y discusión publican la no estimabilidad como límite de diseño: PASTIS conserva dos de cinco bloques completos y BreizhCrops uno por estrato. El PDF se mantiene en veinte páginas reduciendo solo la tipografía del apéndice; no se publican igualdad, equivalencia ni dirección</td><td><code data-author="Javier Rebull">4582e3a</code></td></tr>
+      <tr><td><b>US-140 / US-134</b></td><td>Ancla corregida</td><td>La decisión sin ganador deja de apuntar a la raíz obsoleta de equidad y nombra una salida actual y sellada de US-134. El gate exige ruta exacta, bytes vigentes y esquema cerrado; reescribir y volver a sellar ya no permite mover el punto de decisión en silencio</td><td><code data-author="Javier Rebull">c5f41e6</code></td></tr>
+      <tr><td><b>US-134</b></td><td>Auditoría por ataque</td><td>Catorce mutaciones negativas cubren clases añadidas o perdidas, filas omitidas, estados inventados, una familia parcialmente publicada, cifras inferenciales indebidas y divergencias entre contrato, protocolo, fuente, resultado y ledger</td><td><code data-author="Javier Rebull">37e3e1a</code></td></tr>
+      <tr><td><b>US-134</b></td><td>Sello de resultados</td><td>Las tres salidas entran al registro de custodia con estado SELLADO. La procedencia fija contrato, protocolo, selección y código productor; el inventario cerrado impide colocar una cuarta salida al lado</td><td><code data-author="Javier Rebull">59e0a54</code></td></tr>
+      <tr><td><b>US-134</b></td><td>Materialización</td><td>Se producen 492 filas de soporte y 22 contrastes planificados para once modelo-estratos. PASTIS tiene dos de cinco bloques con las dieciocho clases y tres incompletos; cada estrato de BreizhCrops tiene un bloque, por debajo del mínimo de tres. Toda H2 queda sin delta, intervalo, p ni Holm</td><td><code data-author="Javier Rebull">3db1fd3</code></td></tr>
+      <tr><td><b>US-134</b></td><td>Custodia previa</td><td>El contrato y su lectura metodológica quedan sellados antes de materializar el soporte. La tabla de clases procede de entrenamiento y la regla retira la familia completa si falta una clase o no existen tres bloques pareados</td><td><code data-author="Javier Rebull">0bc5290</code></td></tr>
+      <tr><td><b>US-134</b></td><td>Contrato previo</td><td>Se congela la estimabilidad antes de abrir cualquier contraste H2: universo de dieciocho clases fijado desde entrenamiento, dos contrastes planificados, mínimo de tres bloques pareados y prohibición de publicar intervalos, p o Holm cuando la familia no es estimable. Se declara que la cobertura agregada ya había sido inspeccionada</td><td><code data-author="Javier Rebull">1ad1dba</code></td></tr>
       <tr><td><b>US-133 / web</b></td><td>Control de publicación</td><td>La pestaña En vivo deja de repetir el nombre técnico del gate como si fuera su explicación: ahora dice que el control conserva poblaciones, cortes y la ausencia documentada de área. Una prueba impide que el texto opaco vuelva</td><td><code data-author="Javier Rebull">affed47</code></td></tr>
       <tr><td><b>US-133</b></td><td>Integración y cierre</td><td>PR #50 fusionada después de doce de doce jobs verdes sobre el HEAD final. US-133 aporta sus cinco SP con seis artefactos sellados, sin imputar área a BreizhCrops ni comparar numéricamente contra la pasada obsoleta; el siguiente cierre es US-134</td><td><code data-author="Javier Rebull">5ec606f</code></td></tr>
       <tr><td><b>US-133</b></td><td>Contrato previo</td><td>La cobertura distribuida se congela antes de abrir etiquetas: seis brazos, clase verdadera completa, deciles de área ajustados solo en entrenamiento, denominador común y ausencia explícita de una vista de área cuando el banco no aporta la variable</td><td><code data-author="Javier Rebull">32b7c22</code></td></tr>
@@ -1435,15 +1446,17 @@
              "Las cifras de la primera pasada permanecen OBSOLETO y se cruzan solo como contexto. No se publica una diferencia numérica porque cambiaron catálogo, leyendas, panel y población; restarlas atribuiría al mecanismo lo que también cambió de diseño",
              "RESULTADO ACOTADO. En los cinco predictores PASTIS y los tres mecanismos con entrega selectiva, la amplitud de cobertura entre clases verdaderas supera la amplitud entre deciles de área. No se interpreta como transporte, preferencia de usuario ni contraste confirmatorio"],
          out:"docs/paper/coverage-distribution-v1.json; docs/paper/coverage-distribution-v1.md; reports/micai2027/distribution/; scripts/coverage_distribution_check.py", dep:"US-129"},
-        {id:"US-134", t:"La disparidad como criterio principal, con su intervalo", sp:5, st:"idle",
-         role:"Como revisor, quiero que la afirmación de equidad tenga incertidumbre y no sea un punto, y quiero que sea el criterio principal si es donde hay efecto.",
-         ac:["CORREGIDO tras auditoría externa: elegir la variable primaria según dónde haya potencia es escoger el resultado después de verlo. La primaria se CONGELA en US-140 junto con población, coordenadas, familia y regla de decisión. Lo hecho sobre los dos bancos vistos es exploratorio y se etiqueta así",
-             "El estadístico titular NO es la mayor razón observada: es una medida declarada sobre todas las clases con soporte suficiente",
-             "Intervalo por bloque para la medida de disparidad, declarada antes de calcularla",
-             "NO se preregistra sobre los dos bancos ya mirados: se declaran exploratorios y la medida se preregistra para los bancos nuevos. Preregistrar sobre datos vistos es un ritual, no un compromiso",
-             "Se reconoce que el hallazgo del recorte está parcialmente implicado por su definición —retirar las clases de peor F1 hace que reciban poca cobertura— y se separa lo tautológico de lo que no lo es",
-             "Los cuatro mecanismos de la EPIC 20 incluidos"],
-         out:"reports/paper_micai/equidad/", dep:"US-133, US-131, US-140"},
+        {id:"US-134", t:"Disparidad predeclarada: estimabilidad por bloques", sp:5, st:"ok",
+         role:"Como revisor, quiero que una familia de disparidad sin soporte por bloques se retire completa, en vez de recibir un intervalo fabricado o una conclusión direccional.",
+         ac:["CERRADA COMO NO ESTIMABLE. La regla se congeló después de abrir cobertura agregada, pero antes de calcular cualquier contraste H2; esa frontera temporal está declarada y no se presenta como preregistro confirmatorio",
+             "El universo de dieciocho clases PASTIS sale de entrenamiento. Cada contraste exige al menos tres bloques pareados que contengan todas las clases; una clase ausente retira la familia entera, no solo la coordenada incómoda",
+             "Se publican 492 filas de soporte y 22 filas de familia para once combinaciones modelo-estrato y dos contrastes planificados. Los conteos salen de los artefactos, no de esta prosa",
+             "PASTIS conserva solo dos de cinco bloques completos para las dieciocho clases; los otros tres carecen de al menos una. Los dos contrastes H2 quedan missing_class en los cinco predictores",
+             "Cada combinación modelo-región de BreizhCrops contiene un único bloque espacial, por debajo del mínimo de tres. Los doce contrastes quedan too_few_blocks",
+             "NINGUNA fila no estimable contiene delta, intervalo, p o Holm. La ausencia de estimabilidad no se redacta como igualdad, equivalencia, ausencia de disparidad ni evidencia sobre su dirección",
+             "h2-estimability-check rederiva localmente el soporte desde las etiquetas selladas y, en el CI sin NumPy, declara su alcance reducido mientras comprueba contrato, custodia, inventario cerrado, aritmética y retirada completa de la familia",
+             "El ancla de la decisión sin ganador apunta a family-status.csv, artefacto actual SELLADO, y ya no a la antigua raíz obsoleta de equidad"],
+         out:"docs/paper/h2-estimability-v1.json; docs/paper/h2-estimability-v1.md; reports/micai2027/disparity/; scripts/h2_estimability_check.py", dep:"US-133, US-131, US-140"},
         {id:"US-135", t:"El sesgo inducido en la estadística de superficie", sp:8, st:"idle",
          role:"Como usuario real, el producto no es una etiqueta por parcela: son estadísticas de superficie por cultivo, y la no entrega las sesga de forma distinta según el mecanismo.",
          ac:["Sesgo en la estimación de área por cultivo bajo cada mecanismo, con su dirección y su magnitud",
@@ -1921,7 +1934,8 @@
 
   /* La secuencia es una decision del plan; sus conteos y puntos se derivan de EPICS. */
   var CADENA = ["US-140","US-136","US-139","US-160","US-124","US-125","US-171",
-                "US-155","US-128","US-129","US-152","US-154","US-144","US-146","US-148"];
+                "US-155","US-128","US-129","US-133","US-134","US-135","US-152","US-154",
+                "US-144","US-146","US-148"];
   var porId = {};
   stories.forEach(function(u){ porId[u.id] = u; });
   var cadenaPendiente = CADENA.filter(function(id){
@@ -1953,7 +1967,7 @@
   var FASES_CRITICAS = [
     {n:"01", t:"Congelar inferencia", ids:["US-140"]},
     {n:"02", t:"Cerrar búsqueda y panel", ids:["US-136","US-139"]},
-    {n:"03", t:"Medir y tensionar", ids:["US-160","US-124","US-125","US-171","US-155","US-128","US-129"]},
+    {n:"03", t:"Medir y tensionar", ids:["US-160","US-124","US-125","US-171","US-155","US-128","US-129","US-133","US-134","US-135"]},
     {n:"04", t:"Elegir el mecanismo", ids:["US-152","US-154"]},
     {n:"05", t:"Escribir y entregar", ids:["US-144","US-146","US-148"]}
   ];
