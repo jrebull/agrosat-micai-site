@@ -427,20 +427,21 @@
     lo que dice es lo que hay.</p>
 
   <div class="callout">
-    <p><b>Ya hay un diagnóstico exploratorio; todavía no hay veredicto comparativo.</b> La cobertura
-      conforme se ejecutó sobre PASTIS y BreizhCrops y se reporta con sus denominadores sellados.
-      Los dos bancos habían sido inspeccionados antes y, dentro de las catorce entradas
-      documentadas, no se admitió un banco confirmatorio; las otras acciones aún no comparten
-      vectores de resultado. Por eso esta primera tabla no decide qué mecanismo conviene, no
-      demuestra transporte y no fija un precio ni una preferencia de usuarios no observados.</p>
+    <p><b>Ya hay dos diagnósticos exploratorios; todavía no hay veredicto comparativo.</b> Los
+      conjuntos conformes y el retroceso HCAT4 se ejecutaron sobre PASTIS y BreizhCrops con
+      denominadores sellados. Los dos bancos habían sido inspeccionados antes y, dentro de las
+      catorce entradas documentadas, no se admitió un banco confirmatorio; las demás acciones aún
+      no comparten vectores de resultado. La tabla distingue contención, amplitud, entrega precisa
+      y acierto preciso: no decide qué mecanismo conviene, no demuestra transporte y no fija un
+      precio ni una preferencia de usuarios no observados.</p>
   </div>
 
   <div class="cifras">
     <div class="cifra"><span class="n">20</span>
       <span class="l">páginas A4, PDF anónimo</span></div>
-    <div class="cifra"><span class="n">7/8</span>
+    <div class="cifra"><span class="n">8/8</span>
       <span class="l">secciones redactadas</span></div>
-    <div class="cifra"><span class="n">28/28</span>
+    <div class="cifra"><span class="n">29/29</span>
       <span class="l">gates en verde</span></div>
   </div>
 
@@ -458,9 +459,9 @@
       <tr><td class="sec">Problem Statement and Estimand</td><td><span class="chip ok">Redactada</span></td><td class="n">121</td><td class="nota"></td></tr>
       <tr><td class="sec">Four Mechanisms as Alternative Actions</td><td><span class="chip ok">Redactada</span></td><td class="n">100</td><td class="nota"></td></tr>
       <tr><td class="sec">Evaluation Protocol</td><td><span class="chip ok">Redactada</span></td><td class="n">158</td><td class="nota"></td></tr>
-      <tr><td class="sec">Results</td><td><span class="chip ok">Redactada</span></td><td class="n">44</td><td class="nota"></td></tr>
-      <tr><td class="sec">Discussion</td><td><span class="chip wip">Esqueleto</span></td><td class="n">14</td><td class="nota">src: reports/micai2027/conformal/pastis-coverage.csv src: reports/micai2027/conformal/breizhcrops-coverage.csv</td></tr>
-      <tr><td class="sec">Frozen Analysis Contracts</td><td><span class="chip ok">Redactada</span></td><td class="n">36</td><td class="nota"></td></tr>
+      <tr><td class="sec">Results</td><td><span class="chip ok">Redactada</span></td><td class="n">52</td><td class="nota"></td></tr>
+      <tr><td class="sec">Discussion</td><td><span class="chip ok">Redactada</span></td><td class="n">15</td><td class="nota"></td></tr>
+      <tr><td class="sec">Frozen Analysis Contracts</td><td><span class="chip ok">Redactada</span></td><td class="n">31</td><td class="nota"></td></tr>
       </tbody>
     </table>
   </div>
@@ -473,6 +474,7 @@
       <li><span class="chip ok">pasa</span> <code>ci-resource-check</code> — los recursos declarados en CI existen</li>
       <li><span class="chip ok">pasa</span> <code>ci-test-coverage-check</code> — ningun job de CI esta apagado ni se traga sus fallos</li>
       <li><span class="chip ok">pasa</span> <code>conformal-coverage-check</code> — la cobertura conforme exploratoria conserva splits, denominadores y procedencia</li>
+      <li><span class="chip ok">pasa</span> <code>hcat4-backoff-check</code> — el retroceso HCAT4 conserva ambos catálogos, contexto, perfiles y custodia</li>
       <li><span class="chip ok">pasa</span> <code>imbalance-check</code> — la rejilla de desbalance permanece congelada y sin resultados</li>
       <li><span class="chip ok">pasa</span> <code>inference-contract-check</code> — inference-contract-check</li>
       <li><span class="chip ok">pasa</span> <code>micai-claims-check</code> — ninguna afirmacion retirada ha vuelto</li>
@@ -508,7 +510,7 @@
     </object>
   </div>
   <p class="pie-visor"><a href="paper/agrosat-micai2027-en-vivo.pdf">Abrir el PDF a pantalla completa</a> ·
-    manuscrito al día 2026-09-10, commit <code>5f42ca9</code></p>
+    manuscrito al día 2026-09-10, commit <code>feede2c</code></p>
 </section>
 <!-- GENERADO build_site_paper · fin -->
 

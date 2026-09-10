@@ -30,12 +30,11 @@
       </div>
       <aside class="plan-now" aria-labelledby="plan-now-title">
         <p class="plan-now-label">Ahora · siguiente cierre</p>
-        <h2 id="plan-now-title"><a href="#US-131">Retroceso jerárquico</a></h2>
-        <p>US-130 ya ejecutó y selló el diagnóstico conforme exploratorio sobre once combinaciones
-          de modelo y estrato. El siguiente cierre es US-131: decidir y congelar el alcance del
-          retroceso HCAT4 para BreizhCrops, cuyo contrato vigente solo cubre las dieciocho hojas
-          <code>semantic18</code> de PASTIS, antes de producir otro brazo empírico.</p>
-        <div class="plan-now-state"><span></span>En curso · sin crédito parcial</div>
+        <h2 id="plan-now-title"><a href="#US-132">Líneas base comparables</a></h2>
+        <p>US-131 ya congeló, ejecutó y selló el retroceso HCAT4 exploratorio en los dos catálogos.
+          El siguiente cierre operativo es US-132: implementar desde su publicación la línea base
+          clásica de Ha y declarar el límite de no comparar rechazadores aprendidos.</p>
+        <div class="plan-now-state"><span></span>Lista · depende solo de US-130, ya cerrada</div>
       </aside>
     </div>
 
@@ -150,9 +149,12 @@
         las entregas se fijan antes de abrir la referencia y cinco artefactos sellados publican
         cobertura y tamaño de conjunto para once combinaciones de modelo y estrato. El diagnóstico
         es exploratorio: no elige mecanismo, no afirma transporte y no convierte PASTIS ni
-        BreizhCrops en confirmatorios. El siguiente hueco es US-131; HCAT4 está definido sobre
-        <code>semantic18</code>, pero no existe todavía una decisión equivalente para el catálogo de
-        BreizhCrops.</p>
+        BreizhCrops en confirmatorios. <b>US-131 queda cerrada el 10 de septiembre</b>: dos cortes
+        HCAT4 predeclarados cubren las dieciocho hojas de PASTIS y las nueve clases publicadas de
+        BreizhCrops; once evaluaciones modelo-estrato fijan la entrega antes de abrir la referencia.
+        Sus tres salidas se reprodujeron byte a byte y están selladas. La tabla del manuscrito
+        conserva separados los objetivos de validación conforme y jerárquico: no los presenta como
+        igual pérdida, no declara un ganador y no convierte el diagnóstico en inferencia.</p>
       <p><b>Auditoría de calibración, 9 de septiembre.</b> Una simulación bajo nulo global encontró
         que la primera implementación excedía el alfa familiar nominal. El hallazgo era real, pero
         su atribución al número de clústeres no estaba identificada: la comparación publicada
@@ -344,13 +346,13 @@
       <div class="ledger-row"><span class="name">Historias nuevas terminadas</span><span class="note">épicas 18 a 27</span><span class="num" id="progress-done-new">—</span></div>
       <div class="ledger-row"><span class="name">Historias retiradas</span><span class="note">se conservan como registro</span><span class="num" id="progress-retired">—</span></div>
       <div class="ledger-row"><span class="name">Historias nuevas por ejecutar</span><span class="note">incluye dependencias aún no liberadas</span><span class="num" id="progress-pending">—</span></div>
-      <div class="ledger-row"><span class="name">Esfuerzo pendiente</span><span class="note">el camino crítico continúa en US-133; el siguiente cierre operativo es US-131</span><span class="num" id="progress-pending-sp">—</span></div>
+      <div class="ledger-row"><span class="name">Esfuerzo pendiente</span><span class="note">el camino crítico continúa en US-133; el siguiente cierre operativo es US-132</span><span class="num" id="progress-pending-sp">—</span></div>
     </div>
     </details>
     <div class="colophon plan-colophon">
       <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
       <span><b>Total</b> <span id="total-sp">—</span> puntos de historia</span>
-      <span><b>Actualizado</b> 10 de septiembre de 2026, diagnóstico conforme exploratorio sellado; sin veredicto comparativo</span>
+      <span><b>Actualizado</b> 10 de septiembre de 2026, diagnósticos conforme y HCAT4 exploratorios sellados; sin veredicto comparativo</span>
     </div>
   </div>
 </header>
@@ -566,7 +568,7 @@
 
     <div class="history-log">
     <details class="history-day" open>
-    <summary class="dia" data-date="2026-09-10"><time datetime="2026-09-10">10 sep</time><strong>US-139 cierra la selección; US-130 ejecuta el primer diagnóstico exploratorio</strong></summary>
+    <summary class="dia" data-date="2026-09-10"><time datetime="2026-09-10">10 sep</time><strong>US-139 cierra la selección; US-130 y US-131 ejecutan dos diagnósticos exploratorios</strong></summary>
     <div class="scroll">
             <table>
               <colgroup><col class="c-us"><col class="c-tipo"><col class="c-que"><col class="c-ev"></colgroup>
@@ -590,6 +592,16 @@
       <tr><td><b>US-130</b></td><td>Correctivo de CI</td><td>El checkout limpio encontró una asimetría: la custodia aceptaba un payload DVC ausente mediante su puntero, pero la comprobación de procedencia intentaba abrir después el fichero ausente. El gate usa ahora la identidad ya certificada por puntero y ledger, con prueba positiva y negativa</td><td><code data-author="Javier Rebull">b4afe89</code></td></tr>
       <tr><td><b>US-130 / US-144</b></td><td>Propagación pública</td><td>El primer pase de publicación generó una frase absoluta sobre la inexistencia de un banco y el segundo pase la rechazó. El tablero usa ahora el alcance que sí sostiene el contrato: dentro de las catorce entradas documentadas no se admitió un banco confirmatorio</td><td><code data-author="Javier Rebull">c7a17c6</code></td></tr>
       <tr><td><b>US-130</b></td><td>Cierre integrado</td><td>PR #47 fusionada tras dos ejecuciones completas de CI, con doce de doce trabajos verdes. El diagnóstico conforme exploratorio queda en <code>main</code>; suma ocho puntos cerrados sin declarar un veredicto comparativo ni un banco confirmatorio</td><td><code data-author="Javier Rebull">9426360</code></td></tr>
+      <tr><td><b>US-131</b></td><td>Contrato previo</td><td>Se congelan antes de los resultados los cortes HCAT4 de PASTIS y BreizhCrops. El segundo usa las nueve clases publicadas y cuatro grupos exactos no degenerados; el primero conserva las tres correspondencias aproximadas ya declaradas</td><td><code data-author="Javier Rebull">b5b3261</code></td></tr>
+      <tr><td><b>US-131</b></td><td>Autorización exploratoria</td><td>El protocolo predeclara tres rutas de salida y pasa HCAT4 a ejecución exploratoria sin habilitar inferencia, agregación entre bancos ni selección de un mecanismo. El productor solo puede abrir las etiquetas después de fijar todas las entregas</td><td><code data-author="Javier Rebull">21f6037</code></td></tr>
+      <tr><td><b>US-131</b></td><td>Custodia de entradas</td><td>Los dos contratos HCAT4 y el protocolo que autoriza la corrida quedan sellados antes de materializar resultados</td><td><code data-author="Javier Rebull">fbefbb9</code></td></tr>
+      <tr><td><b>US-131</b></td><td>Materialización</td><td>Once evaluaciones modelo-estrato producen dos tablas de amplitud jerárquica y una de procedencia. PASTIS conserva cinco miembros; BreizhCrops, tres familias en cada una de dos regiones externas. Las salidas no contienen ganador ni contraste confirmatorio</td><td><code data-author="Javier Rebull">2ab1e04</code></td></tr>
+      <tr><td><b>US-131</b></td><td>Sello de resultados</td><td>Las tres salidas HCAT4 se reproducen byte a byte en dos ejecuciones limpias y entran al registro de custodia</td><td><code data-author="Javier Rebull">b2bbb93</code></td></tr>
+      <tr><td><b>US-131</b></td><td>Auditoría independiente</td><td>Un gate en biblioteca estándar rederiva cortes, inventario, poblaciones, siete celdas de pérdida, aritmética de salidas y procedencia. Diez ataques prueban catálogo incompleto, rutas desplazadas, cifras copiadas de otro contexto, salida vecina y payload DVC inválido</td><td><code data-author="Javier Rebull">32cc3c2</code></td></tr>
+      <tr><td><b>US-131 / US-144</b></td><td>Manuscrito</td><td>Resultados y discusión publican los dos diagnósticos exploratorios en una tabla única de conteos, pero conservan separados sus objetivos de validación. No se presenta cobertura conforme y amplitud jerárquica como igual pérdida, ni se imprime un ganador</td><td><code data-author="Javier Rebull">feede2c</code></td></tr>
+      <tr><td><b>US-130 / US-131</b></td><td>Custodia por productor</td><td>El gate conforme deja de apropiarse de toda salida empírica del protocolo: cada control vigila solo los artefactos de su productor. Una prueba demuestra que otro productor puede coexistir y que alterar el inventario conforme sigue fallando</td><td><code data-author="Javier Rebull">4caee8e</code></td></tr>
+      <tr><td><b>US-131</b></td><td>Propagación completa</td><td>Plan, manuscrito, apéndice, disponibilidad y publicación dejan de describir HCAT4 como pendiente o de presentar el diagnóstico conforme como única salida empírica. El gate HCAT4 entra en CI</td><td><code data-author="Javier Rebull">93a1751</code></td></tr>
+      <tr><td><b>US-131</b></td><td>Integración y cierre</td><td>PR #48 fusionada después de dos ejecuciones completas de CI, con doce de doce trabajos verdes. El diagnóstico HCAT4 exploratorio queda en <code>main</code> y la historia aporta sus cinco puntos sin declarar igual presupuesto de pérdida, ganador, inferencia ni transporte</td><td><code data-author="Javier Rebull">220bd90</code></td></tr>
       </tbody></table></div>
     </details>
 
@@ -1368,14 +1380,15 @@
              "REPRODUCIBILIDAD Y CUSTODIA. Los cinco artefactos se reprodujeron byte a byte en dos ejecuciones limpias, tienen fila SELLADO y conformal-coverage-check rederiva aritmética, distribución, splits, procedencia e inventario cerrado incluso sin materializar el payload DVC grande en CI",
              "VERIFICACIÓN: 633 pruebas de scripts y módulos conformes/panel, make check y gates de preregistro, panel, protocolo, custodia y cobertura en verde; PDF anónimo de veinte páginas inspeccionado visualmente"],
          out:"ml/eval/conformal.py; ml/eval/conformal_reporting.py; docs/paper/conformal-execution-v1.json; reports/micai2027/conformal/; scripts/conformal_coverage_check.py; paper/micai2027/sections/06-results.tex", dep:"US-129"},
-        {id:"US-131", t:"Retroceso jerárquico como cuarto mecanismo", sp:5, st:"wip",
+        {id:"US-131", t:"Retroceso jerárquico como cuarto mecanismo", sp:5, st:"ok",
          role:"Como agrónomo, prefiero que me digan «cereal» a que no me digan nada.",
-         ac:["MECÁNICA TERMINADA, COMPARACIÓN EMPÍRICA PENDIENTE. El contrato sellado usa HCAT4 sobre EuroCrops v2: dieciocho hojas semantic18 forman una partición completa en siete nodos, con tres correspondencias aproximadas declaradas. No se inventa una taxonomía desde las confusiones del modelo",
+         ac:["EJECUCIÓN EXPLORATORIA CERRADA. Dos cortes sellados y congelados antes de los resultados cubren los catálogos completos: dieciocho hojas semantic18 de PASTIS en siete nodos HCAT4, con tres correspondencias aproximadas declaradas, y las nueve clases publicadas de BreizhCrops en cuatro grupos exactos no degenerados. No se inventa una taxonomía desde las confusiones del modelo",
              "El umbral es una entrada obligatoria de entrenamiento y validación. Por encima conserva el singleton; por debajo devuelve exactamente las hojas representadas bajo el nodo predeclarado. No acepta etiquetas verdaderas ni posteriores de otro catálogo",
              "CORRECCIÓN DE PREMISA: Türkōglu et al. 2021 ya predicen cultivos a tres granularidades y ajustan la salida por confianza. Mortier et al. 2022 formalizan conjuntos jerárquicos con nodos internos. Lo nuevo NO es el mecanismo ni llevarlo a cultivos; es compararlo con las otras acciones mediante perfiles comunes y la geometría completa de pérdidas",
-             "CONTROL NEGATIVO: doce pruebas rechazan hojas duplicadas, no ancestrales, nombres HCAT4 o PASTIS inventados, otro ancho de catálogo y cualquier intento de habilitar ejecución empírica antes del preregistro",
-             "PENDIENTE: compararlo a igual presupuesto de pérdida con los otros tres mecanismos. Hasta entonces US-131 permanece en curso y no imprime un ganador"],
-         out:"ml/eval/hierarchical_backoff.py; docs/paper/hcat4-backoff-v1.json; docs/paper/hcat4-backoff-v1.md; paper/micai2027/sections/04-mechanisms.tex", dep:"US-129"},
+             "SEPARACIÓN ESTRUCTURAL. Once evaluaciones modelo-estrato fijan la entrega completa antes de abrir la referencia. El diagnóstico publica las siete celdas de pérdida por banco y estrato, sin agregarlas, sin inferencia y sin declarar transporte",
+             "REPRODUCIBILIDAD Y CUSTODIA. Tres salidas se reprodujeron byte a byte en dos ejecuciones limpias, tienen fila SELLADO y hcat4-backoff-check rederiva cortes, inventario, poblaciones, aritmética, procedencia y el cierre de la raíz incluso sin materializar payloads DVC",
+             "LÍMITE. HCAT4 y APS se ajustan a objetivos de validación distintos; la tabla conjunta no los presenta como igual presupuesto de pérdida, no imprime un ganador y no sustituye la geometría completa de US-152"],
+         out:"ml/eval/hierarchical_backoff.py; ml/eval/hierarchical_reporting.py; docs/paper/hcat4-backoff-v2.json; docs/paper/hcat4-execution-v1.json; reports/micai2027/hcat4/; scripts/hcat4_backoff_check.py; paper/micai2027/sections/06-results.tex", dep:"US-129"},
         {id:"US-132", t:"Líneas base de la literatura", sp:3, st:"idle",
          role:"Como revisor, quiero ver el artículo comparado contra los métodos que dice extender.",
          ac:["Ha 1997 como línea base clásica, implementada desde su publicación",
