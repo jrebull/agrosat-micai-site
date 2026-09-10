@@ -30,11 +30,11 @@
       </div>
       <aside class="plan-now" aria-labelledby="plan-now-title">
         <p class="plan-now-label">Ahora · cuello de botella</p>
-        <h2 id="plan-now-title"><a href="#US-139">Panel y posteriores</a></h2>
-        <p>US-136 cerró sin estrato confirmatorio: catorce candidatos documentados, cero admisibles.
-          La vía vigente evalúa PASTIS y BreizhCrops solo como exploratorios. Antes de ejecutarla
-          faltan el panel aplicable a cada banco y posteriores separados de entrenamiento y
-          validación; los OOF del fold 5 no pueden fijar su propio punto de operación.</p>
+        <h2 id="plan-now-title"><a href="#US-130">Cobertura conforme</a></h2>
+        <p>US-139 cerró los paneles y materializó posteriores separados de entrenamiento y
+          validación sin abrir el estrato evaluado. El siguiente cierre es conectar ese bundle al
+          flujo de seis brazos y medir la cobertura conforme sobre la población completa, siempre
+          como resultado exploratorio y sin reigualar el punto de operación.</p>
         <div class="plan-now-state"><span></span>En curso · sin crédito parcial</div>
       </aside>
     </div>
@@ -83,7 +83,7 @@
 
     <div class="cadena">
       <div class="cadena-head">
-        <span>Camino crítico · continúa en US-139</span>
+        <span>Camino crítico · continúa en US-130</span>
         <span id="cadena-resumen">—</span>
       </div>
       <div class="cadena-via" id="cadena-via"
@@ -142,10 +142,12 @@
         nuevas atacan pareo, denominador, familia incompleta, semilla, varianza cero, rejilla
         recortada, divergencia de contratos y calibración bajo nulo. <b>No es un resultado empírico.</b>
         US-136 cerró la búsqueda documentada sin candidato admisible, por lo que no se ejecutará un
-        estrato confirmatorio. La salida exploratoria sigue bloqueada por una ausencia distinta: los
-        parquets disponibles contienen solo posteriores del fold 5, no entrenamiento y validación.
-        El runner heredado no puede rellenar esos huecos sin reintroducir la fuga que el protocolo
-        prohíbe.</p>
+        estrato confirmatorio. <b>Actualización del 10 de septiembre:</b> US-139 cerró la ausencia
+        colindante sin recurrir a los OOF evaluados: treinta parquets contienen únicamente
+        entrenamiento y validación para los paneles congelados de PASTIS y BreizhCrops. El runner
+        heredado dejó de ordenar predictores con etiquetas de evaluación. Todavía no se ha producido
+        ningún resultado del artículo; el siguiente paso es aplicar el flujo de seis brazos al
+        estrato externo y medir la cobertura conforme.</p>
       <p><b>Auditoría de calibración, 9 de septiembre.</b> Una simulación bajo nulo global encontró
         que la primera implementación excedía el alfa familiar nominal. El hallazgo era real, pero
         su atribución al número de clústeres no estaba identificada: la comparación publicada
@@ -337,7 +339,7 @@
       <div class="ledger-row"><span class="name">Historias nuevas terminadas</span><span class="note">épicas 18 a 27</span><span class="num" id="progress-done-new">—</span></div>
       <div class="ledger-row"><span class="name">Historias retiradas</span><span class="note">se conservan como registro</span><span class="num" id="progress-retired">—</span></div>
       <div class="ledger-row"><span class="name">Historias nuevas por ejecutar</span><span class="note">incluye dependencias aún no liberadas</span><span class="num" id="progress-pending">—</span></div>
-      <div class="ledger-row"><span class="name">Esfuerzo pendiente</span><span class="note">el camino crítico continúa en US-139</span><span class="num" id="progress-pending-sp">—</span></div>
+      <div class="ledger-row"><span class="name">Esfuerzo pendiente</span><span class="note">el camino crítico continúa en US-130</span><span class="num" id="progress-pending-sp">—</span></div>
     </div>
     </details>
     <div class="colophon plan-colophon">
@@ -559,13 +561,21 @@
 
     <div class="history-log">
     <details class="history-day" open>
-    <summary class="dia" data-date="2026-09-10"><time datetime="2026-09-10">10 sep</time><strong>US-136 cerrada sin candidato y sin fingir exhaustividad</strong></summary>
+    <summary class="dia" data-date="2026-09-10"><time datetime="2026-09-10">10 sep</time><strong>US-136 cerrada; US-139 separa selección de evaluación</strong></summary>
     <div class="scroll">
             <table>
               <colgroup><col class="c-us"><col class="c-tipo"><col class="c-que"><col class="c-ev"></colgroup>
       <thead><tr><th>US</th><th>Tipo</th><th>Qué se hizo</th><th>Evidencia</th></tr></thead>
       <tbody data-date="2026-09-10">
       <tr><td><b>US-136</b></td><td>Integración</td><td>PR #42 fusionada después de CI 6/6 sobre el HEAD final. El contrato de parada, sus catorce adjudicaciones, la salida vacía, el alcance limitado, la condición de reapertura y la naturaleza autoral de los criterios quedan en <code>main</code>. US-136 pasa a hecha; el siguiente cuello es el panel y los posteriores separados</td><td><code data-author="Javier Rebull">0f2543b</code></td></tr>
+      <tr><td><b>US-139</b></td><td>Contrato previo</td><td>Se congelan por banco el panel, las familias, los roles de entrenamiento, validación y evaluación, y la regla de no declarar campeón. PASTIS reserva el fold 5; BreizhCrops reserva por turno una región completa</td><td><code data-author="Javier Rebull">c9cbd8b</code></td></tr>
+      <tr><td><b>US-139</b></td><td>Split ejecutable</td><td>Dos intentos terminaron antes de publicar artefactos y dejaron sus causas como enmiendas: parcelas PASTIS sin etiqueta semantic18 válida y clases singleton en BreizhCrops. Las primeras quedan en un inventario de exclusión; las segundas permanecen solo en entrenamiento y su ausencia de validación se cuenta</td><td><code data-author="Javier Rebull">b1d3bb0</code></td></tr>
+      <tr><td><b>US-139</b></td><td>Fuga retirada</td><td>El runner heredado deja de puntuar cinco predictores sobre las etiquetas de evaluación para conservar los dos favorables. El panel completo queda como factor de sensibilidad y la función que lo fija ya no acepta etiquetas ni métricas</td><td><code data-author="Javier Rebull">c62bbc2</code></td></tr>
+      <tr><td><b>US-139</b></td><td>Procedencia del productor</td><td>La tercera corrida se detuvo antes de publicar al descubrir que un SHA podía atribuirse a código modificado sin commit. El productor exige ahora árbol limpio al empezar y al terminar; cambiar HEAD, contrato o árbol durante la ejecución aborta la publicación</td><td><code data-author="Javier Rebull">ee4b0f3</code></td></tr>
+      <tr><td><b>US-139</b></td><td>Materialización</td><td>Treinta parquets de selección quedan versionados como un único directorio DVC: cinco miembros PASTIS sobre entrenamiento y validación y tres familias Breizh para cada región externa. El manifiesto declara cero filas de evaluación, cero métricas y ningún campeón</td><td><code data-author="Javier Rebull">ac3020f</code></td></tr>
+      <tr><td><b>US-139</b></td><td>Camino lateral de DVC</td><td>El gate ya no comprueba por separado un puntero bien formado y un payload válido: cuando el directorio está materializado exige que <code>dvc status</code> vincule ambos. Dos pruebas distinguen un directorio cambiado del estado vacío correcto</td><td><code data-author="Javier Rebull">87cbdb7</code></td></tr>
+      <tr><td><b>US-139</b></td><td>Suite amplia</td><td>La primera corrida amplia encontró que una prueba de acoplamiento temporal omitía el nuevo parámetro obligatorio del volcador. Se reparó sin cambiar su espía ni su afirmación; la repetición terminó con 1 417 pruebas pasadas y 28 omitidas</td><td><code data-author="Javier Rebull">9b3c823</code></td></tr>
+      <tr><td><b>US-139</b></td><td>Integración y cierre</td><td>PR #46 fusionada con commit de merge después de doce de doce jobs verdes. Se conserva la ancestría de <code>ee4b0f3</code>, que el manifiesto registra como productor limpio; <code>dvc status</code> queda vacío y US-139 aporta sus ocho SP sin atribuirse ningún resultado empírico</td><td><code data-author="Javier Rebull">4315e36</code></td></tr>
       </tbody></table></div>
     </details>
 
@@ -1103,7 +1113,7 @@
              "parcel/18cls se declara IRREPRODUCIBLE: N=18 nunca entró al barrido, así que no hay cifra contra la cual validarlo",
              "incremental/08cls NUNCA EXISTIÓ, con cinco evidencias convergentes. Se corrige el docstring y se anota que el currículum paró en el escalón 04. Decir que se perdió es un error de registro",
              "Necesita GPU de 40 GB o más: bajar el batch de 256 cambiaría la composición de negativos del contraste y dejaría de ser la misma receta",
-             "FUERA DEL CAMINO CRÍTICO DEL ARTÍCULO: el coautor dice que para MICAI no entran ni E-a ni la fenología, y el propio informe forense dice que regenerar los checkpoints no cambia ninguna cifra. Es higiene del repositorio, y compite por una GPU que el artículo necesita para US-139"],
+             "FUERA DEL CAMINO CRÍTICO DEL ARTÍCULO: el coautor dice que para MICAI no entran ni E-a ni la fenología, y el propio informe forense dice que regenerar los checkpoints no cambia ninguna cifra. Es higiene del repositorio. US-139 ya cerró sus posteriores de selección, así que esta recuperación tampoco compite hoy por la GPU del artículo"],
          out:"checkpoints/farslip/parcel/04cls; docs/paper/artefactos-perdidos.md", dep:"—"},
         {id:"US-159", t:"Inventario de rutas rotas, con su gate", sp:3, st:"idle",
          role:"Como equipo que perdió una máquina, quiero saber qué más apunta a ficheros que no existen, porque el barrido encontró 56 rutas así y solo tres estaban en el radar.",
@@ -1311,7 +1321,7 @@
              "La vía primaria conserva las noventa coordenadas aunque alguna tenga error estándar cero: esa coordenada no recibe intervalo ni p y bloquea la afirmación ordenada que la necesita. Con menos de tres patch_id pareados conserva los perfiles y retira toda inferencia",
              "Una dominancia exige que las seis cotas superiores simultáneas de la misma relación ordenada queden bajo cero. El código evalúa las treinta direcciones predeclaradas; no abre una familia favorable después de ver el signo",
              "DOS CAMINOS ESTRECHOS CERRADOS: los contrastes ya no pueden definir por sí mismos qué estratos existían, y las medias del mapa llevan su unidad explícita. Una coincidencia numérica no permite mezclar la media parcelaria con la sensibilidad de bloques",
-             "LÍMITE DECLARADO: no existe todavía banco confirmatorio ni un productor con posteriores separados de entrenamiento, validación y prueba. Por eso US-128 sigue en curso y no hay resultados; los OOF del fold 5 no pueden calibrar su propio punto de operación"],
+             "LÍMITE ACTUALIZADO: no existe banco confirmatorio y US-128 sigue en curso sin resultados. US-139 ya materializó posteriores separados de entrenamiento y validación; el bundle excluye por diseño toda fila de evaluación. US-130 debe aplicar al estrato externo un punto de operación fijado sin abrir sus etiquetas: los OOF del fold 5 no pueden calibrar su propio punto de operación"],
          out:"ml/eval/micai_profile_inference.py; ml/eval/micai_multiplicity.py; ml/eval/decision_cost.py; paper/micai2027/sections/05-protocol.tex", dep:"US-125, US-140, US-175"},
         {id:"US-129", t:"Gate de protocolo, probado en negativo", sp:3, st:"ok",
          role:"Como equipo al que se le colaron tres defectos de protocolo, quiero una comprobación que los detecte, y verla fallar antes de confiar en ella.",
@@ -1444,15 +1454,17 @@
              "REAPERTURA CERRADA: revisar otro candidato exige una enmienda versionada antes de verlo; no se sigue buscando hasta admitir al candidato menos malo",
              "PROPAGACIÓN VERIFICADA: preregistro, introducción, protocolo, apéndice y ledger dicen lo mismo; banco-confirmatorio-search-check corre en quality-gates y prueba también los caminos laterales"],
          out:"docs/paper/banco-confirmatorio-search-v1.json; docs/paper/bancos-candidatos.md; reports/micai2027/us136/evidencia.json", dep:"US-129"},
-        {id:"US-139", t:"Varios predictores por banco, con el desplegado como referencia", sp:8, st:"wip",
+        {id:"US-139", t:"Varios predictores por banco, con el desplegado como referencia", sp:8, st:"ok",
          role:"Como revisor, quiero saber si la conclusión es del desbalance o de un modelo, y quiero ver el producto que de verdad se desplegó.",
-         ac:["EL DESPLEGADO Y SU RECONSTRUCCIÓN NO SON EL MISMO PREDICTOR, y nada puede fingir que lo son. DECIDIDO el 4 de septiembre: xgb-alphaearth-remat-v1 entra como CANDIDATO NUEVO con procedencia verificada, nunca como reproducción del desplegado —no lo reproduce: acuerdo de argmax 0,945433 y 0,5474 por debajo de 0,5 de confianza, que es la franja sobre la que opera el artículo—. Queda fuera del panel de segmentación densa, que es otra ruta, y si se usa es como factor de sensibilidad. El componente histórico desplegado permanece legacy_unverified y entra SOLO como REFERENCIA DESCRIPTIVA: se reporta su acuerdo global de 0,945433 con la reconstrucción y la divergencia concentrada en baja confianza —0,5474 por debajo de 0,5 frente a 0,9999 por encima de 0,9— y no se usa para inferencia",
-             "Al menos tres predictores de familias distintas por cada banco exploratorio efectivamente evaluado; no se presupone un banco nuevo después del cierre vacío de US-136",
-             "NO se declara un campeón con las etiquetas de evaluación. El recálculo diagnóstico sitúa tsvit-pheno-fullm en 0,7883 frente a 0,7367 de tsvit-pheno, por lo que fullm debe permanecer elegible; ese orden no decide el panel ni selecciona el predictor del artículo",
-             "La lista de predictores se fija en el preregistro, no se elige después",
-             "La tabla descriptiva se recomputa y se sella tras el re-volcado. Las contribuciones históricas de FarSLIP, +0,0047 y +0,0009, proceden de artefactos OBSOLETO y miembros excluidos: se conservan como diagnóstico histórico, no justifican la exclusión ni entran a inferencia",
-             "La selección de predictores se hace en datos separados: hoy se hacía con las mismas etiquetas de evaluación"],
-         out:"reports/paper_micai/", dep:"US-119, US-129, US-136"}
+         ac:["CERRADA ANTES DE RESULTADOS: panel-selection-v1.json fija los paneles, los splits y el rol de sensibilidad. No existe campeón, ajuste de hiperparámetros ni selección con etiquetas de evaluación",
+             "PASTIS: cinco miembros y cuatro familias. Los folds 1–3 producen 51 833 parcelas elegibles de entrenamiento y el fold 4 produce 17 478 de validación; 38 232 y 13 459 identificadores con posterior pero sin etiqueta semantic18 válida quedan visibles en dos inventarios de exclusión",
+             "BREIZHCROPS: regresión logística, bosque aleatorio y XGBoost, tres familias. Para cada región externa, la otra aporta exactamente 24 000 filas de entrenamiento y 6 000 de validación; las clases singleton permanecen solo en entrenamiento y su ausencia queda contada",
+             "FRONTERA CERRADA: treinta parquets, cero filas del fold 5 o de la región evaluada, cero métricas y ningún ganador. Los once pares banco–estrato–miembro se cargaron por la interfaz de consumo y mantienen entrenamiento y validación disjuntos",
+             "PROCEDENCIA EJECUTABLE: manifest.json registra ruta, MD5, bytes, filas y columnas de cada fichero; data.dvc fija un directorio de 30 archivos. El gate abre el payload cuando existe, rederiva probabilidades e identidades y exige además que dvc status coincida con el puntero",
+             "CAMINO ESTRECHO CERRADO: una corrida larga solo publica si HEAD, contrato y árbol permanecen iguales y el árbol estaba limpio al empezar. Un SHA ya no puede atribuirse a código modificado sin commit",
+             "FUGA HEREDADA RETIRADA: run_paper_micai_fase3.py ya no puntúa cinco miembros sobre las etiquetas de evaluación para conservar dos; mantiene el panel congelado completo como factor de sensibilidad",
+             "EL DESPLEGADO Y SU RECONSTRUCCIÓN SIGUEN SIENDO OBJETOS DISTINTOS. xgb-alphaearth histórico permanece legacy_unverified y solo descriptivo; xgb-alphaearth-remat-v1 es un candidato nuevo con procedencia, no su reproducción ni un miembro añadido después al panel denso"],
+         out:"docs/paper/panel-selection-v1.json; ml/eval/panel_posteriors/manifest.json; ml/eval/panel_posteriors/data.dvc", dep:"US-119, US-129, US-136"}
       ]
     },
     {
