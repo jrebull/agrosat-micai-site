@@ -18,7 +18,7 @@
   <div class="plan-hero-inner">
     <div class="plan-topline">
       <a href="index.html">AgroSatCopilot / cuaderno</a>
-      <span>Actualizado 9 sep 2026</span>
+      <span>Actualizado 10 sep 2026</span>
     </div>
 
     <div class="plan-intro">
@@ -30,11 +30,11 @@
       </div>
       <aside class="plan-now" aria-labelledby="plan-now-title">
         <p class="plan-now-label">Ahora · cuello de botella</p>
-        <h2 id="plan-now-title"><a href="#US-136">Banco y posteriores</a></h2>
-        <p>La inferencia simultánea y la potencia prospectiva ya son ejecutables, pero el manifiesto
-          sigue en <code>mechanics_only</code>: GEO-Bench fue descartado, no existe otro banco
-          confirmatorio congelado y los OOF disponibles solo cubren el fold 5, sin los posteriores
-          de entrenamiento y validación que fijan el punto de operación.</p>
+        <h2 id="plan-now-title"><a href="#US-139">Panel y posteriores</a></h2>
+        <p>US-136 cerró sin estrato confirmatorio: catorce candidatos documentados, cero admisibles.
+          La vía vigente evalúa PASTIS y BreizhCrops solo como exploratorios. Antes de ejecutarla
+          faltan el panel aplicable a cada banco y posteriores separados de entrenamiento y
+          validación; los OOF del fold 5 no pueden fijar su propio punto de operación.</p>
         <div class="plan-now-state"><span></span>En curso · sin crédito parcial</div>
       </aside>
     </div>
@@ -83,7 +83,7 @@
 
     <div class="cadena">
       <div class="cadena-head">
-        <span>Camino crítico · continúa en US-136</span>
+        <span>Camino crítico · continúa en US-139</span>
         <span id="cadena-resumen">—</span>
       </div>
       <div class="cadena-via" id="cadena-via"
@@ -140,8 +140,9 @@
         regla a la alternativa prospectiva Dirichlet–multinomial en las seis colocaciones y la
         rejilla ICC completa, y decide admisión por el mínimo de las cotas Wilson. Veinticuatro pruebas
         nuevas atacan pareo, denominador, familia incompleta, semilla, varianza cero, rejilla
-        recortada, divergencia de contratos y calibración bajo nulo. <b>No es un resultado empírico.</b> La ejecución sigue
-        bloqueada por dos ausencias verificadas: ningún banco confirmatorio pasó US-136 y los
+        recortada, divergencia de contratos y calibración bajo nulo. <b>No es un resultado empírico.</b>
+        US-136 cerró la búsqueda documentada sin candidato admisible, por lo que no se ejecutará un
+        estrato confirmatorio. La salida exploratoria sigue bloqueada por una ausencia distinta: los
         parquets disponibles contienen solo posteriores del fold 5, no entrenamiento y validación.
         El runner heredado no puede rellenar esos huecos sin reintroducir la fuga que el protocolo
         prohíbe.</p>
@@ -192,11 +193,12 @@
         retiró una afirmación favorable: del checkpoint <code>fullm-v2</code> no se conservaron los
         folds de entrenamiento, por lo que su fold 5 no se presenta como <i>held-out</i> ni libre de
         fuga. El panel inferencial vigente no cambia y no se generaron resultados.
-        <b>US-136 está en curso</b>: GEO-Bench <code>m-SA-crop-type</code> quedó descartado como
-        confirmatorio al verificar su conversor oficial —unidad píxel y partición aleatoria—, y
-        la segunda criba no asciende ningún sustituto por conveniencia. El sitio deriva ahora este
-        estado del contrato auditado, en vez de conservar la tabla manual que aún decía «cuatro
-        bancos elegidos».
+        <b>US-136 quedó cerrada sin candidato admisible</b>: catorce entradas documentadas, incluidas
+        CropHarvest y GEO-Bench <code>m-SA-crop-type</code>, fueron adjudicadas con los mismos
+        criterios estructurales. PASTIS y BreizhCrops quedan solo como exploratorios y el artículo
+        no tendrá estrato confirmatorio ni afirmará transporte. El cierre no se presenta como una
+        búsqueda global exhaustiva: no existe un log específico de consultas de bancos. Reabrirlo
+        exige una enmienda versionada antes de mirar un candidato nuevo.
         El arnés OOF ya verifica la longitud
         temporal efectiva y su gate corre en CI, pero <b>31 artefactos
         siguen obsoletos</b> y no se regeneran antes de fijar la pérdida y el panel. El workflow
@@ -335,7 +337,7 @@
       <div class="ledger-row"><span class="name">Historias nuevas terminadas</span><span class="note">épicas 18 a 27</span><span class="num" id="progress-done-new">—</span></div>
       <div class="ledger-row"><span class="name">Historias retiradas</span><span class="note">se conservan como registro</span><span class="num" id="progress-retired">—</span></div>
       <div class="ledger-row"><span class="name">Historias nuevas por ejecutar</span><span class="note">incluye dependencias aún no liberadas</span><span class="num" id="progress-pending">—</span></div>
-      <div class="ledger-row"><span class="name">Esfuerzo pendiente</span><span class="note">el camino crítico continúa en US-136</span><span class="num" id="progress-pending-sp">—</span></div>
+      <div class="ledger-row"><span class="name">Esfuerzo pendiente</span><span class="note">el camino crítico continúa en US-139</span><span class="num" id="progress-pending-sp">—</span></div>
     </div>
     </details>
     <div class="colophon plan-colophon">
@@ -557,12 +559,27 @@
 
     <div class="history-log">
     <details class="history-day" open>
-    <summary class="dia" data-date="2026-09-09"><time datetime="2026-09-09">9 sep</time><strong>Pivote completo, protocolo archivado e inferencia congelada antes de resultados</strong></summary>
+    <summary class="dia" data-date="2026-09-10"><time datetime="2026-09-10">10 sep</time><strong>US-136 cerrada sin candidato y sin fingir exhaustividad</strong></summary>
+    <div class="scroll">
+            <table>
+              <colgroup><col class="c-us"><col class="c-tipo"><col class="c-que"><col class="c-ev"></colgroup>
+      <thead><tr><th>US</th><th>Tipo</th><th>Qué se hizo</th><th>Evidencia</th></tr></thead>
+      <tbody data-date="2026-09-10">
+      <tr><td><b>US-136</b></td><td>Integración</td><td>PR #42 fusionada después de CI 6/6 sobre el HEAD final. El contrato de parada, sus catorce adjudicaciones, la salida vacía, el alcance limitado, la condición de reapertura y la naturaleza autoral de los criterios quedan en <code>main</code>. US-136 pasa a hecha; el siguiente cuello es el panel y los posteriores separados</td><td><code data-author="Javier Rebull">0f2543b</code></td></tr>
+      </tbody></table></div>
+    </details>
+
+    <details class="history-day">
+    <summary class="dia" data-date="2026-09-09"><time datetime="2026-09-09">9 sep</time><strong>Pivote completo, búsqueda confirmatoria cerrada e inferencia congelada antes de resultados</strong></summary>
     <div class="scroll">
             <table>
               <colgroup><col class="c-us"><col class="c-tipo"><col class="c-que"><col class="c-ev"></colgroup>
       <thead><tr><th>US</th><th>Tipo</th><th>Qué se hizo</th><th>Evidencia</th></tr></thead>
       <tbody data-date="2026-09-09">
+      <tr><td><b>US-136</b></td><td>Contrato de parada</td><td>La búsqueda se cierra con catorce entradas documentadas, cero admisibles y <code>confirmatory_dataset_id: null</code>. CropHarvest colapsa los mecanismos por su tarea binaria; GEO-Bench falla unidad parcelaria y partición espacial. Reabrir exige una enmienda anterior al candidato nuevo</td><td><code data-author="Javier Rebull">f97c3f0</code></td></tr>
+      <tr><td><b>US-136</b></td><td>Salida vacía</td><td>Preregistro y manuscrito retiran el estrato confirmatorio: PASTIS y BreizhCrops quedan exploratorios y el resultado negativo se limita al conjunto registrado. El contrato y el registro entran al apéndice y a custodia sin convertir ausencia de log en exhaustividad</td><td><code data-author="Javier Rebull">455e571</code></td></tr>
+      <tr><td><b>US-136</b></td><td>Frontera de evidencia</td><td>El gate fija qué fuentes sostienen el cierre y prohíbe rebautizar las búsquedas generales de literatura como log de bancos. Un falso rojo propio dejó de contar candidatos al validar esa frontera; la prueba negativa conserva ambas obligaciones</td><td><code data-author="Javier Rebull">debbd1f</code></td></tr>
+      <tr><td><b>US-136</b></td><td>Elección explícita</td><td>El suelo de cinco etiquetas, la geografía fuera de Europa occidental, exigir la partición del propio banco y la descarga sin trámite dejan de aparecer como restricciones intrínsecas: son reglas de alcance y reproducibilidad elegidas por el equipo. Contrato, preregistro, manuscrito y apéndice lo dicen juntos</td><td><code data-author="Javier Rebull">5d45066</code></td></tr>
       <tr><td><b>US-175</b></td><td>Pivote metodológico</td><td>La vía de entrevistas se retira antes de ejecutarse. R0 y L1–L6 definen perfiles por brazo sobre el símplex completo de dimensión cinco; la salida primaria es dominancia uniforme y fronteras lineales, no un punto de preferencia atribuido</td><td><code data-author="Javier Rebull">067c606</code></td></tr>
       <tr><td><b>US-175</b></td><td>Custodia derivada</td><td>El contrato, la enmienda y todos sus consumidores activos entran al sellador específico; sus MD5 y notas se derivan del fichero en vez de copiarse desde prosa</td><td><code data-author="Javier Rebull">0021a57</code></td></tr>
       <tr><td><b>US-175</b></td><td>Propagación sellada</td><td>Preregistro, estimando, trabajo relacionado y enmienda quedan enlazados al nuevo contrato sin alterar el protocolo histórico no ejecutado</td><td><code data-author="Javier Rebull">ed5f344</code></td></tr>
@@ -1403,7 +1420,7 @@
       ]
     },
     {
-      id:"EPIC 22", name:"Validez externa, y separar el hallazgo del artefacto", status:"idle",
+      id:"EPIC 22", name:"Validez externa, y separar el hallazgo del artefacto", status:"wip",
       goal:"Dos bancos franceses no demuestran transporte, y peor: comparten el sistema de etiquetado, no solo el país. Sin un tercer banco admisible, la geografía y la forma del desbalance siguen confundidas. La manipulación dentro de banco las separa parcialmente, pero no autoriza una afirmación de transporte.",
       us:[
         {id:"US-157", t:"Barrido del desbalance con la geografía fija", sp:5, st:"wip",
@@ -1417,20 +1434,20 @@
              "PRODUCTOR CERRADO: scripts/run_paper_micai_imbalance.py solo abre tres tablas de etiquetas si contrato y preregistro están congelados, cada entrada conserva un sello MD5 vigente y las seis salidas exactas ya están predeclaradas. No sobrescribe una corrida existente",
              "PENDIENTE EMPÍRICO: no se ha creado reports/micai2027/desbalance/. US-140 ya está congelada; falta ejecutar, verificar y sellar targets, pesos y tamaño efectivo por banco más la procedencia, sin reabrir el diseño inferencial"],
          out:"reports/micai2027/desbalance/", dep:"US-129, US-140"},
-        {id:"US-136", t:"Criba del tercer banco, con cardinalidad suficiente", sp:8, st:"wip",
-         role:"Como revisor de validez externa, quiero ver el protocolo en otra geografía y otra nomenclatura, con un catálogo que permita los cuatro mecanismos.",
-         ac:["CANDIDATO ANTERIOR DESCARTADO: GEO-Bench m-SA-crop-type (Zenodo 10.5281/zenodo.8008825, CC BY 4.0) no entra como confirmatorio. La decisión está en banco-tercero-v1.json y el gate la re-deriva desde la evidencia primaria capturada",
-             "PRIMER CRITERIO DE ADMISIÓN: la tarea de referencia tiene K mayor o igual que 5 clases. CropHarvest NO lo cumple, porque sus tareas de referencia son binarias y con K=2 los cuatro mecanismos colapsan en uno",
-             "SEGUNDO CRITERIO, corregido tras separar las unidades: la partición ajena identifica patch_id para la simulación de potencia del estimando primario. Sus bloques espaciales determinan si puede publicarse la sensibilidad t por bloques, pero NO deciden por sí solos si todo el banco es confirmatorio ni se cuentan como el n del bootstrap primario",
-             "HECHO PARA GEO-BENCH: es segmentación por píxel y no clasificación por parcela; declara diez etiquetas, nueve no ausentes; su partición es aleatoria por directorio; y solo se sabe que el conversor permite submuestrear, no que el artefacto publicado lo esté. Ninguna de esas cuatro afirmaciones vuelve a quedar en prosa sin control",
-             "EN CURSO: se rehace el barrido con cardinalidad, unidad parcelaria y partición espacial como criterios conjuntos. Ningún candidato se asciende por calendario; si ninguno cumple, la salida es declarar dos bancos confirmatorios y ninguna afirmación de transporte",
-             "Partición espacial propia del banco, no construida por nosotros",
-             "Se declara además que los dos bancos franceses comparten el sistema de etiquetado y no solo el país, y se comprueba si sus regiones solapan"],
-         out:"reports/paper_micai/externa/", dep:"US-129"},
-        {id:"US-139", t:"Varios predictores por banco, con el desplegado como referencia", sp:8, st:"idle",
+        {id:"US-136", t:"Cerrar la búsqueda del banco confirmatorio sin admitir por cansancio", sp:8, st:"ok",
+         role:"Como revisor de validez externa, quiero saber qué universo se examinó, por qué cada candidato falló y qué hace el artículo si ninguno es admisible.",
+         ac:["CONTRATO EJECUTABLE Y SELLADO: banco-confirmatorio-search-v1.json fija catorce entradas documentadas —dos recomendaciones iniciales, ocho descartes iniciales y cuatro revisiones de seguimiento—, todas adjudicadas y ninguna admitida",
+             "ALCANCE HONESTO: no se versionó un log de consultas específico para bancos. El cierre cubre el registro, sus enlaces y la evidencia primaria capturada de GEO-Bench; no afirma haber agotado toda la literatura ni todos los depósitos",
+             "CROPHARVEST DESCARTADO: sus tareas de referencia son binarias. Con K=2 el recorte a K=1 es degenerado, el retroceso no tiene taxonomía útil y el conjunto {0,1} coincide con no entregar",
+             "GEO-BENCH DESCARTADO: la unidad es píxel, no parcela, y el conversor oficial sortea la partición con np.random.choice. El gate re-deriva el veredicto desde seis ficheros de evidencia primaria",
+             "SALIDA VACÍA PREDECLARADA: confirmatory_dataset_id permanece null; PASTIS y BreizhCrops son exploratorios, no existe estrato confirmatorio y el artículo limita el resultado negativo a las catorce entradas registradas",
+             "REAPERTURA CERRADA: revisar otro candidato exige una enmienda versionada antes de verlo; no se sigue buscando hasta admitir al candidato menos malo",
+             "PROPAGACIÓN VERIFICADA: preregistro, introducción, protocolo, apéndice y ledger dicen lo mismo; banco-confirmatorio-search-check corre en quality-gates y prueba también los caminos laterales"],
+         out:"docs/paper/banco-confirmatorio-search-v1.json; docs/paper/bancos-candidatos.md; reports/micai2027/us136/evidencia.json", dep:"US-129"},
+        {id:"US-139", t:"Varios predictores por banco, con el desplegado como referencia", sp:8, st:"wip",
          role:"Como revisor, quiero saber si la conclusión es del desbalance o de un modelo, y quiero ver el producto que de verdad se desplegó.",
          ac:["EL DESPLEGADO Y SU RECONSTRUCCIÓN NO SON EL MISMO PREDICTOR, y nada puede fingir que lo son. DECIDIDO el 4 de septiembre: xgb-alphaearth-remat-v1 entra como CANDIDATO NUEVO con procedencia verificada, nunca como reproducción del desplegado —no lo reproduce: acuerdo de argmax 0,945433 y 0,5474 por debajo de 0,5 de confianza, que es la franja sobre la que opera el artículo—. Queda fuera del panel de segmentación densa, que es otra ruta, y si se usa es como factor de sensibilidad. El componente histórico desplegado permanece legacy_unverified y entra SOLO como REFERENCIA DESCRIPTIVA: se reporta su acuerdo global de 0,945433 con la reconstrucción y la divergencia concentrada en baja confianza —0,5474 por debajo de 0,5 frente a 0,9999 por encima de 0,9— y no se usa para inferencia",
-             "Al menos tres predictores por banco, de familias distintas, aplicados también a los bancos nuevos",
+             "Al menos tres predictores de familias distintas por cada banco exploratorio efectivamente evaluado; no se presupone un banco nuevo después del cierre vacío de US-136",
              "NO se declara un campeón con las etiquetas de evaluación. El recálculo diagnóstico sitúa tsvit-pheno-fullm en 0,7883 frente a 0,7367 de tsvit-pheno, por lo que fullm debe permanecer elegible; ese orden no decide el panel ni selecciona el predictor del artículo",
              "La lista de predictores se fija en el preregistro, no se elige después",
              "La tabla descriptiva se recomputa y se sella tras el re-volcado. Las contribuciones históricas de FarSLIP, +0,0047 y +0,0009, proceden de artefactos OBSOLETO y miembros excluidos: se conservan como diagnóstico histórico, no justifican la exclusión ni entran a inferencia",
@@ -1866,7 +1883,7 @@
 
   var FASES_CRITICAS = [
     {n:"01", t:"Congelar inferencia", ids:["US-140"]},
-    {n:"02", t:"Admitir banco y panel", ids:["US-136","US-139"]},
+    {n:"02", t:"Cerrar búsqueda y panel", ids:["US-136","US-139"]},
     {n:"03", t:"Medir y tensionar", ids:["US-160","US-124","US-125","US-171","US-155","US-128","US-129"]},
     {n:"04", t:"Elegir el mecanismo", ids:["US-152","US-154"]},
     {n:"05", t:"Escribir y entregar", ids:["US-144","US-146","US-148"]}

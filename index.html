@@ -436,11 +436,11 @@
   </div>
 
   <div class="cifras">
-    <div class="cifra"><span class="n">18</span>
+    <div class="cifra"><span class="n">19</span>
       <span class="l">páginas A4, PDF anónimo</span></div>
     <div class="cifra"><span class="n">6/8</span>
       <span class="l">secciones redactadas</span></div>
-    <div class="cifra"><span class="n">23/23</span>
+    <div class="cifra"><span class="n">24/24</span>
       <span class="l">gates en verde</span></div>
   </div>
 
@@ -453,14 +453,14 @@
       <thead><tr><th>Sección</th><th>Estado</th><th class="n">Líneas</th>
         <th>De qué depende</th></tr></thead>
       <tbody>
-      <tr><td class="sec">Introduction</td><td><span class="chip ok">Redactada</span></td><td class="n">45</td><td class="nota"></td></tr>
+      <tr><td class="sec">Introduction</td><td><span class="chip ok">Redactada</span></td><td class="n">48</td><td class="nota"></td></tr>
       <tr><td class="sec">Related Work</td><td><span class="chip ok">Redactada</span></td><td class="n">76</td><td class="nota"></td></tr>
       <tr><td class="sec">Problem Statement and Estimand</td><td><span class="chip ok">Redactada</span></td><td class="n">121</td><td class="nota"></td></tr>
       <tr><td class="sec">Four Mechanisms as Alternative Actions</td><td><span class="chip ok">Redactada</span></td><td class="n">100</td><td class="nota"></td></tr>
-      <tr><td class="sec">Evaluation Protocol</td><td><span class="chip ok">Redactada</span></td><td class="n">144</td><td class="nota"></td></tr>
+      <tr><td class="sec">Evaluation Protocol</td><td><span class="chip ok">Redactada</span></td><td class="n">157</td><td class="nota"></td></tr>
       <tr><td class="sec">Results</td><td><span class="chip wip">Esqueleto</span></td><td class="n">2</td><td class="nota">No hay resultados que presentar, y esto no es un descuido: el espacio de perdidas, el criterio principal y los valores inferenciales ya estan cerrados, pero la corrida preregistrad...</td></tr>
       <tr><td class="sec">Discussion</td><td><span class="chip wip">Esqueleto</span></td><td class="n">2</td><td class="nota">Se escribe con los resultados delante, no antes.  Debe incluir, por decision tomada y no como relleno: los sesgos declarados de la busqueda bibliografica (idioma, indexacion, vocab...</td></tr>
-      <tr><td class="sec">Frozen Analysis Contracts</td><td><span class="chip ok">Redactada</span></td><td class="n">35</td><td class="nota"></td></tr>
+      <tr><td class="sec">Frozen Analysis Contracts</td><td><span class="chip ok">Redactada</span></td><td class="n">36</td><td class="nota"></td></tr>
       </tbody>
     </table>
   </div>
@@ -468,6 +468,7 @@
   <h2>Qué se comprobó antes de publicar esto</h2>
   <ul class="gates">
       <li><span class="chip ok">pasa</span> <code>archive-safety-check</code> — el archivo ajeno no entra al repositorio sin revisar</li>
+      <li><span class="chip ok">pasa</span> <code>banco-confirmatorio-search-check</code> — las catorce entradas estan adjudicadas y la salida vacia conserva su alcance</li>
       <li><span class="chip ok">pasa</span> <code>banco-tercero-check</code> — el tercer banco se decide desde evidencia primaria capturada</li>
       <li><span class="chip ok">pasa</span> <code>ci-resource-check</code> — los recursos declarados en CI existen</li>
       <li><span class="chip ok">pasa</span> <code>ci-test-coverage-check</code> — ningun job de CI esta apagado ni se traga sus fallos</li>
@@ -476,7 +477,7 @@
       <li><span class="chip ok">pasa</span> <code>micai-claims-check</code> — ninguna afirmacion retirada ha vuelto</li>
       <li><span class="chip ok">pasa</span> <code>micai-protocol-check</code> — cada artefacto declara su regimen y procedencia</li>
       <li><span class="chip ok">pasa</span> <code>micai2027-anon-check</code> — el PDF no revela identidad</li>
-      <li><span class="chip ok">pasa</span> <code>micai2027-appendix-check</code> — el apendice coincide con sus nueve contratos sellados</li>
+      <li><span class="chip ok">pasa</span> <code>micai2027-appendix-check</code> — el apendice coincide con sus diez contratos sellados</li>
       <li><span class="chip ok">pasa</span> <code>micai2027-package-check</code> — el ZIP anonimo solo contiene fuentes permitidas y recompila limpio</li>
       <li><span class="chip ok">pasa</span> <code>micai2027-src-check</code> — toda cifra impresa sale de un artefacto sellado</li>
       <li><span class="chip ok">pasa</span> <code>model-identity-check</code> — cada checkpoint, OOF y consumidor usa una identidad unica y trazable</li>
@@ -503,7 +504,7 @@
     </object>
   </div>
   <p class="pie-visor"><a href="paper/agrosat-micai2027-en-vivo.pdf">Abrir el PDF a pantalla completa</a> ·
-    manuscrito al día 2026-09-09, commit <code>cdb5c6b</code></p>
+    manuscrito al día 2026-09-09, commit <code>bac69ec</code></p>
 </section>
 <!-- GENERADO build_site_paper · fin -->
 
