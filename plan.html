@@ -30,11 +30,11 @@
       </div>
       <aside class="plan-now" aria-labelledby="plan-now-title">
         <p class="plan-now-label">Ahora · siguiente cierre</p>
-        <h2 id="plan-now-title"><a href="#US-132">Líneas base comparables</a></h2>
-        <p>US-131 ya congeló, ejecutó y selló el retroceso HCAT4 exploratorio en los dos catálogos.
-          El siguiente cierre operativo es US-132: implementar desde su publicación la línea base
-          clásica de Ha y declarar el límite de no comparar rechazadores aprendidos.</p>
-        <div class="plan-now-state"><span></span>Lista · depende solo de US-130, ya cerrada</div>
+        <h2 id="plan-now-title"><a href="#US-133">Cobertura distribuida</a></h2>
+        <p>US-132 ya implementó y auditó la familia clásica de Ha, pero no inventa un punto de
+          coste para convertirla en séptimo brazo. El siguiente cierre ejecutable es US-133:
+          cobertura por clase verdadera y decil de área bajo el protocolo vigente.</p>
+        <div class="plan-now-state"><span></span>Lista · depende de US-129, ya cerrada</div>
       </aside>
     </div>
 
@@ -155,6 +155,16 @@
         Sus tres salidas se reprodujeron byte a byte y están selladas. La tabla del manuscrito
         conserva separados los objetivos de validación conforme y jerárquico: no los presenta como
         igual pérdida, no declara un ganador y no convierte el diagnóstico en inferencia.</p>
+      <p><b>US-132, mecánica cerrada y comparación pendiente, 10 de septiembre.</b> La regla
+        selectiva de Ha se rederivó desde su riesgo nativo y se implementó sin etiquetas ni razón
+        de costes predeterminada. La fuerza bruta sobre todos los subconjuntos no vacíos verifica
+        la regla, y contrato, evidencia y DOI quedan bajo custodia. No se cuenta la historia como
+        hecha: Ha define una familia parametrizada, no un punto. Añadir una razón elegida al diseño
+        vigente cambiaría seis brazos, quince pares y noventa coordenadas por siete, veintiún y
+        ciento veintiséis; exige enmienda prospectiva y nuevo cálculo de potencia. Un gate en CI
+        impide introducir ese séptimo brazo, declarar una salida empírica o retirar el deslinde del
+        manuscrito. La exclusión de rechazadores aprendidos sigue rotulada como elección del equipo,
+        no como imposibilidad.</p>
       <p><b>Auditoría de calibración, 9 de septiembre.</b> Una simulación bajo nulo global encontró
         que la primera implementación excedía el alfa familiar nominal. El hallazgo era real, pero
         su atribución al número de clústeres no estaba identificada: la comparación publicada
@@ -346,13 +356,13 @@
       <div class="ledger-row"><span class="name">Historias nuevas terminadas</span><span class="note">épicas 18 a 27</span><span class="num" id="progress-done-new">—</span></div>
       <div class="ledger-row"><span class="name">Historias retiradas</span><span class="note">se conservan como registro</span><span class="num" id="progress-retired">—</span></div>
       <div class="ledger-row"><span class="name">Historias nuevas por ejecutar</span><span class="note">incluye dependencias aún no liberadas</span><span class="num" id="progress-pending">—</span></div>
-      <div class="ledger-row"><span class="name">Esfuerzo pendiente</span><span class="note">el camino crítico continúa en US-133; el siguiente cierre operativo es US-132</span><span class="num" id="progress-pending-sp">—</span></div>
+      <div class="ledger-row"><span class="name">Esfuerzo pendiente</span><span class="note">el camino crítico y el siguiente cierre operativo continúan en US-133</span><span class="num" id="progress-pending-sp">—</span></div>
     </div>
     </details>
     <div class="colophon plan-colophon">
       <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
       <span><b>Total</b> <span id="total-sp">—</span> puntos de historia</span>
-      <span><b>Actualizado</b> 10 de septiembre de 2026, diagnósticos conforme y HCAT4 exploratorios sellados; sin veredicto comparativo</span>
+      <span><b>Actualizado</b> 10 de septiembre de 2026, Ha implementada como familia mecánica sin séptimo brazo; sin veredicto comparativo</span>
     </div>
   </div>
 </header>
@@ -568,7 +578,7 @@
 
     <div class="history-log">
     <details class="history-day" open>
-    <summary class="dia" data-date="2026-09-10"><time datetime="2026-09-10">10 sep</time><strong>US-139 cierra la selección; US-130 y US-131 ejecutan dos diagnósticos exploratorios</strong></summary>
+    <summary class="dia" data-date="2026-09-10"><time datetime="2026-09-10">10 sep</time><strong>Panel, dos diagnósticos y una línea base mecánica quedan auditados</strong></summary>
     <div class="scroll">
             <table>
               <colgroup><col class="c-us"><col class="c-tipo"><col class="c-que"><col class="c-ev"></colgroup>
@@ -602,6 +612,11 @@
       <tr><td><b>US-130 / US-131</b></td><td>Custodia por productor</td><td>El gate conforme deja de apropiarse de toda salida empírica del protocolo: cada control vigila solo los artefactos de su productor. Una prueba demuestra que otro productor puede coexistir y que alterar el inventario conforme sigue fallando</td><td><code data-author="Javier Rebull">4caee8e</code></td></tr>
       <tr><td><b>US-131</b></td><td>Propagación completa</td><td>Plan, manuscrito, apéndice, disponibilidad y publicación dejan de describir HCAT4 como pendiente o de presentar el diagnóstico conforme como única salida empírica. El gate HCAT4 entra en CI</td><td><code data-author="Javier Rebull">93a1751</code></td></tr>
       <tr><td><b>US-131</b></td><td>Integración y cierre</td><td>PR #48 fusionada después de dos ejecuciones completas de CI, con doce de doce trabajos verdes. El diagnóstico HCAT4 exploratorio queda en <code>main</code> y la historia aporta sus cinco puntos sin declarar igual presupuesto de pérdida, ganador, inferencia ni transporte</td><td><code data-author="Javier Rebull">220bd90</code></td></tr>
+      <tr><td><b>US-132</b></td><td>Contrato previo</td><td>Se congela la mecánica de Ha como familia indexada por una razón de costes, sin elegir punto, leer etiquetas retenidas ni autorizar artefactos empíricos. El contrato explicita el conflicto con la familia inferencial vigente</td><td><code data-author="Javier Rebull">9dfd9fe</code></td></tr>
+      <tr><td><b>US-132</b></td><td>Implementación mecánica</td><td>El operador puro incluye toda clase por encima del umbral estricto y usa el argmax estable solo para conservar la acción no vacía. La prueba principal enumera todos los subconjuntos no vacíos y confirma el riesgo mínimo exacto sobre probabilidades sintéticas</td><td><code data-author="Javier Rebull">e39f782</code></td></tr>
+      <tr><td><b>US-132</b></td><td>Límite documentado</td><td>La evidencia legible separa la cardinalidad nativa de Ha del espacio común de seis pérdidas, declara el desempate como elección y conserva como decisiones del equipo excluir rechazadores aprendidos y novedad abierta</td><td><code data-author="Javier Rebull">9402bed</code></td></tr>
+      <tr><td><b>US-132 / US-144</b></td><td>Control e integración</td><td>Un gate cierra contrato, custodia, DOI, interfaz sin etiquetas, seis brazos, protocolo y ausencia de resultados. Once ataques negativos lo sostienen; el manuscrito declara que no existe séptimo brazo y permanece dentro del límite de veinte páginas</td><td><code data-author="Javier Rebull">1342609</code></td></tr>
+      <tr><td><b>US-132</b></td><td>Integración parcial</td><td>PR #49 fusionada tras dos ejecuciones completas del CI con doce de doce trabajos verdes. La mecánica entra a <code>main</code>; US-132 permanece en curso porque todavía no existe una tabla empírica bajo el mismo eje de coste</td><td><code data-author="Javier Rebull">81ac764</code></td></tr>
       </tbody></table></div>
     </details>
 
@@ -1389,13 +1404,14 @@
              "REPRODUCIBILIDAD Y CUSTODIA. Tres salidas se reprodujeron byte a byte en dos ejecuciones limpias, tienen fila SELLADO y hcat4-backoff-check rederiva cortes, inventario, poblaciones, aritmética, procedencia y el cierre de la raíz incluso sin materializar payloads DVC",
              "LÍMITE. HCAT4 y APS se ajustan a objetivos de validación distintos; la tabla conjunta no los presenta como igual presupuesto de pérdida, no imprime un ganador y no sustituye la geometría completa de US-152"],
          out:"ml/eval/hierarchical_backoff.py; ml/eval/hierarchical_reporting.py; docs/paper/hcat4-backoff-v2.json; docs/paper/hcat4-execution-v1.json; reports/micai2027/hcat4/; scripts/hcat4_backoff_check.py; paper/micai2027/sections/06-results.tex", dep:"US-129"},
-        {id:"US-132", t:"Líneas base de la literatura", sp:3, st:"idle",
+        {id:"US-132", t:"Líneas base de la literatura", sp:3, st:"wip",
          role:"Como revisor, quiero ver el artículo comparado contra los métodos que dice extender.",
-         ac:["Ha 1997 como línea base clásica, implementada desde su publicación",
-             "EXCLUSIÓN DE ALCANCE declarada, no una restricción del problema: NO se reimplementa un rechazador aprendido. El motivo es el presupuesto y el riesgo de sobreajuste, no que sea imposible hacerlo bien, y el coste se escribe: el artículo no puede decir nada sobre mecanismos APRENDIDOS de renuncia, solo sobre los declarados. Decir «un revisor lo criticará se haga como se haga» era vestir una decisión nuestra de inevitabilidad",
-             "Tabla única con los cuatro mecanismos y las líneas base bajo el mismo eje de coste",
-             "El rechazo por NOVEDAD (Carvalho 2023, Xu 2026, Giménez 2023) se declara fuera de alcance con su motivo: rechazar clases desconocidas es otra pregunta que repartir un presupuesto fijo de promesa. Es lo único que usa la comunidad de open-set y será su primera pregunta"],
-         out:"reports/paper_micai/lineas_base/", dep:"US-130"}
+         ac:["MECÁNICA HECHA. Ha 1997 está implementada desde su publicación como familia parametrizada de subconjuntos no vacíos. No acepta etiquetas retenidas ni una razón de costes por defecto; la fuerza bruta confirma el óptimo nativo sobre datos sintéticos",
+             "EXCLUSIÓN DE ALCANCE DECLARADA. No se reimplementa un rechazador aprendido por presupuesto y riesgo de sobreajuste, no porque sea imposible hacerlo bien. El artículo no puede afirmar nada sobre mecanismos aprendidos de renuncia",
+             "PENDIENTE Y NO DISIMULABLE. La tabla única bajo el mismo eje de coste todavía no existe. Ha no es un brazo sin elegir w_n/w_E: incorporarlo cambia seis brazos, quince pares y noventa coordenadas por siete, veintiún pares y ciento veintiséis coordenadas; exige enmienda prospectiva y recalcular potencia antes de ejecutar",
+             "El rechazo por NOVEDAD (Carvalho 2023, Xu 2026, Giménez 2023) queda fuera por elección: rechazar clases desconocidas es otra pregunta que repartir un presupuesto fijo de promesa. No se presenta como restricción matemática",
+             "CONTROL EJECUTABLE. ha-baseline-check verifica contrato exacto, bytes SELLADO, DOI, interfaz sin etiquetas, familia de seis brazos, protocolo sin Ha empírico, ausencia de resultados vecinos y deslinde en el manuscrito. Corre en CI y once pruebas negativas atacan esos caminos"],
+         out:"docs/paper/ha-baseline-v1.json; docs/paper/ha-baseline-v1.md; ml/eval/ha_class_selective.py; scripts/ha_baseline_check.py", dep:"US-130"}
       ]
     },
     {
