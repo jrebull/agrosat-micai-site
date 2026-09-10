@@ -30,11 +30,11 @@
       </div>
       <aside class="plan-now" aria-labelledby="plan-now-title">
         <p class="plan-now-label">Ahora · siguiente cierre</p>
-        <h2 id="plan-now-title"><a href="#US-133">Cobertura distribuida</a></h2>
-        <p>US-132 ya implementó y auditó la familia clásica de Ha, pero no inventa un punto de
-          coste para convertirla en séptimo brazo. El siguiente cierre ejecutable es US-133:
-          cobertura por clase verdadera y decil de área bajo el protocolo vigente.</p>
-        <div class="plan-now-state"><span></span>Lista · depende de US-129, ya cerrada</div>
+        <h2 id="plan-now-title"><a href="#US-134">Disparidad con intervalo</a></h2>
+        <p>US-133 ya cerró la distribución de entrega para los seis brazos: por clase verdadera
+          en ambos bancos y por decil de área en PASTIS. BreizhCrops no aporta área de parcela y
+          queda como no estimable, sin fabricar un proxy. El siguiente cierre es US-134.</p>
+        <div class="plan-now-state"><span></span>Lista · depende de US-133, US-131 y US-140, ya cerradas</div>
       </aside>
     </div>
 
@@ -82,7 +82,7 @@
 
     <div class="cadena">
       <div class="cadena-head">
-        <span>Camino crítico · continúa en US-133</span>
+        <span>Camino crítico · continúa en US-134</span>
         <span id="cadena-resumen">—</span>
       </div>
       <div class="cadena-via" id="cadena-via"
@@ -356,7 +356,7 @@
       <div class="ledger-row"><span class="name">Historias nuevas terminadas</span><span class="note">épicas 18 a 27</span><span class="num" id="progress-done-new">—</span></div>
       <div class="ledger-row"><span class="name">Historias retiradas</span><span class="note">se conservan como registro</span><span class="num" id="progress-retired">—</span></div>
       <div class="ledger-row"><span class="name">Historias nuevas por ejecutar</span><span class="note">incluye dependencias aún no liberadas</span><span class="num" id="progress-pending">—</span></div>
-      <div class="ledger-row"><span class="name">Esfuerzo pendiente</span><span class="note">el camino crítico y el siguiente cierre operativo continúan en US-133</span><span class="num" id="progress-pending-sp">—</span></div>
+      <div class="ledger-row"><span class="name">Esfuerzo pendiente</span><span class="note">el camino crítico y el siguiente cierre operativo continúan en US-134</span><span class="num" id="progress-pending-sp">—</span></div>
     </div>
     </details>
     <div class="colophon plan-colophon">
@@ -578,12 +578,20 @@
 
     <div class="history-log">
     <details class="history-day" open>
-    <summary class="dia" data-date="2026-09-10"><time datetime="2026-09-10">10 sep</time><strong>Panel, dos diagnósticos y una línea base mecánica quedan auditados</strong></summary>
+    <summary class="dia" data-date="2026-09-10"><time datetime="2026-09-10">10 sep</time><strong>Panel, mecanismos y cobertura distribuida llegan a evidencia sellada</strong></summary>
     <div class="scroll">
             <table>
               <colgroup><col class="c-us"><col class="c-tipo"><col class="c-que"><col class="c-ev"></colgroup>
       <thead><tr><th>US</th><th>Tipo</th><th>Qué se hizo</th><th>Evidencia</th></tr></thead>
       <tbody data-date="2026-09-10">
+      <tr><td><b>US-133 / web</b></td><td>Control de publicación</td><td>La pestaña En vivo deja de repetir el nombre técnico del gate como si fuera su explicación: ahora dice que el control conserva poblaciones, cortes y la ausencia documentada de área. Una prueba impide que el texto opaco vuelva</td><td><code data-author="Javier Rebull">affed47</code></td></tr>
+      <tr><td><b>US-133</b></td><td>Integración y cierre</td><td>PR #50 fusionada después de doce de doce jobs verdes sobre el HEAD final. US-133 aporta sus cinco SP con seis artefactos sellados, sin imputar área a BreizhCrops ni comparar numéricamente contra la pasada obsoleta; el siguiente cierre es US-134</td><td><code data-author="Javier Rebull">5ec606f</code></td></tr>
+      <tr><td><b>US-133</b></td><td>Contrato previo</td><td>La cobertura distribuida se congela antes de abrir etiquetas: seis brazos, clase verdadera completa, deciles de área ajustados solo en entrenamiento, denominador común y ausencia explícita de una vista de área cuando el banco no aporta la variable</td><td><code data-author="Javier Rebull">32b7c22</code></td></tr>
+      <tr><td><b>US-133</b></td><td>Custodia de entradas</td><td>El contrato ejecutable y su lectura metodológica quedan sellados antes de producir una cifra. El protocolo predeclara exactamente seis salidas y conserva el régimen exploratorio</td><td><code data-author="Javier Rebull">ff4b118</code></td></tr>
+      <tr><td><b>US-133</b></td><td>Materialización</td><td>Se producen 1 164 filas analíticas: cobertura por clase para ambos bancos y por decil de área para PASTIS. Las nueve fronteras de área se derivan del entrenamiento y no se vuelven a ajustar sobre evaluación</td><td><code data-author="Javier Rebull">8ab8fed</code></td></tr>
+      <tr><td><b>US-133</b></td><td>Sello de resultados</td><td>Las seis salidas —clase, área, disponibilidad, cruce histórico y procedencia— entran al registro de custodia como artefactos SELLADO</td><td><code data-author="Javier Rebull">52efe39</code></td></tr>
+      <tr><td><b>US-133</b></td><td>Auditoría por ataque</td><td>Nueve mutaciones negativas prueban aritmética, completitud, brazos que siempre entregan, ausencia de área en BreizhCrops, cortes insuficientes, recalibración sobre evaluación y reutilización numérica de la pasada obsoleta. El gate entra en CI</td><td><code data-author="Javier Rebull">35b701d</code></td></tr>
+      <tr><td><b>US-133 / US-144</b></td><td>Manuscrito</td><td>Resultados incorpora el hallazgo acotado: en cada predictor PASTIS, la variación entre clases supera la variación entre deciles de área para los tres brazos selectivos. BreizhCrops queda no estimable por área, sin proxy; el PDF vuelve al límite de veinte páginas</td><td><code data-author="Javier Rebull">47a0d41</code></td></tr>
       <tr><td><b>US-136</b></td><td>Integración</td><td>PR #42 fusionada después de CI 6/6 sobre el HEAD final. El contrato de parada, sus catorce adjudicaciones, la salida vacía, el alcance limitado, la condición de reapertura y la naturaleza autoral de los criterios quedan en <code>main</code>. US-136 pasa a hecha; el siguiente cuello es el panel y los posteriores separados</td><td><code data-author="Javier Rebull">0f2543b</code></td></tr>
       <tr><td><b>US-139</b></td><td>Contrato previo</td><td>Se congelan por banco el panel, las familias, los roles de entrenamiento, validación y evaluación, y la regla de no declarar campeón. PASTIS reserva el fold 5; BreizhCrops reserva por turno una región completa</td><td><code data-author="Javier Rebull">c9cbd8b</code></td></tr>
       <tr><td><b>US-139</b></td><td>Split ejecutable</td><td>Dos intentos terminaron antes de publicar artefactos y dejaron sus causas como enmiendas: parcelas PASTIS sin etiqueta semantic18 válida y clases singleton en BreizhCrops. Las primeras quedan en un inventario de exclusión; las segundas permanecen solo en entrenamiento y su ausencia de validación se cuenta</td><td><code data-author="Javier Rebull">b1d3bb0</code></td></tr>
@@ -1415,15 +1423,18 @@
       ]
     },
     {
-      id:"EPIC 21", name:"Distribución de cobertura y sesgo de superficie", status:"idle",
+      id:"EPIC 21", name:"Distribución de cobertura y sesgo de superficie", status:"wip",
       goal:"La disparidad es una hipótesis por medir, no un hallazgo ni una inferencia sobre quién paga. Esta épica describe cómo se distribuyen la entrega y el sesgo de superficie por clase y tamaño de parcela, con incertidumbre y sin convertir un grupo observado en una preferencia de usuario.",
       us:[
-        {id:"US-133", t:"Cobertura por clase y por tamaño de parcela", sp:5, st:"idle",
+        {id:"US-133", t:"Cobertura por clase y por tamaño de parcela", sp:5, st:"ok",
          role:"Como productor de un cultivo raro, quiero saber qué probabilidad tengo de recibir respuesta bajo cada mecanismo, porque una media de cobertura no me dice nada.",
-         ac:["Cobertura por clase verdadera y por decil de ÁREA de parcela, por mecanismo y por banco. El soporte de una clase no es el tamaño de una parcela y el reencuadre pide los dos",
-             "Las cifras de la primera pasada se re-derivan bajo el protocolo de la EPIC 19 y se publica la diferencia",
-             "Cada cifra citada sale de UNA fila del artefacto: el «20 % frente al 62 %» mezclaba dos y era falso"],
-         out:"reports/paper_micai/equidad/", dep:"US-129"},
+         ac:["EJECUCIÓN EXPLORATORIA CERRADA. Se publican 1 164 filas analíticas: cobertura por clase verdadera para PASTIS y BreizhCrops, y por decil de área para PASTIS, siempre por brazo y modelo-estrato. El soporte de una clase no se usa como sustituto del tamaño de parcela",
+             "LIMITACIÓN COMO RESULTADO. Las entradas selladas de BreizhCrops no contienen geometría ni área de parcela; esa vista queda NO ESTIMABLE y no se fabrica un proxy. El contrato conserva la ausencia como dato auditable",
+             "Los nueve cortes de área de PASTIS se ajustan únicamente sobre entrenamiento con la regla higher y quedan fijos al abrir evaluación. El productor rechaza recalibrarlos sobre las parcelas evaluadas",
+             "Cada fila cierra numerador y denominador sobre la población elegible. Los brazos que siempre entregan tienen cobertura exactamente uno; un gate independiente rederiva la aritmética, la completitud de clases y deciles, y la procedencia",
+             "Las cifras de la primera pasada permanecen OBSOLETO y se cruzan solo como contexto. No se publica una diferencia numérica porque cambiaron catálogo, leyendas, panel y población; restarlas atribuiría al mecanismo lo que también cambió de diseño",
+             "RESULTADO ACOTADO. En los cinco predictores PASTIS y los tres mecanismos con entrega selectiva, la amplitud de cobertura entre clases verdaderas supera la amplitud entre deciles de área. No se interpreta como transporte, preferencia de usuario ni contraste confirmatorio"],
+         out:"docs/paper/coverage-distribution-v1.json; docs/paper/coverage-distribution-v1.md; reports/micai2027/distribution/; scripts/coverage_distribution_check.py", dep:"US-129"},
         {id:"US-134", t:"La disparidad como criterio principal, con su intervalo", sp:5, st:"idle",
          role:"Como revisor, quiero que la afirmación de equidad tenga incertidumbre y no sea un punto, y quiero que sea el criterio principal si es donde hay efecto.",
          ac:["CORREGIDO tras auditoría externa: elegir la variable primaria según dónde haya potencia es escoger el resultado después de verlo. La primaria se CONGELA en US-140 junto con población, coordenadas, familia y regla de decisión. Lo hecho sobre los dos bancos vistos es exploratorio y se etiqueta así",
