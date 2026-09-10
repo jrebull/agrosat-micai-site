@@ -134,15 +134,28 @@
         <code>micai_profile_inference.py</code> implementa la familia simultánea de quince pares por
         seis coordenadas con remuestreo pareado de <code>patch_id</code> dentro de bloque; conserva
         las noventa coordenadas, evalúa las dos direcciones y retira una afirmación si alguna de sus
-        coordenadas tiene error estándar cero. <code>micai_profile_power.py</code> aplica la misma
+        coordenadas tiene error estándar cero. Cada réplica vuelve a estimar su propio error
+        estándar de clúster: un denominador único para todas las réplicas estandariza, pero no
+        studentiza. <code>micai_profile_power.py</code> aplica la misma
         regla a la alternativa prospectiva Dirichlet–multinomial en las seis colocaciones y la
-        rejilla ICC completa, y decide admisión por el mínimo de las cotas Wilson. Veintidós pruebas
+        rejilla ICC completa, y decide admisión por el mínimo de las cotas Wilson. Veinticuatro pruebas
         nuevas atacan pareo, denominador, familia incompleta, semilla, varianza cero, rejilla
-        recortada y divergencia de contratos. <b>No es un resultado empírico.</b> La ejecución sigue
+        recortada, divergencia de contratos y calibración bajo nulo. <b>No es un resultado empírico.</b> La ejecución sigue
         bloqueada por dos ausencias verificadas: ningún banco confirmatorio pasó US-136 y los
         parquets disponibles contienen solo posteriores del fold 5, no entrenamiento y validación.
         El runner heredado no puede rellenar esos huecos sin reintroducir la fuga que el protocolo
         prohíbe.</p>
+      <p><b>Auditoría de calibración, 9 de septiembre.</b> Una simulación bajo nulo global encontró
+        que la primera implementación excedía el alfa familiar nominal. El hallazgo era real, pero
+        su atribución al número de clústeres no estaba identificada: la comparación publicada
+        cambiaba simultáneamente clústeres, parcelas totales y parcelas por parche, y cinco cifras
+        adicionales solo existían en el docstring del test. La causa ejecutable era más inmediata:
+        todas las réplicas se dividían por un único error estándar. La corrección agrega por
+        <code>patch_id</code>, recalcula el error estándar dentro de cada réplica y conserva intactos
+        alfa, familia, semilla y remuestreos del contrato congelado. Una regresión de seiscientas
+        simulaciones exige que la cota Wilson unilateral del nivel realizado no exceda 0,05 en el
+        escenario que reprodujo el defecto. Es calibración sintética, no el nivel realizado de un
+        banco futuro ni un resultado del artículo.</p>
       <p><b>Estado previo al pivote del 9 de septiembre; conservado como registro.</b> Las ocho rondas cerraron defectos en código, tests,
         custodia y redacción. <b>US-173 es la primera historia científica cerrada del estudio
         reencuadrado</b>: la inferencia será condicional a cada banco, con la parcela como unidad,
@@ -579,6 +592,9 @@
       <tr><td><b>US-128/155</b></td><td>Mecánica primaria</td><td>La familia simultánea de noventa coordenadas y ciento ochenta direcciones, y la potencia prospectiva sobre veinticuatro escenarios, pasan de contrato a implementación atacada por veintidós pruebas. No se publica resultado empírico: faltan un banco confirmatorio admisible y posteriores separados de entrenamiento y validación</td><td><code data-author="Javier Rebull">b320843</code></td></tr>
       <tr><td><b>US-155</b></td><td>Camino de invocación</td><td>El cargador del contrato reconoce la misma fuente prospectiva al recibir rutas relativas o absolutas, pero sigue rechazando cualquier fichero distinto. La prueba ejecuta ambas formas para que el directorio de trabajo no cambie el estudio aceptado</td><td><code data-author="Javier Rebull">d939b68</code></td></tr>
       <tr><td><b>US-128/155</b></td><td>Integración</td><td>PR #39 fusionada después de dos ejecuciones completas de CI sobre el SHA final. La mecánica queda en <code>main</code>, con los veintitrés controles del manuscrito en verde y sin promover el manifiesto fuera de <code>mechanics_only</code></td><td><code data-author="Javier Rebull">12966f3</code></td></tr>
+      <tr><td><b>US-128</b></td><td>Calibración adversa</td><td>Una simulación bajo nulo global demuestra que la primera banda simultánea excede su alfa nominal. La evidencia conserva el defecto, pero no identifica su causa como «pocos clústeres»: el contraste que sostenía esa frase cambiaba a la vez el número de clústeres, las parcelas totales y el tamaño de parche, y las demás cifras solo estaban en prosa</td><td><code data-author="Javier Rebull">256404d</code></td></tr>
+      <tr><td><b>US-128</b></td><td>Studentización corregida</td><td>El máximo bootstrap deja de dividir todas las réplicas por un error estándar fijo. Cada remuestreo pareado vuelve a estimar su error de clúster; una prueba de mecanismo cuenta una estimación original más una por réplica y una regresión de seiscientas simulaciones acota con Wilson el error familiar realizado del escenario que reprodujo el defecto. No cambia el contrato ni produce un resultado empírico</td><td><code data-author="Javier Rebull">47fbcd8</code></td></tr>
+      <tr><td><b>US-128</b></td><td>Integración con CI externo bloqueado</td><td>PR #40 fusionada tras pruebas locales focales, evaluación sin lentas, PDF y <code>make check</code> en verde. GitHub no ejecutó pasos: los jobs terminaron antes de arrancar por pagos fallidos o límite de gasto de la cuenta. El historial lo registra como bloqueo de infraestructura, no como fallo ni como CI verde</td><td><code data-author="Javier Rebull">dd0c1f8</code></td></tr>
       </tbody></table></div>
     </details>
 
@@ -1270,6 +1286,8 @@
          role:"Como revisor de la corrección por multiplicidad, quiero que ninguna tabla corta, capa omitida o cambio de unidad pueda hacerse pasar por control del ganador de toda la superficie.",
          ac:["MECÁNICA PRIMARIA TERMINADA, SUPERFICIE EMPÍRICA PENDIENTE. ml/eval/micai_profile_inference.py construye en una sola ejecución los quince pares por seis coordenadas y las dos direcciones; quitar un brazo, sustituir parcelas o desalinear patch y bloque falla",
              "El criterio primario no usa Holm ni una pérdida puntual: el máximo absoluto de las noventa diferencias centradas y studentizadas produce cotas simultáneas. Holm permanece limitado a H2 y a sensibilidades escalares explícitamente separadas",
+             "CORRECCIÓN DE IMPLEMENTACIÓN: la primera versión reutilizaba un error estándar para todas las réplicas y excedía el alfa en una simulación bajo nulo. Cada réplica estima ahora su propio error estándar de clúster. Una prueba de mecanismo impide volver al denominador fijo y una regresión de seiscientas simulaciones exige que la cota Wilson unilateral no exceda 0,05 en el escenario que reprodujo el defecto",
+             "LÍMITE DE LA AUDITORÍA: el hallazgo de inflación era real, pero la frase «lo causa el número de clústeres» no estaba identificada porque la comparación cambiaba también población y tamaño de parche. Las cifras no ejecutadas se retiraron del docstring; la calibración sintética no se presenta como nivel de un banco futuro",
              "Cada ejecución confirmatoria todavía debe identificar banco, predictor, universo de clases, punto de operación y partición. US-140 congela alfa 0,05, 9 999 remuestreos y semilla 20260909; el productor empírico debe aportar la procedencia de esos ejes sin elegirlos del resultado",
              "SENSIBILIDAD ESCALAR HEREDADA: si se declara un vector de pérdida, una selección entre seis brazos exige quince pares por estrato. La tabla focal de US-127 conserva sus seis filas y all_pairwise_budgeted_contrasts completa los nueve pares restantes sin confundirse con la familia primaria",
              "SENSIBILIDAD ESCALAR HEREDADA: la única exclusión de Holm es una identidad por construcción predeclarada. Una diferencia parcelaria la refuta; una igualdad observada no la inventa. Si otra comparación carece de p válida, Holm no se aplica a esa familia",
