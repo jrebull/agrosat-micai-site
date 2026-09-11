@@ -18,7 +18,7 @@
   <div class="plan-hero-inner">
     <div class="plan-topline">
       <a href="index.html">AgroSatCopilot / cuaderno</a>
-      <span>Actualizado 10 sep 2026</span>
+      <span>Actualizado 11 sep 2026</span>
     </div>
 
     <div class="plan-intro">
@@ -219,59 +219,27 @@
         no tendrá estrato confirmatorio ni afirmará transporte. El cierre no se presenta como una
         búsqueda global exhaustiva: no existe un log específico de consultas de bancos. Reabrirlo
         exige una enmienda versionada antes de mirar un candidato nuevo.
-        El arnés OOF ya verifica la longitud
-        temporal efectiva y su gate corre en CI, pero <b>31 artefactos
-        siguen obsoletos</b> y no se regeneran antes de fijar la pérdida y el panel. El workflow
-        propuesto por Arthur también quedó revisado: este plan registra más abajo qué se adopta,
-        qué se descarta y qué queda solo como posibilidad futura. <b>US-141, US-142 y US-149 están
-        cerradas</b>: el trabajo relacionado ya está en la primera página y en su sección, y
-        <code>paper/micai2027/refs.bib</code> contiene exactamente las 17 claves citadas, derivadas
-        de un catálogo verificado de 58. Las secciones del problema, el estimando y la mecánica ya
-        están escritas desde sus contratos, y el registro de afirmaciones retiradas deriva sus 16
-        filas de la revisión externa en vez de mantener otra lista manual. <b>US-160, US-124 y
-        US-125 están en curso</b>: el código ya calibra los seis brazos con entrenamiento y
-        validación, los aplica
-        sin aceptar etiquetas de prueba y solo después evalúa las siete celdas sobre todas las
-        parcelas. El universo neutral de clases sale del soporte de entrenamiento y no puede
-        cambiar con validación, prueba ni mecanismo; una clase sin soporte en el bloque permanece
-        visible como indefinida, nunca como cero. La PR #13 integró ese flujo en
-        <code>28dc201</code> después de seis jobs de CI verdes. La pérdida sigue siendo una entrada
-        obligatoria sin valores predeterminados. US-125 ya conecta esas pérdidas por identidad de
-        parcela con intervalos separados por bloque espacial y por <code>patch_id</code>; no
-        remuestrea parcelas sueltas ni deja entrar en Holm una vista con menos de tres unidades.
-        La corrección exploratoria ya es ejecutable: no mezcla unidades, excluye solo identidades
-        declaradas como estructurales antes de observar pérdidas y no reduce la familia después de
-        descubrir una p indefinida. La PR #14 integró esa mecánica en <code>1f16145</code> con los
-        seis jobs de CI verdes; US-125 permanece en curso hasta la regeneración empírica. La
-        auditoría posterior cerró dos caminos laterales: una identidad declarada se contrasta ahora
-        parcela por parcela, incluso cuando la suma cancela y no hay intervalo, y la pestaña En vivo
-        compara el panel completo y los bytes del PDF en lugar de sus primeros 400 caracteres.
-        <b>US-130 pasa a en curso</b>: la calibración conforme determinista ya es mecánica
-        ejecutable y la auditoría corrigió un orden estadístico finito mal calculado; la cobertura
-        marginal empírica sigue prohibida hasta firmar el preregistro.
-        <b>US-131 también pasa a en curso</b>: el corte HCAT4 de siete nodos resuelve las dieciocho
-        hojas del catálogo contra las fuentes locales y el constructor rechaza asignaciones
-        incompletas, repetidas, no ancestrales o inventadas. La revisión corrigió una premisa del
-        propio plan: Türkōglu et al. ya ajustan la granularidad de salida por confianza en mapeo de
-        cultivos. Por eso no reclamamos como nuevo el retroceso, sino su comparación con las otras
-        acciones bajo una pérdida atribuida. Esa comparación aún no se ejecutó.
-        <b>US-157 sigue en curso</b>: la rejilla de veinte perfiles, los adaptadores semánticos y
-        el productor están congelados y auditados sin ejecutar resultados; seis salidas permanecen
-        declaradas pero ausentes hasta el preregistro. El manuscrito LNCS anónimo llega a
-        <b>dieciocho páginas y seis de ocho secciones redactadas</b>. <b>US-144 sigue en curso</b>:
-        el apéndice se genera desde nueve contratos sellados y resultados y discusión están
-        deliberadamente vacíos; la declaración de disponibilidad ya está integrada. <b>US-145
-        pasa a en curso</b>: el ZIP anónimo se construye desde una lista blanca, se audita completo
-        y recompila el PDF byte a byte en un directorio limpio. No se declara cerrado porque el
-        paquete final depende de que US-144 termine. <b>US-143
-        también está en curso</b>: el contrato ejecutable de las figuras ya impide repetir el
-        ancho y los canales defectuosos, pero todavía no se ha regenerado ninguna figura
-        empírica. En <b>US-172</b>, las nueve decisiones operativas están cerradas y la determinación
-        institucional escrita está sellada. El protocolo v0.3 quedó <b>CONGELADO el 9 de
-        septiembre</b>, antes del primer reclutamiento, y sus cuatro adjuntos fijan el commit fuente,
-        se reproducen byte a byte y tienen fila propia en el ledger. El bloqueo formal está cerrado;
-        el sustantivo no: faltan las respuestas de seis informantes y la tabla trazable que sale de
-        ellas. Por eso US-172 permanece en curso y aún no se ejecutan resultados.</p>
+        El arnés OOF ya verifica la longitud temporal efectiva y su gate corre en CI. Los
+        <b>31 artefactos históricos siguen OBSOLETO</b>, pero las salidas vigentes del manuscrito
+        nuevo viven bajo <code>reports/micai2027/</code> y no reutilizan sus cifras. El workflow
+        propuesto por Arthur quedó revisado: este plan registra qué se adopta, qué se descarta y qué
+        queda solo como posibilidad futura. <b>US-141, US-142 y US-149 están cerradas</b>: trabajo
+        relacionado, bibliografía final y afirmaciones retiradas tienen fuentes y controles
+        ejecutables. <b>US-130, US-131, US-133, US-134 y US-135 también están cerradas</b>, con
+        cobertura conforme, retroceso jerárquico, distribución, no estimabilidad de H2 y error de
+        superficie ya integrados al manuscrito sin convertir exploración en confirmación.
+        <b>US-160 y US-124 cierran el 11 de septiembre</b>: los seis brazos se ejecutaron sobre las
+        mismas poblaciones y cada perfil conserva R0 y L1–L6 sobre el denominador completo. Los
+        puntos de operación salen de entrenamiento y validación; las salidas no contienen un precio
+        puntual, p-valores ni una afirmación primaria. <b>US-157 también queda cerrada</b>: veinte
+        perfiles de desbalance producen objetivos, pesos y tamaño efectivo separados para PASTIS-R
+        y BreizhCrops; los pesos grandes viven en DVC y las trece salidas nuevas tienen custodia.
+        <b>US-125 sigue en curso</b>: la mecánica de dependencia está lista, pero el siguiente
+        resultado defendible no es escoger un precio, sino construir US-152, el atlas de regiones
+        ganadoras en todo el símplex. <b>US-172 permanece retirada sin entrevistas</b>; su protocolo,
+        acta y adjuntos se conservan como registro y no gobiernan esta ejecución. El manuscrito y el
+        paquete anónimo siguen en curso hasta integrar el atlas, la decisión desplegada y la
+        discusión final.</p>
       <p><b>Revalidación de la PR #6, 6 de septiembre.</b> Se conserva el permiso mínimo de lectura
         de PR que necesita el job de calidad y el exportador queda reducido a un prefiltro local.
         No se adopta el lote de memoria que la PR publicó como «saneado»: entró antes de las dos
@@ -363,7 +331,7 @@
     <div class="colophon plan-colophon">
       <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
       <span><b>Total</b> <span id="total-sp">—</span> puntos de historia</span>
-      <span><b>Actualizado</b> 10 de septiembre de 2026, H2 cerrada como no estimable en ambos bancos; sin equivalencia ni dirección inferida</span>
+      <span><b>Actualizado</b> 11 de septiembre de 2026, seis brazos y barrido de desbalance materializados y sellados; sigue US-152</span>
     </div>
   </div>
 </header>
@@ -578,6 +546,20 @@
     </section>
 
     <div class="history-log">
+    <details class="history-day" open>
+    <summary class="dia" data-date="2026-09-11"><time datetime="2026-09-11">11 sep</time><strong>Los seis brazos y el barrido de desbalance pasan de contrato a evidencia</strong></summary>
+    <div class="scroll">
+            <table>
+              <colgroup><col class="c-us"><col class="c-tipo"><col class="c-que"><col class="c-ev"></colgroup>
+      <thead><tr><th>US</th><th>Tipo</th><th>Qué se hizo</th><th>Evidencia</th></tr></thead>
+      <tbody data-date="2026-09-11">
+      <tr><td><b>US-124 / US-160</b></td><td>Contrato ejecutable</td><td>El runner real cierra antes de medir el panel, los estratos, las entradas selladas, las siete celdas y la prohibición de introducir una pérdida puntual o inferencia primaria. El control acepta cualquier orden físico de filas, pero no una celda repetida, omitida ni un fichero escondido en un subdirectorio</td><td><code data-author="Javier Rebull">7e8ed28</code></td></tr>
+      <tr><td><b>US-124 / US-160</b></td><td>Materialización</td><td>Los seis brazos se ejecutan sobre once combinaciones banco–estrato–modelo. Se publican perfiles completos, puntos de operación fijados en entrenamiento y validación, y 104 160 cuentas por parche para PASTIS-R; ningún artefacto contiene un precio de pérdida, p-valor ni afirmación confirmatoria</td><td><code data-author="Javier Rebull">d5209e0</code></td></tr>
+      <tr><td><b>US-157</b></td><td>Materialización</td><td>La rejilla congelada produce veinte objetivos y pesos exactos para PASTIS-R y BreizhCrops. Los identificadores dejan de usar alias internos, las seis entradas son rutas contractuales y los dos ficheros grandes de pesos quedan en DVC; el runner no acepta predicciones, confianza ni pérdidas</td><td><code data-author="Javier Rebull">cec6f71</code></td></tr>
+      <tr><td><b>US-124 / US-157</b></td><td>Custodia y cierre</td><td>Las trece salidas entran al manifiesto y al ledger con una única procedencia por bundle. Los perfiles ligeros quedan en Git y los dos pesos —14 y 72 MB— se publican por DVC. Los gates revalidan identidades, régimen exploratorio, denominadores y bytes actuales</td><td><code data-author="Javier Rebull">bf127f7</code></td></tr>
+      </tbody></table></div>
+    </details>
+
     <details class="history-day" open>
     <summary class="dia" data-date="2026-09-10"><time datetime="2026-09-10">10 sep</time><strong>Panel, mecanismos, cobertura y estimabilidad llegan a evidencia sellada</strong></summary>
     <div class="scroll">
@@ -1296,9 +1278,9 @@
       id:"EPIC 19", name:"El protocolo sobre perfiles completos de resultado", status:"wip",
       goal:"Los seis brazos comparten población, catálogo y seis celdas con coste. La comparación primaria conserva esas frecuencias y estudia toda la geometría de pérdidas; cobertura y cardinalidad quedan como descriptores, y cualquier vector puntual es solo sensibilidad declarada.",
       us:[
-        {id:"US-160", t:"Los cuatro mecanismos como predictores con valores de conjunto", sp:8, st:"wip",
+        {id:"US-160", t:"Los cuatro mecanismos como predictores con valores de conjunto", sp:8, st:"ok",
          role:"Como autor que quiere comparar los cuatro mecanismos sin imponer una moneda, necesito que todos produzcan el mismo vector de resultados sobre la misma población.",
-         ac:["MECÁNICA TERMINADA, EJECUCIÓN EMPÍRICA PENDIENTE. Cuatro mecanismos producen SEIS brazos experimentales: una referencia sin mecanismo, dos recortes del mismo catálogo —por F1 y por soporte—, abstención, conjunto adaptativo y retroceso. La no-entrega universal es una acción límite, no un séptimo brazo. La sección 4 del manuscrito deja explícita la cuenta",
+         ac:["CERRADA Y EJECUTADA. Cuatro mecanismos producen SEIS brazos experimentales: una referencia sin mecanismo, dos recortes del mismo catálogo —por F1 y por soporte—, abstención, conjunto adaptativo y retroceso. La no-entrega universal es una acción límite, no un séptimo brazo. Los perfiles empíricos conservan las siete celdas y no fijan una pérdida puntual",
              "Los constructores de conjunto adaptativo y retroceso están implementados con puntos de operación inyectados; no calibran dentro de prueba. El retroceso rechaza particiones con hojas ausentes, repetidas o fuera del catálogo",
              "La rejilla completa ya es comportamiento: R0 y L1–L6 son resultados distintos, incluidos conjunto que no contiene la verdad y retroceso equivocado. Cada parcela cae en una sola celda según lo que recibe el usuario, no según el nombre del algoritmo",
              "El perfil exige las siete celdas R0 y L1–L6, conserva toda parcela y no recibe valores de pérdida. El riesgo puntual sigue disponible solo como sensibilidad explícita, sin valor predeterminado",
@@ -1312,18 +1294,18 @@
              "FLUJO CONECTADO, SIN RESULTADOS: SixArmDesign exige catálogo, tasas, miscoverage, jerarquía y suelo de soporte sin valores por defecto. fit_six_arm_operating_point acepta solo entrenamiento y validación; apply_six_arms acepta prueba pero NO etiquetas; evaluate_six_arms recibe la verdad cuando las seis entregas ya están fijadas",
              "La afirmación de auditoría que existía solo en prosa queda ahora como prueba: seis brazos sobre 400 parcelas sintéticas, las 400 permanecen en cada denominador y cada parcela cae exactamente en una de R0 o L1–L6. Permutar las etiquetas cambia la puntuación, nunca la entrega",
              "Se cita Ha 1997 como el marco del que los cuatro mecanismos son casos particulares. Su implementación como línea base pertenece a US-132, no a esta historia"],
-         out:"ml/eval/set_valued.py; ml/eval/micai_actions.py; ml/eval/decision_cost.py", dep:"US-173, US-175"},
-        {id:"US-124", t:"Denominador común fijado antes de la entrega", sp:5, st:"wip",
+         out:"ml/eval/set_valued.py; ml/eval/micai_actions.py; ml/eval/decision_cost.py; reports/micai2027/six-arms/", dep:"US-173, US-175"},
+        {id:"US-124", t:"Denominador común fijado antes de la entrega", sp:5, st:"ok",
          role:"Como autor que denuncia comparar sobre denominadores distintos, quiero no hacerlo yo, porque el estimando promedia sobre las clases presentes en la entrega de cada brazo y esos conjuntos difieren.",
-         ac:["IMPLEMENTADO para el estimando nuevo: el universo neutral se fija desde las etiquetas de ENTRENAMIENTO y el suelo predeclarado, una sola vez antes de la entrega. La versión anterior de este AC decía «clases presentes en el bloque completo» y volvía a leer la prueba; se retira",
+         ac:["CERRADA con ejecución empírica: el universo neutral se fija desde las etiquetas de ENTRENAMIENTO y el suelo predeclarado, una sola vez antes de la entrega. La versión anterior de este AC decía «clases presentes en el bloque completo» y volvía a leer la prueba; se retira",
              "Caso sin soporte explícito: la clase permanece en la salida común con soporte cero, defined=false y pérdida NaN; nunca se convierte en un cero válido ni desaparece solo de un brazo",
              "El conjunto de evaluación ya no lo elige un brazo ni un bloque: evaluate_six_arms solo acepta el SixArmOperatingPoint ajustado antes. Intentar inyectar class_universe después falla por firma",
              "La pérdida primaria usa TODAS las parcelas, incluso las de clases fuera del resumen neutral. El universo común restringe el diagnóstico por clase, no cambia el denominador parcelario de la pérdida",
-             "Se publica el delta antes y después con su artefacto, sea cual sea el valor. Hoy medido: encoge un 42,1 % y un bloque cambia de signo",
+             "La exigencia anterior de publicar un delta escalar antes y después queda retirada: pertenecía al estimando viejo y exigiría escoger una pérdida que el pivote prohíbe. La evidencia vigente publica las siete frecuencias completas sobre un único denominador",
              "Tests negativos rechazan cinco brazos, distinto número de parcelas, catálogo de prueba distinto y un universo de clases inyectado después de ver resultados",
-             "El 42,1 %, el cambio de signo y el 0,00127 se midieron sobre el conjunto ENTREGADO. Bajo el estimando de US-160, que evalúa la población completa, esas cifras cambian: o se recomputan, o el método las declara explícitamente como medidas bajo el estimando anterior",
-             "El suelo se aplica en ENTRENAMIENTO para construir un universo fijo. Aplicarlo dentro de cada bloque evaluado reintroduciría el denominador móvil que esta historia existe para eliminar. Falta regenerar y publicar los deltas empíricos después de fijar pérdida y puntos de operación"],
-         out:"ml/eval/micai_actions.py; ml/eval/paper_micai_coverage.py", dep:"US-160"},
+             "El 42,1 %, el cambio de signo y el 0,00127 permanecen en cuarentena como medidas del estimando anterior; no se recalculan bajo un precio elegido después de ver los perfiles",
+             "El suelo se aplica en ENTRENAMIENTO para construir un universo fijo. Los perfiles sellados cierran cada brazo sobre la población completa y sus conteos por patch_id vuelven a sumar exactamente el mismo denominador"],
+         out:"ml/eval/micai_actions.py; scripts/run_micai2027_six_arms.py; reports/micai2027/six-arms/", dep:"US-160"},
         {id:"US-125", t:"Bloque espacial y parche como unidades explícitas", sp:5, st:"wip",
          role:"Como autor cuyo estimando conserva todas las parcelas pero cuya dependencia vive en el parche, quiero separar la variación entre bloques del remuestreo por patch_id y no fabricar réplicas parcelarias.",
          ac:["MECÁNICA TERMINADA, REGENERACIÓN PENDIENTE. ml/eval/micai_inference.py reporta dos vistas: t pareada sobre las medias por bloque y bootstrap de patch_id completos dentro de cada bloque. No existe bootstrap por parcela",
@@ -1517,16 +1499,16 @@
       id:"EPIC 22", name:"Validez externa, y separar el hallazgo del artefacto", status:"wip",
       goal:"Dos bancos franceses no demuestran transporte, y peor: comparten el sistema de etiquetado, no solo el país. Sin un tercer banco admisible, la geografía y la forma del desbalance siguen confundidas. La manipulación dentro de banco las separa parcialmente, pero no autoriza una afirmación de transporte.",
       us:[
-        {id:"US-157", t:"Barrido del desbalance con la geografía fija", sp:5, st:"wip",
+        {id:"US-157", t:"Barrido del desbalance con la geografía fija", sp:5, st:"ok",
          role:"Como revisor que pregunta si esto es un hallazgo o un artefacto europeo, quiero ver la variable independiente manipulada dentro de un banco.",
-         ac:["INFRAESTRUCTURA TERMINADA, EJECUCIÓN PENDIENTE: veinte objetivos salen solo del soporte de entrenamiento —cuatro tamaños de catálogo por cinco exponentes— y la interfaz no acepta predicciones, confianza ni pérdidas",
+         ac:["CERRADA Y MATERIALIZADA: veinte objetivos salen solo del soporte de entrenamiento —cuatro tamaños de catálogo por cinco exponentes— y la interfaz no acepta predicciones, confianza ni pérdidas",
              "DECISIÓN CORREGIDA ANTES DE INTEGRAR: se descarta el remuestreo con reemplazo porque añade semilla, duplicados y soporte efectivo variable. La reponderación exacta usa una vez cada parcela activa y fija la masa objetivo por clase",
              "CRUCE SEMÁNTICO CONGELADO: trigo, cebada, colza, maíz, pradera y frutal son las seis clases comunes entre PASTIS semantic18 y BreizhCrops. Girasol queda fuera porque el diagnóstico sellado suma soporte inferior a cien; el gate recalcula ambos lados del umbral",
              "Los mismos objetos objetivo inmutables se aplican a cada banco. Una rejilla corta, reordenada, con clases distintas, otra fuente de entrenamiento o profundidad incompatible falla en vez de cambiar la variable independiente por geografía",
              "Cada punto parametrizado por K, entropía del soporte y profundidad de la taxonomía. Se declara que el barrido DESCRIBE la superficie de respuesta y NO contrasta la identidad del banco: los cuarenta puntos son reponderaciones de las mismas parcelas, no unidades independientes, y la identidad del banco solo tiene dos niveles. Tratarlos como n=40 sería la pseudorreplicación que US-125 acaba de corregir",
              "No exige reentrenar: convierte los dos bancos vigentes en cuarenta puntos de diseño sobre posteriores ya volcadas. Responde si el patrón cambia al manipular el desbalance con la geografía fija, pero NO sustituye una prueba de transporte",
              "PRODUCTOR CERRADO: scripts/run_paper_micai_imbalance.py solo abre tres tablas de etiquetas si contrato y preregistro están congelados, cada entrada conserva un sello MD5 vigente y las seis salidas exactas ya están predeclaradas. No sobrescribe una corrida existente",
-             "PENDIENTE EMPÍRICO: no se ha creado reports/micai2027/desbalance/. US-140 ya está congelada; falta ejecutar, verificar y sellar targets, pesos y tamaño efectivo por banco más la procedencia, sin reabrir el diseño inferencial"],
+             "EJECUCIÓN SELLADA: targets, pesos y tamaño efectivo por banco más la procedencia ocupan las seis rutas predeclaradas. Los pesos grandes viven en DVC; el gate acepta un checkout sin materializar solo cuando el puntero exacto representa esa misma ruta"],
          out:"reports/micai2027/desbalance/", dep:"US-129, US-140"},
         {id:"US-136", t:"Cerrar la búsqueda del banco confirmatorio sin admitir por cansancio", sp:8, st:"ok",
          role:"Como revisor de validez externa, quiero saber qué universo se examinó, por qué cada candidato falló y qué hace el artículo si ninguno es admisible.",
