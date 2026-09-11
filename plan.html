@@ -234,6 +234,9 @@
         puntual, p-valores ni una afirmación primaria. <b>US-157 también queda cerrada</b>: veinte
         perfiles de desbalance producen objetivos, pesos y tamaño efectivo separados para PASTIS-R
         y BreizhCrops; los pesos grandes viven en DVC y las trece salidas nuevas tienen custodia.
+        <b>US-165 queda cerrada por su salida predeclarada</b>: al no existir un banco confirmatorio
+        multianual admitido, la transferencia temporal no se estima ni se supone; se publica como
+        limitación nominal y un gate impide afirmar generalización entre campañas sin evidencia.
         <b>US-125 sigue en curso</b>: la mecánica de dependencia está lista, pero el siguiente
         resultado defendible no es escoger un precio, sino construir US-152, el atlas de regiones
         ganadoras en todo el símplex. <b>US-172 permanece retirada sin entrevistas</b>; su protocolo,
@@ -557,6 +560,7 @@
       <tr><td><b>US-124 / US-160</b></td><td>Materialización</td><td>Los seis brazos se ejecutan sobre once combinaciones banco–estrato–modelo. Se publican perfiles completos, puntos de operación fijados en entrenamiento y validación, y 104 160 cuentas por parche para PASTIS-R; ningún artefacto contiene un precio de pérdida, p-valor ni afirmación confirmatoria</td><td><code data-author="Javier Rebull">d5209e0</code></td></tr>
       <tr><td><b>US-157</b></td><td>Materialización</td><td>La rejilla congelada produce veinte objetivos y pesos exactos para PASTIS-R y BreizhCrops. Los identificadores dejan de usar alias internos, las seis entradas son rutas contractuales y los dos ficheros grandes de pesos quedan en DVC; el runner no acepta predicciones, confianza ni pérdidas</td><td><code data-author="Javier Rebull">cec6f71</code></td></tr>
       <tr><td><b>US-124 / US-157</b></td><td>Custodia y cierre</td><td>Las trece salidas entran al manifiesto y al ledger con una única procedencia por bundle. Los perfiles ligeros quedan en Git y los dos pesos —14 y 72 MB— se publican por DVC. Los gates revalidan identidades, régimen exploratorio, denominadores y bytes actuales</td><td><code data-author="Javier Rebull">bf127f7</code></td></tr>
+      <tr><td><b>US-165</b></td><td>Limitación temporal</td><td>Arthur convierte la ausencia de transferencia entre campañas en una limitación con nombre y control ejecutable. La criba sellada no admite ningún banco confirmatorio; por tanto no se inventan campañas para PASTIS-R ni BreizhCrops, y el artículo no afirma que el punto de operación se transfiera entre años</td><td><code data-author="Arthur Zizumbo">93b4168</code></td></tr>
       </tbody></table></div>
     </details>
 
@@ -1565,12 +1569,12 @@
              "Se responde explícitamente: en qué régimen conviene un mecanismo de operación y en cuál conviene invertir ese esfuerzo en el modelo",
              "Si la ganancia de cualquier mecanismo es menor que la de cambiar de modelo, el artículo lo dice en la discusión y no lo esconde"],
          out:"reports/paper_micai/robustez/modelo_vs_mecanismo/", dep:"US-132"},
-        {id:"US-165", t:"Transferencia temporal del punto de operación", sp:5, st:"idle",
-         role:"«Su punto de operación se elige en un año y se aplica en otro. ¿Sobrevive?» Todos nuestros bancos son de un solo año por sitio y eso es una grieta abierta.",
-         ac:["Se aprovecha un banco multianual para elegir el punto de operación en un año y evaluarlo en otro",
-             "Se reporta cuánto se degrada la disparidad y el diagrama de fases al cruzar el año",
-             "Si no se consigue banco multianual, se declara como limitación con nombre y no se omite"],
-         out:"reports/paper_micai/robustez/temporal/", dep:"US-136"},
+        {id:"US-165", t:"Transferencia temporal del punto de operación", sp:5, st:"ok",
+         role:"«¿Sobrevive el punto de operación al cambiar de campaña?» La búsqueda cerrada no admitió un banco confirmatorio multianual; la transferencia queda sin medir y el artículo debe declararlo con nombre.",
+         ac:["NO EJECUTABLE con el inventario vigente: banco-confirmatorio-search-v1.json cierra la criba con cero bancos admitidos; no se atribuyen campañas a PASTIS-R ni BreizhCrops porque el registro no las documenta",
+             "NO ESTIMABLE sin un banco multianual admitido: no se publica una degradación temporal ni se sustituye con una comparación entre sitios",
+             "HECHO: temporal-transfer-v1.json y transferencia-temporal.md declaran la limitación, la condición verificable para levantarla y tres afirmaciones prohibidas; temporal-transfer-check corre en CI"],
+         out:"docs/paper/temporal-transfer-v1.json", dep:"US-136"},
         {id:"US-166", t:"Robustez al ruido de etiqueta", sp:3, st:"idle",
          role:"«Las declaraciones de cultivo del agricultor tienen error conocido. Su disparidad puede ser ruido de etiqueta concentrado en las clases raras.»",
          ac:["Inyección de ruido de etiqueta a tasas plausibles documentadas en la literatura, con más peso en las clases confundibles",
