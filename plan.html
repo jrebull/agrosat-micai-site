@@ -33,8 +33,9 @@
         <h2 id="plan-now-title"><a href="#US-146">Publicar el depósito citable</a></h2>
         <p>US-144 y US-145 ya cierran el manuscrito y el paquete anónimo: veinte páginas, ocho
           secciones, diecinueve referencias citadas y un ZIP de dieciocho entradas que recompila
-          byte a byte. US-146 ya tiene contrato, licencias por alcance, inventario y custodia en la
-          PR #69; falta crear el borrador privado de Zenodo y reservar su DOI. No se publica ni se
+          byte a byte. La PR #69 ya está fusionada: US-147 cierra licencias y atribución, y US-146
+          tiene contrato, inventario y custodia; falta crear el borrador privado de Zenodo y reservar
+          su DOI. No se publica ni se
           comparte durante la revisión doble ciego. En paralelo permanece abierta la cadena
           metodológica US-125 → US-171 → US-155.</p>
         <div class="plan-now-state"><span></span>En curso · reserva DOI pendiente</div>
@@ -336,7 +337,7 @@
     <div class="colophon plan-colophon">
       <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
       <span><b>Total</b> <span id="total-sp">—</span> puntos de historia</span>
-      <span><b>Actualizado</b> 12 de septiembre de 2026, US-146 y US-147 en curso con contrato, custodia y licencias preparados en PR #69</span>
+      <span><b>Actualizado</b> 12 de septiembre de 2026, US-147 cerrado y US-146 en curso tras fusionar la PR #69</span>
     </div>
   </div>
 </header>
@@ -562,6 +563,7 @@
       <tr><td><b>US-146</b></td><td>Control negativo</td><td>El gate cierra inventario, estado DOI, anonimato, derechos y productores; además rechaza que el borrador se comparta durante el doble ciego. El propio contrato deja de certificarse solo: contrato, protocolo legible, autoridad de licencias y CITATION necesitan fila de custodia vigente</td><td><code data-author="Javier Rebull">12d295c</code></td></tr>
       <tr><td><b>US-146 / US-147</b></td><td>Custodia</td><td>Contrato ejecutable, protocolo legible, CITATION.cff y autoridad de licencias entran al ledger con sus bytes y procedencia. US-146 permanece en curso: ni el record de Zenodo ni el DOI existen todavía y el plan no los fabrica en prosa</td><td><code data-author="Javier Rebull">ac18447</code></td></tr>
       <tr><td><b>US-146</b></td><td>Propagación</td><td>El primer CI encontró que el inventario inferencial derivado no conocía el contrato nuevo. Al regenerarlo, DOI y record_id nulos aparecieron sin motivo estructurado. Ambos reciben ahora el mismo motivo verificable —el borrador autenticado aún no existe—, el inventario se rederiva y la custodia se resella sobre los bytes finales</td><td><code data-author="Javier Rebull">252ca0c</code></td></tr>
+      <tr><td><b>US-146 / US-147</b></td><td>Integración</td><td>PR #69 fusionada con doce comprobaciones de CI en verde. Licencias, atribución, contrato, inventario y custodia entran a main; US-147 queda cerrada. US-146 permanece abierta únicamente por la creación autenticada del borrador privado de Zenodo y la reserva de su DOI, sin publicar ni compartir durante la revisión</td><td><code data-author="Javier Rebull">c4d61c5</code></td></tr>
       <tr><td><b>US-144</b></td><td>Auditoría de cierre</td><td>El PDF queda en veinte páginas A4, sin identidad en texto ni metadatos. Las diecinueve referencias cierran en ambas direcciones, las veinticinco cifras del resumen del atlas coinciden con el artefacto crudo y el ZIP anónimo recompila byte a byte con dieciocho entradas permitidas y sin datos crudos</td><td><code data-author="Javier Rebull">2d4bc6b</code></td></tr>
       <tr><td><b>US-144</b></td><td>Regla inferencial visible</td><td>Método distingue el error estándar cero observado del cero estructural: solo una celda que ninguno de los dos brazos puede producir recibe la cota exacta [0, 0], sin probabilidad bootstrap. Coincidir en los datos sigue retirando la afirmación inferencial</td><td><code data-author="Javier Rebull">be8fb78</code></td></tr>
       <tr><td><b>US-144</b></td><td>Camino estrecho</td><td>La frase inicial describía solo brazos que no devuelven conjuntos y dejaba fuera otros resultados imposibles; además, «ningún par» era un recuento empírico escrito solo en prosa dentro de Método. La versión final nombra la condición del operador y expresa la consecuencia general sin fabricar una segunda fuente</td><td><code data-author="Javier Rebull">c3349eb</code></td></tr>
@@ -1761,12 +1763,12 @@
              "Contrato, protocolo legible, CITATION y autoridad de licencias tienen fila SELLADO propia; trece pruebas negativas atacan inventario, custodia, anonimato, DOI, derechos y el camino de al lado",
              "Declarado con una lista enumerada qué no se publica y por qué, con un motivo por ítem"],
          out:"docs/paper/micai2027-deposit-v1.json; CITATION.cff; DOI reservado pendiente", dep:"US-144"},
-        {id:"US-147", t:"Licencias y atribución de los datos", sp:2, st:"wip",
+        {id:"US-147", t:"Licencias y atribución de los datos", sp:2, st:"ok",
          role:"Como autor del depósito, quiero publicar solo lo que podemos licenciar y atribuir desde una fuente primaria, sin asignar a un banco una licencia por conveniencia.",
          ac:["PASTIS-R corregido en las superficies activas a Sainte-Fare-Garnot et al. 2022, CC-BY-4.0, según el depósito oficial Zenodo 5735646; la mención previa CC-BY-SA-4.0 se retira",
              "Para BreizhCrops no se localizó licencia de datos; además LICENSE dice GPL-3.0 y setup.py MIT para el código. No se elige una por inferencia ni se redistribuyen HDF5, geometrías, etiquetas o la implementación temporal hasta aclararlo",
              "MIT se limita al código original y CC-BY-4.0 a contratos, documentación, recuentos y figuras propios. Las dos figuras del manuscrito no reproducen imagen Copernicus: la atribución a datos fuente queda en la documentación, no en un pie irrelevante",
-             "Autoridad de licencias sellada y cruzada por micai2027-deposit-check; cierre pendiente de fusionar PR #69"],
+             "CERRADA EN c4d61c5. Autoridad de licencias sellada y cruzada por micai2027-deposit-check; PR #69 fusionada con CI completa en verde"],
          out:"paper/micai2027/; docs/licenses/", dep:"US-143"},
         {id:"US-148", t:"Metadatos, camera-ready y convocatoria", sp:3, st:"idle",
          role:"Como autor de correspondencia, quiero que el nombre coincida carácter a carácter en todas partes.",
