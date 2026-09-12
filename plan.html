@@ -337,7 +337,7 @@
     <div class="colophon plan-colophon">
       <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
       <span><b>Total</b> <span id="total-sp">—</span> puntos de historia</span>
-      <span><b>Actualizado</b> 12 de septiembre de 2026, PR #75 fusionada: la salida por no envío respeta el punto de decisión congelado</span>
+      <span><b>Actualizado</b> 12 de septiembre de 2026, PR #77 fusionada: US-168 separa por banco la pérdida fijada por el mecanismo</span>
     </div>
   </div>
 </header>
@@ -559,6 +559,13 @@
               <colgroup><col class="c-us"><col class="c-tipo"><col class="c-que"><col class="c-ev"></colgroup>
       <thead><tr><th>US</th><th>Tipo</th><th>Qué se hizo</th><th>Evidencia</th></tr></thead>
       <tbody data-date="2026-09-12">
+      <tr><td><b>US-168</b></td><td>Integración auditada</td><td>PR #77 entra a <code>main</code> con seis jobs de CI verdes sobre el SHA final y 900 pruebas de scripts locales. Sustituye la PR #76 para conservar la fecha ejecutable de no envío y sumar las correcciones posteriores. US-168 aporta sus tres puntos; el camino crítico pendiente permanece US-125 → US-171 → US-155</td><td><code data-author="Javier Rebull">836a770</code></td></tr>
+      <tr><td><b>US-168</b></td><td>Base adoptada de Arthur</td><td>Se adopta la separación exacta en conteos enteros <code>parcelas = R0 + masa analítica + déficit empírico</code>, el productor inicial sobre PASTIS-R, el vocabulario de seis brazos derivado por AST y la retención explícita de H2. La entrega no se reduce a una afirmación: contrato, productor, gate, enmienda y salida estructurada nacen juntos</td><td><code data-author="Arthur Zizumbo">460f1c6</code> · <code data-author="Arthur Zizumbo">ac44131</code></td></tr>
+      <tr><td><b>US-168</b></td><td>Dos partes descartadas</td><td>No se adoptan como resultado las magnitudes diagnósticas de la primera reproducción de BreizhCrops: existían solo en prosa, sin artefacto sellado. Tampoco se conserva como propiedad del banco que «no reproduce en este anfitrión»: era una observación del primer entorno y el anfitrión de integración satisfizo después el mismo guard. Queda el hecho histórico, no la generalización</td><td><code data-author="Arthur Zizumbo">2eb3d50</code> · <code data-author="Javier Rebull">8a7b572</code></td></tr>
+      <tr><td><b>US-168</b></td><td>Control cerrado por mecanismo</td><td>El gate deja de creer las columnas de cobertura: deriva entrega como <code>parcel_count − L2</code>, exige que la cobertura salga de esos enteros y que la no-entrega de los brazos de recorte coincida con el argmax libre fuera de la leyenda. Panel, estratos, clases, procedencia y estados no inferenciales cierran contra contratos sellados. Veintiséis ataques negativos prueban el comportamiento</td><td><code data-author="Javier Rebull">572aea9</code></td></tr>
+      <tr><td><b>US-168</b></td><td>Reapertura prospectiva</td><td>Antes de reejecutar, la enmienda 11 registra que el anfitrión de integración rederiva todas las posteriores selladas de BreizhCrops dentro de la tolerancia ya fijada. Sus dos tablas vuelven al inventario; el productor se niega si esa condición deja de cumplirse. Incluir la descripción no fabrica inferencia: cada región sigue siendo un solo clúster y H2 permanece retenida</td><td><code data-author="Javier Rebull">f99cee1</code></td></tr>
+      <tr><td><b>US-168</b></td><td>Resultado separado por banco</td><td>PASTIS-R publica 540 filas por clase y 30 resúmenes miembro-brazo; BreizhCrops, 324 y 36 por sus dos estratos. No se agrupan bancos, modelos ni estratos. Conservan entrega 80 de 80 configuraciones clase-retirada en PASTIS-R y 44 de 54 en BreizhCrops: retirar una clase impide el acierto preciso, pero no determina por sí solo la entrega</td><td><code data-author="Javier Rebull">5dc76e8</code></td></tr>
+      <tr><td><b>US-168 / US-156</b></td><td>Custodia y efecto en el envío</td><td>Las cinco salidas quedan selladas y el protocolo rederiva 45 artefactos empíricos; el depósito preparado contiene 65 artefactos de diez productores. El nuevo alcance no cambia el veredicto: 3 de 7 criterios cumplidos y envío todavía no autorizado. La actividad entra al historial, no infla el avance científico</td><td><code data-author="Javier Rebull">7ec1a99</code> · <code data-author="Javier Rebull">4cc14bb</code></td></tr>
       <tr><td><b>US-146 / US-147</b></td><td>Contrato y derechos</td><td>La PR #69 fija un borrador Zenodo privado y no compartido durante la revisión, sesenta artefactos del protocolo, nueve productores y nueve salidas editoriales. El código propio queda MIT y los contratos, recuentos y figuras propios CC-BY-4.0; los datos fuente no se relicencian. PASTIS-R se corrige a CC-BY-4.0 desde Zenodo 5735646 y BreizhCrops queda sin licencia de datos inventada</td><td><code data-author="Javier Rebull">16132e6</code></td></tr>
       <tr><td><b>US-146</b></td><td>Control negativo</td><td>El gate cierra inventario, estado DOI, anonimato, derechos y productores; además rechaza que el borrador se comparta durante el doble ciego. El propio contrato deja de certificarse solo: contrato, protocolo legible, autoridad de licencias y CITATION necesitan fila de custodia vigente</td><td><code data-author="Javier Rebull">12d295c</code></td></tr>
       <tr><td><b>US-146 / US-147</b></td><td>Custodia</td><td>Contrato ejecutable, protocolo legible, CITATION.cff y autoridad de licencias entran al ledger con sus bytes y procedencia. US-146 permanece en curso: ni el record de Zenodo ni el DOI existen todavía y el plan no los fabrica en prosa</td><td><code data-author="Javier Rebull">ac18447</code></td></tr>
@@ -1583,7 +1590,7 @@
       ]
     },
     {
-      id:"EPIC 26", name:"El campo de tiro: cada prueba mata un ataque", status:"idle",
+      id:"EPIC 26", name:"El campo de tiro: cada prueba mata un ataque", status:"wip",
       goal:"Un revisor estricto de MICAI no va a discutir el mapeo de cultivos: va a buscar el punto donde el resultado se cae. Esta épica es el inventario de esos puntos, cada uno convertido en un experimento que se corre ANTES de escribir. Lo que sobreviva va al artículo; lo que no, cambia la afirmación. Con veinte páginas hay sitio para una sección de robustez de verdad y no para una frase de cortesía.",
       us:[
         {id:"US-161", t:"Sensibilidad a la semilla y al submuestreo", sp:5, st:"idle",
@@ -1631,12 +1638,14 @@
              "Se comprueba si el número de bloques efectivos cambia con el colchón, porque eso cambia la potencia",
              "El barrido de colchones se cruza con el barrido de k de US-171: al subir k los bloques se acercan y el colchón que valía para cinco puede no valer para quince"],
          out:"reports/paper_micai/robustez/bloques/", dep:"US-125"},
-        {id:"US-168", t:"Separar lo tautológico de lo que no lo es", sp:3, st:"idle",
+        {id:"US-168", t:"Separar lo tautológico de lo que no lo es", sp:3, st:"ok",
          role:"«Que el recorte deje sin cobertura a las clases que retira es la definición del mecanismo, no un hallazgo.» Tienen razón en parte, y hay que decir en qué parte.",
-         ac:["Se descompone la disparidad en la parte implicada analíticamente por la definición del mecanismo y la parte que no lo está",
-             "La parte no trivial se identifica y se mide: qué clases pierden cobertura SIN haber sido retiradas, y por qué",
-             "Se declara explícitamente qué componente del hallazgo es tautológico, antes de que lo haga un revisor"],
-         out:"reports/paper_micai/robustez/tautologia/", dep:"US-134"},
+         ac:["CERRADA: la identidad entera separa R0, masa analítica y déficit empírico por brazo, clase, miembro y estrato; la entrega se deriva de L2 y no de una columna de cobertura creída",
+             "RESULTADO EXPLORATORIO: PASTIS-R y BreizhCrops se publican por separado. Retirar una clase impide por definición el acierto preciso, pero los artefactos muestran que no determina por sí solo la entrega",
+             "REPRODUCIBILIDAD CONDICIONAL: BreizhCrops entra solo cuando el cargador rederiva las posteriores selladas dentro de la tolerancia; un fallo exige enmienda previa y retira sus dos tablas",
+             "LÍMITE: H2 sigue retenida y todas las filas llevan primary_inference_allowed=false. La salida no declara significancia, ganador ni transporte",
+             "CONTROL: veintiséis ataques cierran brazos, panel, estratos, catálogo, conteos, frecuencias, procedencia, inventario y bloque publicado; cinco salidas quedan SELLADO"],
+         out:"reports/micai2027/robustez/tautologia/", dep:"US-134"},
         {id:"US-169", t:"La curva completa, no un punto de operación", sp:3, st:"idle",
          role:"«Han elegido el punto de operación que les conviene.» Ya nos pasó: publicamos el 88,3 % de un punto exploratorio junto a la frase «criterio preregistrado».",
          ac:["Toda afirmación se acompaña de la curva completa sobre el eje de coste, no de un punto",
