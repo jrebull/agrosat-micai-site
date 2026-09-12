@@ -29,16 +29,16 @@
           retirado en una comparación defendible de cuatro maneras de prometer menos.</p>
       </div>
       <aside class="plan-now" aria-labelledby="plan-now-title">
-        <p class="plan-now-label">Ahora · siguiente paso editorial</p>
-        <h2 id="plan-now-title"><a href="#US-148">Preparar el envío MICAI</a></h2>
-        <p>US-144 y US-145 ya cierran el manuscrito y el paquete anónimo: veinte páginas, ocho
-          secciones, diecinueve referencias citadas y un ZIP de dieciocho entradas que recompila
-          byte a byte. US-147 cierra licencias y atribución, y US-146 tiene contrato, inventario y
-          custodia. El DOI editorial del artículo lo genera Springer al publicar; un DOI separado de
-          Zenodo identificaría los artefactos y se tramita solo después de una aceptación. No es un
-          requisito ni un bloqueo del envío doble ciego. En paralelo permanece abierta la cadena
-          metodológica US-125 → US-171 → US-155.</p>
-        <div class="plan-now-state"><span></span>Envío no bloqueado · depósito posaceptación</div>
+        <p class="plan-now-label">Ahora · autorización científica</p>
+        <h2 id="plan-now-title"><a href="#US-125">Cerrar US-125 → US-171 → US-155</a></h2>
+        <p>US-144 y US-145 ya cierran el manuscrito y el paquete anónimo, pero eso no autoriza el
+          envío. El estado ejecutable de US-156 verifica por separado los siete criterios de no
+          envío: tres están cumplidos y cuatro siguen pendientes. No se reduce el análisis a
+          PASTIS-R después de observar que BreizhCrops solo admite descripción; sus perfiles y su
+          no estimabilidad permanecen en la cuenta. El siguiente correctivo publicará para esos
+          estratos la geometría descriptiva completa, sin inventar bandas ni dominancia inferencial,
+          y después cerrará US-125, US-171 y US-155. Zenodo sigue fuera de este camino.</p>
+        <div class="plan-now-state"><span></span>Envío no autorizado · 3 de 7 criterios cumplidos</div>
       </aside>
     </div>
 
@@ -566,6 +566,8 @@
       <tr><td><b>US-146 / US-147</b></td><td>Integración</td><td>PR #69 fusionada con doce comprobaciones de CI en verde. Licencias, atribución, contrato, inventario y custodia entran a main; US-147 queda cerrada. US-146 permanece abierta únicamente por la creación autenticada del borrador privado de Zenodo y la reserva de su DOI, sin publicar ni compartir durante la revisión</td><td><code data-author="Javier Rebull">c4d61c5</code></td></tr>
       <tr><td><b>US-146</b></td><td>Corrección de alcance</td><td>El plan confundía el DOI editorial del artículo con el DOI opcional del paquete. Springer identifica el artículo al publicarlo; Zenodo solo identificaría los artefactos. Durante la revisión no se crea registro ni se reserva DOI, y su ausencia deja de presentarse como bloqueo del envío. Cuatro pruebas negativas fijan la separación y exigen aceptación sellada antes de reservar</td><td><code data-author="Javier Rebull">61bf55f</code></td></tr>
       <tr><td><b>US-146</b></td><td>Integración</td><td>PR #72 fusionada con los seis jobs de CI en verde. El contrato posaceptación, su resellado reproducible y veinte pruebas dirigidas entran a main; reservar un DOI de artefactos antes de una aceptación sellada queda rechazado por comportamiento, no solo por prosa</td><td><code data-author="Javier Rebull">9e70725</code></td></tr>
+      <tr><td><b>US-156</b></td><td>Estado ejecutable</td><td>PR #73 fusionada con CI completa: los siete criterios se rederivan desde artefactos sellados, tres están cumplidos y el envío permanece no autorizado. El verde de <code>no-winner-check</code> queda rotulado como validación de forma; el cumplimiento vive en un artefacto separado y sellado</td><td><code data-author="Javier Rebull">501b4bc</code></td></tr>
+      <tr><td><b>US-152 / US-156</b></td><td>Decisión de alcance</td><td>No se contrae el conjunto de análisis a PASTIS-R después de ver la insuficiencia de BreizhCrops. Los once estratos permanecen en la cuenta: PASTIS-R conserva bandas simultáneas; BreizhCrops debe publicar perfiles, no estimabilidad y geometría descriptiva completa, sin presentarla como atlas inferencial ni ganador certificado</td><td><code data-author="Javier Rebull">501b4bc</code></td></tr>
       <tr><td><b>US-144</b></td><td>Auditoría de cierre</td><td>El PDF queda en veinte páginas A4, sin identidad en texto ni metadatos. Las diecinueve referencias cierran en ambas direcciones, las veinticinco cifras del resumen del atlas coinciden con el artefacto crudo y el ZIP anónimo recompila byte a byte con dieciocho entradas permitidas y sin datos crudos</td><td><code data-author="Javier Rebull">2d4bc6b</code></td></tr>
       <tr><td><b>US-144</b></td><td>Regla inferencial visible</td><td>Método distingue el error estándar cero observado del cero estructural: solo una celda que ninguno de los dos brazos puede producir recibe la cota exacta [0, 0], sin probabilidad bootstrap. Coincidir en los datos sigue retirando la afirmación inferencial</td><td><code data-author="Javier Rebull">be8fb78</code></td></tr>
       <tr><td><b>US-144</b></td><td>Camino estrecho</td><td>La frase inicial describía solo brazos que no devuelven conjuntos y dejaba fuera otros resultados imposibles; además, «ningún par» era un recuento empírico escrito solo en prosa dentro de Método. La versión final nombra la condición del operador y expresa la consecuencia general sin fabricar una segunda fuente</td><td><code data-author="Javier Rebull">c3349eb</code></td></tr>
@@ -1677,7 +1679,10 @@
          out:"docs/paper/preregistro-v2-borrador.md; docs/paper/inference-v1.json; reports/micai2027/planning/dominance-alternative-v1.json", dep:"US-173, US-175"},
         {id:"US-156", t:"La salida sin ganador uniforme, escrita antes de correr", sp:5, st:"wip",
          role:"Como equipo expuesto al reporte selectivo, quiero escribir antes de medir qué significa que la dominancia no ordene los brazos.",
-         ac:["Tesis alternativa redactada: varios brazos pueden permanecer no dominados y la evidencia solo identifica regiones de preferencia, no un ganador universal",
+         ac:["ESTADO EJECUTABLE: siete criterios cerrados en ambas direcciones contra no-winner-v1.json; tres están cumplidos y cuatro pendientes. submission_authorized=false se deriva y el gate rechaza autorizar mientras falte uno",
+             "DECISIÓN DE ALCANCE: no se excluye BreizhCrops después de observar su único clúster. Los once estratos siguen en la cuenta; declarar que una banda no es estimable satisface la obligación de declarar incertidumbre, no la convierte en una banda numérica",
+             "PENDIENTE DE COMPORTAMIENTO: los seis estratos de BreizhCrops deben publicar sus quince pares, orden parcial observado y fronteras plug-in como descripción. La salida debe rotularse sin banda simultánea, sin dominancia inferencial y sin región de ganador certificado",
+             "Tesis alternativa redactada: varios brazos pueden permanecer no dominados y la evidencia solo identifica regiones de preferencia, no un ganador universal",
              "Criterio de NO ENVÍO basado en informatividad y robustez de los perfiles, no en que aparezca el ganador deseado",
              "El protocolo no puede ser el resultado de reserva",
              "Fecha explícita de evaluación, atada al sellado de US-134, y firma en el ADR: es la decisión más cara del plan y sin punto de decisión se evalúa el día del cierre, cuando ya no se puede actuar",
