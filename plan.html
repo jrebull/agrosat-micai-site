@@ -86,7 +86,7 @@
 
     <div class="cadena">
       <div class="cadena-head">
-        <span>Ruta editorial · el depósito sigue a la aceptación</span>
+        <span>Ruta editorial · el depósito sigue a una decisión sellada</span>
         <span id="cadena-resumen">—</span>
       </div>
       <div class="cadena-via" id="cadena-via"
@@ -331,13 +331,13 @@
       <div class="ledger-row"><span class="name">Historias nuevas terminadas</span><span class="note">épicas 18 a 27</span><span class="num" id="progress-done-new">—</span></div>
       <div class="ledger-row"><span class="name">Historias retiradas</span><span class="note">se conservan como registro</span><span class="num" id="progress-retired">—</span></div>
       <div class="ledger-row"><span class="name">Historias nuevas por ejecutar</span><span class="note">incluye dependencias aún no liberadas</span><span class="num" id="progress-pending">—</span></div>
-      <div class="ledger-row"><span class="name">Esfuerzo pendiente</span><span class="note">manuscrito y paquete anónimo cerrados; US-146 se ejecuta solo tras aceptación</span><span class="num" id="progress-pending-sp">—</span></div>
+      <div class="ledger-row"><span class="name">Esfuerzo pendiente</span><span class="note">manuscrito y paquete anónimo cerrados; US-146 espera aceptación o una decisión sellada de no envío</span><span class="num" id="progress-pending-sp">—</span></div>
     </div>
     </details>
     <div class="colophon plan-colophon">
       <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
       <span><b>Total</b> <span id="total-sp">—</span> puntos de historia</span>
-      <span><b>Actualizado</b> 12 de septiembre de 2026, PR #72 fusionada: Zenodo sale del camino de envío y queda para después de la aceptación</span>
+      <span><b>Actualizado</b> 12 de septiembre de 2026, PR #74 fusionada: las dos salidas del depósito exigen una decisión sellada</span>
     </div>
   </div>
 </header>
@@ -566,6 +566,7 @@
       <tr><td><b>US-146 / US-147</b></td><td>Integración</td><td>PR #69 fusionada con doce comprobaciones de CI en verde. Licencias, atribución, contrato, inventario y custodia entran a main; US-147 queda cerrada. US-146 permanece abierta únicamente por la creación autenticada del borrador privado de Zenodo y la reserva de su DOI, sin publicar ni compartir durante la revisión</td><td><code data-author="Javier Rebull">c4d61c5</code></td></tr>
       <tr><td><b>US-146</b></td><td>Corrección de alcance</td><td>El plan confundía el DOI editorial del artículo con el DOI opcional del paquete. Springer identifica el artículo al publicarlo; Zenodo solo identificaría los artefactos. Durante la revisión no se crea registro ni se reserva DOI, y su ausencia deja de presentarse como bloqueo del envío. Cuatro pruebas negativas fijan la separación y exigen aceptación sellada antes de reservar</td><td><code data-author="Javier Rebull">61bf55f</code></td></tr>
       <tr><td><b>US-146</b></td><td>Integración</td><td>PR #72 fusionada con los seis jobs de CI en verde. El contrato posaceptación, su resellado reproducible y veinte pruebas dirigidas entran a main; reservar un DOI de artefactos antes de una aceptación sellada queda rechazado por comportamiento, no solo por prosa</td><td><code data-author="Javier Rebull">9e70725</code></td></tr>
+      <tr><td><b>US-146 / US-148</b></td><td>Dos salidas cerradas</td><td>PR #74 fusionada tras seis jobs de CI en verde. El envío deja de depender del depósito y US-146 pasa al final de la ruta. El paquete citable puede seguir a una aceptación o a una decisión sellada de no envío; esta segunda vía exige un acta JSON tipada que case con el contrato y con el estado vigente de los siete criterios. Un artefacto sellado cualquiera ya no puede suplantarla</td><td><code data-author="Javier Rebull">f2534a3</code></td></tr>
       <tr><td><b>US-156</b></td><td>Estado ejecutable</td><td>PR #73 fusionada con CI completa: los siete criterios se rederivan desde artefactos sellados, tres están cumplidos y el envío permanece no autorizado. El verde de <code>no-winner-check</code> queda rotulado como validación de forma; el cumplimiento vive en un artefacto separado y sellado</td><td><code data-author="Javier Rebull">501b4bc</code></td></tr>
       <tr><td><b>US-152 / US-156</b></td><td>Decisión de alcance</td><td>No se contrae el conjunto de análisis a PASTIS-R después de ver la insuficiencia de BreizhCrops. Los once estratos permanecen en la cuenta: PASTIS-R conserva bandas simultáneas; BreizhCrops debe publicar perfiles, no estimabilidad y geometría descriptiva completa, sin presentarla como atlas inferencial ni ganador certificado</td><td><code data-author="Javier Rebull">501b4bc</code></td></tr>
       <tr><td><b>US-144</b></td><td>Auditoría de cierre</td><td>El PDF queda en veinte páginas A4, sin identidad en texto ni metadatos. Las diecinueve referencias cierran en ambas direcciones, las veinticinco cifras del resumen del atlas coinciden con el artefacto crudo y el ZIP anónimo recompila byte a byte con dieciocho entradas permitidas y sin datos crudos</td><td><code data-author="Javier Rebull">2d4bc6b</code></td></tr>
@@ -1762,14 +1763,15 @@
              "El camera-ready armado se comprueba en negativo y revela las identidades esperadas; el ZIP anónimo recompila main.pdf byte a byte en un segundo directorio limpio",
              "La declaración de disponibilidad distingue el proyecto LaTeX incluido, los resultados que todavía no existen, el código aún privado y los datos fuente que no se redistribuyen"],
          out:"make micai-zip", dep:"US-144", start_dep:"US-144"},
-        {id:"US-146", t:"Depósito citable posterior a aceptación", sp:3, st:"wip",
-         role:"Como lector posterior a la aceptación, quiero alcanzar el ledger, el preregistro y los datos derivados desde un registro citable.",
-         ac:["PREPARADO; EJECUCIÓN POSACEPTACIÓN. El contrato ejecutable cierra sesenta artefactos del protocolo, nueve productores, nueve salidas editoriales y las tres rutas que regeneran el atlas y las dos figuras",
+        {id:"US-146", t:"Depósito citable tras una decisión de salida", sp:3, st:"wip",
+         role:"Como lector posterior a la aceptación o a una decisión de no envío, quiero alcanzar el ledger, el preregistro y los datos derivados desde un registro citable.",
+         ac:["PREPARADO; EJECUCIÓN DIFERIDA. El contrato ejecutable cierra sesenta artefactos del protocolo, nueve productores, nueve salidas editoriales y las tres rutas que regeneran el atlas y las dos figuras",
              "Durante la revisión no existe registro Zenodo, enlace de revisión ni DOI de artefactos. Su ausencia es el estado correcto y no condiciona la entrega a MICAI",
-             "Springer genera el DOI editorial del artículo al publicarlo; Zenodo solo daría un DOI separado al paquete. CITATION.cff fija autoría y ORCID para esa entrega posterior a aceptación",
-             "Contrato, protocolo legible, CITATION y autoridad de licencias tienen fila SELLADO propia; veinte pruebas dirigidas atacan inventario, custodia, orden de firma, aceptación, ciclo DOI, derechos y el camino de al lado",
+             "Springer genera el DOI editorial del artículo al publicarlo; Zenodo solo daría un DOI separado al paquete. CITATION.cff fija autoría y ORCID para el depósito posterior a cualquiera de las dos decisiones selladas",
+             "La vía de no envío exige un acta JSON tipada y sellada que case con el contrato y con el estado vigente de los siete criterios; un artefacto sellado cualquiera no puede suplantarla",
+             "Contrato, protocolo legible, CITATION y autoridad de licencias tienen fila SELLADO propia; veintiséis pruebas dirigidas atacan inventario, custodia, orden de firma, aceptación, ciclo DOI, derechos y el camino de al lado",
              "Declarado con una lista enumerada qué no se publica y por qué, con un motivo por ítem"],
-         out:"docs/paper/micai2027-deposit-v1.json; CITATION.cff; DOI de artefactos solo tras aceptación", dep:"US-144"},
+         out:"docs/paper/micai2027-deposit-v1.json; CITATION.cff; DOI de artefactos tras aceptación o decisión sellada de no envío", dep:"US-144"},
         {id:"US-147", t:"Licencias y atribución de los datos", sp:2, st:"ok",
          role:"Como autor del depósito, quiero publicar solo lo que podemos licenciar y atribuir desde una fuente primaria, sin asignar a un banco una licencia por conveniencia.",
          ac:["PASTIS-R corregido en las superficies activas a Sainte-Fare-Garnot et al. 2022, CC-BY-4.0, según el depósito oficial Zenodo 5735646; la mención previa CC-BY-SA-4.0 se retira",
