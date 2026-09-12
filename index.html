@@ -439,6 +439,11 @@
       conteos no son volumen del símplex. BreizhCrops aporta perfiles descriptivos, pero no
       inferencia pareada; ambos bancos ya habían sido inspeccionados y no existe estrato
       confirmatorio. El artículo no afirma transporte ni inventa una preferencia externa.</p>
+    <p><b>El caso desplegado ya está localizado, con alcance retrospectivo.</b> Entregó etiqueta
+      precisa en 15265 de 16640 parcelas. De 30 configuraciones congeladas,
+      0 dominan su perfil, el perfil desplegado domina 5 y
+      cruza 25. Son sistemas predictor--acción completos: no se presenta como
+      efecto aislado del recorte, dato confirmatorio ni pérdida implícita del usuario.</p>
   </div>
 
   <div class="cifras">
@@ -446,7 +451,7 @@
       <span class="l">páginas A4, PDF anónimo</span></div>
     <div class="cifra"><span class="n">8/8</span>
       <span class="l">secciones redactadas</span></div>
-    <div class="cifra"><span class="n">39/39</span>
+    <div class="cifra"><span class="n">40/40</span>
       <span class="l">gates en verde</span></div>
   </div>
 
@@ -464,9 +469,9 @@
       <tr><td class="sec">Problem Statement and Estimand</td><td><span class="chip ok">Redactada</span></td><td class="n">111</td><td class="nota"></td></tr>
       <tr><td class="sec">Four Mechanisms as Alternative Actions</td><td><span class="chip ok">Redactada</span></td><td class="n">100</td><td class="nota"></td></tr>
       <tr><td class="sec">Evaluation Protocol</td><td><span class="chip ok">Redactada</span></td><td class="n">125</td><td class="nota"></td></tr>
-      <tr><td class="sec">Results</td><td><span class="chip ok">Redactada</span></td><td class="n">75</td><td class="nota"></td></tr>
-      <tr><td class="sec">Discussion</td><td><span class="chip ok">Redactada</span></td><td class="n">33</td><td class="nota"></td></tr>
-      <tr><td class="sec">Frozen Analysis Contracts</td><td><span class="chip ok">Redactada</span></td><td class="n">34</td><td class="nota"></td></tr>
+      <tr><td class="sec">Results</td><td><span class="chip ok">Redactada</span></td><td class="n">84</td><td class="nota"></td></tr>
+      <tr><td class="sec">Discussion</td><td><span class="chip ok">Redactada</span></td><td class="n">37</td><td class="nota"></td></tr>
+      <tr><td class="sec">Frozen Analysis Contracts</td><td><span class="chip ok">Redactada</span></td><td class="n">17</td><td class="nota"></td></tr>
       </tbody>
     </table>
   </div>
@@ -482,6 +487,7 @@
       <li><span class="chip ok">pasa</span> <code>conformal-coverage-check</code> — la cobertura conforme exploratoria conserva splits, denominadores y procedencia</li>
       <li><span class="chip ok">pasa</span> <code>coverage-distribution-check</code> — la cobertura por clase y area conserva poblaciones, cortes y ausencia documentada</li>
       <li><span class="chip ok">pasa</span> <code>decision-atlas-check</code> — decision-atlas-check</li>
+      <li><span class="chip ok">pasa</span> <code>deployed-profile-check</code> — el perfil servido se rederiva sin convertirlo en efecto causal ni resultado confirmatorio</li>
       <li><span class="chip ok">pasa</span> <code>h2-estimability-check</code> — H2 conserva su universo y unidad; si faltan clases o bloques no fabrica inferencia</li>
       <li><span class="chip ok">pasa</span> <code>ha-baseline-check</code> — la familia mecánica de Ha no se convierte en un séptimo brazo sin enmienda</li>
       <li><span class="chip ok">pasa</span> <code>hcat4-backoff-check</code> — el retroceso HCAT4 conserva ambos catálogos, contexto, perfiles y custodia</li>
@@ -525,7 +531,7 @@
     </object>
   </div>
   <p class="pie-visor"><a href="paper/agrosat-micai2027-en-vivo.pdf">Abrir el PDF a pantalla completa</a> ·
-    manuscrito al día 2026-09-11, commit <code>e88b66a</code></p>
+    manuscrito al día 2026-09-11, commit <code>21d309b</code></p>
 </section>
 <!-- GENERADO build_site_paper · fin -->
 
@@ -1111,19 +1117,20 @@
   </div>
 
 <!-- GENERATED build_site_paper third-bank · start -->
-  <h2>Dos bancos confirmatorios; el tercero sigue sin seleccionar</h2>
-  <p>PASTIS y BreizhCrops permiten estimar el contraste dentro de cada banco, pero ambos son
-    franceses y <strong>no sostienen transporte geográfico</strong>. Un banco adicional solo entra
+  <h2>Dos bancos exploratorios; ninguno confirmatorio</h2>
+  <p>PASTIS-R permite el atlas inferencial exploratorio; BreizhCrops queda descriptivo bajo la
+    unidad congelada. Ambos son franceses y <strong>no sostienen transporte geográfico</strong>.
+    Un banco adicional solo entra
     si conserva la parcela como unidad, aporta una partición espacial ajena y deja comparar los
     mecanismos sin que el catálogo colapse.</p>
   <div class="ledger">
     <div class="ledger-row">
       <span class="name">PASTIS · Francia</span>
-      <span class="note">confirmatorio, inferencia condicional</span>
+      <span class="note">exploratorio, atlas inferencial condicional</span>
       <span class="num">vigente</span></div>
     <div class="ledger-row">
       <span class="name">BreizhCrops · Francia</span>
-      <span class="note">confirmatorio, inferencia condicional</span>
+      <span class="note">exploratorio, perfiles descriptivos</span>
       <span class="num">vigente</span></div>
     <div class="ledger-row">
       <span class="name">CropHarvest</span>

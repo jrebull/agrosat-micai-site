@@ -30,12 +30,12 @@
       </div>
       <aside class="plan-now" aria-labelledby="plan-now-title">
         <p class="plan-now-label">Ahora · siguiente cierre</p>
-        <h2 id="plan-now-title"><a href="#US-154">Perfil desplegado</a></h2>
-        <p>US-152 ya publica el atlas: no certifica dominancia en ninguna de las setenta y cinco
-          comparaciones y cuatro brazos distintos ganan según el coste. El siguiente cierre es
-          US-154: situar la decisión real de despliegue sin sustituir el predictor histórico de
-          procedencia incompleta por su reconstrucción verificable.</p>
-        <div class="plan-now-state"><span></span>En espera · exige procedencia del desplegado</div>
+        <h2 id="plan-now-title"><a href="#US-144">Cerrar el manuscrito</a></h2>
+        <p>US-154 ya sitúa la decisión real: entrega 15 265 de 16 640 parcelas y ninguna de las
+          treinta configuraciones congeladas domina su perfil. El siguiente cierre es US-144:
+          auditar el PDF anónimo, el paquete reproducible y la coherencia entre abstract,
+          resultados, discusión y artefactos.</p>
+        <div class="plan-now-state"><span></span>En curso · veinte páginas, ocho secciones</div>
       </aside>
     </div>
 
@@ -83,7 +83,7 @@
 
     <div class="cadena">
       <div class="cadena-head">
-        <span>Camino crítico · continúa en US-154</span>
+        <span>Camino crítico · continúa en US-144</span>
         <span id="cadena-resumen">—</span>
       </div>
       <div class="cadena-via" id="cadena-via"
@@ -328,7 +328,7 @@
       <div class="ledger-row"><span class="name">Historias nuevas terminadas</span><span class="note">épicas 18 a 27</span><span class="num" id="progress-done-new">—</span></div>
       <div class="ledger-row"><span class="name">Historias retiradas</span><span class="note">se conservan como registro</span><span class="num" id="progress-retired">—</span></div>
       <div class="ledger-row"><span class="name">Historias nuevas por ejecutar</span><span class="note">incluye dependencias aún no liberadas</span><span class="num" id="progress-pending">—</span></div>
-      <div class="ledger-row"><span class="name">Esfuerzo pendiente</span><span class="note">el atlas está cerrado; el siguiente cierre operativo continúa en US-154</span><span class="num" id="progress-pending-sp">—</span></div>
+      <div class="ledger-row"><span class="name">Esfuerzo pendiente</span><span class="note">atlas y perfil desplegado cerrados; continúa el cierre editorial de US-144</span><span class="num" id="progress-pending-sp">—</span></div>
     </div>
     </details>
     <div class="colophon plan-colophon">
@@ -556,6 +556,10 @@
               <colgroup><col class="c-us"><col class="c-tipo"><col class="c-que"><col class="c-ev"></colgroup>
       <thead><tr><th>US</th><th>Tipo</th><th>Qué se hizo</th><th>Evidencia</th></tr></thead>
       <tbody data-date="2026-09-11">
+      <tr><td><b>US-154</b></td><td>Contrato retrospectivo</td><td>La decisión servida queda congelada después de declarar que hubo un diagnóstico previo: voto Full-M v2 más XGBoost histórico, catálogo de doce clases, regla de corte por media top-k y prohibición de llamarlo confirmatorio, held-out, causal o precio implícito</td><td><code data-author="Javier Rebull">a18bf74</code></td></tr>
+      <tr><td><b>US-154</b></td><td>Materialización</td><td>El perfil servido se reproduce sobre 16 640 parcelas: 15 265 entregas precisas, 13 617 correctas, 1 648 erróneas y 1 375 silencios. La antigua cifra 14 688 se conserva con su significado real —soporte de la verdad en el catálogo— y deja de llamarse cobertura</td><td><code data-author="Javier Rebull">0ed4f38</code></td></tr>
+      <tr><td><b>US-154</b></td><td>Auditoría por mecanismo</td><td>El control deja de confiar en dos constantes favorables: deriva el soporte desde el perfil y cada relación de dominancia desde sus seis diferencias. Entre treinta configuraciones completas, ninguna domina al desplegado; este domina cinco y cruza veinticinco. No se presenta como efecto aislado del recorte</td><td><code data-author="Javier Rebull">32a4536</code></td></tr>
+      <tr><td><b>US-154 / US-144</b></td><td>Integración</td><td>Abstract, Resultados y Discusión incorporan el caso retrospectivo con sus límites de procedencia. El apéndice conserva los diez contratos en forma compacta y el PDF anónimo vuelve al máximo exacto de veinte páginas sin reducir tipografía</td><td><code data-author="Javier Rebull">21d309b</code></td></tr>
       <tr><td><b>US-152</b></td><td>Contrato previo</td><td>Se congelan antes del atlas las veinte secciones bidimensionales de Δ⁵, la rejilla, los seis brazos, la familia simultánea y la prohibición de publicar un porcentaje o volumen del símplex sin una medida declarada</td><td><code data-author="Javier Rebull">d4f82ed</code></td></tr>
       <tr><td><b>US-152</b></td><td>Materialización</td><td>El atlas conserva once miembros en la cuenta cerrada. PASTIS-R aporta cinco atlas completos; los seis estratos modelo–región de BreizhCrops quedan declarados sin atlas porque cada uno contiene un solo clúster pareado. Las salidas separan dominancia, no dominancia e incertidumbre</td><td><code data-author="Javier Rebull">326a0b1</code></td></tr>
       <tr><td><b>US-152</b></td><td>Auditoría por ataque</td><td>La primera versión llamaba estructural a cualquier igualdad exacta por parche y luego trataba sus propios ceros válidos como si no tuvieran cota al evaluar dominancia. El arreglo deriva la imposibilidad de la definición de ambos brazos, distingue cuentas iguales no nulas y vuelve a materializar el mismo atlas de PASTIS-R con procedencia nueva</td><td><code data-author="Javier Rebull">445d486</code></td></tr>
@@ -1501,14 +1505,15 @@
              "Cada ancla se publica como sensibilidad no confirmatoria y nunca como representativa de un grupo de afectados",
              "La ausencia de una fuente defendible no bloquea el artículo ni autoriza inventar un punto"],
          out:"paper/micai2027/sections/", dep:"US-152"},
-        {id:"US-154", t:"La decisión de despliegue real como perfil de resultados", sp:5, st:"idle",
-         role:"Como equipo, tenemos una acción tomada en un producto y podemos medir su perfil contrafactual sin atribuirle después un coste implícito que nadie declaró.",
-         ac:["El hecho se cuenta anonimizado: un sistema desplegado recortó su catálogo de 18 clases a 12 con criterio F1 por clase ≥ 0,90. El doble ciego exige quitar el nombre, no el hecho",
-             "LA COBERTURA DE ENTREGA ESTÁ POR MEDIR, y es el trabajo de esta historia. Dos cifras se han atribuido ya a ese sistema y ninguna lo era: 0,9054 es el cumulative_support_share de la curva del Stacking-5, y 0,88269 —14 688 de 16 640— es la CUOTA DE SOPORTE DE LA VERDAD, porque el filtro que la produce descarta por la etiqueta verdadera, no por lo que el sistema responde. Se mide desde la regla que de verdad se desplegó y desde sus predicciones, se nombra cuota_de_soporte_de_la_verdad a la vieja, y no se publica ninguna de las dos como cobertura",
-             "Se publica su vector R0/L1–L6 y se compara por dominancia uniforme; no se infiere un coste implícito a partir de la acción elegida",
-             "Contrafactual: qué perfil habría producido cada uno de los otros mecanismos sobre las mismas parcelas",
-             "Si ninguna acción domina a la desplegada, se dice; elegir un ganador requeriría una preferencia externa"],
-         out:"reports/paper_micai/decision/", dep:"US-152"}
+        {id:"US-154", t:"La decisión de despliegue real como perfil de resultados", sp:5, st:"ok",
+         role:"Como equipo, auditamos la acción realmente servida sin atribuirle después un coste implícito, una causalidad ni un régimen held-out que la procedencia no sostiene.",
+         ac:["CERRADA Y ANONIMIZADA: el sistema redujo dieciocho clases a doce. La regla histórica eligió el mayor catálogo top-F1 cuya MEDIA por clase seguía en 0,90 sobre el mismo fold usado para describirlo; no exigía F1 ≥ 0,90 en cada clase ni fue una selección preregistrada",
+             "COBERTURA DERIVADA: la regla servida entrega el argmax restringido solo si el argmax original permanece. Entrega 15 265 de 16 640 parcelas —0,9174—. La cifra 14 688 —0,8827— es soporte de la verdad dentro del catálogo, no cobertura, y ambas magnitudes quedan separadas en el artefacto",
+             "El vector completo es R0=13 617, L1=1 648, L2=1 375 y L3–L6=0 estructural. No se infiere un coste implícito a partir de la acción elegida",
+             "COMPARACIÓN ACOTADA: frente a treinta configuraciones predictor–acción congeladas sobre las mismas parcelas, ninguna domina al sistema desplegado; este domina cinco y cruza veinticinco. Son configuraciones completas, no contrafactuales dentro del predictor ni efectos aislados del mecanismo",
+             "PROCEDENCIA DECLARADA: Full-M v2 no conserva folds de entrenamiento registrados, el XGBoost histórico sigue legacy_unverified y su rematerialización no lo sustituye. El resultado es retrospectivo y descriptivo, no confirmatorio, held-out, causal ni transportable",
+             "CONTROL CERRADO: soporte, tasas y dominancia se rederivan de CSV sellados; cambiar solo el resumen o la etiqueta de relación falla"],
+         out:"docs/paper/deployed-profile-v1.json; reports/micai2027/deployed-profile/; paper/micai2027/", dep:"US-152"}
       ]
     },
     {
@@ -1695,7 +1700,7 @@
          out:"docs/paper/afirmaciones-retiradas.md; scripts/micai_claims_check.py; tests/scripts/test_micai_claims_check.py", dep:"—"},
         {id:"US-144", t:"El manuscrito", sp:13, st:"wip",
          role:"Como autor, quiero escribir el artículo del ángulo nuevo, no parchear el anterior, porque el anterior arrastra frases que ya no corresponden a ningún dato.",
-         ac:["EN CURSO, OCHO DE OCHO SECCIONES REDACTADAS. paper/micai2027 compila en LNCS anónimo, A4 y veinte páginas. Abstract, Resultados y Discusión integran ya el atlas exploratorio y declaran que BreizhCrops es descriptivo para esta inferencia; el cierre final sigue dependiendo del perfil desplegado de US-154", "Veinte páginas. La cuenta honesta dice que la rejilla completa pide unas VEINTISÉIS, así que hay que recortar seis y el recorte se decide AHORA, no cuando salga la convocatoria",
+         ac:["EN CURSO, OCHO DE OCHO SECCIONES REDACTADAS. paper/micai2027 compila en LNCS anónimo, A4 y veinte páginas. Abstract, Resultados y Discusión integran el atlas exploratorio, el límite descriptivo de BreizhCrops y el perfil retrospectivo de US-154; falta la auditoría final del PDF y del paquete", "Veinte páginas exactas. El apéndice conserva las decisiones de diez contratos sellados en forma compacta; no se redujo la tipografía para hacer caber el resultado desplegado",
              "Recortes decididos, en orden: la autopsia al depósito con DOI dejando un párrafo en método (−0,9); un predictor preseleccionado por banco en el cuerpo y la rejilla completa al depósito (−0,7); la reducción formal al F1 alineado y la sensibilidad a g al apéndice del depósito (−0,7); el barrido de desbalance a cuatro frases y un panel (−0,6); fuera la curva de riesgo, que el diagrama de fases subsume (−0,6); la frase de límite metodológico solo para los ocho trabajos más cercanos y no para las treinta y cinco citas (−0,6); los casos de uso fundidos en la figura (−0,3); equidad por clase y por área en una figura de dos paneles (−0,4)",
              "Lo que NO se recorta bajo ninguna circunstancia: el sesgo en la estadística de superficie y la decisión de despliegue real. Son las dos únicas cosas del artículo que nadie más puede escribir",
              "La sección de robustez lleva las diez pruebas de la EPIC 26, cada una respondiendo a un ataque nombrado. No es una frase de cortesía: es un cuarto de la sección de resultados",
