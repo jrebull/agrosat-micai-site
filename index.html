@@ -147,7 +147,7 @@
 <!-- ================= ESTADO ================= -->
 <section class="panel" id="p-est" role="tabpanel" aria-labelledby="t-est" hidden>
   <div class="callout">
-    <p><b>Estado vigente, 12 de septiembre.</b> El manuscrito anónimo ocupa veinte páginas y el
+    <p><b>Estado vigente, 13 de septiembre.</b> El manuscrito anónimo ocupa veinte páginas y el
       estado ejecutable cumple cuatro de siete criterios; el envío sigue sin autorizarse. US-171
       cerró la sensibilidad espacial correctiva sobre 496 parches completos y las mismas 16 640
       parcelas en siete particiones predeclaradas. Ningún <i>k</i> alcanza la separación congelada,
@@ -156,8 +156,14 @@
       depósito preparado 71 artefactos de once productores. La vía de entrevistas permanece
       retirada sin crédito. US-125 queda cerrada contra las ejecuciones vigentes: la inferencia
       conserva el pareo por parcela, remuestrea parches completos y retira las afirmaciones que no
-      tienen suficientes unidades. El siguiente cierre es ejecutar la potencia prospectiva de
-      US-155; no se atribuyen preferencias ni se afirma quién paga.</p>
+      tienen suficientes unidades. US-155 también está cerrada por la salida vacía que impone la
+      ausencia de banco confirmatorio; no se atribuyen preferencias ni se afirma quién paga.
+      US-118 queda cerrada: el
+      arnés, su custodia y el inventario OOF ya estaban vigentes, y la última condición —fijar
+      antes de regenerar pérdida, panel, preregistro y las 31 rutas obsoletas— es ahora un control
+      ejecutable. El siguiente trabajo científico ejecutable es US-132 → US-164: comparar la
+      familia de Ha bajo el mismo eje de coste y después contrastar operar mejor contra cambiar de
+      predictor. El hito de decisión permanece congelado para el 24 de septiembre.</p>
   </div>
   <p class="nota-tabla"><b>Registro histórico acumulado; no describe el tablero vigente.</b> El borrador de quince páginas sigue retirado. Ocho rondas externas cerraron
     defectos de evaluación, custodia y redacción. US-173 cerró el primer contrato científico del
@@ -451,7 +457,7 @@
       <span class="l">páginas A4, PDF anónimo</span></div>
     <div class="cifra"><span class="n">8/8</span>
       <span class="l">secciones redactadas</span></div>
-    <div class="cifra"><span class="n">47/47</span>
+    <div class="cifra"><span class="n">48/48</span>
       <span class="l">gates en verde</span></div>
   </div>
 
@@ -518,6 +524,7 @@
       <li><span class="chip ok">pasa</span> <code>plan-check</code> — el plan por epicas no tiene ciclos ni estados imposibles</li>
       <li><span class="chip ok">pasa</span> <code>preregistro-check</code> — el contrato del estimando no diverge del preregistro</li>
       <li><span class="chip ok">pasa</span> <code>protocolo-check</code> — el protocolo con personas no se declara congelado sin su acta</li>
+      <li><span class="chip ok">pasa</span> <code>regeneration-preconditions-check</code> — perdida, panel, preregistro y el alcance historico conservan su frontera congelada</li>
       <li><span class="chip ok">pasa</span> <code>six-arm-execution-check</code> — six-arm-execution-check</li>
       <li><span class="chip ok">pasa</span> <code>spatial-partition-check</code> — la particion espacial se elige sin mirar resultados</li>
       <li><span class="chip ok">pasa</span> <code>spatial-sensitivity-check</code> — spatial-sensitivity-check</li>
@@ -1232,13 +1239,16 @@
   </div>
 
   <div class="finding pass">
-    <div class="top"><span class="chip ok">US-118 parcial</span><h3>El inventario OOF ya protege también CI</h3></div>
+    <div class="top"><span class="chip ok">US-118 cerrada</span><h3>El inventario OOF y la frontera de regeneración ya son ejecutables</h3></div>
     <p>El gate distingue artefactos canónicos, históricos sin procedencia y excluidos; verifica
       bytes o punteros DVC y exige que la longitud temporal del dataset coincida con la del
       modelo especificado. Los manifiestos nuevos fijan versión de código y datos por miembro; el
       histórico vuelve a describir una sola corrida, sin pegarle Full-M desde otra. Al activarse el
-      gate detectó un volcado no inventariado. La historia sigue en curso
-      porque la tabla inferencial y las 25 filas obsoletas esperan pérdida, panel y preregistro.</p>
+      gate detectó un volcado no inventariado. La precondición final comprueba pérdida, panel y
+      preregistro juntos, distingue las celdas reales del ledger de sus notas y cierra exactamente
+      31 rutas <code>OBSOLETO</code>. Quitar una fila, inventar el SHA, mover un estado o resellar
+      otros bytes rompe el control. La historia queda cerrada; ejecutar sigue siendo una decisión
+      separada.</p>
   </div>
 
   <div class="finding pass">
@@ -1393,13 +1403,13 @@
   }
   var pending = [
     ["01","US-121 · Firmar alcance, modelo y destino","ADR-014 está escrito y cumple sus cinco criterios; permanece abierto hasta las dos firmas o la fecha de corte del 18 de septiembre.","wip","En curso"],
-    ["02","US-118 · Endurecer el arnés OOF","El productor ya acopla T=37 entre especificación del modelo y dataset, el inventario corre en CI y la población independiente queda en 16 640 parcelas. Sigue abierta hasta que la tabla inferencial se regenere después de fijar pérdida, panel y preregistro.","wip","En curso"],
+    ["02","US-118 · Endurecer el arnés OOF","Cerrada: arnés, custodia e inventario OOF están vigentes; la precondición fija 31 rutas OBSOLETO y comprueba pérdida, panel y preregistro sin convertir el verde en autorización de ejecución.","ok","Cerrada"],
     ["03","US-141 y US-142 · Trabajo relacionado y bibliografía","Cerradas: trabajo relacionado integrado en primera página y bibliografía final derivada con las 17 claves realmente citadas de un catálogo verificado de 58.","ok","Cerradas"],
     ["04","EPIC 27 · Espacio de pérdidas","Cerrada: perfiles R0/L1–L6, dominancia uniforme y fronteras sobre Δ⁵. Las entrevistas y la banda práctica se retiraron sin ejecución.","ok","Cerrada"],
     ["05","US-140 · Congelar inferencia","Cerrada: alfa, potencia, familia simultánea, bootstrap, semilla, puntos de operación, disparidad y alternativa prospectiva tienen contrato sellado.","ok","Cerrada"],
-    ["06","EPIC 19 · Ejecutar inferencia","Aplicar los seis brazos, intervalos simultáneos y potencia bajo el contrato congelado; cualquier vector puntual queda solo como sensibilidad.","wip","Camino crítico"],
-    ["07","US-152 · Atlas de decisión","Regenerar perfiles, dominancia y fronteras con incertidumbre; ninguna vista plana se presenta como todo el espacio.","stop","Tras la firma"],
-    ["08","Decisión de continuidad","Contrastar los artefactos regenerados con la afirmación preregistrada y decidir artículo, reducción de alcance o cierre sin mover el criterio.","stop","Go / no-go"]
+    ["06","US-132 · Línea base de Ha","Completar la comparación bajo el mismo eje de coste exige una enmienda prospectiva: añadir el séptimo brazo cambia pares, coordenadas y potencia. La mecánica sola no cierra la historia.","wip","Siguiente"],
+    ["07","US-164 · Modelo mejor frente a mecanismo","Después de US-132, comparar la ganancia de operar con promesas parciales contra pasar del peor al mejor predictor del panel, sin ocultar si domina cambiar de modelo.","stop","Depende de US-132"],
+    ["08","US-156 · Decisión del 24 de septiembre","El estado ejecutable mantiene cuatro de siete criterios cumplidos. Si no aparece una vía prospectiva legítima, la regla congelada conduce al informe técnico y no al envío; US-146 queda después de esa decisión.","wip","Hito congelado"]
   ];
   var pe = document.getElementById("pending");
   pending.forEach(function(p){

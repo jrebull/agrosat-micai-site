@@ -18,7 +18,7 @@
   <div class="plan-hero-inner">
     <div class="plan-topline">
       <a href="index.html">AgroSatCopilot / cuaderno</a>
-      <span>Actualizado 12 sep 2026</span>
+      <span>Actualizado 13 sep 2026</span>
     </div>
 
     <div class="plan-intro">
@@ -229,6 +229,9 @@
         El arnés OOF ya verifica la longitud temporal efectiva y su gate corre en CI. Los
         <b>31 artefactos históricos siguen OBSOLETO</b>, pero las salidas vigentes del manuscrito
         nuevo viven bajo <code>reports/micai2027/</code> y no reutilizan sus cifras. El workflow
+        de US-118 ya cierra el alcance exacto de esas 31 rutas y comprueba juntos pérdida, panel,
+        preregistro, custodia vigente y la frontera anterior a regenerar; el control informa si se
+        puede ejecutar, pero no autoriza la ejecución. El workflow
         propuesto por Arthur quedó revisado: este plan registra qué se adopta, qué se descarta y qué
         queda solo como posibilidad futura. <b>US-141, US-142 y US-149 están cerradas</b>: trabajo
         relacionado, bibliografía final y afirmaciones retiradas tienen fuentes y controles
@@ -350,7 +353,7 @@
     <div class="colophon plan-colophon">
       <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
       <span><b>Total</b> <span id="total-sp">—</span> puntos de historia</span>
-      <span><b>Actualizado</b> 13 de septiembre de 2026: US-153 integrada y revalidada por ataque; la política de anclas ya no puede acreditarse a sí misma</span>
+      <span><b>Actualizado</b> 13 de septiembre de 2026: US-118 integrada tras cerrar alcance, custodia y frontera congelada por ataque</span>
     </div>
   </div>
 </header>
@@ -578,6 +581,9 @@
       <tr><td><b>US-153</b></td><td>Revalidación del tercer ataque</td><td>La prueba nueva falla sobre <code>main</code> vulnerable y pasa con el arreglo: sustituir las clases de identificador por <code>memory</code>, añadir un patrón permisivo y resellar ya no convierte una narración en fuente. Se conservan los cierres de Arthur para infinitos y tipos mal formados</td><td><code data-author="Javier Rebull">e48d585</code></td></tr>
       <tr><td><b>US-153</b></td><td>Camino de al lado</td><td>La misma autorreferencia seguía disponible al renombrar las formas admitidas, estrechar el corpus o cambiar a la vez el contrato y sus valores aguas arriba. Los tres ataques se reprodujeron antes de cerrar la clase. Además, un DOI con forma válida pero inexistente en la matriz verificada deja de contar como procedencia</td><td><code data-author="Javier Rebull">b0747d0</code> · <code data-author="Javier Rebull">d1d7810</code></td></tr>
       <tr><td><b>US-153</b></td><td>Integración final</td><td>PR #84 fusionada después de seis jobs verdes sobre el SHA final. La historia pasa a hecha con treinta pruebas dirigidas, contrato resellado y el registro público distinguiendo la base útil de Arthur, los defectos de su primera entrega y el endurecimiento posterior</td><td><code data-author="Javier Rebull">9442e44</code></td></tr>
+      <tr><td><b>US-118</b></td><td>Precondición ejecutable</td><td>Pérdida, panel y preregistro dejan de ser una frase previa a la regeneración. Un gate comprueba sus estados y custodia, enumera el alcance y entra tanto en CI como en <code>make check</code></td><td><code data-author="Javier Rebull">014b4bf</code> · <code data-author="Javier Rebull">280eeeb</code></td></tr>
+      <tr><td><b>US-118</b></td><td>Auditoría por ataque</td><td>El primer verde contaba 32 filas porque confundía una nota con la celda de estado; el ledger contiene 31 rutas realmente <code>OBSOLETO</code>. También aceptaba reducir el alcance, inventar un SHA, suplantar una fila con prosa y mover la frontera mediante un resellado. El control usa ahora columnas exactas, un conjunto cerrado de rutas y anclas independientes</td><td><code data-author="Javier Rebull">6c71273</code></td></tr>
+      <tr><td><b>US-118</b></td><td>Integración y cierre</td><td>PR #85 fusionada después de dos ejecuciones completas de CI, doce de doce jobs verdes sobre el SHA final. La historia aporta sus ocho puntos sin autorizar por sí sola la regeneración de los artefactos históricos</td><td><code data-author="Javier Rebull">23b0726</code></td></tr>
       </tbody></table></div>
     </details>
 
@@ -1227,7 +1233,7 @@
       id:"EPIC 18", name:"Cimientos: recuperar, sanear, gobernar", status:"wip",
       goal:"Nada de lo que sigue vale si el suelo se mueve. Aquí se recupera lo recuperable, se declara lo que no, y se cierra la gobernanza. Es la única épica que puede empezar hoy sin depender de nada.",
       us:[
-        {id:"US-118", t:"Endurecimiento del arnés OOF y re-volcado canónico", sp:8, st:"wip",
+        {id:"US-118", t:"Endurecimiento del arnés OOF y re-volcado canónico", sp:8, st:"ok",
          role:"Como equipo que publicó una cifra producida por un bug, quiero que el arnés no pueda volver a mezclar configuraciones, para que ninguna tabla imprima un fallo como resultado.",
          ac:["HECHO 4-SEP: dvc pull de checkpoints/segmentation materializó 37 ficheros (2,6 GB en disco) y dvc status responde Data and pipelines are up to date. Hay 13 directorios de checkpoint —incluidos tsvit-pheno-fullm-v1 y -v2—; no estaban perdidos, estaban sin traer",
              "Constructor único de kwargs de scoring, consumido por el cálculo denso y por el volcado",
@@ -1244,8 +1250,8 @@
              "El XGB histórico no se vuelve canónico por añadir una fila: permanece legacy_unverified y fuera del análisis inferencial. El inventario global distingue presencia, procedencia y aptitud para consumo",
              "DECISIÓN DE ALCANCE: farslip-ft18, farslip-zeroshot y xgb-alphaearth-italia pasan a excluded para MICAI 2027, sin borrarse. Su eventual reproducción pertenece a higiene del repositorio y no bloquea el artículo",
              "train_folds, val_folds, n_timesteps y md5 del checkpoint en los parámetros de MLflow",
-             "PARCIAL: el arnés y su custodia están cerrados, pero la tabla que consume US-139 todavía no es un artefacto inferencial vigente. El recálculo diagnóstico da 0,7883 a tsvit-pheno-fullm frente a 0,7367 a tsvit-pheno; no selecciona un ganador porque usa evaluación. Las 25 filas OBSOLETO se regeneran una sola vez después de fijar pérdida, panel y preregistro"],
-         out:"PR en el fork; ml/eval/oof/; docs/model_cards/", dep:"—"},
+             "CERRADO 13-SEP: pérdida, panel y preregistro se comprueban juntos contra estados exactos, custodia vigente y cinco anclas de la frontera congelada. El alcance queda cerrado por las 31 rutas cuya celda de estado es OBSOLETO; una mención en prosa no cuenta, quitar una fila falla y resellar no redefine lo congelado. El gate corre en CI y en make check, informa la precondición y no autoriza ejecutar"],
+         out:"ml/eval/oof/; docs/model_cards/; scripts/regeneration_preconditions_check.py; make oof-manifest-check; make regeneration-preconditions-check", dep:"—"},
         {id:"US-158", t:"Recuperar lo recuperable (deuda del repositorio, NO del artículo)", sp:5, st:"idle",
          role:"Como equipo que dio por perdidos tres checkpoints, quiero saber cuál se regenera con receta verificable, porque producir uno que se PARECE al original no restaura la reproducibilidad: la simula.",
          ac:["parcel/04cls se regenera. El parquet de captions perdido se reconstruye submuestreando mil filas por clase del versionado de 69 297, ordenando por (int(patch_id), parcel_id): da 16 012 filas, el tamaño que la documentación atribuye al perdido",
