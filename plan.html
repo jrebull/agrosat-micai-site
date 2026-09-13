@@ -29,17 +29,19 @@
           retirado en una comparación defendible de cuatro maneras de prometer menos.</p>
       </div>
       <aside class="plan-now" aria-labelledby="plan-now-title">
-        <p class="plan-now-label">Ahora · autorización científica</p>
-        <h2 id="plan-now-title"><a href="#US-155">Cerrar US-155</a></h2>
+        <p class="plan-now-label">Ahora · decisión congelada</p>
+        <h2 id="plan-now-title"><a href="#US-156">Llegar al 24 de septiembre sin mover la regla</a></h2>
         <p>US-144 y US-145 ya cierran el manuscrito y el paquete anónimo, pero eso no autoriza el
           envío. El estado ejecutable de US-156 verifica por separado los siete criterios de no
-          envío: cuatro están cumplidos y tres siguen pendientes. US-171 ya publicó la sensibilidad
-          correctiva sobre parches completos: conserva las 16 640 parcelas en los siete valores de
-          <i>k</i>, no selecciona ninguno y no sustituye el atlas primario. US-125 queda cerrada
-          contra las ejecuciones vigentes: el pareo conserva la identidad de parcela, la inferencia
-          remuestrea parches completos y la falta de unidades retira la afirmación en lugar de
-          fabricar precisión. El siguiente cierre es la potencia prospectiva de US-155. Zenodo
-          sigue fuera de este camino.</p>
+          envío: cuatro están cumplidos y tres siguen pendientes. <b>US-155 ya no es un cómputo
+          pendiente</b>: US-136 cerró la búsqueda con cero candidatos admisibles y su contrato solo
+          permite simular sobre la estructura de un candidato confirmatorio. Usar PASTIS-R o
+          BreizhCrops en su lugar convertiría un banco exploratorio en candidato por conveniencia.
+          Los otros dos pendientes tampoco esperan regeneración: los estratos BreizhCrops tienen
+          un solo clúster y el criterio congelado exige incertidumbre y orden parcial en cada
+          estrato de análisis. Si el estado no cambia por una vía prospectiva legítima, el punto de
+          decisión del 24 de septiembre conduce al informe técnico, no al envío MICAI. Zenodo sigue
+          fuera de este camino.</p>
         <div class="plan-now-state"><span></span>Envío no autorizado · 4 de 7 criterios cumplidos</div>
       </aside>
     </div>
@@ -250,9 +252,13 @@
         <b>US-171 queda cerrada</b>: publica la curva completa sobre parches enteros, conserva las
         16 640 parcelas en cada partición y no selecciona un <i>k</i> que incumple el criterio
         congelado. El resultado no fabrica territorios nuevos, no reemplaza el atlas primario y
-        eleva el estado ejecutable a cuatro de siete criterios. <b>US-172 permanece retirada sin
+        eleva el estado ejecutable a cuatro de siete criterios. <b>US-155 queda cerrada por salida
+        vacía</b>: la criba congelada admite cero candidatos confirmatorios, de modo que no existe
+        la estructura de parches y bloques sobre la que su simulación puede ejecutarse. Sustituirla
+        por PASTIS-R o BreizhCrops contradiría el rol exploratorio ya fijado; el criterio de potencia
+        permanece pendiente hasta el punto de decisión y no se fabrica una cifra. <b>US-172 permanece retirada sin
         entrevistas</b>; su protocolo, acta y adjuntos se conservan como registro y no gobiernan
-        esta ejecución. El siguiente cierre sustantivo es US-155.</p>
+        esta ejecución. El siguiente hito sustantivo es la decisión congelada del 24 de septiembre.</p>
       <p><b>Revalidación de la PR #6, 6 de septiembre.</b> Se conserva el permiso mínimo de lectura
         de PR que necesita el job de calidad y el exportador queda reducido a un prefiltro local.
         No se adopta el lote de memoria que la PR publicó como «saneado»: entró antes de las dos
@@ -566,6 +572,7 @@
               <colgroup><col class="c-us"><col class="c-tipo"><col class="c-que"><col class="c-ev"></colgroup>
       <thead><tr><th>US</th><th>Tipo</th><th>Qué se hizo</th><th>Evidencia</th></tr></thead>
       <tbody data-date="2026-09-12">
+      <tr><td><b>US-155 / US-156</b></td><td>Salida vacía ejecutable</td><td>La potencia deja de figurar como cómputo pendiente. La criba de US-136 y el protocolo coinciden en cero candidatos confirmatorios; el productor del estado rechaza sustituir PASTIS-R o BreizhCrops por la estructura candidata que exige el contrato. El manuscrito declara la no ejecución, el criterio permanece pendiente y el envío sigue en cuatro de siete</td><td><code data-author="Javier Rebull">27d70bc</code> · <code data-author="Javier Rebull">dd4b6a6</code> · <code data-author="Javier Rebull">adce9dc</code> · <code data-author="Javier Rebull">59d13e2</code></td></tr>
       <tr><td><b>US-125</b></td><td>Cierre contra resultados vigentes</td><td>La historia deja de esperar la regeneración del estimando retirado. Los perfiles de seis brazos, el atlas primario y la sensibilidad espacial demuestran sobre datos vigentes que se conserva el pareo por parcela, se remuestrean parches completos y la falta de clústeres retira la inferencia sin borrar el resultado descriptivo. Los artefactos antiguos continúan OBSOLETO; no se reinterpretan</td><td><code data-author="Javier Rebull">1f16145</code> · <code data-author="Javier Rebull">e67c856</code> · <code data-author="Javier Rebull">5c9ae9e</code> · <code data-author="Javier Rebull">368a0b2</code></td></tr>
       <tr><td><b>US-153</b></td><td>Entrega de Arthur en revisión</td><td>La PR #80 no se adopta todavía aunque su CI esté verde. El ataque reproduce tres falsos verdes: acepta coeficientes o cotas infinitas, trata cualquier texto con tipo <code>doi</code> como fuente recuperable y permite re-sellar el vocabulario para admitir una fuente opaca. Se pidió cerrar los tres mecanismos antes de fusionar; el historial no cuenta una entrega pendiente como avance</td><td><code data-author="Arthur Zizumbo">3390753</code></td></tr>
       <tr><td><b>US-171</b></td><td>Ejecución correctiva</td><td>La sensibilidad espacial se reejecuta sobre 496 <code>patch_id</code> indivisibles y las mismas 16 640 parcelas en siete valores predeclarados de <i>k</i>. Ningún candidato alcanza la separación congelada; la curva completa se publica sin escoger después de ver el resultado</td><td><code data-author="Javier Rebull">c45a900</code> · <code data-author="Javier Rebull">368a0b2</code></td></tr>
@@ -1389,9 +1396,9 @@
              "Medido y publicado cuánto valía la asimetría. Hoy: 0,00127, un 4,4 % del delta, así que el defecto es real y casi inconsecuente, y se dirá con su número en vez de suponer que los tres pesaban igual",
              "El protocolo NO puede ser el resultado de reserva: si el experimento central no da nada, se ejecuta el plan del resultado nulo, no se envía el andamio"],
          out:"ml/eval/paper_micai_coverage.py", dep:"US-124"},
-        {id:"US-155", t:"Potencia con unidad y modelo explícitos", sp:3, st:"wip",
+        {id:"US-155", t:"Potencia con unidad y modelo explícitos", sp:3, st:"ok",
          role:"Como equipo a punto de comparar seis brazos, quiero que cada afirmación de potencia corresponda al estimando y la unidad que realmente analiza, y no a una fórmula conveniente aplicada a otra vista.",
-         ac:["MECÁNICA t Y SIMULACIÓN PRIMARIA TERMINADAS, EJECUCIÓN PENDIENTE. ml/eval/micai_power.py conserva el diagnóstico bilateral con t no central; ml/eval/micai_profile_power.py implementa la potencia prospectiva del criterio primario sin aceptar resultados observados",
+         ac:["CERRADA CON SALIDA VACÍA. ml/eval/micai_power.py conserva el diagnóstico bilateral con t no central y ml/eval/micai_profile_power.py implementa la potencia prospectiva sin aceptar resultados observados; no se ejecuta porque la criba congelada terminó con cero candidatos admisibles",
              "La t no central solo describe la SENSIBILIDAD con medias de bloque de igual peso. La potencia primaria simula perfiles de siete celdas con Dirichlet–multinomial sobre tamaños de patch y bloques planeados sin resultados, y aplica el mismo máximo studentizado de la inferencia primaria; no se sustituye por el número de bloques",
              "La rejilla es cerrada: seis colocaciones del brazo dominante por cuatro ICC. Quitar un escenario falla; la admisión usa el mínimo de las veinticuatro cotas inferiores Wilson unilaterales, no la media ni el escenario favorable",
              "El consumidor cruza la alternativa con el contrato: perfil, margen por coordenada, acoplamiento entre brazos, conteos, semillas, remuestreos, regla de éxito y estadístico de admisión. Volver a sellar dos JSON divergentes no basta para cambiar el análisis",
@@ -1400,8 +1407,8 @@
              "Para una familia Holm planificada se usa prospectivamente el primer umbral alfa/m. No se afirma que Holm tenga un único alfa para todos sus pasos, y m se fija antes de saber qué comparaciones producen una p válida",
              "El barrido de k ya no produce MDE ni tiene_potencia: subdividir el mismo territorio no crea información independiente. El número hipotético de unidades necesarias significa unidades NUEVAS bajo una desviación prospectiva declarada, no permiso para renombrar subdivisiones",
              "Las cifras históricas —0,0196, 0,0326, 0,0508, 0,0167, trece y veinte— siguen OBSOLETO. También cae la conclusión que dejábamos en pie: «ninguna medida de disparidad tiene potencia» vuelve a PENDIENTE y puede cambiar al regenerar",
-             "La potencia EVALÚA el criterio sustantivo congelado; nunca lo elige. El criterio principal es la dominancia de US-175 y sus parámetros se cierran en US-140. Falta un banco admisible y su estructura sin resultados; hasta entonces no hay cifra de potencia ni ascenso confirmatorio"],
-         out:"ml/eval/micai_power.py; ml/eval/micai_profile_power.py; reports/paper_micai/potencia/", dep:"US-125, US-136, US-171"},
+             "La potencia EVALÚA el criterio sustantivo congelado; nunca lo elige. US-136 fija confirmatory_dataset_id=null y cero admitidos: usar la estructura de PASTIS-R o BreizhCrops violaría su rol exploratorio. El estado ejecutable lo comprueba, no publica una cifra y deja power_admission pendiente hasta el punto de decisión"],
+         out:"ml/eval/micai_power.py; ml/eval/micai_profile_power.py; reports/micai2027/no-winner/criteria-status.json; paper/micai2027/sections/05-protocol.tex", dep:"US-125, US-136, US-171"},
         {id:"US-171", t:"Sensibilidad espacial sin fabricar territorios nuevos", sp:8, st:"ok",
          role:"Como equipo al que le dijeron que hacen falta trece bloques y solo tiene cinco, quiero saber si el cinco es una restricción del dato o el valor por defecto de una función. Es lo segundo, y lo que se encuentra al mirarlo es más interesante que el permiso para usar quince.",
          ac:["CERRADA con ejecución empírica correctiva. El contrato nuevo se congeló antes de correr y declara PASTIS-R como exploratorio, <code>patch_id</code> como unidad indivisible, la población completa y los siete valores de <i>k</i>",
