@@ -180,6 +180,14 @@
         artefactos empíricos declarados y trece productores en el depósito preparado. La potencia
         de la familia ampliada todavía no se ha recalculado; por eso US-132 sigue en curso y aporta
         cero puntos cerrados.</p>
+      <p><b>US-132, familia ejecutable y alternativa bloqueada, 13 de septiembre.</b> La inferencia
+        y la potencia ya reciben el orden cerrado del contrato v2: producen veintiún pares y ciento
+        veintiséis coordenadas sin ampliar el enum histórico que gobierna la familia v1. El trabajo
+        completo se deriva en código como veintiocho escenarios, veintisiete mil novecientas setenta
+        y dos réplicas de simulación y doscientos setenta y nueve millones seiscientos noventa y dos
+        mil veintiocho remuestreos. La ejecución sigue bloqueada por una causa metodológica nueva:
+        la alternativa heredada asigna masa a celdas que cada acción no puede producir. El simulador
+        las rechaza antes de gastar cómputo; falta una alternativa prospectiva factible y sellada.</p>
       <p><b>Auditoría de calibración, 9 de septiembre.</b> Una simulación bajo nulo global encontró
         que la primera implementación excedía el alfa familiar nominal. El hallazgo era real, pero
         su atribución al número de clústeres no estaba identificada: la comparación publicada
@@ -602,6 +610,7 @@
       <tr><td><b>US-132</b></td><td>Materialización y custodia</td><td>La tercera ejecución parte de un árbol limpio y produce exactamente siete artefactos: perfiles, cuentas por parche y puntos de operación para los dos bancos, más una procedencia común. Las seis filas históricas permanecen idénticas y Ha se calibra por modelo y estrato desde validación. El paquete queda declarado en el protocolo y sellado; no se ejecuta potencia ni se asciende el régimen exploratorio</td><td><code data-author="Javier Rebull">4575f24</code> · <code data-author="Javier Rebull">ec9d2db</code></td></tr>
       <tr><td><b>US-132 / US-146 / US-156</b></td><td>Propagación completa</td><td>El depósito preparado pasa de cincuenta y cuatro a sesenta y un artefactos empíricos y de doce a trece productores. La primera CI detecta que el contexto <code>us132-execution</code> no estaba clasificado en el registro cerrado; se añade como procedencia, no como banco, se regenera el inventario inferencial y la frontera de regeneración queda fijada en los bytes actuales incluso frente a un resellado posterior. La suite completa encuentra después que el estado de no envío seguía citando el inventario anterior: se rederiva y sella con sesenta y cinco artefactos con régimen y rol; el veredicto permanece en cuatro de siete y el envío sigue sin autorización</td><td><code data-author="Javier Rebull">048e9a5</code> · <code data-author="Javier Rebull">d70e544</code> · <code data-author="Javier Rebull">f859f0b</code> · <code data-author="Javier Rebull">58def94</code> · <code data-author="Javier Rebull">9e70a41</code> · <code data-author="Javier Rebull">45a35b3</code></td></tr>
       <tr><td><b>US-132</b></td><td>Integración del paquete</td><td>PR #93 fusionada tras dos ejecuciones completas con doce de doce jobs verdes sobre el SHA final y una reproducción local de la suite de CI. El paquete de siete brazos entra en <code>main</code> sin cambiar el crédito científico: US-132 continúa en curso porque la potencia diagnóstica de la familia de veintiún pares sigue pendiente</td><td><code data-author="Javier Rebull">4e0ae10</code></td></tr>
+      <tr><td><b>US-132</b></td><td>Familia dinámica y control de factibilidad</td><td>PR #94 conserva <code>ArmName</code> como autoridad histórica de seis brazos y añade una ruta explícita para el orden v2 de siete. La cuenta de trabajo sale del diseño cargado y no de prosa. El primer cronometraje queda descartado al detectar que los perfiles comunes asignan probabilidad positiva a cincuenta y dos combinaciones brazo–perfil–celda imposibles; el simulador las enumera y se niega a ejecutar hasta que exista una alternativa prospectiva por brazo</td><td><code data-author="Javier Rebull">4d4488a</code> · <code data-author="Javier Rebull">affe8c4</code></td></tr>
       </tbody></table></div>
     </details>
 
@@ -1534,8 +1543,8 @@
              "EJECUCIÓN BAJO CUSTODIA. El runner produjo y selló perfiles, cuentas por parche, puntos de operación y procedencia para PASTIS-R y BreizhCrops. El gate demuestra que añadir Ha no alteró ninguna fila publicada de los seis brazos, exige una sola calibración por modelo y estrato y cierra tipos, rutas e inventario",
              "El rechazo por NOVEDAD (Carvalho 2023, Xu 2026, Giménez 2023) queda fuera por elección: rechazar clases desconocidas es otra pregunta que repartir un presupuesto fijo de promesa. No se presenta como restricción matemática",
              "CONTROL EJECUTABLE. ha-baseline-check conserva la frontera histórica de seis brazos; inference-contract-check rederiva la semántica de v2 desde v1, valida el punto de Ha, el régimen exploratorio, las dimensiones y la potencia diagnóstica. Ambos exigen bytes SELLADO y el manuscrito distingue lo ejecutado de lo prospectivo",
-             "PENDIENTE Y NO DISIMULABLE. El paquete empírico existe, está sellado y auditado; falta el diagnóstico de potencia para la familia ampliada. US-132 permanece en curso y aporta cero puntos hasta ejecutar y auditar esa potencia"],
-         out:"docs/paper/ha-baseline-v1.json; docs/paper/ha-baseline-v1.md; docs/paper/inference-v2.json; docs/paper/seven-arm-execution-v1.json; ml/eval/ha_class_selective.py; scripts/ha_baseline_check.py; scripts/inference_contract_check.py; scripts/run_micai2027_seven_arms.py; scripts/seven_arm_execution_check.py", dep:"US-130"}
+             "PENDIENTE Y NO DISIMULABLE. El paquete empírico existe, está sellado y auditado. La API ya representa los siete brazos sin alterar la familia histórica y deriva veintiocho escenarios y 279 692 028 remuestreos; la ejecución se bloquea porque la alternativa v1 asigna masa a celdas imposibles. Falta congelar una alternativa factible por brazo, ejecutarla y auditarla"],
+         out:"docs/paper/ha-baseline-v1.json; docs/paper/ha-baseline-v1.md; docs/paper/inference-v2.json; docs/paper/seven-arm-execution-v1.json; docs/paper/auditoria-potencia-siete-brazos.md; ml/eval/ha_class_selective.py; ml/eval/micai_profile_inference.py; ml/eval/micai_profile_power.py; scripts/ha_baseline_check.py; scripts/inference_contract_check.py; scripts/run_micai2027_seven_arms.py; scripts/seven_arm_execution_check.py", dep:"US-130"}
       ]
     },
     {
