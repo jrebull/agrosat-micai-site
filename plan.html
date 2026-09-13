@@ -172,7 +172,12 @@
         ciento veintiséis; exige enmienda prospectiva y nuevo cálculo de potencia. Un gate en CI
         impide introducir ese séptimo brazo, declarar una salida empírica o retirar el deslinde del
         manuscrito. La exclusión de rechazadores aprendidos sigue rotulada como elección del equipo,
-        no como imposibilidad.</p>
+        no como imposibilidad. <b>Actualización del 13 de septiembre:</b> la enmienda v2 ya tiene un
+        productor de siete brazos congelado antes de resultados. El productor añade Ha sin poder
+        reescribir los perfiles, cuentas por parche ni puntos de operación sellados de los seis
+        brazos históricos; el gate exige además una única calibración de Ha por modelo y estrato.
+        Todavía no se ha materializado el paquete ni recalculado la potencia, por lo que US-132 sigue
+        en curso y aporta cero puntos.</p>
       <p><b>Auditoría de calibración, 9 de septiembre.</b> Una simulación bajo nulo global encontró
         que la primera implementación excedía el alfa familiar nominal. El hallazgo era real, pero
         su atribución al número de clústeres no estaba identificada: la comparación publicada
@@ -590,6 +595,7 @@
       <tr><td><b>US-132</b></td><td>Punto de operación y contrato v2</td><td>La calibración de Ha deriva su razón de costes exclusivamente de los posteriores de validación para cada modelo y estrato, sin etiquetas retenidas. La enmienda prospectiva fija siete brazos, veintiún pares, ciento veintiséis coordenadas absolutas y doscientas cincuenta y dos direcciones; la familia v1 de seis brazos no se reescribe</td><td><code data-author="Javier Rebull">b2d7be3</code> · <code data-author="Javier Rebull">adbedaf</code></td></tr>
       <tr><td><b>US-132</b></td><td>Auditoría de la enmienda</td><td>El primer contrato estaba sellado pero podía cambiar de significado y volver a sellarse: copiaba el alcance confirmatorio de v1, ningún gate comprobaba sus valores y el manuscrito aún negaba el séptimo brazo. El control semántico deriva v2 desde v1 mediante un conjunto cerrado de cambios, conserva el régimen exploratorio, separa la potencia diagnóstica y atribuye cada versión a su commit real</td><td><code data-author="Javier Rebull">54ebcdc</code> · <code data-author="Javier Rebull">3a6e234</code> · <code data-author="Javier Rebull">db98c07</code> · <code data-author="Javier Rebull">f9e9b81</code></td></tr>
       <tr><td><b>US-132</b></td><td>Integración de la extensión</td><td>PR #88 fusionada después de doce de doce jobs verdes sobre el SHA final. El contrato v2 queda sellado y con consumidor semántico; no se materializó el paquete de siete brazos, no se recalculó potencia y la historia permanece en curso sin sumar puntos cerrados</td><td><code data-author="Javier Rebull">a6cd57a</code></td></tr>
+      <tr><td><b>US-132</b></td><td>Productor previo a resultados</td><td>PR #89 añade el runner versionado que materializará Ha por modelo y estrato desde calibración, conserva las siete cuentas de pérdida y registra el paquete cerrado antes de ejecutar. La auditoría encontró tres falsos verdes: <code>true</code> podía ocupar el lugar de la versión numérica, una calibración duplicada se ocultaba tras un conjunto completo y la extensión podía reescribir los seis brazos históricos. El gate compara ahora tipos, unicidad y las filas históricas selladas. Doce de doce jobs verdes; no se generó ningún resultado ni se ejecutó potencia</td><td><code data-author="Javier Rebull">9cfe1e3</code> · <code data-author="Javier Rebull">be13b53</code> · <code data-author="Javier Rebull">9a6a146</code></td></tr>
       </tbody></table></div>
     </details>
 
@@ -1519,10 +1525,11 @@
          ac:["MECÁNICA HECHA. Ha 1997 está implementada desde su publicación como familia parametrizada de subconjuntos no vacíos. No acepta etiquetas retenidas ni una razón de costes por defecto; la fuerza bruta confirma el óptimo nativo sobre datos sintéticos",
              "EXCLUSIÓN DE ALCANCE DECLARADA. No se reimplementa un rechazador aprendido por presupuesto y riesgo de sobreajuste, no porque sea imposible hacerlo bien. El artículo no puede afirmar nada sobre mecanismos aprendidos de renuncia",
              "CONTRATO V2 SELLADO; EJECUCIÓN PENDIENTE. La razón de costes de Ha se deriva solo de los posteriores de validación, por modelo y estrato. La extensión prospectiva fija siete brazos, veintiún pares, ciento veintiséis coordenadas absolutas y doscientas cincuenta y dos direcciones; se declara exploratoria y su potencia es diagnóstica. La familia v1 de seis brazos permanece intacta",
+             "PRODUCTOR CONGELADO ANTES DE RESULTADOS. El runner de siete brazos está versionado, su contrato está sellado y sus siete artefactos históricos de referencia son insumos explícitos. El gate exige que añadir Ha no altere ninguna fila publicada de los seis brazos, una sola calibración por modelo y estrato y valores con tipo exacto",
              "El rechazo por NOVEDAD (Carvalho 2023, Xu 2026, Giménez 2023) queda fuera por elección: rechazar clases desconocidas es otra pregunta que repartir un presupuesto fijo de promesa. No se presenta como restricción matemática",
              "CONTROL EJECUTABLE. ha-baseline-check conserva la frontera histórica de seis brazos; inference-contract-check rederiva la semántica de v2 desde v1, valida el punto de Ha, el régimen exploratorio, las dimensiones y la potencia diagnóstica. Ambos exigen bytes SELLADO y el manuscrito distingue lo ejecutado de lo prospectivo",
              "PENDIENTE Y NO DISIMULABLE. Todavía no existe el paquete empírico de siete brazos ni el diagnóstico de potencia para la familia ampliada. US-132 permanece en curso y aporta cero puntos hasta materializar, sellar y auditar esas salidas"],
-         out:"docs/paper/ha-baseline-v1.json; docs/paper/ha-baseline-v1.md; docs/paper/inference-v2.json; ml/eval/ha_class_selective.py; scripts/ha_baseline_check.py; scripts/inference_contract_check.py", dep:"US-130"}
+         out:"docs/paper/ha-baseline-v1.json; docs/paper/ha-baseline-v1.md; docs/paper/inference-v2.json; docs/paper/seven-arm-execution-v1.json; ml/eval/ha_class_selective.py; scripts/ha_baseline_check.py; scripts/inference_contract_check.py; scripts/run_micai2027_seven_arms.py; scripts/seven_arm_execution_check.py", dep:"US-130"}
       ]
     },
     {
