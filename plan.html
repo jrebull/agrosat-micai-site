@@ -584,7 +584,7 @@
 
     <div class="history-log">
     <details class="history-day" open>
-    <summary class="dia" data-date="2026-09-14"><time datetime="2026-09-14">14 sep</time><strong>La línea base de Ha queda ejecutada sin convertir potencia diagnóstica en admisión</strong></summary>
+    <summary class="dia" data-date="2026-09-14"><time datetime="2026-09-14">14 sep</time><strong>US-164 separa lo que aporta operar mejor de lo que aporta cambiar de predictor</strong></summary>
     <div class="scroll">
             <table>
               <colgroup><col class="c-us"><col class="c-tipo"><col class="c-que"><col class="c-ev"></colgroup>
@@ -594,6 +594,9 @@
       <tr><td><b>US-132</b></td><td>Potencia diagnóstica</td><td>Se ejecutan 3 996 réplicas y 39 956 004 remuestreos bajo las cuatro celdas válidas de baseline. Las tasas observadas son 0,647; 0,020; 0,006 y 0,000 para ICC 0; 0,05; 0,10 y 0,20. Ninguna cota Wilson alcanza 0,80; no se emite decisión de admisión porque el contrato declara este análisis exploratorio y diagnóstico</td><td><code data-author="Javier Rebull">cc5ad2c</code></td></tr>
       <tr><td><b>US-132 / US-152 / US-171</b></td><td>Enmienda sin reescritura</td><td>La definición de dominancia queda unificada en una sola función: todas las cotas como máximo cero y al menos una estrictamente menor. <code>inference-v1.json</code> permanece intacto; una enmienda post-ejecución sellada declara el alcance histórico y su momento. Atlas y sensibilidad espacial se rederivan con tablas científicas idénticas byte a byte; solo cambia la procedencia</td><td><code data-author="Javier Rebull">cc5ad2c</code></td></tr>
       <tr><td><b>US-132</b></td><td>Integración sin GitHub Actions</td><td>Las PR #97 y #96 se fusionan sin presentar Actions como verde: los jobs no arrancan por facturación. La evidencia sustitutiva se ejecuta sobre la cabeza exacta de la #96: <code>make check</code>, quince controles científicos, PDF A4 de veinte páginas y 2 841 pruebas locales sin fallos. La excepción termina cuando vuelva el presupuesto de Actions</td><td><code data-author="Javier Rebull">2cdafba</code> · <code data-author="Javier Rebull">cc5ad2c</code></td></tr>
+      <tr><td><b>US-164</b></td><td>Comparación sobre un eje común</td><td>La ganancia de una acción y la ganancia de pasar del peor al mejor predictor disponible se calculan sobre la misma función de pérdida, en las veinte secciones y la rejilla completa de sesenta y seis puntos ya declaradas. El contrato revela que hubo una sonda previa y prohíbe convertir cuentas de rejilla en probabilidades o en efecto de invertir en entrenamiento</td><td><code data-author="Javier Rebull">ad5693a</code> · <code data-author="Javier Rebull">4aa5625</code></td></tr>
+      <tr><td><b>US-164</b></td><td>Resultado exploratorio</td><td>En PASTIS-R, cambiar entre los predictores disponibles supera la mejor acción en 1 233 de 1 320 evaluaciones declaradas; la acción es mayor en 83 y empata en 4, siempre con conjuntos adaptativos cuando gana. Los dos estratos descriptivos de BreizhCrops dan 870/446/4 y 849/467/4. Son cuentas sobre una rejilla, no volúmenes del símplex ni una comparación de costes de ingeniería</td><td><code data-author="Javier Rebull">967469e</code> · <code data-author="Javier Rebull">bfd1734</code></td></tr>
+      <tr><td><b>US-164</b></td><td>Frontera y validación local</td><td>El primer intento añadió cuatro salidas posteriores a resultados al manifiesto congelado; <code>regeneration-preconditions-check</code> lo rechazó. Se restauran exactamente sus bytes y se crea un inventario posresultado cerrado. PR #98 se fusiona sin presentar Actions como verde: <code>make check</code>, 86 pruebas backend, 2 769 de scripts y ML puro y 9 lentas pasan localmente; 33 quedan omitidas por datos opcionales ausentes</td><td><code data-author="Javier Rebull">6956a1c</code> · <code data-author="Javier Rebull">0b08fdc</code></td></tr>
       </tbody></table></div>
     </details>
 
@@ -1698,12 +1701,14 @@
              "Se reporta la fracción de parcelas afectadas, no solo la de celdas: son 38 034 de 60 000, y decir 1,62 % subestima el alcance en un factor de treinta y nueve",
              "Si la conclusión cambia al quitar las imputadas, es la imputación y se dice"],
          out:"reports/paper_micai/robustez/imputacion/", dep:"US-129"},
-        {id:"US-164", t:"El mecanismo frente a entrenar un modelo mejor", sp:5, st:"idle",
-         role:"«En vez de todo esto, entrenen un clasificador mejor.» Es la objeción más obvia y más devastadora, y ningún documento del proyecto la ha respondido nunca.",
-         ac:["Se sitúa la ganancia de cada mecanismo frente a la ganancia de pasar del peor al mejor predictor disponible, en el mismo eje de coste",
-             "Se responde explícitamente: en qué régimen conviene un mecanismo de operación y en cuál conviene invertir ese esfuerzo en el modelo",
-             "Si la ganancia de cualquier mecanismo es menor que la de cambiar de modelo, el artículo lo dice en la discusión y no lo esconde"],
-         out:"reports/paper_micai/robustez/modelo_vs_mecanismo/", dep:"US-132"},
+        {id:"US-164", t:"Cambiar de predictor frente a operar mejor", sp:5, st:"ok",
+         role:"«En vez de todo esto, entrenen un clasificador mejor.» La respuesta medible distingue cambiar entre predictores ya disponibles de invertir en entrenamiento o prometer un modelo futuro.",
+         ac:["CERRADA. La ganancia de cada acción y la ganancia de pasar del peor al mejor predictor disponible se calculan sobre el mismo eje de pérdida, sin mezclar bancos ni estratos",
+             "RESULTADO EXPLORATORIO. En PASTIS-R el cambio entre predictores disponibles es mayor en 1 233 de 1 320 puntos; la acción es mayor en 83 y empata en 4. Cuando gana la acción, siempre son conjuntos adaptativos",
+             "RÉPLICA DESCRIPTIVA. Los dos estratos de BreizhCrops producen cuentas 870/446/4 y 849/467/4. No se presentan como inferencia pareada ni como volúmenes del símplex",
+             "LÍMITE. El contraste no estima costes de ingeniería, efecto causal de invertir en entrenamiento ni rendimiento de un predictor futuro; esas afirmaciones quedan prohibidas",
+             "CUSTODIA. Cuatro salidas selladas viven en un inventario posresultado cerrado; el manifiesto empírico congelado conserva exactamente sus bytes y sus 61 artefactos"],
+         out:"reports/micai2027/model-vs-mechanism/", dep:"US-132"},
         {id:"US-165", t:"Transferencia temporal del punto de operación", sp:5, st:"ok",
          role:"«¿Sobrevive el punto de operación al cambiar de campaña?» La búsqueda cerrada no admitió un banco confirmatorio multianual; la transferencia queda sin medir y el artículo debe declararlo con nombre.",
          ac:["NO EJECUTABLE con el inventario vigente: banco-confirmatorio-search-v1.json cierra la criba con cero bancos admitidos; no se atribuyen campañas a PASTIS-R ni BreizhCrops porque el registro no las documenta",
