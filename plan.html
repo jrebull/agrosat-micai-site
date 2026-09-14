@@ -368,7 +368,7 @@
     <div class="colophon plan-colophon">
       <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
       <span><b>Total</b> <span id="total-sp">—</span> puntos de historia</span>
-      <span><b>Actualizado</b> 14 de septiembre de 2026: US-162 cerrada con auditoría completa, enmienda visible y resultados integrados</span>
+      <span><b>Actualizado</b> 14 de septiembre de 2026: US-161 congelada sin reentrenamiento retrospectivo; ejecución reproducible pendiente</span>
     </div>
   </div>
 </header>
@@ -584,7 +584,7 @@
 
     <div class="history-log">
     <details class="history-day" open>
-    <summary class="dia" data-date="2026-09-14"><time datetime="2026-09-14">14 sep</time><strong>US-164 se corrige y US-162 cierra la auditoría de calibración</strong></summary>
+    <summary class="dia" data-date="2026-09-14"><time datetime="2026-09-14">14 sep</time><strong>US-162 cierra y US-161 separa sensibilidad reproducible de semillas desconocidas</strong></summary>
     <div class="scroll">
             <table>
               <colgroup><col class="c-us"><col class="c-tipo"><col class="c-que"><col class="c-ev"></colgroup>
@@ -601,6 +601,9 @@
       <tr><td><b>US-162</b></td><td>Contrato y primera ejecución retirada</td><td>La auditoría predeclara fiabilidad agregada y por clase, temperatura ajustada solo en validación, efecto sobre abstención y cobertura conforme condicional. La primera corrida no sellada mostró que seleccionar solo por ECE de validación omitía fallos retenidos; se conserva fuera del artículo como antecedente y no se usa para escoger un subconjunto favorable</td><td><code data-author="Javier Rebull">f5a937a</code> · <code data-author="Javier Rebull">edd2332</code> · <code data-author="Javier Rebull">e28c35d</code></td></tr>
       <tr><td><b>US-162</b></td><td>Enmienda y cuenta completa</td><td>La enmienda visible extiende el ajuste a cada modelo y estrato, siempre con etiquetas de validación y sin seleccionar ni ajustar con evaluación. En retenido, el log-loss mejora en todas las filas; ECE y Brier empeoran en tres cada uno, y entrega y exactitud selectiva se mueven en ambos sentidos. Se reporta como robustez exploratoria, no como mejora de recalibración</td><td><code data-author="Javier Rebull">8693942</code> · <code data-author="Javier Rebull">22ec29d</code> · <code data-author="Javier Rebull">4af38b3</code></td></tr>
       <tr><td><b>US-162</b></td><td>Custodia, reproducibilidad e integración</td><td>Diez salidas se reproducen byte a byte, quedan selladas y entran al depósito preparado. El gate rederiva bins, ECE, métricas por clase, abstención y cobertura desde la cuenta cerrada. El manuscrito mantiene veinte páginas: integra el resultado mixto, la heterogeneidad condicional y la cronología de la enmienda sin ocultar el primer intento</td><td><code data-author="Javier Rebull">6c6ef3b</code> · <code data-author="Javier Rebull">741c492</code> · <code data-author="Javier Rebull">6388ef2</code></td></tr>
+      <tr><td><b>US-162</b></td><td>Rejilla y métricas fijadas</td><td>La PR #100 entra con evidencia local explícita mientras Actions sigue bloqueado. El gate exige que cada temperatura pertenezca a la rejilla logarítmica congelada; log-loss y Brier quedan fijados contra cálculos manuales, y el cargador deja de llamar estratificado a un muestreo que no lo es</td><td><code data-author="Javier Rebull">a03f119</code></td></tr>
+      <tr><td><b>US-161</b></td><td>Decisión prospectiva</td><td>No se reentrenan después del atlas los cinco modelos profundos de PASTIS-R cuya semilla de entrenamiento no consta en las fuentes de identidad declaradas. El contrato deriva diez semillas por SHA-256, mantiene fijos esos posteriores y limita PASTIS-R a etapas estocásticas posentrenamiento; por tanto, no autoriza afirmar robustez a la semilla de entrenamiento</td><td><code data-author="Javier Rebull">db63556</code> · <code data-author="Javier Rebull">b8bae71</code></td></tr>
+      <tr><td><b>US-161</b></td><td>Corrección y control</td><td>El preregistro decía que las sesenta mil parcelas de BreizhCrops eran un submuestreo proporcional estratificado, pero el productor ejecutó muestreo aleatorio simple sin reemplazo. La corrección queda visible; la sensibilidad repetirá muestreo, partición interna, tres ajustes clásicos y acciones. Doce ataques negativos cierran miembros, etapas, productor, rejilla y regla de retiro</td><td><code data-author="Javier Rebull">54622d8</code> · <code data-author="Javier Rebull">ef20580</code></td></tr>
       </tbody></table></div>
     </details>
 
@@ -1685,13 +1688,15 @@
       id:"EPIC 26", name:"El campo de tiro: cada prueba mata un ataque", status:"wip",
       goal:"Un revisor estricto de MICAI no va a discutir el mapeo de cultivos: va a buscar el punto donde el resultado se cae. Esta épica es el inventario de esos puntos, cada uno convertido en un experimento que se corre ANTES de escribir. Lo que sobreviva va al artículo; lo que no, cambia la afirmación. Con veinte páginas hay sitio para una sección de robustez de verdad y no para una frase de cortesía.",
       us:[
-        {id:"US-161", t:"Sensibilidad a la semilla y al submuestreo", sp:5, st:"idle",
-         role:"«Todo su artículo corre con la semilla 42 y un submuestreo que eligieron ustedes.» Es el primer ataque y hoy no tenemos respuesta.",
-         ac:["Todo el pipeline repetido con al menos diez semillas: bloques espaciales, submuestreo de BreizhCrops, particiones de calibración",
-             "Se reporta la dispersión de la disparidad y del diagrama de fases entre semillas, no solo su media",
-             "Se comprueba si el «pasillo» donde los cuatro mecanismos coinciden es robusto o es un artefacto del submuestreo de 30 000 parcelas por región",
-             "Si una conclusión depende de la semilla, se retira. Sin excepción"],
-         out:"reports/paper_micai/robustez/semillas/", dep:"US-129"},
+        {id:"US-161", t:"Sensibilidad a la semilla y al submuestreo", sp:5, st:"wip",
+         role:"«Todo su artículo corre con la semilla 42 y un submuestreo que eligieron ustedes.» La respuesta debe medir solo la aleatoriedad reconstruible y nombrar la que la procedencia no permite medir.",
+         ac:["CONTRATO CONGELADO Y SELLADO: seed-sensitivity-v1.json deriva diez semillas por SHA-256 de US-161 e índice. No se elige una semilla favorable ni se cambia la rejilla después de ejecutar",
+             "PASTIS-R ACOTADO: las fuentes de identidad no registran la semilla de entrenamiento de los cinco modelos profundos. Sus posteriores quedan fijos; se repiten la partición espacial por parches y el bootstrap, sin reclamar robustez del entrenamiento",
+             "SIN REENTRENAMIENTO RETROSPECTIVO: entrenar cinco modelos de nuevo después de observar el atlas sería otro estudio y no forma parte de los criterios congelados del artículo. Reabrirlo exige una enmienda prospectiva e identidades nuevas",
+             "BREIZHCROPS CORREGIDO: el histórico no fue estratificado ni proporcional; fue muestreo aleatorio simple sin reemplazo. Las diez corridas repetirán muestra regional, partición interna, tres ajustes clásicos y acciones posteriores",
+             "CUENTA CERRADA: cinco salidas predeclaradas publicarán cada corrida, soporte por clase, estabilidad de afirmaciones y estabilidad de ganadores sobre la rejilla. Las cuentas de rejilla no son volumen del símplex",
+             "REGLA DE SALIDA: si una conclusión cambia dentro de las diez semillas, se retira o se acota. El gate tiene doce ataques negativos y ya forma parte de make check; el runner y las salidas siguen pendientes"],
+         out:"docs/paper/seed-sensitivity-v1.json; docs/paper/sensibilidad-semillas.md; reports/micai2027/robustez/semillas/", dep:"US-129"},
         {id:"US-162", t:"Calibración de las posteriores", sp:5, st:"ok",
          role:"«Su rechazo por confianza y su predicción conforme suponen posteriores calibradas, y no han enseñado ni un diagrama de fiabilidad.» Es un ataque letal contra dos de los cuatro mecanismos.",
          ac:["CERRADA. Fiabilidad de etiqueta superior y por clase para cada modelo y estrato, con diez intervalos y cuenta completa",
