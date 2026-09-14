@@ -368,7 +368,7 @@
     <div class="colophon plan-colophon">
       <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
       <span><b>Total</b> <span id="total-sp">—</span> puntos de historia</span>
-      <span><b>Actualizado</b> 14 de septiembre de 2026: US-161 congelada sin reentrenamiento retrospectivo; ejecución reproducible pendiente</span>
+      <span><b>Actualizado</b> 14 de septiembre de 2026: US-161 congelada, productor reanudable integrado y ejecución reproducible en curso</span>
     </div>
   </div>
 </header>
@@ -590,6 +590,8 @@
               <colgroup><col class="c-us"><col class="c-tipo"><col class="c-que"><col class="c-ev"></colgroup>
       <thead><tr><th>US</th><th>Tipo</th><th>Qué se hizo</th><th>Evidencia</th></tr></thead>
       <tbody data-date="2026-09-14">
+      <tr><td><b>US-161</b></td><td>Productor reanudable integrado</td><td>PR #104 fusiona el productor real sin depender de GitHub Actions: cada una de las diez semillas se ejecuta y conserva fuera del repositorio bajo el commit exacto; solo el conjunto completo puede publicar las cinco salidas. Los builders trabajan en memoria, el muestreo deja constancia de clases ausentes y el ensamblado rechaza particiones incompletas, contaminadas o procedentes de otra revisión</td><td><code data-author="Javier Rebull">c042224</code> · <code data-author="Javier Rebull">bb031ca</code> · <code data-author="Javier Rebull">0eafcba</code> · <code data-author="Javier Rebull">02b6317</code> · <code data-author="Javier Rebull">301dd12</code></td></tr>
+      <tr><td><b>US-161</b></td><td>Validación y ejecución iniciada</td><td>La cabeza fusionada pasa <code>make check</code>, 3 800 pruebas de scripts y ML y 86 pruebas unitarias y end-to-end del backend. Una corrida completa de una semilla verificó el flujo sobre ambos bancos sin publicar cifras. La ejecución prospectiva de diez particiones queda iniciada; el tablero mantiene la historia en curso y aporta cero al avance hasta que exista el paquete cerrado</td><td><code data-author="Javier Rebull">301dd12</code></td></tr>
       <tr><td><b>US-132</b></td><td>Alternativa factible por brazo</td><td>Los perfiles prospectivos dejan de asignar masa a resultados que cada acción no puede producir. La rejilla se cierra en veintiocho escenarios: cuatro simulables para baseline y veinticuatro no aplicables por imposibilidad estructural. El ensamblado exige la cuenta completa y la partición solo cambia calendario, nunca estadística</td><td><code data-author="Javier Rebull">2cdafba</code></td></tr>
       <tr><td><b>US-132</b></td><td>Potencia diagnóstica</td><td>Se ejecutan 3 996 réplicas y 39 956 004 remuestreos bajo las cuatro celdas válidas de baseline. Las tasas observadas son 0,647; 0,020; 0,006 y 0,000 para ICC 0; 0,05; 0,10 y 0,20. Ninguna cota Wilson alcanza 0,80; no se emite decisión de admisión porque el contrato declara este análisis exploratorio y diagnóstico</td><td><code data-author="Javier Rebull">cc5ad2c</code></td></tr>
       <tr><td><b>US-132 / US-152 / US-171</b></td><td>Enmienda sin reescritura</td><td>La definición de dominancia queda unificada en una sola función: todas las cotas como máximo cero y al menos una estrictamente menor. <code>inference-v1.json</code> permanece intacto; una enmienda post-ejecución sellada declara el alcance histórico y su momento. Atlas y sensibilidad espacial se rederivan con tablas científicas idénticas byte a byte; solo cambia la procedencia</td><td><code data-author="Javier Rebull">cc5ad2c</code></td></tr>
@@ -1695,7 +1697,7 @@
              "SIN REENTRENAMIENTO RETROSPECTIVO: entrenar cinco modelos de nuevo después de observar el atlas sería otro estudio y no forma parte de los criterios congelados del artículo. Reabrirlo exige una enmienda prospectiva e identidades nuevas",
              "BREIZHCROPS CORREGIDO: el histórico no fue estratificado ni proporcional; fue muestreo aleatorio simple sin reemplazo. Las diez corridas repetirán muestra regional, partición interna, tres ajustes clásicos y acciones posteriores",
              "CUENTA CERRADA: cinco salidas predeclaradas publicarán cada corrida, soporte por clase, estabilidad de afirmaciones y estabilidad de ganadores sobre la rejilla. Las cuentas de rejilla no son volumen del símplex",
-             "REGLA DE SALIDA: si una conclusión cambia dentro de las diez semillas, se retira o se acota. El gate tiene doce ataques negativos y ya forma parte de make check; el runner y las salidas siguen pendientes"],
+             "REGLA DE SALIDA: si una conclusión cambia dentro de las diez semillas, se retira o se acota. El gate forma parte de make check; el runner reanudable está fusionado en PR #104 y la ejecución prospectiva está en curso. Las cinco salidas siguen ausentes hasta completar y validar las diez particiones"],
          out:"docs/paper/seed-sensitivity-v1.json; docs/paper/sensibilidad-semillas.md; reports/micai2027/robustez/semillas/", dep:"US-129"},
         {id:"US-162", t:"Calibración de las posteriores", sp:5, st:"ok",
          role:"«Su rechazo por confianza y su predicción conforme suponen posteriores calibradas, y no han enseñado ni un diagrama de fiabilidad.» Es un ataque letal contra dos de los cuatro mecanismos.",
