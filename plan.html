@@ -18,7 +18,7 @@
   <div class="plan-hero-inner">
     <div class="plan-topline">
       <a href="index.html">AgroSatCopilot / cuaderno</a>
-      <span>Actualizado 13 sep 2026</span>
+      <span>Actualizado 14 sep 2026</span>
     </div>
 
     <div class="plan-intro">
@@ -368,7 +368,7 @@
     <div class="colophon plan-colophon">
       <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
       <span><b>Total</b> <span id="total-sp">—</span> puntos de historia</span>
-      <span><b>Actualizado</b> 13 de septiembre de 2026: US-118 integrada tras cerrar alcance, custodia y frontera congelada por ataque</span>
+      <span><b>Actualizado</b> 14 de septiembre de 2026: US-162 cerrada con auditoría completa, enmienda visible y resultados integrados</span>
     </div>
   </div>
 </header>
@@ -584,7 +584,7 @@
 
     <div class="history-log">
     <details class="history-day" open>
-    <summary class="dia" data-date="2026-09-14"><time datetime="2026-09-14">14 sep</time><strong>US-164 separa lo que aporta operar mejor de lo que aporta cambiar de predictor</strong></summary>
+    <summary class="dia" data-date="2026-09-14"><time datetime="2026-09-14">14 sep</time><strong>US-164 se corrige y US-162 cierra la auditoría de calibración</strong></summary>
     <div class="scroll">
             <table>
               <colgroup><col class="c-us"><col class="c-tipo"><col class="c-que"><col class="c-ev"></colgroup>
@@ -595,8 +595,12 @@
       <tr><td><b>US-132 / US-152 / US-171</b></td><td>Enmienda sin reescritura</td><td>La definición de dominancia queda unificada en una sola función: todas las cotas como máximo cero y al menos una estrictamente menor. <code>inference-v1.json</code> permanece intacto; una enmienda post-ejecución sellada declara el alcance histórico y su momento. Atlas y sensibilidad espacial se rederivan con tablas científicas idénticas byte a byte; solo cambia la procedencia</td><td><code data-author="Javier Rebull">cc5ad2c</code></td></tr>
       <tr><td><b>US-132</b></td><td>Integración sin GitHub Actions</td><td>Las PR #97 y #96 se fusionan sin presentar Actions como verde: los jobs no arrancan por facturación. La evidencia sustitutiva se ejecuta sobre la cabeza exacta de la #96: <code>make check</code>, quince controles científicos, PDF A4 de veinte páginas y 2 841 pruebas locales sin fallos. La excepción termina cuando vuelva el presupuesto de Actions</td><td><code data-author="Javier Rebull">2cdafba</code> · <code data-author="Javier Rebull">cc5ad2c</code></td></tr>
       <tr><td><b>US-164</b></td><td>Comparación sobre un eje común</td><td>La ganancia de una acción y la ganancia de pasar del peor al mejor predictor disponible se calculan sobre la misma función de pérdida, en las veinte secciones y la rejilla completa de sesenta y seis puntos ya declaradas. El contrato revela que hubo una sonda previa y prohíbe convertir cuentas de rejilla en probabilidades o en efecto de invertir en entrenamiento</td><td><code data-author="Javier Rebull">ad5693a</code> · <code data-author="Javier Rebull">4aa5625</code></td></tr>
-      <tr><td><b>US-164</b></td><td>Resultado exploratorio</td><td>En PASTIS-R, cambiar entre los predictores disponibles supera la mejor acción en 1 233 de 1 320 evaluaciones declaradas; la acción es mayor en 83 y empata en 4, siempre con conjuntos adaptativos cuando gana. Los dos estratos descriptivos de BreizhCrops dan 870/446/4 y 849/467/4. Son cuentas sobre una rejilla, no volúmenes del símplex ni una comparación de costes de ingeniería</td><td><code data-author="Javier Rebull">967469e</code> · <code data-author="Javier Rebull">bfd1734</code></td></tr>
+      <tr><td><b>US-164</b></td><td>Resultado retirado</td><td>La primera salida publicó 870/446/4 y 849/467/4 para BreizhCrops. Esas cuentas quedan retiradas: el cargador había reutilizado el posterior de un miembro para todos los predictores del estrato. Se conservan aquí como registro del error, no como resultado vigente</td><td><code data-author="Javier Rebull">967469e</code> · <code data-author="Javier Rebull">bfd1734</code></td></tr>
       <tr><td><b>US-164</b></td><td>Frontera y validación local</td><td>El primer intento añadió cuatro salidas posteriores a resultados al manifiesto congelado; <code>regeneration-preconditions-check</code> lo rechazó. Se restauran exactamente sus bytes y se crea un inventario posresultado cerrado. PR #98 se fusiona sin presentar Actions como verde: <code>make check</code>, 86 pruebas backend, 2 769 de scripts y ML puro y 9 lentas pasan localmente; 33 quedan omitidas por datos opcionales ausentes</td><td><code data-author="Javier Rebull">6956a1c</code> · <code data-author="Javier Rebull">0b08fdc</code></td></tr>
+      <tr><td><b>US-164</b></td><td>Corrección de acoplamiento</td><td>La primera ejecución de BreizhCrops reutilizaba el posterior de un miembro para todos los predictores del estrato. La salida se retira, el cargador conserva un posterior por miembro y la rederivación corregida produce 952/364/4 y 928/388/4. PASTIS-R permanece idéntico; las cuentas siguen siendo exploratorias y no son volúmenes del símplex</td><td><code data-author="Javier Rebull">98d1fb2</code> · <code data-author="Javier Rebull">312323d</code> · <code data-author="Javier Rebull">51e0e6b</code></td></tr>
+      <tr><td><b>US-162</b></td><td>Contrato y primera ejecución retirada</td><td>La auditoría predeclara fiabilidad agregada y por clase, temperatura ajustada solo en validación, efecto sobre abstención y cobertura conforme condicional. La primera corrida no sellada mostró que seleccionar solo por ECE de validación omitía fallos retenidos; se conserva fuera del artículo como antecedente y no se usa para escoger un subconjunto favorable</td><td><code data-author="Javier Rebull">f5a937a</code> · <code data-author="Javier Rebull">edd2332</code> · <code data-author="Javier Rebull">e28c35d</code></td></tr>
+      <tr><td><b>US-162</b></td><td>Enmienda y cuenta completa</td><td>La enmienda visible extiende el ajuste a cada modelo y estrato, siempre con etiquetas de validación y sin seleccionar ni ajustar con evaluación. En retenido, el log-loss mejora en todas las filas; ECE y Brier empeoran en tres cada uno, y entrega y exactitud selectiva se mueven en ambos sentidos. Se reporta como robustez exploratoria, no como mejora de recalibración</td><td><code data-author="Javier Rebull">8693942</code> · <code data-author="Javier Rebull">22ec29d</code> · <code data-author="Javier Rebull">4af38b3</code></td></tr>
+      <tr><td><b>US-162</b></td><td>Custodia, reproducibilidad e integración</td><td>Diez salidas se reproducen byte a byte, quedan selladas y entran al depósito preparado. El gate rederiva bins, ECE, métricas por clase, abstención y cobertura desde la cuenta cerrada. El manuscrito mantiene veinte páginas: integra el resultado mixto, la heterogeneidad condicional y la cronología de la enmienda sin ocultar el primer intento</td><td><code data-author="Javier Rebull">6c6ef3b</code> · <code data-author="Javier Rebull">741c492</code> · <code data-author="Javier Rebull">6388ef2</code></td></tr>
       </tbody></table></div>
     </details>
 
@@ -1688,13 +1692,14 @@
              "Se comprueba si el «pasillo» donde los cuatro mecanismos coinciden es robusto o es un artefacto del submuestreo de 30 000 parcelas por región",
              "Si una conclusión depende de la semilla, se retira. Sin excepción"],
          out:"reports/paper_micai/robustez/semillas/", dep:"US-129"},
-        {id:"US-162", t:"Calibración de las posteriores", sp:5, st:"idle",
+        {id:"US-162", t:"Calibración de las posteriores", sp:5, st:"ok",
          role:"«Su rechazo por confianza y su predicción conforme suponen posteriores calibradas, y no han enseñado ni un diagrama de fiabilidad.» Es un ataque letal contra dos de los cuatro mecanismos.",
-         ac:["Diagrama de fiabilidad y error de calibración esperado por predictor y por banco",
-             "Calibración por clase, no solo agregada: con desbalance extremo la agregada esconde justo lo que importa",
-             "Si un predictor está mal calibrado, el rechazo por confianza se reporta también sobre su versión recalibrada, y se dice cuánto cambia",
-             "La cobertura del conforme se valida CONDICIONAL por clase, no solo marginal: la marginal se cumple por construcción y no dice nada del reparto"],
-         out:"reports/paper_micai/robustez/calibracion/", dep:"US-130"},
+         ac:["CERRADA. Fiabilidad de etiqueta superior y por clase para cada modelo y estrato, con diez intervalos y cuenta completa",
+             "ENMIENDA VISIBLE. La primera corrida no sellada mostró que el disparador por ECE de validación omitía fallos retenidos; la auditoría final ajusta todos los miembros con validación y no selecciona con etiquetas de evaluación",
+             "RESULTADO MIXTO. El log-loss retenido mejora en todas las filas, pero ECE y Brier empeoran en tres cada uno; entrega y exactitud selectiva cambian en ambos sentidos, por lo que no se reclama mejora universal",
+             "COBERTURA CONDICIONAL. Se publican todas las clases con soporte; treinta y ocho de ciento cuarenta y cuatro filas quedan bajo 0,9, con los soportes extremos pequeños rotulados para impedir una generalización espuria",
+             "CUSTODIA. Diez salidas reproducibles byte a byte, contrato y enmienda sellados, cuenta semántica cerrada y resultado integrado en el manuscrito de veinte páginas"],
+         out:"reports/micai2027/calibration/", dep:"US-130"},
         {id:"US-163", t:"Ablación de la imputación", sp:3, st:"idle",
          role:"«El 1,62 % de sus celdas está imputado, pero eso toca al 63 % de las parcelas. ¿Cómo sabemos que su resultado no es la imputación?» La cifra que publicamos era la que minimizaba el alcance.",
          ac:["El experimento se repite sobre el subconjunto de parcelas SIN ninguna celda imputada",
@@ -1705,7 +1710,7 @@
          role:"«En vez de todo esto, entrenen un clasificador mejor.» La respuesta medible distingue cambiar entre predictores ya disponibles de invertir en entrenamiento o prometer un modelo futuro.",
          ac:["CERRADA. La ganancia de cada acción y la ganancia de pasar del peor al mejor predictor disponible se calculan sobre el mismo eje de pérdida, sin mezclar bancos ni estratos",
              "RESULTADO EXPLORATORIO. En PASTIS-R el cambio entre predictores disponibles es mayor en 1 233 de 1 320 puntos; la acción es mayor en 83 y empata en 4. Cuando gana la acción, siempre son conjuntos adaptativos",
-             "RÉPLICA DESCRIPTIVA. Los dos estratos de BreizhCrops producen cuentas 870/446/4 y 849/467/4. No se presentan como inferencia pareada ni como volúmenes del símplex",
+             "RÉPLICA DESCRIPTIVA CORREGIDA. Los dos estratos de BreizhCrops producen cuentas 952/364/4 y 928/388/4 tras retirar una ejecución que reutilizaba el posterior entre miembros. No se presentan como inferencia pareada ni como volúmenes del símplex",
              "LÍMITE. El contraste no estima costes de ingeniería, efecto causal de invertir en entrenamiento ni rendimiento de un predictor futuro; esas afirmaciones quedan prohibidas",
              "CUSTODIA. Cuatro salidas selladas viven en un inventario posresultado cerrado; el manifiesto empírico congelado conserva exactamente sus bytes y sus 61 artefactos"],
          out:"reports/micai2027/model-vs-mechanism/", dep:"US-132"},
