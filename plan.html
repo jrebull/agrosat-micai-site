@@ -18,7 +18,7 @@
   <div class="plan-hero-inner">
     <div class="plan-topline">
       <a href="index.html">AgroSatCopilot / cuaderno</a>
-      <span>Actualizado 14 sep 2026</span>
+      <span>Actualizado 15 sep 2026</span>
     </div>
 
     <div class="plan-intro">
@@ -368,7 +368,7 @@
     <div class="colophon plan-colophon">
       <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
       <span><b>Total</b> <span id="total-sp">—</span> puntos de historia</span>
-      <span><b>Actualizado</b> 14 de septiembre de 2026: US-161 congelada, productor reanudable integrado y ejecución reproducible en curso</span>
+      <span><b>Actualizado</b> 15 de septiembre de 2026: US-161 cerrada, diez semillas publicadas y manuscrito corregido</span>
     </div>
   </div>
 </header>
@@ -583,6 +583,20 @@
     </section>
 
     <div class="history-log">
+    <details class="history-day" open>
+    <summary class="dia" data-date="2026-09-15"><time datetime="2026-09-15">15 sep</time><strong>US-161 cierra la sensibilidad y retira una conclusión espacial</strong></summary>
+    <div class="scroll">
+            <table>
+              <colgroup><col class="c-us"><col class="c-tipo"><col class="c-que"><col class="c-ev"></colgroup>
+      <thead><tr><th>US</th><th>Tipo</th><th>Qué se hizo</th><th>Evidencia</th></tr></thead>
+      <tbody data-date="2026-09-15">
+      <tr><td><b>US-161</b></td><td>Custodia corregida</td><td>Una enmienda posterior a las dos ejecuciones no selladas añade únicamente régimen, rol, banco y vínculo al preregistro. Conserva las decisiones y fija como testigo los SHA-256 de las columnas científicas; la rerun limpia coincide exactamente con ellas</td><td><code data-author="Javier Rebull">024435f</code> · <code data-author="Javier Rebull">27ba21e</code></td></tr>
+      <tr><td><b>US-161</b></td><td>Cuenta completa</td><td>Las diez semillas prospectivas publican juntas cinco salidas: 240 filas de estabilidad de afirmaciones, 6 600 puntos de rejilla, soporte de clase, cuenta de ejecución y procedencia. Las 60 000 parcelas por semilla se conservaron y el gate rederiva que los valores científicos coinciden con el testigo</td><td><code data-author="Javier Rebull">e06bc70</code> · <code data-author="Javier Rebull">dcb7fff</code></td></tr>
+      <tr><td><b>US-161 / US-144</b></td><td>Resultado integrado</td><td>Quince afirmaciones sobreviven, ocho cuentas se acotan y una se retira. La ausencia de dominancia se conserva; la afirmación de que ninguna partición espacial era elegible falla en las diez reruns y sale del artículo. El PDF mantiene veinte páginas y el paquete anónimo reconstruye sus dieciocho entradas byte a byte</td><td><code data-author="Javier Rebull">05b69c8</code></td></tr>
+      <tr><td><b>US-156</b></td><td>Estado rederivado</td><td>El manifiesto pasa a 66 artefactos empíricos y 14 productores. El estado ejecutable vuelve a derivarse y permanece en cuatro de siete criterios: cerrar US-161 no autoriza el envío ni convierte la robustez posentrenamiento en robustez a semillas de entrenamiento desconocidas</td><td><code data-author="Javier Rebull">bf5329b</code> · <code data-author="Javier Rebull">037f463</code> · <code data-author="Javier Rebull">9f1c79c</code></td></tr>
+      </tbody></table></div>
+    </details>
+
     <details class="history-day" open>
     <summary class="dia" data-date="2026-09-14"><time datetime="2026-09-14">14 sep</time><strong>US-162 cierra y US-161 separa sensibilidad reproducible de semillas desconocidas</strong></summary>
     <div class="scroll">
@@ -1690,14 +1704,14 @@
       id:"EPIC 26", name:"El campo de tiro: cada prueba mata un ataque", status:"wip",
       goal:"Un revisor estricto de MICAI no va a discutir el mapeo de cultivos: va a buscar el punto donde el resultado se cae. Esta épica es el inventario de esos puntos, cada uno convertido en un experimento que se corre ANTES de escribir. Lo que sobreviva va al artículo; lo que no, cambia la afirmación. Con veinte páginas hay sitio para una sección de robustez de verdad y no para una frase de cortesía.",
       us:[
-        {id:"US-161", t:"Sensibilidad a la semilla y al submuestreo", sp:5, st:"wip",
+        {id:"US-161", t:"Sensibilidad a la semilla y al submuestreo", sp:5, st:"ok",
          role:"«Todo su artículo corre con la semilla 42 y un submuestreo que eligieron ustedes.» La respuesta debe medir solo la aleatoriedad reconstruible y nombrar la que la procedencia no permite medir.",
          ac:["CONTRATO CONGELADO Y SELLADO: seed-sensitivity-v1.json deriva diez semillas por SHA-256 de US-161 e índice. No se elige una semilla favorable ni se cambia la rejilla después de ejecutar",
              "PASTIS-R ACOTADO: las fuentes de identidad no registran la semilla de entrenamiento de los cinco modelos profundos. Sus posteriores quedan fijos; se repiten la partición espacial por parches y el bootstrap, sin reclamar robustez del entrenamiento",
              "SIN REENTRENAMIENTO RETROSPECTIVO: entrenar cinco modelos de nuevo después de observar el atlas sería otro estudio y no forma parte de los criterios congelados del artículo. Reabrirlo exige una enmienda prospectiva e identidades nuevas",
              "BREIZHCROPS CORREGIDO: el histórico no fue estratificado ni proporcional; fue muestreo aleatorio simple sin reemplazo. Las diez corridas repetirán muestra regional, partición interna, tres ajustes clásicos y acciones posteriores",
-             "CUENTA CERRADA: cinco salidas predeclaradas publicarán cada corrida, soporte por clase, estabilidad de afirmaciones y estabilidad de ganadores sobre la rejilla. Las cuentas de rejilla no son volumen del símplex",
-             "REGLA DE SALIDA: si una conclusión cambia dentro de las diez semillas, se retira o se acota. El gate forma parte de make check; el runner reanudable está fusionado en PR #104 y la ejecución prospectiva está en curso. Las cinco salidas siguen ausentes hasta completar y validar las diez particiones"],
+             "CUENTA CERRADA Y SELLADA: las cinco salidas contienen las diez corridas completas, soporte por clase, 240 filas de estabilidad de afirmaciones y 6 600 puntos de rejilla. Quince afirmaciones son estables, ocho se acotan y una se retira",
+             "REGLA EJERCIDA: la ausencia de dominancia y los hallazgos cualitativos sobreviven. Las cuentas del atlas y de BreizhCrops se publican con sus rangos; «ninguna partición espacial seleccionada» se retira porque falla en las diez reruns. No se publica una partición sustituta sin su perfil por semilla"],
          out:"docs/paper/seed-sensitivity-v1.json; docs/paper/sensibilidad-semillas.md; reports/micai2027/robustez/semillas/", dep:"US-129"},
         {id:"US-162", t:"Calibración de las posteriores", sp:5, st:"ok",
          role:"«Su rechazo por confianza y su predicción conforme suponen posteriores calibradas, y no han enseñado ni un diagrama de fiabilidad.» Es un ataque letal contra dos de los cuatro mecanismos.",
@@ -1918,21 +1932,23 @@
   var historyCommitCount = 0;
   Array.prototype.forEach.call(historyRows, function(row){
     var date = row.parentNode.getAttribute("data-date");
-    var evidence = row.querySelector("td:last-child code[data-author]");
-    if(!date || !evidence) return;
-    var commit = evidence.textContent.trim();
-    if(!/^[0-9a-f]{7,40}$/.test(commit) || seenHistoryCommits[commit]) return;
-    seenHistoryCommits[commit] = true;
-    historyCommitCount += 1;
-    var author = evidence.getAttribute("data-author");
+    var evidence = row.querySelectorAll("td:last-child code[data-author]");
+    if(!date || !evidence.length) return;
     var kind = row.children[1].textContent.trim();
-    historyByDate[date] = (historyByDate[date] || 0) + 1;
-    if(!historyByDateAndAuthor[date]) historyByDateAndAuthor[date] = {};
-    historyByDateAndAuthor[date][author] =
-      (historyByDateAndAuthor[date][author] || 0) + 1;
-    if(!historyByAuthor[author]) historyByAuthor[author] = {total:0, kinds:{}};
-    historyByAuthor[author].total += 1;
-    historyByAuthor[author].kinds[kind] = (historyByAuthor[author].kinds[kind] || 0) + 1;
+    Array.prototype.forEach.call(evidence, function(commitNode){
+      var commit = commitNode.textContent.trim();
+      if(!/^[0-9a-f]{7,40}$/.test(commit) || seenHistoryCommits[commit]) return;
+      seenHistoryCommits[commit] = true;
+      historyCommitCount += 1;
+      var author = commitNode.getAttribute("data-author");
+      historyByDate[date] = (historyByDate[date] || 0) + 1;
+      if(!historyByDateAndAuthor[date]) historyByDateAndAuthor[date] = {};
+      historyByDateAndAuthor[date][author] =
+        (historyByDateAndAuthor[date][author] || 0) + 1;
+      if(!historyByAuthor[author]) historyByAuthor[author] = {total:0, kinds:{}};
+      historyByAuthor[author].total += 1;
+      historyByAuthor[author].kinds[kind] = (historyByAuthor[author].kinds[kind] || 0) + 1;
+    });
   });
 
   var historyDates = Object.keys(historyByDate).sort();
