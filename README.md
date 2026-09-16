@@ -4,9 +4,9 @@ Sitio estático con el estado del artículo: qué es el proyecto, en qué punto 
 desglosado por épicas e historias de usuario, los hallazgos vigentes y el camino de
 continuación.
 
-Vive aparte del repositorio del sistema
-([`jrebull/agrosat-copilotv2`](https://github.com/jrebull/agrosat-copilotv2)) para que
-publicarlo no arrastre 68 GB de datos ni exponga rutas internas.
+Vive dentro de [`site/`](./) en el mismo repositorio que el artículo, sus artefactos y sus
+controles. Netlify publica únicamente este subdirectorio: los datos y las rutas internas del
+monorepo no forman parte del despliegue.
 
 ## Qué hay
 
@@ -14,7 +14,7 @@ publicarlo no arrastre 68 GB de datos ni exponga rutas internas.
 index.html        resumen, estado y hallazgos, con pestañas
 plan.html         15 épicas y 89 historias de usuario con criterios de aceptación
 assets/style.css  la hoja de estilo, compartida por las dos páginas
-netlify.toml      configuración de despliegue y cabeceras
+../netlify.toml   configuración de despliegue y cabeceras desde la raíz del monorepo
 _headers          las mismas cabeceras, por si se despliega sin leer el toml
 robots.txt        prohibición de rastreo
 ```
@@ -26,10 +26,10 @@ dos fuentes de Google.
 
 **Desde la interfaz**, que es lo más rápido:
 
-1. Sube este repositorio a GitHub.
-2. En Netlify, *Add new site → Import an existing project* y elige el repositorio.
-3. Deja el comando de compilación **vacío** y el directorio de publicación en `.`
-   (el `netlify.toml` ya lo dice, así que basta con no contradecirlo).
+1. Sube el monorepo `jrebull/agrosat-copilotv2` a GitHub.
+2. En Netlify, *Add new site → Import an existing project* y elige ese repositorio.
+3. Deja el comando de compilación **vacío** y el directorio de publicación en `site`
+   (el `netlify.toml` de la raíz ya lo declara).
 4. *Deploy*.
 
 **Desde la terminal**, si prefieres:
@@ -37,8 +37,8 @@ dos fuentes de Google.
 ```bash
 npm install -g netlify-cli
 netlify login
-netlify init          # crea el sitio y lo enlaza a este repositorio
-netlify deploy --prod --dir .
+netlify init          # ejecutado desde la raíz del monorepo
+netlify deploy --prod --dir site
 ```
 
 Cada `git push` a la rama por defecto vuelve a desplegar.
