@@ -368,7 +368,7 @@
     <div class="colophon plan-colophon">
       <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
       <span><b>Total</b> <span id="total-sp">—</span> puntos de historia</span>
-      <span><b>Actualizado</b> 16 de septiembre de 2026: US-128 cerrada sobre la superficie completa y sin alterar el régimen exploratorio</span>
+      <span><b>Actualizado</b> 16 de septiembre de 2026: US-166 cerrada sin fabricar una inyección de ruido no identificada</span>
     </div>
   </div>
 </header>
@@ -584,7 +584,7 @@
 
     <div class="history-log">
     <details class="history-day" open>
-    <summary class="dia" data-date="2026-09-16"><time datetime="2026-09-16">16 sep</time><strong>US-163 mide la población complete-case y retiene la comparación</strong></summary>
+    <summary class="dia" data-date="2026-09-16"><time datetime="2026-09-16">16 sep</time><strong>US-163 mide la población complete-case y US-166 cierra sin inventar ruido</strong></summary>
     <div class="scroll">
             <table>
               <colgroup><col class="c-us"><col class="c-tipo"><col class="c-que"><col class="c-ev"></colgroup>
@@ -598,6 +598,7 @@
       <tr><td><b>US-169</b></td><td>Curva completa cerrada sobre Δ⁵</td><td>La historia asumía un eje escalar y un punto preregistrado que el pivote retiró. El cierre vigente prohíbe elegir ese punto y comprueba la rejilla completa: veinte secciones, sesenta y seis puntos, cinco predictores y sus diez reejecuciones por semilla. El manuscrito publica el rango completo y declara que la sección visible fue elegida después de materializar el atlas</td><td><code data-author="Javier Rebull">79d6d6b</code></td></tr>
       <tr><td><b>US-126</b></td><td>Simetría del punto de operación cerrada</td><td>El defecto de 0,00127 se conserva como diagnóstico del módulo escalar retirado, no como resultado actual. En el flujo vigente el ajuste solo recibe entrenamiento y validación, la aplicación no recibe etiquetas, una identidad reutilizada falla y las veintidós filas de los paquetes de seis y siete brazos declaran que no hubo reigualación en evaluación</td><td><code data-author="Javier Rebull">ab59b6e</code></td></tr>
       <tr><td><b>US-128</b></td><td>Multiplicidad ejecutada y cerrada</td><td>La familia primaria conserva las noventa coordenadas de los quince pares en cada uno de los once miembros: 990 filas. PASTIS-R aporta 75 órdenes parciales —71 incomparables y 4 indeterminados—; las 540 coordenadas de BreizhCrops con un solo clúster permanecen visibles y sin inferencia. Ciento ocho pruebas dirigidas atacan omisiones, unidades mezcladas, ceros no estructurales y familias reducidas</td><td><code data-author="Javier Rebull">4918f2a</code></td></tr>
+      <tr><td><b>US-166</b></td><td>Robustez no estimable cerrada</td><td>Las veintidós filas de H2 fueron retenidas antes de producir un contraste y ninguna fuente verificada identifica una matriz de transición por clase para los dos bancos. No se convierte la precisión agregada superior a 98 % de PASTIS ni el 91,76 % de otro LPIS y otra nomenclatura en un proceso francés de corrupción. El contrato prohíbe crear salidas o publicar un umbral y enumera cuatro condiciones prospectivas para reabrir la historia; el sitio publica 59 de 59 controles en verde</td><td><code data-author="Javier Rebull">95352f0</code> · <code data-author="Javier Rebull">ef2a758</code> · <code data-author="Javier Rebull">1c04c66</code></td></tr>
       </tbody></table></div>
     </details>
 
@@ -1765,12 +1766,14 @@
              "NO ESTIMABLE sin un banco multianual admitido: no se publica una degradación temporal ni se sustituye con una comparación entre sitios",
              "HECHO: temporal-transfer-v1.json y transferencia-temporal.md declaran la limitación, la condición verificable para levantarla y tres afirmaciones prohibidas; temporal-transfer-check corre en CI"],
          out:"docs/paper/temporal-transfer-v1.json", dep:"US-136"},
-        {id:"US-166", t:"Robustez al ruido de etiqueta", sp:3, st:"idle",
-         role:"«Las declaraciones de cultivo del agricultor tienen error conocido. Su disparidad puede ser ruido de etiqueta concentrado en las clases raras.»",
-         ac:["Inyección de ruido de etiqueta a tasas plausibles documentadas en la literatura, con más peso en las clases confundibles",
-             "Se reporta a qué tasa de ruido deja de sostenerse la disparidad",
-             "Se contrasta con las tasas de error reales que reportan los sistemas de declaración parcelaria"],
-         out:"reports/paper_micai/robustez/ruido/", dep:"US-134"},
+        {id:"US-166", t:"Robustez al ruido de etiqueta", sp:3, st:"ok",
+         role:"«¿A qué nivel de ruido deja de sostenerse la disparidad?» La pregunta no tiene umbral estimable: H2 fue retenida antes del contraste y las fuentes no identifican una transición de etiquetas por clase y banco.",
+         ac:["CERRADA SIN INYECCIÓN. Las veintidós filas de H2 están retiradas antes del contraste —diez por clase ausente y doce por muy pocos bloques—; no existe una disparidad de referencia cuya desaparición pueda estimarse",
+             "EVIDENCIA ACOTADA. PASTIS informa una estimación agregada superior a 98 % sin tamaño muestral ni matriz de transición; BreizhCrops documenta el origen declarativo sin tasa; el 91,76 % sobre 9 635 puntos pertenece a otro país y otra nomenclatura; la fuente oficial del RPG tampoco publica una tasa",
+             "REGLA EJECUTABLE. label-noise-check exige el estado no estimable, las cuatro fuentes y sus límites, rechaza cualquier fichero bajo reports/micai2027/robustez/ruido y prohíbe convertir la ausencia en explicación causal o umbral",
+             "REAPERTURA PROSPECTIVA. Harían falta una H2 estimable sin perturbación, tasas por banco, una transición por clase o regla de corrupción fijada de antemano, y unidad, repeticiones, semillas y familia simultánea congeladas antes de ejecutar",
+             "CUSTODIA. label-noise-v1.json está SELLADO; cada cantidad no reportada lleva su motivo y el inventario inferencial la distingue de un cero"],
+         out:"docs/paper/label-noise-v1.json; docs/paper/ruido-etiqueta.md", dep:"US-134"},
         {id:"US-167", t:"Sensibilidad del bloqueo espacial", sp:3, st:"ok",
          role:"«Su colchón de un kilómetro es arbitrario y sus bloques pueden filtrar.» La respuesta es una rejilla exploratoria completa y predeclarada, no la selección posterior de una configuración favorable.",
          ac:["CERRADA: 126 celdas cruzan seis colchones, tres resoluciones H3 y los siete valores de k congelados por US-171; no se escoge una celda después de ver la salida",
