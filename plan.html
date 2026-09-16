@@ -368,7 +368,7 @@
     <div class="colophon plan-colophon">
       <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
       <span><b>Total</b> <span id="total-sp">—</span> puntos de historia</span>
-      <span><b>Actualizado</b> 16 de septiembre de 2026: US-123 integra el cuaderno en el monorepo; falta reapuntar Netlify</span>
+      <span><b>Actualizado</b> 16 de septiembre de 2026: ADR-014 adoptado; US-123 aún espera reapuntar Netlify</span>
     </div>
   </div>
 </header>
@@ -584,7 +584,7 @@
 
     <div class="history-log">
     <details class="history-day" open>
-    <summary class="dia" data-date="2026-09-16"><time datetime="2026-09-16">16 sep</time><strong>US-158 recupera el insumo verificable; US-123 y US-122 cierran fronteras de publicación y memoria</strong></summary>
+    <summary class="dia" data-date="2026-09-16"><time datetime="2026-09-16">16 sep</time><strong>US-121 adopta el rumbo editorial; US-148 publica cuatro copias de revisión y US-158 recupera el insumo verificable</strong></summary>
     <div class="scroll">
             <table>
               <colgroup><col class="c-us"><col class="c-tipo"><col class="c-que"><col class="c-ev"></colgroup>
@@ -604,6 +604,8 @@
       <tr><td><b>US-166</b></td><td>Robustez no estimable cerrada</td><td>Las veintidós filas de H2 fueron retenidas antes de producir un contraste y ninguna fuente verificada identifica una matriz de transición por clase para los dos bancos. No se convierte la precisión agregada superior a 98 % de PASTIS ni el 91,76 % de otro LPIS y otra nomenclatura en un proceso francés de corrupción. El contrato prohíbe crear salidas o publicar un umbral y enumera cuatro condiciones prospectivas para reabrir la historia; el sitio publica 59 de 59 controles en verde</td><td><code data-author="Javier Rebull">95352f0</code> · <code data-author="Javier Rebull">ef2a758</code> · <code data-author="Javier Rebull">1c04c66</code></td></tr>
       <tr><td><b>US-148</b></td><td>Vigilancia editorial ejecutable</td><td>La convocatoria de artículos MICAI 2027 todavía no existe en las páginas oficiales consultadas. El contrato registra las cuatro observaciones, distingue el llamado para sede del llamado para artículos, prohíbe heredar de 2026 el límite de páginas o las declaraciones y fija la próxima revisión para el 23 de septiembre. Autoría, ORCID y bloque camera-ready quedan cruzados y sellados; la divulgación exacta de IA y las confirmaciones humanas siguen pendientes, por lo que el envío permanece no autorizado</td><td><code data-author="Javier Rebull">f267bbf</code> · <code data-author="Javier Rebull">88771ee</code> · <code data-author="Javier Rebull">d73ca85</code></td></tr>
       <tr><td><b>US-123</b></td><td>Migración local verificable</td><td>El cuaderno público entra como <code>site/</code> al mismo repositorio que el manuscrito, los artefactos y sus controles. Los cinco consumidores dejan de buscar un clon hermano; Netlify publica únicamente ese subdirectorio; las revisiones externas permanecen versionadas y las dos raíces compartidas del borrador retirado solo pueden seguir <code>OBSOLETO</code>. El contrato está sellado y 61 de 61 controles pasan. La historia permanece en curso porque todavía falta confirmar que el sitio vivo construye este monorepo y, después, archivar el repositorio legado</td><td><code data-author="Javier Rebull">d6b746a</code> · <code data-author="Javier Rebull">2ea954f</code> · <code data-author="Javier Rebull">484f111</code></td></tr>
+      <tr><td><b>US-121</b></td><td>Adopción editorial</td><td>ADR-014 queda adoptado como decisión del proyecto sin fabricar firmas personales: MICAI 2027 es la única sede; los manuscritos anteriores quedan archivados; seis brazos forman la familia primaria y Ha permanece diagnóstico; no se afirma transporte, preferencia atribuida ni ganador universal. El criterio de no envío y su punto del 24 de septiembre se aceptan sin alterar sus siete condiciones</td><td><code data-author="Javier Rebull">a2a560e</code></td></tr>
+      <tr><td><b>US-121 / US-148</b></td><td>Autoría y copias de revisión</td><td>Javier A. Rebull-Saucedo pasa a primer autor y autor de correspondencia por su contribución sustantiva al artículo; Arthur Jafed Zizumbo-Velasco queda segundo. El sitio ofrece cuatro copias del mismo borrador: anónima e identificada en inglés, y sus traducciones de cortesía en español. El inglés sigue siendo normativo. Las dos copias identificadas son temporales y constituyen un bloqueo ejecutable: deben retirarse antes de cualquier envío con doble ciego</td><td><code data-author="Javier Rebull">5449a82</code> · <code data-author="Javier Rebull">5916fa6</code></td></tr>
       </tbody></table></div>
     </details>
 
@@ -1382,15 +1384,17 @@
              "GATE EJECUTABLE. model-identity-check cruza por AST el registro y el consumidor, verifica el puntero DVC y, si está materializado, manifiesto, nombres, columnas y hashes. Cinco pruebas negativas cubren alias duplicado, ruta divergente, alias dentro del parquet y folds inventados",
              "INTEGRADO en PR #20 tras seis jobs de CI verdes. No cambia el panel inferencial congelado y no genera ningún resultado empírico"],
          out:"docs/paper/model-identities-v1.json; docs/paper/identidad-modelos.md; ml/eval/oof_new32.dvc; make model-identity-check", dep:"US-118"},
-        {id:"US-121", t:"ADR-014: alcance, modelo y destino", sp:3, st:"wip",
-         role:"Como equipo que cambia de tesis por tercera vez, quiero que el cambio quede firmado, para que dentro de seis meses nadie reconstruya el ángulo viejo de memoria.",
+        {id:"US-121", t:"ADR-014: alcance, modelo y destino", sp:3, st:"ok",
+         role:"Como equipo que cambia de tesis por tercera vez, quiero que el cambio quede adoptado y auditable, para que dentro de seis meses nadie reconstruya el ángulo viejo de memoria.",
          ac:["Ángulo, contribuciones y lo que baja de rango, con la evidencia que lo obligó",
              "Sede única: MICAI 2027, hipótesis de planificación de 20 páginas, a reverificar con la convocatoria. Sin artículo de revista en paralelo",
-             "Destino del manuscrito heredado de 24 páginas y del borrador retirado de 15: informe técnico interno o preprint, no en limbo",
+             "Destino cerrado: el manuscrito heredado de 24 páginas y el borrador retirado de 15 quedan como archivo interno, nunca como autoridades del artículo nuevo. Solo se reutiliza material vuelto a verificar bajo los contratos de MICAI 2027",
              "Qué REGLA DE SELECCIÓN o PANEL PREDECLARADO usa el artículo, no qué predictor gana: la pregunta anterior presuponía que tiene que existir un ganador, y una pregunta así se contesta con un ganador. No se declara ninguno. Se reporta el panel elegible predeclarado —al menos tres predictores de familias distintas por banco, como exige US-139— y el predictor se trata como factor de sensibilidad. Solo podrá seleccionarse uno mediante selección anidada independiente de la evaluación",
-             "Fecha de corte: si no está firmado en dos semanas, se ejecuta el plan con la decisión por defecto documentada. FIJADA: 18 de septiembre de 2026, y cada decisión del ADR lleva marcada su versión [POR DEFECTO] para que ejecutar sin firma no exija interpretar nada",
-             "ESCRITO Y EN CURSO: el documento cumple los cinco criterios y está en docs/decisions/ADR-014-micai-2027.md. Queda en curso y NO terminado porque le faltan las dos firmas, que es lo único que un repositorio no puede producir. Pasa a hecha cuando se firme, o en la fecha de corte anotando ahí la fecha en que las decisiones por defecto empezaron a valer",
-             "NO se declara un predictor ganador, y el motivo se firma: el ranking que lo elegiría se calcula sobre las mismas etiquetas con las que después se evalúa. Se reporta el PANEL elegible predeclarado —al menos tres predictores de familias distintas por banco— y el predictor se trata como factor de sensibilidad. Solo podrá seleccionarse uno mediante selección anidada independiente de la evaluación. El borrador decía «reporta los dos», que contradecía a US-139: dos predictores del mismo linaje no son un panel, son la misma comparación con el mismo sesgo dos veces"],
+             "ADOPTADO el 16 de septiembre, antes de la fecha de corte. Las confirmaciones personales de Arthur y Javier siguen registradas como pendientes y no se falsifican; la adopción del proyecto vuelve operativas las decisiones sin convertir esas confirmaciones en candado técnico",
+             "Sin entrevistas ni elicitación pendientes: el análisis recorre Δ⁵ completo y no atribuye a productores, asesores, inspectores o aseguradoras una preferencia que no se midió. Se conservan la atribución de fuentes, el orden de autores y la divulgación factual de asistencia automatizada",
+             "Familia decidida por evidencia: seis brazos primarios para el atlas y la inferencia; ha_class_selective queda como séptimo diagnóstico porque su familia ampliada no alcanza la admisión congelada. No se declara un predictor ni un mecanismo ganador",
+             "Transporte acotado: el método puede reutilizarse, pero los resultados son condicionales a PASTIS-R y BreizhCrops. Sin banco confirmatorio admisible no se generaliza a otra geografía, campaña, taxonomía ni operación",
+             "Criterio de no envío y punto de decisión ACEPTADOS sin mover la regla: cuatro de siete condiciones están cumplidas y submission_authorized=false. Si el 24 de septiembre sigue así, la salida es informe técnico y depósito citable, no un envío MICAI forzado"],
          out:"docs/decisions/ADR-014-micai-2027.md", dep:"—"},
         {id:"US-122", t:"Consentimiento, crédito y divulgación de IA", sp:3, st:"wip",
          role:"Como autor que va a nombrar a terceros y que usó agentes para auditar, quiero pedir permiso y declarar la asistencia antes de escribir, porque después del camera-ready no se corrige.",
@@ -1948,11 +1952,12 @@
          out:"paper/micai2027/; docs/licenses/", dep:"US-143"},
         {id:"US-148", t:"Metadatos, camera-ready y convocatoria", sp:3, st:"wip",
          role:"Como autor de correspondencia, quiero que el nombre coincida carácter a carácter en todas partes.",
-         ac:["EN CURSO. Autoría, orden, ORCID, afiliación y correos cruzados entre contrato, bloque camera-ready y CITATION.cff; la forma con guion queda sellada",
+         ac:["EN CURSO. Javier A. Rebull-Saucedo figura como primer autor y autor de correspondencia; Arthur Jafed Zizumbo-Velasco como segundo. Autoría, orden, ORCID, afiliación y correos están cruzados entre contrato, bloque camera-ready y CITATION.cff; la forma con guion queda sellada",
              "La declaración de datos y código está preparada. La divulgación de IA conserva pendientes las herramientas, versiones y tareas exactas; conflictos, financiación y agradecimientos esperan confirmación humana",
              "A 16 de septiembre no existe convocatoria de artículos MICAI 2027: /2027 no publica edición y sus rutas de autores y llamados redirigen a 2026. No se heredan límite de páginas ni requisitos editoriales",
-             "Vigilancia semanal ejecutable: próxima revisión el 23 de septiembre. El gate caduca si no se actualiza y mantiene submission_ready=false mientras falte la convocatoria o una declaración"],
-         out:"docs/paper/micai2027-submission-v1.json; docs/paper/metadatos-autoria.md; paper/micai2027/authors.tex", dep:"US-144"}
+             "Vigilancia semanal ejecutable: próxima revisión el 23 de septiembre. El gate caduca si no se actualiza y mantiene submission_ready=false mientras falte la convocatoria o una declaración",
+             "REVISIÓN PÚBLICA TEMPORAL. La pestaña En vivo publica inglés anónimo e identificado, español anónimo e identificado. El inglés es normativo y las traducciones son de cortesía. Las dos copias identificadas deben retirarse antes de una entrega con doble ciego; noindex no sustituye esa retirada"],
+         out:"docs/paper/micai2027-submission-v1.json; docs/paper/metadatos-autoria.md; paper/camera-ready/micai2027-authors.tex; site/paper/", dep:"US-144"}
       ]
     }
   ];
