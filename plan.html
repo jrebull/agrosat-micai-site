@@ -584,12 +584,13 @@
 
     <div class="history-log">
     <details class="history-day" open>
-    <summary class="dia" data-date="2026-09-16"><time datetime="2026-09-16">16 sep</time><strong>US-123 integra la fuente pública; US-148 vigila la convocatoria sin heredar reglas</strong></summary>
+    <summary class="dia" data-date="2026-09-16"><time datetime="2026-09-16">16 sep</time><strong>US-123 integra la fuente pública; US-122 separa piloto válido de memoria autorizada</strong></summary>
     <div class="scroll">
             <table>
               <colgroup><col class="c-us"><col class="c-tipo"><col class="c-que"><col class="c-ev"></colgroup>
       <thead><tr><th>US</th><th>Tipo</th><th>Qué se hizo</th><th>Evidencia</th></tr></thead>
       <tbody data-date="2026-09-16">
+      <tr><td><b>US-122</b></td><td>Piloto semántico</td><td>El esquema v1 enumera decisión, causa raíz, consecuencia, puntero Git y autor técnico; la prosa rechaza cifras, geometrías, lenguaje empírico y nombres conocidos. Un lote enteramente sintético fija el digest y conserva dos espacios humanos pendientes. El gate pasa informando <b>0/2 firmas · NO COMPARTIBLE</b>: preparación no equivale a autorización. También se retiró de la plantilla de PR la orden contradictoria de versionar <code>.engram/</code></td><td><code data-author="Javier Rebull">684955f</code></td></tr>
       <tr><td><b>US-163</b></td><td>Rejilla completa</td><td>Las diez semillas prospectivas de US-161 se ejecutan sobre las dos regiones: veinte cuentas de población y ciento ochenta filas de soporte, sin elegir semillas ni reducir el catálogo. Los tres CSV científicos conservan exactamente los SHA-256 del primer ensamblado completo</td><td><code data-author="Javier Rebull">abe1efd</code></td></tr>
       <tr><td><b>US-163</b></td><td>Resultado no estimable</td><td>Cero de veinte celdas semilla–estrato conservan las nueve clases. La clase 4 no llega a la muestra en catorce celdas; en las otras seis entra con una o dos parcelas y el filtro complete-case la deja en cero. La clase 6 tampoco se muestrea en cinco, se elimina en ocho y sobrevive en siete. Por la regla previa no se ajusta ningún modelo ni se compara ningún mecanismo</td><td><code data-author="Javier Rebull">abe1efd</code> · <code data-author="Javier Rebull">3729b18</code></td></tr>
       <tr><td><b>US-163</b></td><td>Publicación corregida</td><td>El primer JSON histórico anidaba dos tablas y el protocolo lo rechazó antes del sello. Una enmienda pos-ejecución fija los hashes testigo y permite solo aplanar ese registro y separar la revisión de cómputo de la de publicación. Protocolo y depósito cierran con 71 artefactos empíricos, 94 totales y 15 productores</td><td><code data-author="Javier Rebull">8c87ddb</code> · <code data-author="Javier Rebull">531df27</code> · <code data-author="Javier Rebull">ee8cabb</code></td></tr>
@@ -1396,9 +1397,10 @@
              "El exportador es solo un prefiltro local: escribe fuera del repositorio, verifica esquema, conteo y digest contra el manifiesto, y no publica ni importa memoria",
              "El harness enumera lo único permitido bajo docs/engram/ mientras ADR-015 siga propuesta; una prueba negativa demuestra que renombrar el lote no evita el fallo",
              "CONTROL POR BYTES: archive-safety-check inspecciona todos los blobs preparados en el índice, sin depender de la carpeta ni del nombre. Rechaza extensiones y firmas de contenedores comprimidos; un gzip renombrado como .dat y oculto tras otros bytes en el árbol de trabajo falla. Los nueve contenedores históricos solo pasan con ruta y SHA-256 exactos, y el gate bloqueante corre en CI y make check",
-             "PENDIENTE: política semántica para nombres, geometrías y resultados no publicados; dos aprobaciones sobre bytes idénticos; transporte, custodio, acceso, retención y retirada; piloto sintético",
+             "PILOTO EJECUTABLE: el esquema semántico v1 admite solo decisión, causa raíz, consecuencia, puntero Git y autor técnico. Rechaza cifras, geometrías, lenguaje empírico y nombres conocidos. El lote es enteramente sintético, su digest se re-deriva y el gate informa 0/2 firmas y NO COMPARTIBLE",
+             "PENDIENTE HUMANO: dos aprobaciones sobre bytes idénticos; decisión de transporte, custodio, lectores, retención y retirada. Ninguna de ellas se infiere de que el gate esté verde",
              "PENDIENTE DE CONTENCIÓN EXTERNA: purga por Support de refs/pull/{3,4,5} antes de volver a público. Las refs de las PR #6 y #7 divergen del commit sensible y quedan fuera del caso"],
-         out:"docs/paper/metadatos-autoria.md; docs/us-work/us-122.md; docs/decisions/ADR-015-engram-memoria-compartida.md", dep:"US-121"},
+         out:"docs/paper/metadatos-autoria.md; docs/us-work/us-122.md; docs/decisions/ADR-015-engram-memoria-compartida.md; docs/decisions/engram-sharing-policy-v1.json; docs/decisions/engram-synthetic-pilot-v1.json", dep:"US-121"},
         {id:"US-123", t:"Fuente única de verdad", sp:3, st:"wip",
          role:"Como revisor externo, quiero que el repositorio que el artículo cita sea el mismo donde viven sus cifras, para poder comprobarlas sin pedir acceso a otro sitio.",
          ac:["EN CURSO. Artefactos, controles y cuaderno ya viven en este monorepo; los consumidores usan site/ y netlify.toml publica solo ese subdirectorio",
