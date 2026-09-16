@@ -595,6 +595,7 @@
       <tr><td><b>US-163</b></td><td>Publicación corregida</td><td>El primer JSON histórico anidaba dos tablas y el protocolo lo rechazó antes del sello. Una enmienda pos-ejecución fija los hashes testigo y permite solo aplanar ese registro y separar la revisión de cómputo de la de publicación. Protocolo y depósito cierran con 71 artefactos empíricos, 94 totales y 15 productores</td><td><code data-author="Javier Rebull">8c87ddb</code> · <code data-author="Javier Rebull">531df27</code> · <code data-author="Javier Rebull">ee8cabb</code></td></tr>
       <tr><td><b>US-156 / US-163</b></td><td>Cuenta de no envío sincronizada</td><td>La incorporación de cinco artefactos eleva la cuenta con régimen y rol de 70/70 a 75/75. El estado se rederiva y resella sin cambiar el veredicto: cuatro de siete criterios cumplidos y envío todavía no autorizado</td><td><code data-author="Javier Rebull">98b6237</code> · <code data-author="Javier Rebull">242d44a</code></td></tr>
       <tr><td><b>US-170</b></td><td>Alcance de mecanismos cerrado</td><td>Los cuatro mecanismos quedan situados como puntos post-entrenamiento, no como cobertura exhaustiva. Cascadas, umbrales por clase y rechazo aprendido se excluyen con un motivo distinto y la región aprendida, adaptativa por clase y multietapa queda nombrada como no explorada. Un gate deriva los seis brazos del código y vigila las tres exclusiones en el manuscrito; la corrección posterior conserva la regla de coste del séptimo brazo</td><td><code data-author="Javier Rebull">d3e216f</code> · <code data-author="Javier Rebull">f12c34b</code></td></tr>
+      <tr><td><b>US-169</b></td><td>Curva completa cerrada sobre Δ⁵</td><td>La historia asumía un eje escalar y un punto preregistrado que el pivote retiró. El cierre vigente prohíbe elegir ese punto y comprueba la rejilla completa: veinte secciones, sesenta y seis puntos, cinco predictores y sus diez reejecuciones por semilla. El manuscrito publica el rango completo y declara que la sección visible fue elegida después de materializar el atlas</td><td><code data-author="Javier Rebull">79d6d6b</code></td></tr>
       </tbody></table></div>
     </details>
 
@@ -1781,12 +1782,13 @@
              "LÍMITE: H2 sigue retenida y todas las filas llevan primary_inference_allowed=false. La salida no declara significancia, ganador ni transporte",
              "CONTROL: veintiséis ataques cierran brazos, panel, estratos, catálogo, conteos, frecuencias, procedencia, inventario y bloque publicado; cinco salidas quedan SELLADO"],
          out:"reports/micai2027/robustez/tautologia/", dep:"US-134"},
-        {id:"US-169", t:"La curva completa, no un punto de operación", sp:3, st:"idle",
+        {id:"US-169", t:"La curva completa, no un punto de operación", sp:3, st:"ok",
          role:"«Han elegido el punto de operación que les conviene.» Ya nos pasó: publicamos el 88,3 % de un punto exploratorio junto a la frase «criterio preregistrado».",
-         ac:["Toda afirmación se acompaña de la curva completa sobre el eje de coste, no de un punto",
-             "El punto preregistrado se marca y se distingue visualmente del resto",
-             "Se publica el rango de la magnitud titular sobre toda la curva, no su valor máximo"],
-         out:"reports/paper_micai/robustez/curvas/", dep:"US-152"},
+         ac:["CERRADA SOBRE EL OBJETO VIGENTE. El AC original suponía una curva unidimensional; el pivote congeló un símplex de pérdidas Δ⁵ y prohíbe seleccionar una pérdida puntual. No se fabrica ni marca después de resultados un punto que el contrato dice que no existe",
+             "La curva completa son veinte secciones bidimensionales declaradas antes del atlas, con sesenta y seis puntos por sección y cinco predictores: 6 600 evaluaciones modelo–pérdida. El gate cierra cada punto histórico contra la misma rejilla de diez semillas",
+             "La única sección mostrada es la primera de la enumeración congelada y el manuscrito declara que su elección editorial fue posterior a los resultados. Las veinte permanecen en el artefacto estructurado",
+             "Los rangos de ganadores ciertos, indeterminados y cuentas por brazo se rederivan de los diez valores semilla; no se sustituye la curva por el máximo favorable. Diez pruebas, ocho negativas, fijan el cierre"],
+         out:"reports/micai2027/atlas/; reports/micai2027/robustez/semillas/lattice-winner-stability.csv; scripts/whole_loss_curve_check.py", dep:"US-152"},
         {id:"US-170", t:"Por qué estos cuatro mecanismos y no otros", sp:2, st:"ok",
          role:"«¿Por qué estos cuatro?» Sin respuesta, la elección parece de conveniencia.",
          ac:["CERRADA. Los cuatro mecanismos se sitúan como puntos post-entrenamiento del retículo de predictores con valores de conjunto; los dos criterios de catálogo son brazos del mismo mecanismo y la referencia no se cuenta como un quinto mecanismo",
