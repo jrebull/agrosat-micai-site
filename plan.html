@@ -594,6 +594,7 @@
       <tr><td><b>US-163</b></td><td>Resultado no estimable</td><td>Cero de veinte celdas semilla–estrato conservan las nueve clases. La clase 4 no llega a la muestra en catorce celdas; en las otras seis entra con una o dos parcelas y el filtro complete-case la deja en cero. La clase 6 tampoco se muestrea en cinco, se elimina en ocho y sobrevive en siete. Por la regla previa no se ajusta ningún modelo ni se compara ningún mecanismo</td><td><code data-author="Javier Rebull">abe1efd</code> · <code data-author="Javier Rebull">3729b18</code></td></tr>
       <tr><td><b>US-163</b></td><td>Publicación corregida</td><td>El primer JSON histórico anidaba dos tablas y el protocolo lo rechazó antes del sello. Una enmienda pos-ejecución fija los hashes testigo y permite solo aplanar ese registro y separar la revisión de cómputo de la de publicación. Protocolo y depósito cierran con 71 artefactos empíricos, 94 totales y 15 productores</td><td><code data-author="Javier Rebull">8c87ddb</code> · <code data-author="Javier Rebull">531df27</code> · <code data-author="Javier Rebull">ee8cabb</code></td></tr>
       <tr><td><b>US-156 / US-163</b></td><td>Cuenta de no envío sincronizada</td><td>La incorporación de cinco artefactos eleva la cuenta con régimen y rol de 70/70 a 75/75. El estado se rederiva y resella sin cambiar el veredicto: cuatro de siete criterios cumplidos y envío todavía no autorizado</td><td><code data-author="Javier Rebull">98b6237</code> · <code data-author="Javier Rebull">242d44a</code></td></tr>
+      <tr><td><b>US-170</b></td><td>Alcance de mecanismos cerrado</td><td>Los cuatro mecanismos quedan situados como puntos post-entrenamiento, no como cobertura exhaustiva. Cascadas, umbrales por clase y rechazo aprendido se excluyen con un motivo distinto y la región aprendida, adaptativa por clase y multietapa queda nombrada como no explorada. Un gate deriva los seis brazos del código y vigila las tres exclusiones en el manuscrito; la corrección posterior conserva la regla de coste del séptimo brazo</td><td><code data-author="Javier Rebull">d3e216f</code> · <code data-author="Javier Rebull">f12c34b</code></td></tr>
       </tbody></table></div>
     </details>
 
@@ -1786,12 +1787,13 @@
              "El punto preregistrado se marca y se distingue visualmente del resto",
              "Se publica el rango de la magnitud titular sobre toda la curva, no su valor máximo"],
          out:"reports/paper_micai/robustez/curvas/", dep:"US-152"},
-        {id:"US-170", t:"Por qué estos cuatro mecanismos y no otros", sp:2, st:"idle",
+        {id:"US-170", t:"Por qué estos cuatro mecanismos y no otros", sp:2, st:"ok",
          role:"«¿Por qué estos cuatro?» Sin respuesta, la elección parece de conveniencia.",
-         ac:["Los cuatro se sitúan como puntos del retículo de predictores con valores de conjunto, con lo que la elección deja de ser arbitraria. NO se afirma que cubran el espacio: son cuatro puntos de un retículo cuya región de mecanismos aprendidos queda explícitamente fuera de alcance por US-132",
-             "Se nombran los mecanismos que quedan fuera y por qué: cascada, umbral por clase, y rechazo aprendido",
-             "Se declara qué región del retículo NO se explora"],
-         out:"paper/micai2027/sections/", dep:"US-160"}
+         ac:["CERRADA. Los cuatro mecanismos se sitúan como puntos post-entrenamiento del retículo de predictores con valores de conjunto; los dos criterios de catálogo son brazos del mismo mecanismo y la referencia no se cuenta como un quinto mecanismo",
+             "NO se afirma que cubran el espacio. El manuscrito nombra tres familias adyacentes y la razón de excluir cada una: las cascadas cambian la ruta de información y cómputo; los umbrales por clase añaden parámetros de validación con soporte escaso; el rechazo aprendido cambia el predictor entrenado",
+             "La región de políticas aprendidas, adaptativas por clase y multietapa queda declarada como no explorada; excluirla es una decisión de diseño, no evidencia de inferioridad",
+             "mechanism-scope-check deriva del código los seis brazos, exige las tres exclusiones en método y trabajo relacionado, y rechaza tanto un séptimo brazo silencioso como cualquier afirmación de exhaustividad. Ocho pruebas, seis negativas, y el PDF anónimo de veinte páginas cierran la integración"],
+         out:"paper/micai2027/sections/04-mechanisms.tex; scripts/mechanism_scope_check.py", dep:"US-160"}
       ]
     },
     {
