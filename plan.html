@@ -368,7 +368,7 @@
     <div class="colophon plan-colophon">
       <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
       <span><b>Total</b> <span id="total-sp">—</span> puntos de historia</span>
-      <span><b>Actualizado</b> 16 de septiembre de 2026: US-148 vigila la convocatoria sin heredar reglas de 2026</span>
+      <span><b>Actualizado</b> 16 de septiembre de 2026: US-123 integra el cuaderno en el monorepo; falta reapuntar Netlify</span>
     </div>
   </div>
 </header>
@@ -584,7 +584,7 @@
 
     <div class="history-log">
     <details class="history-day" open>
-    <summary class="dia" data-date="2026-09-16"><time datetime="2026-09-16">16 sep</time><strong>US-148 abre la vigilancia editorial; US-163 y US-166 cierran sin fabricar resultados</strong></summary>
+    <summary class="dia" data-date="2026-09-16"><time datetime="2026-09-16">16 sep</time><strong>US-123 integra la fuente pública; US-148 vigila la convocatoria sin heredar reglas</strong></summary>
     <div class="scroll">
             <table>
               <colgroup><col class="c-us"><col class="c-tipo"><col class="c-que"><col class="c-ev"></colgroup>
@@ -600,6 +600,7 @@
       <tr><td><b>US-128</b></td><td>Multiplicidad ejecutada y cerrada</td><td>La familia primaria conserva las noventa coordenadas de los quince pares en cada uno de los once miembros: 990 filas. PASTIS-R aporta 75 órdenes parciales —71 incomparables y 4 indeterminados—; las 540 coordenadas de BreizhCrops con un solo clúster permanecen visibles y sin inferencia. Ciento ocho pruebas dirigidas atacan omisiones, unidades mezcladas, ceros no estructurales y familias reducidas</td><td><code data-author="Javier Rebull">4918f2a</code></td></tr>
       <tr><td><b>US-166</b></td><td>Robustez no estimable cerrada</td><td>Las veintidós filas de H2 fueron retenidas antes de producir un contraste y ninguna fuente verificada identifica una matriz de transición por clase para los dos bancos. No se convierte la precisión agregada superior a 98 % de PASTIS ni el 91,76 % de otro LPIS y otra nomenclatura en un proceso francés de corrupción. El contrato prohíbe crear salidas o publicar un umbral y enumera cuatro condiciones prospectivas para reabrir la historia; el sitio publica 59 de 59 controles en verde</td><td><code data-author="Javier Rebull">95352f0</code> · <code data-author="Javier Rebull">ef2a758</code> · <code data-author="Javier Rebull">1c04c66</code></td></tr>
       <tr><td><b>US-148</b></td><td>Vigilancia editorial ejecutable</td><td>La convocatoria de artículos MICAI 2027 todavía no existe en las páginas oficiales consultadas. El contrato registra las cuatro observaciones, distingue el llamado para sede del llamado para artículos, prohíbe heredar de 2026 el límite de páginas o las declaraciones y fija la próxima revisión para el 23 de septiembre. Autoría, ORCID y bloque camera-ready quedan cruzados y sellados; la divulgación exacta de IA y las confirmaciones humanas siguen pendientes, por lo que el envío permanece no autorizado</td><td><code data-author="Javier Rebull">f267bbf</code> · <code data-author="Javier Rebull">88771ee</code> · <code data-author="Javier Rebull">d73ca85</code></td></tr>
+      <tr><td><b>US-123</b></td><td>Migración local verificable</td><td>El cuaderno público entra como <code>site/</code> al mismo repositorio que el manuscrito, los artefactos y sus controles. Los cinco consumidores dejan de buscar un clon hermano; Netlify publica únicamente ese subdirectorio; las revisiones externas permanecen versionadas y las dos raíces compartidas del borrador retirado solo pueden seguir <code>OBSOLETO</code>. El contrato está sellado y 61 de 61 controles pasan. La historia permanece en curso porque todavía falta confirmar que el sitio vivo construye este monorepo y, después, archivar el repositorio legado</td><td><code data-author="Javier Rebull">d6b746a</code> · <code data-author="Javier Rebull">2ea954f</code> · <code data-author="Javier Rebull">484f111</code></td></tr>
       </tbody></table></div>
     </details>
 
@@ -1398,13 +1399,14 @@
              "PENDIENTE: política semántica para nombres, geometrías y resultados no publicados; dos aprobaciones sobre bytes idénticos; transporte, custodio, acceso, retención y retirada; piloto sintético",
              "PENDIENTE DE CONTENCIÓN EXTERNA: purga por Support de refs/pull/{3,4,5} antes de volver a público. Las refs de las PR #6 y #7 divergen del commit sensible y quedan fuera del caso"],
          out:"docs/paper/metadatos-autoria.md; docs/us-work/us-122.md; docs/decisions/ADR-015-engram-memoria-compartida.md", dep:"US-121"},
-        {id:"US-123", t:"Fuente única de verdad", sp:3, st:"idle",
+        {id:"US-123", t:"Fuente única de verdad", sp:3, st:"wip",
          role:"Como revisor externo, quiero que el repositorio que el artículo cita sea el mismo donde viven sus cifras, para poder comprobarlas sin pedir acceso a otro sitio.",
-         ac:["Artefactos, gate y cuaderno en un solo repositorio, y el sitio desplegado desde ahí",
-             "Ninguna cifra del artículo carece de fila SELLADO en el ledger",
-             "Las revisiones externas versionadas, no como adjuntos sueltos",
-             "Cada historia escribe un fichero propio dentro de su carpeta: hoy dos historias comparten reports/paper_micai/equidad/ y otras dos reports/paper_micai/decision/, y el ledger no puede distinguir una regeneración legítima de una sobrescritura"],
-         out:"monorepo; netlify.toml", dep:"US-121"}
+         ac:["EN CURSO. Artefactos, controles y cuaderno ya viven en este monorepo; los consumidores usan site/ y netlify.toml publica solo ese subdirectorio",
+             "PENDIENTE EXTERNO: confirmar en Netlify que agrosat2027.netlify.app construye jrebull/agrosat-copilotv2. Hasta entonces el contrato mantiene repoint_required=true y no concede el cierre",
+             "Ninguna cifra del artículo carece de fila SELLADO en el ledger; el contrato de migración también está sellado y las revisiones externas están versionadas",
+             "Las antiguas raíces compartidas reports/paper_micai/equidad/ y reports/paper_micai/decision/ no pertenecen al protocolo vigente y solo pueden conservar filas OBSOLETO. El gate rechaza cualquier salida nueva bajo ellas",
+             "Después del primer despliegue comprobado desde site/, archivar jrebull/agrosat-micai-site para que no queden dos autoridades escribibles"],
+         out:"site/; netlify.toml; docs/paper/source-of-truth-v1.json", dep:"US-121"}
       ]
     },
     {
