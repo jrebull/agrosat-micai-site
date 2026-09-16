@@ -584,12 +584,13 @@
 
     <div class="history-log">
     <details class="history-day" open>
-    <summary class="dia" data-date="2026-09-16"><time datetime="2026-09-16">16 sep</time><strong>US-123 integra la fuente pública; US-122 separa piloto válido de memoria autorizada</strong></summary>
+    <summary class="dia" data-date="2026-09-16"><time datetime="2026-09-16">16 sep</time><strong>US-158 recupera el insumo verificable; US-123 y US-122 cierran fronteras de publicación y memoria</strong></summary>
     <div class="scroll">
             <table>
               <colgroup><col class="c-us"><col class="c-tipo"><col class="c-que"><col class="c-ev"></colgroup>
       <thead><tr><th>US</th><th>Tipo</th><th>Qué se hizo</th><th>Evidencia</th></tr></thead>
       <tbody data-date="2026-09-16">
+      <tr><td><b>US-158</b></td><td>Frontera previa a GPU</td><td>El parquet perdido se reconstruye de forma determinista desde las 69 297 captions completas: 16 012 filas, dieciocho clases y seis clases bajo el tope que conservan todas sus filas. El nuevo blob DVC está en el remoto; el contrato fija fuente, orden, cuentas, comando de staging y aceptación histórica. El gate dice expresamente que esto no autoriza H100 ni acredita un checkpoint: la historia pasa a en curso, no a hecha</td><td><code data-author="Javier Rebull">c229617</code></td></tr>
       <tr><td><b>US-122</b></td><td>Piloto semántico</td><td>El esquema v1 enumera decisión, causa raíz, consecuencia, puntero Git y autor técnico; la prosa rechaza cifras, geometrías, lenguaje empírico y nombres conocidos. Un lote enteramente sintético fija el digest y conserva dos espacios humanos pendientes. El gate pasa informando <b>0/2 firmas · NO COMPARTIBLE</b>: preparación no equivale a autorización. También se retiró de la plantilla de PR la orden contradictoria de versionar <code>.engram/</code></td><td><code data-author="Javier Rebull">684955f</code></td></tr>
       <tr><td><b>US-163</b></td><td>Rejilla completa</td><td>Las diez semillas prospectivas de US-161 se ejecutan sobre las dos regiones: veinte cuentas de población y ciento ochenta filas de soporte, sin elegir semillas ni reducir el catálogo. Los tres CSV científicos conservan exactamente los SHA-256 del primer ensamblado completo</td><td><code data-author="Javier Rebull">abe1efd</code></td></tr>
       <tr><td><b>US-163</b></td><td>Resultado no estimable</td><td>Cero de veinte celdas semilla–estrato conservan las nueve clases. La clase 4 no llega a la muestra en catorce celdas; en las otras seis entra con una o dos parcelas y el filtro complete-case la deja en cero. La clase 6 tampoco se muestrea en cinco, se elimina en ocho y sobrevive en siete. Por la regla previa no se ajusta ningún modelo ni se compara ningún mecanismo</td><td><code data-author="Javier Rebull">abe1efd</code> · <code data-author="Javier Rebull">3729b18</code></td></tr>
@@ -1342,16 +1343,19 @@
              "train_folds, val_folds, n_timesteps y md5 del checkpoint en los parámetros de MLflow",
              "CERRADO 13-SEP: pérdida, panel y preregistro se comprueban juntos contra estados exactos, custodia vigente y cinco anclas de la frontera congelada. El alcance queda cerrado por las 31 rutas cuya celda de estado es OBSOLETO; una mención en prosa no cuenta, quitar una fila falla y resellar no redefine lo congelado. El gate corre en CI y en make check, informa la precondición y no autoriza ejecutar"],
          out:"ml/eval/oof/; docs/model_cards/; scripts/regeneration_preconditions_check.py; make oof-manifest-check; make regeneration-preconditions-check", dep:"—"},
-        {id:"US-158", t:"Recuperar lo recuperable (deuda del repositorio, NO del artículo)", sp:5, st:"idle",
+        {id:"US-158", t:"Recuperar lo recuperable (deuda del repositorio, NO del artículo)", sp:5, st:"wip",
          role:"Como equipo que dio por perdidos tres checkpoints, quiero saber cuál se regenera con receta verificable, porque producir uno que se PARECE al original no restaura la reproducibilidad: la simula.",
-         ac:["parcel/04cls se regenera. El parquet de captions perdido se reconstruye submuestreando mil filas por clase del versionado de 69 297, ordenando por (int(patch_id), parcel_id): da 16 012 filas, el tamaño que la documentación atribuye al perdido",
+         ac:["EN CURSO 16-SEP: el insumo de parcel/04cls ya se recuperó. El productor determinista submuestrea mil filas por clase del versionado de 69 297, ordenando por (int(patch_id), parcel_id), y materializa exactamente 16 012 filas en dieciocho clases. Dos ejecuciones dan el mismo MD5; el puntero y su único blob están en DVC remoto",
+             "CORRECCIÓN MEDIDA: no son solo dos las clases raras. Seis quedan bajo el tope y conservan todo su soporte —6, 9, 10, 13, 17 y 18—; el contrato publica las dieciocho cuentas y exige que sumen 16 012",
+             "FRONTERA EJECUTABLE: farslip-recovery-v1.json fija fuente, selección, comando completo, staging, hardware y criterio de promoción. make farslip-recovery-check cruza ambos punteros DVC y el CSV histórico; también falla si aparece un checkpoint mientras training.authorized siga en false",
+             "NO HECHO: no se lanzó H100 y no existe checkpoint recuperado. El CLI ahora admite --output-root para que una ejecución autorizada escriba primero en checkpoints/farslip/recovery/ y nunca sobrescriba la ruta canónica antes de cumplir el criterio",
              "Verificado antes de correr nada: ese conjunto da 1301 parcelas de evaluación con N=4 y 3200 con N=12, que es exactamente lo que registra parcel_sweep.csv",
              "Criterio de aceptación falsable: macro-F1 en 0,7025 ± 0,005 sobre exactamente 1301 parcelas. NO el 0,6452 que circula, que no existe en ningún artefacto y solo aparece en un geojson como coordenada",
              "parcel/18cls se declara IRREPRODUCIBLE: N=18 nunca entró al barrido, así que no hay cifra contra la cual validarlo",
              "incremental/08cls NUNCA EXISTIÓ, con cinco evidencias convergentes. Se corrige el docstring y se anota que el currículum paró en el escalón 04. Decir que se perdió es un error de registro",
              "Necesita GPU de 40 GB o más: bajar el batch de 256 cambiaría la composición de negativos del contraste y dejaría de ser la misma receta",
              "FUERA DEL CAMINO CRÍTICO DEL ARTÍCULO: el coautor dice que para MICAI no entran ni E-a ni la fenología, y el propio informe forense dice que regenerar los checkpoints no cambia ninguna cifra. Es higiene del repositorio. US-139 ya cerró sus posteriores de selección, así que esta recuperación tampoco compite hoy por la GPU del artículo"],
-         out:"checkpoints/farslip/parcel/04cls; docs/paper/artefactos-perdidos.md", dep:"—"},
+         out:"data/farslip/parcel_phenology_captions.parquet.dvc; docs/operations/farslip-recovery-v1.json; make farslip-recovery-check; checkpoints/farslip/parcel/04cls (pendiente)", dep:"—"},
         {id:"US-159", t:"Inventario de rutas fuera de custodia, con su gate", sp:3, st:"ok",
          role:"Como equipo que perdió una máquina, quiero que toda ruta por defecto fuera de Git y DVC tenga una adjudicación verificable, sin depender de qué datos estén materializados en cada clon.",
          ac:["HECHO POR ARTHUR. El escáner AST y make paths-check entraron por PR #45; el barrido actual encuentra 112 literales y adjudica los 43 que están fuera de Git/DVC en un conjunto cerrado",
