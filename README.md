@@ -12,7 +12,7 @@ monorepo no forman parte del despliegue.
 
 ```
 index.html        resumen, estado y hallazgos, con pestañas
-plan.html         15 épicas y 89 historias de usuario con criterios de aceptación
+plan.html         15 épicas y 90 historias de usuario con criterios de aceptación
 assets/style.css  la hoja de estilo, compartida por las dos páginas
 ../netlify.toml   configuración de despliegue y cabeceras desde la raíz del monorepo
 _headers          las mismas cabeceras, por si se despliega sin leer el toml
@@ -71,4 +71,4 @@ sustituye.
 ## Licencia
 
 Documento interno de trabajo. Los autores del código del sistema son Isaac Ávila y
-Aaron Bocanegra; los del artículo, Arthur Jafed Zizumbo Velasco y Javier A. Rebull-Saucedo.
+Aaron Bocanegra; los del artículo, Javier A. Rebull-Saucedo y Arthur Jafed Zizumbo-Velasco.
