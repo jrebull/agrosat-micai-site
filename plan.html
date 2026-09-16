@@ -368,7 +368,7 @@
     <div class="colophon plan-colophon">
       <span><b>Numeración</b> continúa el plan del sistema: EPIC 13 y US-084 en adelante</span>
       <span><b>Total</b> <span id="total-sp">—</span> puntos de historia</span>
-      <span><b>Actualizado</b> 15 de septiembre de 2026: US-161 cerrada, diez semillas publicadas y manuscrito corregido</span>
+      <span><b>Actualizado</b> 16 de septiembre de 2026: US-128 cerrada sobre la superficie completa y sin alterar el régimen exploratorio</span>
     </div>
   </div>
 </header>
@@ -597,6 +597,7 @@
       <tr><td><b>US-170</b></td><td>Alcance de mecanismos cerrado</td><td>Los cuatro mecanismos quedan situados como puntos post-entrenamiento, no como cobertura exhaustiva. Cascadas, umbrales por clase y rechazo aprendido se excluyen con un motivo distinto y la región aprendida, adaptativa por clase y multietapa queda nombrada como no explorada. Un gate deriva los seis brazos del código y vigila las tres exclusiones en el manuscrito; la corrección posterior conserva la regla de coste del séptimo brazo</td><td><code data-author="Javier Rebull">d3e216f</code> · <code data-author="Javier Rebull">f12c34b</code></td></tr>
       <tr><td><b>US-169</b></td><td>Curva completa cerrada sobre Δ⁵</td><td>La historia asumía un eje escalar y un punto preregistrado que el pivote retiró. El cierre vigente prohíbe elegir ese punto y comprueba la rejilla completa: veinte secciones, sesenta y seis puntos, cinco predictores y sus diez reejecuciones por semilla. El manuscrito publica el rango completo y declara que la sección visible fue elegida después de materializar el atlas</td><td><code data-author="Javier Rebull">79d6d6b</code></td></tr>
       <tr><td><b>US-126</b></td><td>Simetría del punto de operación cerrada</td><td>El defecto de 0,00127 se conserva como diagnóstico del módulo escalar retirado, no como resultado actual. En el flujo vigente el ajuste solo recibe entrenamiento y validación, la aplicación no recibe etiquetas, una identidad reutilizada falla y las veintidós filas de los paquetes de seis y siete brazos declaran que no hubo reigualación en evaluación</td><td><code data-author="Javier Rebull">ab59b6e</code></td></tr>
+      <tr><td><b>US-128</b></td><td>Multiplicidad ejecutada y cerrada</td><td>La familia primaria conserva las noventa coordenadas de los quince pares en cada uno de los once miembros: 990 filas. PASTIS-R aporta 75 órdenes parciales —71 incomparables y 4 indeterminados—; las 540 coordenadas de BreizhCrops con un solo clúster permanecen visibles y sin inferencia. Ciento ocho pruebas dirigidas atacan omisiones, unidades mezcladas, ceros no estructurales y familias reducidas</td><td><code data-author="Javier Rebull">4918f2a</code></td></tr>
       </tbody></table></div>
     </details>
 
@@ -1541,9 +1542,9 @@
              "HALLAZGO DE IDENTIFICACIÓN: «razón denominador sobre ganancia» no nombra qué cantidad es numerador, cuál denominador ni la unidad de agregación. Esas tres decisiones se congelan antes de calcularla; hasta entonces no existe una razón empírica",
              "REENCUADRADO: estos contrastes escalares quedan como sensibilidad para un vector declarado. La inferencia primaria compara las seis coordenadas y las fronteras del espacio completo; no selecciona puntos de operación con un coste aprendido en prueba"],
          out:"ml/eval/micai_contrasts.py; reports/paper_micai/", dep:"US-155, US-175"},
-        {id:"US-128", t:"Multiplicidad bien definida", sp:3, st:"wip",
+        {id:"US-128", t:"Multiplicidad bien definida", sp:3, st:"ok",
          role:"Como revisor de la corrección por multiplicidad, quiero que ninguna tabla corta, capa omitida o cambio de unidad pueda hacerse pasar por control del ganador de toda la superficie.",
-         ac:["MECÁNICA PRIMARIA TERMINADA, SUPERFICIE EMPÍRICA PENDIENTE. ml/eval/micai_profile_inference.py construye en una sola ejecución los quince pares por seis coordenadas y las dos direcciones; quitar un brazo, sustituir parcelas o desalinear patch y bloque falla",
+         ac:["CERRADA SOBRE LA SUPERFICIE COMPLETA EJECUTADA. La familia primaria conserva 990 coordenadas: quince pares por seis resultados en cada uno de los once miembros declarados. Quitar un brazo, sustituir parcelas, desalinear parche y bloque o borrar una fila no estimable falla",
              "El criterio primario no usa Holm ni una pérdida puntual: el máximo absoluto de las noventa diferencias centradas y studentizadas produce cotas simultáneas. Holm permanece limitado a H2 y a sensibilidades escalares explícitamente separadas",
              "CORRECCIÓN DE IMPLEMENTACIÓN: la primera versión reutilizaba un error estándar para todas las réplicas y excedía el alfa en una simulación bajo nulo. Cada réplica estima ahora su propio error estándar de clúster. Una prueba de mecanismo impide volver al denominador fijo y una regresión de seiscientas simulaciones exige que la cota Wilson unilateral no exceda 0,05 en el escenario que reprodujo el defecto",
              "LÍMITE DE LA AUDITORÍA: el hallazgo de inflación era real, pero la frase «lo causa el número de clústeres» no estaba identificada porque la comparación cambiaba también población y tamaño de parche. Las cifras no ejecutadas se retiraron del docstring; la calibración sintética no se presenta como nivel de un banco futuro",
@@ -1553,8 +1554,9 @@
              "La vía primaria conserva las noventa coordenadas aunque alguna tenga error estándar cero: esa coordenada no recibe intervalo ni p y bloquea la afirmación ordenada que la necesita. Con menos de tres patch_id pareados conserva los perfiles y retira toda inferencia",
              "Una dominancia exige que las seis cotas superiores simultáneas de la misma relación ordenada sean como máximo cero y que al menos una quede estrictamente bajo cero. Una igualdad estructural exacta no bloquea el orden; un cero no estructural sigue reteniendo la inferencia. El código evalúa las treinta direcciones predeclaradas y no abre una familia favorable después de ver el signo",
              "DOS CAMINOS ESTRECHOS CERRADOS: los contrastes ya no pueden definir por sí mismos qué estratos existían, y las medias del mapa llevan su unidad explícita. Una coincidencia numérica no permite mezclar la media parcelaria con la sensibilidad de bloques",
-             "LÍMITE ACTUALIZADO: no existe banco confirmatorio y US-128 sigue en curso sin resultados. US-139 ya materializó posteriores separados de entrenamiento y validación; el bundle excluye por diseño toda fila de evaluación. US-130 debe aplicar al estrato externo un punto de operación fijado sin abrir sus etiquetas: los OOF del fold 5 no pueden calibrar su propio punto de operación"],
-         out:"ml/eval/micai_profile_inference.py; ml/eval/micai_multiplicity.py; ml/eval/decision_cost.py; paper/micai2027/sections/05-protocol.tex", dep:"US-125, US-140, US-175"},
+             "RESULTADO EXPLORATORIO: los cinco miembros de PASTIS-R producen 75 pares de orden parcial: 71 incomparables y 4 indeterminados, sin dominancia certificada. Los seis miembros de BreizhCrops conservan sus 540 coordenadas con estado de menos de tres clústeres; no se borran, agrupan ni promueven a inferencia",
+             "LÍMITE ACTUALIZADO: cerrar la familia ejecutada no crea un banco confirmatorio. La cuenta permanece exploratoria, no selecciona predictor, no afirma transporte y no autoriza el envío por sí sola"],
+         out:"docs/paper/multiplicidad-superficie-completa.md; docs/paper/inference-v1.json; reports/micai2027/atlas/; ml/eval/micai_profile_inference.py; ml/eval/micai_multiplicity.py", dep:"US-125, US-140, US-175"},
         {id:"US-129", t:"Gate de protocolo, probado en negativo", sp:3, st:"ok",
          role:"Como equipo al que se le colaron tres defectos de protocolo, quiero una comprobación que los detecte, y verla fallar antes de confiar en ella.",
          ac:["El inventario cerrado enumera TODOS los objetos bajo reports/micai2027. Cambiar extensión, mover a figuras o crear un directorio enlazado no oculta un resultado",
