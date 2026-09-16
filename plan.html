@@ -584,12 +584,27 @@
 
     <div class="history-log">
     <details class="history-day" open>
+    <summary class="dia" data-date="2026-09-16"><time datetime="2026-09-16">16 sep</time><strong>US-163 mide la población complete-case y retiene la comparación</strong></summary>
+    <div class="scroll">
+            <table>
+              <colgroup><col class="c-us"><col class="c-tipo"><col class="c-que"><col class="c-ev"></colgroup>
+      <thead><tr><th>US</th><th>Tipo</th><th>Qué se hizo</th><th>Evidencia</th></tr></thead>
+      <tbody data-date="2026-09-16">
+      <tr><td><b>US-163</b></td><td>Rejilla completa</td><td>Las diez semillas prospectivas de US-161 se ejecutan sobre las dos regiones: veinte cuentas de población y ciento ochenta filas de soporte, sin elegir semillas ni reducir el catálogo. Los tres CSV científicos conservan exactamente los SHA-256 del primer ensamblado completo</td><td><code data-author="Javier Rebull">abe1efd</code></td></tr>
+      <tr><td><b>US-163</b></td><td>Resultado no estimable</td><td>Cero de veinte celdas semilla–estrato conservan las nueve clases. La clase 4 desaparece del complete-case en ambas regiones para las diez semillas; la clase 6, en las diez muestras de frh01 y tres de frh04. Por la regla previa no se ajusta ningún modelo ni se compara ningún mecanismo</td><td><code data-author="Javier Rebull">abe1efd</code> · <code data-author="Javier Rebull">3729b18</code></td></tr>
+      <tr><td><b>US-163</b></td><td>Publicación corregida</td><td>El primer JSON histórico anidaba dos tablas y el protocolo lo rechazó antes del sello. Una enmienda pos-ejecución fija los hashes testigo y permite solo aplanar ese registro y separar la revisión de cómputo de la de publicación. Protocolo y depósito cierran con 71 artefactos empíricos, 94 totales y 15 productores</td><td><code data-author="Javier Rebull">8c87ddb</code> · <code data-author="Javier Rebull">531df27</code> · <code data-author="Javier Rebull">ee8cabb</code></td></tr>
+      <tr><td><b>US-156 / US-163</b></td><td>Cuenta de no envío sincronizada</td><td>La incorporación de cinco artefactos eleva la cuenta con régimen y rol de 70/70 a 75/75. El estado se rederiva y resella sin cambiar el veredicto: cuatro de siete criterios cumplidos y envío todavía no autorizado</td><td><code data-author="Javier Rebull">98b6237</code> · <code data-author="Javier Rebull">242d44a</code></td></tr>
+      </tbody></table></div>
+    </details>
+
+    <details class="history-day" open>
     <summary class="dia" data-date="2026-09-15"><time datetime="2026-09-15">15 sep</time><strong>US-161 cierra la sensibilidad y retira una conclusión espacial</strong></summary>
     <div class="scroll">
             <table>
               <colgroup><col class="c-us"><col class="c-tipo"><col class="c-que"><col class="c-ev"></colgroup>
       <thead><tr><th>US</th><th>Tipo</th><th>Qué se hizo</th><th>Evidencia</th></tr></thead>
       <tbody data-date="2026-09-15">
+      <tr><td><b>US-163</b></td><td>Contrato previo y soporte auditado</td><td>La ablación deja de atribuir causalmente a la imputación lo que también cambia por condicionar sobre faltantes. El contrato fija las diez semillas de US-161, conserva el catálogo de nueve clases y retiene toda comparación aguas abajo si una sola clase desaparece. La tabla histórica sellada confirma el caso límite: la clase 4 queda sin parcelas complete-case en ambas regiones</td><td><code data-author="Javier Rebull">1ddebdc</code> · <code data-author="Javier Rebull">97298fa</code></td></tr>
       <tr><td><b>US-161</b></td><td>Custodia corregida</td><td>Una enmienda posterior a las dos ejecuciones no selladas añade únicamente régimen, rol, banco y vínculo al preregistro. Conserva las decisiones y fija como testigo los SHA-256 de las columnas científicas; la reejecución limpia coincide exactamente con ellas</td><td><code data-author="Javier Rebull">024435f</code> · <code data-author="Javier Rebull">27ba21e</code></td></tr>
       <tr><td><b>US-161</b></td><td>Cuenta completa</td><td>Las diez semillas prospectivas publican juntas cinco salidas: 240 filas de estabilidad de afirmaciones, 6 600 puntos de rejilla, soporte de clase, cuenta de ejecución y procedencia. Las 60 000 parcelas por semilla se conservaron y el gate rederiva que los valores científicos coinciden con el testigo</td><td><code data-author="Javier Rebull">e06bc70</code> · <code data-author="Javier Rebull">dcb7fff</code></td></tr>
       <tr><td><b>US-161 / US-144</b></td><td>Resultado integrado</td><td>Quince afirmaciones sobreviven, ocho cuentas se acotan y una se retira. La ausencia de dominancia se conserva; la afirmación de que ninguna partición espacial era elegible falla en las diez reejecuciones y sale del artículo. El PDF mantiene veinte páginas y el paquete anónimo reconstruye sus dieciocho entradas byte a byte</td><td><code data-author="Javier Rebull">05b69c8</code></td></tr>
@@ -1721,12 +1736,14 @@
              "COBERTURA CONDICIONAL. Se publican todas las clases con soporte; treinta y ocho de ciento cuarenta y cuatro filas quedan bajo 0,9, con los soportes extremos pequeños rotulados para impedir una generalización espuria",
              "CUSTODIA. Diez salidas reproducibles byte a byte, contrato y enmienda sellados, cuenta semántica cerrada y resultado integrado en el manuscrito de veinte páginas"],
          out:"reports/micai2027/calibration/", dep:"US-130"},
-        {id:"US-163", t:"Ablación de la imputación", sp:3, st:"idle",
-         role:"«El 1,62 % de sus celdas está imputado, pero eso toca al 63 % de las parcelas. ¿Cómo sabemos que su resultado no es la imputación?» La cifra que publicamos era la que minimizaba el alcance.",
-         ac:["El experimento se repite sobre el subconjunto de parcelas SIN ninguna celda imputada",
-             "Se reporta la fracción de parcelas afectadas, no solo la de celdas: son 38 034 de 60 000, y decir 1,62 % subestima el alcance en un factor de treinta y nueve",
-             "Si la conclusión cambia al quitar las imputadas, es la imputación y se dice"],
-         out:"reports/paper_micai/robustez/imputacion/", dep:"US-129"},
+        {id:"US-163", t:"Sensibilidad a completitud e imputación", sp:3, st:"ok",
+         role:"«El 1,62 % de las celdas no finitas toca 38 034 de 60 000 parcelas.» Quitar esas parcelas no aísla la imputación: condiciona por faltantes y cambia la población. La historia mide ese soporte sin llamarlo efecto causal.",
+         ac:["CONTRATO SELLADO: imputation-ablation-v1.json usa exactamente las diez semillas prospectivas de US-161, prohíbe escoger una favorable y conserva el catálogo de nueve clases",
+             "CUENTA HISTÓRICA REDERIVADA: 179 747 de 11 100 000 celdas no finitas, 38 034 parcelas afectadas y 21 966 complete-case; la clase 4 queda en cero en ambas regiones",
+             "REGLA DE ESTIMABILIDAD: cada celda semilla–estrato necesita las nueve clases tanto en fuente como en evaluación. Si falla una, se publican población y soporte, pero no modelos, mecanismos ni ganador",
+             "CERRADA SIN COMPARACIÓN: 0/20 celdas conservan las nueve clases. La clase 4 desaparece en ambas regiones para las diez semillas; la clase 6, en diez muestras de frh01 y tres de frh04. Por contrato no se ajusta ningún modelo ni se elige mecanismo",
+             "CUSTODIA: cinco salidas selladas, protocolo en 71 artefactos empíricos y depósito preparado en 94 artefactos de quince productores"],
+         out:"docs/paper/imputation-ablation-v1.json; reports/micai2027/robustez/imputacion/", dep:"US-161"},
         {id:"US-164", t:"Cambiar de predictor frente a operar mejor", sp:5, st:"ok",
          role:"«En vez de todo esto, entrenen un clasificador mejor.» La respuesta medible distingue cambiar entre predictores ya disponibles de invertir en entrenamiento o prometer un modelo futuro.",
          ac:["CERRADA. La ganancia de cada acción y la ganancia de pasar del peor al mejor predictor disponible se calculan sobre el mismo eje de pérdida, sin mezclar bancos ni estratos",
