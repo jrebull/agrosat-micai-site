@@ -687,6 +687,8 @@ tbody tr.hi td{background:var(--sienna-soft);font-weight:600}
 .plan-page .epic-progress-measure strong{font:600 25px/1 var(--display);
   letter-spacing:-.04em;font-variant-numeric:tabular-nums;color:var(--ink)}
 .plan-page .epic-progress-measure .progress-track{height:5px;margin:0}
+.plan-page .epic-progress-note{grid-column:2/-1;margin:-8px 0 2px;padding-left:14px;
+  border-left:3px solid var(--ochre);font:12.5px/1.45 var(--body);color:var(--muted)}
 
 .plan-page .hero-track{gap:8px}
 .plan-page .hero-step{border:1px solid var(--rule);border-top-width:4px;padding:18px;
@@ -742,6 +744,7 @@ tbody tr.hi td{background:var(--sienna-soft);font-weight:600}
   .plan-page .epic-progress-card{grid-template-columns:88px 1fr;gap:10px 18px;padding:17px 0}
   .plan-page .epic-progress-key{grid-row:1/3}
   .plan-page .epic-progress-meta{grid-column:2}
+  .plan-page .epic-progress-note{grid-column:2;margin-top:0}
   .plan-page .epic-progress-measure{grid-column:1/-1;margin-top:4px}
   .plan-page .us-top{grid-template-columns:auto 1fr auto auto;gap:10px}
   .plan-page .us-top::after{grid-column:4}
