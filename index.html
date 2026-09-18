@@ -154,7 +154,10 @@
       parcelas elegibles, reúne las seis políticas en un espacio común y termina en los perfiles
       completos de resultados y el atlas de decisión. El artículo compara puntos operativos fijos,
       no familias completas; trata el vector de frecuencias como objeto empírico principal y limita
-      la base de seis pérdidas a utilidades constantes dentro de esas celdas. PASTIS-R permanece
+      la base de seis pérdidas a utilidades constantes dentro de esas celdas. Una proposición
+      sellada establece ahora el límite exacto: el perfil identifica las pérdidas que factorizan
+      por la partición ejecutable, pero no cardinalidad, profundidad taxonómica ni gravedad dentro
+      de una celda sin frecuencias refinadas. PASTIS-R permanece
       exploratorio y BreizhCrops descriptivo: no se afirma transporte geográfico, preferencia de
       usuarios ni ganador universal. La literatura inmediata y el suplemento reconstructivo ya
       están cerrados. Las cuatro críticas severas quedaron adjudicadas en cuatro iteraciones:
@@ -456,7 +459,7 @@
       <span class="l">páginas A4, PDF anónimo</span></div>
     <div class="cifra"><span class="n">7/7</span>
       <span class="l">secciones redactadas</span></div>
-    <div class="cifra"><span class="n">66/66</span>
+    <div class="cifra"><span class="n">67/67</span>
       <span class="l">gates en verde</span></div>
   </div>
 
@@ -503,6 +506,7 @@
       <li><span class="chip ok">pasa</span> <code>imputation-ablation-check</code> — imputation-ablation-check</li>
       <li><span class="chip ok">pasa</span> <code>inference-contract-check</code> — inference-contract-check</li>
       <li><span class="chip ok">pasa</span> <code>label-noise-check</code> — label-noise-check</li>
+      <li><span class="chip ok">pasa</span> <code>loss-basis-proposition-check</code> — loss-basis-proposition-check</li>
       <li><span class="chip ok">pasa</span> <code>mechanism-scope-check</code> — los seis brazos representan cuatro mecanismos y las familias excluidas siguen visibles</li>
       <li><span class="chip ok">pasa</span> <code>micai-claims-check</code> — ninguna afirmacion retirada ha vuelto</li>
       <li><span class="chip ok">pasa</span> <code>micai-protocol-check</code> — cada artefacto declara su regimen y procedencia</li>
@@ -590,7 +594,7 @@
     </object>
   </div>
   <p class="pie-visor"><a href="paper/agrosat-micai2027-en-vivo.pdf">Abrir el PDF a pantalla completa</a> ·
-    manuscrito al día 2026-09-17, commit <code>6ad7fed</code></p>
+    manuscrito al día 2026-09-17, commit <code>a19bbc0</code></p>
 </section>
 <!-- GENERADO build_site_paper · fin -->
 
@@ -1457,7 +1461,8 @@
     ["07","US-164 · Cambiar predictor frente a operar mejor","Cerrada: en PASTIS-R el salto entre predictores disponibles supera la mejor acción en 1 233 de 1 320 puntos; la acción gana en 83 y empata en 4. La comparación no estima inversión en entrenamiento ni modelos futuros.","ok","Cerrada"],
     ["08","US-162 · Calibración de las posteriores","Cerrada: cuenta agregada y por clase para cada modelo-estrato, temperatura ajustada solo con validación, abstención recalculada, cobertura condicional y diez salidas reproducibles. El resultado es mixto y no se presenta como mejora universal.","ok","Cerrada"],
     ["09","US-156 · Acta formal del 24 de septiembre","El estado ejecutable mantiene cuatro de siete criterios cumplidos y el envío no está autorizado. La fecha gobierna el acta formal; no bloquea la revisión del manuscrito.","wip","Hito congelado"],
-    ["10","US-176 · Reencuadre editorial","Cerrada: tabla central de perfiles, suplemento reconstructivo, quince páginas en inglés y auditoría ciega final sin bloqueo metodológico no declarado. El cierre editorial no autoriza el envío.","ok","Cerrada"]
+    ["10","US-176 · Reencuadre editorial","Cerrada: tabla central de perfiles, suplemento reconstructivo, quince páginas en inglés y auditoría ciega final sin bloqueo metodológico no declarado. El cierre editorial no autoriza el envío.","ok","Cerrada"],
+    ["11","US-177 · Límite de la base de pérdidas","Cerrada: proposición y prueba caracterizan la suficiencia exacta del perfil de siete celdas y demuestran qué refinamientos internos no quedan identificados.","ok","Cerrada"]
   ];
   var pe = document.getElementById("pending");
   pending.forEach(function(p){
